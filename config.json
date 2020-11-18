@@ -1,5 +1,5 @@
 {
     "theme": "templates/dark.html",
-    "title": "apolzek.me",
+    "title": "apolzek.github.io",
     "ignore" : ["CNAME","index.html", "config.json"]
 }
