@@ -1,0 +1,22 @@
+body {
+    color: white;
+    background: #000000;
+    font-family: 'Anonymous Pro', monospace;
+}
+
+a:link {
+    color: #ff3add;
+}
+
+a:visited {
+    color: #ff3add;
+    ;
+}
+
+h1 {
+    font-family: 'Anonymous Pro', monospace;
+}
+
+.greentext { 
+    color: #36ff75 ;
+}
