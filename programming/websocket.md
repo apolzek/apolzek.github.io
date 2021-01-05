@@ -209,3 +209,22 @@ client.onmessage = function(e) {
     }
 };
 ```
+
+[nodejs-websocket-programming-examples](https://www.pubnub.com/blog/nodejs-websocket-programming-examples/)
+https://www.youtube.com/watch?v=YaJbc7s1ROg
+
+```
+GET wss://9fc9b7005cc1.ngrok.io/ HTTP/1.1
+Host: 9fc9b7005cc1.ngrok.io
+Connection: Upgrade
+Pragma: no-cache
+Cache-Control: no-cache
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36
+Upgrade: websocket
+Origin: https://dwst.github.io
+Sec-WebSocket-Version: 13
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,pt;q=0.8
+Sec-WebSocket-Key: n2t0lyNBikhF+5DcrMihJQ==
+Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+```
