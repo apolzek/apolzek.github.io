@@ -1,20 +1,49 @@
 # WebSocket
 
-WebSocket is a computer communications protocol, providing **full-duplex** communication channels over a **single TCP connection**. The WebSocket protocol was standardized by the IETF as **RFC 6455** in 2011, and the WebSocket API in Web IDL is being standardized by the W3C. WebSocket is distinct from HTTP. Both protocols are located at layer 7 in the OSI model and depend on TCP at layer 4. Although they are different, RFC 6455 states that WebSocket "is designed to work over HTTP ports 443 and 80 as well as to support HTTP proxies and intermediaries," thus making it compatible with the HTTP protocol. To achieve compatibility, the WebSocket handshake uses the HTTP Upgrade header to change from the HTTP protocol to the WebSocket protocol.
+## Overview
 
-The WebSocket protocol specification defines ws (WebSocket) and wss (WebSocket Secure) as two new uniform resource identifier (URI) schemes that are used for unencrypted and encrypted connections, respectively.
+WebSocket is a computer communications protocol, providing **full-duplex** communication channels over a single TCP connection. The WebSocket protocol was standardized by the IETF as **RFC 6455** in 2011, and the WebSocket API in Web IDL is being standardized by the W3C.
+
+WebSocket is distinct from HTTP. Both protocols are located at layer 7 in the OSI model and depend on TCP at layer 4. Although they are different, RFC 6455 states that WebSocket "is designed to work over HTTP ports 443 and 80 as well as to support HTTP proxies and intermediaries," thus making it compatible with the HTTP protocol. To achieve compatibility, the WebSocket handshake uses the **HTTP Upgrade header** to change from the HTTP protocol to the WebSocket protocol.
+
+The WebSocket protocol enables interaction between a web browser (or other client application) and a web server with lower overhead than half-duplex alternatives such as HTTP polling, facilitating real-time data transfer from and to the server. This is made possible by providing a standardized way for the server to send content to the client without being first requested by the client, and allowing messages to be passed back and forth while keeping the connection open. In this way, a two-way ongoing conversation can take place between the client and the server. The communications are usually done over TCP port number 443 (or 80 in the case of unsecured connections), which is of benefit for those environments which block non-web Internet connections using a firewall. Similar two-way browser-server communications have been achieved in non-standardized ways using stopgap technologies such as Comet.
+
+Most browsers support the protocol, including Google Chrome, Microsoft Edge, Internet Explorer, Firefox, Safari and Opera.
+
+Unlike HTTP, WebSocket provides full-duplex communication. Additionally, WebSocket enables streams of messages on top of TCP. TCP alone deals with streams of bytes with no inherent concept of a message. Before WebSocket, port 80 full-duplex communication was attainable using Comet channels; however, Comet implementation is nontrivial, and due to the TCP handshake and HTTP header overhead, it is inefficient for small messages. The WebSocket protocol aims to solve these problems without compromising the security assumptions of the web.
+
+The WebSocket protocol specification defines ws (WebSocket) and wss (WebSocket Secure) as two new uniform resource identifier (URI) schemes that are used for unencrypted and encrypted connections, respectively. Apart from the scheme name and fragment (i.e. # is not supported), the rest of the URI components are defined to use URI generic syntax.
+
+Using browser developer tools, developers can inspect the WebSocket handshake as well as the WebSocket frames.
 
 [RFC6455](https://tools.ietf.org/html/rfc6455)
-# Files
 
-![websockets flow](https://www.fullstackpython.com/img/visuals/websockets-flow.png)
-![websockets chat](https://quarkus.io/guides/images/websocket-guide-architecture.png)
+![websockets-flow](https://www.fullstackpython.com/img/visuals/websockets-flow.png)
+
+## History
+
+WebSocket was first referenced as TCPConnection in the HTML5 specification, as a placeholder for a TCP-based socket API. In June 2008, a series of discussions were led by Michael Carter that resulted in the first version of the protocol known as WebSocket.
+
+The name "WebSocket" was coined by Ian Hickson and Michael Carter shortly thereafter through collaboration on the #whatwg IRC chat room, and subsequently authored for inclusion in the HTML5 specification by Ian Hickson, and announced on the cometdaily blog by Michael Carter. In December 2009, Google Chrome 4 was the first browser to ship full support for the standard, with WebSocket enabled by default. Development of the WebSocket protocol was subsequently moved from the W3C and WHATWG group to the IETF in February 2010, and authored for two revisions under Ian Hickson.
+
+After the protocol was shipped and enabled by default in multiple browsers, the RFC was finalized under Ian Fette in December 2011.
+
+![network](https://kaazing.com/doc/5.0/images/f-portable-network-e.jpg)
+
+## Web server implementation
+
+Nginx has supported WebSockets since 2013, implemented in version 1.3.13 including acting as a reverse proxy and load balancer of WebSocket applications.
+
+Internet Information Services added support for WebSockets in version 8 which was released with Windows Server 2012.
+
+lighttpd has supported WebSockets since 2017, implemented in version 1.4.46. lighttpd mod_proxy can act as a reverse proxy and load balancer of WebSocket applications. lighttpd mod_wstunnel can facilitate a WebSocket tunnel, allowing a client to employ WebSockets to tunnel a simpler protocol, such as JSON, to a backend application.
 
 ## Protocol handshake
 
 To establish a WebSocket connection, the client sends a WebSocket handshake request, for which the server returns a WebSocket handshake response, as shown in the example below.
 
 Client request (just like in HTTP, each line ends with \r\n and there must be an extra blank line at the end):
+
 ```
 GET /chat HTTP/1.1
 Host: server.example.com
@@ -34,6 +63,7 @@ Connection: ​Upgrade
 Sec-WebSocket-Accept: ​HSmrc0sMlYUkAGmm5OPpG2HaGWk=
 Sec-WebSocket-Protocol: ​ch
 ```
+![websocket-connection](https://miro.medium.com/max/1200/1*0w3tMXm7jr174bqOprcdOg.png)
 
 The handshake starts with an HTTP request/response, allowing servers to handle HTTP connections as well as WebSocket connections on the same port. Once the connection is established, communication switches to a bidirectional binary protocol which does not conform to the HTTP protocol.
 
@@ -41,17 +71,24 @@ In addition to Upgrade headers, the client sends a Sec-WebSocket-Key header cont
 
 Once the connection is established, the client and server can send WebSocket data or text frames back and forth in full-duplex mode. The data is minimally framed, with a small header followed by payload. WebSocket transmissions are described as "messages", where a single message can optionally be split across several data frames. This can allow for sending of messages where initial data is available but the complete length of the message is unknown (it sends one data frame after another until the end is reached and marked with the FIN bit). With extensions to the protocol, this can also be used for multiplexing several streams simultaneously (for instance to avoid monopolizing use of a socket for a single large payload).
 
+![websocket-gateway](https://docs.oracle.com/cd/E55956_01/doc.11123/user_guide/content/images/general/websocket_sequence.png)
+
 ## Proxy Servers
 
 Each new technology has a new set of problems. In the case of WebSocket, it is compatible with proxy servers that mediate HTTP connections in most corporate networks. The WebSocket protocol uses the HTTP update system (which is normally used for HTTP / SSL) to "update" an HTTP connection to a WebSocket connection. Some proxy servers don't like this and will abandon the connection. Thus, even if a particular customer uses the WebSocket protocol, it may not be possible to establish a connection. This makes the next section even more important.
 
+![http-vs-wss](https://46c4ts1tskv22sdav81j9c69-wpengine.netdna-ssl.com/wp-content/uploads/2016/02/1_httpvswebsocket.png)
+
 ## Use cases
+
 Use WebSocket whenever you need an almost real-time, low-latency connection between the client and the server. Keep in mind that this may involve overhauling the way you create server applications with a new focus on technologies like event queues. Some examples of use cases:
 
 - Multiplayer online games
 - Chat apps
 - Live Sports Links
 - Real-time update of social networks
+
+![websockets chat](https://quarkus.io/guides/images/websocket-guide-architecture.png)
 
 ## Security considerations
 
@@ -75,34 +112,32 @@ A mid-2010 draft (version hixie-76) broke compatibility with reverse proxies and
 
 This is a (mostly) pure JavaScript implementation of the WebSocket protocol versions 8 and 13 for Node. There are some example client and server applications that implement various interoperability testing protocols in the "test/scripts" folder. [Reference](https://www.npmjs.com/package/websocket)
 
-
-```npm install websocket```
-
+`npm install websocket`
 
 - Server Example
 
 ```js
 #!/usr/bin/env node
-var WebSocketServer = require('websocket').server;
-var http = require('http');
+var WebSocketServer = require("websocket").server;
+var http = require("http");
 
-var server = http.createServer(function(request, response) {
-    console.log((new Date()) + ' Received request for ' + request.url);
-    response.writeHead(404);
-    response.end();
+var server = http.createServer(function (request, response) {
+  console.log(new Date() + " Received request for " + request.url);
+  response.writeHead(404);
+  response.end();
 });
-server.listen(8080, function() {
-    console.log((new Date()) + ' Server is listening on port 8080');
+server.listen(8080, function () {
+  console.log(new Date() + " Server is listening on port 8080");
 });
 
 wsServer = new WebSocketServer({
-    httpServer: server,
-    // You should not use autoAcceptConnections for production
-    // applications, as it defeats all standard cross-origin protection
-    // facilities built into the protocol and the browser.  You should
-    // *always* verify the connection's origin and decide whether or not
-    // to accept it.
-    autoAcceptConnections: false
+  httpServer: server,
+  // You should not use autoAcceptConnections for production
+  // applications, as it defeats all standard cross-origin protection
+  // facilities built into the protocol and the browser.  You should
+  // *always* verify the connection's origin and decide whether or not
+  // to accept it.
+  autoAcceptConnections: false,
 });
 
 function originIsAllowed(origin) {
@@ -110,29 +145,34 @@ function originIsAllowed(origin) {
   return true;
 }
 
-wsServer.on('request', function(request) {
-    if (!originIsAllowed(request.origin)) {
-      // Make sure we only accept requests from an allowed origin
-      request.reject();
-      console.log((new Date()) + ' Connection from origin ' + request.origin + ' rejected.');
-      return;
+wsServer.on("request", function (request) {
+  if (!originIsAllowed(request.origin)) {
+    // Make sure we only accept requests from an allowed origin
+    request.reject();
+    console.log(
+      new Date() + " Connection from origin " + request.origin + " rejected."
+    );
+    return;
+  }
+
+  var connection = request.accept("echo-protocol", request.origin);
+  console.log(new Date() + " Connection accepted.");
+  connection.on("message", function (message) {
+    if (message.type === "utf8") {
+      console.log("Received Message: " + message.utf8Data);
+      connection.sendUTF(message.utf8Data);
+    } else if (message.type === "binary") {
+      console.log(
+        "Received Binary Message of " + message.binaryData.length + " bytes"
+      );
+      connection.sendBytes(message.binaryData);
     }
-    
-    var connection = request.accept('echo-protocol', request.origin);
-    console.log((new Date()) + ' Connection accepted.');
-    connection.on('message', function(message) {
-        if (message.type === 'utf8') {
-            console.log('Received Message: ' + message.utf8Data);
-            connection.sendUTF(message.utf8Data);
-        }
-        else if (message.type === 'binary') {
-            console.log('Received Binary Message of ' + message.binaryData.length + ' bytes');
-            connection.sendBytes(message.binaryData);
-        }
-    });
-    connection.on('close', function(reasonCode, description) {
-        console.log((new Date()) + ' Peer ' + connection.remoteAddress + ' disconnected.');
-    });
+  });
+  connection.on("close", function (reasonCode, description) {
+    console.log(
+      new Date() + " Peer " + connection.remoteAddress + " disconnected."
+    );
+  });
 });
 ```
 
@@ -140,75 +180,76 @@ wsServer.on('request', function(request) {
 
 ```js
 #!/usr/bin/env node
-var WebSocketClient = require('websocket').client;
+var WebSocketClient = require("websocket").client;
 
 var client = new WebSocketClient();
 
-client.on('connectFailed', function(error) {
-    console.log('Connect Error: ' + error.toString());
+client.on("connectFailed", function (error) {
+  console.log("Connect Error: " + error.toString());
 });
 
-client.on('connect', function(connection) {
-    console.log('WebSocket Client Connected');
-    connection.on('error', function(error) {
-        console.log("Connection Error: " + error.toString());
-    });
-    connection.on('close', function() {
-        console.log('echo-protocol Connection Closed');
-    });
-    connection.on('message', function(message) {
-        if (message.type === 'utf8') {
-            console.log("Received: '" + message.utf8Data + "'");
-        }
-    });
-    
-    function sendNumber() {
-        if (connection.connected) {
-            var number = Math.round(Math.random() * 0xFFFFFF);
-            connection.sendUTF(number.toString());
-            setTimeout(sendNumber, 1000);
-        }
+client.on("connect", function (connection) {
+  console.log("WebSocket Client Connected");
+  connection.on("error", function (error) {
+    console.log("Connection Error: " + error.toString());
+  });
+  connection.on("close", function () {
+    console.log("echo-protocol Connection Closed");
+  });
+  connection.on("message", function (message) {
+    if (message.type === "utf8") {
+      console.log("Received: '" + message.utf8Data + "'");
     }
-    sendNumber();
+  });
+
+  function sendNumber() {
+    if (connection.connected) {
+      var number = Math.round(Math.random() * 0xffffff);
+      connection.sendUTF(number.toString());
+      setTimeout(sendNumber, 1000);
+    }
+  }
+  sendNumber();
 });
 
-client.connect('ws://localhost:8080/', 'echo-protocol');
+client.connect("ws://localhost:8080/", "echo-protocol");
 ```
 
 - Client Example using the W3C WebSocket API
 
 ```js
-var W3CWebSocket = require('websocket').w3cwebsocket;
+var W3CWebSocket = require("websocket").w3cwebsocket;
 
-var client = new W3CWebSocket('ws://localhost:8080/', 'echo-protocol');
+var client = new W3CWebSocket("ws://localhost:8080/", "echo-protocol");
 
-client.onerror = function() {
-    console.log('Connection Error');
+client.onerror = function () {
+  console.log("Connection Error");
 };
 
-client.onopen = function() {
-    console.log('WebSocket Client Connected');
+client.onopen = function () {
+  console.log("WebSocket Client Connected");
 
-    function sendNumber() {
-        if (client.readyState === client.OPEN) {
-            var number = Math.round(Math.random() * 0xFFFFFF);
-            client.send(number.toString());
-            setTimeout(sendNumber, 1000);
-        }
+  function sendNumber() {
+    if (client.readyState === client.OPEN) {
+      var number = Math.round(Math.random() * 0xffffff);
+      client.send(number.toString());
+      setTimeout(sendNumber, 1000);
     }
-    sendNumber();
+  }
+  sendNumber();
 };
 
-client.onclose = function() {
-    console.log('echo-protocol Client Closed');
+client.onclose = function () {
+  console.log("echo-protocol Client Closed");
 };
 
-client.onmessage = function(e) {
-    if (typeof e.data === 'string') {
-        console.log("Received: '" + e.data + "'");
-    }
+client.onmessage = function (e) {
+  if (typeof e.data === "string") {
+    console.log("Received: '" + e.data + "'");
+  }
 };
 ```
+---
 
 [nodejs-websocket-programming-examples](https://www.pubnub.com/blog/nodejs-websocket-programming-examples/)
 https://www.youtube.com/watch?v=YaJbc7s1ROg
