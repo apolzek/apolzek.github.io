@@ -1,5 +1,10 @@
 # WebSocket
 
+https://www.nginx.com/blog/websocket-nginx/
+https://websockets.readthedocs.io/en/stable/intro.html
+https://www.youtube.com/watch?v=YaJbc7s1ROg
+ ,b
+
 ## Overview
 
 WebSocket is a computer communications protocol, providing **full-duplex** communication channels over a single TCP connection. The WebSocket protocol was standardized by the IETF as **RFC 6455** in 2011, and the WebSocket API in Web IDL is being standardized by the W3C.
@@ -250,20 +255,33 @@ client.onmessage = function (e) {
 ---
 
 [nodejs-websocket-programming-examples](https://www.pubnub.com/blog/nodejs-websocket-programming-examples/)
-https://www.youtube.com/watch?v=YaJbc7s1ROg
+
+## Lab 01
+
+![lab-01-websocket](https://i.imgur.com/qKFwCkr.png)
+
+1) Configure websocket server (ws) listening on port 8090
+
+2) Configure proxy (burpsuite) to listen on port 8080 (internet <=> proxy <=> local network)
+
+3) Configure an HTTP tunnel with ngrok on port 8090
+
+4) Using the browser configured with burpsuite, make websocket calls through the website https://dwst.github.io/
+
+* CHAMADA HTTP
 
 ```
-GET wss://9fc9b7005cc1.ngrok.io/ HTTP/1.1
-Host: 9fc9b7005cc1.ngrok.io
+GET / HTTP/1.1
+Host: 4d8dc9b7ce14.ngrok.io
 Connection: Upgrade
 Pragma: no-cache
 Cache-Control: no-cache
-User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36
 Upgrade: websocket
 Origin: https://dwst.github.io
 Sec-WebSocket-Version: 13
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9,pt;q=0.8
-Sec-WebSocket-Key: n2t0lyNBikhF+5DcrMihJQ==
-Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+Accept-Encoding: gzip, deflate
+Accept-Language: pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7
+Sec-WebSocket-Key: 3OXWqQU1UT0wGcBEdnc9gQ==
+Sec-WebSocket-Protocol: echo-protocol
 ```
