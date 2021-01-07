@@ -1,9 +1,8 @@
 # WebSocket
 
-https://www.nginx.com/blog/websocket-nginx/
-https://websockets.readthedocs.io/en/stable/intro.html
-https://www.youtube.com/watch?v=YaJbc7s1ROg
- ,b
+[nginx-websocket](https://www.nginx.com/blog/websocket-nginx/)
+[websocket-with-python](https://websockets.readthedocs.io/en/stable/intro.html)
+[websocket-with-nodejs](https://www.youtube.com/watch?v=YaJbc7s1ROg)
 
 ## Overview
 
@@ -252,7 +251,6 @@ client.onmessage = function (e) {
   }
 };
 ```
----
 
 [nodejs-websocket-programming-examples](https://www.pubnub.com/blog/nodejs-websocket-programming-examples/)
 
@@ -268,7 +266,7 @@ client.onmessage = function (e) {
 
 4) Using the browser configured with burpsuite, make websocket calls through the website https://dwst.github.io/
 
-* CHAMADA HTTP
+* HTTP REQUEST
 
 ```
 GET / HTTP/1.1
