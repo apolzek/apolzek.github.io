@@ -17,6 +17,23 @@ h1 {
     font-family: 'Anonymous Pro', monospace;
 }
 
-.greentext { 
-    color: #36ff75 ;
+.greentext {
+    color: #36ff75;
+}
+
+#typefile {
+    color: #83a8e2;
+}
+
+@keyframes fa-blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 0; }
+}
+.fa-blink {
+  -webkit-animation: fa-blink .95s linear infinite;
+  -moz-animation: fa-blink .95s linear infinite;
+  -ms-animation: fa-blink .95s linear infinite;
+  -o-animation: fa-blink .95s linear infinite;
+  animation: fa-blink .95s linear infinite;
 }
