@@ -13,6 +13,8 @@ a:visited {
     ;
 }
 
+a:link {text-decoration: none;}
+
 h1 {
     font-family: 'Anonymous Pro', monospace;
 }
@@ -36,4 +38,13 @@ h1 {
   -ms-animation: fa-blink .95s linear infinite;
   -o-animation: fa-blink .95s linear infinite;
   animation: fa-blink .95s linear infinite;
+}
+
+#rodape {
+    margin: 0;
+    position: absolute;
+    top: 98%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
 }
