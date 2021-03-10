@@ -1,1 +1,6 @@
-# Piloto
+piloto.md
+
+# piloto
+# Eaeee, seja bem-vindo (a) 
+
+Me propus a escrever o *piloto.md* com o objetivo de explicar quem eu sou, o que faço, o objetivo desse blog(se é que isso pode ser chamado de blog) e também o que você, convidado(a), irá encontrar aqui. Já vou adiantando que encontrará muitos erros de português, muitas experiências em tecnologia sem lógica alguma e também agumas OPINIÕES. De qualquer forma vale resaltar que estou fazendo isso para poder medir meu aprendizado e também monitorar e entender como eu pensava/penso. Acredito que para terceiros a parte mais valiosa pode ser a parte técica, isso envolve as poc's, os códigos, as gambs e também alguns projetos que tento desenvolver. Vou utilizar bastante a linguagem coloquia para explicar com detalhes todos os experimentos realizados. Como grande parte do conteúdo vai ser técnico é importante você saber que atualmente trabalho como SRE, então grande parte das minhas poc's vão ser em cima de ferramenta desse universo/contexto. Sobre feedbacks, eu aceito qualquer tipo de feedback, até mesmo aqueles 100% críticos nada argumentativos, então pode mandar(sem pena) sua opinião.. Eu ia escrever bem mais, mas parei pra resolver uma treta e tudo que eu tinha em mente sumiu .. futuramente eu dou uma atualizada no piloto.md ;)
