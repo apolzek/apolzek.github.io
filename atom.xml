@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>apolzek</title>
+ <link href="/atom.xml" rel="self"/>
+ <link href="/"/>
+ <updated>2022-10-01T22:08:58+00:00</updated>
+ <id></id>
+ <author>
+   <name></name>
+   <email></email>
+ </author>
+
+ 
+ <entry>
+   <title>Piloto</title>
+   <link href="/2022/06/09/Piloto.html"/>
+   <updated>2022-06-09T00:00:00+00:00</updated>
+   <id>/2022/06/09/Piloto</id>
+   <content type="html">&lt;p&gt;Eaee, seja bem-vindo..&lt;/p&gt;
+
+&lt;p&gt;🔗 &lt;strong&gt;apolzek.github.io&lt;/strong&gt; hospeda o projeto &lt;strong&gt;SRError&lt;/strong&gt;. O intuito é compartilhar artigos técnicos(predominantemente), bem detalhados, utilizando linguagem coloquial e com abertura pra discussão e crítica. Diferente do Wikipedia, não pretendo focar em definições, não encare os posts como uma fonte de verdade e também saiba que mts dos assuntos tratados não são do meu total domínio. Vc deve encontrar bastante conteúdo sobre &lt;em&gt;Containers, Kubernetes, Observabilidae, CNCF Tools, Hashicorp Tools, Computação em núvem e Segurança da Informação(mais focada nesse contexto DevOps/SRE)&lt;/em&gt;. Já vou adiantar que pretendo escrever sobre &lt;strong&gt;casos de exceção&lt;/strong&gt;, ou seja, o que vc normalmente &lt;em&gt;NÃO&lt;/em&gt; encontra em artigos e vídeos por ai (:&lt;/p&gt;
+
+&lt;h2 id=&quot;whoami&quot;&gt;whoami&lt;/h2&gt;
+
+&lt;p&gt;Hj em dia trampo como &lt;strong&gt;SRE&lt;/strong&gt;. Trabalhei como terceirizado no setor de Telecom, atuei no time de operações de serviços voltados para o mercado financeiro e também no time de Observabilidade para o mercado de pagamentos. Nas horas vagas frequento alguns butecos copo sujo e lavo muita louça&lt;/p&gt;
+
+&lt;h2 id=&quot;objetivo-&quot;&gt;objetivo ?&lt;/h2&gt;
+
+&lt;p&gt;Registrar o processo de aprendizagem de algum assunto técnico relacionado aos temas citados acima. Em vez de focar na obra final e nas conclusões, pretendo enfatizar o processo de travessia para o conhecimento. Ou seja, preciso dar atenção nos mínimos detalhes, te ajudar a entender o que sei, o que estou pensando e também como vc pode reproduzir exatamente o que estou fazendo. Qualquer prova de conceito deve ser criticada, e ao final, nos ensinar  algo. Vamos trilhar um caminho que concilie teoria e prática. Lembre-se sempre: &lt;strong&gt;FAZER != FAZER BEM FEITO&lt;/strong&gt;. Além disso, tenho como segundo ojetivo usar esse projeto como um &lt;strong&gt;Medidor de aprendizagem e Procrastinação&lt;/strong&gt; 📊&lt;/p&gt;
+
+&lt;h2 id=&quot;erros-&quot;&gt;erros !&lt;/h2&gt;
+
+&lt;p&gt;Por favor critique qlq artigo a vontade. Pode me chamar no Telegram/Discord se deseja discutir algo.. Seria interessante outros pontos de vista, correções técnicas e novas ideias/assuntos. Apenas seja educado =) OK ?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Discord: &lt;strong&gt;apolzek#3359&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Telegram: &lt;strong&gt;@apolzek&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;lets-work&quot;&gt;let’s work..&lt;/h2&gt;
+
+&lt;p&gt;por enquanto é isso, espero que vc encontre algum conteúdo util e que eu possa colaborar de alguma forma.. 🌱&lt;/p&gt;
+</content>
+ </entry>
+ 
+
+</feed>

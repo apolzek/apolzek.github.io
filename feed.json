@@ -1,0 +1,35 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "apolzek",
+    "home_page_url": "/",
+    "feed_url": "/feed.json",
+    "description": "SRError",
+    "icon": "/apple-touch-icon.png",
+    "favicon": "/favicon.ico",
+    "expired": false,
+    
+"items": [
+    
+        {
+            "id": "/2022/06/09/Piloto.html",
+            "title": "Piloto",
+            "summary": "Piloto",
+            "content_text": "Eaee, seja bem-vindo..🔗 apolzek.github.io hospeda o projeto SRError. O intuito é compartilhar artigos técnicos(predominantemente), bem detalhados, utilizando linguagem coloquial e com abertura pra discussão e crítica. Diferente do Wikipedia, não pretendo focar em definições, não encare os posts como uma fonte de verdade e também saiba que mts dos assuntos tratados não são do meu total domínio. Vc deve encontrar bastante conteúdo sobre Containers, Kubernetes, Observabilidae, CNCF Tools, Hashicorp Tools, Computação em núvem e Segurança da Informação(mais focada nesse contexto DevOps/SRE). Já vou adiantar que pretendo escrever sobre casos de exceção, ou seja, o que vc normalmente NÃO encontra em artigos e vídeos por ai (:whoamiHj em dia trampo como SRE. Trabalhei como terceirizado no setor de Telecom, atuei no time de operações de serviços voltados para o mercado financeiro e também no time de Observabilidade para o mercado de pagamentos. Nas horas vagas frequento alguns butecos copo sujo e lavo muita louçaobjetivo ?Registrar o processo de aprendizagem de algum assunto técnico relacionado aos temas citados acima. Em vez de focar na obra final e nas conclusões, pretendo enfatizar o processo de travessia para o conhecimento. Ou seja, preciso dar atenção nos mínimos detalhes, te ajudar a entender o que sei, o que estou pensando e também como vc pode reproduzir exatamente o que estou fazendo. Qualquer prova de conceito deve ser criticada, e ao final, nos ensinar  algo. Vamos trilhar um caminho que concilie teoria e prática. Lembre-se sempre: FAZER != FAZER BEM FEITO. Além disso, tenho como segundo ojetivo usar esse projeto como um Medidor de aprendizagem e Procrastinação 📊erros !Por favor critique qlq artigo a vontade. Pode me chamar no Telegram/Discord se deseja discutir algo.. Seria interessante outros pontos de vista, correções técnicas e novas ideias/assuntos. Apenas seja educado =) OK ?      Discord: apolzek#3359        Telegram: @apolzek  let’s work..por enquanto é isso, espero que vc encontre algum conteúdo util e que eu possa colaborar de alguma forma.. 🌱",
+            "content_html": "<p>Eaee, seja bem-vindo..</p><p>🔗 <strong>apolzek.github.io</strong> hospeda o projeto <strong>SRError</strong>. O intuito é compartilhar artigos técnicos(predominantemente), bem detalhados, utilizando linguagem coloquial e com abertura pra discussão e crítica. Diferente do Wikipedia, não pretendo focar em definições, não encare os posts como uma fonte de verdade e também saiba que mts dos assuntos tratados não são do meu total domínio. Vc deve encontrar bastante conteúdo sobre <em>Containers, Kubernetes, Observabilidae, CNCF Tools, Hashicorp Tools, Computação em núvem e Segurança da Informação(mais focada nesse contexto DevOps/SRE)</em>. Já vou adiantar que pretendo escrever sobre <strong>casos de exceção</strong>, ou seja, o que vc normalmente <em>NÃO</em> encontra em artigos e vídeos por ai (:</p><h2 id=\"whoami\">whoami</h2><p>Hj em dia trampo como <strong>SRE</strong>. Trabalhei como terceirizado no setor de Telecom, atuei no time de operações de serviços voltados para o mercado financeiro e também no time de Observabilidade para o mercado de pagamentos. Nas horas vagas frequento alguns butecos copo sujo e lavo muita louça</p><h2 id=\"objetivo-\">objetivo ?</h2><p>Registrar o processo de aprendizagem de algum assunto técnico relacionado aos temas citados acima. Em vez de focar na obra final e nas conclusões, pretendo enfatizar o processo de travessia para o conhecimento. Ou seja, preciso dar atenção nos mínimos detalhes, te ajudar a entender o que sei, o que estou pensando e também como vc pode reproduzir exatamente o que estou fazendo. Qualquer prova de conceito deve ser criticada, e ao final, nos ensinar  algo. Vamos trilhar um caminho que concilie teoria e prática. Lembre-se sempre: <strong>FAZER != FAZER BEM FEITO</strong>. Além disso, tenho como segundo ojetivo usar esse projeto como um <strong>Medidor de aprendizagem e Procrastinação</strong> 📊</p><h2 id=\"erros-\">erros !</h2><p>Por favor critique qlq artigo a vontade. Pode me chamar no Telegram/Discord se deseja discutir algo.. Seria interessante outros pontos de vista, correções técnicas e novas ideias/assuntos. Apenas seja educado =) OK ?</p><ul>  <li>    <p>Discord: <strong>apolzek#3359</strong></p>  </li>  <li>    <p>Telegram: <strong>@apolzek</strong></p>  </li></ul><h2 id=\"lets-work\">let’s work..</h2><p>por enquanto é isso, espero que vc encontre algum conteúdo util e que eu possa colaborar de alguma forma.. 🌱</p>",
+            "url": "/2022/06/09/Piloto.html",
+            
+            
+            
+            
+            
+            "date_published": "2022-06-09T00:00:00+00:00",
+            "date_modified": "2022-06-09T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        }
+    
+    ]
+}
