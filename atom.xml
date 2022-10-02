@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2022-10-01T22:28:13+00:00</updated>
+ <updated>2022-10-02T14:29:17+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>Piloto</title>
-   <link href="/2022/06/09/Piloto.html"/>
-   <updated>2022-06-09T00:00:00+00:00</updated>
-   <id>/2022/06/09/Piloto</id>
+   <link href="/2022/10/02/Piloto.html"/>
+   <updated>2022-10-02T00:00:00+00:00</updated>
+   <id>/2022/10/02/Piloto</id>
    <content type="html">&lt;p&gt;Eaee, seja bem-vindo..&lt;/p&gt;
 
 &lt;p&gt;🔗 &lt;strong&gt;apolzek.github.io&lt;/strong&gt; hospeda o projeto &lt;strong&gt;SRError&lt;/strong&gt;. O intuito é compartilhar artigos técnicos(predominantemente), bem detalhados, utilizando linguagem coloquial e com abertura pra discussão e crítica. Diferente do Wikipedia, não pretendo focar em definições, não encare os posts como uma fonte de verdade e também saiba que mts dos assuntos tratados não são do meu total domínio. Vc deve encontrar bastante conteúdo sobre &lt;em&gt;Containers, Kubernetes, Observabilidae, CNCF Tools, Hashicorp Tools, Computação em núvem e Segurança da Informação(mais focada nesse contexto DevOps/SRE)&lt;/em&gt;. Já vou adiantar que pretendo escrever sobre &lt;strong&gt;casos de exceção&lt;/strong&gt;, ou seja, o que vc normalmente &lt;em&gt;NÃO&lt;/em&gt; encontra em artigos e vídeos por ai (:&lt;/p&gt;
