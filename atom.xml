@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2023-06-29T19:39:00+00:00</updated>
+ <updated>2023-06-29T19:40:14+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -13,7 +13,7 @@
 
  
  <entry>
-   <title>Piloto</title>
+   <title>linux/process</title>
    <link href="/2022/11/10/revisao-cicd.html"/>
    <updated>2022-11-10T00:00:00+00:00</updated>
    <id>/2022/11/10/revisao-cicd</id>
