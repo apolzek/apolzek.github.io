@@ -4,13 +4,33 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2023-06-29T19:40:14+00:00</updated>
+ <updated>2023-07-21T16:56:04+00:00</updated>
  <id></id>
  <author>
    <name></name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>linux/process</title>
+   <link href="/2022/11/10/revisao-test.html"/>
+   <updated>2022-11-10T00:00:00+00:00</updated>
+   <id>/2022/11/10/revisao-test</id>
+   <content type="html">&lt;ul&gt;
+  &lt;li&gt;Git workflow&lt;/li&gt;
+  &lt;li&gt;Git flow&lt;/li&gt;
+  &lt;li&gt;Steps básicos&lt;/li&gt;
+  &lt;li&gt;Steps adicionais&lt;/li&gt;
+  &lt;li&gt;Velocidade x Confiabilidade&lt;/li&gt;
+  &lt;li&gt;Ferramentas e suas diferenças (Tekton, Gitlab, Github, Travis, Jenkins..)&lt;/li&gt;
+  &lt;li&gt;Tilt&lt;/li&gt;
+  &lt;li&gt;Pré-commit&lt;/li&gt;
+  &lt;li&gt;Segurança&lt;/li&gt;
+  &lt;li&gt;Feature Flag&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
  
  <entry>
    <title>linux/process</title>
