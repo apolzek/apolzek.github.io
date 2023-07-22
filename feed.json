@@ -11,6 +11,27 @@
 "items": [
     
         {
+            "id": "/2022/11/10/revisao-cicd.html",
+            "title": "opiniao/engenharia-de-confiabilidade-no-brasil",
+            "summary": "Piloto",
+            "content_text": "  Git workflow  Git flow  Steps básicos  Steps adicionais  Velocidade x Confiabilidade  Ferramentas e suas diferenças (Tekton, Gitlab, Github, Travis, Jenkins..)  Tilt  Pré-commit  Segurança  Feature Flag",
+            "content_html": "<ul>  <li>Git workflow</li>  <li>Git flow</li>  <li>Steps básicos</li>  <li>Steps adicionais</li>  <li>Velocidade x Confiabilidade</li>  <li>Ferramentas e suas diferenças (Tekton, Gitlab, Github, Travis, Jenkins..)</li>  <li>Tilt</li>  <li>Pré-commit</li>  <li>Segurança</li>  <li>Feature Flag</li></ul>",
+            "url": "/2022/11/10/revisao-cicd.html",
+            
+            
+            
+            
+            
+            "date_published": "2022-11-10T00:00:00+00:00",
+            "date_modified": "2022-11-10T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
             "id": "/2022/11/10/revisao-test.html",
             "title": "linux/other",
             "summary": "Piloto",
@@ -34,6 +55,48 @@
         {
             "id": "/2022/11/10/revisao-cicd.html",
             "title": "linux/process",
+            "summary": "Piloto",
+            "content_text": "  Git workflow  Git flow  Steps básicos  Steps adicionais  Velocidade x Confiabilidade  Ferramentas e suas diferenças (Tekton, Gitlab, Github, Travis, Jenkins..)  Tilt  Pré-commit  Segurança  Feature Flag",
+            "content_html": "<ul>  <li>Git workflow</li>  <li>Git flow</li>  <li>Steps básicos</li>  <li>Steps adicionais</li>  <li>Velocidade x Confiabilidade</li>  <li>Ferramentas e suas diferenças (Tekton, Gitlab, Github, Travis, Jenkins..)</li>  <li>Tilt</li>  <li>Pré-commit</li>  <li>Segurança</li>  <li>Feature Flag</li></ul>",
+            "url": "/2022/11/10/revisao-cicd.html",
+            
+            
+            
+            
+            
+            "date_published": "2022-11-10T00:00:00+00:00",
+            "date_modified": "2022-11-10T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
+            "id": "/2022/11/10/revisao-cicd.html",
+            "title": "k8s/hpa",
+            "summary": "Piloto",
+            "content_text": "  Git workflow  Git flow  Steps básicos  Steps adicionais  Velocidade x Confiabilidade  Ferramentas e suas diferenças (Tekton, Gitlab, Github, Travis, Jenkins..)  Tilt  Pré-commit  Segurança  Feature Flag",
+            "content_html": "<ul>  <li>Git workflow</li>  <li>Git flow</li>  <li>Steps básicos</li>  <li>Steps adicionais</li>  <li>Velocidade x Confiabilidade</li>  <li>Ferramentas e suas diferenças (Tekton, Gitlab, Github, Travis, Jenkins..)</li>  <li>Tilt</li>  <li>Pré-commit</li>  <li>Segurança</li>  <li>Feature Flag</li></ul>",
+            "url": "/2022/11/10/revisao-cicd.html",
+            
+            
+            
+            
+            
+            "date_published": "2022-11-10T00:00:00+00:00",
+            "date_modified": "2022-11-10T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
+            "id": "/2022/11/10/revisao-cicd.html",
+            "title": "cheatsheet/k8s",
             "summary": "Piloto",
             "content_text": "  Git workflow  Git flow  Steps básicos  Steps adicionais  Velocidade x Confiabilidade  Ferramentas e suas diferenças (Tekton, Gitlab, Github, Travis, Jenkins..)  Tilt  Pré-commit  Segurança  Feature Flag",
             "content_html": "<ul>  <li>Git workflow</li>  <li>Git flow</li>  <li>Steps básicos</li>  <li>Steps adicionais</li>  <li>Velocidade x Confiabilidade</li>  <li>Ferramentas e suas diferenças (Tekton, Gitlab, Github, Travis, Jenkins..)</li>  <li>Tilt</li>  <li>Pré-commit</li>  <li>Segurança</li>  <li>Feature Flag</li></ul>",

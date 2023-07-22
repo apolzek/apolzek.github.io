@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "opiniao/engenharia-de-confiabilidade-no-brasil",
+      "category" : "",
+      "tags"     : "piloto",
+      "url"      : "/2022/11/10/revisao-cicd.html",
+      "date"     : "2022-11-10 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "linux/other",
       "category" : "",
       "tags"     : "piloto",
@@ -10,6 +18,22 @@
   
     {
       "title"    : "linux/process",
+      "category" : "",
+      "tags"     : "piloto",
+      "url"      : "/2022/11/10/revisao-cicd.html",
+      "date"     : "2022-11-10 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "k8s/hpa",
+      "category" : "",
+      "tags"     : "piloto",
+      "url"      : "/2022/11/10/revisao-cicd.html",
+      "date"     : "2022-11-10 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "cheatsheet/k8s",
       "category" : "",
       "tags"     : "piloto",
       "url"      : "/2022/11/10/revisao-cicd.html",
