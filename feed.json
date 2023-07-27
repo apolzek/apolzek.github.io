@@ -14,8 +14,8 @@
             "id": "/2023/07/27/vim.html",
             "title": "cheatsheet/vim",
             "summary": "Cheatsheet VIM",
-            "content_text": "",
-            "content_html": "",
+            "content_text": "  Git workflow  Git flow  Steps básicos  Steps adicionais  Velocidade x Confiabilidade  Ferramentas e suas diferenças (Tekton, Gitlab, Github, Travis, Jenkins..)  Tilt  Pré-commit  Segurança  Feature Flag",
+            "content_html": "<ul>  <li>Git workflow</li>  <li>Git flow</li>  <li>Steps básicos</li>  <li>Steps adicionais</li>  <li>Velocidade x Confiabilidade</li>  <li>Ferramentas e suas diferenças (Tekton, Gitlab, Github, Travis, Jenkins..)</li>  <li>Tilt</li>  <li>Pré-commit</li>  <li>Segurança</li>  <li>Feature Flag</li></ul>",
             "url": "/2023/07/27/vim.html",
             
             
