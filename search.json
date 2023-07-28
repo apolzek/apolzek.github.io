@@ -1,51 +1,43 @@
 [
   
     {
-      "title"    : "cheatsheet/vim",
+      "title"    : "k8s/analise-de-rede",
       "category" : "",
-      "tags"     : "vim, vi, editor, 1991",
-      "url"      : "/2023/07/27/vim.html",
-      "date"     : "2023-07-27 00:00:00 +0000"
+      "tags"     : "piloto",
+      "url"      : "/2023/08/10/analise-de-rede.html",
+      "date"     : "2023-08-10 00:00:00 +0000"
     } ,
   
     {
       "title"    : "opiniao/engenharia-de-confiabilidade-no-brasil",
       "category" : "",
       "tags"     : "piloto",
-      "url"      : "/2022/11/10/revisao-cicd.html",
-      "date"     : "2022-11-10 00:00:00 +0000"
+      "url"      : "/2023/08/01/engenharia-de-confiabilidade-no-brasil.html",
+      "date"     : "2023-08-01 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "linux/other",
+      "title"    : "dev/golang/concorrencia",
       "category" : "",
       "tags"     : "piloto",
-      "url"      : "/2022/11/10/revisao-test.html",
-      "date"     : "2022-11-10 00:00:00 +0000"
+      "url"      : "/2023/07/29/concorrencia.html",
+      "date"     : "2023-07-29 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "linux/process",
+      "title"    : "linux/falando-de-distros",
       "category" : "",
-      "tags"     : "piloto",
-      "url"      : "/2022/11/10/revisao-cicd.html",
-      "date"     : "2022-11-10 00:00:00 +0000"
+      "tags"     : "distro, linux, distribuição",
+      "url"      : "/2023/07/28/falando-de-distros.html",
+      "date"     : "2023-07-28 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "k8s/hpa",
+      "title"    : "cheatsheet/vim",
       "category" : "",
-      "tags"     : "piloto",
-      "url"      : "/2022/11/10/revisao-cicd.html",
-      "date"     : "2022-11-10 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "programming/golang/concorrencia",
-      "category" : "",
-      "tags"     : "piloto",
-      "url"      : "/2022/11/10/revisao-cicd.html",
-      "date"     : "2022-11-10 00:00:00 +0000"
+      "tags"     : "vim, vi, editor, 1991",
+      "url"      : "/2023/07/27/vim.html",
+      "date"     : "2023-07-27 00:00:00 +0000"
     } 
   
 ]
