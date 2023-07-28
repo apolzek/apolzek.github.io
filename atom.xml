@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2023-07-28T00:17:25+00:00</updated>
+ <updated>2023-07-28T00:22:17+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -13,19 +13,11 @@
 
  
  <entry>
-   <title>Vim</title>
+   <title>cheatsheet/vim</title>
    <link href="/2023/07/27/vim.html"/>
    <updated>2023-07-27T00:00:00+00:00</updated>
    <id>/2023/07/27/vim</id>
-   <content type="html">&lt;hr /&gt;
-&lt;p&gt;layout: post
-title: cheatsheet/vim
-description: Cheatsheet VIM
-summary:&lt;br /&gt;
-tags: vim, vi, editor
-—&lt;/p&gt;
-
-&lt;table&gt;
+   <content type="html">&lt;table&gt;
   &lt;thead&gt;
     &lt;tr&gt;
       &lt;th style=&quot;text-align: center&quot;&gt;Comando&lt;/th&gt;
@@ -172,6 +164,18 @@ tags: vim, vi, editor
     &lt;tr&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;:%s/windows/linux/g&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Troca todas as ocorrências de windows por linux(mais de uma por linha)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;e! /etc/hosts&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Muda pro outro arquivo descartando alterações atuais&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;ESQ + :syntax on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Habilita o Highlight(arquivo deve ter extenção)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;ESQ + :set nu&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Habilita a numeração das linhas&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
