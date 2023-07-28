@@ -95,6 +95,27 @@
         },
     
         {
+            "id": "/2023/07/28/deletar-historico-commits-github.html",
+            "title": "dev/git/deletar-historico-commits-github",
+            "summary": "Deletar todo histórico de commits no Github",
+            "content_text": "  Checkoutgit checkout --orphan latest_branch  Add all the filesgit add -A  Commit the changesgit commit -am \"commit message\"  Delete the branchgit branch -D main  Rename the current branch to maingit branch -m main  Finally, force update your repositorygit push -f origin main",
+            "content_html": "<ol>  <li>Checkout</li></ol><p><code class=\"language-plaintext highlighter-rouge\">git checkout --orphan latest_branch</code></p><ol>  <li>Add all the files</li></ol><p><code class=\"language-plaintext highlighter-rouge\">git add -A</code></p><ol>  <li>Commit the changes</li></ol><p><code class=\"language-plaintext highlighter-rouge\">git commit -am \"commit message\"</code></p><ol>  <li>Delete the branch</li></ol><p><code class=\"language-plaintext highlighter-rouge\">git branch -D main</code></p><ol>  <li>Rename the current branch to main</li></ol><p><code class=\"language-plaintext highlighter-rouge\">git branch -m main</code></p><ol>  <li>Finally, force update your repository</li></ol><p><code class=\"language-plaintext highlighter-rouge\">git push -f origin main</code></p>",
+            "url": "/2023/07/28/deletar-historico-commits-github.html",
+            
+            
+            
+            "tags": ["git","history","github"],
+            
+            "date_published": "2023-07-28T00:00:00+00:00",
+            "date_modified": "2023-07-28T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
             "id": "/2023/07/27/vim.html",
             "title": "cheatsheet/vim",
             "summary": "Cheatsheet VIM",

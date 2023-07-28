@@ -33,6 +33,14 @@
     } ,
   
     {
+      "title"    : "dev/git/deletar-historico-commits-github",
+      "category" : "",
+      "tags"     : "git, history, github",
+      "url"      : "/2023/07/28/deletar-historico-commits-github.html",
+      "date"     : "2023-07-28 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "cheatsheet/vim",
       "category" : "",
       "tags"     : "vim, vi, editor, 1991",
