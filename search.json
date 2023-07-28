@@ -9,19 +9,19 @@
     } ,
   
     {
-      "title"    : "opiniao/engenharia-de-confiabilidade-no-brasil",
-      "category" : "",
-      "tags"     : "piloto",
-      "url"      : "/2023/08/01/engenharia-de-confiabilidade-no-brasil.html",
-      "date"     : "2023-08-01 00:00:00 +0000"
-    } ,
-  
-    {
       "title"    : "dev/golang/concorrencia",
       "category" : "",
       "tags"     : "piloto",
       "url"      : "/2023/07/29/concorrencia.html",
       "date"     : "2023-07-29 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "opiniao/engenharia-de-confiabilidade-no-brasil",
+      "category" : "",
+      "tags"     : "SRE, confiabilidade",
+      "url"      : "/2023/07/28/engenharia-de-confiabilidade-no-brasil.html",
+      "date"     : "2023-07-28 00:00:00 +0000"
     } ,
   
     {

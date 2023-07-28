@@ -32,27 +32,6 @@
         },
     
         {
-            "id": "/2023/08/01/engenharia-de-confiabilidade-no-brasil.html",
-            "title": "opiniao/engenharia-de-confiabilidade-no-brasil",
-            "summary": "Piloto",
-            "content_text": "  engenharia-de-confiabilidade-no-brasil",
-            "content_html": "<ul>  <li>engenharia-de-confiabilidade-no-brasil</li></ul>",
-            "url": "/2023/08/01/engenharia-de-confiabilidade-no-brasil.html",
-            
-            
-            
-            
-            
-            "date_published": "2023-08-01T00:00:00+00:00",
-            "date_modified": "2023-08-01T00:00:00+00:00",
-            
-                "author": 
-                ""
-                
-            
-        },
-    
-        {
             "id": "/2023/07/29/concorrencia.html",
             "title": "dev/golang/concorrencia",
             "summary": "Piloto",
@@ -66,6 +45,27 @@
             
             "date_published": "2023-07-29T00:00:00+00:00",
             "date_modified": "2023-07-29T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
+            "id": "/2023/07/28/engenharia-de-confiabilidade-no-brasil.html",
+            "title": "opiniao/engenharia-de-confiabilidade-no-brasil",
+            "summary": "Falando sobre Engenharia de Confiabilidade no mercado Brasileiro",
+            "content_text": "  engenharia-de-confiabilidade-no-brasil",
+            "content_html": "<ul>  <li>engenharia-de-confiabilidade-no-brasil</li></ul>",
+            "url": "/2023/07/28/engenharia-de-confiabilidade-no-brasil.html",
+            
+            
+            
+            "tags": ["SRE","confiabilidade"],
+            
+            "date_published": "2023-07-28T00:00:00+00:00",
+            "date_modified": "2023-07-28T00:00:00+00:00",
             
                 "author": 
                 ""
