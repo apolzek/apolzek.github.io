@@ -1,35 +1,35 @@
 [
   
     {
-      "title"    : "k8s/analise-de-rede",
+      "title"    : "linux/falando-de-distros",
       "category" : "",
-      "tags"     : "piloto",
-      "url"      : "/2023/08/10/analise-de-rede.html",
-      "date"     : "2023-08-10 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "dev/golang/concorrencia",
-      "category" : "",
-      "tags"     : "piloto",
-      "url"      : "/2023/07/29/concorrencia.html",
-      "date"     : "2023-07-29 00:00:00 +0000"
+      "tags"     : "distro, linux, distribuição",
+      "url"      : "/2023/12/28/falando-de-distros.html",
+      "date"     : "2023-12-28 00:00:00 +0000"
     } ,
   
     {
       "title"    : "opiniao/engenharia-de-confiabilidade-no-brasil",
       "category" : "",
       "tags"     : "SRE, confiabilidade",
-      "url"      : "/2023/07/28/engenharia-de-confiabilidade-no-brasil.html",
-      "date"     : "2023-07-28 00:00:00 +0000"
+      "url"      : "/2023/09/28/engenharia-de-confiabilidade-no-brasil.html",
+      "date"     : "2023-09-28 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "linux/falando-de-distros",
+      "title"    : "k8s/analise-de-rede",
       "category" : "",
-      "tags"     : "distro, linux, distribuição",
-      "url"      : "/2023/07/28/falando-de-distros.html",
-      "date"     : "2023-07-28 00:00:00 +0000"
+      "tags"     : "piloto",
+      "url"      : "/2023/09/10/analise-de-rede.html",
+      "date"     : "2023-09-10 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "dev/golang/revisao-concorrencia",
+      "category" : "",
+      "tags"     : "go,, concorrencia",
+      "url"      : "/2023/08/08/revisao-concorrencia.html",
+      "date"     : "2023-08-08 00:00:00 +0000"
     } ,
   
     {
