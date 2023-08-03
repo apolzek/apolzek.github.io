@@ -25,6 +25,14 @@
     } ,
   
     {
+      "title"    : "cheatsheet/docker",
+      "category" : "",
+      "tags"     : "docker",
+      "url"      : "/2023/08/12/docker.html",
+      "date"     : "2023-08-12 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "dev/golang/revisao-concorrencia",
       "category" : "",
       "tags"     : "go,, concorrencia",

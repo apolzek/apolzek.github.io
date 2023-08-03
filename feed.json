@@ -74,6 +74,27 @@
         },
     
         {
+            "id": "/2023/08/12/docker.html",
+            "title": "cheatsheet/docker",
+            "summary": "Cheatsheet Docker",
+            "content_text": "docker image build;docker image history;docker image import;docker image inspect;docker image load;docker image ls;docker image prune;docker image pull;docker image push;docker image rm;docker image save;e docker image tag;",
+            "content_html": "<p>docker image build;docker image history;docker image import;docker image inspect;docker image load;docker image ls;docker image prune;docker image pull;docker image push;docker image rm;docker image save;e docker image tag;</p>",
+            "url": "/2023/08/12/docker.html",
+            
+            
+            
+            
+            
+            "date_published": "2023-08-12T00:00:00+00:00",
+            "date_modified": "2023-08-12T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
             "id": "/2023/08/08/revisao-concorrencia.html",
             "title": "dev/golang/revisao-concorrencia",
             "summary": "Um overview sobre concorrência em Golang",
