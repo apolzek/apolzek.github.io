@@ -17,6 +17,14 @@
     } ,
   
     {
+      "title"    : "k8s/extensibilidade-k8s",
+      "category" : "",
+      "tags"     : "piloto",
+      "url"      : "/2023/09/11/extensibilidade-k8s.html",
+      "date"     : "2023-09-11 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "k8s/analise-de-rede",
       "category" : "",
       "tags"     : "piloto",

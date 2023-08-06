@@ -53,6 +53,27 @@
         },
     
         {
+            "id": "/2023/09/11/extensibilidade-k8s.html",
+            "title": "k8s/extensibilidade-k8s",
+            "summary": "Capacidade do kubernetes",
+            "content_text": "",
+            "content_html": "",
+            "url": "/2023/09/11/extensibilidade-k8s.html",
+            
+            
+            
+            
+            
+            "date_published": "2023-09-11T00:00:00+00:00",
+            "date_modified": "2023-09-11T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
             "id": "/2023/09/10/analise-de-rede.html",
             "title": "k8s/analise-de-rede",
             "summary": "Piloto",

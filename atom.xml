@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2023-08-04T22:05:48+00:00</updated>
+ <updated>2023-08-06T03:00:05+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -29,6 +29,15 @@
    <content type="html">&lt;ul&gt;
   &lt;li&gt;engenharia-de-confiabilidade-no-brasil&lt;/li&gt;
 &lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>k8s/extensibilidade-k8s</title>
+   <link href="/2023/09/11/extensibilidade-k8s.html"/>
+   <updated>2023-09-11T00:00:00+00:00</updated>
+   <id>/2023/09/11/extensibilidade-k8s</id>
+   <content type="html">
 </content>
  </entry>
  
