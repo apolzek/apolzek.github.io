@@ -11,6 +11,27 @@
 "items": [
     
         {
+            "id": "/2023/12/28/sre-afie-seu-machado.html",
+            "title": "linux/sre-afie-seu-machado",
+            "summary": null,
+            "content_text": "asdf  lazygit  terraform  aws  kubectlvisidatakinddockerrcontainerd",
+            "content_html": "<p>asdf</p><ul>  <li>lazygit</li>  <li>terraform</li>  <li>aws</li>  <li>kubectl</li></ul><p>visidatakinddockerrcontainerd</p>",
+            "url": "/2023/12/28/sre-afie-seu-machado.html",
+            
+            
+            
+            "tags": ["distro","linux","distribuição"],
+            
+            "date_published": "2023-12-28T00:00:00+00:00",
+            "date_modified": "2023-12-28T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
             "id": "/2023/12/28/falando-de-distros.html",
             "title": "linux/falando-de-distros",
             "summary": null,
