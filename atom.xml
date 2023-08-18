@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2023-08-18T11:45:58+00:00</updated>
+ <updated>2023-08-18T11:54:23+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -90,7 +90,8 @@ containerd&lt;/p&gt;
    <link href="/2023/08/12/docker.html"/>
    <updated>2023-08-12T00:00:00+00:00</updated>
    <id>/2023/08/12/docker</id>
-   <content type="html">&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker image build
+   <content type="html">&lt;p&gt;Comandos basicos para imagens&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker image build
 docker image history
 docker image import
 docker image inspect
@@ -104,7 +105,9 @@ docker image save
 docker image tag
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;p&gt;Comandos basicos para containers&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker run -d --name meu-container nginx:latest
+docker run --name meu-container -p 80:8080 nginx:latest
 docker stop meu-container
 docker start meu-container
 docker logs meu-container
@@ -112,19 +115,30 @@ docker exec -it meu-container bash
 docker rm meu-container
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;p&gt;Comandos basicos para build&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker build -t minha-imagem:latest /caminho/do/Dockerfile
 docker rmi minha-imagem:latest
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;p&gt;Comandos para copiar arquivos entre host e container&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker cp arquivo.txt nome-do-container:/caminho/no/contêiner/
+docker cp nome-do-container:/caminho/no/contêiner/arquivo.txt arquivo.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Comandos para visualisar e limitar recursos&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker stats
 docker rmi $(docker images -q)
 docker run --cpus=2 --memory=1g nome-da-imagem
-docker network create minha-rede
-docker run -p 80:8080 nginx
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker cp arquivo.txt nome-do-container:/caminho/no/contêiner/
-docker cp nome-do-container:/caminho/no/contêiner/arquivo.txt arquivo.txt
+&lt;p&gt;Comando para limpar containers e itens associados a eles&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker system prune -a --volumes --dry-run
+docker system prune -a --volumes
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Converter imagem para arquivo e depois importar novamente&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker save -o nome_da_imagem.tar nome_da_imagem
+docker load -i nome_da_imagem.tar
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
