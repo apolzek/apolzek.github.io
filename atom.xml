@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2023-08-18T12:02:34+00:00</updated>
+ <updated>2023-08-18T12:16:24+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -127,8 +127,12 @@ docker cp nome-do-container:/caminho/no/contêiner/arquivo.txt arquivo.txt
 
 &lt;h2 id=&quot;comandos-para-visualisar-e-limitar-recursos&quot;&gt;Comandos para visualisar e limitar recursos&lt;/h2&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker stats
-docker rmi $(docker images -q)
 docker run --cpus=2 --memory=1g nome-da-imagem
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;remover-todas-as-imagens-ou-containers&quot;&gt;Remover todas as imagens ou containers&lt;/h2&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker rmi $(docker images -q)
+docker rm -f $(docker ps -aq)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;comando-para-limpar-containers-e-itens-associados-a-eles&quot;&gt;Comando para limpar containers e itens associados a eles&lt;/h2&gt;

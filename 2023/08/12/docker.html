@@ -22,8 +22,9 @@ docker rmi minha-imagem:latest
 </code></pre></div></div> <h2 id="comandos-para-copiar-arquivos-entre-host-e-container"> Comandos para copiar arquivos entre host e container <a href="#comandos-para-copiar-arquivos-entre-host-e-container">#</a> </h2> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker cp arquivo.txt nome-do-container:/caminho/no/contêiner/
 docker cp nome-do-container:/caminho/no/contêiner/arquivo.txt arquivo.txt
 </code></pre></div></div> <h2 id="comandos-para-visualisar-e-limitar-recursos"> Comandos para visualisar e limitar recursos <a href="#comandos-para-visualisar-e-limitar-recursos">#</a> </h2> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker stats
-docker rmi $(docker images -q)
 docker run --cpus=2 --memory=1g nome-da-imagem
+</code></pre></div></div> <h2 id="remover-todas-as-imagens-ou-containers"> Remover todas as imagens ou containers <a href="#remover-todas-as-imagens-ou-containers">#</a> </h2> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker rmi $(docker images -q)
+docker rm -f $(docker ps -aq)
 </code></pre></div></div> <h2 id="comando-para-limpar-containers-e-itens-associados-a-eles"> Comando para limpar containers e itens associados a eles <a href="#comando-para-limpar-containers-e-itens-associados-a-eles">#</a> </h2> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker system prune -a --volumes --dry-run
 docker system prune -a --volumes
 </code></pre></div></div> <h2 id="converter-imagem-para-arquivo-e-depois-importar-novamente"> Converter imagem para arquivo e depois importar novamente <a href="#converter-imagem-para-arquivo-e-depois-importar-novamente">#</a> </h2> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker save -o nome_da_imagem.tar nome_da_imagem
