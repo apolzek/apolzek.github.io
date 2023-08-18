@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2023-08-18T11:54:23+00:00</updated>
+ <updated>2023-08-18T11:56:47+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -105,7 +105,7 @@ docker image save
 docker image tag
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Comandos basicos para containers&lt;/p&gt;
+&lt;center&gt;&lt;b&gt;Comandos basicos para containers&lt;/b&gt;&lt;/center&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker run -d --name meu-container nginx:latest
 docker run --name meu-container -p 80:8080 nginx:latest
 docker stop meu-container
