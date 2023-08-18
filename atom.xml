@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2023-08-09T11:10:17+00:00</updated>
+ <updated>2023-08-18T11:36:42+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -39,6 +39,18 @@ containerd&lt;/p&gt;
    <updated>2023-12-28T00:00:00+00:00</updated>
    <id>/2023/12/28/falando-de-distros</id>
    <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>dev/golang/revisao-concorrencia</title>
+   <link href="/2023/10/08/revisao-concorrencia.html"/>
+   <updated>2023-10-08T00:00:00+00:00</updated>
+   <id>/2023/10/08/revisao-concorrencia</id>
+   <content type="html">&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;A concorrência é um dos principais pilares da linguagem de programação Go (Golang), projetada para facilitar a criação de programas eficientes e escaláveis. Ao adotar uma abordagem leve de goroutines e canais, o Go permite que os desenvolvedores criem programas concorrentes de forma mais intuitiva e livre de preocupações com detalhes de gerenciamento de threads e bloqueios. Através das goroutines, que são unidades independentes de execução, e dos canais, que permitem a comunicação e sincronização entre goroutines, os programadores podem facilmente explorar a concorrência para realizar tarefas paralelas de maneira segura e eficaz, contribuindo para a criação de sistemas altamente responsivos e performáticos.&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Essa breve introdução foi escrita pelo ChatGPT.&lt;/p&gt;
+
 </content>
  </entry>
  
@@ -111,45 +123,49 @@ docker cp nome-do-container:/caminho/no/contêiner/arquivo.txt arquivo.txt&lt;/p
  </entry>
  
  <entry>
-   <title>dev/golang/revisao-concorrencia</title>
-   <link href="/2023/08/08/revisao-concorrencia.html"/>
-   <updated>2023-08-08T00:00:00+00:00</updated>
-   <id>/2023/08/08/revisao-concorrencia</id>
-   <content type="html">&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;A concorrência é um dos principais pilares da linguagem de programação Go (Golang), projetada para facilitar a criação de programas eficientes e escaláveis. Ao adotar uma abordagem leve de goroutines e canais, o Go permite que os desenvolvedores criem programas concorrentes de forma mais intuitiva e livre de preocupações com detalhes de gerenciamento de threads e bloqueios. Através das goroutines, que são unidades independentes de execução, e dos canais, que permitem a comunicação e sincronização entre goroutines, os programadores podem facilmente explorar a concorrência para realizar tarefas paralelas de maneira segura e eficaz, contribuindo para a criação de sistemas altamente responsivos e performáticos.&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Essa breve introdução foi escrita pelo ChatGPT.&lt;/p&gt;
-
-</content>
- </entry>
- 
- <entry>
    <title>dev/git/deletar-historico-commits-github</title>
    <link href="/2023/07/28/deletar-historico-commits-github.html"/>
    <updated>2023-07-28T00:00:00+00:00</updated>
    <id>/2023/07/28/deletar-historico-commits-github</id>
-   <content type="html">&lt;p&gt;1 Checkout&lt;/p&gt;
+   <content type="html">&lt;p&gt;Deleting the .git folder may cause problems in your git repository. If you want to delete all your commit history but keep the code in its current state, it is very safe to do it as in the following:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Checkout&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git checkout --orphan latest_branch&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;2 Add all the files&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Add all the files&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git add -A&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;3 Commit the changes&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Commit the changes&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git commit -am &quot;commit message&quot;&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;4 Delete the branch&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Delete the branch&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git branch -D main&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;5 Rename the current branch to main&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Rename the current branch to main&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git branch -m main&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;6 Finally, force update your repository&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Finally, force update your repository&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git push -f origin main&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;PS: this will not keep your old commit history around&lt;/em&gt;&lt;/p&gt;
 </content>
  </entry>
  

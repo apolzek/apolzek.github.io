@@ -53,6 +53,27 @@
         },
     
         {
+            "id": "/2023/10/08/revisao-concorrencia.html",
+            "title": "dev/golang/revisao-concorrencia",
+            "summary": "Um overview sobre concorrência em Golang",
+            "content_text": "A concorrência é um dos principais pilares da linguagem de programação Go (Golang), projetada para facilitar a criação de programas eficientes e escaláveis. Ao adotar uma abordagem leve de goroutines e canais, o Go permite que os desenvolvedores criem programas concorrentes de forma mais intuitiva e livre de preocupações com detalhes de gerenciamento de threads e bloqueios. Através das goroutines, que são unidades independentes de execução, e dos canais, que permitem a comunicação e sincronização entre goroutines, os programadores podem facilmente explorar a concorrência para realizar tarefas paralelas de maneira segura e eficaz, contribuindo para a criação de sistemas altamente responsivos e performáticos.Essa breve introdução foi escrita pelo ChatGPT.",
+            "content_html": "<p><code class=\"language-plaintext highlighter-rouge\">A concorrência é um dos principais pilares da linguagem de programação Go (Golang), projetada para facilitar a criação de programas eficientes e escaláveis. Ao adotar uma abordagem leve de goroutines e canais, o Go permite que os desenvolvedores criem programas concorrentes de forma mais intuitiva e livre de preocupações com detalhes de gerenciamento de threads e bloqueios. Através das goroutines, que são unidades independentes de execução, e dos canais, que permitem a comunicação e sincronização entre goroutines, os programadores podem facilmente explorar a concorrência para realizar tarefas paralelas de maneira segura e eficaz, contribuindo para a criação de sistemas altamente responsivos e performáticos.</code></p><p>Essa breve introdução foi escrita pelo ChatGPT.</p>",
+            "url": "/2023/10/08/revisao-concorrencia.html",
+            
+            
+            
+            "tags": ["go,","concorrencia"],
+            
+            "date_published": "2023-10-08T00:00:00+00:00",
+            "date_modified": "2023-10-08T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
             "id": "/2023/09/28/engenharia-de-confiabilidade-no-brasil.html",
             "title": "opiniao/engenharia-de-confiabilidade-no-brasil",
             "summary": "Falando sobre Engenharia de Confiabilidade no mercado Brasileiro",
@@ -137,32 +158,11 @@
         },
     
         {
-            "id": "/2023/08/08/revisao-concorrencia.html",
-            "title": "dev/golang/revisao-concorrencia",
-            "summary": "Um overview sobre concorrência em Golang",
-            "content_text": "A concorrência é um dos principais pilares da linguagem de programação Go (Golang), projetada para facilitar a criação de programas eficientes e escaláveis. Ao adotar uma abordagem leve de goroutines e canais, o Go permite que os desenvolvedores criem programas concorrentes de forma mais intuitiva e livre de preocupações com detalhes de gerenciamento de threads e bloqueios. Através das goroutines, que são unidades independentes de execução, e dos canais, que permitem a comunicação e sincronização entre goroutines, os programadores podem facilmente explorar a concorrência para realizar tarefas paralelas de maneira segura e eficaz, contribuindo para a criação de sistemas altamente responsivos e performáticos.Essa breve introdução foi escrita pelo ChatGPT.",
-            "content_html": "<p><code class=\"language-plaintext highlighter-rouge\">A concorrência é um dos principais pilares da linguagem de programação Go (Golang), projetada para facilitar a criação de programas eficientes e escaláveis. Ao adotar uma abordagem leve de goroutines e canais, o Go permite que os desenvolvedores criem programas concorrentes de forma mais intuitiva e livre de preocupações com detalhes de gerenciamento de threads e bloqueios. Através das goroutines, que são unidades independentes de execução, e dos canais, que permitem a comunicação e sincronização entre goroutines, os programadores podem facilmente explorar a concorrência para realizar tarefas paralelas de maneira segura e eficaz, contribuindo para a criação de sistemas altamente responsivos e performáticos.</code></p><p>Essa breve introdução foi escrita pelo ChatGPT.</p>",
-            "url": "/2023/08/08/revisao-concorrencia.html",
-            
-            
-            
-            "tags": ["go,","concorrencia"],
-            
-            "date_published": "2023-08-08T00:00:00+00:00",
-            "date_modified": "2023-08-08T00:00:00+00:00",
-            
-                "author": 
-                ""
-                
-            
-        },
-    
-        {
             "id": "/2023/07/28/deletar-historico-commits-github.html",
             "title": "dev/git/deletar-historico-commits-github",
             "summary": "Deletar todo histórico de commits no Github",
-            "content_text": "1 Checkoutgit checkout --orphan latest_branch2 Add all the filesgit add -A3 Commit the changesgit commit -am \"commit message\"4 Delete the branchgit branch -D main5 Rename the current branch to maingit branch -m main6 Finally, force update your repositorygit push -f origin main",
-            "content_html": "<p>1 Checkout</p><p><code class=\"language-plaintext highlighter-rouge\">git checkout --orphan latest_branch</code></p><p>2 Add all the files</p><p><code class=\"language-plaintext highlighter-rouge\">git add -A</code></p><p>3 Commit the changes</p><p><code class=\"language-plaintext highlighter-rouge\">git commit -am \"commit message\"</code></p><p>4 Delete the branch</p><p><code class=\"language-plaintext highlighter-rouge\">git branch -D main</code></p><p>5 Rename the current branch to main</p><p><code class=\"language-plaintext highlighter-rouge\">git branch -m main</code></p><p>6 Finally, force update your repository</p><p><code class=\"language-plaintext highlighter-rouge\">git push -f origin main</code></p>",
+            "content_text": "Deleting the .git folder may cause problems in your git repository. If you want to delete all your commit history but keep the code in its current state, it is very safe to do it as in the following:  Checkoutgit checkout --orphan latest_branch  Add all the filesgit add -A  Commit the changesgit commit -am \"commit message\"  Delete the branchgit branch -D main  Rename the current branch to maingit branch -m main  Finally, force update your repositorygit push -f origin mainPS: this will not keep your old commit history around",
+            "content_html": "<p>Deleting the .git folder may cause problems in your git repository. If you want to delete all your commit history but keep the code in its current state, it is very safe to do it as in the following:</p><ol>  <li>Checkout</li></ol><p><code class=\"language-plaintext highlighter-rouge\">git checkout --orphan latest_branch</code></p><ol>  <li>Add all the files</li></ol><p><code class=\"language-plaintext highlighter-rouge\">git add -A</code></p><ol>  <li>Commit the changes</li></ol><p><code class=\"language-plaintext highlighter-rouge\">git commit -am \"commit message\"</code></p><ol>  <li>Delete the branch</li></ol><p><code class=\"language-plaintext highlighter-rouge\">git branch -D main</code></p><ol>  <li>Rename the current branch to main</li></ol><p><code class=\"language-plaintext highlighter-rouge\">git branch -m main</code></p><ol>  <li>Finally, force update your repository</li></ol><p><code class=\"language-plaintext highlighter-rouge\">git push -f origin main</code></p><p><em>PS: this will not keep your old commit history around</em></p>",
             "url": "/2023/07/28/deletar-historico-commits-github.html",
             
             
