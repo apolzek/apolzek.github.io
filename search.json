@@ -17,6 +17,14 @@
     } ,
   
     {
+      "title"    : "linux/processos",
+      "category" : "",
+      "tags"     : "processos, processes, process, linux",
+      "url"      : "/2023/12/10/processos.html",
+      "date"     : "2023-12-10 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "dev/golang/revisao-concorrencia",
       "category" : "",
       "tags"     : "go,, concorrencia",

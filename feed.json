@@ -53,6 +53,27 @@
         },
     
         {
+            "id": "/2023/12/10/processos.html",
+            "title": "linux/processos",
+            "summary": null,
+            "content_text": "",
+            "content_html": "",
+            "url": "/2023/12/10/processos.html",
+            
+            
+            
+            "tags": ["processos","processes","process","linux"],
+            
+            "date_published": "2023-12-10T00:00:00+00:00",
+            "date_modified": "2023-12-10T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
             "id": "/2023/10/08/revisao-concorrencia.html",
             "title": "dev/golang/revisao-concorrencia",
             "summary": "Um overview sobre concorrência em Golang",

@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2023-08-18T12:16:24+00:00</updated>
+ <updated>2023-08-23T22:48:11+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -38,6 +38,15 @@ containerd&lt;/p&gt;
    <link href="/2023/12/28/falando-de-distros.html"/>
    <updated>2023-12-28T00:00:00+00:00</updated>
    <id>/2023/12/28/falando-de-distros</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>linux/processos</title>
+   <link href="/2023/12/10/processos.html"/>
+   <updated>2023-12-10T00:00:00+00:00</updated>
+   <id>/2023/12/10/processos</id>
    <content type="html">
 </content>
  </entry>
