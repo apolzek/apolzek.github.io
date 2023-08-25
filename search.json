@@ -1,6 +1,94 @@
 [
   
     {
+      "title"    : "tool/caixa-de-ferramentas",
+      "category" : "",
+      "tags"     : "linux, tools, toolbox",
+      "url"      : "/2024/12/01/caixa-de-ferramentas.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "sre/resumo-livro-sre-google",
+      "category" : "",
+      "tags"     : "processos, processes, process, linux",
+      "url"      : "/2024/12/01/resumo-livro-sre-google.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "opiniao/engenharia-de-confiabilidade-no-brasil",
+      "category" : "",
+      "tags"     : "sre, confiabilidade, reliability, engineer",
+      "url"      : "/2024/12/01/engenharia-de-confiabilidade-no-brasil.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "linux/processos-no-linux",
+      "category" : "",
+      "tags"     : "processos, processes, process, linux",
+      "url"      : "/2024/12/01/processos-no-linux.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "linux/nao-se-apaixone-por-distros",
+      "category" : "",
+      "tags"     : "linux, distro",
+      "url"      : "/2024/12/01/nao-se-apaixone-por-distros.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "k8s/easy-cka",
+      "category" : "",
+      "tags"     : "cka, certification, kubernetes, k8s",
+      "url"      : "/2024/12/01/easy-cka.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "diario/auto-recuperacao-mental",
+      "category" : "",
+      "tags"     : "mente, cérebro, brain",
+      "url"      : "/2024/12/01/auto-recuperacao-mental.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "dev/ruby/basicao",
+      "category" : "",
+      "tags"     : "ruby",
+      "url"      : "/2024/12/01/basicao.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "dev/python/basicao",
+      "category" : "",
+      "tags"     : "python",
+      "url"      : "/2024/12/01/basicao.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "dev/padroes-de-projeto/factory",
+      "category" : "",
+      "tags"     : "factory",
+      "url"      : "/2024/12/01/factory.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "dev/java/basicao",
+      "category" : "",
+      "tags"     : "java",
+      "url"      : "/2024/12/01/basicao.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "dev/golang/basicao",
       "category" : "",
       "tags"     : "go",
@@ -9,51 +97,51 @@
     } ,
   
     {
-      "title"    : "linux/sre-afie-seu-machado",
+      "title"    : "dev/estrutura-de-dados/filas",
       "category" : "",
-      "tags"     : "distro, linux, distribuição",
-      "url"      : "/2023/12/28/sre-afie-seu-machado.html",
-      "date"     : "2023-12-28 00:00:00 +0000"
+      "tags"     : "fila, queue",
+      "url"      : "/2024/12/01/filas.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "linux/falando-de-distros",
+      "title"    : "cheatsheet/terraform",
       "category" : "",
-      "tags"     : "distro, linux, distribuição",
-      "url"      : "/2023/12/28/falando-de-distros.html",
-      "date"     : "2023-12-28 00:00:00 +0000"
+      "tags"     : "terraform",
+      "url"      : "/2024/12/01/terraform.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "linux/processos",
+      "title"    : "cheatsheet/kubectl",
       "category" : "",
-      "tags"     : "processos, processes, process, linux",
-      "url"      : "/2023/12/10/processos.html",
-      "date"     : "2023-12-10 00:00:00 +0000"
+      "tags"     : "kubectl",
+      "url"      : "/2024/12/01/kubectl.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "opiniao/engenharia-de-confiabilidade-no-brasil",
+      "title"    : "cheatsheet/git",
       "category" : "",
-      "tags"     : "SRE, confiabilidade",
-      "url"      : "/2023/09/28/engenharia-de-confiabilidade-no-brasil.html",
-      "date"     : "2023-09-28 00:00:00 +0000"
+      "tags"     : "git",
+      "url"      : "/2024/12/01/git.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "k8s/extensibilidade-k8s",
+      "title"    : "cheatsheet/asdf",
       "category" : "",
-      "tags"     : "piloto",
-      "url"      : "/2023/09/11/extensibilidade-k8s.html",
-      "date"     : "2023-09-11 00:00:00 +0000"
+      "tags"     : "asdf",
+      "url"      : "/2024/12/01/asdf.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "k8s/analise-de-rede",
+      "title"    : "aws/dominando-o-iam",
       "category" : "",
-      "tags"     : "piloto",
-      "url"      : "/2023/09/10/analise-de-rede.html",
-      "date"     : "2023-09-10 00:00:00 +0000"
+      "tags"     : "iam, aws, security",
+      "url"      : "/2024/12/01/dominando-o-iam.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
     {

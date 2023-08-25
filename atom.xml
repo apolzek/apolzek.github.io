@@ -4,13 +4,153 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2023-08-25T21:49:37+00:00</updated>
+ <updated>2023-08-25T21:49:51+00:00</updated>
  <id></id>
  <author>
    <name></name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>tool/caixa-de-ferramentas</title>
+   <link href="/2024/12/01/caixa-de-ferramentas.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/caixa-de-ferramentas</id>
+   <content type="html">&lt;h3 id=&quot;plugins-asdf&quot;&gt;Plugins asdf&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;awscli&lt;/li&gt;
+  &lt;li&gt;bat&lt;/li&gt;
+  &lt;li&gt;cfssl&lt;/li&gt;
+  &lt;li&gt;docker-slim&lt;/li&gt;
+  &lt;li&gt;dotnet-core&lt;/li&gt;
+  &lt;li&gt;eksctl&lt;/li&gt;
+  &lt;li&gt;fd&lt;/li&gt;
+  &lt;li&gt;fzf&lt;/li&gt;
+  &lt;li&gt;helm&lt;/li&gt;
+  &lt;li&gt;helm-docs&lt;/li&gt;
+  &lt;li&gt;java&lt;/li&gt;
+  &lt;li&gt;jq&lt;/li&gt;
+  &lt;li&gt;k6&lt;/li&gt;
+  &lt;li&gt;kind&lt;/li&gt;
+  &lt;li&gt;kubectl&lt;/li&gt;
+  &lt;li&gt;kubectx&lt;/li&gt;
+  &lt;li&gt;lazygit&lt;/li&gt;
+  &lt;li&gt;maven&lt;/li&gt;
+  &lt;li&gt;mysql&lt;/li&gt;
+  &lt;li&gt;neovim&lt;/li&gt;
+  &lt;li&gt;nodejs&lt;/li&gt;
+  &lt;li&gt;rust&lt;/li&gt;
+  &lt;li&gt;shellcheck&lt;/li&gt;
+  &lt;li&gt;teller&lt;/li&gt;
+  &lt;li&gt;terraform&lt;/li&gt;
+  &lt;li&gt;tilt&lt;/li&gt;
+  &lt;li&gt;trivy&lt;/li&gt;
+  &lt;li&gt;yamllint&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;outras-ferramentas&quot;&gt;Outras ferramentas&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;visidata&lt;/li&gt;
+  &lt;li&gt;kind&lt;/li&gt;
+  &lt;li&gt;docker&lt;/li&gt;
+  &lt;li&gt;containerd&lt;/li&gt;
+  &lt;li&gt;virtualbox&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>sre/resumo-livro-sre-google</title>
+   <link href="/2024/12/01/resumo-livro-sre-google.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/resumo-livro-sre-google</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>opiniao/engenharia-de-confiabilidade-no-brasil</title>
+   <link href="/2024/12/01/engenharia-de-confiabilidade-no-brasil.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/engenharia-de-confiabilidade-no-brasil</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>linux/processos-no-linux</title>
+   <link href="/2024/12/01/processos-no-linux.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/processos-no-linux</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>linux/nao-se-apaixone-por-distros</title>
+   <link href="/2024/12/01/nao-se-apaixone-por-distros.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/nao-se-apaixone-por-distros</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>k8s/easy-cka</title>
+   <link href="/2024/12/01/easy-cka.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/easy-cka</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>diario/auto-recuperacao-mental</title>
+   <link href="/2024/12/01/auto-recuperacao-mental.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/auto-recuperacao-mental</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>dev/ruby/basicao</title>
+   <link href="/2024/12/01/basicao.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/basicao</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>dev/python/basicao</title>
+   <link href="/2024/12/01/basicao.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/basicao</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>dev/padroes-de-projeto/factory</title>
+   <link href="/2024/12/01/factory.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/factory</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>dev/java/basicao</title>
+   <link href="/2024/12/01/basicao.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/basicao</id>
+   <content type="html">
+</content>
+ </entry>
  
  <entry>
    <title>dev/golang/basicao</title>
@@ -22,72 +162,56 @@
  </entry>
  
  <entry>
-   <title>linux/sre-afie-seu-machado</title>
-   <link href="/2023/12/28/sre-afie-seu-machado.html"/>
-   <updated>2023-12-28T00:00:00+00:00</updated>
-   <id>/2023/12/28/sre-afie-seu-machado</id>
-   <content type="html">&lt;p&gt;asdf&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;lazygit&lt;/li&gt;
-  &lt;li&gt;terraform&lt;/li&gt;
-  &lt;li&gt;aws&lt;/li&gt;
-  &lt;li&gt;kubectl&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;visidata
-kind
-dockerr
-containerd&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>linux/falando-de-distros</title>
-   <link href="/2023/12/28/falando-de-distros.html"/>
-   <updated>2023-12-28T00:00:00+00:00</updated>
-   <id>/2023/12/28/falando-de-distros</id>
+   <title>dev/estrutura-de-dados/filas</title>
+   <link href="/2024/12/01/filas.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/filas</id>
    <content type="html">
 </content>
  </entry>
  
  <entry>
-   <title>linux/processos</title>
-   <link href="/2023/12/10/processos.html"/>
-   <updated>2023-12-10T00:00:00+00:00</updated>
-   <id>/2023/12/10/processos</id>
+   <title>cheatsheet/terraform</title>
+   <link href="/2024/12/01/terraform.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/terraform</id>
    <content type="html">
 </content>
  </entry>
  
  <entry>
-   <title>opiniao/engenharia-de-confiabilidade-no-brasil</title>
-   <link href="/2023/09/28/engenharia-de-confiabilidade-no-brasil.html"/>
-   <updated>2023-09-28T00:00:00+00:00</updated>
-   <id>/2023/09/28/engenharia-de-confiabilidade-no-brasil</id>
-   <content type="html">&lt;ul&gt;
-  &lt;li&gt;engenharia-de-confiabilidade-no-brasil&lt;/li&gt;
-&lt;/ul&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>k8s/extensibilidade-k8s</title>
-   <link href="/2023/09/11/extensibilidade-k8s.html"/>
-   <updated>2023-09-11T00:00:00+00:00</updated>
-   <id>/2023/09/11/extensibilidade-k8s</id>
+   <title>cheatsheet/kubectl</title>
+   <link href="/2024/12/01/kubectl.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/kubectl</id>
    <content type="html">
 </content>
  </entry>
  
  <entry>
-   <title>k8s/analise-de-rede</title>
-   <link href="/2023/09/10/analise-de-rede.html"/>
-   <updated>2023-09-10T00:00:00+00:00</updated>
-   <id>/2023/09/10/analise-de-rede</id>
-   <content type="html">&lt;ul&gt;
-  &lt;li&gt;analise-de-rede&lt;/li&gt;
-&lt;/ul&gt;
+   <title>cheatsheet/git</title>
+   <link href="/2024/12/01/git.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/git</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>cheatsheet/asdf</title>
+   <link href="/2024/12/01/asdf.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/asdf</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>aws/dominando-o-iam</title>
+   <link href="/2024/12/01/dominando-o-iam.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/dominando-o-iam</id>
+   <content type="html">
 </content>
  </entry>
  
