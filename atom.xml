@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2023-08-25T21:54:20+00:00</updated>
+ <updated>2023-08-25T22:02:14+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -392,9 +392,11 @@
 
 &lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
 
-&lt;p&gt;https://gobyexample.com/generics
-https://www.youtube.com/watch?v=nD_6L2PBfaE
-https://www.youtube.com/watch?v=XcDnQvVCW78&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;https://gobyexample.com/generics&lt;/li&gt;
+  &lt;li&gt;https://www.youtube.com/watch?v=nD_6L2PBfaE&lt;/li&gt;
+  &lt;li&gt;https://www.youtube.com/watch?v=XcDnQvVCW78&lt;/li&gt;
+&lt;/ul&gt;
 </content>
  </entry>
  
