@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "dev/golang/basicao",
+      "category" : "",
+      "tags"     : "go",
+      "url"      : "/2024/12/01/basicao.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "linux/sre-afie-seu-machado",
       "category" : "",
       "tags"     : "distro, linux, distribuição",
@@ -25,14 +33,6 @@
     } ,
   
     {
-      "title"    : "dev/golang/revisao-concorrencia",
-      "category" : "",
-      "tags"     : "go,, concorrencia",
-      "url"      : "/2023/10/08/revisao-concorrencia.html",
-      "date"     : "2023-10-08 00:00:00 +0000"
-    } ,
-  
-    {
       "title"    : "opiniao/engenharia-de-confiabilidade-no-brasil",
       "category" : "",
       "tags"     : "SRE, confiabilidade",
@@ -54,6 +54,14 @@
       "tags"     : "piloto",
       "url"      : "/2023/09/10/analise-de-rede.html",
       "date"     : "2023-09-10 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "dev/golang/generics",
+      "category" : "",
+      "tags"     : "go, generics",
+      "url"      : "/2023/08/25/generics.html",
+      "date"     : "2023-08-25 00:00:00 +0000"
     } ,
   
     {
