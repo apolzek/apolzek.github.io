@@ -92,6 +92,14 @@
       "title"    : "dev/golang/basicao",
       "category" : "",
       "tags"     : "go",
+      "url"      : "/2024/12/01/slices.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "dev/golang/basicao",
+      "category" : "",
+      "tags"     : "go",
       "url"      : "/2024/12/01/basicao.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,

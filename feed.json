@@ -242,6 +242,27 @@
         },
     
         {
+            "id": "/2024/12/01/slices.html",
+            "title": "dev/golang/basicao",
+            "summary": "Basicão sobre a linguagem Golang",
+            "content_text": "package mainimport \"fmt\"func main() {\tvar s = []int{1, 2, 3}\tmodifySlice(s)\tfmt.Println(s)}func modifySlice(i []int) {\ti[0] = 3\ti = append(i, 4)\ti[2] = 4}O motivo é que o na verdade isso é um ponteiro, quando você deu append o ponteiro antigo foi descartado e um novo foi gerado contendo todo que havia no antigo i mais o novo elemento. Como s ainda aponta para o ponteiro antigo print vai imprimir o conteúdo antigo que teve apenas o primeiro elemento alterado.",
+            "content_html": "<div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>package mainimport \"fmt\"func main() {\tvar s = []int{1, 2, 3}\tmodifySlice(s)\tfmt.Println(s)}func modifySlice(i []int) {\ti[0] = 3\ti = append(i, 4)\ti[2] = 4}</code></pre></div></div><p>O motivo é que o na verdade isso é um ponteiro, quando você deu append o ponteiro antigo foi descartado e um novo foi gerado contendo todo que havia no antigo i mais o novo elemento. Como s ainda aponta para o ponteiro antigo print vai imprimir o conteúdo antigo que teve apenas o primeiro elemento alterado.</p>",
+            "url": "/2024/12/01/slices.html",
+            
+            
+            
+            
+            
+            "date_published": "2024-12-01T00:00:00+00:00",
+            "date_modified": "2024-12-01T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
             "id": "/2024/12/01/basicao.html",
             "title": "dev/golang/basicao",
             "summary": "Basicão sobre a linguagem Golang",

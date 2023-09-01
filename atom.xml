@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2023-09-01T21:15:24+00:00</updated>
+ <updated>2023-09-01T21:42:45+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -149,6 +149,36 @@
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/basicao</id>
    <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>dev/golang/basicao</title>
+   <link href="/2024/12/01/slices.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/slices</id>
+   <content type="html">&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package main
+
+import &quot;fmt&quot;
+
+func main() {
+	var s = []int{1, 2, 3}
+	modifySlice(s)
+
+	fmt.Println(s)
+
+}
+
+func modifySlice(i []int) {
+	i[0] = 3
+	i = append(i, 4)
+	i[2] = 4
+
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;O motivo é que o na verdade isso é um ponteiro, quando você deu append o ponteiro antigo foi descartado e um novo foi gerado contendo todo que havia no antigo i mais o novo elemento. Como s ainda aponta para o ponteiro antigo print vai imprimir o conteúdo antigo que teve apenas o primeiro elemento alterado.&lt;/p&gt;
 </content>
  </entry>
  
