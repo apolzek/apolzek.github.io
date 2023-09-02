@@ -263,6 +263,27 @@
         },
     
         {
+            "id": "/2024/12/01/eu-sou-o-crud.html",
+            "title": "dev/golang/eu-sou-o-crud",
+            "summary": "Diversos repositorios com CRUD's em Golang",
+            "content_text": "",
+            "content_html": "",
+            "url": "/2024/12/01/eu-sou-o-crud.html",
+            
+            
+            
+            "tags": ["go","crud"],
+            
+            "date_published": "2024-12-01T00:00:00+00:00",
+            "date_modified": "2024-12-01T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
             "id": "/2024/12/01/basicao.html",
             "title": "dev/golang/basicao",
             "summary": "Basicão sobre a linguagem Golang",

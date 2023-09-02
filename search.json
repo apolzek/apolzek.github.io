@@ -97,6 +97,14 @@
     } ,
   
     {
+      "title"    : "dev/golang/eu-sou-o-crud",
+      "category" : "",
+      "tags"     : "go, crud",
+      "url"      : "/2024/12/01/eu-sou-o-crud.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "dev/golang/basicao",
       "category" : "",
       "tags"     : "go",
