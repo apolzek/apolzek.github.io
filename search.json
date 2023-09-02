@@ -113,14 +113,6 @@
     } ,
   
     {
-      "title"    : "cheatsheet/terraform",
-      "category" : "",
-      "tags"     : "terraform",
-      "url"      : "/2024/12/01/terraform.html",
-      "date"     : "2024-12-01 00:00:00 +0000"
-    } ,
-  
-    {
       "title"    : "cheatsheet/kubectl",
       "category" : "",
       "tags"     : "kubectl",
@@ -150,6 +142,14 @@
       "tags"     : "iam, aws, security",
       "url"      : "/2024/12/01/dominando-o-iam.html",
       "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "cheatsheet/terraform",
+      "category" : "",
+      "tags"     : "terraform",
+      "url"      : "/2023/09/02/terraform.html",
+      "date"     : "2023-09-02 00:00:00 +0000"
     } ,
   
     {

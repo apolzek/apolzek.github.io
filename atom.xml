@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2023-09-01T22:09:10+00:00</updated>
+ <updated>2023-09-02T21:30:01+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -220,15 +220,6 @@
  </entry>
  
  <entry>
-   <title>cheatsheet/terraform</title>
-   <link href="/2024/12/01/terraform.html"/>
-   <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/terraform</id>
-   <content type="html">
-</content>
- </entry>
- 
- <entry>
    <title>cheatsheet/kubectl</title>
    <link href="/2024/12/01/kubectl.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
@@ -318,6 +309,56 @@ aws iam add-user-to-group --group-name mygroup --user-name myuser
     ]
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>cheatsheet/terraform</title>
+   <link href="/2023/09/02/terraform.html"/>
+   <updated>2023-09-02T00:00:00+00:00</updated>
+   <id>/2023/09/02/terraform</id>
+   <content type="html">&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;terraform init
+terraform validate
+terraform fmt
+terraform plan
+terraform apply
+terraform destroy
+terraform workspace new dev
+terraform workspace list
+terraform workspace select dev
+terraform import aws_s3_bucket.example my-bucket
+terraform state list
+terraform output example_output
+terraform graph | dot -Tpng &amp;gt; graph.png
+terraform taint aws_instance.example
+terraform untaint aws_instance.example
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;terraform init&lt;/strong&gt;: Este comando é usado para inicializar um novo diretório de configuração do Terraform. Ele baixa os provedores e módulos especificados no arquivo de configuração.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;terraform plan&lt;/strong&gt;: Este comando cria um plano de execução que mostra o que o Terraform fará antes de efetivamente fazer qualquer alteração na infraestrutura. É uma boa prática executar isso antes de aplicar qualquer configuração.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;terraform apply&lt;/strong&gt;: Este comando é usado para aplicar as alterações definidas em seu código do Terraform à infraestrutura. Ele criará, atualizará ou destruirá recursos conforme necessário.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;terraform destroy&lt;/strong&gt;: Este comando é usado para destruir todos os recursos definidos em seu código do Terraform. Use com cuidado, pois isso pode resultar na perda de recursos.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;terraform validate&lt;/strong&gt;: Este comando verifica a sintaxe do arquivo de configuração do Terraform e verifica se há erros.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;terraform fmt&lt;/strong&gt;: Este comando formata seu código Terraform de acordo com as convenções de estilo do Terraform.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;terraform workspace&lt;/strong&gt;: Este comando permite que você gerencie workspaces (espaços de trabalho) no Terraform, o que é útil para lidar com configurações diferentes em um único diretório.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;terraform import&lt;/strong&gt;: Este comando é usado para importar um recurso existente em um provedor para o estado do Terraform. Isso é útil quando você deseja começar a gerenciar recursos que já existem.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;terraform state&lt;/strong&gt;: Este comando permite manipular diretamente o estado do Terraform, que é útil em situações avançadas de gerenciamento de estado.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;terraform output&lt;/strong&gt;: Este comando exibe os valores de saída definidos em seu arquivo de configuração do Terraform.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;terraform graph&lt;/strong&gt;: Este comando gera uma representação visual do gráfico de recursos do Terraform, mostrando as dependências entre recursos.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;terraform taint&lt;/strong&gt;: Este comando marca um recurso como “sujo” no estado, o que faz com que o Terraform o reconstrua na próxima vez que você executar o terraform apply.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;terraform untaint&lt;/strong&gt;: Este comando remove a marcação de “sujeira” de um recurso no estado.&lt;/p&gt;
 </content>
  </entry>
  
