@@ -113,6 +113,14 @@
     } ,
   
     {
+      "title"    : "cheatsheet/ufw",
+      "category" : "",
+      "tags"     : "ufw, ubuntu, firewall",
+      "url"      : "/2024/12/01/ufw.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "cheatsheet/kubectl",
       "category" : "",
       "tags"     : "kubectl",
@@ -129,10 +137,26 @@
     } ,
   
     {
+      "title"    : "cheatsheet/firewalld",
+      "category" : "",
+      "tags"     : "firewalld, linux, firewall",
+      "url"      : "/2024/12/01/firewalld.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "cheatsheet/asdf",
       "category" : "",
       "tags"     : "asdf",
       "url"      : "/2024/12/01/asdf.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "cheatsheet/apt",
+      "category" : "",
+      "tags"     : "apt, ubuntu, package",
+      "url"      : "/2024/12/01/apt.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   

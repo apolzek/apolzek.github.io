@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2023-09-02T21:47:47+00:00</updated>
+ <updated>2023-09-02T21:57:50+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -220,6 +220,46 @@
  </entry>
  
  <entry>
+   <title>cheatsheet/ufw</title>
+   <link href="/2024/12/01/ufw.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/ufw</id>
+   <content type="html">&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Habilitar o Firewall
+sudo ufw enable
+
+# Desabilitar o Firewall
+sudo ufw disable
+
+# Verificar o Status do Firewall
+sudo ufw status
+
+# Adicionar uma Regra de Permissão de Porta (por exemplo, porta 80/tcp)
+sudo ufw allow 80/tcp
+
+# Adicionar uma Regra de Permissão para um Range de Portas (por exemplo, portas de 8000 a 8010/tcp)
+sudo ufw allow 8000:8010/tcp
+
+# Adicionar uma Regra de Permissão para um Aplicativo Específico (por exemplo, OpenSSH)
+sudo ufw allow OpenSSH
+
+# Negar uma Porta (por exemplo, porta 22/tcp)
+sudo ufw deny 22/tcp
+
+# Excluir uma Regra (por exemplo, excluir a regra que permite o tráfego na porta 80/tcp)
+sudo ufw delete allow 80/tcp
+
+# Habilitar ou Desabilitar o Logging
+sudo ufw logging on
+sudo ufw logging off
+
+# Regras de IPv6 (substitua allow ou deny por allow6 ou deny6 para IPv6)
+sudo ufw allow6 80/tcp
+sudo ufw deny6 22/tcp
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>cheatsheet/kubectl</title>
    <link href="/2024/12/01/kubectl.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
@@ -238,11 +278,125 @@
  </entry>
  
  <entry>
+   <title>cheatsheet/firewalld</title>
+   <link href="/2024/12/01/firewalld.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/firewalld</id>
+   <content type="html">&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Habilitar o Firewalld
+sudo systemctl start firewalld
+sudo systemctl enable firewalld
+
+# Desabilitar o Firewalld
+sudo systemctl stop firewalld
+sudo systemctl disable firewalld
+
+# Verificar o Status do Firewalld
+sudo systemctl status firewalld
+
+# Listar as Zonas Disponíveis
+sudo firewall-cmd --get-zones
+
+# Definir uma Zona Padrão (substitua &apos;public&apos; pelo nome da zona desejada)
+sudo firewall-cmd --set-default-zone=public
+
+# Adicionar uma Regra de Permissão de Porta (por exemplo, porta 80/tcp)
+sudo firewall-cmd --add-port=80/tcp --permanent
+
+# Recarregar o Firewalld para Aplicar Alterações Permanentes
+sudo firewall-cmd --reload
+
+# Adicionar uma Regra de Serviço (por exemplo, SSH)
+sudo firewall-cmd --add-service=ssh --permanent
+
+# Remover uma Regra de Serviço (por exemplo, SSH)
+sudo firewall-cmd --remove-service=ssh --permanent
+
+# Habilitar ou Desabilitar o Logging (substitua &apos;yes&apos; ou &apos;no&apos; conforme necessário)
+sudo firewall-cmd --set-log-denied=yes --permanent
+sudo firewall-cmd --set-log-denied=no --permanent
+
+# Ativar ou Desativar o Firewalld
+sudo systemctl start firewalld
+sudo systemctl stop firewalld
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>cheatsheet/asdf</title>
    <link href="/2024/12/01/asdf.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/asdf</id>
    <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>cheatsheet/apt</title>
+   <link href="/2024/12/01/apt.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/apt</id>
+   <content type="html">&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Atualizar a lista de pacotes disponíveis
+sudo apt update
+
+# Atualizar todos os pacotes instalados
+sudo apt upgrade
+
+# Atualizar o sistema inteiro, incluindo pacotes que exigem novas dependências
+sudo apt dist-upgrade
+
+# Instalar um pacote
+sudo apt install nome-do-pacote
+
+# Remover um pacote (o pacote é desinstalado, mas as configurações permanecem)
+sudo apt remove nome-do-pacote
+
+# Remover um pacote junto com suas configurações
+sudo apt purge nome-do-pacote
+
+# Procurar um pacote pelo nome ou descrição
+apt search termo-de-busca
+
+# Exibir informações detalhadas sobre um pacote
+apt show nome-do-pacote
+
+# Listar todos os pacotes instalados
+dpkg --list
+
+# Listar pacotes específicos
+dpkg --list | grep termo-de-busca
+
+# Listar pacotes disponíveis para atualização
+apt list --upgradable
+
+# Mostrar as dependências de um pacote
+apt depends nome-do-pacote
+
+# Verificar se um pacote específico está instalado
+dpkg -l | grep nome-do-pacote
+
+# Limpar o cache de pacotes baixados (libera espaço em disco)
+sudo apt clean
+
+# Remover pacotes órfãos (pacotes que não são mais necessários)
+sudo apt autoremove
+
+# Verificar a integridade dos pacotes instalados
+sudo apt check
+
+# Corrigir problemas de dependências quebradas
+sudo apt --fix-broken install
+
+# Bloquear a versão de um pacote para evitar atualizações automáticas
+sudo apt-mark hold nome-do-pacote
+
+# Desbloquear um pacote previamente bloqueado
+sudo apt-mark unhold nome-do-pacote
+
+# Visualizar o histórico de atualizações
+less /var/log/apt/history.log
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
  

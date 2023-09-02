@@ -305,6 +305,27 @@
         },
     
         {
+            "id": "/2024/12/01/ufw.html",
+            "title": "cheatsheet/ufw",
+            "summary": "Cheatsheet ufw",
+            "content_text": "# Habilitar o Firewallsudo ufw enable# Desabilitar o Firewallsudo ufw disable# Verificar o Status do Firewallsudo ufw status# Adicionar uma Regra de Permissão de Porta (por exemplo, porta 80/tcp)sudo ufw allow 80/tcp# Adicionar uma Regra de Permissão para um Range de Portas (por exemplo, portas de 8000 a 8010/tcp)sudo ufw allow 8000:8010/tcp# Adicionar uma Regra de Permissão para um Aplicativo Específico (por exemplo, OpenSSH)sudo ufw allow OpenSSH# Negar uma Porta (por exemplo, porta 22/tcp)sudo ufw deny 22/tcp# Excluir uma Regra (por exemplo, excluir a regra que permite o tráfego na porta 80/tcp)sudo ufw delete allow 80/tcp# Habilitar ou Desabilitar o Loggingsudo ufw logging onsudo ufw logging off# Regras de IPv6 (substitua allow ou deny por allow6 ou deny6 para IPv6)sudo ufw allow6 80/tcpsudo ufw deny6 22/tcp",
+            "content_html": "<div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code># Habilitar o Firewallsudo ufw enable# Desabilitar o Firewallsudo ufw disable# Verificar o Status do Firewallsudo ufw status# Adicionar uma Regra de Permissão de Porta (por exemplo, porta 80/tcp)sudo ufw allow 80/tcp# Adicionar uma Regra de Permissão para um Range de Portas (por exemplo, portas de 8000 a 8010/tcp)sudo ufw allow 8000:8010/tcp# Adicionar uma Regra de Permissão para um Aplicativo Específico (por exemplo, OpenSSH)sudo ufw allow OpenSSH# Negar uma Porta (por exemplo, porta 22/tcp)sudo ufw deny 22/tcp# Excluir uma Regra (por exemplo, excluir a regra que permite o tráfego na porta 80/tcp)sudo ufw delete allow 80/tcp# Habilitar ou Desabilitar o Loggingsudo ufw logging onsudo ufw logging off# Regras de IPv6 (substitua allow ou deny por allow6 ou deny6 para IPv6)sudo ufw allow6 80/tcpsudo ufw deny6 22/tcp</code></pre></div></div>",
+            "url": "/2024/12/01/ufw.html",
+            
+            
+            
+            "tags": ["ufw","ubuntu","firewall"],
+            
+            "date_published": "2024-12-01T00:00:00+00:00",
+            "date_modified": "2024-12-01T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
             "id": "/2024/12/01/kubectl.html",
             "title": "cheatsheet/kubectl",
             "summary": "Cheatsheet kubectl",
@@ -347,6 +368,27 @@
         },
     
         {
+            "id": "/2024/12/01/firewalld.html",
+            "title": "cheatsheet/firewalld",
+            "summary": "Cheatsheet firewalld",
+            "content_text": "# Habilitar o Firewalldsudo systemctl start firewalldsudo systemctl enable firewalld# Desabilitar o Firewalldsudo systemctl stop firewalldsudo systemctl disable firewalld# Verificar o Status do Firewalldsudo systemctl status firewalld# Listar as Zonas Disponíveissudo firewall-cmd --get-zones# Definir uma Zona Padrão (substitua 'public' pelo nome da zona desejada)sudo firewall-cmd --set-default-zone=public# Adicionar uma Regra de Permissão de Porta (por exemplo, porta 80/tcp)sudo firewall-cmd --add-port=80/tcp --permanent# Recarregar o Firewalld para Aplicar Alterações Permanentessudo firewall-cmd --reload# Adicionar uma Regra de Serviço (por exemplo, SSH)sudo firewall-cmd --add-service=ssh --permanent# Remover uma Regra de Serviço (por exemplo, SSH)sudo firewall-cmd --remove-service=ssh --permanent# Habilitar ou Desabilitar o Logging (substitua 'yes' ou 'no' conforme necessário)sudo firewall-cmd --set-log-denied=yes --permanentsudo firewall-cmd --set-log-denied=no --permanent# Ativar ou Desativar o Firewalldsudo systemctl start firewalldsudo systemctl stop firewalld",
+            "content_html": "<div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code># Habilitar o Firewalldsudo systemctl start firewalldsudo systemctl enable firewalld# Desabilitar o Firewalldsudo systemctl stop firewalldsudo systemctl disable firewalld# Verificar o Status do Firewalldsudo systemctl status firewalld# Listar as Zonas Disponíveissudo firewall-cmd --get-zones# Definir uma Zona Padrão (substitua 'public' pelo nome da zona desejada)sudo firewall-cmd --set-default-zone=public# Adicionar uma Regra de Permissão de Porta (por exemplo, porta 80/tcp)sudo firewall-cmd --add-port=80/tcp --permanent# Recarregar o Firewalld para Aplicar Alterações Permanentessudo firewall-cmd --reload# Adicionar uma Regra de Serviço (por exemplo, SSH)sudo firewall-cmd --add-service=ssh --permanent# Remover uma Regra de Serviço (por exemplo, SSH)sudo firewall-cmd --remove-service=ssh --permanent# Habilitar ou Desabilitar o Logging (substitua 'yes' ou 'no' conforme necessário)sudo firewall-cmd --set-log-denied=yes --permanentsudo firewall-cmd --set-log-denied=no --permanent# Ativar ou Desativar o Firewalldsudo systemctl start firewalldsudo systemctl stop firewalld</code></pre></div></div>",
+            "url": "/2024/12/01/firewalld.html",
+            
+            
+            
+            "tags": ["firewalld","linux","firewall"],
+            
+            "date_published": "2024-12-01T00:00:00+00:00",
+            "date_modified": "2024-12-01T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
             "id": "/2024/12/01/asdf.html",
             "title": "cheatsheet/asdf",
             "summary": "Cheatsheet asdf",
@@ -357,6 +399,27 @@
             
             
             
+            
+            "date_published": "2024-12-01T00:00:00+00:00",
+            "date_modified": "2024-12-01T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
+            "id": "/2024/12/01/apt.html",
+            "title": "cheatsheet/apt",
+            "summary": "Cheatsheet apt",
+            "content_text": "# Atualizar a lista de pacotes disponíveissudo apt update# Atualizar todos os pacotes instaladossudo apt upgrade# Atualizar o sistema inteiro, incluindo pacotes que exigem novas dependênciassudo apt dist-upgrade# Instalar um pacotesudo apt install nome-do-pacote# Remover um pacote (o pacote é desinstalado, mas as configurações permanecem)sudo apt remove nome-do-pacote# Remover um pacote junto com suas configuraçõessudo apt purge nome-do-pacote# Procurar um pacote pelo nome ou descriçãoapt search termo-de-busca# Exibir informações detalhadas sobre um pacoteapt show nome-do-pacote# Listar todos os pacotes instaladosdpkg --list# Listar pacotes específicosdpkg --list | grep termo-de-busca# Listar pacotes disponíveis para atualizaçãoapt list --upgradable# Mostrar as dependências de um pacoteapt depends nome-do-pacote# Verificar se um pacote específico está instaladodpkg -l | grep nome-do-pacote# Limpar o cache de pacotes baixados (libera espaço em disco)sudo apt clean# Remover pacotes órfãos (pacotes que não são mais necessários)sudo apt autoremove# Verificar a integridade dos pacotes instaladossudo apt check# Corrigir problemas de dependências quebradassudo apt --fix-broken install# Bloquear a versão de um pacote para evitar atualizações automáticassudo apt-mark hold nome-do-pacote# Desbloquear um pacote previamente bloqueadosudo apt-mark unhold nome-do-pacote# Visualizar o histórico de atualizaçõesless /var/log/apt/history.log",
+            "content_html": "<div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code># Atualizar a lista de pacotes disponíveissudo apt update# Atualizar todos os pacotes instaladossudo apt upgrade# Atualizar o sistema inteiro, incluindo pacotes que exigem novas dependênciassudo apt dist-upgrade# Instalar um pacotesudo apt install nome-do-pacote# Remover um pacote (o pacote é desinstalado, mas as configurações permanecem)sudo apt remove nome-do-pacote# Remover um pacote junto com suas configuraçõessudo apt purge nome-do-pacote# Procurar um pacote pelo nome ou descriçãoapt search termo-de-busca# Exibir informações detalhadas sobre um pacoteapt show nome-do-pacote# Listar todos os pacotes instaladosdpkg --list# Listar pacotes específicosdpkg --list | grep termo-de-busca# Listar pacotes disponíveis para atualizaçãoapt list --upgradable# Mostrar as dependências de um pacoteapt depends nome-do-pacote# Verificar se um pacote específico está instaladodpkg -l | grep nome-do-pacote# Limpar o cache de pacotes baixados (libera espaço em disco)sudo apt clean# Remover pacotes órfãos (pacotes que não são mais necessários)sudo apt autoremove# Verificar a integridade dos pacotes instaladossudo apt check# Corrigir problemas de dependências quebradassudo apt --fix-broken install# Bloquear a versão de um pacote para evitar atualizações automáticassudo apt-mark hold nome-do-pacote# Desbloquear um pacote previamente bloqueadosudo apt-mark unhold nome-do-pacote# Visualizar o histórico de atualizaçõesless /var/log/apt/history.log</code></pre></div></div>",
+            "url": "/2024/12/01/apt.html",
+            
+            
+            
+            "tags": ["apt","ubuntu","package"],
             
             "date_published": "2024-12-01T00:00:00+00:00",
             "date_modified": "2024-12-01T00:00:00+00:00",
