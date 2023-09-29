@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2023-09-02T22:00:15+00:00</updated>
+ <updated>2023-09-29T20:00:39+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -206,7 +206,16 @@
    <link href="/2024/12/01/eu-sou-o-crud.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/eu-sou-o-crud</id>
-   <content type="html">
+   <content type="html">&lt;p&gt;https://github.com/apolzek/rinha-backend-2023-go
+https://github.com/apolzek/score-day
+https://github.com/apolzek/go-backend-clean-architecture
+https://github.com/apolzek/mvc-golang-with-gin
+https://github.com/apolzek/golang-API
+https://github.com/apolzek/go-crud-live
+https://github.com/apolzek/go-microservice-example
+https://github.com/apolzek/golang-mongodb-api
+https://github.com/apolzek/fiber-mongo-api
+https://github.com/apolzek/UserCRUDApp-Golang&lt;/p&gt;
 </content>
  </entry>
  
@@ -755,9 +764,10 @@ docker cp nome-do-container:/caminho/no/contêiner/arquivo.txt arquivo.txt
 docker run --cpus=2 --memory=1g nome-da-imagem
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;remover-todas-as-imagens-ou-containers&quot;&gt;Remover todas as imagens ou containers&lt;/h2&gt;
+&lt;h2 id=&quot;remover-todas-as-imagens-containers-ou-volumes&quot;&gt;Remover todas as imagens, containers ou volumes&lt;/h2&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker rmi $(docker images -q)
 docker rm -f $(docker ps -aq)
+docker container rm -f $(docker container ls -qa); for i in $(docker volume ls | awk &apos;{print $2}&apos; | sed 1d); do docker volume rm -f $i; done
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;comando-para-limpar-containers-e-itens-associados-a-eles&quot;&gt;Comando para limpar containers e itens associados a eles&lt;/h2&gt;

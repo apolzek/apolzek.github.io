@@ -23,8 +23,9 @@ docker rmi minha-imagem:latest
 docker cp nome-do-container:/caminho/no/contêiner/arquivo.txt arquivo.txt
 </code></pre></div></div> <h2 id="comandos-para-visualisar-e-limitar-recursos"> Comandos para visualisar e limitar recursos <a href="#comandos-para-visualisar-e-limitar-recursos">#</a> </h2> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker stats
 docker run --cpus=2 --memory=1g nome-da-imagem
-</code></pre></div></div> <h2 id="remover-todas-as-imagens-ou-containers"> Remover todas as imagens ou containers <a href="#remover-todas-as-imagens-ou-containers">#</a> </h2> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker rmi $(docker images -q)
+</code></pre></div></div> <h2 id="remover-todas-as-imagens-containers-ou-volumes"> Remover todas as imagens, containers ou volumes <a href="#remover-todas-as-imagens-containers-ou-volumes">#</a> </h2> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker rmi $(docker images -q)
 docker rm -f $(docker ps -aq)
+docker container rm -f $(docker container ls -qa); for i in $(docker volume ls | awk '{print $2}' | sed 1d); do docker volume rm -f $i; done
 </code></pre></div></div> <h2 id="comando-para-limpar-containers-e-itens-associados-a-eles"> Comando para limpar containers e itens associados a eles <a href="#comando-para-limpar-containers-e-itens-associados-a-eles">#</a> </h2> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker system prune -a --volumes --dry-run
 docker system prune -a --volumes
 </code></pre></div></div> <h2 id="converter-imagem-para-arquivo-e-depois-importar-novamente"> Converter imagem para arquivo e depois importar novamente <a href="#converter-imagem-para-arquivo-e-depois-importar-novamente">#</a> </h2> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker save -o nome_da_imagem.tar nome_da_imagem
