@@ -57,18 +57,26 @@
     } ,
   
     {
+      "title"    : "development/golang/resumao",
+      "category" : "",
+      "tags"     : "go",
+      "url"      : "/2024/12/01/resumao.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "development/golang/eu-sou-o-crud",
       "category" : "",
-      "tags"     : "go, crud",
+      "tags"     : "go, dev",
       "url"      : "/2024/12/01/eu-sou-o-crud.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "development/golang/basicao",
+      "title"    : "development/golang/context",
       "category" : "",
-      "tags"     : "go",
-      "url"      : "/2024/12/01/basicao.html",
+      "tags"     : "go, golang, dev",
+      "url"      : "/2024/12/01/context.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
