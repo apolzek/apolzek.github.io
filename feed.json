@@ -11,111 +11,6 @@
 "items": [
     
         {
-            "id": "/2024/12/01/caixa-de-ferramentas.html",
-            "title": "tool/caixa-de-ferramentas",
-            "summary": "Minha caixa de ferramentas",
-            "content_text": "Plugins asdf  awscli  bat  cfssl  docker-slim  dotnet-core  eksctl  fd  fzf  helm  helm-docs  java  jq  k6  kind  kubectl  kubectx  lazygit  maven  mysql  neovim  nodejs  rust  shellcheck  teller  terraform  tilt  trivy  yamllintOutras ferramentas  visidata  kind  docker  containerd  virtualbox",
-            "content_html": "<h3 id=\"plugins-asdf\">Plugins asdf</h3><ul>  <li>awscli</li>  <li>bat</li>  <li>cfssl</li>  <li>docker-slim</li>  <li>dotnet-core</li>  <li>eksctl</li>  <li>fd</li>  <li>fzf</li>  <li>helm</li>  <li>helm-docs</li>  <li>java</li>  <li>jq</li>  <li>k6</li>  <li>kind</li>  <li>kubectl</li>  <li>kubectx</li>  <li>lazygit</li>  <li>maven</li>  <li>mysql</li>  <li>neovim</li>  <li>nodejs</li>  <li>rust</li>  <li>shellcheck</li>  <li>teller</li>  <li>terraform</li>  <li>tilt</li>  <li>trivy</li>  <li>yamllint</li></ul><h3 id=\"outras-ferramentas\">Outras ferramentas</h3><ul>  <li>visidata</li>  <li>kind</li>  <li>docker</li>  <li>containerd</li>  <li>virtualbox</li></ul>",
-            "url": "/2024/12/01/caixa-de-ferramentas.html",
-            
-            
-            
-            "tags": ["linux","tools","toolbox"],
-            
-            "date_published": "2024-12-01T00:00:00+00:00",
-            "date_modified": "2024-12-01T00:00:00+00:00",
-            
-                "author": 
-                ""
-                
-            
-        },
-    
-        {
-            "id": "/2024/12/01/resumo-livro-sre-google.html",
-            "title": "sre/resumo-livro-sre-google",
-            "summary": "Falando sobre processos no Linux",
-            "content_text": "",
-            "content_html": "",
-            "url": "/2024/12/01/resumo-livro-sre-google.html",
-            
-            
-            
-            "tags": ["processos","processes","process","linux"],
-            
-            "date_published": "2024-12-01T00:00:00+00:00",
-            "date_modified": "2024-12-01T00:00:00+00:00",
-            
-                "author": 
-                ""
-                
-            
-        },
-    
-        {
-            "id": "/2024/12/01/engenharia-de-confiabilidade-no-brasil.html",
-            "title": "opiniao/engenharia-de-confiabilidade-no-brasil",
-            "summary": "Falando sobre Engenharia de Confiabilidade no mercado Brasileiro",
-            "content_text": "",
-            "content_html": "",
-            "url": "/2024/12/01/engenharia-de-confiabilidade-no-brasil.html",
-            
-            
-            
-            "tags": ["sre","confiabilidade","reliability","engineer"],
-            
-            "date_published": "2024-12-01T00:00:00+00:00",
-            "date_modified": "2024-12-01T00:00:00+00:00",
-            
-                "author": 
-                ""
-                
-            
-        },
-    
-        {
-            "id": "/2024/12/01/processos-no-linux.html",
-            "title": "linux/processos-no-linux",
-            "summary": "Falando sobre processos no Linux",
-            "content_text": "",
-            "content_html": "",
-            "url": "/2024/12/01/processos-no-linux.html",
-            
-            
-            
-            "tags": ["processos","processes","process","linux"],
-            
-            "date_published": "2024-12-01T00:00:00+00:00",
-            "date_modified": "2024-12-01T00:00:00+00:00",
-            
-                "author": 
-                ""
-                
-            
-        },
-    
-        {
-            "id": "/2024/12/01/nao-se-apaixone-por-distros.html",
-            "title": "linux/nao-se-apaixone-por-distros",
-            "summary": "Uma breve reflexão sobre distros Linux",
-            "content_text": "",
-            "content_html": "",
-            "url": "/2024/12/01/nao-se-apaixone-por-distros.html",
-            
-            
-            
-            "tags": ["linux","distro"],
-            
-            "date_published": "2024-12-01T00:00:00+00:00",
-            "date_modified": "2024-12-01T00:00:00+00:00",
-            
-                "author": 
-                ""
-                
-            
-        },
-    
-        {
             "id": "/2024/12/01/easy-cka.html",
             "title": "k8s/easy-cka",
             "summary": "Visão geral sobre a certificação CKA",
@@ -147,6 +42,27 @@
             
             
             "tags": ["mente","cérebro","brain"],
+            
+            "date_published": "2024-12-01T00:00:00+00:00",
+            "date_modified": "2024-12-01T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
+            "id": "/2024/12/01/processos-no-linux.html",
+            "title": "linux/processos-no-linux",
+            "summary": "Falando sobre processos no Linux",
+            "content_text": "",
+            "content_html": "",
+            "url": "/2024/12/01/processos-no-linux.html",
+            
+            
+            
+            "tags": ["processos","processes","process","linux"],
             
             "date_published": "2024-12-01T00:00:00+00:00",
             "date_modified": "2024-12-01T00:00:00+00:00",
@@ -243,7 +159,7 @@
     
         {
             "id": "/2024/12/01/slices.html",
-            "title": "dev/golang/basicao",
+            "title": "development/golang/basicao",
             "summary": "Basicão sobre a linguagem Golang",
             "content_text": "package mainimport \"fmt\"func main() {\tvar s = []int{1, 2, 3}\tmodifySlice(s)\tfmt.Println(s)}func modifySlice(i []int) {\ti[0] = 3\ti = append(i, 4)\ti[2] = 4}O motivo é que o na verdade isso é um ponteiro, quando você deu append o ponteiro antigo foi descartado e um novo foi gerado contendo todo que havia no antigo i mais o novo elemento. Como s ainda aponta para o ponteiro antigo print vai imprimir o conteúdo antigo que teve apenas o primeiro elemento alterado.package mainimport \"fmt\"func main() {\tvar s = []int{1, 2, 3}\tmodifySlice(&amp;s)\tfmt.Println(s)}func modifySlice(i *[]int) {\t// Corrija o slice usando o ponteiro\t(*i)[0] = 3\t*i = append(*i, 4)\t(*i)[2] = 4}",
             "content_html": "<div class=\"language-go highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">package</span> <span class=\"n\">main</span><span class=\"k\">import</span> <span class=\"s\">\"fmt\"</span><span class=\"k\">func</span> <span class=\"n\">main</span><span class=\"p\">()</span> <span class=\"p\">{</span>\t<span class=\"k\">var</span> <span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"p\">[]</span><span class=\"kt\">int</span><span class=\"p\">{</span><span class=\"m\">1</span><span class=\"p\">,</span> <span class=\"m\">2</span><span class=\"p\">,</span> <span class=\"m\">3</span><span class=\"p\">}</span>\t<span class=\"n\">modifySlice</span><span class=\"p\">(</span><span class=\"n\">s</span><span class=\"p\">)</span>\t<span class=\"n\">fmt</span><span class=\"o\">.</span><span class=\"n\">Println</span><span class=\"p\">(</span><span class=\"n\">s</span><span class=\"p\">)</span><span class=\"p\">}</span><span class=\"k\">func</span> <span class=\"n\">modifySlice</span><span class=\"p\">(</span><span class=\"n\">i</span> <span class=\"p\">[]</span><span class=\"kt\">int</span><span class=\"p\">)</span> <span class=\"p\">{</span>\t<span class=\"n\">i</span><span class=\"p\">[</span><span class=\"m\">0</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"m\">3</span>\t<span class=\"n\">i</span> <span class=\"o\">=</span> <span class=\"nb\">append</span><span class=\"p\">(</span><span class=\"n\">i</span><span class=\"p\">,</span> <span class=\"m\">4</span><span class=\"p\">)</span>\t<span class=\"n\">i</span><span class=\"p\">[</span><span class=\"m\">2</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"m\">4</span><span class=\"p\">}</span></code></pre></div></div><p>O motivo é que o na verdade isso é um ponteiro, quando você deu append o ponteiro antigo foi descartado e um novo foi gerado contendo todo que havia no antigo i mais o novo elemento. Como s ainda aponta para o ponteiro antigo print vai imprimir o conteúdo antigo que teve apenas o primeiro elemento alterado.</p><div class=\"language-go highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">package</span> <span class=\"n\">main</span><span class=\"k\">import</span> <span class=\"s\">\"fmt\"</span><span class=\"k\">func</span> <span class=\"n\">main</span><span class=\"p\">()</span> <span class=\"p\">{</span>\t<span class=\"k\">var</span> <span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"p\">[]</span><span class=\"kt\">int</span><span class=\"p\">{</span><span class=\"m\">1</span><span class=\"p\">,</span> <span class=\"m\">2</span><span class=\"p\">,</span> <span class=\"m\">3</span><span class=\"p\">}</span>\t<span class=\"n\">modifySlice</span><span class=\"p\">(</span><span class=\"o\">&amp;</span><span class=\"n\">s</span><span class=\"p\">)</span>\t<span class=\"n\">fmt</span><span class=\"o\">.</span><span class=\"n\">Println</span><span class=\"p\">(</span><span class=\"n\">s</span><span class=\"p\">)</span><span class=\"p\">}</span><span class=\"k\">func</span> <span class=\"n\">modifySlice</span><span class=\"p\">(</span><span class=\"n\">i</span> <span class=\"o\">*</span><span class=\"p\">[]</span><span class=\"kt\">int</span><span class=\"p\">)</span> <span class=\"p\">{</span>\t<span class=\"c\">// Corrija o slice usando o ponteiro</span>\t<span class=\"p\">(</span><span class=\"o\">*</span><span class=\"n\">i</span><span class=\"p\">)[</span><span class=\"m\">0</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"m\">3</span>\t<span class=\"o\">*</span><span class=\"n\">i</span> <span class=\"o\">=</span> <span class=\"nb\">append</span><span class=\"p\">(</span><span class=\"o\">*</span><span class=\"n\">i</span><span class=\"p\">,</span> <span class=\"m\">4</span><span class=\"p\">)</span>\t<span class=\"p\">(</span><span class=\"o\">*</span><span class=\"n\">i</span><span class=\"p\">)[</span><span class=\"m\">2</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"m\">4</span><span class=\"p\">}</span></code></pre></div></div>",
@@ -264,7 +180,7 @@
     
         {
             "id": "/2024/12/01/eu-sou-o-crud.html",
-            "title": "dev/golang/eu-sou-o-crud",
+            "title": "development/golang/eu-sou-o-crud",
             "summary": "Diversos repositorios com CRUD's em Golang",
             "content_text": "https://github.com/apolzek/rinha-backend-2023-gohttps://github.com/apolzek/score-dayhttps://github.com/apolzek/go-backend-clean-architecturehttps://github.com/apolzek/mvc-golang-with-ginhttps://github.com/apolzek/golang-APIhttps://github.com/apolzek/go-crud-livehttps://github.com/apolzek/go-microservice-examplehttps://github.com/apolzek/golang-mongodb-apihttps://github.com/apolzek/fiber-mongo-apihttps://github.com/apolzek/UserCRUDApp-Golang",
             "content_html": "<p>https://github.com/apolzek/rinha-backend-2023-gohttps://github.com/apolzek/score-dayhttps://github.com/apolzek/go-backend-clean-architecturehttps://github.com/apolzek/mvc-golang-with-ginhttps://github.com/apolzek/golang-APIhttps://github.com/apolzek/go-crud-livehttps://github.com/apolzek/go-microservice-examplehttps://github.com/apolzek/golang-mongodb-apihttps://github.com/apolzek/fiber-mongo-apihttps://github.com/apolzek/UserCRUDApp-Golang</p>",
@@ -285,7 +201,7 @@
     
         {
             "id": "/2024/12/01/basicao.html",
-            "title": "dev/golang/basicao",
+            "title": "development/golang/basicao",
             "summary": "Basicão sobre a linguagem Golang",
             "content_text": "",
             "content_html": "",
@@ -315,6 +231,27 @@
             
             
             "tags": ["fila","queue"],
+            
+            "date_published": "2024-12-01T00:00:00+00:00",
+            "date_modified": "2024-12-01T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
+            "id": "/2024/12/01/dominando-o-iam.html",
+            "title": "aws/dominando-o-iam",
+            "summary": "Dominando de uma vez por todas o AWS IAM",
+            "content_text": "A IAM (Identity and Access Management) é um serviço fundamental da AWS (Amazon Web Services) que permite gerenciar de forma segura o acesso aos recursos da AWS. Com a IAM, você pode criar e gerenciar usuários, grupos e funções, além de definir permissões detalhadas para controlar quem tem acesso a quais recursos e ações dentro da sua conta da AWS. Aqui estão alguns conceitos importantes e exemplos práticos de uso da IAM:UsuáriosUm usuário é uma identidade que você cria para alguém ou algo (como uma aplicação) que precisa acessar sua conta da AWS. Cada usuário possui um nome de usuário exclusivo e credenciais de login. Aqui está um exemplo de criação de um usuário na IAM:aws iam create-user --user-name myuserGruposUm grupo é um conjunto de permissões que você pode aplicar a vários usuários. Você atribui políticas (conjuntos de permissões) aos grupos, e os usuários que pertencem ao grupo herdam essas permissões. Aqui está um exemplo de criação de um grupo na IAM e associação de um usuário a ele:aws iam create-group --group-name mygroupaws iam add-user-to-group --group-name mygroup --user-name myuserPolíticasAs políticas definem as permissões de acesso em formato JSON. Elas especificam o que um usuário, grupo ou função pode fazer com recursos específicos. Aqui está um exemplo de criação de uma política que permite a leitura de um bucket S3:{    \"Version\": \"2012-10-17\",    \"Statement\": [        {            \"Effect\": \"Allow\",            \"Action\": \"s3:GetObject\",            \"Resource\": \"arn:aws:s3:::my-bucket/*\"        }    ]}FunçõesAs funções permitem conceder permissões temporárias a serviços da AWS ou entidades confiáveis. Isso é útil para permitir que serviços acessem outros recursos em seu nome, sem a necessidade de compartilhar credenciais de acesso direto. Aqui está um exemplo de criação de uma função que permite que uma instância EC2 acesse um bucket S3:aws iam create-role --role-name myrole --assume-role-policy-document file://trust-policy.jsonAssume Role Policy DocumentO documento de política de confiança é um JSON que define quais entidades ou serviços podem assumir uma função. Aqui está um exemplo simplificado:{    \"Version\": \"2012-10-17\",    \"Statement\": [        {            \"Effect\": \"Allow\",            \"Principal\": {                \"Service\": \"ec2.amazonaws.com\"            },            \"Action\": \"sts:AssumeRole\"        }    ]}",
+            "content_html": "<p>A IAM (Identity and Access Management) é um serviço fundamental da AWS (Amazon Web Services) que permite gerenciar de forma segura o acesso aos recursos da AWS. Com a IAM, você pode criar e gerenciar usuários, grupos e funções, além de definir permissões detalhadas para controlar quem tem acesso a quais recursos e ações dentro da sua conta da AWS. Aqui estão alguns conceitos importantes e exemplos práticos de uso da IAM:</p><h4 id=\"usuários\">Usuários</h4><p>Um usuário é uma identidade que você cria para alguém ou algo (como uma aplicação) que precisa acessar sua conta da AWS. Cada usuário possui um nome de usuário exclusivo e credenciais de login. Aqui está um exemplo de criação de um usuário na IAM:</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>aws iam create-user --user-name myuser</code></pre></div></div><h4 id=\"grupos\">Grupos</h4><p>Um grupo é um conjunto de permissões que você pode aplicar a vários usuários. Você atribui políticas (conjuntos de permissões) aos grupos, e os usuários que pertencem ao grupo herdam essas permissões. Aqui está um exemplo de criação de um grupo na IAM e associação de um usuário a ele:</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>aws iam create-group --group-name mygroupaws iam add-user-to-group --group-name mygroup --user-name myuser</code></pre></div></div><h4 id=\"políticas\">Políticas</h4><p>As políticas definem as permissões de acesso em formato JSON. Elas especificam o que um usuário, grupo ou função pode fazer com recursos específicos. Aqui está um exemplo de criação de uma política que permite a leitura de um bucket S3:</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>{    \"Version\": \"2012-10-17\",    \"Statement\": [        {            \"Effect\": \"Allow\",            \"Action\": \"s3:GetObject\",            \"Resource\": \"arn:aws:s3:::my-bucket/*\"        }    ]}</code></pre></div></div><h4 id=\"funções\">Funções</h4><p>As funções permitem conceder permissões temporárias a serviços da AWS ou entidades confiáveis. Isso é útil para permitir que serviços acessem outros recursos em seu nome, sem a necessidade de compartilhar credenciais de acesso direto. Aqui está um exemplo de criação de uma função que permite que uma instância EC2 acesse um bucket S3:</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>aws iam create-role --role-name myrole --assume-role-policy-document file://trust-policy.json</code></pre></div></div><h4 id=\"assume-role-policy-document\">Assume Role Policy Document</h4><p>O documento de política de confiança é um JSON que define quais entidades ou serviços podem assumir uma função. Aqui está um exemplo simplificado:</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>{    \"Version\": \"2012-10-17\",    \"Statement\": [        {            \"Effect\": \"Allow\",            \"Principal\": {                \"Service\": \"ec2.amazonaws.com\"            },            \"Action\": \"sts:AssumeRole\"        }    ]}</code></pre></div></div>",
+            "url": "/2024/12/01/dominando-o-iam.html",
+            
+            
+            
+            "tags": ["iam","aws","security"],
             
             "date_published": "2024-12-01T00:00:00+00:00",
             "date_modified": "2024-12-01T00:00:00+00:00",
@@ -413,34 +350,13 @@
             "id": "/2024/12/01/asdf.html",
             "title": "cheatsheet/asdf",
             "summary": "Cheatsheet asdf",
-            "content_text": "",
-            "content_html": "",
+            "content_text": "  awscli  bat  cfssl  docker-slim  dotnet-core  eksctl  fd  fzf  helm  helm-docs  java  jq  k6  kind  kubectl  kubectx  lazygit  maven  mysql  neovim  nodejs  rust  shellcheck  teller  terraform  tilt  trivy      yamllint    visidata  kind  docker  containerd  virtualbox",
+            "content_html": "<ul>  <li>awscli</li>  <li>bat</li>  <li>cfssl</li>  <li>docker-slim</li>  <li>dotnet-core</li>  <li>eksctl</li>  <li>fd</li>  <li>fzf</li>  <li>helm</li>  <li>helm-docs</li>  <li>java</li>  <li>jq</li>  <li>k6</li>  <li>kind</li>  <li>kubectl</li>  <li>kubectx</li>  <li>lazygit</li>  <li>maven</li>  <li>mysql</li>  <li>neovim</li>  <li>nodejs</li>  <li>rust</li>  <li>shellcheck</li>  <li>teller</li>  <li>terraform</li>  <li>tilt</li>  <li>trivy</li>  <li>    <p>yamllint</p>  </li>  <li>visidata</li>  <li>kind</li>  <li>docker</li>  <li>containerd</li>  <li>virtualbox</li></ul>",
             "url": "/2024/12/01/asdf.html",
             
             
             
             
-            
-            "date_published": "2024-12-01T00:00:00+00:00",
-            "date_modified": "2024-12-01T00:00:00+00:00",
-            
-                "author": 
-                ""
-                
-            
-        },
-    
-        {
-            "id": "/2024/12/01/dominando-o-iam.html",
-            "title": "aws/dominando-o-iam",
-            "summary": "Dominando de uma vez por todas o AWS IAM",
-            "content_text": "A IAM (Identity and Access Management) é um serviço fundamental da AWS (Amazon Web Services) que permite gerenciar de forma segura o acesso aos recursos da AWS. Com a IAM, você pode criar e gerenciar usuários, grupos e funções, além de definir permissões detalhadas para controlar quem tem acesso a quais recursos e ações dentro da sua conta da AWS. Aqui estão alguns conceitos importantes e exemplos práticos de uso da IAM:UsuáriosUm usuário é uma identidade que você cria para alguém ou algo (como uma aplicação) que precisa acessar sua conta da AWS. Cada usuário possui um nome de usuário exclusivo e credenciais de login. Aqui está um exemplo de criação de um usuário na IAM:aws iam create-user --user-name myuserGruposUm grupo é um conjunto de permissões que você pode aplicar a vários usuários. Você atribui políticas (conjuntos de permissões) aos grupos, e os usuários que pertencem ao grupo herdam essas permissões. Aqui está um exemplo de criação de um grupo na IAM e associação de um usuário a ele:aws iam create-group --group-name mygroupaws iam add-user-to-group --group-name mygroup --user-name myuserPolíticasAs políticas definem as permissões de acesso em formato JSON. Elas especificam o que um usuário, grupo ou função pode fazer com recursos específicos. Aqui está um exemplo de criação de uma política que permite a leitura de um bucket S3:{    \"Version\": \"2012-10-17\",    \"Statement\": [        {            \"Effect\": \"Allow\",            \"Action\": \"s3:GetObject\",            \"Resource\": \"arn:aws:s3:::my-bucket/*\"        }    ]}FunçõesAs funções permitem conceder permissões temporárias a serviços da AWS ou entidades confiáveis. Isso é útil para permitir que serviços acessem outros recursos em seu nome, sem a necessidade de compartilhar credenciais de acesso direto. Aqui está um exemplo de criação de uma função que permite que uma instância EC2 acesse um bucket S3:aws iam create-role --role-name myrole --assume-role-policy-document file://trust-policy.jsonAssume Role Policy DocumentO documento de política de confiança é um JSON que define quais entidades ou serviços podem assumir uma função. Aqui está um exemplo simplificado:{    \"Version\": \"2012-10-17\",    \"Statement\": [        {            \"Effect\": \"Allow\",            \"Principal\": {                \"Service\": \"ec2.amazonaws.com\"            },            \"Action\": \"sts:AssumeRole\"        }    ]}",
-            "content_html": "<p>A IAM (Identity and Access Management) é um serviço fundamental da AWS (Amazon Web Services) que permite gerenciar de forma segura o acesso aos recursos da AWS. Com a IAM, você pode criar e gerenciar usuários, grupos e funções, além de definir permissões detalhadas para controlar quem tem acesso a quais recursos e ações dentro da sua conta da AWS. Aqui estão alguns conceitos importantes e exemplos práticos de uso da IAM:</p><h4 id=\"usuários\">Usuários</h4><p>Um usuário é uma identidade que você cria para alguém ou algo (como uma aplicação) que precisa acessar sua conta da AWS. Cada usuário possui um nome de usuário exclusivo e credenciais de login. Aqui está um exemplo de criação de um usuário na IAM:</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>aws iam create-user --user-name myuser</code></pre></div></div><h4 id=\"grupos\">Grupos</h4><p>Um grupo é um conjunto de permissões que você pode aplicar a vários usuários. Você atribui políticas (conjuntos de permissões) aos grupos, e os usuários que pertencem ao grupo herdam essas permissões. Aqui está um exemplo de criação de um grupo na IAM e associação de um usuário a ele:</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>aws iam create-group --group-name mygroupaws iam add-user-to-group --group-name mygroup --user-name myuser</code></pre></div></div><h4 id=\"políticas\">Políticas</h4><p>As políticas definem as permissões de acesso em formato JSON. Elas especificam o que um usuário, grupo ou função pode fazer com recursos específicos. Aqui está um exemplo de criação de uma política que permite a leitura de um bucket S3:</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>{    \"Version\": \"2012-10-17\",    \"Statement\": [        {            \"Effect\": \"Allow\",            \"Action\": \"s3:GetObject\",            \"Resource\": \"arn:aws:s3:::my-bucket/*\"        }    ]}</code></pre></div></div><h4 id=\"funções\">Funções</h4><p>As funções permitem conceder permissões temporárias a serviços da AWS ou entidades confiáveis. Isso é útil para permitir que serviços acessem outros recursos em seu nome, sem a necessidade de compartilhar credenciais de acesso direto. Aqui está um exemplo de criação de uma função que permite que uma instância EC2 acesse um bucket S3:</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>aws iam create-role --role-name myrole --assume-role-policy-document file://trust-policy.json</code></pre></div></div><h4 id=\"assume-role-policy-document\">Assume Role Policy Document</h4><p>O documento de política de confiança é um JSON que define quais entidades ou serviços podem assumir uma função. Aqui está um exemplo simplificado:</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>{    \"Version\": \"2012-10-17\",    \"Statement\": [        {            \"Effect\": \"Allow\",            \"Principal\": {                \"Service\": \"ec2.amazonaws.com\"            },            \"Action\": \"sts:AssumeRole\"        }    ]}</code></pre></div></div>",
-            "url": "/2024/12/01/dominando-o-iam.html",
-            
-            
-            
-            "tags": ["iam","aws","security"],
             
             "date_published": "2024-12-01T00:00:00+00:00",
             "date_modified": "2024-12-01T00:00:00+00:00",
@@ -495,7 +411,7 @@
     
         {
             "id": "/2023/08/25/generics.html",
-            "title": "dev/golang/generics",
+            "title": "development/golang/generics",
             "summary": "Entendendo Generics no Go",
             "content_text": "GenericsResumindo Generics.. normalmente criamos uma variável de um tipo específico e em algum momento colocamos um valor dentro dela respeitando esse tipo. Quando utilizamos generics fazemos o inverso, onde recebemos um valor sem ter um tipo pré-definido e em algum momento podemos especifica-lo(normalmente no momento de uso).Generics tem tudo haver com Constraints e Interfaces. Antes da versão 1.18(alguma coisa) para fazer o tipo Any era utilizado interface vazia, representado por interface{}.func Print(a ...interface{}) (n int, err error)Para descobrir o tipo, era utilizado o switch:package mainimport \"fmt\"func something(x interface{}) {\tswitch idk := x.(type) {\tcase int:\t\tfmt.Println(\"eh int:\", idk)\tcase string:\t\tfmt.Println(\"eh string:\", idk)\tdefault:\t\tfmt.Println(\"eh invalido\", idk)\t}}func main() {\tsomething(\"brazil\")\tsomething(1337)\tsomething(12.123)}Modelo abaixo está utilizando Genericspackage mainimport \"fmt\"type UserTest1 struct {\tname string\tage  int16}type UserTest2 struct {\tdocumentNumber string\taddress        string}func userTest[T UserTest1 | UserTest2](user T) {\tfmt.Println(user)\tfmt.Println(user)}func identity[T any](arg T) T {\treturn arg}func anyType(arg any) any {\treturn arg}func main() {\tu1 := UserTest1{\t\tname: \"Mario\",\t\tage:  29,\t}\tuserTest(u1)\t// num := 10\t// userTest(num)\tout1 := identity[string](\"test\")\tfmt.Println(out1)\tout2 := identity[int16](1234)\tfmt.Println(out2)\tout3 := anyType(1234)\tfmt.Println(out3)\tout4 := anyType(\"test\")\tfmt.Println(out4)}E para fazer comparações entre variáveis do tipo Any ?? Abaixo está um jeito feio de se fazerfunc main() {\tvar value1 interface{} = 42\tvar value2 interface{} = \"42\"\tif reflect.TypeOf(value1).Kind() == reflect.Int &amp;&amp; reflect.TypeOf(value2).Kind() == reflect.String {\t\tconvertedValue1 := value1.(int)\t\tconvertedValue2 := value2.(string)\t\tif convertedValue1 == 42 &amp;&amp; convertedValue2 == \"42\" {\t\t\tfmt.Println(\"As variáveis são iguais.\")\t\t} else {\t\t\tfmt.Println(\"As variáveis são diferentes.\")\t\t}\t} else {\t\tfmt.Println(\"Tipos incompatíveis para comparação.\")\t}}Abaixo está uma implementação mais elegante. Ele utiliza o comparable.package mainimport \"fmt\"func anyTest[T comparable](arg1 T, arg2 T) {\tfmt.Println(arg1 == arg2)}func main() {\tanyTest(1, 2)}Comparação com &lt; e &gt;. Também possível comparar tipo primitivo de tipo definido(usando ~)package mainimport \"fmt\"func test[T NumberTests](arg1 T, arg2 T) {\tfmt.Println(arg1 &gt;= arg2)}func testInt[T ~int64](arg1 T, arg2 T) {\tfmt.Println(arg1 &gt;= arg2)}type MyNum int64type NumberTests interface {\tint64 | float64 | float32}type NumberIntTests interface {\tint64}func main() {\ttest(3.2, 2.0)\tvar iNum MyNum = 44\ttestInt(iNum, 33)}É possível utilizar na declaração de um tipo também. Onde não é mais necessário definir o tipo no momento da criação. Ex:package mainimport \"fmt\"type User[T any, B any] struct {\tname T\tage  B}func main() {\tuserTest := User[string, int64]{\t\tname: \"joao\",\t\tage:  20,\t}\tfmt.Println(userTest)}Referências  https://gobyexample.com/generics  https://www.youtube.com/watch?v=nD_6L2PBfaE  https://www.youtube.com/watch?v=XcDnQvVCW78",
             "content_html": "<h2 id=\"generics\">Generics</h2><p>Resumindo Generics.. normalmente criamos uma variável de um tipo específico e em algum momento colocamos um valor dentro dela respeitando esse tipo. Quando utilizamos generics fazemos o inverso, onde recebemos um valor sem ter um tipo pré-definido e em algum momento podemos especifica-lo(normalmente no momento de uso).</p><p><strong>Generics</strong> tem tudo haver com <strong>Constraints e Interfaces</strong>. Antes da versão 1.18(alguma coisa) para fazer o tipo Any era utilizado interface vazia, representado por <em>interface{}</em>.</p><div class=\"language-go highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">func</span> <span class=\"n\">Print</span><span class=\"p\">(</span><span class=\"n\">a</span> <span class=\"o\">...</span><span class=\"k\">interface</span><span class=\"p\">{})</span> <span class=\"p\">(</span><span class=\"n\">n</span> <span class=\"kt\">int</span><span class=\"p\">,</span> <span class=\"n\">err</span> <span class=\"kt\">error</span><span class=\"p\">)</span></code></pre></div></div><p>Para descobrir o tipo, era utilizado o <strong>switch</strong>:</p><div class=\"language-go highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">package</span> <span class=\"n\">main</span><span class=\"k\">import</span> <span class=\"s\">\"fmt\"</span><span class=\"k\">func</span> <span class=\"n\">something</span><span class=\"p\">(</span><span class=\"n\">x</span> <span class=\"k\">interface</span><span class=\"p\">{})</span> <span class=\"p\">{</span>\t<span class=\"k\">switch</span> <span class=\"n\">idk</span> <span class=\"o\">:=</span> <span class=\"n\">x</span><span class=\"o\">.</span><span class=\"p\">(</span><span class=\"k\">type</span><span class=\"p\">)</span> <span class=\"p\">{</span>\t<span class=\"k\">case</span> <span class=\"kt\">int</span><span class=\"o\">:</span>\t\t<span class=\"n\">fmt</span><span class=\"o\">.</span><span class=\"n\">Println</span><span class=\"p\">(</span><span class=\"s\">\"eh int:\"</span><span class=\"p\">,</span> <span class=\"n\">idk</span><span class=\"p\">)</span>\t<span class=\"k\">case</span> <span class=\"kt\">string</span><span class=\"o\">:</span>\t\t<span class=\"n\">fmt</span><span class=\"o\">.</span><span class=\"n\">Println</span><span class=\"p\">(</span><span class=\"s\">\"eh string:\"</span><span class=\"p\">,</span> <span class=\"n\">idk</span><span class=\"p\">)</span>\t<span class=\"k\">default</span><span class=\"o\">:</span>\t\t<span class=\"n\">fmt</span><span class=\"o\">.</span><span class=\"n\">Println</span><span class=\"p\">(</span><span class=\"s\">\"eh invalido\"</span><span class=\"p\">,</span> <span class=\"n\">idk</span><span class=\"p\">)</span>\t<span class=\"p\">}</span><span class=\"p\">}</span><span class=\"k\">func</span> <span class=\"n\">main</span><span class=\"p\">()</span> <span class=\"p\">{</span>\t<span class=\"n\">something</span><span class=\"p\">(</span><span class=\"s\">\"brazil\"</span><span class=\"p\">)</span>\t<span class=\"n\">something</span><span class=\"p\">(</span><span class=\"m\">1337</span><span class=\"p\">)</span>\t<span class=\"n\">something</span><span class=\"p\">(</span><span class=\"m\">12.123</span><span class=\"p\">)</span><span class=\"p\">}</span></code></pre></div></div><p>Modelo abaixo está utilizando Generics</p><div class=\"language-go highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">package</span> <span class=\"n\">main</span><span class=\"k\">import</span> <span class=\"s\">\"fmt\"</span><span class=\"k\">type</span> <span class=\"n\">UserTest1</span> <span class=\"k\">struct</span> <span class=\"p\">{</span>\t<span class=\"n\">name</span> <span class=\"kt\">string</span>\t<span class=\"n\">age</span>  <span class=\"kt\">int16</span><span class=\"p\">}</span><span class=\"k\">type</span> <span class=\"n\">UserTest2</span> <span class=\"k\">struct</span> <span class=\"p\">{</span>\t<span class=\"n\">documentNumber</span> <span class=\"kt\">string</span>\t<span class=\"n\">address</span>        <span class=\"kt\">string</span><span class=\"p\">}</span><span class=\"k\">func</span> <span class=\"n\">userTest</span><span class=\"p\">[</span><span class=\"n\">T</span> <span class=\"n\">UserTest1</span> <span class=\"o\">|</span> <span class=\"n\">UserTest2</span><span class=\"p\">](</span><span class=\"n\">user</span> <span class=\"n\">T</span><span class=\"p\">)</span> <span class=\"p\">{</span>\t<span class=\"n\">fmt</span><span class=\"o\">.</span><span class=\"n\">Println</span><span class=\"p\">(</span><span class=\"n\">user</span><span class=\"p\">)</span>\t<span class=\"n\">fmt</span><span class=\"o\">.</span><span class=\"n\">Println</span><span class=\"p\">(</span><span class=\"n\">user</span><span class=\"p\">)</span><span class=\"p\">}</span><span class=\"k\">func</span> <span class=\"n\">identity</span><span class=\"p\">[</span><span class=\"n\">T</span> <span class=\"n\">any</span><span class=\"p\">](</span><span class=\"n\">arg</span> <span class=\"n\">T</span><span class=\"p\">)</span> <span class=\"n\">T</span> <span class=\"p\">{</span>\t<span class=\"k\">return</span> <span class=\"n\">arg</span><span class=\"p\">}</span><span class=\"k\">func</span> <span class=\"n\">anyType</span><span class=\"p\">(</span><span class=\"n\">arg</span> <span class=\"n\">any</span><span class=\"p\">)</span> <span class=\"n\">any</span> <span class=\"p\">{</span>\t<span class=\"k\">return</span> <span class=\"n\">arg</span><span class=\"p\">}</span><span class=\"k\">func</span> <span class=\"n\">main</span><span class=\"p\">()</span> <span class=\"p\">{</span>\t<span class=\"n\">u1</span> <span class=\"o\">:=</span> <span class=\"n\">UserTest1</span><span class=\"p\">{</span>\t\t<span class=\"n\">name</span><span class=\"o\">:</span> <span class=\"s\">\"Mario\"</span><span class=\"p\">,</span>\t\t<span class=\"n\">age</span><span class=\"o\">:</span>  <span class=\"m\">29</span><span class=\"p\">,</span>\t<span class=\"p\">}</span>\t<span class=\"n\">userTest</span><span class=\"p\">(</span><span class=\"n\">u1</span><span class=\"p\">)</span>\t<span class=\"c\">// num := 10</span>\t<span class=\"c\">// userTest(num)</span>\t<span class=\"n\">out1</span> <span class=\"o\">:=</span> <span class=\"n\">identity</span><span class=\"p\">[</span><span class=\"kt\">string</span><span class=\"p\">](</span><span class=\"s\">\"test\"</span><span class=\"p\">)</span>\t<span class=\"n\">fmt</span><span class=\"o\">.</span><span class=\"n\">Println</span><span class=\"p\">(</span><span class=\"n\">out1</span><span class=\"p\">)</span>\t<span class=\"n\">out2</span> <span class=\"o\">:=</span> <span class=\"n\">identity</span><span class=\"p\">[</span><span class=\"kt\">int16</span><span class=\"p\">](</span><span class=\"m\">1234</span><span class=\"p\">)</span>\t<span class=\"n\">fmt</span><span class=\"o\">.</span><span class=\"n\">Println</span><span class=\"p\">(</span><span class=\"n\">out2</span><span class=\"p\">)</span>\t<span class=\"n\">out3</span> <span class=\"o\">:=</span> <span class=\"n\">anyType</span><span class=\"p\">(</span><span class=\"m\">1234</span><span class=\"p\">)</span>\t<span class=\"n\">fmt</span><span class=\"o\">.</span><span class=\"n\">Println</span><span class=\"p\">(</span><span class=\"n\">out3</span><span class=\"p\">)</span>\t<span class=\"n\">out4</span> <span class=\"o\">:=</span> <span class=\"n\">anyType</span><span class=\"p\">(</span><span class=\"s\">\"test\"</span><span class=\"p\">)</span>\t<span class=\"n\">fmt</span><span class=\"o\">.</span><span class=\"n\">Println</span><span class=\"p\">(</span><span class=\"n\">out4</span><span class=\"p\">)</span><span class=\"p\">}</span></code></pre></div></div><p>E para fazer comparações entre variáveis do tipo Any ?? Abaixo está um jeito feio de se fazer</p><div class=\"language-go highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">func</span> <span class=\"n\">main</span><span class=\"p\">()</span> <span class=\"p\">{</span>\t<span class=\"k\">var</span> <span class=\"n\">value1</span> <span class=\"k\">interface</span><span class=\"p\">{}</span> <span class=\"o\">=</span> <span class=\"m\">42</span>\t<span class=\"k\">var</span> <span class=\"n\">value2</span> <span class=\"k\">interface</span><span class=\"p\">{}</span> <span class=\"o\">=</span> <span class=\"s\">\"42\"</span>\t<span class=\"k\">if</span> <span class=\"n\">reflect</span><span class=\"o\">.</span><span class=\"n\">TypeOf</span><span class=\"p\">(</span><span class=\"n\">value1</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">Kind</span><span class=\"p\">()</span> <span class=\"o\">==</span> <span class=\"n\">reflect</span><span class=\"o\">.</span><span class=\"n\">Int</span> <span class=\"o\">&amp;&amp;</span> <span class=\"n\">reflect</span><span class=\"o\">.</span><span class=\"n\">TypeOf</span><span class=\"p\">(</span><span class=\"n\">value2</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">Kind</span><span class=\"p\">()</span> <span class=\"o\">==</span> <span class=\"n\">reflect</span><span class=\"o\">.</span><span class=\"n\">String</span> <span class=\"p\">{</span>\t\t<span class=\"n\">convertedValue1</span> <span class=\"o\">:=</span> <span class=\"n\">value1</span><span class=\"o\">.</span><span class=\"p\">(</span><span class=\"kt\">int</span><span class=\"p\">)</span>\t\t<span class=\"n\">convertedValue2</span> <span class=\"o\">:=</span> <span class=\"n\">value2</span><span class=\"o\">.</span><span class=\"p\">(</span><span class=\"kt\">string</span><span class=\"p\">)</span>\t\t<span class=\"k\">if</span> <span class=\"n\">convertedValue1</span> <span class=\"o\">==</span> <span class=\"m\">42</span> <span class=\"o\">&amp;&amp;</span> <span class=\"n\">convertedValue2</span> <span class=\"o\">==</span> <span class=\"s\">\"42\"</span> <span class=\"p\">{</span>\t\t\t<span class=\"n\">fmt</span><span class=\"o\">.</span><span class=\"n\">Println</span><span class=\"p\">(</span><span class=\"s\">\"As variáveis são iguais.\"</span><span class=\"p\">)</span>\t\t<span class=\"p\">}</span> <span class=\"k\">else</span> <span class=\"p\">{</span>\t\t\t<span class=\"n\">fmt</span><span class=\"o\">.</span><span class=\"n\">Println</span><span class=\"p\">(</span><span class=\"s\">\"As variáveis são diferentes.\"</span><span class=\"p\">)</span>\t\t<span class=\"p\">}</span>\t<span class=\"p\">}</span> <span class=\"k\">else</span> <span class=\"p\">{</span>\t\t<span class=\"n\">fmt</span><span class=\"o\">.</span><span class=\"n\">Println</span><span class=\"p\">(</span><span class=\"s\">\"Tipos incompatíveis para comparação.\"</span><span class=\"p\">)</span>\t<span class=\"p\">}</span><span class=\"p\">}</span></code></pre></div></div><p>Abaixo está uma implementação mais elegante. Ele utiliza o <strong>comparable</strong>.</p><div class=\"language-go highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">package</span> <span class=\"n\">main</span><span class=\"k\">import</span> <span class=\"s\">\"fmt\"</span><span class=\"k\">func</span> <span class=\"n\">anyTest</span><span class=\"p\">[</span><span class=\"n\">T</span> <span class=\"n\">comparable</span><span class=\"p\">](</span><span class=\"n\">arg1</span> <span class=\"n\">T</span><span class=\"p\">,</span> <span class=\"n\">arg2</span> <span class=\"n\">T</span><span class=\"p\">)</span> <span class=\"p\">{</span>\t<span class=\"n\">fmt</span><span class=\"o\">.</span><span class=\"n\">Println</span><span class=\"p\">(</span><span class=\"n\">arg1</span> <span class=\"o\">==</span> <span class=\"n\">arg2</span><span class=\"p\">)</span><span class=\"p\">}</span><span class=\"k\">func</span> <span class=\"n\">main</span><span class=\"p\">()</span> <span class=\"p\">{</span>\t<span class=\"n\">anyTest</span><span class=\"p\">(</span><span class=\"m\">1</span><span class=\"p\">,</span> <span class=\"m\">2</span><span class=\"p\">)</span><span class=\"p\">}</span></code></pre></div></div><p>Comparação com &lt; e &gt;. Também possível comparar tipo primitivo de tipo definido(usando <strong>~</strong>)</p><div class=\"language-go highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">package</span> <span class=\"n\">main</span><span class=\"k\">import</span> <span class=\"s\">\"fmt\"</span><span class=\"k\">func</span> <span class=\"n\">test</span><span class=\"p\">[</span><span class=\"n\">T</span> <span class=\"n\">NumberTests</span><span class=\"p\">](</span><span class=\"n\">arg1</span> <span class=\"n\">T</span><span class=\"p\">,</span> <span class=\"n\">arg2</span> <span class=\"n\">T</span><span class=\"p\">)</span> <span class=\"p\">{</span>\t<span class=\"n\">fmt</span><span class=\"o\">.</span><span class=\"n\">Println</span><span class=\"p\">(</span><span class=\"n\">arg1</span> <span class=\"o\">&gt;=</span> <span class=\"n\">arg2</span><span class=\"p\">)</span><span class=\"p\">}</span><span class=\"k\">func</span> <span class=\"n\">testInt</span><span class=\"p\">[</span><span class=\"n\">T</span> <span class=\"err\">~</span><span class=\"kt\">int64</span><span class=\"p\">](</span><span class=\"n\">arg1</span> <span class=\"n\">T</span><span class=\"p\">,</span> <span class=\"n\">arg2</span> <span class=\"n\">T</span><span class=\"p\">)</span> <span class=\"p\">{</span>\t<span class=\"n\">fmt</span><span class=\"o\">.</span><span class=\"n\">Println</span><span class=\"p\">(</span><span class=\"n\">arg1</span> <span class=\"o\">&gt;=</span> <span class=\"n\">arg2</span><span class=\"p\">)</span><span class=\"p\">}</span><span class=\"k\">type</span> <span class=\"n\">MyNum</span> <span class=\"kt\">int64</span><span class=\"k\">type</span> <span class=\"n\">NumberTests</span> <span class=\"k\">interface</span> <span class=\"p\">{</span>\t<span class=\"kt\">int64</span> <span class=\"o\">|</span> <span class=\"kt\">float64</span> <span class=\"o\">|</span> <span class=\"kt\">float32</span><span class=\"p\">}</span><span class=\"k\">type</span> <span class=\"n\">NumberIntTests</span> <span class=\"k\">interface</span> <span class=\"p\">{</span>\t<span class=\"kt\">int64</span><span class=\"p\">}</span><span class=\"k\">func</span> <span class=\"n\">main</span><span class=\"p\">()</span> <span class=\"p\">{</span>\t<span class=\"n\">test</span><span class=\"p\">(</span><span class=\"m\">3.2</span><span class=\"p\">,</span> <span class=\"m\">2.0</span><span class=\"p\">)</span>\t<span class=\"k\">var</span> <span class=\"n\">iNum</span> <span class=\"n\">MyNum</span> <span class=\"o\">=</span> <span class=\"m\">44</span>\t<span class=\"n\">testInt</span><span class=\"p\">(</span><span class=\"n\">iNum</span><span class=\"p\">,</span> <span class=\"m\">33</span><span class=\"p\">)</span><span class=\"p\">}</span></code></pre></div></div><p>É possível utilizar na declaração de um tipo também. Onde não é mais necessário definir o tipo no momento da criação. Ex:</p><div class=\"language-go highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">package</span> <span class=\"n\">main</span><span class=\"k\">import</span> <span class=\"s\">\"fmt\"</span><span class=\"k\">type</span> <span class=\"n\">User</span><span class=\"p\">[</span><span class=\"n\">T</span> <span class=\"n\">any</span><span class=\"p\">,</span> <span class=\"n\">B</span> <span class=\"n\">any</span><span class=\"p\">]</span> <span class=\"k\">struct</span> <span class=\"p\">{</span>\t<span class=\"n\">name</span> <span class=\"n\">T</span>\t<span class=\"n\">age</span>  <span class=\"n\">B</span><span class=\"p\">}</span><span class=\"k\">func</span> <span class=\"n\">main</span><span class=\"p\">()</span> <span class=\"p\">{</span>\t<span class=\"n\">userTest</span> <span class=\"o\">:=</span> <span class=\"n\">User</span><span class=\"p\">[</span><span class=\"kt\">string</span><span class=\"p\">,</span> <span class=\"kt\">int64</span><span class=\"p\">]{</span>\t\t<span class=\"n\">name</span><span class=\"o\">:</span> <span class=\"s\">\"joao\"</span><span class=\"p\">,</span>\t\t<span class=\"n\">age</span><span class=\"o\">:</span>  <span class=\"m\">20</span><span class=\"p\">,</span>\t<span class=\"p\">}</span>\t<span class=\"n\">fmt</span><span class=\"o\">.</span><span class=\"n\">Println</span><span class=\"p\">(</span><span class=\"n\">userTest</span><span class=\"p\">)</span><span class=\"p\">}</span></code></pre></div></div><h2 id=\"referências\">Referências</h2><ul>  <li>https://gobyexample.com/generics</li>  <li>https://www.youtube.com/watch?v=nD_6L2PBfaE</li>  <li>https://www.youtube.com/watch?v=XcDnQvVCW78</li></ul>",

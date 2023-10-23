@@ -4,99 +4,13 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2023-10-23T15:57:17+00:00</updated>
+ <updated>2023-10-23T18:38:22+00:00</updated>
  <id></id>
  <author>
    <name></name>
    <email></email>
  </author>
 
- 
- <entry>
-   <title>tool/caixa-de-ferramentas</title>
-   <link href="/2024/12/01/caixa-de-ferramentas.html"/>
-   <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/caixa-de-ferramentas</id>
-   <content type="html">&lt;h3 id=&quot;plugins-asdf&quot;&gt;Plugins asdf&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;awscli&lt;/li&gt;
-  &lt;li&gt;bat&lt;/li&gt;
-  &lt;li&gt;cfssl&lt;/li&gt;
-  &lt;li&gt;docker-slim&lt;/li&gt;
-  &lt;li&gt;dotnet-core&lt;/li&gt;
-  &lt;li&gt;eksctl&lt;/li&gt;
-  &lt;li&gt;fd&lt;/li&gt;
-  &lt;li&gt;fzf&lt;/li&gt;
-  &lt;li&gt;helm&lt;/li&gt;
-  &lt;li&gt;helm-docs&lt;/li&gt;
-  &lt;li&gt;java&lt;/li&gt;
-  &lt;li&gt;jq&lt;/li&gt;
-  &lt;li&gt;k6&lt;/li&gt;
-  &lt;li&gt;kind&lt;/li&gt;
-  &lt;li&gt;kubectl&lt;/li&gt;
-  &lt;li&gt;kubectx&lt;/li&gt;
-  &lt;li&gt;lazygit&lt;/li&gt;
-  &lt;li&gt;maven&lt;/li&gt;
-  &lt;li&gt;mysql&lt;/li&gt;
-  &lt;li&gt;neovim&lt;/li&gt;
-  &lt;li&gt;nodejs&lt;/li&gt;
-  &lt;li&gt;rust&lt;/li&gt;
-  &lt;li&gt;shellcheck&lt;/li&gt;
-  &lt;li&gt;teller&lt;/li&gt;
-  &lt;li&gt;terraform&lt;/li&gt;
-  &lt;li&gt;tilt&lt;/li&gt;
-  &lt;li&gt;trivy&lt;/li&gt;
-  &lt;li&gt;yamllint&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;outras-ferramentas&quot;&gt;Outras ferramentas&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;visidata&lt;/li&gt;
-  &lt;li&gt;kind&lt;/li&gt;
-  &lt;li&gt;docker&lt;/li&gt;
-  &lt;li&gt;containerd&lt;/li&gt;
-  &lt;li&gt;virtualbox&lt;/li&gt;
-&lt;/ul&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>sre/resumo-livro-sre-google</title>
-   <link href="/2024/12/01/resumo-livro-sre-google.html"/>
-   <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/resumo-livro-sre-google</id>
-   <content type="html">
-</content>
- </entry>
- 
- <entry>
-   <title>opiniao/engenharia-de-confiabilidade-no-brasil</title>
-   <link href="/2024/12/01/engenharia-de-confiabilidade-no-brasil.html"/>
-   <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/engenharia-de-confiabilidade-no-brasil</id>
-   <content type="html">
-</content>
- </entry>
- 
- <entry>
-   <title>linux/processos-no-linux</title>
-   <link href="/2024/12/01/processos-no-linux.html"/>
-   <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/processos-no-linux</id>
-   <content type="html">
-</content>
- </entry>
- 
- <entry>
-   <title>linux/nao-se-apaixone-por-distros</title>
-   <link href="/2024/12/01/nao-se-apaixone-por-distros.html"/>
-   <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/nao-se-apaixone-por-distros</id>
-   <content type="html">
-</content>
- </entry>
  
  <entry>
    <title>k8s/easy-cka</title>
@@ -112,6 +26,15 @@
    <link href="/2024/12/01/auto-recuperacao-mental.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/auto-recuperacao-mental</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>linux/processos-no-linux</title>
+   <link href="/2024/12/01/processos-no-linux.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/processos-no-linux</id>
    <content type="html">
 </content>
  </entry>
@@ -153,7 +76,7 @@
  </entry>
  
  <entry>
-   <title>dev/golang/basicao</title>
+   <title>development/golang/basicao</title>
    <link href="/2024/12/01/slices.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/slices</id>
@@ -202,7 +125,7 @@
  </entry>
  
  <entry>
-   <title>dev/golang/eu-sou-o-crud</title>
+   <title>development/golang/eu-sou-o-crud</title>
    <link href="/2024/12/01/eu-sou-o-crud.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/eu-sou-o-crud</id>
@@ -220,7 +143,7 @@ https://github.com/apolzek/UserCRUDApp-Golang&lt;/p&gt;
  </entry>
  
  <entry>
-   <title>dev/golang/basicao</title>
+   <title>development/golang/basicao</title>
    <link href="/2024/12/01/basicao.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/basicao</id>
@@ -234,6 +157,72 @@ https://github.com/apolzek/UserCRUDApp-Golang&lt;/p&gt;
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/filas</id>
    <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>aws/dominando-o-iam</title>
+   <link href="/2024/12/01/dominando-o-iam.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/dominando-o-iam</id>
+   <content type="html">&lt;p&gt;A IAM (Identity and Access Management) é um serviço fundamental da AWS (Amazon Web Services) que permite gerenciar de forma segura o acesso aos recursos da AWS. Com a IAM, você pode criar e gerenciar usuários, grupos e funções, além de definir permissões detalhadas para controlar quem tem acesso a quais recursos e ações dentro da sua conta da AWS. Aqui estão alguns conceitos importantes e exemplos práticos de uso da IAM:&lt;/p&gt;
+
+&lt;h4 id=&quot;usuários&quot;&gt;Usuários&lt;/h4&gt;
+
+&lt;p&gt;Um usuário é uma identidade que você cria para alguém ou algo (como uma aplicação) que precisa acessar sua conta da AWS. Cada usuário possui um nome de usuário exclusivo e credenciais de login. Aqui está um exemplo de criação de um usuário na IAM:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;aws iam create-user --user-name myuser
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;grupos&quot;&gt;Grupos&lt;/h4&gt;
+
+&lt;p&gt;Um grupo é um conjunto de permissões que você pode aplicar a vários usuários. Você atribui políticas (conjuntos de permissões) aos grupos, e os usuários que pertencem ao grupo herdam essas permissões. Aqui está um exemplo de criação de um grupo na IAM e associação de um usuário a ele:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;aws iam create-group --group-name mygroup
+aws iam add-user-to-group --group-name mygroup --user-name myuser
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;políticas&quot;&gt;Políticas&lt;/h4&gt;
+
+&lt;p&gt;As políticas definem as permissões de acesso em formato JSON. Elas especificam o que um usuário, grupo ou função pode fazer com recursos específicos. Aqui está um exemplo de criação de uma política que permite a leitura de um bucket S3:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
+    &quot;Version&quot;: &quot;2012-10-17&quot;,
+    &quot;Statement&quot;: [
+        {
+            &quot;Effect&quot;: &quot;Allow&quot;,
+            &quot;Action&quot;: &quot;s3:GetObject&quot;,
+            &quot;Resource&quot;: &quot;arn:aws:s3:::my-bucket/*&quot;
+        }
+    ]
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;funções&quot;&gt;Funções&lt;/h4&gt;
+
+&lt;p&gt;As funções permitem conceder permissões temporárias a serviços da AWS ou entidades confiáveis. Isso é útil para permitir que serviços acessem outros recursos em seu nome, sem a necessidade de compartilhar credenciais de acesso direto. Aqui está um exemplo de criação de uma função que permite que uma instância EC2 acesse um bucket S3:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;aws iam create-role --role-name myrole --assume-role-policy-document file://trust-policy.json
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;assume-role-policy-document&quot;&gt;Assume Role Policy Document&lt;/h4&gt;
+
+&lt;p&gt;O documento de política de confiança é um JSON que define quais entidades ou serviços podem assumir uma função. Aqui está um exemplo simplificado:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
+    &quot;Version&quot;: &quot;2012-10-17&quot;,
+    &quot;Statement&quot;: [
+        {
+            &quot;Effect&quot;: &quot;Allow&quot;,
+            &quot;Principal&quot;: {
+                &quot;Service&quot;: &quot;ec2.amazonaws.com&quot;
+            },
+            &quot;Action&quot;: &quot;sts:AssumeRole&quot;
+        }
+    ]
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
  
@@ -345,73 +334,43 @@ sudo systemctl stop firewalld
    <link href="/2024/12/01/asdf.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/asdf</id>
-   <content type="html">
-</content>
- </entry>
- 
- <entry>
-   <title>aws/dominando-o-iam</title>
-   <link href="/2024/12/01/dominando-o-iam.html"/>
-   <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/dominando-o-iam</id>
-   <content type="html">&lt;p&gt;A IAM (Identity and Access Management) é um serviço fundamental da AWS (Amazon Web Services) que permite gerenciar de forma segura o acesso aos recursos da AWS. Com a IAM, você pode criar e gerenciar usuários, grupos e funções, além de definir permissões detalhadas para controlar quem tem acesso a quais recursos e ações dentro da sua conta da AWS. Aqui estão alguns conceitos importantes e exemplos práticos de uso da IAM:&lt;/p&gt;
-
-&lt;h4 id=&quot;usuários&quot;&gt;Usuários&lt;/h4&gt;
-
-&lt;p&gt;Um usuário é uma identidade que você cria para alguém ou algo (como uma aplicação) que precisa acessar sua conta da AWS. Cada usuário possui um nome de usuário exclusivo e credenciais de login. Aqui está um exemplo de criação de um usuário na IAM:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;aws iam create-user --user-name myuser
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;grupos&quot;&gt;Grupos&lt;/h4&gt;
-
-&lt;p&gt;Um grupo é um conjunto de permissões que você pode aplicar a vários usuários. Você atribui políticas (conjuntos de permissões) aos grupos, e os usuários que pertencem ao grupo herdam essas permissões. Aqui está um exemplo de criação de um grupo na IAM e associação de um usuário a ele:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;aws iam create-group --group-name mygroup
-aws iam add-user-to-group --group-name mygroup --user-name myuser
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;políticas&quot;&gt;Políticas&lt;/h4&gt;
-
-&lt;p&gt;As políticas definem as permissões de acesso em formato JSON. Elas especificam o que um usuário, grupo ou função pode fazer com recursos específicos. Aqui está um exemplo de criação de uma política que permite a leitura de um bucket S3:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
-    &quot;Version&quot;: &quot;2012-10-17&quot;,
-    &quot;Statement&quot;: [
-        {
-            &quot;Effect&quot;: &quot;Allow&quot;,
-            &quot;Action&quot;: &quot;s3:GetObject&quot;,
-            &quot;Resource&quot;: &quot;arn:aws:s3:::my-bucket/*&quot;
-        }
-    ]
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;funções&quot;&gt;Funções&lt;/h4&gt;
-
-&lt;p&gt;As funções permitem conceder permissões temporárias a serviços da AWS ou entidades confiáveis. Isso é útil para permitir que serviços acessem outros recursos em seu nome, sem a necessidade de compartilhar credenciais de acesso direto. Aqui está um exemplo de criação de uma função que permite que uma instância EC2 acesse um bucket S3:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;aws iam create-role --role-name myrole --assume-role-policy-document file://trust-policy.json
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;assume-role-policy-document&quot;&gt;Assume Role Policy Document&lt;/h4&gt;
-
-&lt;p&gt;O documento de política de confiança é um JSON que define quais entidades ou serviços podem assumir uma função. Aqui está um exemplo simplificado:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
-    &quot;Version&quot;: &quot;2012-10-17&quot;,
-    &quot;Statement&quot;: [
-        {
-            &quot;Effect&quot;: &quot;Allow&quot;,
-            &quot;Principal&quot;: {
-                &quot;Service&quot;: &quot;ec2.amazonaws.com&quot;
-            },
-            &quot;Action&quot;: &quot;sts:AssumeRole&quot;
-        }
-    ]
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+   <content type="html">&lt;ul&gt;
+  &lt;li&gt;awscli&lt;/li&gt;
+  &lt;li&gt;bat&lt;/li&gt;
+  &lt;li&gt;cfssl&lt;/li&gt;
+  &lt;li&gt;docker-slim&lt;/li&gt;
+  &lt;li&gt;dotnet-core&lt;/li&gt;
+  &lt;li&gt;eksctl&lt;/li&gt;
+  &lt;li&gt;fd&lt;/li&gt;
+  &lt;li&gt;fzf&lt;/li&gt;
+  &lt;li&gt;helm&lt;/li&gt;
+  &lt;li&gt;helm-docs&lt;/li&gt;
+  &lt;li&gt;java&lt;/li&gt;
+  &lt;li&gt;jq&lt;/li&gt;
+  &lt;li&gt;k6&lt;/li&gt;
+  &lt;li&gt;kind&lt;/li&gt;
+  &lt;li&gt;kubectl&lt;/li&gt;
+  &lt;li&gt;kubectx&lt;/li&gt;
+  &lt;li&gt;lazygit&lt;/li&gt;
+  &lt;li&gt;maven&lt;/li&gt;
+  &lt;li&gt;mysql&lt;/li&gt;
+  &lt;li&gt;neovim&lt;/li&gt;
+  &lt;li&gt;nodejs&lt;/li&gt;
+  &lt;li&gt;rust&lt;/li&gt;
+  &lt;li&gt;shellcheck&lt;/li&gt;
+  &lt;li&gt;teller&lt;/li&gt;
+  &lt;li&gt;terraform&lt;/li&gt;
+  &lt;li&gt;tilt&lt;/li&gt;
+  &lt;li&gt;trivy&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;yamllint&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;visidata&lt;/li&gt;
+  &lt;li&gt;kind&lt;/li&gt;
+  &lt;li&gt;docker&lt;/li&gt;
+  &lt;li&gt;containerd&lt;/li&gt;
+  &lt;li&gt;virtualbox&lt;/li&gt;
+&lt;/ul&gt;
 </content>
  </entry>
  
@@ -535,7 +494,7 @@ terraform untaint aws_instance.example
  </entry>
  
  <entry>
-   <title>dev/golang/generics</title>
+   <title>development/golang/generics</title>
    <link href="/2023/08/25/generics.html"/>
    <updated>2023-08-25T00:00:00+00:00</updated>
    <id>/2023/08/25/generics</id>
