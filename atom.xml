@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2023-09-29T20:00:39+00:00</updated>
+ <updated>2023-10-23T15:51:31+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -350,75 +350,6 @@ sudo systemctl stop firewalld
  </entry>
  
  <entry>
-   <title>cheatsheet/apt</title>
-   <link href="/2024/12/01/apt.html"/>
-   <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/apt</id>
-   <content type="html">&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Atualizar a lista de pacotes disponíveis
-sudo apt update
-
-# Atualizar todos os pacotes instalados
-sudo apt upgrade
-
-# Atualizar o sistema inteiro, incluindo pacotes que exigem novas dependências
-sudo apt dist-upgrade
-
-# Instalar um pacote
-sudo apt install nome-do-pacote
-
-# Remover um pacote (o pacote é desinstalado, mas as configurações permanecem)
-sudo apt remove nome-do-pacote
-
-# Remover um pacote junto com suas configurações
-sudo apt purge nome-do-pacote
-
-# Procurar um pacote pelo nome ou descrição
-apt search termo-de-busca
-
-# Exibir informações detalhadas sobre um pacote
-apt show nome-do-pacote
-
-# Listar todos os pacotes instalados
-dpkg --list
-
-# Listar pacotes específicos
-dpkg --list | grep termo-de-busca
-
-# Listar pacotes disponíveis para atualização
-apt list --upgradable
-
-# Mostrar as dependências de um pacote
-apt depends nome-do-pacote
-
-# Verificar se um pacote específico está instalado
-dpkg -l | grep nome-do-pacote
-
-# Limpar o cache de pacotes baixados (libera espaço em disco)
-sudo apt clean
-
-# Remover pacotes órfãos (pacotes que não são mais necessários)
-sudo apt autoremove
-
-# Verificar a integridade dos pacotes instalados
-sudo apt check
-
-# Corrigir problemas de dependências quebradas
-sudo apt --fix-broken install
-
-# Bloquear a versão de um pacote para evitar atualizações automáticas
-sudo apt-mark hold nome-do-pacote
-
-# Desbloquear um pacote previamente bloqueado
-sudo apt-mark unhold nome-do-pacote
-
-# Visualizar o histórico de atualizações
-less /var/log/apt/history.log
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
    <title>aws/dominando-o-iam</title>
    <link href="/2024/12/01/dominando-o-iam.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
@@ -480,6 +411,75 @@ aws iam add-user-to-group --group-name mygroup --user-name myuser
         }
     ]
 }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>cheatsheet/apt</title>
+   <link href="/2023/10/01/apt.html"/>
+   <updated>2023-10-01T00:00:00+00:00</updated>
+   <id>/2023/10/01/apt</id>
+   <content type="html">&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Atualizar a lista de pacotes disponíveis
+sudo apt update
+
+# Atualizar todos os pacotes instalados
+sudo apt upgrade
+
+# Atualizar o sistema inteiro, incluindo pacotes que exigem novas dependências
+sudo apt dist-upgrade
+
+# Instalar um pacote
+sudo apt install nome-do-pacote
+
+# Remover um pacote (o pacote é desinstalado, mas as configurações permanecem)
+sudo apt remove nome-do-pacote
+
+# Remover um pacote junto com suas configurações
+sudo apt purge nome-do-pacote
+
+# Procurar um pacote pelo nome ou descrição
+apt search termo-de-busca
+
+# Exibir informações detalhadas sobre um pacote
+apt show nome-do-pacote
+
+# Listar todos os pacotes instalados
+dpkg --list
+
+# Listar pacotes específicos
+dpkg --list | grep termo-de-busca
+
+# Listar pacotes disponíveis para atualização
+apt list --upgradable
+
+# Mostrar as dependências de um pacote
+apt depends nome-do-pacote
+
+# Verificar se um pacote específico está instalado
+dpkg -l | grep nome-do-pacote
+
+# Limpar o cache de pacotes baixados (libera espaço em disco)
+sudo apt clean
+
+# Remover pacotes órfãos (pacotes que não são mais necessários)
+sudo apt autoremove
+
+# Verificar a integridade dos pacotes instalados
+sudo apt check
+
+# Corrigir problemas de dependências quebradas
+sudo apt --fix-broken install
+
+# Bloquear a versão de um pacote para evitar atualizações automáticas
+sudo apt-mark hold nome-do-pacote
+
+# Desbloquear um pacote previamente bloqueado
+sudo apt-mark unhold nome-do-pacote
+
+# Visualizar o histórico de atualizações
+less /var/log/apt/history.log
+
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
@@ -724,7 +724,55 @@ terraform untaint aws_instance.example
    <link href="/2023/08/12/docker.html"/>
    <updated>2023-08-12T00:00:00+00:00</updated>
    <id>/2023/08/12/docker</id>
-   <content type="html">&lt;h2 id=&quot;comandos-basicos-para-imagens&quot;&gt;Comandos basicos para imagens&lt;/h2&gt;
+   <content type="html">&lt;h2 id=&quot;comandos-basicos-para-containers&quot;&gt;Comandos basicos para containers&lt;/h2&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker run -d --name meu-container nginx:latest # criacao container em background
+docker run --name meu-container-nginx -p 80:8080 nginx:latest # nome deve ser unico
+docker container ls # listar containers em execucao
+docker container ls -a # mostra os containers parados e em execucao
+docker stop meu-container # para um container
+docker start meu-container # iniciar um container parado
+docker logs meu-container # ver os logs do container
+docker exec -it meu-container bash # para sair usar CTRL+P CTRL+Q
+docker rm meu-container
+docker exec -it -w /tmp meu-container-nginx touch xD # Executa o comando setando um Workdir(/tmp)
+docker rename meu-container-nginx meu-container-sagrado
+docker run -d -v /tmp:/tmp nginx:latest # mapeamento de volumes
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;comandos-para-copiar-arquivos-entre-host-e-container&quot;&gt;Comandos para copiar arquivos entre host e container&lt;/h2&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker cp /tmp/origin meu-container-nginx:/tmp # copiar arquivo do Host para o Container
+echo &quot;by: apolzek&quot; &amp;gt;&amp;gt; /tmp/whoami ; docker cp /tmp/whoami meu-container-nginx:/tmp; docker exec -it meu-container-nginx sh -c &quot;cat /tmp/whoami&quot;
+docker cp meu-container-nginx:/tmp/whoami # Copiar do Container para Host
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;comandos-para-visualisar-e-limitar-recursos&quot;&gt;Comandos para visualisar e limitar recursos&lt;/h2&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker stats
+docker run --cpus=2 --memory=1g nome-da-imagem
+docker run -d --cpus=2 --memory=6MB nginx:latest
+
+docker run -d --name nginx-do-bem --cpus=2 --memory=6MB nginx:latest # cria container com limite de CPU e RAM
+docker update --cpus 2 --memory 1024m --memory-swap 1024m nginx-do-bem # altera limites
+docker update --cpus=&quot;.5&quot; nginx-do-bem # altera apenas liomite de CPU
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;remover-todas-as-imagens-containers-ou-volumes&quot;&gt;Remover todas as imagens, containers ou volumes&lt;/h2&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker rmi $(docker images -q) -f
+docker rm -f $(docker ps -aq)
+docker container rm -f $(docker container ls -qa); for i in $(docker volume ls | awk &apos;{print $2}&apos; | sed 1d); do docker volume rm -f $i; done
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;comando-para-limpar-containers-e-itens-associados-a-eles&quot;&gt;Comando para limpar containers e itens associados a eles&lt;/h2&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker system prune -a --volumes --dry-run
+docker system prune -a --volumes
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;comandos-basicos-para-build&quot;&gt;Comandos basicos para build&lt;/h2&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker build -t minha-imagem:latest /caminho/do/Dockerfile
+docker rmi minha-imagem:latest # Remove a imagem criada
+docker build -f Dockerfile.debug . # Especifica o arquivo de Dockerfile
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;comandos-basicos-para-imagens&quot;&gt;Comandos basicos para imagens&lt;/h2&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker image build
 docker image history
 docker image import
@@ -737,42 +785,9 @@ docker image push
 docker image rm
 docker image save
 docker image tag
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;comandos-basicos-para-containers&quot;&gt;Comandos basicos para containers&lt;/h2&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker run -d --name meu-container nginx:latest
-docker run --name meu-container -p 80:8080 nginx:latest
-docker stop meu-container
-docker start meu-container
-docker logs meu-container
-docker exec -it meu-container bash
-docker rm meu-container
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;comandos-basicos-para-build&quot;&gt;Comandos basicos para build&lt;/h2&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker build -t minha-imagem:latest /caminho/do/Dockerfile
-docker rmi minha-imagem:latest
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;comandos-para-copiar-arquivos-entre-host-e-container&quot;&gt;Comandos para copiar arquivos entre host e container&lt;/h2&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker cp arquivo.txt nome-do-container:/caminho/no/contêiner/
-docker cp nome-do-container:/caminho/no/contêiner/arquivo.txt arquivo.txt
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;comandos-para-visualisar-e-limitar-recursos&quot;&gt;Comandos para visualisar e limitar recursos&lt;/h2&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker stats
-docker run --cpus=2 --memory=1g nome-da-imagem
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;remover-todas-as-imagens-containers-ou-volumes&quot;&gt;Remover todas as imagens, containers ou volumes&lt;/h2&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker rmi $(docker images -q)
-docker rm -f $(docker ps -aq)
-docker container rm -f $(docker container ls -qa); for i in $(docker volume ls | awk &apos;{print $2}&apos; | sed 1d); do docker volume rm -f $i; done
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;comando-para-limpar-containers-e-itens-associados-a-eles&quot;&gt;Comando para limpar containers e itens associados a eles&lt;/h2&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker system prune -a --volumes --dry-run
-docker system prune -a --volumes
+docker search debian # procurar uma imagem do registry
+docker search --filter=stars=3 --no-trunc busybox
+docker search --filter is-official=true --filter stars=3 busybox
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;converter-imagem-para-arquivo-e-depois-importar-novamente&quot;&gt;Converter imagem para arquivo e depois importar novamente&lt;/h2&gt;
@@ -781,7 +796,6 @@ docker load -i nome_da_imagem.tar
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;principais-arquivos-docker-dentro-da-maquina&quot;&gt;Principais arquivos docker dentro da maquina&lt;/h2&gt;
-
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/usr/bin/docker 
 /etc/docker 
 /usr/libexec/docker 
@@ -814,6 +828,17 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;tshoot&quot;&gt;tshoot&lt;/h2&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;systemctl status docker.service
+journalctl -u docker.service
+journalctl -u docker.service | less
+docker port container-name # test ports
+docker inspect container-name # inspect container
+docker inspect --format=&apos;&apos; container-name # get ip
+docker inspect --format=&apos;&apos; container-name # get image
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
