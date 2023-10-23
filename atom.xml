@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2023-10-23T15:51:31+00:00</updated>
+ <updated>2023-10-23T15:57:17+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -756,14 +756,10 @@ docker update --cpus=&quot;.5&quot; nginx-do-bem # altera apenas liomite de CPU
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;remover-todas-as-imagens-containers-ou-volumes&quot;&gt;Remover todas as imagens, containers ou volumes&lt;/h2&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker rmi $(docker images -q) -f
-docker rm -f $(docker ps -aq)
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker system prune -a --volumes # limpeza dos containers e volumes associados
+docker rmi $(docker images -q) -f # remove todas as imagens
+docker rm -f $(docker ps -aq) # remove todos os containers
 docker container rm -f $(docker container ls -qa); for i in $(docker volume ls | awk &apos;{print $2}&apos; | sed 1d); do docker volume rm -f $i; done
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;comando-para-limpar-containers-e-itens-associados-a-eles&quot;&gt;Comando para limpar containers e itens associados a eles&lt;/h2&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker system prune -a --volumes --dry-run
-docker system prune -a --volumes
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;comandos-basicos-para-build&quot;&gt;Comandos basicos para build&lt;/h2&gt;
