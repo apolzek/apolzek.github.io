@@ -9,10 +9,10 @@
     } ,
   
     {
-      "title"    : "diario/auto-recuperacao-mental",
+      "title"    : "opinions/sre-brasil-x-sre-na-gringa",
       "category" : "",
-      "tags"     : "mente, cérebro, brain",
-      "url"      : "/2024/12/01/auto-recuperacao-mental.html",
+      "tags"     : "",
+      "url"      : "/2024/12/01/sre-brasil-x-sre-na-gringa.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
@@ -37,14 +37,6 @@
       "category" : "",
       "tags"     : "python",
       "url"      : "/2024/12/01/basicao.html",
-      "date"     : "2024-12-01 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "dev/padroes-de-projeto/factory",
-      "category" : "",
-      "tags"     : "factory",
-      "url"      : "/2024/12/01/factory.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
@@ -77,6 +69,14 @@
       "category" : "",
       "tags"     : "go",
       "url"      : "/2024/12/01/basicao.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "dev/padroes-de-projeto/factory",
+      "category" : "",
+      "tags"     : "factory",
+      "url"      : "/2024/12/01/factory.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
@@ -169,7 +169,7 @@
     } ,
   
     {
-      "title"    : "dev/git/deletar-historico-commits-github",
+      "title"    : "tools/git/deletar-historico-commits-github",
       "category" : "",
       "tags"     : "git, history, github",
       "url"      : "/2023/07/28/deletar-historico-commits-github.html",

@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2023-10-23T18:38:22+00:00</updated>
+ <updated>2023-10-23T18:44:57+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -22,10 +22,10 @@
  </entry>
  
  <entry>
-   <title>diario/auto-recuperacao-mental</title>
-   <link href="/2024/12/01/auto-recuperacao-mental.html"/>
+   <title>opinions/sre-brasil-x-sre-na-gringa</title>
+   <link href="/2024/12/01/sre-brasil-x-sre-na-gringa.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/auto-recuperacao-mental</id>
+   <id>/2024/12/01/sre-brasil-x-sre-na-gringa</id>
    <content type="html">
 </content>
  </entry>
@@ -53,15 +53,6 @@
    <link href="/2024/12/01/basicao.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/basicao</id>
-   <content type="html">
-</content>
- </entry>
- 
- <entry>
-   <title>dev/padroes-de-projeto/factory</title>
-   <link href="/2024/12/01/factory.html"/>
-   <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/factory</id>
    <content type="html">
 </content>
  </entry>
@@ -147,6 +138,15 @@ https://github.com/apolzek/UserCRUDApp-Golang&lt;/p&gt;
    <link href="/2024/12/01/basicao.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/basicao</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>dev/padroes-de-projeto/factory</title>
+   <link href="/2024/12/01/factory.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/factory</id>
    <content type="html">
 </content>
  </entry>
@@ -799,7 +799,7 @@ docker inspect --format=&apos;&apos; container-name # get image
  </entry>
  
  <entry>
-   <title>dev/git/deletar-historico-commits-github</title>
+   <title>tools/git/deletar-historico-commits-github</title>
    <link href="/2023/07/28/deletar-historico-commits-github.html"/>
    <updated>2023-07-28T00:00:00+00:00</updated>
    <id>/2023/07/28/deletar-historico-commits-github</id>

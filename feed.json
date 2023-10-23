@@ -32,16 +32,16 @@
         },
     
         {
-            "id": "/2024/12/01/auto-recuperacao-mental.html",
-            "title": "diario/auto-recuperacao-mental",
-            "summary": "Como eu resolvo problemas que só existem na minha cabeça",
+            "id": "/2024/12/01/sre-brasil-x-sre-na-gringa.html",
+            "title": "opinions/sre-brasil-x-sre-na-gringa",
+            "summary": null,
             "content_text": "",
             "content_html": "",
-            "url": "/2024/12/01/auto-recuperacao-mental.html",
+            "url": "/2024/12/01/sre-brasil-x-sre-na-gringa.html",
             
             
             
-            "tags": ["mente","cérebro","brain"],
+            
             
             "date_published": "2024-12-01T00:00:00+00:00",
             "date_modified": "2024-12-01T00:00:00+00:00",
@@ -101,27 +101,6 @@
             "content_text": "",
             "content_html": "",
             "url": "/2024/12/01/basicao.html",
-            
-            
-            
-            
-            
-            "date_published": "2024-12-01T00:00:00+00:00",
-            "date_modified": "2024-12-01T00:00:00+00:00",
-            
-                "author": 
-                ""
-                
-            
-        },
-    
-        {
-            "id": "/2024/12/01/factory.html",
-            "title": "dev/padroes-de-projeto/factory",
-            "summary": "Entendendo padrão de projeto Factory",
-            "content_text": "",
-            "content_html": "",
-            "url": "/2024/12/01/factory.html",
             
             
             
@@ -206,6 +185,27 @@
             "content_text": "",
             "content_html": "",
             "url": "/2024/12/01/basicao.html",
+            
+            
+            
+            
+            
+            "date_published": "2024-12-01T00:00:00+00:00",
+            "date_modified": "2024-12-01T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
+            "id": "/2024/12/01/factory.html",
+            "title": "dev/padroes-de-projeto/factory",
+            "summary": "Entendendo padrão de projeto Factory",
+            "content_text": "",
+            "content_html": "",
+            "url": "/2024/12/01/factory.html",
             
             
             
@@ -453,7 +453,7 @@
     
         {
             "id": "/2023/07/28/deletar-historico-commits-github.html",
-            "title": "dev/git/deletar-historico-commits-github",
+            "title": "tools/git/deletar-historico-commits-github",
             "summary": "Deletar todo histórico de commits no Github",
             "content_text": "Deleting the .git folder may cause problems in your git repository. If you want to delete all your commit history but keep the code in its current state, it is very safe to do it as in the following:1 - Checkoutgit checkout --orphan latest_branch2 - Add all the filesgit add -A3 - Commit the changesgit commit -am \"commit message\"4 - Delete the branchgit branch -D main5 - Rename the current branch to maingit branch -m main6 - Finally, force update your repositorygit push -f origin mainPS: this will not keep your old commit history aroundReference",
             "content_html": "<p>Deleting the .git folder may cause problems in your git repository. If you want to delete all your commit history but keep the code in its current state, it is very safe to do it as in the following:</p><p>1 - Checkout</p><p><code class=\"language-plaintext highlighter-rouge\">git checkout --orphan latest_branch</code></p><p>2 - Add all the files</p><p><code class=\"language-plaintext highlighter-rouge\">git add -A</code></p><p>3 - Commit the changes</p><p><code class=\"language-plaintext highlighter-rouge\">git commit -am \"commit message\"</code></p><p>4 - Delete the branch</p><p><code class=\"language-plaintext highlighter-rouge\">git branch -D main</code></p><p>5 - Rename the current branch to main</p><p><code class=\"language-plaintext highlighter-rouge\">git branch -m main</code></p><p>6 - Finally, force update your repository</p><p><code class=\"language-plaintext highlighter-rouge\">git push -f origin main</code></p><p><em>PS: this will not keep your old commit history around</em></p><p><a href=\"https://stackoverflow.com/questions/13716658/how-to-delete-all-commit-history-in-github\">Reference</a></p>",
