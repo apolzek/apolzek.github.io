@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2023-10-24T14:16:19+00:00</updated>
+ <updated>2023-10-24T15:03:13+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -674,7 +674,10 @@ terraform untaint aws_instance.example
 &lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;interface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{})&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;h3 id=&quot;before-generics-existed&quot;&gt;Before generics existed&lt;/h3&gt;
+
 &lt;p&gt;Para descobrir o tipo, era utilizado o &lt;strong&gt;switch&lt;/strong&gt;:&lt;/p&gt;
+
 &lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;fmt&quot;&lt;/span&gt;
@@ -698,7 +701,8 @@ terraform untaint aws_instance.example
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Modelo abaixo está utilizando Generics&lt;/p&gt;
+&lt;h3 id=&quot;after-generics-was-implemented&quot;&gt;After generics was implemented&lt;/h3&gt;
+
 &lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;fmt&quot;&lt;/span&gt;
@@ -851,46 +855,83 @@ terraform untaint aws_instance.example
    <updated>2023-08-12T00:00:00+00:00</updated>
    <id>/2023/08/12/docker</id>
    <content type="html">&lt;h2 id=&quot;comandos-basicos-para-containers&quot;&gt;Comandos basicos para containers&lt;/h2&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker run -d --name meu-container nginx:latest # criacao container em background
-docker run --name meu-container-nginx -p 80:8080 nginx:latest # nome deve ser unico
-docker container ls # listar containers em execucao
-docker container ls -a # mostra os containers parados e em execucao
-docker stop meu-container # para um container
-docker start meu-container # iniciar um container parado
-docker logs meu-container # ver os logs do container
-docker exec -it meu-container bash # para sair usar CTRL+P CTRL+Q
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; # Criacao container em background
+docker run -d --name meu-container nginx:latest
+
+ # Criacao container (nome deve ser unico) expondo a porta 80
+docker run --name meu-container-nginx -p 8080:80 nginx:latest
+
+# Listar containers em execucao
+docker container ls 
+
+# Listar os containers parados e em execucao (ALL)
+docker container ls -a 
+
+ # Parar um container (stopping)
+docker stop meu-container
+
+# Iniciar um container existente que esta parado
+docker start meu-container 
+
+# Ver os logs do container
+docker logs meu-container 
+
+# Entra no modo terminal interativo. Para sair usar CTRL+P CTRL+Q
+docker exec -it meu-container bash 
+
+# Remover um container (pode usar nome ou ID)
 docker rm meu-container
-docker exec -it -w /tmp meu-container-nginx touch xD # Executa o comando setando um Workdir(/tmp)
+
+# Executa o comando setando um Workdir(/tmp)
+docker exec -it -w /tmp meu-container-nginx touch xD 
+
+# Alterar nome de um container
 docker rename meu-container-nginx meu-container-sagrado
-docker run -d -v /tmp:/tmp nginx:latest # mapeamento de volumes
+
+# Mapeamento de volumes entre maquina host e container
+docker run -d -v /tmp:/tmp nginx:latest 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;comandos-para-copiar-arquivos-entre-host-e-container&quot;&gt;Comandos para copiar arquivos entre host e container&lt;/h2&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker cp /tmp/origin meu-container-nginx:/tmp # copiar arquivo do Host para o Container
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Copiar arquivo do host para o containe
+docker cp /tmp/origin meu-container-nginx:/tmp r
+
+# Testar o mapeamento de pastas entre container e maquina host
 echo &quot;by: apolzek&quot; &amp;gt;&amp;gt; /tmp/whoami ; docker cp /tmp/whoami meu-container-nginx:/tmp; docker exec -it meu-container-nginx sh -c &quot;cat /tmp/whoami&quot;
-docker cp meu-container-nginx:/tmp/whoami # Copiar do Container para Host
+
+# Copiar do container para host
+docker cp meu-container-nginx:/tmp/whoami 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;comandos-para-visualisar-e-limitar-recursos&quot;&gt;Comandos para visualisar e limitar recursos&lt;/h2&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker stats
+
 docker run --cpus=2 --memory=1g nome-da-imagem
+
 docker run -d --cpus=2 --memory=6MB nginx:latest
 
 docker run -d --name nginx-do-bem --cpus=2 --memory=6MB nginx:latest # cria container com limite de CPU e RAM
+
 docker update --cpus 2 --memory 1024m --memory-swap 1024m nginx-do-bem # altera limites
+
 docker update --cpus=&quot;.5&quot; nginx-do-bem # altera apenas liomite de CPU
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;remover-todas-as-imagens-containers-ou-volumes&quot;&gt;Remover todas as imagens, containers ou volumes&lt;/h2&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker system prune -a --volumes # limpeza dos containers e volumes associados
+
 docker rmi $(docker images -q) -f # remove todas as imagens
+
 docker rm -f $(docker ps -aq) # remove todos os containers
+
 docker container rm -f $(docker container ls -qa); for i in $(docker volume ls | awk &apos;{print $2}&apos; | sed 1d); do docker volume rm -f $i; done
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;comandos-basicos-para-build&quot;&gt;Comandos basicos para build&lt;/h2&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker build -t minha-imagem:latest /caminho/do/Dockerfile
+
 docker rmi minha-imagem:latest # Remove a imagem criada
+
 docker build -f Dockerfile.debug . # Especifica o arquivo de Dockerfile
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
