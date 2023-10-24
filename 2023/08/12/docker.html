@@ -52,12 +52,16 @@ docker run -d --name nginx-do-bem --cpus=2 --memory=6MB nginx:latest # cria cont
 docker update --cpus 2 --memory 1024m --memory-swap 1024m nginx-do-bem # altera limites
 
 docker update --cpus=".5" nginx-do-bem # altera apenas liomite de CPU
-</code></pre></div></div> <h2 id="remover-todas-as-imagens-containers-ou-volumes"> Remover todas as imagens, containers ou volumes <a href="#remover-todas-as-imagens-containers-ou-volumes">#</a> </h2> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker system prune -a --volumes # limpeza dos containers e volumes associados
+</code></pre></div></div> <h2 id="remover-todas-as-imagens-containers-ou-volumes"> Remover todas as imagens, containers ou volumes <a href="#remover-todas-as-imagens-containers-ou-volumes">#</a> </h2> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Limpeza dos containers e volumes associados
+docker system prune -a --volumes # 
 
-docker rmi $(docker images -q) -f # remove todas as imagens
+# Remove todas as imagens
+docker rmi $(docker images -q) -f 
 
-docker rm -f $(docker ps -aq) # remove todos os containers
+ # Remove todos os containers
+docker rm -f $(docker ps -aq)
 
+# Remove todos os containers e volumes associados a ele
 docker container rm -f $(docker container ls -qa); for i in $(docker volume ls | awk '{print $2}' | sed 1d); do docker volume rm -f $i; done
 </code></pre></div></div> <h2 id="comandos-basicos-para-build"> Comandos basicos para build <a href="#comandos-basicos-para-build">#</a> </h2> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build -t minha-imagem:latest /caminho/do/Dockerfile
 
