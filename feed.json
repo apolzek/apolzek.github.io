@@ -368,19 +368,19 @@
         },
     
         {
-            "id": "/2024/12/01/asdf.html",
+            "id": "/2023/10/01/asdf.html",
             "title": "cheatsheet/asdf",
             "summary": "Cheatsheet asdf",
             "content_text": "  awscli  bat  cfssl  docker-slim  dotnet-core  eksctl  fd  fzf  helm  helm-docs  java  jq  k6  kind  kubectl  kubectx  lazygit  maven  mysql  neovim  nodejs  rust  shellcheck  teller  terraform  tilt  trivy      yamllint    visidata  kind  docker  containerd  virtualbox",
             "content_html": "<ul>  <li>awscli</li>  <li>bat</li>  <li>cfssl</li>  <li>docker-slim</li>  <li>dotnet-core</li>  <li>eksctl</li>  <li>fd</li>  <li>fzf</li>  <li>helm</li>  <li>helm-docs</li>  <li>java</li>  <li>jq</li>  <li>k6</li>  <li>kind</li>  <li>kubectl</li>  <li>kubectx</li>  <li>lazygit</li>  <li>maven</li>  <li>mysql</li>  <li>neovim</li>  <li>nodejs</li>  <li>rust</li>  <li>shellcheck</li>  <li>teller</li>  <li>terraform</li>  <li>tilt</li>  <li>trivy</li>  <li>    <p>yamllint</p>  </li>  <li>visidata</li>  <li>kind</li>  <li>docker</li>  <li>containerd</li>  <li>virtualbox</li></ul>",
-            "url": "/2024/12/01/asdf.html",
+            "url": "/2023/10/01/asdf.html",
             
             
             
             
             
-            "date_published": "2024-12-01T00:00:00+00:00",
-            "date_modified": "2024-12-01T00:00:00+00:00",
+            "date_published": "2023-10-01T00:00:00+00:00",
+            "date_modified": "2023-10-01T00:00:00+00:00",
             
                 "author": 
                 ""

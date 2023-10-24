@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2023-10-23T22:36:05+00:00</updated>
+ <updated>2023-10-24T14:16:19+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -498,9 +498,9 @@ sudo systemctl stop firewalld
  
  <entry>
    <title>cheatsheet/asdf</title>
-   <link href="/2024/12/01/asdf.html"/>
-   <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/asdf</id>
+   <link href="/2023/10/01/asdf.html"/>
+   <updated>2023-10-01T00:00:00+00:00</updated>
+   <id>/2023/10/01/asdf</id>
    <content type="html">&lt;ul&gt;
   &lt;li&gt;awscli&lt;/li&gt;
   &lt;li&gt;bat&lt;/li&gt;
