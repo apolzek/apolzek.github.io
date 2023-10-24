@@ -1,7 +1,7 @@
 [
   
     {
-      "title"    : "k8s/easy-cka",
+      "title"    : "tools/k8s/easy-cka",
       "category" : "",
       "tags"     : "cka, certification, kubernetes, k8s",
       "url"      : "/2024/12/01/easy-cka.html",
@@ -21,6 +21,14 @@
       "category" : "",
       "tags"     : "processos, processes, process, linux",
       "url"      : "/2024/12/01/processos-no-linux.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "dev/padroes-de-projeto/factory",
+      "category" : "",
+      "tags"     : "factory",
+      "url"      : "/2024/12/01/factory.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
@@ -73,14 +81,6 @@
     } ,
   
     {
-      "title"    : "development/golang/context",
-      "category" : "",
-      "tags"     : "go, golang, dev",
-      "url"      : "/2024/12/01/context.html",
-      "date"     : "2024-12-01 00:00:00 +0000"
-    } ,
-  
-    {
       "title"    : "dev/padroes-de-projeto/factory",
       "category" : "",
       "tags"     : "factory",
@@ -93,6 +93,14 @@
       "category" : "",
       "tags"     : "fila, queue",
       "url"      : "/2024/12/01/filas.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "aws/dominando-o-iam",
+      "category" : "",
+      "tags"     : "iam, aws, security",
+      "url"      : "/2024/12/01/dominando-o-iam-copy.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
@@ -145,6 +153,14 @@
     } ,
   
     {
+      "title"    : "development/golang/context",
+      "category" : "",
+      "tags"     : "go, golang, context, dev",
+      "url"      : "/2023/10/24/context.html",
+      "date"     : "2023-10-24 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "cheatsheet/asdf",
       "category" : "",
       "tags"     : "asdf",
@@ -163,7 +179,7 @@
     {
       "title"    : "development/golang/generics",
       "category" : "",
-      "tags"     : "go, generics",
+      "tags"     : "go, generics, dev",
       "url"      : "/2023/08/25/generics.html",
       "date"     : "2023-08-25 00:00:00 +0000"
     } ,
@@ -171,7 +187,7 @@
     {
       "title"    : "cheatsheet/docker",
       "category" : "",
-      "tags"     : "docker",
+      "tags"     : "docker, container",
       "url"      : "/2023/08/12/docker.html",
       "date"     : "2023-08-12 00:00:00 +0000"
     } ,
