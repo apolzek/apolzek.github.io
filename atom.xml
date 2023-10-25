@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2023-10-24T20:14:50+00:00</updated>
+ <updated>2023-10-25T15:45:24+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -787,34 +787,22 @@ terraform untaint aws_instance.example
    <content type="html">&lt;p&gt;Plugins: &lt;a href=&quot;https://github.com/asdf-vm/asdf-plugins&quot;&gt;asdf-plugins&lt;/a&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;docker-slim&lt;/li&gt;
-  &lt;li&gt;eksctl&lt;/li&gt;
   &lt;li&gt;fd&lt;/li&gt;
   &lt;li&gt;fzf&lt;/li&gt;
-  &lt;li&gt;helm&lt;/li&gt;
   &lt;li&gt;helm-docs&lt;/li&gt;
-  &lt;li&gt;java&lt;/li&gt;
-  &lt;li&gt;jq&lt;/li&gt;
   &lt;li&gt;k6&lt;/li&gt;
-  &lt;li&gt;kind&lt;/li&gt;
-  &lt;li&gt;kubectl&lt;/li&gt;
-  &lt;li&gt;kubectx&lt;/li&gt;
-  &lt;li&gt;lazygit&lt;/li&gt;
   &lt;li&gt;maven&lt;/li&gt;
   &lt;li&gt;mysql&lt;/li&gt;
   &lt;li&gt;neovim&lt;/li&gt;
   &lt;li&gt;nodejs&lt;/li&gt;
-  &lt;li&gt;rust&lt;/li&gt;
   &lt;li&gt;shellcheck&lt;/li&gt;
   &lt;li&gt;teller&lt;/li&gt;
-  &lt;li&gt;terraform&lt;/li&gt;
-  &lt;li&gt;tilt&lt;/li&gt;
-  &lt;li&gt;trivy&lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;yamllint&lt;/p&gt;
+    &lt;p&gt;tilt&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;visidata&lt;/li&gt;
   &lt;li&gt;kind&lt;/li&gt;
+  &lt;li&gt;diocker-slim&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Download .NET&lt;/p&gt;
@@ -856,6 +844,54 @@ asdf global cfssl latest
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;asdf plugin add lazygit
 asdf &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;lazygit latest
 asdf global lazygit latest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Download Maven&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;asdf plugin-add maven 
+asdf &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;maven 3.5.0
+asdf global maven 3.5.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Download jq&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;asdf plugin add jq
+asdf &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;jq latest
+asdf global jq latest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Download kubectx&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;asdf plugin-add kubectx https://github.com/virtualstaticvoid/asdf-kubectx.git
+asdf &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;kubectx latest
+asdf global kubectx latest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Download yamllint&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;asdf plugin add yamllint
+asdf &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;yamlint latest
+asdf global yamllint latest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Download Rust&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;asdf plugin-add rust https://github.com/code-lever/asdf-rust.git
+asdf &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;rust latest
+asdf global rust latest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Download Trivy&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;asdf plugin add trivy https://github.com/zufardhiyaulhaq/asdf-trivy.git
+asdf &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;trivy latest
+asdf global trivy latest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Download Terraform&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;asdf plugin add terraform
+asdf &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;terraform latest
+asdf global terraform latest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Download Helm&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;asdf plugin-add helm https://github.com/Antiarchitect/asdf-helm.git
+asdf &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;helm latest
+asdf global  helm latest
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
