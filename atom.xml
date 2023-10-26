@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2023-10-25T15:45:24+00:00</updated>
+ <updated>2023-10-26T14:07:46+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -389,51 +389,6 @@ sudo ufw deny6 22/tcp
  </entry>
  
  <entry>
-   <title>cheatsheet/firewalld</title>
-   <link href="/2024/12/01/firewalld.html"/>
-   <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/firewalld</id>
-   <content type="html">&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Habilitar o Firewalld
-sudo systemctl start firewalld
-sudo systemctl enable firewalld
-
-# Desabilitar o Firewalld
-sudo systemctl stop firewalld
-sudo systemctl disable firewalld
-
-# Verificar o Status do Firewalld
-sudo systemctl status firewalld
-
-# Listar as Zonas Disponíveis
-sudo firewall-cmd --get-zones
-
-# Definir uma Zona Padrão (substitua &apos;public&apos; pelo nome da zona desejada)
-sudo firewall-cmd --set-default-zone=public
-
-# Adicionar uma Regra de Permissão de Porta (por exemplo, porta 80/tcp)
-sudo firewall-cmd --add-port=80/tcp --permanent
-
-# Recarregar o Firewalld para Aplicar Alterações Permanentes
-sudo firewall-cmd --reload
-
-# Adicionar uma Regra de Serviço (por exemplo, SSH)
-sudo firewall-cmd --add-service=ssh --permanent
-
-# Remover uma Regra de Serviço (por exemplo, SSH)
-sudo firewall-cmd --remove-service=ssh --permanent
-
-# Habilitar ou Desabilitar o Logging (substitua &apos;yes&apos; ou &apos;no&apos; conforme necessário)
-sudo firewall-cmd --set-log-denied=yes --permanent
-sudo firewall-cmd --set-log-denied=no --permanent
-
-# Ativar ou Desativar o Firewalld
-sudo systemctl start firewalld
-sudo systemctl stop firewalld
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
    <title>cheatsheet/terraform</title>
    <link href="/2024/09/02/terraform.html"/>
    <updated>2024-09-02T00:00:00+00:00</updated>
@@ -780,6 +735,57 @@ terraform untaint aws_instance.example
  </entry>
  
  <entry>
+   <title>cheatsheet/firewalld</title>
+   <link href="/2023/10/24/firewalld.html"/>
+   <updated>2023-10-24T00:00:00+00:00</updated>
+   <id>/2023/10/24/firewalld</id>
+   <content type="html">&lt;h2 id=&quot;comandos-basicos-firewalld&quot;&gt;Comandos basicos firewalld&lt;/h2&gt;
+
+&lt;p&gt;Firewalld é um sistema de gerenciamento de firewall dinâmico para sistemas Linux. Ele foi desenvolvido pela Red Hat e introduzido no Fedora 18 em 2013 como uma alternativa ao iptables. O Firewalld foi projetado para oferecer uma interface simplificada para gerenciar regras de firewall e manipular zonas de rede.&lt;/p&gt;
+
+&lt;p&gt;Presente em distros como Red Hat Enterprise Linux (RHEL), CentOS, Fedora, Oracle Linux.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Habilitar o Firewalld
+sudo systemctl start firewalld
+sudo systemctl enable firewalld
+
+# Desabilitar o Firewalld
+sudo systemctl stop firewalld
+sudo systemctl disable firewalld
+
+# Verificar o Status do Firewalld
+sudo systemctl status firewalld
+
+# Listar as Zonas Disponíveis
+sudo firewall-cmd --get-zones
+
+# Definir uma Zona Padrão (substitua &apos;public&apos; pelo nome da zona desejada)
+sudo firewall-cmd --set-default-zone=public
+
+# Adicionar uma Regra de Permissão de Porta (por exemplo, porta 80/tcp)
+sudo firewall-cmd --add-port=80/tcp --permanent
+
+# Recarregar o Firewalld para Aplicar Alterações Permanentes
+sudo firewall-cmd --reload
+
+# Adicionar uma Regra de Serviço (por exemplo, SSH)
+sudo firewall-cmd --add-service=ssh --permanent
+
+# Remover uma Regra de Serviço (por exemplo, SSH)
+sudo firewall-cmd --remove-service=ssh --permanent
+
+# Habilitar ou Desabilitar o Logging (substitua &apos;yes&apos; ou &apos;no&apos; conforme necessário)
+sudo firewall-cmd --set-log-denied=yes --permanent
+sudo firewall-cmd --set-log-denied=no --permanent
+
+# Ativar ou Desativar o Firewalld
+sudo systemctl start firewalld
+sudo systemctl stop firewalld
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>cheatsheet/asdf</title>
    <link href="/2023/10/01/asdf.html"/>
    <updated>2023-10-01T00:00:00+00:00</updated>
@@ -788,10 +794,7 @@ terraform untaint aws_instance.example
 
 &lt;ul&gt;
   &lt;li&gt;fd&lt;/li&gt;
-  &lt;li&gt;fzf&lt;/li&gt;
-  &lt;li&gt;helm-docs&lt;/li&gt;
   &lt;li&gt;k6&lt;/li&gt;
-  &lt;li&gt;maven&lt;/li&gt;
   &lt;li&gt;mysql&lt;/li&gt;
   &lt;li&gt;neovim&lt;/li&gt;
   &lt;li&gt;nodejs&lt;/li&gt;
@@ -892,6 +895,18 @@ asdf global terraform latest
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;asdf plugin-add helm https://github.com/Antiarchitect/asdf-helm.git
 asdf &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;helm latest
 asdf global  helm latest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Download Helm docs&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;asdf plugin-add helm-docs https://github.com/sudermanjr/asdf-helm-docs.git
+asdf &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;helm-docs latest
+asdf global helm-docs latest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Download fzf&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;asdf plugin add fzf https://github.com/kompiro/asdf-fzf.git
+asdf &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;fzf latest
+asdf global fzf latest
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
@@ -1233,7 +1248,7 @@ docker update --cpus=&quot;.5&quot; nginx-do-bem # altera apenas liomite de CPU
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;remover-todas-as-imagens-containers-ou-volumes&quot;&gt;Remover todas as imagens, containers ou volumes&lt;/h2&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Limpeza dos containers e volumes associados
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Limpeza dos containers e volumes associados
 docker system prune -a --volumes # 
 
 # Remove todas as imagens
@@ -1247,11 +1262,14 @@ docker container rm -f $(docker container ls -qa); for i in $(docker volume ls |
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;comandos-basicos-para-build&quot;&gt;Comandos basicos para build&lt;/h2&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker build -t minha-imagem:latest /caminho/do/Dockerfile
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Este comando é usado para construir uma imagem Docker a partir de um arquivo Dockerfile localizado no caminho especificado
+docker build -t minha-imagem:latest /caminho/do/Dockerfile
 
-docker rmi minha-imagem:latest # Remove a imagem criada
+# Este comando remove a imagem Docker com o nome minha-imagem e a tag latest do sistema
+docker rmi minha-imagem:latest
 
-docker build -f Dockerfile.debug . # Especifica o arquivo de Dockerfile
+# Construir uma imagem Docker a partir de um arquivo Dockerfile local chamado Dockerfile.debug
+docker build -f Dockerfile.debug .
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;comandos-basicos-para-imagens&quot;&gt;Comandos basicos para imagens&lt;/h2&gt;
@@ -1314,7 +1332,10 @@ WantedBy=multi-user.target
 
 &lt;h2 id=&quot;tshoot&quot;&gt;tshoot&lt;/h2&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;systemctl status docker.service
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker system df
+docker events
+docker events --since=$(date -d &quot;1 week ago&quot; --utc +%Y-%m-%dT%H:%M:%SZ) | grep -i &quot;what do you searcg here&quot;
+systemctl status docker.service
 journalctl -u docker.service
 journalctl -u docker.service | less
 docker port container-name # test ports
@@ -1382,6 +1403,14 @@ docker inspect --format=&apos;&apos; container-name # get image
     &lt;tr&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;G&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Ir para o fim do arquivo&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0 (zero)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Para ir para inicio da linha&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$ (cifrão)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Para ir para o final da linha&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;vim file.txt&lt;/td&gt;
