@@ -105,14 +105,6 @@
     } ,
   
     {
-      "title"    : "aws/dominando-o-iam",
-      "category" : "",
-      "tags"     : "iam, aws, security",
-      "url"      : "/2024/12/01/dominando-o-iam.html",
-      "date"     : "2024-12-01 00:00:00 +0000"
-    } ,
-  
-    {
       "title"    : "cheatsheet/ufw",
       "category" : "",
       "tags"     : "ufw, ubuntu, firewall",
@@ -142,6 +134,14 @@
       "tags"     : "terraform",
       "url"      : "/2024/09/02/terraform.html",
       "date"     : "2024-09-02 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "cloud/aws/aws-iam",
+      "category" : "",
+      "tags"     : "iam, aws, security",
+      "url"      : "/2023/10/25/aws-iam.html",
+      "date"     : "2023-10-25 00:00:00 +0000"
     } ,
   
     {
