@@ -177,9 +177,9 @@
     } ,
   
     {
-      "title"    : "development/golang/generics",
+      "title"    : "development/golang/logs",
       "category" : "",
-      "tags"     : "go, generics, dev",
+      "tags"     : "go, golang, logs",
       "url"      : "/2023/08/26/logs.html",
       "date"     : "2023-08-26 00:00:00 +0000"
     } ,
