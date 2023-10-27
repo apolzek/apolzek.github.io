@@ -19,7 +19,7 @@
     {
       "title"    : "linux/processos-no-linux",
       "category" : "",
-      "tags"     : "processos, processes, process, linux",
+      "tags"     : "processos, process, linux",
       "url"      : "/2024/12/01/processos-no-linux.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
@@ -121,11 +121,11 @@
     } ,
   
     {
-      "title"    : "cheatsheet/git",
+      "title"    : "cloud/aws/aws-iam",
       "category" : "",
-      "tags"     : "git",
-      "url"      : "/2024/12/01/git.html",
-      "date"     : "2024-12-01 00:00:00 +0000"
+      "tags"     : "iam, aws, security",
+      "url"      : "/2024/10/25/aws-iam.html",
+      "date"     : "2024-10-25 00:00:00 +0000"
     } ,
   
     {
@@ -134,14 +134,6 @@
       "tags"     : "terraform",
       "url"      : "/2024/09/02/terraform.html",
       "date"     : "2024-09-02 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "cloud/aws/aws-iam",
-      "category" : "",
-      "tags"     : "iam, aws, security",
-      "url"      : "/2023/10/25/aws-iam.html",
-      "date"     : "2023-10-25 00:00:00 +0000"
     } ,
   
     {
@@ -161,6 +153,14 @@
     } ,
   
     {
+      "title"    : "cheatsheet/git",
+      "category" : "",
+      "tags"     : "git",
+      "url"      : "/2023/10/01/git.html",
+      "date"     : "2023-10-01 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "cheatsheet/asdf",
       "category" : "",
       "tags"     : "asdf",
@@ -174,6 +174,14 @@
       "tags"     : "apt, ubuntu, package",
       "url"      : "/2023/10/01/apt.html",
       "date"     : "2023-10-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "development/golang/generics",
+      "category" : "",
+      "tags"     : "go, generics, dev",
+      "url"      : "/2023/08/26/logs.html",
+      "date"     : "2023-08-26 00:00:00 +0000"
     } ,
   
     {
