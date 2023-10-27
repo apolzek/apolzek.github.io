@@ -53,16 +53,16 @@
         },
     
         {
-            "id": "/2024/12/01/processos-no-linux.html",
-            "title": "linux/processos-no-linux",
-            "summary": "Falando sobre processos no Linux",
-            "content_text": "",
-            "content_html": "",
-            "url": "/2024/12/01/processos-no-linux.html",
+            "id": "/2024/12/01/acronym-confusion.html",
+            "title": "opinions/acronym-confusion",
+            "summary": null,
+            "content_text": "“Por favor, note que neste artigo, evitarei fazer comparações entre os itens mencionados, concentrando-me em analisá-los individualmente.”SOLID, KISS, DRY, YAGNI, TDDSOLID:S: Single Responsibility PrincipleO: Open/Closed PrincipleL: Liskov Substitution PrincipleI: Interface Segregation PrincipleD: Dependency Inversion PrincipleEstes são princípios de design de software que visam criar código mais fácil de entender, manter e estender.YAGNI:Y: You Ain’t Gonna Need ItPrincípio que sugere que você não deve adicionar funcionalidades ou complexidades ao seu código até que realmente precise delas. Evita o excesso de engenharia.BDD:B: Behavior-Driven DevelopmentD: DevelopmentMetodologia de desenvolvimento que se concentra no comportamento esperado do software, envolvendo colaboração entre desenvolvedores, testadores e partes interessadas.OOD:O: Object-Oriented DesignD: DevelopmentRefere-se ao processo de usar princípios de design orientado a objetos durante o desenvolvimento de software para criar sistemas mais flexíveis e reutilizáveis.ACID:A: AtomicityC: ConsistencyI: IsolationD: DurabilityPrincípios de transação em banco de dados que garantem a integridade dos dados mesmo em face de falhas.ORM:O: Object-Relational MappingTécnica de programação que converte dados entre tipos de sistemas incompatíveis em linguagens de programação orientadas a objetos.MVC:M: ModelV: ViewC: ControllerPadrão de arquitetura de software que separa a lógica de apresentação dos dados de um aplicativo.",
+            "content_html": "<p>“Por favor, note que neste artigo, evitarei fazer comparações entre os itens mencionados, concentrando-me em analisá-los individualmente.”</p><p>SOLID, KISS, DRY, YAGNI, TDD</p><h4 id=\"solid\">SOLID:</h4><p>S: Single Responsibility PrincipleO: Open/Closed PrincipleL: Liskov Substitution PrincipleI: Interface Segregation PrincipleD: Dependency Inversion PrincipleEstes são princípios de design de software que visam criar código mais fácil de entender, manter e estender.</p><h4 id=\"yagni\">YAGNI:</h4><p>Y: You Ain’t Gonna Need ItPrincípio que sugere que você não deve adicionar funcionalidades ou complexidades ao seu código até que realmente precise delas. Evita o excesso de engenharia.BDD:B: Behavior-Driven DevelopmentD: DevelopmentMetodologia de desenvolvimento que se concentra no comportamento esperado do software, envolvendo colaboração entre desenvolvedores, testadores e partes interessadas.</p><h4 id=\"ood\">OOD:</h4><p>O: Object-Oriented DesignD: DevelopmentRefere-se ao processo de usar princípios de design orientado a objetos durante o desenvolvimento de software para criar sistemas mais flexíveis e reutilizáveis.</p><h4 id=\"acid\">ACID:</h4><p>A: AtomicityC: ConsistencyI: IsolationD: DurabilityPrincípios de transação em banco de dados que garantem a integridade dos dados mesmo em face de falhas.</p><h4 id=\"orm\">ORM:</h4><p>O: Object-Relational MappingTécnica de programação que converte dados entre tipos de sistemas incompatíveis em linguagens de programação orientadas a objetos.</p><h4 id=\"mvc\">MVC:</h4><p>M: ModelV: ViewC: ControllerPadrão de arquitetura de software que separa a lógica de apresentação dos dados de um aplicativo.</p>",
+            "url": "/2024/12/01/acronym-confusion.html",
             
             
             
-            "tags": ["processos","process","linux"],
+            
             
             "date_published": "2024-12-01T00:00:00+00:00",
             "date_modified": "2024-12-01T00:00:00+00:00",
@@ -74,12 +74,33 @@
         },
     
         {
-            "id": "/2024/12/01/factory.html",
-            "title": "dev/padroes-de-projeto/factory",
-            "summary": "Entendendo padrão de projeto Factory",
+            "id": "/2024/12/01/processos-no-linux.html",
+            "title": "opinions/processos-no-linux",
+            "summary": null,
             "content_text": "",
             "content_html": "",
-            "url": "/2024/12/01/factory.html",
+            "url": "/2024/12/01/processos-no-linux.html",
+            
+            
+            
+            
+            
+            "date_published": "2024-12-01T00:00:00+00:00",
+            "date_modified": "2024-12-01T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
+            "id": "/2024/12/01/tempos-verbais.html",
+            "title": "english/tempos-verbais",
+            "summary": null,
+            "content_text": "",
+            "content_html": "",
+            "url": "/2024/12/01/tempos-verbais.html",
             
             
             
@@ -252,6 +273,48 @@
             
             
             "tags": ["fila","queue"],
+            
+            "date_published": "2024-12-01T00:00:00+00:00",
+            "date_modified": "2024-12-01T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
+            "id": "/2024/12/01/postgres.html",
+            "title": "data/postgres",
+            "summary": null,
+            "content_text": "",
+            "content_html": "",
+            "url": "/2024/12/01/postgres.html",
+            
+            
+            
+            
+            
+            "date_published": "2024-12-01T00:00:00+00:00",
+            "date_modified": "2024-12-01T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
+            "id": "/2024/12/01/kafka-connect.html",
+            "title": "data/kafka-connect",
+            "summary": null,
+            "content_text": "",
+            "content_html": "",
+            "url": "/2024/12/01/kafka-connect.html",
+            
+            
+            
+            
             
             "date_published": "2024-12-01T00:00:00+00:00",
             "date_modified": "2024-12-01T00:00:00+00:00",

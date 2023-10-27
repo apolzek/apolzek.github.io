@@ -17,18 +17,26 @@
     } ,
   
     {
-      "title"    : "linux/processos-no-linux",
+      "title"    : "opinions/acronym-confusion",
       "category" : "",
-      "tags"     : "processos, process, linux",
+      "tags"     : "",
+      "url"      : "/2024/12/01/acronym-confusion.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "opinions/processos-no-linux",
+      "category" : "",
+      "tags"     : "",
       "url"      : "/2024/12/01/processos-no-linux.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "dev/padroes-de-projeto/factory",
+      "title"    : "english/tempos-verbais",
       "category" : "",
-      "tags"     : "factory",
-      "url"      : "/2024/12/01/factory.html",
+      "tags"     : "",
+      "url"      : "/2024/12/01/tempos-verbais.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
@@ -93,6 +101,22 @@
       "category" : "",
       "tags"     : "fila, queue",
       "url"      : "/2024/12/01/filas.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "data/postgres",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/2024/12/01/postgres.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "data/kafka-connect",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/2024/12/01/kafka-connect.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
