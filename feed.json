@@ -284,12 +284,75 @@
         },
     
         {
+            "id": "/2024/12/01/redis.html",
+            "title": "data/redis",
+            "summary": null,
+            "content_text": "",
+            "content_html": "",
+            "url": "/2024/12/01/redis.html",
+            
+            
+            
+            
+            
+            "date_published": "2024-12-01T00:00:00+00:00",
+            "date_modified": "2024-12-01T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
+            "id": "/2024/12/01/rabbitmq.html",
+            "title": "data/rabbitmq",
+            "summary": null,
+            "content_text": "",
+            "content_html": "",
+            "url": "/2024/12/01/rabbitmq.html",
+            
+            
+            
+            
+            
+            "date_published": "2024-12-01T00:00:00+00:00",
+            "date_modified": "2024-12-01T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
             "id": "/2024/12/01/postgres.html",
             "title": "data/postgres",
             "summary": null,
             "content_text": "",
             "content_html": "",
             "url": "/2024/12/01/postgres.html",
+            
+            
+            
+            
+            
+            "date_published": "2024-12-01T00:00:00+00:00",
+            "date_modified": "2024-12-01T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
+            "id": "/2024/12/01/kafka.html",
+            "title": "data/kafka",
+            "summary": null,
+            "content_text": "",
+            "content_html": "",
+            "url": "/2024/12/01/kafka.html",
             
             
             
@@ -368,6 +431,69 @@
         },
     
         {
+            "id": "/2024/12/01/python.html",
+            "title": "cheatsheet/python",
+            "summary": "Cheatsheet python",
+            "content_text": "",
+            "content_html": "",
+            "url": "/2024/12/01/python.html",
+            
+            
+            
+            
+            
+            "date_published": "2024-12-01T00:00:00+00:00",
+            "date_modified": "2024-12-01T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
+            "id": "/2024/12/01/lpi2.html",
+            "title": "cheatsheet/lpi2",
+            "summary": "Cheatsheet lpi2",
+            "content_text": "",
+            "content_html": "",
+            "url": "/2024/12/01/lpi2.html",
+            
+            
+            
+            
+            
+            "date_published": "2024-12-01T00:00:00+00:00",
+            "date_modified": "2024-12-01T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
+            "id": "/2024/12/01/lpi1.html",
+            "title": "cheatsheet/lpi1",
+            "summary": "Cheatsheet lpi1",
+            "content_text": "",
+            "content_html": "",
+            "url": "/2024/12/01/lpi1.html",
+            
+            
+            
+            
+            
+            "date_published": "2024-12-01T00:00:00+00:00",
+            "date_modified": "2024-12-01T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
             "id": "/2024/12/01/kubectl.html",
             "title": "cheatsheet/kubectl",
             "summary": "Cheatsheet kubectl",
@@ -389,12 +515,54 @@
         },
     
         {
+            "id": "/2024/12/01/ansible.html",
+            "title": "cheatsheet/ansible",
+            "summary": "Cheatsheet ansible",
+            "content_text": "",
+            "content_html": "",
+            "url": "/2024/12/01/ansible.html",
+            
+            
+            
+            
+            
+            "date_published": "2024-12-01T00:00:00+00:00",
+            "date_modified": "2024-12-01T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
             "id": "/2024/10/25/aws-iam.html",
             "title": "cloud/aws/aws-iam",
             "summary": "Dominando de uma vez por todas o AWS IAM",
             "content_text": "AWS IAMA IAM (Identity and Access Management) é um serviço fundamental da AWS (Amazon Web Services) que permite gerenciar de forma segura o acesso aos recursos da AWS. Com a IAM, você pode criar e gerenciar usuários, grupos e funções, além de definir permissões detalhadas para controlar quem tem acesso a quais recursos e ações dentro da sua conta da AWS. Aqui estão alguns conceitos importantes e exemplos práticos de uso da IAM:UsuáriosUm usuário é uma identidade que você cria para alguém ou algo (como uma aplicação) que precisa acessar sua conta da AWS. Cada usuário possui um nome de usuário exclusivo e credenciais de login. Aqui está um exemplo de criação de um usuário na IAM:aws iam create-user --user-name myuserGruposUm grupo é um conjunto de permissões que você pode aplicar a vários usuários. Você atribui políticas (conjuntos de permissões) aos grupos, e os usuários que pertencem ao grupo herdam essas permissões. Aqui está um exemplo de criação de um grupo na IAM e associação de um usuário a ele:aws iam create-group --group-name mygroupaws iam add-user-to-group --group-name mygroup --user-name myuserPolíticasAs políticas definem as permissões de acesso em formato JSON. Elas especificam o que um usuário, grupo ou função pode fazer com recursos específicos. Aqui está um exemplo de criação de uma política que permite a leitura de um bucket S3:{    \"Version\": \"2012-10-17\",    \"Statement\": [        {            \"Effect\": \"Allow\",            \"Action\": \"s3:GetObject\",            \"Resource\": \"arn:aws:s3:::my-bucket/*\"        }    ]}FunçõesAs funções permitem conceder permissões temporárias a serviços da AWS ou entidades confiáveis. Isso é útil para permitir que serviços acessem outros recursos em seu nome, sem a necessidade de compartilhar credenciais de acesso direto. Aqui está um exemplo de criação de uma função que permite que uma instância EC2 acesse um bucket S3:aws iam create-role --role-name myrole --assume-role-policy-document file://trust-policy.jsonAssume Role Policy DocumentO documento de política de confiança é um JSON que define quais entidades ou serviços podem assumir uma função. Aqui está um exemplo simplificado:{    \"Version\": \"2012-10-17\",    \"Statement\": [        {            \"Effect\": \"Allow\",            \"Principal\": {                \"Service\": \"ec2.amazonaws.com\"            },            \"Action\": \"sts:AssumeRole\"        }    ]}Exemplo de PolicysEsta política permite listar todas as instâncias EC2 em uma região específica{    \"Version\": \"2012-10-17\",    \"Statement\": [        {            \"Sid\": \"ListEC2Instances\",            \"Effect\": \"Allow\",            \"Action\": \"ec2:DescribeInstances\",            \"Resource\": \"*\"        }    ]}Esta política permite listar, criar, excluir e gerenciar buckets no Amazon S3{    \"Version\": \"2012-10-17\",    \"Statement\": [        {            \"Sid\": \"ManageS3Buckets\",            \"Effect\": \"Allow\",            \"Action\": \"s3:*\",            \"Resource\": [                \"arn:aws:s3:::example-bucket\",                \"arn:aws:s3:::example-bucket/*\"            ]        }    ]}",
             "content_html": "<h1 id=\"aws-iam\">AWS IAM</h1><p>A IAM (Identity and Access Management) é um serviço fundamental da AWS (Amazon Web Services) que permite gerenciar de forma segura o acesso aos recursos da AWS. Com a IAM, você pode criar e gerenciar usuários, grupos e funções, além de definir permissões detalhadas para controlar quem tem acesso a quais recursos e ações dentro da sua conta da AWS. Aqui estão alguns conceitos importantes e exemplos práticos de uso da IAM:</p><h4 id=\"usuários\">Usuários</h4><p>Um usuário é uma identidade que você cria para alguém ou algo (como uma aplicação) que precisa acessar sua conta da AWS. Cada usuário possui um nome de usuário exclusivo e credenciais de login. Aqui está um exemplo de criação de um usuário na IAM:</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>aws iam create-user --user-name myuser</code></pre></div></div><h4 id=\"grupos\">Grupos</h4><p>Um grupo é um conjunto de permissões que você pode aplicar a vários usuários. Você atribui políticas (conjuntos de permissões) aos grupos, e os usuários que pertencem ao grupo herdam essas permissões. Aqui está um exemplo de criação de um grupo na IAM e associação de um usuário a ele:</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>aws iam create-group --group-name mygroupaws iam add-user-to-group --group-name mygroup --user-name myuser</code></pre></div></div><h4 id=\"políticas\">Políticas</h4><p>As políticas definem as permissões de acesso em formato JSON. Elas especificam o que um usuário, grupo ou função pode fazer com recursos específicos. Aqui está um exemplo de criação de uma política que permite a leitura de um bucket S3:</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>{    \"Version\": \"2012-10-17\",    \"Statement\": [        {            \"Effect\": \"Allow\",            \"Action\": \"s3:GetObject\",            \"Resource\": \"arn:aws:s3:::my-bucket/*\"        }    ]}</code></pre></div></div><h4 id=\"funções\">Funções</h4><p>As funções permitem conceder permissões temporárias a serviços da AWS ou entidades confiáveis. Isso é útil para permitir que serviços acessem outros recursos em seu nome, sem a necessidade de compartilhar credenciais de acesso direto. Aqui está um exemplo de criação de uma função que permite que uma instância EC2 acesse um bucket S3:</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>aws iam create-role --role-name myrole --assume-role-policy-document file://trust-policy.json</code></pre></div></div><h4 id=\"assume-role-policy-document\">Assume Role Policy Document</h4><p>O documento de política de confiança é um JSON que define quais entidades ou serviços podem assumir uma função. Aqui está um exemplo simplificado:</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>{    \"Version\": \"2012-10-17\",    \"Statement\": [        {            \"Effect\": \"Allow\",            \"Principal\": {                \"Service\": \"ec2.amazonaws.com\"            },            \"Action\": \"sts:AssumeRole\"        }    ]}</code></pre></div></div><h4 id=\"exemplo-de-policys\">Exemplo de Policys</h4><p>Esta política permite listar todas as instâncias EC2 em uma região específica</p><div class=\"language-json highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"p\">{</span><span class=\"w\">    </span><span class=\"nl\">\"Version\"</span><span class=\"p\">:</span><span class=\"w\"> </span><span class=\"s2\">\"2012-10-17\"</span><span class=\"p\">,</span><span class=\"w\">    </span><span class=\"nl\">\"Statement\"</span><span class=\"p\">:</span><span class=\"w\"> </span><span class=\"p\">[</span><span class=\"w\">        </span><span class=\"p\">{</span><span class=\"w\">            </span><span class=\"nl\">\"Sid\"</span><span class=\"p\">:</span><span class=\"w\"> </span><span class=\"s2\">\"ListEC2Instances\"</span><span class=\"p\">,</span><span class=\"w\">            </span><span class=\"nl\">\"Effect\"</span><span class=\"p\">:</span><span class=\"w\"> </span><span class=\"s2\">\"Allow\"</span><span class=\"p\">,</span><span class=\"w\">            </span><span class=\"nl\">\"Action\"</span><span class=\"p\">:</span><span class=\"w\"> </span><span class=\"s2\">\"ec2:DescribeInstances\"</span><span class=\"p\">,</span><span class=\"w\">            </span><span class=\"nl\">\"Resource\"</span><span class=\"p\">:</span><span class=\"w\"> </span><span class=\"s2\">\"*\"</span><span class=\"w\">        </span><span class=\"p\">}</span><span class=\"w\">    </span><span class=\"p\">]</span><span class=\"w\"></span><span class=\"p\">}</span><span class=\"w\"></span></code></pre></div></div><p>Esta política permite listar, criar, excluir e gerenciar buckets no Amazon S3</p><div class=\"language-json highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"p\">{</span><span class=\"w\">    </span><span class=\"nl\">\"Version\"</span><span class=\"p\">:</span><span class=\"w\"> </span><span class=\"s2\">\"2012-10-17\"</span><span class=\"p\">,</span><span class=\"w\">    </span><span class=\"nl\">\"Statement\"</span><span class=\"p\">:</span><span class=\"w\"> </span><span class=\"p\">[</span><span class=\"w\">        </span><span class=\"p\">{</span><span class=\"w\">            </span><span class=\"nl\">\"Sid\"</span><span class=\"p\">:</span><span class=\"w\"> </span><span class=\"s2\">\"ManageS3Buckets\"</span><span class=\"p\">,</span><span class=\"w\">            </span><span class=\"nl\">\"Effect\"</span><span class=\"p\">:</span><span class=\"w\"> </span><span class=\"s2\">\"Allow\"</span><span class=\"p\">,</span><span class=\"w\">            </span><span class=\"nl\">\"Action\"</span><span class=\"p\">:</span><span class=\"w\"> </span><span class=\"s2\">\"s3:*\"</span><span class=\"p\">,</span><span class=\"w\">            </span><span class=\"nl\">\"Resource\"</span><span class=\"p\">:</span><span class=\"w\"> </span><span class=\"p\">[</span><span class=\"w\">                </span><span class=\"s2\">\"arn:aws:s3:::example-bucket\"</span><span class=\"p\">,</span><span class=\"w\">                </span><span class=\"s2\">\"arn:aws:s3:::example-bucket/*\"</span><span class=\"w\">            </span><span class=\"p\">]</span><span class=\"w\">        </span><span class=\"p\">}</span><span class=\"w\">    </span><span class=\"p\">]</span><span class=\"w\"></span><span class=\"p\">}</span><span class=\"w\"></span></code></pre></div></div>",
             "url": "/2024/10/25/aws-iam.html",
+            
+            
+            
+            "tags": ["iam","aws","security"],
+            
+            "date_published": "2024-10-25T00:00:00+00:00",
+            "date_modified": "2024-10-25T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
+            "id": "/2024/10/25/aws-eks.html",
+            "title": "cloud/aws/aws-iam",
+            "summary": "Dominando de uma vez por todas o AWS IAM",
+            "content_text": "AWS IAMA IAM (Identity and Access Management) é um serviço fundamental da AWS (Amazon Web Services) que permite gerenciar de forma segura o acesso aos recursos da AWS. Com a IAM, você pode criar e gerenciar usuários, grupos e funções, além de definir permissões detalhadas para controlar quem tem acesso a quais recursos e ações dentro da sua conta da AWS. Aqui estão alguns conceitos importantes e exemplos práticos de uso da IAM:UsuáriosUm usuário é uma identidade que você cria para alguém ou algo (como uma aplicação) que precisa acessar sua conta da AWS. Cada usuário possui um nome de usuário exclusivo e credenciais de login. Aqui está um exemplo de criação de um usuário na IAM:aws iam create-user --user-name myuserGruposUm grupo é um conjunto de permissões que você pode aplicar a vários usuários. Você atribui políticas (conjuntos de permissões) aos grupos, e os usuários que pertencem ao grupo herdam essas permissões. Aqui está um exemplo de criação de um grupo na IAM e associação de um usuário a ele:aws iam create-group --group-name mygroupaws iam add-user-to-group --group-name mygroup --user-name myuserPolíticasAs políticas definem as permissões de acesso em formato JSON. Elas especificam o que um usuário, grupo ou função pode fazer com recursos específicos. Aqui está um exemplo de criação de uma política que permite a leitura de um bucket S3:{    \"Version\": \"2012-10-17\",    \"Statement\": [        {            \"Effect\": \"Allow\",            \"Action\": \"s3:GetObject\",            \"Resource\": \"arn:aws:s3:::my-bucket/*\"        }    ]}FunçõesAs funções permitem conceder permissões temporárias a serviços da AWS ou entidades confiáveis. Isso é útil para permitir que serviços acessem outros recursos em seu nome, sem a necessidade de compartilhar credenciais de acesso direto. Aqui está um exemplo de criação de uma função que permite que uma instância EC2 acesse um bucket S3:aws iam create-role --role-name myrole --assume-role-policy-document file://trust-policy.jsonAssume Role Policy DocumentO documento de política de confiança é um JSON que define quais entidades ou serviços podem assumir uma função. Aqui está um exemplo simplificado:{    \"Version\": \"2012-10-17\",    \"Statement\": [        {            \"Effect\": \"Allow\",            \"Principal\": {                \"Service\": \"ec2.amazonaws.com\"            },            \"Action\": \"sts:AssumeRole\"        }    ]}Exemplo de PolicysEsta política permite listar todas as instâncias EC2 em uma região específica{    \"Version\": \"2012-10-17\",    \"Statement\": [        {            \"Sid\": \"ListEC2Instances\",            \"Effect\": \"Allow\",            \"Action\": \"ec2:DescribeInstances\",            \"Resource\": \"*\"        }    ]}Esta política permite listar, criar, excluir e gerenciar buckets no Amazon S3{    \"Version\": \"2012-10-17\",    \"Statement\": [        {            \"Sid\": \"ManageS3Buckets\",            \"Effect\": \"Allow\",            \"Action\": \"s3:*\",            \"Resource\": [                \"arn:aws:s3:::example-bucket\",                \"arn:aws:s3:::example-bucket/*\"            ]        }    ]}",
+            "content_html": "<h1 id=\"aws-iam\">AWS IAM</h1><p>A IAM (Identity and Access Management) é um serviço fundamental da AWS (Amazon Web Services) que permite gerenciar de forma segura o acesso aos recursos da AWS. Com a IAM, você pode criar e gerenciar usuários, grupos e funções, além de definir permissões detalhadas para controlar quem tem acesso a quais recursos e ações dentro da sua conta da AWS. Aqui estão alguns conceitos importantes e exemplos práticos de uso da IAM:</p><h4 id=\"usuários\">Usuários</h4><p>Um usuário é uma identidade que você cria para alguém ou algo (como uma aplicação) que precisa acessar sua conta da AWS. Cada usuário possui um nome de usuário exclusivo e credenciais de login. Aqui está um exemplo de criação de um usuário na IAM:</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>aws iam create-user --user-name myuser</code></pre></div></div><h4 id=\"grupos\">Grupos</h4><p>Um grupo é um conjunto de permissões que você pode aplicar a vários usuários. Você atribui políticas (conjuntos de permissões) aos grupos, e os usuários que pertencem ao grupo herdam essas permissões. Aqui está um exemplo de criação de um grupo na IAM e associação de um usuário a ele:</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>aws iam create-group --group-name mygroupaws iam add-user-to-group --group-name mygroup --user-name myuser</code></pre></div></div><h4 id=\"políticas\">Políticas</h4><p>As políticas definem as permissões de acesso em formato JSON. Elas especificam o que um usuário, grupo ou função pode fazer com recursos específicos. Aqui está um exemplo de criação de uma política que permite a leitura de um bucket S3:</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>{    \"Version\": \"2012-10-17\",    \"Statement\": [        {            \"Effect\": \"Allow\",            \"Action\": \"s3:GetObject\",            \"Resource\": \"arn:aws:s3:::my-bucket/*\"        }    ]}</code></pre></div></div><h4 id=\"funções\">Funções</h4><p>As funções permitem conceder permissões temporárias a serviços da AWS ou entidades confiáveis. Isso é útil para permitir que serviços acessem outros recursos em seu nome, sem a necessidade de compartilhar credenciais de acesso direto. Aqui está um exemplo de criação de uma função que permite que uma instância EC2 acesse um bucket S3:</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>aws iam create-role --role-name myrole --assume-role-policy-document file://trust-policy.json</code></pre></div></div><h4 id=\"assume-role-policy-document\">Assume Role Policy Document</h4><p>O documento de política de confiança é um JSON que define quais entidades ou serviços podem assumir uma função. Aqui está um exemplo simplificado:</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>{    \"Version\": \"2012-10-17\",    \"Statement\": [        {            \"Effect\": \"Allow\",            \"Principal\": {                \"Service\": \"ec2.amazonaws.com\"            },            \"Action\": \"sts:AssumeRole\"        }    ]}</code></pre></div></div><h4 id=\"exemplo-de-policys\">Exemplo de Policys</h4><p>Esta política permite listar todas as instâncias EC2 em uma região específica</p><div class=\"language-json highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"p\">{</span><span class=\"w\">    </span><span class=\"nl\">\"Version\"</span><span class=\"p\">:</span><span class=\"w\"> </span><span class=\"s2\">\"2012-10-17\"</span><span class=\"p\">,</span><span class=\"w\">    </span><span class=\"nl\">\"Statement\"</span><span class=\"p\">:</span><span class=\"w\"> </span><span class=\"p\">[</span><span class=\"w\">        </span><span class=\"p\">{</span><span class=\"w\">            </span><span class=\"nl\">\"Sid\"</span><span class=\"p\">:</span><span class=\"w\"> </span><span class=\"s2\">\"ListEC2Instances\"</span><span class=\"p\">,</span><span class=\"w\">            </span><span class=\"nl\">\"Effect\"</span><span class=\"p\">:</span><span class=\"w\"> </span><span class=\"s2\">\"Allow\"</span><span class=\"p\">,</span><span class=\"w\">            </span><span class=\"nl\">\"Action\"</span><span class=\"p\">:</span><span class=\"w\"> </span><span class=\"s2\">\"ec2:DescribeInstances\"</span><span class=\"p\">,</span><span class=\"w\">            </span><span class=\"nl\">\"Resource\"</span><span class=\"p\">:</span><span class=\"w\"> </span><span class=\"s2\">\"*\"</span><span class=\"w\">        </span><span class=\"p\">}</span><span class=\"w\">    </span><span class=\"p\">]</span><span class=\"w\"></span><span class=\"p\">}</span><span class=\"w\"></span></code></pre></div></div><p>Esta política permite listar, criar, excluir e gerenciar buckets no Amazon S3</p><div class=\"language-json highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"p\">{</span><span class=\"w\">    </span><span class=\"nl\">\"Version\"</span><span class=\"p\">:</span><span class=\"w\"> </span><span class=\"s2\">\"2012-10-17\"</span><span class=\"p\">,</span><span class=\"w\">    </span><span class=\"nl\">\"Statement\"</span><span class=\"p\">:</span><span class=\"w\"> </span><span class=\"p\">[</span><span class=\"w\">        </span><span class=\"p\">{</span><span class=\"w\">            </span><span class=\"nl\">\"Sid\"</span><span class=\"p\">:</span><span class=\"w\"> </span><span class=\"s2\">\"ManageS3Buckets\"</span><span class=\"p\">,</span><span class=\"w\">            </span><span class=\"nl\">\"Effect\"</span><span class=\"p\">:</span><span class=\"w\"> </span><span class=\"s2\">\"Allow\"</span><span class=\"p\">,</span><span class=\"w\">            </span><span class=\"nl\">\"Action\"</span><span class=\"p\">:</span><span class=\"w\"> </span><span class=\"s2\">\"s3:*\"</span><span class=\"p\">,</span><span class=\"w\">            </span><span class=\"nl\">\"Resource\"</span><span class=\"p\">:</span><span class=\"w\"> </span><span class=\"p\">[</span><span class=\"w\">                </span><span class=\"s2\">\"arn:aws:s3:::example-bucket\"</span><span class=\"p\">,</span><span class=\"w\">                </span><span class=\"s2\">\"arn:aws:s3:::example-bucket/*\"</span><span class=\"w\">            </span><span class=\"p\">]</span><span class=\"w\">        </span><span class=\"p\">}</span><span class=\"w\">    </span><span class=\"p\">]</span><span class=\"w\"></span><span class=\"p\">}</span><span class=\"w\"></span></code></pre></div></div>",
+            "url": "/2024/10/25/aws-eks.html",
             
             
             
@@ -591,48 +759,6 @@
             
             "date_published": "2023-08-12T00:00:00+00:00",
             "date_modified": "2023-08-12T00:00:00+00:00",
-            
-                "author": 
-                ""
-                
-            
-        },
-    
-        {
-            "id": "/2023/07/28/deletar-historico-commits-github.html",
-            "title": "tools/git/deletar-historico-commits-github",
-            "summary": "Deletar todo histórico de commits no Github",
-            "content_text": "Deleting the .git folder may cause problems in your git repository. If you want to delete all your commit history but keep the code in its current state, it is very safe to do it as in the following:1 - Checkoutgit checkout --orphan latest_branch2 - Add all the filesgit add -A3 - Commit the changesgit commit -am \"commit message\"4 - Delete the branchgit branch -D main5 - Rename the current branch to maingit branch -m main6 - Finally, force update your repositorygit push -f origin mainPS: this will not keep your old commit history aroundReference",
-            "content_html": "<p>Deleting the .git folder may cause problems in your git repository. If you want to delete all your commit history but keep the code in its current state, it is very safe to do it as in the following:</p><p>1 - Checkout</p><p><code class=\"language-plaintext highlighter-rouge\">git checkout --orphan latest_branch</code></p><p>2 - Add all the files</p><p><code class=\"language-plaintext highlighter-rouge\">git add -A</code></p><p>3 - Commit the changes</p><p><code class=\"language-plaintext highlighter-rouge\">git commit -am \"commit message\"</code></p><p>4 - Delete the branch</p><p><code class=\"language-plaintext highlighter-rouge\">git branch -D main</code></p><p>5 - Rename the current branch to main</p><p><code class=\"language-plaintext highlighter-rouge\">git branch -m main</code></p><p>6 - Finally, force update your repository</p><p><code class=\"language-plaintext highlighter-rouge\">git push -f origin main</code></p><p><em>PS: this will not keep your old commit history around</em></p><p><a href=\"https://stackoverflow.com/questions/13716658/how-to-delete-all-commit-history-in-github\">Reference</a></p>",
-            "url": "/2023/07/28/deletar-historico-commits-github.html",
-            
-            
-            
-            "tags": ["git","history","github"],
-            
-            "date_published": "2023-07-28T00:00:00+00:00",
-            "date_modified": "2023-07-28T00:00:00+00:00",
-            
-                "author": 
-                ""
-                
-            
-        },
-    
-        {
-            "id": "/2023/07/27/vim.html",
-            "title": "cheatsheet/vim",
-            "summary": "Cheatsheet vim",
-            "content_text": "            Comando      Descrição                  gg      Ir para o inicio do arquivo              G      Ir para o fim do arquivo              0 (zero)      Para ir para inicio da linha              $ (cifrão)      Para ir para o final da linha              vim file.txt      Criar ou abrir um arquivo(caso exista)              i      Modo de inserção              Insert      Modo de inserção              ESQ      Sair do modo inserção              a      Modo inserção um caractere a frente              I      Modo inserção no inicio da linha              A      Modo inserção no final da linha              o      Modo inserção na próxima linha              O      Modo inserção na linha acima              S      Apagar linha completa e entrar no modo inserção              u      Desfaz ultima alteração(igual crtl + z)              crtl + r      Refaz ultima alteração              :w      Salvar o arquivo              :wq      Salvar e sair do arquivo              :q!      Sair sem salvar              :x      Salvar e sair do arquivo              ZZ      Salvar e sair do arquivo              yy      Copiar a linha toda              p      Colar a linha copiada              y5y      Copiar 5 linhas              dd      Recortar a linha              d3d      Recortar 3 linhas              ESQ + v      Modo visual horizontal              ESQ + V      Modo visual vertical              y + w      Copia uma palavra              y + 3 + w      Copia 3 palavras a frente              x      delete              X      backspace              :w file-new.txt      Salvar arquivo com outro nome(salvar como)              :split another-file.txt      Divide a tela em duas              crtl + w + w      Alternar entre as divisões de tela              :r /etc/hosts      Copiar conteúdo de hosts para arquivo atual              /linux      Procurar a palavra “linux” dentro do arquivo              n      Procura próxima ocorrência da palavra              ?  linux      Buscar palavra “linux” de baixo pra cima              :%s/windows/linux      Troca todas as ocorrências de windows por linux              :%s/windows/linux/g      Troca todas as ocorrências de windows por linux(mais de uma por linha)              e! /etc/hosts      Mudar para outro arquivo descartando alterações atuais              ESQ + :syntax on      Habilita o Highlight(arquivo deve ter extenção)              ESQ + :set nu      Habilitar a numeração das linhas              ESQ + :set nonu      Desabilitar a numeração das linhas              :ab google google.com.br      Criar uma abreviação              :set ai      Auto identação              :set noai      Desabilitar auto identação              :set visualbell      Trocar notificação de som para modo visual              :set ic      Buscar no modo ignore case sensitive              :set bg=light      Background claro              :set tabstop=4      Tamanho do tab em 4 espaços              :set showmatch      Mostrar fechamento de parenteses              :.,$!sort      Ordenação alfabética              :.,$!sort | pr -2t      Ordenação alfabética em duas colunas      ",
-            "content_html": "<table>  <thead>    <tr>      <th style=\"text-align: center\">Comando</th>      <th style=\"text-align: center\">Descrição</th>    </tr>  </thead>  <tbody>    <tr>      <td style=\"text-align: center\">gg</td>      <td style=\"text-align: center\">Ir para o inicio do arquivo</td>    </tr>    <tr>      <td style=\"text-align: center\">G</td>      <td style=\"text-align: center\">Ir para o fim do arquivo</td>    </tr>    <tr>      <td style=\"text-align: center\">0 (zero)</td>      <td style=\"text-align: center\">Para ir para inicio da linha</td>    </tr>    <tr>      <td style=\"text-align: center\">$ (cifrão)</td>      <td style=\"text-align: center\">Para ir para o final da linha</td>    </tr>    <tr>      <td style=\"text-align: center\">vim file.txt</td>      <td style=\"text-align: center\">Criar ou abrir um arquivo(caso exista)</td>    </tr>    <tr>      <td style=\"text-align: center\">i</td>      <td style=\"text-align: center\">Modo de inserção</td>    </tr>    <tr>      <td style=\"text-align: center\">Insert</td>      <td style=\"text-align: center\">Modo de inserção</td>    </tr>    <tr>      <td style=\"text-align: center\">ESQ</td>      <td style=\"text-align: center\">Sair do modo inserção</td>    </tr>    <tr>      <td style=\"text-align: center\">a</td>      <td style=\"text-align: center\">Modo inserção um caractere a frente</td>    </tr>    <tr>      <td style=\"text-align: center\">I</td>      <td style=\"text-align: center\">Modo inserção no inicio da linha</td>    </tr>    <tr>      <td style=\"text-align: center\">A</td>      <td style=\"text-align: center\">Modo inserção no final da linha</td>    </tr>    <tr>      <td style=\"text-align: center\">o</td>      <td style=\"text-align: center\">Modo inserção na próxima linha</td>    </tr>    <tr>      <td style=\"text-align: center\">O</td>      <td style=\"text-align: center\">Modo inserção na linha acima</td>    </tr>    <tr>      <td style=\"text-align: center\">S</td>      <td style=\"text-align: center\">Apagar linha completa e entrar no modo inserção</td>    </tr>    <tr>      <td style=\"text-align: center\">u</td>      <td style=\"text-align: center\">Desfaz ultima alteração(igual crtl + z)</td>    </tr>    <tr>      <td style=\"text-align: center\">crtl + r</td>      <td style=\"text-align: center\">Refaz ultima alteração</td>    </tr>    <tr>      <td style=\"text-align: center\">:w</td>      <td style=\"text-align: center\">Salvar o arquivo</td>    </tr>    <tr>      <td style=\"text-align: center\">:wq</td>      <td style=\"text-align: center\">Salvar e sair do arquivo</td>    </tr>    <tr>      <td style=\"text-align: center\">:q!</td>      <td style=\"text-align: center\">Sair sem salvar</td>    </tr>    <tr>      <td style=\"text-align: center\">:x</td>      <td style=\"text-align: center\">Salvar e sair do arquivo</td>    </tr>    <tr>      <td style=\"text-align: center\">ZZ</td>      <td style=\"text-align: center\">Salvar e sair do arquivo</td>    </tr>    <tr>      <td style=\"text-align: center\">yy</td>      <td style=\"text-align: center\">Copiar a linha toda</td>    </tr>    <tr>      <td style=\"text-align: center\">p</td>      <td style=\"text-align: center\">Colar a linha copiada</td>    </tr>    <tr>      <td style=\"text-align: center\">y5y</td>      <td style=\"text-align: center\">Copiar 5 linhas</td>    </tr>    <tr>      <td style=\"text-align: center\">dd</td>      <td style=\"text-align: center\">Recortar a linha</td>    </tr>    <tr>      <td style=\"text-align: center\">d3d</td>      <td style=\"text-align: center\">Recortar 3 linhas</td>    </tr>    <tr>      <td style=\"text-align: center\">ESQ + v</td>      <td style=\"text-align: center\">Modo visual horizontal</td>    </tr>    <tr>      <td style=\"text-align: center\">ESQ + V</td>      <td style=\"text-align: center\">Modo visual vertical</td>    </tr>    <tr>      <td style=\"text-align: center\">y + w</td>      <td style=\"text-align: center\">Copia uma palavra</td>    </tr>    <tr>      <td style=\"text-align: center\">y + 3 + w</td>      <td style=\"text-align: center\">Copia 3 palavras a frente</td>    </tr>    <tr>      <td style=\"text-align: center\">x</td>      <td style=\"text-align: center\">delete</td>    </tr>    <tr>      <td style=\"text-align: center\">X</td>      <td style=\"text-align: center\">backspace</td>    </tr>    <tr>      <td style=\"text-align: center\">:w file-new.txt</td>      <td style=\"text-align: center\">Salvar arquivo com outro nome(salvar como)</td>    </tr>    <tr>      <td style=\"text-align: center\">:split another-file.txt</td>      <td style=\"text-align: center\">Divide a tela em duas</td>    </tr>    <tr>      <td style=\"text-align: center\">crtl + w + w</td>      <td style=\"text-align: center\">Alternar entre as divisões de tela</td>    </tr>    <tr>      <td style=\"text-align: center\">:r /etc/hosts</td>      <td style=\"text-align: center\">Copiar conteúdo de hosts para arquivo atual</td>    </tr>    <tr>      <td style=\"text-align: center\">/linux</td>      <td style=\"text-align: center\">Procurar a palavra “linux” dentro do arquivo</td>    </tr>    <tr>      <td style=\"text-align: center\">n</td>      <td style=\"text-align: center\">Procura próxima ocorrência da palavra</td>    </tr>    <tr>      <td style=\"text-align: center\">?  linux</td>      <td style=\"text-align: center\">Buscar palavra “linux” de baixo pra cima</td>    </tr>    <tr>      <td style=\"text-align: center\">:%s/windows/linux</td>      <td style=\"text-align: center\">Troca todas as ocorrências de windows por linux</td>    </tr>    <tr>      <td style=\"text-align: center\">:%s/windows/linux/g</td>      <td style=\"text-align: center\">Troca todas as ocorrências de windows por linux(mais de uma por linha)</td>    </tr>    <tr>      <td style=\"text-align: center\">e! /etc/hosts</td>      <td style=\"text-align: center\">Mudar para outro arquivo descartando alterações atuais</td>    </tr>    <tr>      <td style=\"text-align: center\">ESQ + :syntax on</td>      <td style=\"text-align: center\">Habilita o Highlight(arquivo deve ter extenção)</td>    </tr>    <tr>      <td style=\"text-align: center\">ESQ + :set nu</td>      <td style=\"text-align: center\">Habilitar a numeração das linhas</td>    </tr>    <tr>      <td style=\"text-align: center\">ESQ + :set nonu</td>      <td style=\"text-align: center\">Desabilitar a numeração das linhas</td>    </tr>    <tr>      <td style=\"text-align: center\">:ab google google.com.br</td>      <td style=\"text-align: center\">Criar uma abreviação</td>    </tr>    <tr>      <td style=\"text-align: center\">:set ai</td>      <td style=\"text-align: center\">Auto identação</td>    </tr>    <tr>      <td style=\"text-align: center\">:set noai</td>      <td style=\"text-align: center\">Desabilitar auto identação</td>    </tr>    <tr>      <td style=\"text-align: center\">:set visualbell</td>      <td style=\"text-align: center\">Trocar notificação de som para modo visual</td>    </tr>    <tr>      <td style=\"text-align: center\">:set ic</td>      <td style=\"text-align: center\">Buscar no modo ignore case sensitive</td>    </tr>    <tr>      <td style=\"text-align: center\">:set bg=light</td>      <td style=\"text-align: center\">Background claro</td>    </tr>    <tr>      <td style=\"text-align: center\">:set tabstop=4</td>      <td style=\"text-align: center\">Tamanho do tab em 4 espaços</td>    </tr>    <tr>      <td style=\"text-align: center\">:set showmatch</td>      <td style=\"text-align: center\">Mostrar fechamento de parenteses</td>    </tr>    <tr>      <td style=\"text-align: center\">:.,$!sort</td>      <td style=\"text-align: center\">Ordenação alfabética</td>    </tr>    <tr>      <td style=\"text-align: center\">:.,$!sort | pr -2t</td>      <td style=\"text-align: center\">Ordenação alfabética em duas colunas</td>    </tr>  </tbody></table>",
-            "url": "/2023/07/27/vim.html",
-            
-            
-            
-            "tags": ["vim","vi","editor","1991"],
-            
-            "date_published": "2023-07-27T00:00:00+00:00",
-            "date_modified": "2023-07-27T00:00:00+00:00",
             
                 "author": 
                 ""

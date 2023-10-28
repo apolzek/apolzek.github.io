@@ -105,10 +105,34 @@
     } ,
   
     {
+      "title"    : "data/redis",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/2024/12/01/redis.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "data/rabbitmq",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/2024/12/01/rabbitmq.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "data/postgres",
       "category" : "",
       "tags"     : "",
       "url"      : "/2024/12/01/postgres.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "data/kafka",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/2024/12/01/kafka.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
@@ -137,6 +161,30 @@
     } ,
   
     {
+      "title"    : "cheatsheet/python",
+      "category" : "",
+      "tags"     : "ansible",
+      "url"      : "/2024/12/01/python.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "cheatsheet/lpi2",
+      "category" : "",
+      "tags"     : "ansible",
+      "url"      : "/2024/12/01/lpi2.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "cheatsheet/lpi1",
+      "category" : "",
+      "tags"     : "ansible",
+      "url"      : "/2024/12/01/lpi1.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "cheatsheet/kubectl",
       "category" : "",
       "tags"     : "kubectl",
@@ -145,10 +193,26 @@
     } ,
   
     {
+      "title"    : "cheatsheet/ansible",
+      "category" : "",
+      "tags"     : "ansible",
+      "url"      : "/2024/12/01/ansible.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "cloud/aws/aws-iam",
       "category" : "",
       "tags"     : "iam, aws, security",
       "url"      : "/2024/10/25/aws-iam.html",
+      "date"     : "2024-10-25 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "cloud/aws/aws-iam",
+      "category" : "",
+      "tags"     : "iam, aws, security",
+      "url"      : "/2024/10/25/aws-eks.html",
       "date"     : "2024-10-25 00:00:00 +0000"
     } ,
   
