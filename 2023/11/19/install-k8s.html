@@ -56,7 +56,7 @@ kubectl get all <span class="nt">--namespace</span> metallb-system
 <span class="na">spec</span><span class="pi">:</span>
   <span class="na">ipAddressPools</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">default-pool</span>
-</code></pre></div></div> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl apply <span class="nt">-f</span> ipaddresspool.yaml
+</code></pre></div></div> <p>Apply metallb config files</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl apply <span class="nt">-f</span> ipaddresspool.yaml
 kubectl apply <span class="nt">-f</span> l2advertisement.yaml
 </code></pre></div></div> <p>Test cluster k8s and metallb</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl create deployment hello-server <span class="nt">--image</span><span class="o">=</span>gcr.io/google-samples/hello-app:1.0
 kubectl expose deployment hello-server <span class="nt">--type</span> LoadBalancer <span class="nt">--port</span> 80 <span class="nt">--target-port</span> 8080

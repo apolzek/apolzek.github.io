@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2023-11-19T18:01:14+00:00</updated>
+ <updated>2023-11-19T18:04:26+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -787,6 +787,7 @@ kubectl get all &lt;span class=&quot;nt&quot;&gt;--namespace&lt;/span&gt; metall
   &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;default-pool&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;p&gt;Apply metallb config files&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl apply &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; ipaddresspool.yaml
 kubectl apply &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; l2advertisement.yaml
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -822,16 +823,18 @@ kubectl scale &lt;span class=&quot;nt&quot;&gt;--replicas&lt;/span&gt;&lt;span c
 &lt;ul&gt;
   &lt;li&gt;
     &lt;p&gt;Deadlines: tempo maximo para o codigo terminar de ser executado(definir o ponto final)
-WithDeadline: passa o horario final para terminar(horario maximo)
-WithTimeout: daqui a quanto tempo vai terminar&lt;/p&gt;
+	- WithDeadline: passa o horario final para terminar(horario maximo)
+	- WithTimeout: daqui a quanto tempo vai terminar&lt;/p&gt;
   &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Cancellation Signals: todos que estiverem escutando o contexto sao cancelados
-WithCancel&lt;/p&gt;
+  &lt;li&gt;Cancellation Signals: todos que estiverem escutando o contexto sao cancelados
+    &lt;ul&gt;
+      &lt;li&gt;WithCancel&lt;/li&gt;
+    &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Request-scoped values
-WithValue: definir e mapear valores(em memoria)&lt;/p&gt;
+  &lt;li&gt;Request-scoped values
+    &lt;ul&gt;
+      &lt;li&gt;WithValue: definir e mapear valores(em memoria)&lt;/li&gt;
+    &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
