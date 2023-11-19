@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2023-11-19T18:04:26+00:00</updated>
+ <updated>2023-11-19T18:06:44+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -820,22 +820,20 @@ kubectl scale &lt;span class=&quot;nt&quot;&gt;--replicas&lt;/span&gt;&lt;span c
 
 &lt;h3 id=&quot;3-tipos-de-contexto-em-go&quot;&gt;3 tipos de contexto em Go&lt;/h3&gt;
 
+&lt;p&gt;&lt;strong&gt;Deadlines&lt;/strong&gt;: tempo maximo para o codigo terminar de ser executado(definir o ponto final)&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Deadlines: tempo maximo para o codigo terminar de ser executado(definir o ponto final)
-	- WithDeadline: passa o horario final para terminar(horario maximo)
-	- WithTimeout: daqui a quanto tempo vai terminar&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Cancellation Signals: todos que estiverem escutando o contexto sao cancelados
-    &lt;ul&gt;
-      &lt;li&gt;WithCancel&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Request-scoped values
-    &lt;ul&gt;
-      &lt;li&gt;WithValue: definir e mapear valores(em memoria)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
+  &lt;li&gt;WithDeadline: passa o horario final para terminar(horario maximo)&lt;/li&gt;
+  &lt;li&gt;WithTimeout: daqui a quanto tempo vai terminar&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cancellation Signals&lt;/strong&gt;: todos que estiverem escutando o contexto sao cancelados&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;WithCancel&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Request-scoped values&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;WithValue: definir e mapear valores(em memoria)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;1-controlando-prazos-timeouts&quot;&gt;1. Controlando Prazos (Timeouts):&lt;/h3&gt;
