@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2023-10-28T18:59:42+00:00</updated>
+ <updated>2023-11-19T18:01:14+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -701,6 +701,106 @@ terraform untaint aws_instance.example
  </entry>
  
  <entry>
+   <title>tools/k8s/install-k8s</title>
+   <link href="/2023/11/19/install-k8s.html"/>
+   <updated>2023-11-19T00:00:00+00:00</updated>
+   <id>/2023/11/19/install-k8s</id>
+   <content type="html">&lt;p&gt;Disable swap (pre-req&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo sed&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;/ swap / s/^/#/&apos;&lt;/span&gt; /etc/fstab
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Load kernel modules&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt; | sudo tee /etc/modules-load.d/k8s.conf
+overlay
+br_netfilter
+&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF
+
+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;modprobe overlay
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;modprobe br_netfilter
+
+&lt;span class=&quot;c&quot;&gt;# sysctl params required by setup, params persist across reboots&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt; | sudo tee /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-iptables  = 1
+net.bridge.bridge-nf-call-ip6tables = 1
+net.ipv4.ip_forward                 = 1
+&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF
+
+&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# Apply sysctl params without reboot&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;sysctl &lt;span class=&quot;nt&quot;&gt;--system&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Install container runtime, and k8s components&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get update
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; apt-transport-https ca-certificates curl
+&lt;span class=&quot;nb&quot;&gt;sudo mkdir&lt;/span&gt; /etc/apt/keyrings
+curl &lt;span class=&quot;nt&quot;&gt;-fsSL&lt;/span&gt; https://packages.cloud.google.com/apt/doc/apt-key.gpg | &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;gpg &lt;span class=&quot;nt&quot;&gt;--dearmor&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; /etc/apt/keyrings/kubernetes-archive-keyring.gpg
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;sudo tee&lt;/span&gt; /etc/apt/sources.list.d/kubernetes.list
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get update
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;kubelet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1.26.5-00 &lt;span class=&quot;nv&quot;&gt;kubeadm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1.26.5-00 &lt;span class=&quot;nv&quot;&gt;kubectl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1.26.5-00
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;docker.io
+&lt;span class=&quot;nb&quot;&gt;sudo sed&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;s/ SystemdCgroup = false/ SystemdCgroup = true/&apos;&lt;/span&gt; /etc/containerd/config.toml
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl restart containerd.service
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl restart kubelet.service
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl &lt;span class=&quot;nb&quot;&gt;enable &lt;/span&gt;kubelet.service
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;kubeadm config images pull
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;kubeadm init &lt;span class=&quot;nt&quot;&gt;--pod-network-cidr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;10.10.0.0/16
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Configure k8s access&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/.kube
+&lt;span class=&quot;nb&quot;&gt;sudo cp&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; /etc/kubernetes/admin.conf &lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/.kube/config
+&lt;span class=&quot;nb&quot;&gt;sudo chown&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;:&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-g&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/.kube/config
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Configure calico&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl create &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; https://raw.githubusercontent.com/projectcalico/calico/v3.26.1/manifests/tigera-operator.yaml
+
+curl https://raw.githubusercontent.com/projectcalico/calico/v3.26.1/manifests/custom-resources.yaml &lt;span class=&quot;nt&quot;&gt;-O&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;s/cidr: 192\.168\.0\.0\/16/cidr: 10.10.0.0\/16/g&apos;&lt;/span&gt; custom-resources.yaml
+kubectl create &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; custom-resources.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Configure metallb&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl apply &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; https://raw.githubusercontent.com/metallb/metallb/v0.13.7/config/manifests/metallb-native.yaml
+kubectl get all &lt;span class=&quot;nt&quot;&gt;--namespace&lt;/span&gt; metallb-system
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;ipaddresspool.yaml&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;metallb.io/v1beta1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;IPAddressPool&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;default-pool&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;namespace&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;metallb-system&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;addresses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;192.168.100.240-192.168.1.250&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;l2advertisement.yaml&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;metallb.io/v1beta1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;L2Advertisement&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;default&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;namespace&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;metallb-system&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;ipAddressPools&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;default-pool&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl apply &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; ipaddresspool.yaml
+kubectl apply &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; l2advertisement.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Test cluster k8s and metallb&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl create deployment hello-server &lt;span class=&quot;nt&quot;&gt;--image&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;gcr.io/google-samples/hello-app:1.0
+kubectl expose deployment hello-server &lt;span class=&quot;nt&quot;&gt;--type&lt;/span&gt; LoadBalancer &lt;span class=&quot;nt&quot;&gt;--port&lt;/span&gt; 80 &lt;span class=&quot;nt&quot;&gt;--target-port&lt;/span&gt; 8080
+kubectl scale &lt;span class=&quot;nt&quot;&gt;--replicas&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;3 deployment hello-server
+&lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;i &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;1..5&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do &lt;/span&gt;curl http://192.168.100.240&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>development/golang/context</title>
    <link href="/2023/10/24/context.html"/>
    <updated>2023-10-24T00:00:00+00:00</updated>
@@ -720,21 +820,18 @@ terraform untaint aws_instance.example
 &lt;h3 id=&quot;3-tipos-de-contexto-em-go&quot;&gt;3 tipos de contexto em Go&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Deadlines: tempo maximo para o codigo terminar de ser executado(definir o ponto final)
-    &lt;ul&gt;
-      &lt;li&gt;WithDeadline: passa o horario final para terminar(horario maximo)&lt;/li&gt;
-      &lt;li&gt;WithTimeout: daqui a quanto tempo vai terminar&lt;/li&gt;
-    &lt;/ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Deadlines: tempo maximo para o codigo terminar de ser executado(definir o ponto final)
+WithDeadline: passa o horario final para terminar(horario maximo)
+WithTimeout: daqui a quanto tempo vai terminar&lt;/p&gt;
   &lt;/li&gt;
-  &lt;li&gt;Cancellation Signals: todos que estiverem escutando o contexto sao cancelados
-    &lt;ul&gt;
-      &lt;li&gt;WithCancel&lt;/li&gt;
-    &lt;/ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Cancellation Signals: todos que estiverem escutando o contexto sao cancelados
+WithCancel&lt;/p&gt;
   &lt;/li&gt;
-  &lt;li&gt;Request-scoped values
-    &lt;ul&gt;
-      &lt;li&gt;WithValue: definir e mapear valores(em memoria)&lt;/li&gt;
-    &lt;/ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Request-scoped values
+WithValue: definir e mapear valores(em memoria)&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -1054,108 +1151,109 @@ sudo systemctl stop firewalld
    <id>/2023/10/01/git</id>
    <content type="html">&lt;h2 id=&quot;git&quot;&gt;Git&lt;/h2&gt;
 
-&lt;p&gt;Git foi principalmente escrito na linguagem C. Git foi criado por Linus Torvalds, o mesmo criador do kernel Linux. inus Torvalds começou o desenvolvimento do Git em 2005. Git foi desenvolvido para resolver desafios específicos enfrentados pela comunidade de desenvolvedores de software, especialmente aqueles trabalhando no desenvolvimento do kernel Linux. Eles precisavam de um sistema de controle de versão rápido e eficiente para lidar com o grande volume de código fonte e as contribuições simultâneas de uma grande comunidade global de desenvolvedores. Git foi projetado para ser distribuído, permitindo que os desenvolvedores trabalhassem de forma eficaz em diferentes partes do mundo sem depender de uma única fonte centralizada, o que o tornou fundamental para o desenvolvimento colaborativo de software em grande escala.&lt;/p&gt;
+&lt;p&gt;Git foi principalmente escrito na linguagem C. Git foi criado por Linus Torvalds, o mesmo criador do kernel Linux. Linus Torvalds começou o desenvolvimento do Git em 2005. Git foi desenvolvido para resolver desafios específicos enfrentados pela comunidade de desenvolvedores de software, especialmente aqueles trabalhando no desenvolvimento do kernel Linux. Eles precisavam de um sistema de controle de versão rápido e eficiente para lidar com o grande volume de código fonte e as contribuições simultâneas de uma grande comunidade global de desenvolvedores. Git foi projetado para ser distribuído, permitindo que os desenvolvedores trabalhassem de forma eficaz em diferentes partes do mundo sem depender de uma única fonte centralizada, o que o tornou fundamental para o desenvolvimento colaborativo de software em grande escala.&lt;/p&gt;
 
 &lt;h2 id=&quot;comandos-basicos-git&quot;&gt;Comandos basicos git&lt;/h2&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## Configurar o nome do autor
-git config --global user.name &quot;Seu Nome&quot;
+&lt;p&gt;Configurar&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;##Configurar o nome do autor&lt;/span&gt;
+git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; user.name &lt;span class=&quot;s2&quot;&gt;&quot;Seu Nome&quot;&lt;/span&gt;
 
-## Configurar o email do autor
-git config --global user.email &quot;seuemail@example.com&quot;
+&lt;span class=&quot;c&quot;&gt;# Configurar o email do autor&lt;/span&gt;
+git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; user.email &lt;span class=&quot;s2&quot;&gt;&quot;seuemail@example.com&quot;&lt;/span&gt;
 
-## Verificar o status do repositório
+&lt;span class=&quot;c&quot;&gt;# Verificar o status do repositório&lt;/span&gt;
 git status
 
-# Trabalhando com Alterações:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-## Adicionar mudanças para o próximo commit
+&lt;p&gt;Trabalhando com Alterações&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Adicionar mudanças para o próximo commit&lt;/span&gt;
 git add &amp;lt;nome_do_arquivo&amp;gt;
 
-## Adicionar todas as mudanças
-git add .
+&lt;span class=&quot;c&quot;&gt;# Adicionar todas as mudanças&lt;/span&gt;
+git add &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
 
-## Confirmar as mudanças
-git commit -m &quot;Mensagem do commit&quot;
+&lt;span class=&quot;c&quot;&gt;# Confirmar as mudanças&lt;/span&gt;
+git commit &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Mensagem do commit&quot;&lt;/span&gt;
 
-## Alterar o último commit (se não foi enviado)
-git commit --amend -m &quot;Nova mensagem do commit&quot;
+&lt;span class=&quot;c&quot;&gt;# Alterar o último commit (se não foi enviado)&lt;/span&gt;
+git commit &lt;span class=&quot;nt&quot;&gt;--amend&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Nova mensagem do commit&quot;&lt;/span&gt;
 
-## Verificar alterações não confirmadas
+&lt;span class=&quot;c&quot;&gt;# Verificar alterações não confirmadas&lt;/span&gt;
 git diff
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-# Branches:
-
-## Criar um novo branch
+&lt;p&gt;Trabalhando com Branches&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Criar um novo branch&lt;/span&gt;
 git branch &amp;lt;nome_do_branch&amp;gt;
 
-## Mudar para um branch existente
+&lt;span class=&quot;c&quot;&gt;# Mudar para um branch existente&lt;/span&gt;
 git checkout &amp;lt;nome_do_branch&amp;gt;
 
-## Criar um novo branch e mudar para ele
-git checkout -b &amp;lt;nome_do_branch&amp;gt;
+&lt;span class=&quot;c&quot;&gt;# Criar um novo branch e mudar para ele&lt;/span&gt;
+git checkout &lt;span class=&quot;nt&quot;&gt;-b&lt;/span&gt; &amp;lt;nome_do_branch&amp;gt;
 
-## Listar todos os branches
+&lt;span class=&quot;c&quot;&gt;# Listar todos os branches&lt;/span&gt;
 git branch
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-# Integrando Mudanças:
-
-## Mesclar alterações de um branch para outro
+&lt;p&gt;Integrando Mudanças&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Mesclar alterações de um branch para outro&lt;/span&gt;
 git merge &amp;lt;nome_do_branch&amp;gt;
 
-## Resolver conflitos durante a mesclagem
+&lt;span class=&quot;c&quot;&gt;# Resolver conflitos durante a mesclagem&lt;/span&gt;
 
-# Faça as alterações necessárias nos arquivos
+&lt;span class=&quot;c&quot;&gt;# Faça as alterações necessárias nos arquivos&lt;/span&gt;
 git add &amp;lt;nome_do_arquivo&amp;gt;
-git merge --continue
+git merge &lt;span class=&quot;nt&quot;&gt;--continue&lt;/span&gt;
 
-## Abortar uma mesclagem
-git merge --abort
+&lt;span class=&quot;c&quot;&gt;# Abortar uma mesclagem&lt;/span&gt;
+git merge &lt;span class=&quot;nt&quot;&gt;--abort&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-# Sincronização Remota:
-
-## Adicionar um repositório remoto
+&lt;p&gt;Sincronização Remota&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Adicionar um repositório remoto&lt;/span&gt;
 git remote add &amp;lt;nome_do_remoto&amp;gt; &amp;lt;URL_do_remoto&amp;gt;
 
-## Enviar alterações para um branch remoto
+&lt;span class=&quot;c&quot;&gt;# Enviar alterações para um branch remoto&lt;/span&gt;
 git push &amp;lt;nome_do_remoto&amp;gt; &amp;lt;nome_do_branch&amp;gt;
 
-## Puxar alterações de um branch remoto
+&lt;span class=&quot;c&quot;&gt;# Puxar alterações de um branch remoto&lt;/span&gt;
 git pull &amp;lt;nome_do_remoto&amp;gt; &amp;lt;nome_do_branch&amp;gt;
 
-## Atualizar o repositório local com o remoto
+&lt;span class=&quot;c&quot;&gt;# Atualizar o repositório local com o remoto&lt;/span&gt;
 git fetch &amp;lt;nome_do_remoto&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-# Desfazendo Mudanças:
+&lt;p&gt;Desfazendo Mudanças&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Desfazer mudanças não confirmadas&lt;/span&gt;
+git checkout &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; &amp;lt;nome_do_arquivo&amp;gt;
 
-## Desfazer mudanças não confirmadas
-git checkout -- &amp;lt;nome_do_arquivo&amp;gt;
-
-## Desfazer mudanças confirmadas, criando um novo commit
+&lt;span class=&quot;c&quot;&gt;# Desfazer mudanças confirmadas, criando um novo commit&lt;/span&gt;
 git revert &amp;lt;hash_do_commit&amp;gt;
 
-## Resetar o HEAD para um commit específico
+&lt;span class=&quot;c&quot;&gt;# Resetar o HEAD para um commit específico&lt;/span&gt;
 git reset &amp;lt;hash_do_commit&amp;gt;
 
-## Resetar o HEAD e os arquivos para um commit específico
-git reset --hard &amp;lt;hash_do_commit&amp;gt;
+&lt;span class=&quot;c&quot;&gt;# Resetar o HEAD e os arquivos para um commit específico&lt;/span&gt;
+git reset &lt;span class=&quot;nt&quot;&gt;--hard&lt;/span&gt; &amp;lt;hash_do_commit&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-# Visualizando o Histórico:
-
-## Ver o histórico de commits
+&lt;p&gt;Visualizando o Histórico&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Ver o histórico de commits&lt;/span&gt;
 git log
 
-## Ver um resumo do histórico de commits
-git log --oneline
+&lt;span class=&quot;c&quot;&gt;# Ver um resumo do histórico de commits&lt;/span&gt;
+git log &lt;span class=&quot;nt&quot;&gt;--oneline&lt;/span&gt;
 
-## Ver alterações específicas em um arquivo
-git log -p &amp;lt;nome_do_arquivo&amp;gt;
+&lt;span class=&quot;c&quot;&gt;# Ver alterações específicas em um arquivo&lt;/span&gt;
+git log &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &amp;lt;nome_do_arquivo&amp;gt;
 
-## Verificar quem alterou uma linha específica em um arquivo
+&lt;span class=&quot;c&quot;&gt;# Verificar quem alterou uma linha específica em um arquivo&lt;/span&gt;
 git blame &amp;lt;nome_do_arquivo&amp;gt;
 
-## Criar e aplicar patches
-
+&lt;span class=&quot;c&quot;&gt;# Criar e aplicar patches&lt;/span&gt;
 git format-patch &amp;lt;hash_inicial&amp;gt;..&amp;lt;hash_final&amp;gt;
 git apply &amp;lt;patch_file&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -1169,22 +1267,6 @@ git apply &amp;lt;patch_file&amp;gt;
    <id>/2023/10/01/asdf</id>
    <content type="html">&lt;p&gt;Plugins: &lt;a href=&quot;https://github.com/asdf-vm/asdf-plugins&quot;&gt;asdf-plugins&lt;/a&gt;&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;fd&lt;/li&gt;
-  &lt;li&gt;k6&lt;/li&gt;
-  &lt;li&gt;mysql&lt;/li&gt;
-  &lt;li&gt;neovim&lt;/li&gt;
-  &lt;li&gt;nodejs&lt;/li&gt;
-  &lt;li&gt;shellcheck&lt;/li&gt;
-  &lt;li&gt;teller&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;tilt&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;visidata&lt;/li&gt;
-  &lt;li&gt;kind&lt;/li&gt;
-  &lt;li&gt;diocker-slim&lt;/li&gt;
-&lt;/ul&gt;
-
 &lt;p&gt;Download .NET&lt;/p&gt;
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;asdf plugin-add dotnet-core https://github.com/emersonsoares/asdf-dotnet-core.git
 asdf list all dotnet-core
@@ -1193,6 +1275,12 @@ asdf global dotnet-core 6.0.416
 dotnet &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;
 asdf &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;dotnet-core 6.0.200
 asdf global dotnet-core 6.0.200
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Dowload Nodejs&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+asdf &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;nodejs latest
+asdf global nodejs latest
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Download Java&lt;/p&gt;
@@ -1206,6 +1294,12 @@ asdf global java graalvm-22.3.0+java19
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;asdf plugin add awscli
 asdf &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;awscli latest
 asdf global awscli latest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Download docker-slim&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;asdf plugin add docker-slim
+asdf &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;docker-slim latest
+asdf global docker-slim latest
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Download bat&lt;/p&gt;
@@ -1606,6 +1700,9 @@ docker rename meu-container-nginx meu-container-sagrado
 
 # Mapeamento de volumes entre maquina host e container
 docker run -d -v /tmp:/tmp nginx:latest 
+
+# Mudar entrypoint
+docker run -it --entrypoint sh soumyansh/demo.jar
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;comandos-para-copiar-arquivos-entre-host-e-container&quot;&gt;Comandos para copiar arquivos entre host e container&lt;/h2&gt;

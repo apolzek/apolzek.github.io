@@ -33,6 +33,9 @@ docker rename meu-container-nginx meu-container-sagrado
 
 # Mapeamento de volumes entre maquina host e container
 docker run -d -v /tmp:/tmp nginx:latest 
+
+# Mudar entrypoint
+docker run -it --entrypoint sh soumyansh/demo.jar
 </code></pre></div></div> <h2 id="comandos-para-copiar-arquivos-entre-host-e-container"> Comandos para copiar arquivos entre host e container <a href="#comandos-para-copiar-arquivos-entre-host-e-container">#</a> </h2> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Copiar arquivo do host para o containe
 docker cp /tmp/origin meu-container-nginx:/tmp r
 
