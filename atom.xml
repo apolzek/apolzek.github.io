@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2023-11-19T18:06:44+00:00</updated>
+ <updated>2023-11-23T00:35:52+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -184,6 +184,18 @@ Padrão de arquitetura de software que separa a lógica de apresentação dos da
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/resumao</id>
    <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>development/golang/basicao</title>
+   <link href="/2024/12/01/frameworks.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/frameworks</id>
+   <content type="html">&lt;p&gt;GoFr
+Gin&lt;/p&gt;
+
+&lt;p&gt;https://medium.com/@chaithra.shetty/introducing-gofr-the-go-framework-541252fabc42&lt;/p&gt;
 </content>
  </entry>
  

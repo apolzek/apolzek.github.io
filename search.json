@@ -81,6 +81,14 @@
     } ,
   
     {
+      "title"    : "development/golang/basicao",
+      "category" : "",
+      "tags"     : "go",
+      "url"      : "/2024/12/01/frameworks.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "development/golang/eu-sou-o-crud",
       "category" : "",
       "tags"     : "go, dev",
