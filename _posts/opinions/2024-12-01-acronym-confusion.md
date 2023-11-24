@@ -1,10 +1,13 @@
 ---
 layout: post
 title: opinions/acronym-confusion
-description: 
-summary:
+description: Acronym confusion
+summary: Acronym confusion
 tags:
 ---
+
+
+## Acronym confusion
 
 "Por favor, note que neste artigo, evitarei fazer comparações entre os itens mencionados, concentrando-me em analisá-los individualmente."
 

@@ -6,7 +6,7 @@ summary: Cheatsheet firewalld
 tags: firewalld linux firewall
 ---
 
-## Comandos basicos firewalld
+## Cheatsheet firewalld
 
 Firewalld é um sistema de gerenciamento de firewall dinâmico para sistemas Linux. Ele foi desenvolvido pela Red Hat e introduzido no Fedora 18 em 2013 como uma alternativa ao iptables. O Firewalld foi projetado para oferecer uma interface simplificada para gerenciar regras de firewall e manipular zonas de rede.
 

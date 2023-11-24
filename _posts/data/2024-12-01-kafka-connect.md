@@ -1,8 +1,9 @@
 ---
 layout: post
 title: data/kafka-connect
-description:
-summary:
-tags:
+description: Kafka Connect
+summary: Kafka Connect
+tags: kafka kafka-connect
 ---
 
+## Kafka Connect
