@@ -1,10 +1,10 @@
 [
   
     {
-      "title"    : "tools/k8s/easy-cka",
+      "title"    : "tools/k8s/cka",
       "category" : "",
-      "tags"     : "cka, certification, kubernetes, k8s",
-      "url"      : "/2024/12/01/easy-cka.html",
+      "tags"     : "cka, certification",
+      "url"      : "/2024/12/01/cka.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
@@ -25,79 +25,71 @@
     } ,
   
     {
-      "title"    : "opinions/processos-no-linux",
+      "title"    : "operating-system/processes",
       "category" : "",
-      "tags"     : "",
-      "url"      : "/2024/12/01/processos-no-linux.html",
+      "tags"     : "linux, processes",
+      "url"      : "/2024/12/01/processes.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
     {
       "title"    : "english/tempos-verbais",
       "category" : "",
-      "tags"     : "",
+      "tags"     : "english",
       "url"      : "/2024/12/01/tempos-verbais.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "dev/ruby/basicao",
+      "title"    : "development/ruby/basicao",
       "category" : "",
-      "tags"     : "ruby",
+      "tags"     : "ruby, overview",
       "url"      : "/2024/12/01/basicao.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "dev/python/basicao",
+      "title"    : "development/python/overview",
       "category" : "",
       "tags"     : "python",
-      "url"      : "/2024/12/01/basicao.html",
+      "url"      : "/2024/12/01/overview.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "dev/java/basicao",
+      "title"    : "development/java/overview",
       "category" : "",
-      "tags"     : "java",
-      "url"      : "/2024/12/01/basicao.html",
+      "tags"     : "java, overview",
+      "url"      : "/2024/12/01/overview.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "development/golang/basicao",
+      "title"    : "development/golang/slices",
       "category" : "",
-      "tags"     : "go",
+      "tags"     : "go, slices",
       "url"      : "/2024/12/01/slices.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "development/golang/resumao",
+      "title"    : "development/golang/overview",
       "category" : "",
-      "tags"     : "go",
-      "url"      : "/2024/12/01/resumao.html",
+      "tags"     : "go, overview",
+      "url"      : "/2024/12/01/overview.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "development/golang/basicao",
+      "title"    : "development/golang/frameworks",
       "category" : "",
-      "tags"     : "go",
+      "tags"     : "go, frameworks",
       "url"      : "/2024/12/01/frameworks.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "development/golang/eu-sou-o-crud",
-      "category" : "",
-      "tags"     : "go, dev",
-      "url"      : "/2024/12/01/eu-sou-o-crud.html",
-      "date"     : "2024-12-01 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "dev/padroes-de-projeto/factory",
+      "title"    : "development/padroes-de-projeto/factory",
       "category" : "",
       "tags"     : "factory",
       "url"      : "/2024/12/01/factory.html",
@@ -105,10 +97,18 @@
     } ,
   
     {
-      "title"    : "dev/estrutura-de-dados/filas",
+      "title"    : "development/estrutura-de-dados/pilha",
+      "category" : "",
+      "tags"     : "pilha",
+      "url"      : "/2024/12/01/pilha.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "development/estrutura-de-dados/fila",
       "category" : "",
       "tags"     : "fila, queue",
-      "url"      : "/2024/12/01/filas.html",
+      "url"      : "/2024/12/01/fila.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
@@ -139,7 +139,7 @@
     {
       "title"    : "data/kafka",
       "category" : "",
-      "tags"     : "",
+      "tags"     : "kafka",
       "url"      : "/2024/12/01/kafka.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
@@ -147,16 +147,8 @@
     {
       "title"    : "data/kafka-connect",
       "category" : "",
-      "tags"     : "",
+      "tags"     : "kafka, kafka-connect",
       "url"      : "/2024/12/01/kafka-connect.html",
-      "date"     : "2024-12-01 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "aws/dominando-o-iam",
-      "category" : "",
-      "tags"     : "iam, aws, security",
-      "url"      : "/2024/12/01/dominando-o-iam-copy.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
@@ -171,7 +163,7 @@
     {
       "title"    : "cheatsheet/python",
       "category" : "",
-      "tags"     : "ansible",
+      "tags"     : "python",
       "url"      : "/2024/12/01/python.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
@@ -179,7 +171,7 @@
     {
       "title"    : "cheatsheet/lpi2",
       "category" : "",
-      "tags"     : "ansible",
+      "tags"     : "lpi2, linux",
       "url"      : "/2024/12/01/lpi2.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
@@ -187,7 +179,7 @@
     {
       "title"    : "cheatsheet/lpi1",
       "category" : "",
-      "tags"     : "ansible",
+      "tags"     : "lpi1, linux",
       "url"      : "/2024/12/01/lpi1.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
@@ -217,18 +209,18 @@
     } ,
   
     {
-      "title"    : "cloud/aws/aws-iam",
+      "title"    : "aws/iam",
       "category" : "",
       "tags"     : "iam, aws, security",
-      "url"      : "/2024/10/25/aws-iam.html",
+      "url"      : "/2024/10/25/iam.html",
       "date"     : "2024-10-25 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "cloud/aws/aws-iam",
+      "title"    : "cloud/aws/eks",
       "category" : "",
-      "tags"     : "iam, aws, security",
-      "url"      : "/2024/10/25/aws-eks.html",
+      "tags"     : "eks, aws, kubernetes",
+      "url"      : "/2024/10/25/eks.html",
       "date"     : "2024-10-25 00:00:00 +0000"
     } ,
   
@@ -299,7 +291,7 @@
     {
       "title"    : "development/golang/generics",
       "category" : "",
-      "tags"     : "go, generics, dev",
+      "tags"     : "go, generics",
       "url"      : "/2023/08/25/generics.html",
       "date"     : "2023-08-25 00:00:00 +0000"
     } ,
@@ -313,10 +305,10 @@
     } ,
   
     {
-      "title"    : "tools/git/deletar-historico-commits-github",
+      "title"    : "tools/git/delete-all-commit-history-github",
       "category" : "",
       "tags"     : "git, history, github",
-      "url"      : "/2023/07/28/deletar-historico-commits-github.html",
+      "url"      : "/2023/07/28/delete-all-commit-history-github.html",
       "date"     : "2023-07-28 00:00:00 +0000"
     } ,
   

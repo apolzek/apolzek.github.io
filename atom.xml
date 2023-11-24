@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2023-11-24T21:10:48+00:00</updated>
+ <updated>2023-11-24T22:03:27+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -13,11 +13,11 @@
 
  
  <entry>
-   <title>tools/k8s/easy-cka</title>
-   <link href="/2024/12/01/easy-cka.html"/>
+   <title>tools/k8s/cka</title>
+   <link href="/2024/12/01/cka.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/easy-cka</id>
-   <content type="html">
+   <id>/2024/12/01/cka</id>
+   <content type="html">&lt;h2 id=&quot;cka&quot;&gt;CKA&lt;/h2&gt;
 </content>
  </entry>
  
@@ -26,7 +26,7 @@
    <link href="/2024/12/01/sre-brasil-x-sre-na-gringa.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/sre-brasil-x-sre-na-gringa</id>
-   <content type="html">
+   <content type="html">&lt;h2 id=&quot;sre-brasil-x-sre-na-gringa&quot;&gt;SRE Brasil x SRE na gringa&lt;/h2&gt;
 </content>
  </entry>
  
@@ -35,7 +35,9 @@
    <link href="/2024/12/01/acronym-confusion.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/acronym-confusion</id>
-   <content type="html">&lt;p&gt;“Por favor, note que neste artigo, evitarei fazer comparações entre os itens mencionados, concentrando-me em analisá-los individualmente.”&lt;/p&gt;
+   <content type="html">&lt;h2 id=&quot;acronym-confusion&quot;&gt;Acronym confusion&lt;/h2&gt;
+
+&lt;p&gt;“Por favor, note que neste artigo, evitarei fazer comparações entre os itens mencionados, concentrando-me em analisá-los individualmente.”&lt;/p&gt;
 
 &lt;p&gt;SOLID, KISS, DRY, YAGNI, TDD&lt;/p&gt;
 
@@ -85,10 +87,10 @@ Padrão de arquitetura de software que separa a lógica de apresentação dos da
  </entry>
  
  <entry>
-   <title>opinions/processos-no-linux</title>
-   <link href="/2024/12/01/processos-no-linux.html"/>
+   <title>operating-system/processes</title>
+   <link href="/2024/12/01/processes.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/processos-no-linux</id>
+   <id>/2024/12/01/processes</id>
    <content type="html">
 </content>
  </entry>
@@ -103,7 +105,7 @@ Padrão de arquitetura de software que separa a lógica de apresentação dos da
  </entry>
  
  <entry>
-   <title>dev/ruby/basicao</title>
+   <title>development/ruby/basicao</title>
    <link href="/2024/12/01/basicao.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/basicao</id>
@@ -112,29 +114,31 @@ Padrão de arquitetura de software que separa a lógica de apresentação dos da
  </entry>
  
  <entry>
-   <title>dev/python/basicao</title>
-   <link href="/2024/12/01/basicao.html"/>
+   <title>development/python/overview</title>
+   <link href="/2024/12/01/overview.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/basicao</id>
-   <content type="html">
+   <id>/2024/12/01/overview</id>
+   <content type="html">&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 </content>
  </entry>
  
  <entry>
-   <title>dev/java/basicao</title>
-   <link href="/2024/12/01/basicao.html"/>
+   <title>development/java/overview</title>
+   <link href="/2024/12/01/overview.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/basicao</id>
-   <content type="html">
+   <id>/2024/12/01/overview</id>
+   <content type="html">&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 </content>
  </entry>
  
  <entry>
-   <title>development/golang/basicao</title>
+   <title>development/golang/slices</title>
    <link href="/2024/12/01/slices.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/slices</id>
-   <content type="html">&lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;
+   <content type="html">&lt;h2 id=&quot;slices&quot;&gt;Slices&lt;/h2&gt;
+
+&lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;fmt&quot;&lt;/span&gt;
 
@@ -179,20 +183,22 @@ Padrão de arquitetura de software que separa a lógica de apresentação dos da
  </entry>
  
  <entry>
-   <title>development/golang/resumao</title>
-   <link href="/2024/12/01/resumao.html"/>
+   <title>development/golang/overview</title>
+   <link href="/2024/12/01/overview.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/resumao</id>
+   <id>/2024/12/01/overview</id>
    <content type="html">
 </content>
  </entry>
  
  <entry>
-   <title>development/golang/basicao</title>
+   <title>development/golang/frameworks</title>
    <link href="/2024/12/01/frameworks.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/frameworks</id>
-   <content type="html">&lt;p&gt;GoFr
+   <content type="html">&lt;h2 id=&quot;frameworks&quot;&gt;Frameworks&lt;/h2&gt;
+
+&lt;p&gt;GoFr
 Gin&lt;/p&gt;
 
 &lt;p&gt;https://medium.com/@chaithra.shetty/introducing-gofr-the-go-framework-541252fabc42&lt;/p&gt;
@@ -200,67 +206,29 @@ Gin&lt;/p&gt;
  </entry>
  
  <entry>
-   <title>development/golang/eu-sou-o-crud</title>
-   <link href="/2024/12/01/eu-sou-o-crud.html"/>
-   <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/eu-sou-o-crud</id>
-   <content type="html">&lt;p&gt;https://github.com/apolzek/rinha-backend-2023-go
-https://github.com/apolzek/score-day
-https://github.com/apolzek/go-backend-clean-architecture
-https://github.com/apolzek/mvc-golang-with-gin
-https://github.com/apolzek/golang-API
-https://github.com/apolzek/go-crud-live
-https://github.com/apolzek/go-microservice-example
-https://github.com/apolzek/golang-mongodb-api
-https://github.com/apolzek/fiber-mongo-api
-https://github.com/apolzek/UserCRUDApp-Golang&lt;/p&gt;
-
-&lt;h2 id=&quot;cruds-em-golang&quot;&gt;CRUDs em Golang&lt;/h2&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;repositories&lt;/th&gt;
-      &lt;th&gt;topics&lt;/th&gt;
-      &lt;th&gt;link&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Dado 1&lt;/td&gt;
-      &lt;td&gt;Dado 2&lt;/td&gt;
-      &lt;td&gt;Dado 3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Dado 4&lt;/td&gt;
-      &lt;td&gt;Dado 5&lt;/td&gt;
-      &lt;td&gt;Dado 6&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Dado 7&lt;/td&gt;
-      &lt;td&gt;Dado 8&lt;/td&gt;
-      &lt;td&gt;Dado 9&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>dev/padroes-de-projeto/factory</title>
+   <title>development/padroes-de-projeto/factory</title>
    <link href="/2024/12/01/factory.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/factory</id>
-   <content type="html">
+   <content type="html">&lt;h2 id=&quot;factory&quot;&gt;Factory&lt;/h2&gt;
 </content>
  </entry>
  
  <entry>
-   <title>dev/estrutura-de-dados/filas</title>
-   <link href="/2024/12/01/filas.html"/>
+   <title>development/estrutura-de-dados/pilha</title>
+   <link href="/2024/12/01/pilha.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/filas</id>
-   <content type="html">
+   <id>/2024/12/01/pilha</id>
+   <content type="html">&lt;h2 id=&quot;pilha&quot;&gt;Pilha&lt;/h2&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>development/estrutura-de-dados/fila</title>
+   <link href="/2024/12/01/fila.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/fila</id>
+   <content type="html">&lt;h2 id=&quot;fila&quot;&gt;Fila&lt;/h2&gt;
 </content>
  </entry>
  
@@ -269,7 +237,7 @@ https://github.com/apolzek/UserCRUDApp-Golang&lt;/p&gt;
    <link href="/2024/12/01/redis.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/redis</id>
-   <content type="html">
+   <content type="html">&lt;h2 id=&quot;redis&quot;&gt;Redis&lt;/h2&gt;
 </content>
  </entry>
  
@@ -278,7 +246,7 @@ https://github.com/apolzek/UserCRUDApp-Golang&lt;/p&gt;
    <link href="/2024/12/01/rabbitmq.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/rabbitmq</id>
-   <content type="html">
+   <content type="html">&lt;h2 id=&quot;rabbitmq&quot;&gt;RabbitMQ&lt;/h2&gt;
 </content>
  </entry>
  
@@ -287,7 +255,7 @@ https://github.com/apolzek/UserCRUDApp-Golang&lt;/p&gt;
    <link href="/2024/12/01/postgres.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/postgres</id>
-   <content type="html">
+   <content type="html">&lt;h2 id=&quot;postgres&quot;&gt;Postgres&lt;/h2&gt;
 </content>
  </entry>
  
@@ -296,7 +264,7 @@ https://github.com/apolzek/UserCRUDApp-Golang&lt;/p&gt;
    <link href="/2024/12/01/kafka.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/kafka</id>
-   <content type="html">
+   <content type="html">&lt;h2 id=&quot;kafka&quot;&gt;Kafka&lt;/h2&gt;
 </content>
  </entry>
  
@@ -305,73 +273,7 @@ https://github.com/apolzek/UserCRUDApp-Golang&lt;/p&gt;
    <link href="/2024/12/01/kafka-connect.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/kafka-connect</id>
-   <content type="html">
-</content>
- </entry>
- 
- <entry>
-   <title>aws/dominando-o-iam</title>
-   <link href="/2024/12/01/dominando-o-iam-copy.html"/>
-   <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/dominando-o-iam copy</id>
-   <content type="html">&lt;p&gt;A IAM (Identity and Access Management) é um serviço fundamental da AWS (Amazon Web Services) que permite gerenciar de forma segura o acesso aos recursos da AWS. Com a IAM, você pode criar e gerenciar usuários, grupos e funções, além de definir permissões detalhadas para controlar quem tem acesso a quais recursos e ações dentro da sua conta da AWS. Aqui estão alguns conceitos importantes e exemplos práticos de uso da IAM:&lt;/p&gt;
-
-&lt;h4 id=&quot;usuários&quot;&gt;Usuários&lt;/h4&gt;
-
-&lt;p&gt;Um usuário é uma identidade que você cria para alguém ou algo (como uma aplicação) que precisa acessar sua conta da AWS. Cada usuário possui um nome de usuário exclusivo e credenciais de login. Aqui está um exemplo de criação de um usuário na IAM:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;aws iam create-user --user-name myuser
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;grupos&quot;&gt;Grupos&lt;/h4&gt;
-
-&lt;p&gt;Um grupo é um conjunto de permissões que você pode aplicar a vários usuários. Você atribui políticas (conjuntos de permissões) aos grupos, e os usuários que pertencem ao grupo herdam essas permissões. Aqui está um exemplo de criação de um grupo na IAM e associação de um usuário a ele:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;aws iam create-group --group-name mygroup
-aws iam add-user-to-group --group-name mygroup --user-name myuser
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;políticas&quot;&gt;Políticas&lt;/h4&gt;
-
-&lt;p&gt;As políticas definem as permissões de acesso em formato JSON. Elas especificam o que um usuário, grupo ou função pode fazer com recursos específicos. Aqui está um exemplo de criação de uma política que permite a leitura de um bucket S3:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
-    &quot;Version&quot;: &quot;2012-10-17&quot;,
-    &quot;Statement&quot;: [
-        {
-            &quot;Effect&quot;: &quot;Allow&quot;,
-            &quot;Action&quot;: &quot;s3:GetObject&quot;,
-            &quot;Resource&quot;: &quot;arn:aws:s3:::my-bucket/*&quot;
-        }
-    ]
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;funções&quot;&gt;Funções&lt;/h4&gt;
-
-&lt;p&gt;As funções permitem conceder permissões temporárias a serviços da AWS ou entidades confiáveis. Isso é útil para permitir que serviços acessem outros recursos em seu nome, sem a necessidade de compartilhar credenciais de acesso direto. Aqui está um exemplo de criação de uma função que permite que uma instância EC2 acesse um bucket S3:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;aws iam create-role --role-name myrole --assume-role-policy-document file://trust-policy.json
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;assume-role-policy-document&quot;&gt;Assume Role Policy Document&lt;/h4&gt;
-
-&lt;p&gt;O documento de política de confiança é um JSON que define quais entidades ou serviços podem assumir uma função. Aqui está um exemplo simplificado:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
-    &quot;Version&quot;: &quot;2012-10-17&quot;,
-    &quot;Statement&quot;: [
-        {
-            &quot;Effect&quot;: &quot;Allow&quot;,
-            &quot;Principal&quot;: {
-                &quot;Service&quot;: &quot;ec2.amazonaws.com&quot;
-            },
-            &quot;Action&quot;: &quot;sts:AssumeRole&quot;
-        }
-    ]
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+   <content type="html">&lt;h2 id=&quot;kafka-connect&quot;&gt;Kafka Connect&lt;/h2&gt;
 </content>
  </entry>
  
@@ -380,7 +282,9 @@ aws iam add-user-to-group --group-name mygroup --user-name myuser
    <link href="/2024/12/01/ufw.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/ufw</id>
-   <content type="html">&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Habilitar o Firewall
+   <content type="html">&lt;h2 id=&quot;cheatsheet-ufw&quot;&gt;Cheatsheet ufw&lt;/h2&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Habilitar o Firewall
 sudo ufw enable
 
 # Desabilitar o Firewall
@@ -401,6 +305,9 @@ sudo ufw allow OpenSSH
 # Negar uma Porta (por exemplo, porta 22/tcp)
 sudo ufw deny 22/tcp
 
+# Limitar a taxa de conexões para um determinado serviço (por exemplo, SSH)
+sudo ufw limit ssh
+
 # Excluir uma Regra (por exemplo, excluir a regra que permite o tráfego na porta 80/tcp)
 sudo ufw delete allow 80/tcp
 
@@ -411,6 +318,9 @@ sudo ufw logging off
 # Regras de IPv6 (substitua allow ou deny por allow6 ou deny6 para IPv6)
 sudo ufw allow6 80/tcp
 sudo ufw deny6 22/tcp
+
+# Permitir tráfego de uma porta UDP específica
+sudo ufw allow 53/udp
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
@@ -420,7 +330,7 @@ sudo ufw deny6 22/tcp
    <link href="/2024/12/01/python.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/python</id>
-   <content type="html">
+   <content type="html">&lt;h2 id=&quot;cheatsheet-python&quot;&gt;Cheatsheet python&lt;/h2&gt;
 </content>
  </entry>
  
@@ -429,7 +339,7 @@ sudo ufw deny6 22/tcp
    <link href="/2024/12/01/lpi2.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/lpi2</id>
-   <content type="html">
+   <content type="html">&lt;h2 id=&quot;cheatsheet-lpi2&quot;&gt;Cheatsheet lpi2&lt;/h2&gt;
 </content>
  </entry>
  
@@ -438,7 +348,7 @@ sudo ufw deny6 22/tcp
    <link href="/2024/12/01/lpi1.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/lpi1</id>
-   <content type="html">
+   <content type="html">&lt;h2 id=&quot;cheatsheet-lpi1&quot;&gt;Cheatsheet lpi1&lt;/h2&gt;
 </content>
  </entry>
  
@@ -447,7 +357,7 @@ sudo ufw deny6 22/tcp
    <link href="/2024/12/01/kubectl.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/kubectl</id>
-   <content type="html">
+   <content type="html">&lt;h2 id=&quot;cheatsheet-kubectl&quot;&gt;Cheatsheet kubectl&lt;/h2&gt;
 </content>
  </entry>
  
@@ -456,7 +366,7 @@ sudo ufw deny6 22/tcp
    <link href="/2024/12/01/ansible.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/ansible</id>
-   <content type="html">
+   <content type="html">&lt;h2 id=&quot;cheatsheet-ansible&quot;&gt;Cheatsheet ansible&lt;/h2&gt;
 </content>
  </entry>
  
@@ -595,11 +505,11 @@ sudo ufw deny6 22/tcp
  </entry>
  
  <entry>
-   <title>cloud/aws/aws-iam</title>
-   <link href="/2024/10/25/aws-iam.html"/>
+   <title>aws/iam</title>
+   <link href="/2024/10/25/iam.html"/>
    <updated>2024-10-25T00:00:00+00:00</updated>
-   <id>/2024/10/25/aws-iam</id>
-   <content type="html">&lt;h1 id=&quot;aws-iam&quot;&gt;AWS IAM&lt;/h1&gt;
+   <id>/2024/10/25/iam</id>
+   <content type="html">&lt;h2 id=&quot;iam&quot;&gt;IAM&lt;/h2&gt;
 
 &lt;p&gt;A IAM (Identity and Access Management) é um serviço fundamental da AWS (Amazon Web Services) que permite gerenciar de forma segura o acesso aos recursos da AWS. Com a IAM, você pode criar e gerenciar usuários, grupos e funções, além de definir permissões detalhadas para controlar quem tem acesso a quais recursos e ações dentro da sua conta da AWS. Aqui estão alguns conceitos importantes e exemplos práticos de uso da IAM:&lt;/p&gt;
 
@@ -659,140 +569,15 @@ aws iam add-user-to-group --group-name mygroup --user-name myuser
     ]
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;exemplo-de-policys&quot;&gt;Exemplo de Policys&lt;/h4&gt;
-
-&lt;p&gt;Esta política permite listar todas as instâncias EC2 em uma região específica&lt;/p&gt;
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2012-10-17&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Statement&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Sid&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ListEC2Instances&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Effect&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Allow&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Action&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ec2:DescribeInstances&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Resource&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;*&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Esta política permite listar, criar, excluir e gerenciar buckets no Amazon S3&lt;/p&gt;
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2012-10-17&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Statement&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Sid&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ManageS3Buckets&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Effect&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Allow&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Action&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;s3:*&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Resource&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-                &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;arn:aws:s3:::example-bucket&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-                &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;arn:aws:s3:::example-bucket/*&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
  
  <entry>
-   <title>cloud/aws/aws-iam</title>
-   <link href="/2024/10/25/aws-eks.html"/>
+   <title>cloud/aws/eks</title>
+   <link href="/2024/10/25/eks.html"/>
    <updated>2024-10-25T00:00:00+00:00</updated>
-   <id>/2024/10/25/aws-eks</id>
-   <content type="html">&lt;h1 id=&quot;aws-iam&quot;&gt;AWS IAM&lt;/h1&gt;
-
-&lt;p&gt;A IAM (Identity and Access Management) é um serviço fundamental da AWS (Amazon Web Services) que permite gerenciar de forma segura o acesso aos recursos da AWS. Com a IAM, você pode criar e gerenciar usuários, grupos e funções, além de definir permissões detalhadas para controlar quem tem acesso a quais recursos e ações dentro da sua conta da AWS. Aqui estão alguns conceitos importantes e exemplos práticos de uso da IAM:&lt;/p&gt;
-
-&lt;h4 id=&quot;usuários&quot;&gt;Usuários&lt;/h4&gt;
-
-&lt;p&gt;Um usuário é uma identidade que você cria para alguém ou algo (como uma aplicação) que precisa acessar sua conta da AWS. Cada usuário possui um nome de usuário exclusivo e credenciais de login. Aqui está um exemplo de criação de um usuário na IAM:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;aws iam create-user --user-name myuser
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;grupos&quot;&gt;Grupos&lt;/h4&gt;
-
-&lt;p&gt;Um grupo é um conjunto de permissões que você pode aplicar a vários usuários. Você atribui políticas (conjuntos de permissões) aos grupos, e os usuários que pertencem ao grupo herdam essas permissões. Aqui está um exemplo de criação de um grupo na IAM e associação de um usuário a ele:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;aws iam create-group --group-name mygroup
-aws iam add-user-to-group --group-name mygroup --user-name myuser
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;políticas&quot;&gt;Políticas&lt;/h4&gt;
-
-&lt;p&gt;As políticas definem as permissões de acesso em formato JSON. Elas especificam o que um usuário, grupo ou função pode fazer com recursos específicos. Aqui está um exemplo de criação de uma política que permite a leitura de um bucket S3:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
-    &quot;Version&quot;: &quot;2012-10-17&quot;,
-    &quot;Statement&quot;: [
-        {
-            &quot;Effect&quot;: &quot;Allow&quot;,
-            &quot;Action&quot;: &quot;s3:GetObject&quot;,
-            &quot;Resource&quot;: &quot;arn:aws:s3:::my-bucket/*&quot;
-        }
-    ]
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;funções&quot;&gt;Funções&lt;/h4&gt;
-
-&lt;p&gt;As funções permitem conceder permissões temporárias a serviços da AWS ou entidades confiáveis. Isso é útil para permitir que serviços acessem outros recursos em seu nome, sem a necessidade de compartilhar credenciais de acesso direto. Aqui está um exemplo de criação de uma função que permite que uma instância EC2 acesse um bucket S3:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;aws iam create-role --role-name myrole --assume-role-policy-document file://trust-policy.json
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;assume-role-policy-document&quot;&gt;Assume Role Policy Document&lt;/h4&gt;
-
-&lt;p&gt;O documento de política de confiança é um JSON que define quais entidades ou serviços podem assumir uma função. Aqui está um exemplo simplificado:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
-    &quot;Version&quot;: &quot;2012-10-17&quot;,
-    &quot;Statement&quot;: [
-        {
-            &quot;Effect&quot;: &quot;Allow&quot;,
-            &quot;Principal&quot;: {
-                &quot;Service&quot;: &quot;ec2.amazonaws.com&quot;
-            },
-            &quot;Action&quot;: &quot;sts:AssumeRole&quot;
-        }
-    ]
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;exemplo-de-policys&quot;&gt;Exemplo de Policys&lt;/h4&gt;
-
-&lt;p&gt;Esta política permite listar todas as instâncias EC2 em uma região específica&lt;/p&gt;
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2012-10-17&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Statement&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Sid&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ListEC2Instances&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Effect&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Allow&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Action&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ec2:DescribeInstances&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Resource&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;*&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Esta política permite listar, criar, excluir e gerenciar buckets no Amazon S3&lt;/p&gt;
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2012-10-17&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Statement&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Sid&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ManageS3Buckets&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Effect&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Allow&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Action&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;s3:*&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Resource&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-                &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;arn:aws:s3:::example-bucket&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-                &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;arn:aws:s3:::example-bucket/*&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+   <id>/2024/10/25/eks</id>
+   <content type="html">&lt;h1 id=&quot;eks&quot;&gt;EKS&lt;/h1&gt;
 </content>
  </entry>
  
@@ -801,7 +586,9 @@ aws iam add-user-to-group --group-name mygroup --user-name myuser
    <link href="/2024/09/02/terraform.html"/>
    <updated>2024-09-02T00:00:00+00:00</updated>
    <id>/2024/09/02/terraform</id>
-   <content type="html">&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;terraform init
+   <content type="html">&lt;h2 id=&quot;cheatsheet-terraform&quot;&gt;Cheatsheet terraform&lt;/h2&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;terraform init
 terraform validate
 terraform fmt
 terraform plan
@@ -851,7 +638,9 @@ terraform untaint aws_instance.example
    <link href="/2023/11/19/install-k8s.html"/>
    <updated>2023-11-19T00:00:00+00:00</updated>
    <id>/2023/11/19/install-k8s</id>
-   <content type="html">&lt;p&gt;Disable swap (pre-req&lt;/p&gt;
+   <content type="html">&lt;h2 id=&quot;install-k8s&quot;&gt;Install k8s&lt;/h2&gt;
+
+&lt;p&gt;Disable swap (pre-req&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo sed&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;/ swap / s/^/#/&apos;&lt;/span&gt; /etc/fstab
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -1245,7 +1034,7 @@ kubectl scale &lt;span class=&quot;nt&quot;&gt;--replicas&lt;/span&gt;&lt;span c
    <link href="/2023/10/24/firewalld.html"/>
    <updated>2023-10-24T00:00:00+00:00</updated>
    <id>/2023/10/24/firewalld</id>
-   <content type="html">&lt;h2 id=&quot;comandos-basicos-firewalld&quot;&gt;Comandos basicos firewalld&lt;/h2&gt;
+   <content type="html">&lt;h2 id=&quot;cheatsheet-firewalld&quot;&gt;Cheatsheet firewalld&lt;/h2&gt;
 
 &lt;p&gt;Firewalld é um sistema de gerenciamento de firewall dinâmico para sistemas Linux. Ele foi desenvolvido pela Red Hat e introduzido no Fedora 18 em 2013 como uma alternativa ao iptables. O Firewalld foi projetado para oferecer uma interface simplificada para gerenciar regras de firewall e manipular zonas de rede.&lt;/p&gt;
 
@@ -1296,14 +1085,14 @@ sudo systemctl stop firewalld
    <link href="/2023/10/01/git.html"/>
    <updated>2023-10-01T00:00:00+00:00</updated>
    <id>/2023/10/01/git</id>
-   <content type="html">&lt;h2 id=&quot;git&quot;&gt;Git&lt;/h2&gt;
+   <content type="html">&lt;h2 id=&quot;cheatsheet-git&quot;&gt;Cheatsheet git&lt;/h2&gt;
 
 &lt;p&gt;Git foi principalmente escrito na linguagem C. Git foi criado por Linus Torvalds, o mesmo criador do kernel Linux. Linus Torvalds começou o desenvolvimento do Git em 2005. Git foi desenvolvido para resolver desafios específicos enfrentados pela comunidade de desenvolvedores de software, especialmente aqueles trabalhando no desenvolvimento do kernel Linux. Eles precisavam de um sistema de controle de versão rápido e eficiente para lidar com o grande volume de código fonte e as contribuições simultâneas de uma grande comunidade global de desenvolvedores. Git foi projetado para ser distribuído, permitindo que os desenvolvedores trabalhassem de forma eficaz em diferentes partes do mundo sem depender de uma única fonte centralizada, o que o tornou fundamental para o desenvolvimento colaborativo de software em grande escala.&lt;/p&gt;
 
 &lt;h2 id=&quot;comandos-basicos-git&quot;&gt;Comandos basicos git&lt;/h2&gt;
 
 &lt;p&gt;Configurar&lt;/p&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;##Configurar o nome do autor&lt;/span&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Configurar o nome do autor&lt;/span&gt;
 git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; user.name &lt;span class=&quot;s2&quot;&gt;&quot;Seu Nome&quot;&lt;/span&gt;
 
 &lt;span class=&quot;c&quot;&gt;# Configurar o email do autor&lt;/span&gt;
@@ -1412,7 +1201,9 @@ git apply &amp;lt;patch_file&amp;gt;
    <link href="/2023/10/01/asdf.html"/>
    <updated>2023-10-01T00:00:00+00:00</updated>
    <id>/2023/10/01/asdf</id>
-   <content type="html">&lt;p&gt;Plugins: &lt;a href=&quot;https://github.com/asdf-vm/asdf-plugins&quot;&gt;asdf-plugins&lt;/a&gt;&lt;/p&gt;
+   <content type="html">&lt;h2 id=&quot;cheatsheet-asdf&quot;&gt;Cheatsheet asdf&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Plugins&lt;/strong&gt;: &lt;a href=&quot;https://github.com/asdf-vm/asdf-plugins&quot;&gt;asdf-plugins&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Download .NET&lt;/p&gt;
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;asdf plugin-add dotnet-core https://github.com/emersonsoares/asdf-dotnet-core.git
@@ -1534,7 +1325,7 @@ asdf global fzf latest
    <link href="/2023/10/01/apt.html"/>
    <updated>2023-10-01T00:00:00+00:00</updated>
    <id>/2023/10/01/apt</id>
-   <content type="html">&lt;h2 id=&quot;apt-advanced-package-tool&quot;&gt;APT (Advanced Package Tool)&lt;/h2&gt;
+   <content type="html">&lt;h2 id=&quot;cheatsheet-apt-advanced-package-tool&quot;&gt;Cheatsheet apt (Advanced Package Tool)&lt;/h2&gt;
 
 &lt;p&gt;Advanced Package Tool (or APT), the main command-line package manager for Debian and its derivatives. It provides command-line tools for searching, managing and querying information about packages, as well as low-level access to all features provided by the libapt-pkg and libapt-inst libraries which higher-level package managers can depend upon.&lt;/p&gt;
 
@@ -1807,7 +1598,7 @@ less /var/log/apt/history.log
    <link href="/2023/08/12/docker.html"/>
    <updated>2023-08-12T00:00:00+00:00</updated>
    <id>/2023/08/12/docker</id>
-   <content type="html">&lt;h2 id=&quot;docker&quot;&gt;Docker&lt;/h2&gt;
+   <content type="html">&lt;h2 id=&quot;cheatsheet-docker&quot;&gt;Cheatsheet docker&lt;/h2&gt;
 
 &lt;p&gt;O Docker é uma plataforma de código aberto que automatiza o processo de implantação de aplicativos dentro de contêineres, fornecendo uma maneira fácil de criar, implantar e executar aplicativos usando contêineres. O projeto Docker foi lançado inicialmente em 2013 por Solomon Hykes, como um projeto interno da dotCloud, uma plataforma de hospedagem de aplicativos.&lt;/p&gt;
 
@@ -1983,33 +1774,35 @@ docker inspect --format=&apos;&apos; container-name # get image
  </entry>
  
  <entry>
-   <title>tools/git/deletar-historico-commits-github</title>
-   <link href="/2023/07/28/deletar-historico-commits-github.html"/>
+   <title>tools/git/delete-all-commit-history-github</title>
+   <link href="/2023/07/28/delete-all-commit-history-github.html"/>
    <updated>2023-07-28T00:00:00+00:00</updated>
-   <id>/2023/07/28/deletar-historico-commits-github</id>
-   <content type="html">&lt;p&gt;Deleting the .git folder may cause problems in your git repository. If you want to delete all your commit history but keep the code in its current state, it is very safe to do it as in the following:&lt;/p&gt;
+   <id>/2023/07/28/delete-all-commit-history-github</id>
+   <content type="html">&lt;h2 id=&quot;delete-all-commit-history-on-github&quot;&gt;Delete all commit history on Github&lt;/h2&gt;
 
-&lt;p&gt;1 - Checkout&lt;/p&gt;
+&lt;p&gt;Deleting the .git folder may cause problems in your git repository. If you want to delete all your commit history but keep the code in its current state, it is very safe to do it as in the following:&lt;/p&gt;
+
+&lt;p&gt;1) Checkout&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git checkout --orphan latest_branch&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;2 - Add all the files&lt;/p&gt;
+&lt;p&gt;2) Add all the files&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git add -A&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;3 - Commit the changes&lt;/p&gt;
+&lt;p&gt;3) Commit the changes&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git commit -am &quot;commit message&quot;&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;4 - Delete the branch&lt;/p&gt;
+&lt;p&gt;4) Delete the branch&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git branch -D main&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;5 - Rename the current branch to main&lt;/p&gt;
+&lt;p&gt;5) Rename the current branch to main&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git branch -m main&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;6 - Finally, force update your repository&lt;/p&gt;
+&lt;p&gt;6) Finally, force update your repository&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git push -f origin main&lt;/code&gt;&lt;/p&gt;
 
@@ -2024,7 +1817,9 @@ docker inspect --format=&apos;&apos; container-name # get image
    <link href="/2023/07/27/vim.html"/>
    <updated>2023-07-27T00:00:00+00:00</updated>
    <id>/2023/07/27/vim</id>
-   <content type="html">&lt;table&gt;
+   <content type="html">&lt;h2 id=&quot;cheatsheet-vim&quot;&gt;Cheatsheet vim&lt;/h2&gt;
+
+&lt;table&gt;
   &lt;thead&gt;
     &lt;tr&gt;
       &lt;th style=&quot;text-align: center&quot;&gt;Comando&lt;/th&gt;
