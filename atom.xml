@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2023-12-06T22:30:16+00:00</updated>
+ <updated>2023-12-06T22:37:36+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -1203,8 +1203,6 @@ git apply &amp;lt;patch_file&amp;gt;
    <id>/2023/10/01/asdf</id>
    <content type="html">&lt;h2 id=&quot;cheatsheet-asdf&quot;&gt;Cheatsheet asdf&lt;/h2&gt;
 
-&lt;p&gt;$ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;curl -s  https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/_posts/cheatsheet/2023-10-01-asdf.md | grep asdf | tail -n +7 | sh&lt;/code&gt;&lt;/p&gt;
-
 &lt;p&gt;&lt;strong&gt;Plugins&lt;/strong&gt;: &lt;a href=&quot;https://github.com/asdf-vm/asdf-plugins&quot;&gt;asdf-plugins&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Download .NET&lt;/p&gt;
@@ -1318,6 +1316,11 @@ asdf global helm-docs latest
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;asdf plugin add fzf https://github.com/kompiro/asdf-fzf.git
 asdf &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;fzf latest
 asdf global fzf latest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;run-all&quot;&gt;Run all&lt;/h2&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;Y3VybCAtcyBodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vYXBvbHplay9hcG9semVrLmdpdGh1Yi5pby9tYWluL19wb3N0cy9jaGVhdHNoZWV0LzIwMjMtMTAtMDEtYXNkZi5tZCB8IGdyZXAgYXNkZiB8IHRhaWwgLW4gKzcg&apos;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;base64&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; | sh
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
