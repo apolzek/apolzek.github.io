@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-01-02T23:08:45+00:00</updated>
+ <updated>2024-01-02T23:47:33+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -91,15 +91,6 @@ Padrão de arquitetura de software que separa a lógica de apresentação dos da
    <link href="/2024/12/01/processes.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/processes</id>
-   <content type="html">
-</content>
- </entry>
- 
- <entry>
-   <title>english/tempos-verbais</title>
-   <link href="/2024/12/01/tempos-verbais.html"/>
-   <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/tempos-verbais</id>
    <content type="html">
 </content>
  </entry>
@@ -634,6 +625,24 @@ terraform untaint aws_instance.example
  </entry>
  
  <entry>
+   <title>opinions/self-assessment</title>
+   <link href="/2024/08/01/self-assessment.html"/>
+   <updated>2024-08-01T00:00:00+00:00</updated>
+   <id>/2024/08/01/self-assessment</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>english/learning-english</title>
+   <link href="/2024/01/20/learning-english.html"/>
+   <updated>2024-01-20T00:00:00+00:00</updated>
+   <id>/2024/01/20/learning-english</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
    <title>tools/my-toolbox</title>
    <link href="/2024/01/10/my-toolbox.html"/>
    <updated>2024-01-10T00:00:00+00:00</updated>
@@ -1115,9 +1124,19 @@ kubectl scale &lt;span class=&quot;nt&quot;&gt;--replicas&lt;/span&gt;&lt;span c
    <id>/2023/10/24/firewalld</id>
    <content type="html">&lt;h2 id=&quot;cheatsheet-firewalld&quot;&gt;Cheatsheet firewalld&lt;/h2&gt;
 
-&lt;p&gt;Firewalld é um sistema de gerenciamento de firewall dinâmico para sistemas Linux. Ele foi desenvolvido pela Red Hat e introduzido no Fedora 18 em 2013 como uma alternativa ao iptables. O Firewalld foi projetado para oferecer uma interface simplificada para gerenciar regras de firewall e manipular zonas de rede.&lt;/p&gt;
+&lt;p&gt;Firewalld, introduced in Fedora 15, serves as a dynamic firewall solution for Linux, supplanting iptables and gaining widespread adoption in distributions like CentOS and RHEL. It brings several key features to the table.&lt;/p&gt;
 
-&lt;p&gt;Presente em distros como Red Hat Enterprise Linux (RHEL), CentOS, Fedora, Oracle Linux.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Dynamic Configuration&lt;/strong&gt;: Firewalld allows for runtime changes without disrupting active connections, a departure from the static nature of iptables.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Zone-Based Configuration&lt;/strong&gt;: The firewall organizes connections into zones such as public and internal, simplifying rule management based on the desired security levels for different network environments.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Rich Rule Sets&lt;/strong&gt;: Firewalld supports rich rule sets, providing a more flexible approach to rule definitions compared to its predecessor iptables.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Application Layer Filtering&lt;/strong&gt;: By integrating with D-Bus, Firewalld enables application layer filtering, allowing applications to define and manage their own firewall rules.&lt;/p&gt;
+
+&lt;p&gt;In terms of use cases, Firewalld finds its primary application in enhancing system security by controlling incoming and outgoing network traffic, safeguarding against unauthorized access. Its zone-based approach allows for tailored security measures on different network interfaces. Service level filtering simplifies rule management by allowing rule definitions based on services. The dynamic adaptability of Firewalld makes it suitable for environments with frequently changing network configurations. Additionally, its D-Bus integration facilitates application-specific firewall rule management, meeting the specific network requirements of various applications.&lt;/p&gt;
+
+&lt;p&gt;In summary, Firewalld stands as a versatile and dynamic firewall solution for Linux, offering enhanced security, flexibility in rule management, and application integration capabilities in dynamic network environments.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Habilitar o Firewalld
 sudo systemctl start firewalld
@@ -1166,7 +1185,7 @@ sudo systemctl stop firewalld
    <id>/2023/10/01/git</id>
    <content type="html">&lt;h2 id=&quot;cheatsheet-git&quot;&gt;Cheatsheet git&lt;/h2&gt;
 
-&lt;p&gt;Git foi principalmente escrito na linguagem C. Git foi criado por Linus Torvalds, o mesmo criador do kernel Linux. Linus Torvalds começou o desenvolvimento do Git em 2005. Git foi desenvolvido para resolver desafios específicos enfrentados pela comunidade de desenvolvedores de software, especialmente aqueles trabalhando no desenvolvimento do kernel Linux. Eles precisavam de um sistema de controle de versão rápido e eficiente para lidar com o grande volume de código fonte e as contribuições simultâneas de uma grande comunidade global de desenvolvedores. Git foi projetado para ser distribuído, permitindo que os desenvolvedores trabalhassem de forma eficaz em diferentes partes do mundo sem depender de uma única fonte centralizada, o que o tornou fundamental para o desenvolvimento colaborativo de software em grande escala.&lt;/p&gt;
+&lt;p&gt;Git was written mainly in C language. Git was created by Linus Torvalds, the same creator of the Linux kernel. Linus Torvalds began developing Git in 2005. Git was developed to solve specific challenges faced by the software developer community, especially those working on Linux kernel development. They needed a fast and efficient version control system to handle the large volume of source code and simultaneous contributions from a large global community of developers. Git was designed to be distributed, allowing developers to work effectively in different parts of the world without relying on a single centralized source, which has become critical for large-scale collaborative software development.&lt;/p&gt;
 
 &lt;h2 id=&quot;comandos-basicos-git&quot;&gt;Comandos basicos git&lt;/h2&gt;
 
@@ -1397,9 +1416,10 @@ asdf &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;fzf latest
 asdf global fzf latest
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;run-all&quot;&gt;Run all&lt;/h2&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;Y3VybCAtcyBodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vYXBvbHplay9hcG9semVrLmdpdGh1Yi5pby9tYWluL19wb3N0cy9jaGVhdHNoZWV0LzIwMjMtMTAtMDEtYXNkZi5tZCB8IGdyZXAgYXNkZiB8IHRhaWwgLW4gKzgg&apos;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;base64&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; | sh
+&lt;p&gt;Download websocat&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;asdf plugin add websocat
+asdf &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;websocat latest
+asdf global websocat latest
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
@@ -1809,7 +1829,7 @@ docker search --filter is-official=true --filter stars=3 busybox
 docker load -i nome_da_imagem.tar
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;main-docker-files-inside-the-machine&quot;&gt;Main docker files inside the machine&lt;/h2&gt;
+&lt;h2 id=&quot;docker-on-my-local-machine&quot;&gt;Docker on my local machine&lt;/h2&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/usr/bin/docker 
 /etc/docker 
 /usr/libexec/docker 
@@ -1947,6 +1967,8 @@ docker inspect --format=&apos;&apos; container-name # get image
    <updated>2023-07-27T00:00:00+00:00</updated>
    <id>/2023/07/27/vim</id>
    <content type="html">&lt;h2 id=&quot;cheatsheet-vim&quot;&gt;Cheatsheet vim&lt;/h2&gt;
+
+&lt;p&gt;Vim, the successor to Vi, was created by &lt;strong&gt;Bram Moolenaar&lt;/strong&gt; in 1991. It aimed to enhance and extend the functionalities of Vi while maintaining compatibility. Vim introduced numerous improvements, including syntax highlighting, multiple undo/redo, visual mode enhancements, and support for various programming languages. One of Vim’s strengths is its extensibility. It supports plugins and has a vibrant community that contributes to its continuous improvement.&lt;/p&gt;
 
 &lt;table&gt;
   &lt;thead&gt;

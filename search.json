@@ -33,14 +33,6 @@
     } ,
   
     {
-      "title"    : "english/tempos-verbais",
-      "category" : "",
-      "tags"     : "english",
-      "url"      : "/2024/12/01/tempos-verbais.html",
-      "date"     : "2024-12-01 00:00:00 +0000"
-    } ,
-  
-    {
       "title"    : "development/ruby/basicao",
       "category" : "",
       "tags"     : "ruby, overview",
@@ -230,6 +222,22 @@
       "tags"     : "terraform",
       "url"      : "/2024/09/02/terraform.html",
       "date"     : "2024-09-02 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "opinions/self-assessment",
+      "category" : "",
+      "tags"     : "self-assessment",
+      "url"      : "/2024/08/01/self-assessment.html",
+      "date"     : "2024-08-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "english/learning-english",
+      "category" : "",
+      "tags"     : "english",
+      "url"      : "/2024/01/20/learning-english.html",
+      "date"     : "2024-01-20 00:00:00 +0000"
     } ,
   
     {
