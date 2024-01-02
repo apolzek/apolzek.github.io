@@ -8,9 +8,19 @@ tags: firewalld linux firewall
 
 ## Cheatsheet firewalld
 
-Firewalld é um sistema de gerenciamento de firewall dinâmico para sistemas Linux. Ele foi desenvolvido pela Red Hat e introduzido no Fedora 18 em 2013 como uma alternativa ao iptables. O Firewalld foi projetado para oferecer uma interface simplificada para gerenciar regras de firewall e manipular zonas de rede.
+Firewalld, introduced in Fedora 15, serves as a dynamic firewall solution for Linux, supplanting iptables and gaining widespread adoption in distributions like CentOS and RHEL. It brings several key features to the table. 
 
-Presente em distros como Red Hat Enterprise Linux (RHEL), CentOS, Fedora, Oracle Linux. 
+**Dynamic Configuration**: Firewalld allows for runtime changes without disrupting active connections, a departure from the static nature of iptables.
+
+**Zone-Based Configuration**: The firewall organizes connections into zones such as public and internal, simplifying rule management based on the desired security levels for different network environments.
+
+**Rich Rule Sets**: Firewalld supports rich rule sets, providing a more flexible approach to rule definitions compared to its predecessor iptables.
+
+**Application Layer Filtering**: By integrating with D-Bus, Firewalld enables application layer filtering, allowing applications to define and manage their own firewall rules.
+
+In terms of use cases, Firewalld finds its primary application in enhancing system security by controlling incoming and outgoing network traffic, safeguarding against unauthorized access. Its zone-based approach allows for tailored security measures on different network interfaces. Service level filtering simplifies rule management by allowing rule definitions based on services. The dynamic adaptability of Firewalld makes it suitable for environments with frequently changing network configurations. Additionally, its D-Bus integration facilitates application-specific firewall rule management, meeting the specific network requirements of various applications.
+
+In summary, Firewalld stands as a versatile and dynamic firewall solution for Linux, offering enhanced security, flexibility in rule management, and application integration capabilities in dynamic network environments.
 
 ```
 # Habilitar o Firewalld
