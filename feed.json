@@ -620,6 +620,27 @@
         },
     
         {
+            "id": "/2024/01/10/my-toolbox.html",
+            "title": "tools/my-toolbox",
+            "summary": "My toolbox",
+            "content_text": "My toolboxMy environment            Tool      Description                  Docker      Platform for developing, shipping, and running applications in containers.              Git      Distributed version control system for tracking changes in source code during software development.              VS Code      Lightweight and powerful code editor developed by Microsoft with support for various programming languages.      Productive environment            Tool      Description                  Kubernetes      Open-source container orchestration platform for automating deployment, scaling, and management of containerized applications.              Apache Kafka      Distributed event streaming platform for building real-time data pipelines and streaming applications.              PostgreSQL      Powerful, open-source relational database system known for its reliability and robust feature set.              Terraform      Infrastructure as Code (IaC) tool for building, changing, and versioning infrastructure efficiently.              Ansible      Open-source automation tool for configuration management, application deployment, and task automation.              MongoDB      NoSQL database that provides high performance, scalability, and flexibility for handling unstructured data.              Jenkins      Open-source automation server for building, testing, and deploying software.              Nginx      Web server and reverse proxy server known for its high performance, scalability, and ease of configuration.      ",
+            "content_html": "<h2 id=\"my-toolbox\">My toolbox</h2><h3 id=\"my-environment\">My environment</h3><table>  <thead>    <tr>      <th>Tool</th>      <th>Description</th>    </tr>  </thead>  <tbody>    <tr>      <td>Docker</td>      <td>Platform for developing, shipping, and running applications in containers.</td>    </tr>    <tr>      <td>Git</td>      <td>Distributed version control system for tracking changes in source code during software development.</td>    </tr>    <tr>      <td>VS Code</td>      <td>Lightweight and powerful code editor developed by Microsoft with support for various programming languages.</td>    </tr>  </tbody></table><h3 id=\"productive-environment\">Productive environment</h3><table>  <thead>    <tr>      <th>Tool</th>      <th>Description</th>    </tr>  </thead>  <tbody>    <tr>      <td>Kubernetes</td>      <td>Open-source container orchestration platform for automating deployment, scaling, and management of containerized applications.</td>    </tr>    <tr>      <td>Apache Kafka</td>      <td>Distributed event streaming platform for building real-time data pipelines and streaming applications.</td>    </tr>    <tr>      <td>PostgreSQL</td>      <td>Powerful, open-source relational database system known for its reliability and robust feature set.</td>    </tr>    <tr>      <td>Terraform</td>      <td>Infrastructure as Code (IaC) tool for building, changing, and versioning infrastructure efficiently.</td>    </tr>    <tr>      <td>Ansible</td>      <td>Open-source automation tool for configuration management, application deployment, and task automation.</td>    </tr>    <tr>      <td>MongoDB</td>      <td>NoSQL database that provides high performance, scalability, and flexibility for handling unstructured data.</td>    </tr>    <tr>      <td>Jenkins</td>      <td>Open-source automation server for building, testing, and deploying software.</td>    </tr>    <tr>      <td>Nginx</td>      <td>Web server and reverse proxy server known for its high performance, scalability, and ease of configuration.</td>    </tr>  </tbody></table>",
+            "url": "/2024/01/10/my-toolbox.html",
+            
+            
+            
+            
+            
+            "date_published": "2024-01-10T00:00:00+00:00",
+            "date_modified": "2024-01-10T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
             "id": "/2023/11/19/install-k8s.html",
             "title": "tools/k8s/install-k8s",
             "summary": "Install k8s",
@@ -738,27 +759,6 @@
             
             "date_published": "2023-10-01T00:00:00+00:00",
             "date_modified": "2023-10-01T00:00:00+00:00",
-            
-                "author": 
-                ""
-                
-            
-        },
-    
-        {
-            "id": "/2023/08/26/logs.html",
-            "title": "development/golang/logs",
-            "summary": "Logs em golang",
-            "content_text": "Logs",
-            "content_html": "<h2 id=\"logs\">Logs</h2>",
-            "url": "/2023/08/26/logs.html",
-            
-            
-            
-            "tags": ["go","golang","logs"],
-            
-            "date_published": "2023-08-26T00:00:00+00:00",
-            "date_modified": "2023-08-26T00:00:00+00:00",
             
                 "author": 
                 ""

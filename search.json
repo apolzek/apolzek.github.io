@@ -233,6 +233,14 @@
     } ,
   
     {
+      "title"    : "tools/my-toolbox",
+      "category" : "",
+      "tags"     : "tools",
+      "url"      : "/2024/01/10/my-toolbox.html",
+      "date"     : "2024-01-10 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "tools/k8s/install-k8s",
       "category" : "",
       "tags"     : "cka, kubernetes, k8s",

@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-01-02T22:55:25+00:00</updated>
+ <updated>2024-01-02T23:08:45+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -630,6 +630,85 @@ terraform untaint aws_instance.example
 &lt;p&gt;&lt;strong&gt;terraform taint&lt;/strong&gt;: Este comando marca um recurso como “sujo” no estado, o que faz com que o Terraform o reconstrua na próxima vez que você executar o terraform apply.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;terraform untaint&lt;/strong&gt;: Este comando remove a marcação de “sujeira” de um recurso no estado.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>tools/my-toolbox</title>
+   <link href="/2024/01/10/my-toolbox.html"/>
+   <updated>2024-01-10T00:00:00+00:00</updated>
+   <id>/2024/01/10/my-toolbox</id>
+   <content type="html">&lt;h2 id=&quot;my-toolbox&quot;&gt;My toolbox&lt;/h2&gt;
+
+&lt;h3 id=&quot;my-environment&quot;&gt;My environment&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Tool&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Docker&lt;/td&gt;
+      &lt;td&gt;Platform for developing, shipping, and running applications in containers.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Git&lt;/td&gt;
+      &lt;td&gt;Distributed version control system for tracking changes in source code during software development.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;VS Code&lt;/td&gt;
+      &lt;td&gt;Lightweight and powerful code editor developed by Microsoft with support for various programming languages.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;productive-environment&quot;&gt;Productive environment&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Tool&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Kubernetes&lt;/td&gt;
+      &lt;td&gt;Open-source container orchestration platform for automating deployment, scaling, and management of containerized applications.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Apache Kafka&lt;/td&gt;
+      &lt;td&gt;Distributed event streaming platform for building real-time data pipelines and streaming applications.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;PostgreSQL&lt;/td&gt;
+      &lt;td&gt;Powerful, open-source relational database system known for its reliability and robust feature set.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Terraform&lt;/td&gt;
+      &lt;td&gt;Infrastructure as Code (IaC) tool for building, changing, and versioning infrastructure efficiently.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Ansible&lt;/td&gt;
+      &lt;td&gt;Open-source automation tool for configuration management, application deployment, and task automation.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;MongoDB&lt;/td&gt;
+      &lt;td&gt;NoSQL database that provides high performance, scalability, and flexibility for handling unstructured data.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Jenkins&lt;/td&gt;
+      &lt;td&gt;Open-source automation server for building, testing, and deploying software.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Nginx&lt;/td&gt;
+      &lt;td&gt;Web server and reverse proxy server known for its high performance, scalability, and ease of configuration.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 </content>
  </entry>
  
@@ -1416,16 +1495,16 @@ less /var/log/apt/history.log
    <id>/2023/08/25/generics</id>
    <content type="html">&lt;h2 id=&quot;generics&quot;&gt;Generics&lt;/h2&gt;
 
-&lt;p&gt;Resumindo Generics.. normalmente criamos uma variável de um tipo específico e em algum momento colocamos um valor dentro dela respeitando esse tipo. Quando utilizamos generics fazemos o inverso, onde recebemos um valor sem ter um tipo pré-definido e em algum momento podemos especifica-lo(normalmente no momento de uso).&lt;/p&gt;
+&lt;p&gt;Generics in Go is a programming language feature introduced to enhance the flexibility and reusability of code. The primary goal is to allow developers to write functions and data structures that can operate on different data types without sacrificing type safety. With the introduction of generics, Go enables the creation of functions and data structures that are not tied to a specific data type, allowing for more versatile and reusable code. This is particularly beneficial when dealing with algorithms and data structures that need to work with various types of data. Generics in Go are implemented using type parameters, allowing developers to define functions and data structures that can work with any type. This reduces code duplication and promotes cleaner, more modular code. Developers can use generics to write more flexible and concise code, as functions and data structures can be written once and applied to different types without sacrificing type safety.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Generics&lt;/strong&gt; tem tudo haver com &lt;strong&gt;Constraints e Interfaces&lt;/strong&gt;. Antes da versão 1.18(alguma coisa) para fazer o tipo Any era utilizado interface vazia, representado por &lt;em&gt;interface{}&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Generics&lt;/strong&gt; have everything to do with &lt;strong&gt;Constraints and Interfaces&lt;/strong&gt;. Before version 1.18(something), to create the Any type, an empty interface was used, represented by &lt;em&gt;interface{}&lt;/em&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;interface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{})&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;before-generics-existed&quot;&gt;Before generics existed&lt;/h3&gt;
 
-&lt;p&gt;Para descobrir o tipo, era utilizado o &lt;strong&gt;switch&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;To discover the type, a &lt;strong&gt;switch&lt;/strong&gt; statement was used:&lt;/p&gt;
 
 &lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;
 
@@ -1609,7 +1688,8 @@ less /var/log/apt/history.log
 
 &lt;p&gt;Containers are encapsulated, isolated environments that include an application and its dependencies, ensuring consistency across different computing environments. Unlike traditional virtualization, which involves running multiple operating systems on a hypervisor, containers share the host operating system’s kernel. This makes them lightweight, faster to start, and more resource-efficient.&lt;/p&gt;
 
-&lt;h2 id=&quot;comandos-basicos-para-containers&quot;&gt;Comandos basicos para containers&lt;/h2&gt;
+&lt;h2 id=&quot;basic-commands-for-containers&quot;&gt;Basic commands for containers&lt;/h2&gt;
+
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; # Criacao container em background
 docker run -d --name meu-container nginx:latest
 
@@ -1650,7 +1730,7 @@ docker run -d -v /tmp:/tmp nginx:latest
 docker run -it --entrypoint sh soumyansh/demo.jar
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;comandos-para-copiar-arquivos-entre-host-e-container&quot;&gt;Comandos para copiar arquivos entre host e container&lt;/h2&gt;
+&lt;h2 id=&quot;commands-to-copy-files-between-host-and-container&quot;&gt;Commands to copy files between host and container&lt;/h2&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Copiar arquivo do host para o containe
 docker cp /tmp/origin meu-container-nginx:/tmp r
 
@@ -1661,7 +1741,7 @@ echo &quot;by: apolzek&quot; &amp;gt;&amp;gt; /tmp/whoami ; docker cp /tmp/whoam
 docker cp meu-container-nginx:/tmp/whoami 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;comandos-para-visualisar-e-limitar-recursos&quot;&gt;Comandos para visualisar e limitar recursos&lt;/h2&gt;
+&lt;h2 id=&quot;commands-to-view-and-limit-resources&quot;&gt;Commands to view and limit resources&lt;/h2&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Exibir um stream contínuo de estatísticas de uso de recursos de containers ativos
 docker stats
 
@@ -1681,7 +1761,7 @@ docker update --cpus 2 --memory 1024m --memory-swap 1024m nginx-do-bem # altera 
 docker update --cpus=&quot;.5&quot; nginx-do-bem # altera apenas liomite de CPU
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;remover-todas-as-imagens-containers-ou-volumes&quot;&gt;Remover todas as imagens, containers ou volumes&lt;/h2&gt;
+&lt;h2 id=&quot;remove-all-images-containers-or-volumes&quot;&gt;Remove all images, containers or volumes&lt;/h2&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Limpeza dos containers e volumes associados
 docker system prune -a --volumes # 
 
@@ -1695,7 +1775,7 @@ docker rm -f $(docker ps -aq)
 docker container rm -f $(docker container ls -qa); for i in $(docker volume ls | awk &apos;{print $2}&apos; | sed 1d); do docker volume rm -f $i; done
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;comandos-basicos-para-build&quot;&gt;Comandos basicos para build&lt;/h2&gt;
+&lt;h2 id=&quot;basic-build-commands&quot;&gt;Basic build commands&lt;/h2&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Este comando é usado para construir uma imagem Docker a partir de um arquivo Dockerfile localizado no caminho especificado
 docker build -t minha-imagem:latest /caminho/do/Dockerfile
 
@@ -1706,7 +1786,7 @@ docker rmi minha-imagem:latest
 docker build -f Dockerfile.debug .
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;comandos-basicos-para-imagens&quot;&gt;Comandos basicos para imagens&lt;/h2&gt;
+&lt;h2 id=&quot;basic-commands-for-images&quot;&gt;Basic commands for images&lt;/h2&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker image build
 docker image history
 docker image import
@@ -1724,12 +1804,12 @@ docker search --filter=stars=3 --no-trunc busybox
 docker search --filter is-official=true --filter stars=3 busybox
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;converter-imagem-para-arquivo-e-depois-importar-novamente&quot;&gt;Converter imagem para arquivo e depois importar novamente&lt;/h2&gt;
+&lt;h2 id=&quot;convert-image-to-file-and-then-import-again&quot;&gt;Convert image to file and then import again&lt;/h2&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker save -o nome_da_imagem.tar nome_da_imagem
 docker load -i nome_da_imagem.tar
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;principais-arquivos-docker-dentro-da-maquina&quot;&gt;Principais arquivos docker dentro da maquina&lt;/h2&gt;
+&lt;h2 id=&quot;main-docker-files-inside-the-machine&quot;&gt;Main docker files inside the machine&lt;/h2&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/usr/bin/docker 
 /etc/docker 
 /usr/libexec/docker 
