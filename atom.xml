@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2023-12-06T22:41:37+00:00</updated>
+ <updated>2024-01-02T22:55:25+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -1605,7 +1605,9 @@ less /var/log/apt/history.log
    <id>/2023/08/12/docker</id>
    <content type="html">&lt;h2 id=&quot;cheatsheet-docker&quot;&gt;Cheatsheet docker&lt;/h2&gt;
 
-&lt;p&gt;O Docker é uma plataforma de código aberto que automatiza o processo de implantação de aplicativos dentro de contêineres, fornecendo uma maneira fácil de criar, implantar e executar aplicativos usando contêineres. O projeto Docker foi lançado inicialmente em 2013 por Solomon Hykes, como um projeto interno da dotCloud, uma plataforma de hospedagem de aplicativos.&lt;/p&gt;
+&lt;p&gt;Docker is a powerful platform that has transformed the way software is developed, deployed, and managed. At its core, Docker utilizes containers, lightweight and portable units that package an application along with its dependencies and runtime environment. This revolutionary technology has streamlined the software development lifecycle, enhancing efficiency, scalability, and consistency across various environments.&lt;/p&gt;
+
+&lt;p&gt;Containers are encapsulated, isolated environments that include an application and its dependencies, ensuring consistency across different computing environments. Unlike traditional virtualization, which involves running multiple operating systems on a hypervisor, containers share the host operating system’s kernel. This makes them lightweight, faster to start, and more resource-efficient.&lt;/p&gt;
 
 &lt;h2 id=&quot;comandos-basicos-para-containers&quot;&gt;Comandos basicos para containers&lt;/h2&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; # Criacao container em background
@@ -1775,6 +1777,48 @@ docker inspect container-name # inspect container
 docker inspect --format=&apos;&apos; container-name # get ip
 docker inspect --format=&apos;&apos; container-name # get image
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;docker-kernel-features&quot;&gt;Docker Kernel Features&lt;/h2&gt;
+
+&lt;h3 id=&quot;namespaces&quot;&gt;Namespaces&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Purpose:&lt;/strong&gt; Provides process isolation by creating an isolated environment for each container.
+&lt;strong&gt;How Docker Uses It:&lt;/strong&gt; Utilizes namespaces, including PID (Process ID) namespaces, to isolate containers at the process level.&lt;/p&gt;
+
+&lt;h3 id=&quot;control-groups-cgroups&quot;&gt;Control Groups (cgroups)&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Purpose:&lt;/strong&gt; Allows resource limiting, prioritization, and isolation of system resources like CPU, memory, disk I/O, and network bandwidth.
+&lt;strong&gt;How Docker Uses It:&lt;/strong&gt; Leverages cgroups to control and limit the resources allocated to containers, preventing resource contention.&lt;/p&gt;
+
+&lt;h3 id=&quot;union-file-systems-unionfs&quot;&gt;Union File Systems (UnionFS)&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Purpose:&lt;/strong&gt; Combines multiple file systems into a single view, facilitating layered container file systems.
+&lt;strong&gt;How Docker Uses It:&lt;/strong&gt; Utilizes UnionFS to create container images through layers, optimizing storage space and enabling efficient image distribution.&lt;/p&gt;
+
+&lt;h3 id=&quot;seccomp-secure-computing-mode&quot;&gt;Seccomp (Secure Computing Mode)&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Purpose:&lt;/strong&gt; Provides a method for specifying a filter for system calls, enhancing security.
+&lt;strong&gt;How Docker Uses It:&lt;/strong&gt; Implements Seccomp profiles to restrict the system calls available to containers, reducing security risks.&lt;/p&gt;
+
+&lt;h3 id=&quot;capabilities&quot;&gt;Capabilities&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Purpose:&lt;/strong&gt; Offers fine-grained privileges that can be assigned to processes.
+&lt;strong&gt;How Docker Uses It:&lt;/strong&gt; Assigns necessary capabilities to containerized processes, minimizing potential security vulnerabilities.&lt;/p&gt;
+
+&lt;h3 id=&quot;apparmor-and-selinux&quot;&gt;AppArmor and SELinux&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Purpose:&lt;/strong&gt; Mandatory Access Control (MAC) mechanisms that restrict process actions, enhancing security.
+&lt;strong&gt;How Docker Uses It:&lt;/strong&gt; Configurable to work with security modules like AppArmor or SELinux for an additional layer of security.&lt;/p&gt;
+
+&lt;h3 id=&quot;overlay-network-driver&quot;&gt;Overlay Network Driver&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Purpose:&lt;/strong&gt; Enables communication between containers running on different hosts in a cluster.
+&lt;strong&gt;How Docker Uses It:&lt;/strong&gt; Implements overlay network drivers to create virtual networks spanning multiple hosts, facilitating distributed container communication.&lt;/p&gt;
+
+&lt;h3 id=&quot;iptables-and-ip-masquerading&quot;&gt;iptables and IP Masquerading&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Purpose:&lt;/strong&gt; iptables configures Linux kernel packet filtering rules, and IP Masquerading enables Network Address Translation (NAT).
+&lt;strong&gt;How Docker Uses It:&lt;/strong&gt; Uses iptables for network address translation, allowing containers to communicate externally using the host machine’s IP address.&lt;/p&gt;
 </content>
  </entry>
  
