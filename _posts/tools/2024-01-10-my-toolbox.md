@@ -15,6 +15,21 @@ tags: tools
 | Docker             | Platform for developing, shipping, and running applications in containers. |
 | Git                | Distributed version control system for tracking changes in source code during software development. |
 | VS Code            | Lightweight and powerful code editor developed by Microsoft with support for various programming languages. |
+| tailspin           | A log file highlighter |
+| vim                |
+| Slack              |
+| Anki               |
+| OpenLens           |
+| Spotify            |
+| HexChat            | 
+| DBeaver            |
+| gitg               |
+| Chrome             |
+| Firefox            |
+| Bruno              |
+| asdf               |
+| HTTPie             |
+| Virtualbox         |
 
 ### Productive environment
 
