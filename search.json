@@ -9,14 +9,6 @@
     } ,
   
     {
-      "title"    : "opinions/sre-brasil-x-sre-na-gringa",
-      "category" : "",
-      "tags"     : "",
-      "url"      : "/2024/12/01/sre-brasil-x-sre-na-gringa.html",
-      "date"     : "2024-12-01 00:00:00 +0000"
-    } ,
-  
-    {
       "title"    : "opinions/acronym-confusion",
       "category" : "",
       "tags"     : "",
@@ -28,7 +20,15 @@
       "title"    : "operating-system/processes",
       "category" : "",
       "tags"     : "linux, processes",
-      "url"      : "/2024/12/01/processes.html",
+      "url"      : "/2024/12/01/linux-processes.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "operating-system/processes",
+      "category" : "",
+      "tags"     : "linux, processes",
+      "url"      : "/2024/12/01/linux-network.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
@@ -61,14 +61,6 @@
       "category" : "",
       "tags"     : "go, slices",
       "url"      : "/2024/12/01/slices.html",
-      "date"     : "2024-12-01 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "development/golang/overview",
-      "category" : "",
-      "tags"     : "go, overview",
-      "url"      : "/2024/12/01/overview.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
@@ -244,8 +236,16 @@
       "title"    : "tools/my-toolbox",
       "category" : "",
       "tags"     : "tools",
-      "url"      : "/2024/01/10/my-toolbox.html",
-      "date"     : "2024-01-10 00:00:00 +0000"
+      "url"      : "/2024/01/05/my-toolbox.html",
+      "date"     : "2024-01-05 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "development/golang/overview",
+      "category" : "",
+      "tags"     : "go, overview",
+      "url"      : "/2024/01/05/overview.html",
+      "date"     : "2024-01-05 00:00:00 +0000"
     } ,
   
     {
