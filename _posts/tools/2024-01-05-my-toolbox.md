@@ -30,6 +30,7 @@ tags: tools
 | asdf               |
 | HTTPie             |
 | Virtualbox         |
+| visidata           | https://www.visidata.org/install/
 
 ### Productive environment
 
