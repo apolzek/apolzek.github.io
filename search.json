@@ -225,6 +225,14 @@
     } ,
   
     {
+      "title"    : "development/golang/closures",
+      "category" : "",
+      "tags"     : "go, closures",
+      "url"      : "/2024/01/28/closures.html",
+      "date"     : "2024-01-28 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "english/learning-english",
       "category" : "",
       "tags"     : "english",
