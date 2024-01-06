@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-01-06T17:50:16+00:00</updated>
+ <updated>2024-01-06T17:57:54+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -937,6 +937,108 @@ terraform untaint aws_instance.example
 &lt;/table&gt;
 
 &lt;h3 id=&quot;extensions-for-visual-studio-code&quot;&gt;Extensions for Visual Studio Code&lt;/h3&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>operating-system/linux-kernel-params</title>
+   <link href="/2024/01/05/linux-kernel-params.html"/>
+   <updated>2024-01-05T00:00:00+00:00</updated>
+   <id>/2024/01/05/linux-kernel-params</id>
+   <content type="html">&lt;h2 id=&quot;linux-kernel-params&quot;&gt;Linux Kernel Params&lt;/h2&gt;
+
+&lt;p&gt;Para ajustar os parâmetros do kernel no Linux, você pode usar o comando &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sysctl&lt;/code&gt; para modificar configurações em tempo de execução. Para tornar as alterações permanentes, adicione as configurações ao arquivo de configuração &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/sysctl.conf&lt;/code&gt; ou a um arquivo em &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/sysctl.d/&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Aqui estão os comandos para alterar cada um dos parâmetros mencionados, junto com uma breve descrição do que cada um faz:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;fs.file-max:&lt;/strong&gt; Limite o número máximo de descritores de arquivos para o sistema.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sysctl &lt;span class=&quot;nt&quot;&gt;-w&lt;/span&gt; fs.file-max&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;6815744
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;kernel.sem:&lt;/strong&gt; Configuração de IPC (Inter-Process Communication).&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sysctl &lt;span class=&quot;nt&quot;&gt;-w&lt;/span&gt; kernel.sem&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;250 32000 100 128&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;kernel.shmmni:&lt;/strong&gt; Define o número máximo de identificadores de semáforos, memória compartilhada e segmentos de memória no sistema.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sysctl &lt;span class=&quot;nt&quot;&gt;-w&lt;/span&gt; kernel.shmmni&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;4096
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;kernel.shmall:&lt;/strong&gt; Define o número total de páginas de memória compartilhada disponíveis para o sistema.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sysctl &lt;span class=&quot;nt&quot;&gt;-w&lt;/span&gt; kernel.shmall&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1073741824
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;kernel.shmmax:&lt;/strong&gt; Define o tamanho máximo do segmento de memória compartilhada que o sistema pode alocar.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sysctl &lt;span class=&quot;nt&quot;&gt;-w&lt;/span&gt; kernel.shmmax&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;4398046511104
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;kernel.panic_on_oops:&lt;/strong&gt; Se definido como 1, o sistema entra em pânico em vez de reiniciar após um “oops” do kernel.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sysctl &lt;span class=&quot;nt&quot;&gt;-w&lt;/span&gt; kernel.panic_on_oops&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;net.core.rmem_default:&lt;/strong&gt; Define o tamanho padrão do buffer de recebimento (em bytes) para soquetes de rede.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sysctl &lt;span class=&quot;nt&quot;&gt;-w&lt;/span&gt; net.core.rmem_default&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;262144
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;net.core.rmem_max:&lt;/strong&gt; Define o tamanho máximo do buffer de recebimento (em bytes) para soquetes de rede.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sysctl &lt;span class=&quot;nt&quot;&gt;-w&lt;/span&gt; net.core.rmem_max&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;4194304
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;net.core.wmem_default:&lt;/strong&gt; Define o tamanho padrão do buffer de envio (em bytes) para soquetes de rede.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sysctl &lt;span class=&quot;nt&quot;&gt;-w&lt;/span&gt; net.core.wmem_default&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;262144
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;net.core.wmem_max:&lt;/strong&gt; Define o tamanho máximo do buffer de envio (em bytes) para soquetes de rede.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sysctl &lt;span class=&quot;nt&quot;&gt;-w&lt;/span&gt; net.core.wmem_max&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1048576
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;net.ipv4.conf.all.rp_filter:&lt;/strong&gt; Ativa ou desativa a filtragem de pacotes de resposta invertida.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sysctl &lt;span class=&quot;nt&quot;&gt;-w&lt;/span&gt; net.ipv4.conf.all.rp_filter&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;net.ipv4.conf.default.rp_filter:&lt;/strong&gt; Ativa ou desativa a filtragem de pacotes de resposta invertida para a interface padrão.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sysctl &lt;span class=&quot;nt&quot;&gt;-w&lt;/span&gt; net.ipv4.conf.default.rp_filter&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;fs.aio-max-nr:&lt;/strong&gt; Define o número máximo de solicitações assíncronas de I/O (AIO).&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sysctl &lt;span class=&quot;nt&quot;&gt;-w&lt;/span&gt; fs.aio-max-nr&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1048576
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;net.ipv4.ip_local_port_range:&lt;/strong&gt; Define o intervalo de portas locais disponíveis para conexões TCP e UDP.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sysctl &lt;span class=&quot;nt&quot;&gt;-w&lt;/span&gt; net.ipv4.ip_local_port_range&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;9000 65500&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Após alterar esses valores usando &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sysctl -w&lt;/code&gt;, você pode verificar se as configurações foram aplicadas usando &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sysctl -a&lt;/code&gt;. Para tornar as alterações permanentes, adicione as linhas correspondentes ao arquivo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/sysctl.conf&lt;/code&gt; ou a um arquivo em &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/sysctl.d/&lt;/code&gt; e execute &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sysctl -p&lt;/code&gt; para recarregar as configurações.&lt;/p&gt;
 </content>
  </entry>
  

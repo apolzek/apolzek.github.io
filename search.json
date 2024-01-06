@@ -249,6 +249,14 @@
     } ,
   
     {
+      "title"    : "operating-system/linux-kernel-params",
+      "category" : "",
+      "tags"     : "linux, params, sysctl",
+      "url"      : "/2024/01/05/linux-kernel-params.html",
+      "date"     : "2024-01-05 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "development/golang/overview",
       "category" : "",
       "tags"     : "go, overview",
