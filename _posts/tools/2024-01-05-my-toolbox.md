@@ -31,6 +31,10 @@ tags: tools
 | HTTPie             |
 | Virtualbox         |
 | visidata           | https://www.visidata.org/install/
+| kubectl            |
+| kubectx            |
+| Insomnia           |
+| Sublime Merge      |
 
 ### Productive environment
 
@@ -44,3 +48,6 @@ tags: tools
 | MongoDB            | NoSQL database that provides high performance, scalability, and flexibility for handling unstructured data. |
 | Jenkins            | Open-source automation server for building, testing, and deploying software. |
 | Nginx              | Web server and reverse proxy server known for its high performance, scalability, and ease of configuration. |
+
+
+### Extensions for Visual Studio Code
