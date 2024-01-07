@@ -13,7 +13,9 @@ tags: tools
 | Tool               | Description                                       |
 | ------------------ | ------------------------------------------------- |
 | Docker             | Platform for developing, shipping, and running applications in containers. |
+| podman             |
 | Git                | Distributed version control system for tracking changes in source code during software development. |
+| gitg               |
 | VS Code            | Lightweight and powerful code editor developed by Microsoft with support for various programming languages. |
 | tailspin           | A log file highlighter |
 | vim                |
@@ -23,7 +25,6 @@ tags: tools
 | Spotify            |
 | HexChat            | 
 | DBeaver            |
-| gitg               |
 | Chrome             |
 | Firefox            |
 | Bruno              |
@@ -35,6 +36,19 @@ tags: tools
 | kubectx            |
 | Insomnia           |
 | Sublime Merge      |
+| lazygit            |
+| lazytrivy          |
+| Terminator         |
+| nmap               |
+| Wireshark          |
+| NordVPN            |
+| OBS Studio         |
+| Cheese             |
+| VLC                |
+| Meld               |
+| Locust             |
+| Apache JMeter      |
+| Postman            |
 
 ### Productive environment
 
@@ -48,6 +62,21 @@ tags: tools
 | MongoDB            | NoSQL database that provides high performance, scalability, and flexibility for handling unstructured data. |
 | Jenkins            | Open-source automation server for building, testing, and deploying software. |
 | Nginx              | Web server and reverse proxy server known for its high performance, scalability, and ease of configuration. |
-
+| Envoy              |
+| HAProxy            |
+| Prometheus         |
+| Grafana            |
+| OpenTelemetry      |
+| FluentD            |
+| Fluentbit          |
+| RabbitMQ           |
+| Loki               |
+| Promtail           |
+| Github Actions     |
+| Gitlab CI          |
+| Netdata            |
+| OpenSearch         |
+| MariaDB            |
+| Redis              |
 
 ### Extensions for Visual Studio Code
