@@ -49,6 +49,8 @@ tags: tools
 | Locust             |
 | Apache JMeter      |
 | Postman            |
+| kind               |
+| k3s                |
 
 ### Productive environment
 
