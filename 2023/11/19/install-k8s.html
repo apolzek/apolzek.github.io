@@ -24,6 +24,7 @@ curl <span class="nt">-fsSL</span> https://packages.cloud.google.com/apt/doc/apt
 <span class="nb">sudo </span>apt-get update
 <span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> <span class="nv">kubelet</span><span class="o">=</span>1.26.5-00 <span class="nv">kubeadm</span><span class="o">=</span>1.26.5-00 <span class="nv">kubectl</span><span class="o">=</span>1.26.5-00
 <span class="nb">sudo </span>apt <span class="nb">install </span>docker.io
+<span class="nb">sudo </span>containerd config default <span class="o">&gt;</span> /etc/containerd/config.toml
 <span class="nb">sudo sed</span> <span class="nt">-i</span> <span class="s1">'s/ SystemdCgroup = false/ SystemdCgroup = true/'</span> /etc/containerd/config.toml
 <span class="nb">sudo </span>systemctl restart containerd.service
 <span class="nb">sudo </span>systemctl restart kubelet.service
