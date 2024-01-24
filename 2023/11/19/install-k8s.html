@@ -24,6 +24,7 @@ curl <span class="nt">-fsSL</span> https://packages.cloud.google.com/apt/doc/apt
 <span class="nb">sudo </span>apt-get update
 <span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> <span class="nv">kubelet</span><span class="o">=</span>1.26.5-00 <span class="nv">kubeadm</span><span class="o">=</span>1.26.5-00 <span class="nv">kubectl</span><span class="o">=</span>1.26.5-00
 <span class="nb">sudo </span>apt <span class="nb">install </span>docker.io
+<span class="nb">sudo mkdir</span> <span class="nt">-p</span> /etc/containerd/
 <span class="nb">sudo </span>containerd config default <span class="o">&gt;</span> /etc/containerd/config.toml
 <span class="nb">sudo sed</span> <span class="nt">-i</span> <span class="s1">'s/ SystemdCgroup = false/ SystemdCgroup = true/'</span> /etc/containerd/config.toml
 <span class="nb">sudo </span>systemctl restart containerd.service
@@ -31,6 +32,7 @@ curl <span class="nt">-fsSL</span> https://packages.cloud.google.com/apt/doc/apt
 <span class="nb">sudo </span>systemctl <span class="nb">enable </span>kubelet.service
 <span class="nb">sudo </span>kubeadm config images pull
 <span class="nb">sudo </span>kubeadm init <span class="nt">--pod-network-cidr</span><span class="o">=</span>10.10.0.0/16
+sidp kubeadm token create <span class="nt">--print-join-command</span>
 </code></pre></div></div> <p>Configure k8s access</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> <span class="nv">$HOME</span>/.kube
 <span class="nb">sudo cp</span> <span class="nt">-i</span> /etc/kubernetes/admin.conf <span class="nv">$HOME</span>/.kube/config
 <span class="nb">sudo chown</span> <span class="si">$(</span><span class="nb">id</span> <span class="nt">-u</span><span class="si">)</span>:<span class="si">$(</span><span class="nb">id</span> <span class="nt">-g</span><span class="si">)</span> <span class="nv">$HOME</span>/.kube/config
@@ -41,6 +43,8 @@ curl https://raw.githubusercontent.com/projectcalico/calico/v3.26.1/manifests/cu
 kubectl create <span class="nt">-f</span> custom-resources.yaml
 </code></pre></div></div> <p>Configure metallb</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl apply <span class="nt">-f</span> https://raw.githubusercontent.com/metallb/metallb/v0.13.7/config/manifests/metallb-native.yaml
 kubectl get all <span class="nt">--namespace</span> metallb-system
+<span class="c"># Pode ser necessário:</span>
+kubectl create secret generic <span class="nt">-n</span> metallb-system memberlist <span class="nt">--from-literal</span><span class="o">=</span><span class="nv">secretkey</span><span class="o">=</span><span class="s2">"</span><span class="si">$(</span>openssl rand <span class="nt">-base64</span> 128<span class="si">)</span><span class="s2">"</span>
 </code></pre></div></div> <p><em>ipaddresspool.yaml</em></p> <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">metallb.io/v1beta1</span>
 <span class="na">kind</span><span class="pi">:</span> <span class="s">IPAddressPool</span>
 <span class="na">metadata</span><span class="pi">:</span>
@@ -48,7 +52,7 @@ kubectl get all <span class="nt">--namespace</span> metallb-system
   <span class="na">namespace</span><span class="pi">:</span> <span class="s">metallb-system</span>
 <span class="na">spec</span><span class="pi">:</span>
   <span class="na">addresses</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s">192.168.100.240-192.168.1.250</span>
+  <span class="pi">-</span> <span class="s">192.168.100.240-192.168.100.250</span>
 </code></pre></div></div> <p><em>l2advertisement.yaml</em></p> <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">metallb.io/v1beta1</span>
 <span class="na">kind</span><span class="pi">:</span> <span class="s">L2Advertisement</span>
 <span class="na">metadata</span><span class="pi">:</span>
