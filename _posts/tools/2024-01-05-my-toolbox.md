@@ -10,53 +10,54 @@ tags: tools
 
 ### My environment
 
-| Tool          | Description                                                                                                                                |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Docker        | Platform for developing, shipping, and running applications in containers                                                                  |
-| podman        | Podman is open source first and won't lock you in                                                                                          |
-| Git           | Distributed version control system for tracking changes in source code during software development                                         |
-| gitg          | gitg is a graphical user interface for git                                                                                                 |
-| VS Code       | Lightweight and powerful code editor developed by Microsoft with support for various programming languages                                 |
-| tailspin      | A log file highlighter                                                                                                                     |
-| vim           | Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient                               |
-| Slack         | O Slack é uma nova forma de se comunicar com sua equipe                                                                                    |
-| Anki          | Anki é um programa open source de cartões de memorização                                                                                   |
-| OpenLens      | Open Lens is the open-source core version of the Lens Desktop                                                                              |
-| Spotify       | O Spotify é um serviço de música digital que dá acesso a milhões de músicas                                                                |
-| HexChat       | HexChat, an open-source, cross-platform IRC client                                                                                         |
-| DBeaver       | DBeaver Community is a free cross-platform database tool for developers, database administrators, analysts, and everyone working with data |
-| Chrome        | Navegador                                                                                                                                  |
-| Firefox       | Navegador                                                                                                                                  |
-| Bruno         | Re-Inventing the API Client                                                                                                                |
-| asdf          | asdf is a CLI tool that can manage multiple language runtime versions on a per-project basis                                               |
-| HTTPie        | HTTPie for Terminal. The original. An open-source API testing client for open minds                                                        |
-| Virtualbox    | A Oracle VM VirtualBox, software de virtualização de plataforma cruzada de código aberto mais popular do mundo                             |
-| visidata      | Command-line interactive multitool for tabular data https://www.visidata.org/install/                                                      |
-| kubectl       | The Kubernetes command-line tool                                                                                                           |
-| kubectx       | Streamlining Cluster Navigation Kubectx allows you to switch between Kubernetes clusters effortlessly                                      |
-| Insomnia      | Kong Insomnia is a collaborative open source API development platform                                                                      |
-| Sublime Merge | Sublime Merge is a Git client                                                                                                              |
-| lazygit       | Lazygit has a very flexible custom command system                                                                                          |
-| lazytrivy     | lazytrivy is a wrapper for Trivy that allows you to run Trivy without remembering the command arguments                                    |
-| Terminator    | Multiple GNOME terminals in one window                                                                                                     |
-| nmap          | Nmap é uma ferramenta de varredura de rede que usa pacotes IP para identificar todos os dispositivos conectados a uma rede                 |
-| Wireshark     | Wireshark é um software que monitora redes de computador                                                                                   |
-| NordVPN       | NordVPN é um provedor/fornecedor de serviços de Virtual Private Network ou Rede Privada Virtual                                            |
-| OBS Studio    | OBS (Open Broadcaster Software) is free and open source software for video recording and live streaming                                    |
-| Cheese        | Cheese is a program for the GNOME Desktop which allows you to take photos, videos, and anything else you can think of with your webcam     |
-| VLC           | Reprodutor multimídia livre para múltiplas plataformas e um arcabouço que reproduz a maioria dos arquivos multimídia                       |
-| Meld          | Meld is a visual diff tool that makes it easier to compare and merge changes in files, directories, Git repos, and more                    |
-| Locust        | An open source load testing tool. Define user behaviour with Python code, and swarm your system with millions of simultaneous users        |
-| Apache JMeter | Application is open source software, a 100% pure Java application designed to load test functional behavior and measure performance        |
-| Postman       | Postman is an API platform for building and using APIs                                                                                     |
-| kind          | kind is a tool for running local Kubernetes clusters using Docker container “nodes”                                                        |
-| k3s           | The certified Kubernetes distribution built for IoT & Edge computing                                                                       |
-| dust          | A Lightning Fast, Modern Alternative to du                                                                                                 |
-| ripgrep       | An Intuitive and Blazing-fast Alternative to grep                                                                                          |
-| bat           | The New-and-Improved cat                                                                                                                   |
-| hyperfine     | Benchmarking Made Easy                                                                                                                     |
-| eza           | An aesthetic alternative to ls                                                                                                             |
-| cheat         | Terminal Utility Cheat Sheets on Demand                                                                                                    |
+| Tool               | Description                                                                                                                                |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| Docker             | Platform for developing, shipping, and running applications in containers                                                                  |
+| podman             | Podman is open source first and won't lock you in                                                                                          |
+| Git                | Distributed version control system for tracking changes in source code during software development                                         |
+| gitg               | gitg is a graphical user interface for git                                                                                                 |
+| VS Code            | Lightweight and powerful code editor developed by Microsoft with support for various programming languages                                 |
+| tailspin           | A log file highlighter                                                                                                                     |
+| vim                | Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient                               |
+| Slack              | O Slack é uma nova forma de se comunicar com sua equipe                                                                                    |
+| Anki               | Anki é um programa open source de cartões de memorização                                                                                   |
+| OpenLens           | Open Lens is the open-source core version of the Lens Desktop                                                                              |
+| Spotify            | O Spotify é um serviço de música digital que dá acesso a milhões de músicas                                                                |
+| HexChat            | HexChat, an open-source, cross-platform IRC client                                                                                         |
+| DBeaver            | DBeaver Community is a free cross-platform database tool for developers, database administrators, analysts, and everyone working with data |
+| Chrome             | Navegador                                                                                                                                  |
+| Firefox            | Navegador                                                                                                                                  |
+| Bruno              | Re-Inventing the API Client                                                                                                                |
+| asdf               | asdf is a CLI tool that can manage multiple language runtime versions on a per-project basis                                               |
+| HTTPie             | HTTPie for Terminal. The original. An open-source API testing client for open minds                                                        |
+| Virtualbox         | A Oracle VM VirtualBox, software de virtualização de plataforma cruzada de código aberto mais popular do mundo                             |
+| visidata           | Command-line interactive multitool for tabular data https://www.visidata.org/install/                                                      |
+| kubectl            | The Kubernetes command-line tool                                                                                                           |
+| kubectx            | Streamlining Cluster Navigation Kubectx allows you to switch between Kubernetes clusters effortlessly                                      |
+| Insomnia           | Kong Insomnia is a collaborative open source API development platform                                                                      |
+| Sublime Merge      | Sublime Merge is a Git client                                                                                                              |
+| lazygit            | Lazygit has a very flexible custom command system                                                                                          |
+| lazytrivy          | lazytrivy is a wrapper for Trivy that allows you to run Trivy without remembering the command arguments                                    |
+| Terminator         | Multiple GNOME terminals in one window                                                                                                     |
+| nmap               | Nmap é uma ferramenta de varredura de rede que usa pacotes IP para identificar todos os dispositivos conectados a uma rede                 |
+| Wireshark          | Wireshark é um software que monitora redes de computador                                                                                   |
+| NordVPN            | NordVPN é um provedor/fornecedor de serviços de Virtual Private Network ou Rede Privada Virtual                                            |
+| OBS Studio         | OBS (Open Broadcaster Software) is free and open source software for video recording and live streaming                                    |
+| Cheese             | Cheese is a program for the GNOME Desktop which allows you to take photos, videos, and anything else you can think of with your webcam     |
+| VLC                | Reprodutor multimídia livre para múltiplas plataformas e um arcabouço que reproduz a maioria dos arquivos multimídia                       |
+| Meld               | Meld is a visual diff tool that makes it easier to compare and merge changes in files, directories, Git repos, and more                    |
+| Locust             | An open source load testing tool. Define user behaviour with Python code, and swarm your system with millions of simultaneous users        |
+| Apache JMeter      | Application is open source software, a 100% pure Java application designed to load test functional behavior and measure performance        |
+| Postman            | Postman is an API platform for building and using APIs                                                                                     |
+| kind               | kind is a tool for running local Kubernetes clusters using Docker container “nodes”                                                        |
+| k3s                | The certified Kubernetes distribution built for IoT & Edge computing                                                                       |
+| dust               | A Lightning Fast, Modern Alternative to du                                                                                                 |
+| ripgrep            | An Intuitive and Blazing-fast Alternative to grep                                                                                          |
+| bat                | The New-and-Improved cat                                                                                                                   |
+| hyperfine          | Benchmarking Made Easy                                                                                                                     |
+| eza                | An aesthetic alternative to ls                                                                                                             |
+| cheat              | Terminal Utility Cheat Sheets on Demand                                                                                                    |
+| certificate-ripper |                                                                                                                                    
 
 ### Productive environment
 
