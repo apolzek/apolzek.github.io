@@ -1,13 +1,12 @@
 ---
 layout: post
-title: opinions/acronym-confusion
-description: Acronym confusion
-summary: Acronym confusion
+title: opinions/it-acronyms
+description: IT Acronyms
+summary: IT Acronyms 
 tags:
 ---
 
-
-## Acronym confusion
+## IT Acronyms
 
 "Por favor, note que neste artigo, evitarei fazer comparações entre os itens mencionados, concentrando-me em analisá-los individualmente."
 

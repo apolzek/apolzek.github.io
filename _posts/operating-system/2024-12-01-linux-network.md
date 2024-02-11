@@ -1,8 +1,8 @@
 ---
 layout: post
-title: operating-system/processes
-description: Processes
-summary: Processes
+title: operating-system/linux-network
+description: Linux Network
+summary: Linux Network
 tags: linux processes
 ---
 
