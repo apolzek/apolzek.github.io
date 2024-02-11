@@ -1,18 +1,10 @@
 [
   
     {
-      "title"    : "tools/k8s/cka",
-      "category" : "",
-      "tags"     : "cka, certification",
-      "url"      : "/2024/12/01/cka.html",
-      "date"     : "2024-12-01 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "opinions/acronym-confusion",
+      "title"    : "opinions/it-acronyms",
       "category" : "",
       "tags"     : "",
-      "url"      : "/2024/12/01/acronym-confusion.html",
+      "url"      : "/2024/12/01/it-acronym.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
@@ -25,10 +17,18 @@
     } ,
   
     {
-      "title"    : "operating-system/processes",
+      "title"    : "operating-system/linux-network",
       "category" : "",
       "tags"     : "linux, processes",
       "url"      : "/2024/12/01/linux-network.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "development/rust/overview",
+      "category" : "",
+      "tags"     : "python",
+      "url"      : "/2024/12/01/overview.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
@@ -42,6 +42,22 @@
   
     {
       "title"    : "development/python/overview",
+      "category" : "",
+      "tags"     : "python",
+      "url"      : "/2024/12/01/overview.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "development/lua/overview",
+      "category" : "",
+      "tags"     : "python",
+      "url"      : "/2024/12/01/overview.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "development/javascript/overview",
       "category" : "",
       "tags"     : "python",
       "url"      : "/2024/12/01/overview.html",
@@ -137,18 +153,10 @@
     } ,
   
     {
-      "title"    : "cheatsheet/ufw",
+      "title"    : "cheatsheet/powershell",
       "category" : "",
-      "tags"     : "ufw, ubuntu, firewall",
-      "url"      : "/2024/12/01/ufw.html",
-      "date"     : "2024-12-01 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "cheatsheet/python",
-      "category" : "",
-      "tags"     : "python",
-      "url"      : "/2024/12/01/python.html",
+      "tags"     : "powershell, linux",
+      "url"      : "/2024/12/01/powershell.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
@@ -177,18 +185,18 @@
     } ,
   
     {
-      "title"    : "cheatsheet/kubectl",
+      "title"    : "cheatsheet/groovy",
       "category" : "",
-      "tags"     : "kubectl",
-      "url"      : "/2024/12/01/kubectl.html",
+      "tags"     : "groovy, linux",
+      "url"      : "/2024/12/01/groovy.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "cheatsheet/ansible",
+      "title"    : "tools/k8s/cka",
       "category" : "",
-      "tags"     : "ansible",
-      "url"      : "/2024/12/01/ansible.html",
+      "tags"     : "cka, certification",
+      "url"      : "/2024/12/01/cka.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
@@ -217,19 +225,59 @@
     } ,
   
     {
-      "title"    : "cheatsheet/terraform",
+      "title"    : "opinions/self-assessment-1",
       "category" : "",
-      "tags"     : "terraform",
-      "url"      : "/2024/09/02/terraform.html",
-      "date"     : "2024-09-02 00:00:00 +0000"
+      "tags"     : "self-assessment",
+      "url"      : "/2024/08/01/self-assessment-1.html",
+      "date"     : "2024-08-01 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "opinions/self-assessment",
+      "title"    : "cheatsheet/ufw",
       "category" : "",
-      "tags"     : "self-assessment",
-      "url"      : "/2024/08/01/self-assessment.html",
-      "date"     : "2024-08-01 00:00:00 +0000"
+      "tags"     : "ufw, ubuntu, firewall",
+      "url"      : "/2024/02/11/ufw.html",
+      "date"     : "2024-02-11 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "cheatsheet/tshoot",
+      "category" : "",
+      "tags"     : "tshoot",
+      "url"      : "/2024/02/11/tshoot.html",
+      "date"     : "2024-02-11 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "cheatsheet/terraform",
+      "category" : "",
+      "tags"     : "terraform",
+      "url"      : "/2024/02/11/terraform.html",
+      "date"     : "2024-02-11 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "cheatsheet/python",
+      "category" : "",
+      "tags"     : "python",
+      "url"      : "/2024/02/11/python.html",
+      "date"     : "2024-02-11 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "cheatsheet/kubectl",
+      "category" : "",
+      "tags"     : "kubectl",
+      "url"      : "/2024/02/11/kubectl.html",
+      "date"     : "2024-02-11 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "cheatsheet/ansible",
+      "category" : "",
+      "tags"     : "ansible",
+      "url"      : "/2024/02/11/ansible.html",
+      "date"     : "2024-02-11 00:00:00 +0000"
     } ,
   
     {
@@ -241,10 +289,10 @@
     } ,
   
     {
-      "title"    : "english/learning-english",
+      "title"    : "english/roadmap",
       "category" : "",
       "tags"     : "english",
-      "url"      : "/2024/01/20/learning-english.html",
+      "url"      : "/2024/01/20/roadmap.html",
       "date"     : "2024-01-20 00:00:00 +0000"
     } ,
   

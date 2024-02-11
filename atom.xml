@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-01-24T22:56:05+00:00</updated>
+ <updated>2024-02-11T16:24:20+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -13,20 +13,11 @@
 
  
  <entry>
-   <title>tools/k8s/cka</title>
-   <link href="/2024/12/01/cka.html"/>
+   <title>opinions/it-acronyms</title>
+   <link href="/2024/12/01/it-acronym.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/cka</id>
-   <content type="html">&lt;h2 id=&quot;cka&quot;&gt;CKA&lt;/h2&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>opinions/acronym-confusion</title>
-   <link href="/2024/12/01/acronym-confusion.html"/>
-   <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/acronym-confusion</id>
-   <content type="html">&lt;h2 id=&quot;acronym-confusion&quot;&gt;Acronym confusion&lt;/h2&gt;
+   <id>/2024/12/01/it-acronym</id>
+   <content type="html">&lt;h2 id=&quot;it-acronyms&quot;&gt;IT Acronyms&lt;/h2&gt;
 
 &lt;p&gt;“Por favor, note que neste artigo, evitarei fazer comparações entre os itens mencionados, concentrando-me em analisá-los individualmente.”&lt;/p&gt;
 
@@ -108,11 +99,20 @@ C: Controller&lt;/p&gt;
  </entry>
  
  <entry>
-   <title>operating-system/processes</title>
+   <title>operating-system/linux-network</title>
    <link href="/2024/12/01/linux-network.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/linux-network</id>
    <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>development/rust/overview</title>
+   <link href="/2024/12/01/overview.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/overview</id>
+   <content type="html">&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 </content>
  </entry>
  
@@ -127,6 +127,24 @@ C: Controller&lt;/p&gt;
  
  <entry>
    <title>development/python/overview</title>
+   <link href="/2024/12/01/overview.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/overview</id>
+   <content type="html">&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>development/lua/overview</title>
+   <link href="/2024/12/01/overview.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/overview</id>
+   <content type="html">&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>development/javascript/overview</title>
    <link href="/2024/12/01/overview.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/overview</id>
@@ -281,59 +299,127 @@ Gin&lt;/p&gt;
  </entry>
  
  <entry>
-   <title>cheatsheet/ufw</title>
-   <link href="/2024/12/01/ufw.html"/>
+   <title>cheatsheet/powershell</title>
+   <link href="/2024/12/01/powershell.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/ufw</id>
-   <content type="html">&lt;h2 id=&quot;cheatsheet-ufw&quot;&gt;Cheatsheet ufw&lt;/h2&gt;
+   <id>/2024/12/01/powershell</id>
+   <content type="html">&lt;h2 id=&quot;cheatsheet-powershell&quot;&gt;Cheatsheet powershell&lt;/h2&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Habilitar o Firewall
-sudo ufw enable
+&lt;div class=&quot;language-powershell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Imprimir uma mensagem na tela&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Write-Output&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Hello, World!&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 
-# Desabilitar o Firewall
-sudo ufw disable
+&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# Declarar variáveis&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$idade&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$nome&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;João&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$salario&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;2500.50&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ativo&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;$true&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 
-# Verificar o Status do Firewall
-sudo ufw status
+&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# Comentários de linha única&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 
-# Adicionar uma Regra de Permissão de Porta (por exemplo, porta 80/tcp)
-sudo ufw allow 80/tcp
+&lt;/span&gt;&lt;span class=&quot;cm&quot;&gt;&amp;lt;#
+Comentários
+de várias
+linhas
+#&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 
-# Adicionar uma Regra de Permissão para um Range de Portas (por exemplo, portas de 8000 a 8010/tcp)
-sudo ufw allow 8000:8010/tcp
+&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# Operadores aritméticos&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$soma&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$subtracao&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$multiplicacao&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$divisao&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$exponenciacao&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$resto_divisao&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 
-# Adicionar uma Regra de Permissão para um Aplicativo Específico (por exemplo, OpenSSH)
-sudo ufw allow OpenSSH
+&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# Estruturas condicionais&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$idade&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-ge&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Write-Output&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Você é maior de idade&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Write-Output&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Você é menor de idade&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 
-# Negar uma Porta (por exemplo, porta 22/tcp)
-sudo ufw deny 22/tcp
+&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# Estruturas de repetição - Loop for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-lt&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Write-Output&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 
-# Limitar a taxa de conexões para um determinado serviço (por exemplo, SSH)
-sudo ufw limit ssh
+&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# Estruturas de repetição - Loop while&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$contador&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$contador&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-lt&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Write-Output&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$contador&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$contador&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 
-# Excluir uma Regra (por exemplo, excluir a regra que permite o tráfego na porta 80/tcp)
-sudo ufw delete allow 80/tcp
+&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# Listas&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$cores&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;@(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;vermelho&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;verde&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;azul&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$primeira_cor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$cores&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$cores&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;amarelo&apos;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$tamanho_lista&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$cores&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Count&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 
-# Habilitar ou Desabilitar o Logging
-sudo ufw logging on
-sudo ufw logging off
+&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# Dicionários&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$pessoa&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;@{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;nome&apos;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;Maria&apos;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;idade&apos;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$idade_da_pessoa&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$pessoa&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;idade&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$pessoa&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;profissao&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;engenheira&apos;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 
-# Regras de IPv6 (substitua allow ou deny por allow6 ou deny6 para IPv6)
-sudo ufw allow6 80/tcp
-sudo ufw deny6 22/tcp
+&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# Funções&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Saudacao&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;param&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$nome&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Write-Output&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Olá, &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$nome&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 
-# Permitir tráfego de uma porta UDP específica
-sudo ufw allow 53/udp
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>cheatsheet/python</title>
-   <link href="/2024/12/01/python.html"/>
-   <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/python</id>
-   <content type="html">&lt;h2 id=&quot;cheatsheet-python&quot;&gt;Cheatsheet python&lt;/h2&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Saudacao&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Ana&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# Trabalhar com arquivos&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$conteudo&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Get-Content&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arquivo.txt&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# Manipulação de strings&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$mensagem&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Olá, Mundo!&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$tamanho&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$mensagem&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Length&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$maiusculas&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$mensagem&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ToUpper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$minusculas&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$mensagem&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ToLower&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$palavras&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$mensagem&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-split&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;,&apos;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# Tratamento de exceções&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$resultado&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;catch&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Write-Output&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Não é possível dividir por zero&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# Trabalhar com datas e horas&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$agora&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Get-Date&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ano_atual&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$agora&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Year&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$mes_atual&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$agora&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Month&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# Compreensão de lista&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$numeros&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;@(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$dobro&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$numeros&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ForEach-Object&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;$_&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# Definir uma classe&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Pessoa&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$nome&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$idade&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pessoa&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$nome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$idade&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;nome&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$nome&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;idade&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$idade&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Saudacao&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Write-Output&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Olá, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;nome&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# Instanciar um objeto da classe Pessoa&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$p1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pessoa&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Carlos&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$p1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Saudacao&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;http-server&quot;&gt;HTTP Server&lt;/h3&gt;
 </content>
  </entry>
  
@@ -367,20 +453,76 @@ sudo ufw allow 53/udp
  </entry>
  
  <entry>
-   <title>cheatsheet/kubectl</title>
-   <link href="/2024/12/01/kubectl.html"/>
+   <title>cheatsheet/groovy</title>
+   <link href="/2024/12/01/groovy.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/kubectl</id>
-   <content type="html">&lt;h2 id=&quot;cheatsheet-kubectl&quot;&gt;Cheatsheet kubectl&lt;/h2&gt;
+   <id>/2024/12/01/groovy</id>
+   <content type="html">&lt;h2 id=&quot;cheatsheet-groovy&quot;&gt;Cheatsheet groovy&lt;/h2&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Definir parâmetros de pipeline&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;parameters&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;name:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;PARAM1&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;defaultValue:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;valor_padrao&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;description:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;Descrição do parâmetro&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;booleanParam&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;name:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;PARAM2&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;defaultValue:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;description:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;Descrição do parâmetro&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;choice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;name:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;PARAM3&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;choices:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;opcao1&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;opcao2&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;opcao3&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;description:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;Descrição do parâmetro&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Definir variáveis globais&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VARIAVEL_GLOBAL&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;valor&apos;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Stage para construir e testar o código&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;stage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;Construir e Testar&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Checkout do repositório&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;branch:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;master&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;url:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;https://exemplo.com/repo.git&apos;&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// Executar comandos de construção e teste&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;sh&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;mvn clean package&apos;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;sh&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;npm install&apos;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;sh&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;npm test&apos;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Stage para implantar em ambiente de teste&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;stage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;Implantar em Teste&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Executar implantação&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;sh&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;kubectl apply -f teste.yaml&apos;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Stage para implantar em ambiente de produção&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;stage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;Implantar em Produção&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Executar implantação&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;sh&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;kubectl apply -f producao.yaml&apos;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Post-condições&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;post&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Notificar por email em caso de falha&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;failure&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;emailext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;nl&quot;&gt;subject:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Pipeline Jenkins - Falha&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nl&quot;&gt;body:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Houve uma falha na execução da pipeline.&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nl&quot;&gt;to:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;exemplo@email.com&quot;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Enviar artefatos para armazenamento permanente&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;always&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;archiveArtifacts&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;target/*.jar&apos;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Função para executar um passo de limpeza&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;limpar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;Executando passo de limpeza...&apos;&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Implemente aqui as etapas de limpeza necessárias&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
  
  <entry>
-   <title>cheatsheet/ansible</title>
-   <link href="/2024/12/01/ansible.html"/>
+   <title>tools/k8s/cka</title>
+   <link href="/2024/12/01/cka.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/ansible</id>
-   <content type="html">&lt;h2 id=&quot;cheatsheet-ansible&quot;&gt;Cheatsheet ansible&lt;/h2&gt;
+   <id>/2024/12/01/cka</id>
+   <content type="html">&lt;h2 id=&quot;cka&quot;&gt;CKA&lt;/h2&gt;
 </content>
  </entry>
  
@@ -596,27 +738,413 @@ aws iam add-user-to-group --group-name mygroup --user-name myuser
  </entry>
  
  <entry>
+   <title>opinions/self-assessment-1</title>
+   <link href="/2024/08/01/self-assessment-1.html"/>
+   <updated>2024-08-01T00:00:00+00:00</updated>
+   <id>/2024/08/01/self-assessment-1</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>cheatsheet/ufw</title>
+   <link href="/2024/02/11/ufw.html"/>
+   <updated>2024-02-11T00:00:00+00:00</updated>
+   <id>/2024/02/11/ufw</id>
+   <content type="html">&lt;h2 id=&quot;cheatsheet-ufw&quot;&gt;Cheatsheet ufw&lt;/h2&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Habilitar o Firewall
+sudo ufw enable
+
+# Desabilitar o Firewall
+sudo ufw disable
+
+# Verificar o Status do Firewall
+sudo ufw status
+
+# Adicionar uma Regra de Permissão de Porta (por exemplo, porta 80/tcp)
+sudo ufw allow 80/tcp
+
+# Adicionar uma Regra de Permissão para um Range de Portas (por exemplo, portas de 8000 a 8010/tcp)
+sudo ufw allow 8000:8010/tcp
+
+# Adicionar uma Regra de Permissão para um Aplicativo Específico (por exemplo, OpenSSH)
+sudo ufw allow OpenSSH
+
+# Negar uma Porta (por exemplo, porta 22/tcp)
+sudo ufw deny 22/tcp
+
+# Limitar a taxa de conexões para um determinado serviço (por exemplo, SSH)
+sudo ufw limit ssh
+
+# Excluir uma Regra (por exemplo, excluir a regra que permite o tráfego na porta 80/tcp)
+sudo ufw delete allow 80/tcp
+
+# Habilitar ou Desabilitar o Logging
+sudo ufw logging on
+sudo ufw logging off
+
+# Regras de IPv6 (substitua allow ou deny por allow6 ou deny6 para IPv6)
+sudo ufw allow6 80/tcp
+sudo ufw deny6 22/tcp
+
+# Permitir tráfego de uma porta UDP específica
+sudo ufw allow 53/udp
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>cheatsheet/tshoot</title>
+   <link href="/2024/02/11/tshoot.html"/>
+   <updated>2024-02-11T00:00:00+00:00</updated>
+   <id>/2024/02/11/tshoot</id>
+   <content type="html">&lt;h2 id=&quot;cheatsheet-tshoot&quot;&gt;Cheatsheet tshoot&lt;/h2&gt;
+
+&lt;h3 id=&quot;important-commands&quot;&gt;Important Commands&lt;/h3&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Listar todas as conexões de rede TCP que estão sendo ouvidas(listening)
+ss -nltp
+
+# Verificar o status de uma interface de rede
+ifconfig
+
+# Mostrar informações detalhadas sobre interfaces de rede
+ip addr show
+
+# Verificar se um host está acessível na rede
+ping endereço_do_host
+
+# Verificar a rota padrão
+ip route show
+
+# Verificar as rotas específicas para um determinado destino
+ip route show destino
+
+# Exibir informações sobre a tabela de roteamento
+route -n
+
+# Verificar as portas TCP e UDP abertas
+netstat -tuln
+
+# Verificar o status de um serviço específico
+systemctl status nome_do_serviço
+
+# Reiniciar um serviço específico
+systemctl restart nome_do_serviço
+
+# Verificar os logs do sistema
+journalctl
+
+# Verificar logs específicos de um serviço
+journalctl -u nome_do_serviço
+
+# Verificar os últimos logs do sistema
+dmesg
+
+# Exibir informações sobre o espaço em disco
+df -h
+
+# Exibir informações detalhadas sobre as partições
+fdisk -l
+
+# Exibir informações sobre o uso de disco por diretório
+du -h /diretório
+
+# Listar os processos em execução
+ps aux
+
+# Procurar um processo específico
+ps aux | grep nome_do_processo
+
+# Matar um processo pelo ID
+kill ID_do_processo
+
+# Matar todos os processos de um determinado nome
+pkill nome_do_processo
+
+# Monitorar o uso da CPU em tempo real
+top
+
+# Monitorar o uso da memória em tempo real
+htop
+
+# Exibir informações sobre uso da memória
+free -m
+
+# Monitorar o tráfego de rede
+iftop
+
+# Monitorar as atividades da rede
+tcpdump -i interface_de_rede
+
+# Verificar as conexões de rede ativas
+netstat -antup
+
+# Exibir as estatísticas do sistema
+vmstat
+
+# Verificar a carga média do sistema
+uptime
+
+# Verificar a versão do sistema operacional
+cat /etc/os-release
+
+# Verificar as informações do kernel
+uname -a
+
+# Verificar a utilização do processador
+mpstat
+
+# Verificar os recursos da CPU
+lscpu
+
+# Verificar as informações do BIOS
+dmidecode -t bios
+
+# Verificar informações da memória
+dmidecode -t memory
+
+# Verificar os dispositivos PCI
+lspci
+
+# Verificar os dispositivos USB
+lsusb
+
+# Verificar as informações do disco
+lsscsi
+
+# Verificar a temperatura do sistema
+sensors
+
+# Verificar os serviços em execução na inicialização
+systemctl list-unit-files | grep enabled
+
+# Verificar os arquivos abertos por um processo
+lsof -p ID_do_processo
+
+# Verificar o status de uma porta específica
+nc -zv host porta
+
+# Verificar a resolução de nomes de host
+nslookup nome_do_host
+
+# Verificar o cache de DNS
+systemd-resolve --status
+
+# Limpar o cache de DNS
+systemd-resolve --flush-caches
+
+# Verificar a tabela de roteamento ARP
+arp -a
+
+# Renovar o endereço IP de uma interface de rede
+dhclient -v interface_de_rede
+
+# Reiniciar uma interface de rede
+ifdown interface_de_rede &amp;amp;&amp;amp; ifup interface_de_rede
+
+# Verificar as configurações de rede
+cat /etc/network/interfaces
+
+# Verificar as rotas do sistema
+ip route show
+
+# Testar a conectividade SSH
+ssh -v usuário@host
+
+# Verificar os arquivos de configuração do SSH
+cat /etc/ssh/sshd_config
+
+# Verificar as conexões SSH ativas
+netstat -antup | grep ssh
+
+# Exibir as chaves SSH autorizadas
+cat ~/.ssh/authorized_keys
+
+# Verificar os logs do SSH
+cat /var/log/auth.log
+
+# Testar a conectividade HTTP
+curl -I http://exemplo.com
+
+# Verificar as configurações do Apache
+apachectl configtest
+
+# Verificar os logs do Apache
+tail -f /var/log/apache2/access.log
+
+# Verificar os logs de erro do Apache
+tail -f /var/log/apache2/error.log
+
+# Testar a conectividade HTTPS
+openssl s_client -connect host:443
+
+# Verificar as configurações do Nginx
+nginx -t
+
+# Verificar os logs do Nginx
+tail -f /var/log/nginx/access.log
+
+# Verificar os logs de erro do Nginx
+tail -f /var/log/nginx/error.log
+
+# Exibir as configurações do firewall
+iptables -L
+
+# Exibir as regras de encaminhamento de porta
+iptables -t nat -L
+
+# Limpar todas as regras do firewall
+iptables -F
+
+# Verificar as conexões de entrada bloqueadas pelo firewall
+dmesg | grep DROP
+
+# Verificar o status do SELinux
+sestatus
+
+# Desativar temporariamente o SELinux
+setenforce 0
+
+# Verificar o status do firewall
+systemctl status firewalld
+
+# Parar o serviço do firewall
+systemctl stop firewalld
+
+# Iniciar o serviço do firewall
+systemctl start firewalld
+
+# Verificar as configurações de proxy do sistema
+env | grep -i proxy
+
+# Verificar as configurações de proxy do navegador
+cat ~/.mozilla/firefox/profiles.ini | grep Path
+
+# Limpar o cache do navegador
+rm -rf ~/.cache/mozilla/firefox/*default*/cache2
+
+# Exibir o status do serviço de rede
+systemctl status network
+
+# Reiniciar o serviço de rede
+systemctl restart network
+
+# Verificar os arquivos de configuração do Samba
+cat /etc/samba/smb.conf
+
+# Reiniciar o serviço do Samba
+systemctl restart smbd
+
+# Verificar o status do serviço de DHCP
+systemctl status dhcpd
+
+# Reiniciar o serviço de DHCP
+systemctl restart dhcpd
+
+# Verificar o status do serviço de FTP
+systemctl status vsftpd
+
+# Reiniciar o serviço de FTP
+systemctl restart vsftpd
+
+# Verificar o status do serviço de DNS
+systemctl status named
+
+# Reiniciar o serviço de DNS
+systemctl restart named
+
+# Verificar o status do serviço de NTP
+systemctl status ntpd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;important-files&quot;&gt;Important files&lt;/h3&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Verificar os logs do DNS
+tail -f /var/log/named.log
+
+# Verificar os logs do FTP
+tail -f /var/log/vsftpd.log
+
+# Verificar os logs do DHCP
+tail -f /var/log/dhcpd.log
+
+# Verificar os logs do Samba
+tail -f /var/log/samba/log.smbd
+
+# Verificar as configurações de proxy
+cat /etc/environment
+
+# Verificar o DNS utilizado pelo sistema
+cat /etc/resolv.conf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>cheatsheet/terraform</title>
-   <link href="/2024/09/02/terraform.html"/>
-   <updated>2024-09-02T00:00:00+00:00</updated>
-   <id>/2024/09/02/terraform</id>
+   <link href="/2024/02/11/terraform.html"/>
+   <updated>2024-02-11T00:00:00+00:00</updated>
+   <id>/2024/02/11/terraform</id>
    <content type="html">&lt;h2 id=&quot;cheatsheet-terraform&quot;&gt;Cheatsheet terraform&lt;/h2&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;terraform init
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Inicializa o diretório do Terraform, baixando os plugins necessários para o provedor configurado.
+terraform init
+
+# Valida a configuração do arquivo do Terraform, verificando se há erros de sintaxe ou referências inválidas.
 terraform validate
+
+# Formata os arquivos de configuração do Terraform para seguir um estilo consistente.
 terraform fmt
+
+# Gera um plano de execução do Terraform, mostrando as mudanças que serão aplicadas na infraestrutura.
 terraform plan
+
+# Aplica as alterações planejadas no plano de execução do Terraform, modificando a infraestrutura de acordo.
 terraform apply
+
+# Destrói a infraestrutura provisionada pelo Terraform, removendo todos os recursos gerenciados.
 terraform destroy
+
+# Cria um novo workspace no Terraform, permitindo gerenciar diferentes estados de infraestrutura.
 terraform workspace new dev
+
+# Lista todos os workspaces disponíveis no Terraform.
 terraform workspace list
+
+# Seleciona um workspace específico no Terraform para ser utilizado nas operações subsequentes.
 terraform workspace select dev
+
+# Importa um recurso existente de um provedor para o estado do Terraform.
 terraform import aws_s3_bucket.example my-bucket
+
+# Lista todos os recursos gerenciados pelo Terraform no estado atual.
 terraform state list
+
+# Exibe o valor de uma saída (output) específica definida no arquivo de configuração do Terraform.
 terraform output example_output
+
+# Gera um gráfico da infraestrutura gerenciada pelo Terraform e exporta como uma imagem PNG.
 terraform graph | dot -Tpng &amp;gt; graph.png
+
+# Marca um recurso como &quot;sujado&quot;, forçando o Terraform a recreá-lo na próxima aplicação.
 terraform taint aws_instance.example
+
+# Remove a marca de &quot;sujado&quot; de um recurso, permitindo que o Terraform continue gerenciando-o normalmente.
 terraform untaint aws_instance.example
+
+# Inicializa o diretório do Terraform, usando um arquivo de configuração alternativo.
+terraform init -backend-config=config.tfbackend
+
+# Aplica as alterações com aprovação automática, sem exigir interação do usuário.
+terraform apply -auto-approve
+
+# Aplica as alterações em um workspace específico.
+terraform apply -var-file=dev.tfvars
+
+# Destrói a infraestrutura provisionada pelo Terraform em um workspace específico.
+terraform destroy -var-file=dev.tfvars
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;strong&gt;terraform init&lt;/strong&gt;: Este comando é usado para inicializar um novo diretório de configuração do Terraform. Ele baixa os provedores e módulos especificados no arquivo de configuração.&lt;/p&gt;
@@ -644,15 +1172,178 @@ terraform untaint aws_instance.example
 &lt;p&gt;&lt;strong&gt;terraform taint&lt;/strong&gt;: Este comando marca um recurso como “sujo” no estado, o que faz com que o Terraform o reconstrua na próxima vez que você executar o terraform apply.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;terraform untaint&lt;/strong&gt;: Este comando remove a marcação de “sujeira” de um recurso no estado.&lt;/p&gt;
+
+&lt;h3 id=&quot;variable-precedence&quot;&gt;Variable precedence&lt;/h3&gt;
+
+&lt;p&gt;Variáveis Explicitamente Definidas
+Arquivos de Variáveis (.tfvars)
+Flags de Linha de Comando
+Variáveis de Ambiente
+Arquivo de Configuração do Terraform (.tf)&lt;/p&gt;
 </content>
  </entry>
  
  <entry>
-   <title>opinions/self-assessment</title>
-   <link href="/2024/08/01/self-assessment.html"/>
-   <updated>2024-08-01T00:00:00+00:00</updated>
-   <id>/2024/08/01/self-assessment</id>
-   <content type="html">
+   <title>cheatsheet/python</title>
+   <link href="/2024/02/11/python.html"/>
+   <updated>2024-02-11T00:00:00+00:00</updated>
+   <id>/2024/02/11/python</id>
+   <content type="html">&lt;h2 id=&quot;cheatsheet-python&quot;&gt;Cheatsheet python&lt;/h2&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python3 &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; venv venv
+&lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;venv/bin/activate
+deactivate
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>cheatsheet/kubectl</title>
+   <link href="/2024/02/11/kubectl.html"/>
+   <updated>2024-02-11T00:00:00+00:00</updated>
+   <id>/2024/02/11/kubectl</id>
+   <content type="html">&lt;h2 id=&quot;cheatsheet-kubectl&quot;&gt;Cheatsheet kubectl&lt;/h2&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Lista todos os pods em todos os namespaces.
+kubectl get pods --all-namespaces
+
+# Lista todos os serviços em todos os namespaces.
+kubectl get services --all-namespaces
+
+# Lista todos os deployments em todos os namespaces.
+kubectl get deployments --all-namespaces
+
+# Lista todos os namespaces.
+kubectl get namespaces
+
+# Descreve um pod específico.
+kubectl describe pod nome_do_pod
+
+# Descreve um serviço específico.
+kubectl describe service nome_do_servico
+
+# Descreve um deployment específico.
+kubectl describe deployment nome_do_deployment
+
+# Exibe o registro de eventos de um pod específico.
+kubectl get events --field-selector involvedObject.name=nome_do_pod
+
+# Exibe os logs de um pod específico.
+kubectl logs nome_do_pod
+
+# Executa um comando dentro de um pod específico.
+kubectl exec -it nome_do_pod -- comando_a_executar
+
+# Copia arquivos de/para um pod específico.
+kubectl cp arquivo.txt nome_do_pod:/caminho/destino
+
+# Cria um novo namespace.
+kubectl create namespace nome_do_namespace
+
+# Exclui um pod específico.
+kubectl delete pod nome_do_pod
+
+# Escala um deployment para um número específico de réplicas.
+kubectl scale deployment nome_do_deployment --replicas=5
+
+# Atualiza uma imagem de container em um deployment.
+kubectl set image deployment/nome_do_deployment nome_do_container=nova_imagem:tag
+
+# Aplica as alterações definidas em um arquivo de manifesto YAML.
+kubectl apply -f arquivo.yaml
+
+# Executa um job de cron dentro do cluster.
+kubectl create job nome_do_job --image=imagem_do_job --schedule=&apos;*/1 * * * *&apos;
+
+# Exibe métricas de recursos do cluster.
+kubectl top nodes
+kubectl top pods
+
+# Exporta recursos do cluster para um arquivo YAML.
+kubectl get deployment nome_do_deployment -o yaml &amp;gt; deployment.yaml
+
+# Aplica atualizações em recursos do cluster com base em um arquivo YAML.
+kubectl apply -f deployment.yaml
+
+# Cria um tunnel seguro para um serviço dentro do cluster.
+kubectl port-forward nome_do_pod 8080:80
+
+# Habilita o encaminhamento de portas para um pod específico.
+kubectl port-forward nome_do_pod 8080:80
+
+# Cria uma proxy de API para o cluster Kubernetes.
+kubectl proxy
+
+# Gera um diagrama de dependências de recursos do cluster.
+kubectl get service nome_do_servico -o json | kubectl-viz visualize
+
+# Exibe informações detalhadas sobre a configuração de rede de um pod específico.
+kubectl get pod nome_do_pod -o=jsonpath=&apos;{.spec.podIP}&apos;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>cheatsheet/ansible</title>
+   <link href="/2024/02/11/ansible.html"/>
+   <updated>2024-02-11T00:00:00+00:00</updated>
+   <id>/2024/02/11/ansible</id>
+   <content type="html">&lt;h2 id=&quot;cheatsheet-ansible&quot;&gt;Cheatsheet ansible&lt;/h2&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Executa um playbook Ansible em hosts remotos.
+ansible-playbook playbook.yml
+
+# Executa um playbook Ansible em hosts remotos com as credenciais especificadas.
+ansible-playbook playbook.yml -u usuário -k
+
+# Executa um playbook Ansible em hosts remotos usando a chave SSH especificada.
+ansible-playbook playbook.yml --private-key chave_ssh.pem
+
+# Executa um playbook Ansible em hosts remotos usando a chave SSH especificada e tornando-se sudo.
+ansible-playbook playbook.yml --private-key chave_ssh.pem --become
+
+# Executa um playbook Ansible em hosts remotos usando a chave SSH especificada e tornando-se sudo com a senha especificada.
+ansible-playbook playbook.yml --private-key chave_ssh.pem --become --become-password senha
+
+# Executa um playbook Ansible em hosts remotos usando a chave SSH especificada, tornando-se sudo e definindo variáveis adicionais.
+ansible-playbook playbook.yml --private-key chave_ssh.pem --become --extra-vars &quot;variavel=valor&quot;
+
+# Executa um playbook Ansible em hosts remotos, limitando-se a um grupo específico.
+ansible-playbook playbook.yml --limit grupo
+
+# Executa um playbook Ansible em hosts remotos, ignorando erros de host indisponível.
+ansible-playbook playbook.yml --skip-tags no_available_host
+
+# Executa um playbook Ansible em hosts remotos, forçando a atualização dos handlers.
+ansible-playbook playbook.yml --force-handlers
+
+# Executa um playbook Ansible em hosts remotos, mostrando apenas mensagens de erro e informações de falha.
+ansible-playbook playbook.yml --tags error
+
+# Executa um playbook Ansible em hosts remotos, exibindo mensagens de debug.
+ansible-playbook playbook.yml -vvv
+
+# Executa um comando ad-hoc Ansible em hosts remotos.
+ansible all -m command -a &quot;comando_a_executar&quot;
+
+# Executa um comando ad-hoc Ansible em hosts remotos, usando sudo.
+ansible all -m command -a &quot;comando_a_executar&quot; --become
+
+# Executa um comando ad-hoc Ansible em hosts remotos, usando sudo com a senha especificada.
+ansible all -m command -a &quot;comando_a_executar&quot; --become --ask-become-pass
+
+# Executa um comando ad-hoc Ansible em hosts remotos, usando um módulo específico.
+ansible all -m nome_do_modulo -a &quot;argumentos_do_modulo&quot;
+
+# Executa um comando ad-hoc Ansible em hosts remotos, definindo variáveis adicionais.
+ansible all -m command -a &quot;comando_a_executar&quot; -e &quot;variavel=valor&quot;
+
+# Gera uma lista de hosts disponíveis.
+ansible all --list-hosts
+
+# Exibe os fatos (facts) coletados dos hosts.
+ansible all -m setup
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
  
@@ -782,10 +1473,10 @@ terraform untaint aws_instance.example
  </entry>
  
  <entry>
-   <title>english/learning-english</title>
-   <link href="/2024/01/20/learning-english.html"/>
+   <title>english/roadmap</title>
+   <link href="/2024/01/20/roadmap.html"/>
    <updated>2024-01-20T00:00:00+00:00</updated>
-   <id>/2024/01/20/learning-english</id>
+   <id>/2024/01/20/roadmap</id>
    <content type="html">
 </content>
  </entry>
