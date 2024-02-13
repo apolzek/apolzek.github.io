@@ -57,7 +57,8 @@ tags: tools
 | hyperfine          | Benchmarking Made Easy                                                                                                                     |
 | eza                | An aesthetic alternative to ls                                                                                                             |
 | cheat              | Terminal Utility Cheat Sheets on Demand                                                                                                    |
-| certificate-ripper |                                                                                                                                    
+| certificate-ripper |
+| lnav               |
 
 ### Productive environment
 
