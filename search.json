@@ -81,10 +81,26 @@
     } ,
   
     {
+      "title"    : "development/golang/grpc",
+      "category" : "",
+      "tags"     : "go, gRPC",
+      "url"      : "/2024/12/01/grpc.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "development/golang/frameworks",
       "category" : "",
       "tags"     : "go, frameworks",
       "url"      : "/2024/12/01/frameworks.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "development/padroes-de-projeto/observer",
+      "category" : "",
+      "tags"     : "observer",
+      "url"      : "/2024/12/01/observer.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
