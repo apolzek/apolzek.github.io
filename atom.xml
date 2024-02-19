@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-02-19T15:54:45+00:00</updated>
+ <updated>2024-02-19T23:18:58+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -573,82 +573,6 @@ func main&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&
  </entry>
  
  <entry>
-   <title>cheatsheet/ufw</title>
-   <link href="/2024/12/01/linux.html"/>
-   <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/linux</id>
-   <content type="html">&lt;h2 id=&quot;cheatsheet-ufw&quot;&gt;Cheatsheet ufw&lt;/h2&gt;
-
-&lt;p&gt;https://medium.com/@sdbutalla/the-6-terminal-utilities-that-save-me-serious-time-and-simplify-my-workflow-1c44b46a4ec9&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>cheatsheet/groovy</title>
-   <link href="/2024/12/01/groovy.html"/>
-   <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/groovy</id>
-   <content type="html">&lt;h2 id=&quot;cheatsheet-groovy&quot;&gt;Cheatsheet groovy&lt;/h2&gt;
-
-&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Definir parâmetros de pipeline&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;parameters&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;name:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;PARAM1&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;defaultValue:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;valor_padrao&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;description:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;Descrição do parâmetro&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;booleanParam&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;name:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;PARAM2&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;defaultValue:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;description:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;Descrição do parâmetro&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;choice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;name:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;PARAM3&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;choices:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;opcao1&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;opcao2&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;opcao3&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;description:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;Descrição do parâmetro&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// Definir variáveis globais&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VARIAVEL_GLOBAL&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;valor&apos;&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// Stage para construir e testar o código&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;stage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;Construir e Testar&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// Checkout do repositório&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;branch:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;master&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;url:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;https://exemplo.com/repo.git&apos;&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;// Executar comandos de construção e teste&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;sh&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;mvn clean package&apos;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;sh&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;npm install&apos;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;sh&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;npm test&apos;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// Stage para implantar em ambiente de teste&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;stage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;Implantar em Teste&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// Executar implantação&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;sh&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;kubectl apply -f teste.yaml&apos;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// Stage para implantar em ambiente de produção&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;stage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;Implantar em Produção&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// Executar implantação&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;sh&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;kubectl apply -f producao.yaml&apos;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// Post-condições&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;post&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// Notificar por email em caso de falha&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;failure&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;emailext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
-            &lt;span class=&quot;nl&quot;&gt;subject:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Pipeline Jenkins - Falha&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;nl&quot;&gt;body:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Houve uma falha na execução da pipeline.&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;nl&quot;&gt;to:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;exemplo@email.com&quot;&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// Enviar artefatos para armazenamento permanente&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;always&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;archiveArtifacts&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;target/*.jar&apos;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// Função para executar um passo de limpeza&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;limpar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;Executando passo de limpeza...&apos;&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// Implemente aqui as etapas de limpeza necessárias&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
    <title>development/golang/reverse-ssh-tunneling</title>
    <link href="/2024/11/24/reverse-ssh-tunneling.html"/>
    <updated>2024-11-24T00:00:00+00:00</updated>
@@ -783,10 +707,28 @@ func main&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&
  </entry>
  
  <entry>
-   <title>aws/iam</title>
-   <link href="/2024/10/25/iam.html"/>
+   <title>cloud/aws/eks</title>
+   <link href="/2024/10/25/eks.html"/>
    <updated>2024-10-25T00:00:00+00:00</updated>
-   <id>/2024/10/25/iam</id>
+   <id>/2024/10/25/eks</id>
+   <content type="html">&lt;h1 id=&quot;eks&quot;&gt;EKS&lt;/h1&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>opinions/self-assessment-1</title>
+   <link href="/2024/08/01/self-assessment-1.html"/>
+   <updated>2024-08-01T00:00:00+00:00</updated>
+   <id>/2024/08/01/self-assessment-1</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>aws/iam</title>
+   <link href="/2024/02/19/iam.html"/>
+   <updated>2024-02-19T00:00:00+00:00</updated>
+   <id>/2024/02/19/iam</id>
    <content type="html">&lt;h2 id=&quot;iam&quot;&gt;IAM&lt;/h2&gt;
 
 &lt;p&gt;A IAM (Identity and Access Management) é um serviço fundamental da AWS (Amazon Web Services) que permite gerenciar de forma segura o acesso aos recursos da AWS. Com a IAM, você pode criar e gerenciar usuários, grupos e funções, além de definir permissões detalhadas para controlar quem tem acesso a quais recursos e ações dentro da sua conta da AWS. Aqui estão alguns conceitos importantes e exemplos práticos de uso da IAM:&lt;/p&gt;
@@ -847,24 +789,6 @@ aws iam add-user-to-group --group-name mygroup --user-name myuser
     ]
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>cloud/aws/eks</title>
-   <link href="/2024/10/25/eks.html"/>
-   <updated>2024-10-25T00:00:00+00:00</updated>
-   <id>/2024/10/25/eks</id>
-   <content type="html">&lt;h1 id=&quot;eks&quot;&gt;EKS&lt;/h1&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>opinions/self-assessment-1</title>
-   <link href="/2024/08/01/self-assessment-1.html"/>
-   <updated>2024-08-01T00:00:00+00:00</updated>
-   <id>/2024/08/01/self-assessment-1</id>
-   <content type="html">
 </content>
  </entry>
  
@@ -1008,6 +932,82 @@ linhas
    <updated>2024-02-19T00:00:00+00:00</updated>
    <id>/2024/02/19/lpi1</id>
    <content type="html">&lt;h2 id=&quot;cheatsheet-lpi1&quot;&gt;Cheatsheet lpi1&lt;/h2&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>cheatsheet/ufw</title>
+   <link href="/2024/02/19/linux.html"/>
+   <updated>2024-02-19T00:00:00+00:00</updated>
+   <id>/2024/02/19/linux</id>
+   <content type="html">&lt;h2 id=&quot;cheatsheet-ufw&quot;&gt;Cheatsheet ufw&lt;/h2&gt;
+
+&lt;p&gt;https://medium.com/@sdbutalla/the-6-terminal-utilities-that-save-me-serious-time-and-simplify-my-workflow-1c44b46a4ec9&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>cheatsheet/groovy</title>
+   <link href="/2024/02/19/groovy.html"/>
+   <updated>2024-02-19T00:00:00+00:00</updated>
+   <id>/2024/02/19/groovy</id>
+   <content type="html">&lt;h2 id=&quot;cheatsheet-groovy&quot;&gt;Cheatsheet groovy&lt;/h2&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Definir parâmetros de pipeline&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;parameters&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;name:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;PARAM1&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;defaultValue:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;valor_padrao&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;description:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;Descrição do parâmetro&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;booleanParam&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;name:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;PARAM2&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;defaultValue:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;description:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;Descrição do parâmetro&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;choice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;name:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;PARAM3&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;choices:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;opcao1&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;opcao2&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;opcao3&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;description:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;Descrição do parâmetro&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Definir variáveis globais&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VARIAVEL_GLOBAL&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;valor&apos;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Stage para construir e testar o código&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;stage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;Construir e Testar&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Checkout do repositório&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;branch:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;master&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;url:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;https://exemplo.com/repo.git&apos;&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// Executar comandos de construção e teste&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;sh&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;mvn clean package&apos;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;sh&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;npm install&apos;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;sh&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;npm test&apos;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Stage para implantar em ambiente de teste&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;stage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;Implantar em Teste&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Executar implantação&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;sh&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;kubectl apply -f teste.yaml&apos;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Stage para implantar em ambiente de produção&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;stage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;Implantar em Produção&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Executar implantação&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;sh&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;kubectl apply -f producao.yaml&apos;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Post-condições&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;post&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Notificar por email em caso de falha&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;failure&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;emailext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;nl&quot;&gt;subject:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Pipeline Jenkins - Falha&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nl&quot;&gt;body:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Houve uma falha na execução da pipeline.&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nl&quot;&gt;to:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;exemplo@email.com&quot;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Enviar artefatos para armazenamento permanente&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;always&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;archiveArtifacts&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;target/*.jar&apos;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Função para executar um passo de limpeza&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;limpar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;Executando passo de limpeza...&apos;&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Implemente aqui as etapas de limpeza necessárias&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
  

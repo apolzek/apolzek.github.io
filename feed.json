@@ -452,48 +452,6 @@
         },
     
         {
-            "id": "/2024/12/01/linux.html",
-            "title": "cheatsheet/ufw",
-            "summary": "Cheatsheet ufw",
-            "content_text": "Cheatsheet ufwhttps://medium.com/@sdbutalla/the-6-terminal-utilities-that-save-me-serious-time-and-simplify-my-workflow-1c44b46a4ec9",
-            "content_html": "<h2 id=\"cheatsheet-ufw\">Cheatsheet ufw</h2><p>https://medium.com/@sdbutalla/the-6-terminal-utilities-that-save-me-serious-time-and-simplify-my-workflow-1c44b46a4ec9</p>",
-            "url": "/2024/12/01/linux.html",
-            
-            
-            
-            "tags": ["ufw","ubuntu","firewall"],
-            
-            "date_published": "2024-12-01T00:00:00+00:00",
-            "date_modified": "2024-12-01T00:00:00+00:00",
-            
-                "author": 
-                ""
-                
-            
-        },
-    
-        {
-            "id": "/2024/12/01/groovy.html",
-            "title": "cheatsheet/groovy",
-            "summary": "Cheatsheet groovy",
-            "content_text": "Cheatsheet groovy// Definir parâmetros de pipelineparameters {    string(name: 'PARAM1', defaultValue: 'valor_padrao', description: 'Descrição do parâmetro')    booleanParam(name: 'PARAM2', defaultValue: true, description: 'Descrição do parâmetro')    choice(name: 'PARAM3', choices: ['opcao1', 'opcao2', 'opcao3'], description: 'Descrição do parâmetro')}// Definir variáveis globaisdef VARIAVEL_GLOBAL = 'valor'// Stage para construir e testar o códigostage('Construir e Testar') {    // Checkout do repositório    git branch: 'master', url: 'https://exemplo.com/repo.git'    // Executar comandos de construção e teste    sh 'mvn clean package'    sh 'npm install'    sh 'npm test'}// Stage para implantar em ambiente de testestage('Implantar em Teste') {    // Executar implantação    sh 'kubectl apply -f teste.yaml'}// Stage para implantar em ambiente de produçãostage('Implantar em Produção') {    // Executar implantação    sh 'kubectl apply -f producao.yaml'}// Post-condiçõespost {    // Notificar por email em caso de falha    failure {        emailext(            subject: \"Pipeline Jenkins - Falha\",            body: \"Houve uma falha na execução da pipeline.\",            to: \"exemplo@email.com\"        )    }    // Enviar artefatos para armazenamento permanente    always {        archiveArtifacts 'target/*.jar'    }}// Função para executar um passo de limpezadef limpar() {    echo 'Executando passo de limpeza...'    // Implemente aqui as etapas de limpeza necessárias}",
-            "content_html": "<h2 id=\"cheatsheet-groovy\">Cheatsheet groovy</h2><div class=\"language-groovy highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\">// Definir parâmetros de pipeline</span><span class=\"n\">parameters</span> <span class=\"o\">{</span>    <span class=\"n\">string</span><span class=\"o\">(</span><span class=\"nl\">name:</span> <span class=\"s1\">'PARAM1'</span><span class=\"o\">,</span> <span class=\"nl\">defaultValue:</span> <span class=\"s1\">'valor_padrao'</span><span class=\"o\">,</span> <span class=\"nl\">description:</span> <span class=\"s1\">'Descrição do parâmetro'</span><span class=\"o\">)</span>    <span class=\"n\">booleanParam</span><span class=\"o\">(</span><span class=\"nl\">name:</span> <span class=\"s1\">'PARAM2'</span><span class=\"o\">,</span> <span class=\"nl\">defaultValue:</span> <span class=\"kc\">true</span><span class=\"o\">,</span> <span class=\"nl\">description:</span> <span class=\"s1\">'Descrição do parâmetro'</span><span class=\"o\">)</span>    <span class=\"n\">choice</span><span class=\"o\">(</span><span class=\"nl\">name:</span> <span class=\"s1\">'PARAM3'</span><span class=\"o\">,</span> <span class=\"nl\">choices:</span> <span class=\"o\">[</span><span class=\"s1\">'opcao1'</span><span class=\"o\">,</span> <span class=\"s1\">'opcao2'</span><span class=\"o\">,</span> <span class=\"s1\">'opcao3'</span><span class=\"o\">],</span> <span class=\"nl\">description:</span> <span class=\"s1\">'Descrição do parâmetro'</span><span class=\"o\">)</span><span class=\"o\">}</span><span class=\"c1\">// Definir variáveis globais</span><span class=\"kt\">def</span> <span class=\"n\">VARIAVEL_GLOBAL</span> <span class=\"o\">=</span> <span class=\"s1\">'valor'</span><span class=\"c1\">// Stage para construir e testar o código</span><span class=\"n\">stage</span><span class=\"o\">(</span><span class=\"s1\">'Construir e Testar'</span><span class=\"o\">)</span> <span class=\"o\">{</span>    <span class=\"c1\">// Checkout do repositório</span>    <span class=\"n\">git</span> <span class=\"nl\">branch:</span> <span class=\"s1\">'master'</span><span class=\"o\">,</span> <span class=\"nl\">url:</span> <span class=\"s1\">'https://exemplo.com/repo.git'</span>    <span class=\"c1\">// Executar comandos de construção e teste</span>    <span class=\"n\">sh</span> <span class=\"s1\">'mvn clean package'</span>    <span class=\"n\">sh</span> <span class=\"s1\">'npm install'</span>    <span class=\"n\">sh</span> <span class=\"s1\">'npm test'</span><span class=\"o\">}</span><span class=\"c1\">// Stage para implantar em ambiente de teste</span><span class=\"n\">stage</span><span class=\"o\">(</span><span class=\"s1\">'Implantar em Teste'</span><span class=\"o\">)</span> <span class=\"o\">{</span>    <span class=\"c1\">// Executar implantação</span>    <span class=\"n\">sh</span> <span class=\"s1\">'kubectl apply -f teste.yaml'</span><span class=\"o\">}</span><span class=\"c1\">// Stage para implantar em ambiente de produção</span><span class=\"n\">stage</span><span class=\"o\">(</span><span class=\"s1\">'Implantar em Produção'</span><span class=\"o\">)</span> <span class=\"o\">{</span>    <span class=\"c1\">// Executar implantação</span>    <span class=\"n\">sh</span> <span class=\"s1\">'kubectl apply -f producao.yaml'</span><span class=\"o\">}</span><span class=\"c1\">// Post-condições</span><span class=\"n\">post</span> <span class=\"o\">{</span>    <span class=\"c1\">// Notificar por email em caso de falha</span>    <span class=\"n\">failure</span> <span class=\"o\">{</span>        <span class=\"n\">emailext</span><span class=\"o\">(</span>            <span class=\"nl\">subject:</span> <span class=\"s2\">\"Pipeline Jenkins - Falha\"</span><span class=\"o\">,</span>            <span class=\"nl\">body:</span> <span class=\"s2\">\"Houve uma falha na execução da pipeline.\"</span><span class=\"o\">,</span>            <span class=\"nl\">to:</span> <span class=\"s2\">\"exemplo@email.com\"</span>        <span class=\"o\">)</span>    <span class=\"o\">}</span>    <span class=\"c1\">// Enviar artefatos para armazenamento permanente</span>    <span class=\"n\">always</span> <span class=\"o\">{</span>        <span class=\"n\">archiveArtifacts</span> <span class=\"s1\">'target/*.jar'</span>    <span class=\"o\">}</span><span class=\"o\">}</span><span class=\"c1\">// Função para executar um passo de limpeza</span><span class=\"kt\">def</span> <span class=\"nf\">limpar</span><span class=\"o\">()</span> <span class=\"o\">{</span>    <span class=\"n\">echo</span> <span class=\"s1\">'Executando passo de limpeza...'</span>    <span class=\"c1\">// Implemente aqui as etapas de limpeza necessárias</span><span class=\"o\">}</span></code></pre></div></div>",
-            "url": "/2024/12/01/groovy.html",
-            
-            
-            
-            "tags": ["groovy","linux"],
-            
-            "date_published": "2024-12-01T00:00:00+00:00",
-            "date_modified": "2024-12-01T00:00:00+00:00",
-            
-                "author": 
-                ""
-                
-            
-        },
-    
-        {
             "id": "/2024/11/24/reverse-ssh-tunneling.html",
             "title": "development/golang/reverse-ssh-tunneling",
             "summary": "Reverse SSH Tunneling",
@@ -507,27 +465,6 @@
             
             "date_published": "2024-11-24T00:00:00+00:00",
             "date_modified": "2024-11-24T00:00:00+00:00",
-            
-                "author": 
-                ""
-                
-            
-        },
-    
-        {
-            "id": "/2024/10/25/iam.html",
-            "title": "aws/iam",
-            "summary": "IAM",
-            "content_text": "IAMA IAM (Identity and Access Management) é um serviço fundamental da AWS (Amazon Web Services) que permite gerenciar de forma segura o acesso aos recursos da AWS. Com a IAM, você pode criar e gerenciar usuários, grupos e funções, além de definir permissões detalhadas para controlar quem tem acesso a quais recursos e ações dentro da sua conta da AWS. Aqui estão alguns conceitos importantes e exemplos práticos de uso da IAM:UsuáriosUm usuário é uma identidade que você cria para alguém ou algo (como uma aplicação) que precisa acessar sua conta da AWS. Cada usuário possui um nome de usuário exclusivo e credenciais de login. Aqui está um exemplo de criação de um usuário na IAM:aws iam create-user --user-name myuserGruposUm grupo é um conjunto de permissões que você pode aplicar a vários usuários. Você atribui políticas (conjuntos de permissões) aos grupos, e os usuários que pertencem ao grupo herdam essas permissões. Aqui está um exemplo de criação de um grupo na IAM e associação de um usuário a ele:aws iam create-group --group-name mygroupaws iam add-user-to-group --group-name mygroup --user-name myuserPolíticasAs políticas definem as permissões de acesso em formato JSON. Elas especificam o que um usuário, grupo ou função pode fazer com recursos específicos. Aqui está um exemplo de criação de uma política que permite a leitura de um bucket S3:{    \"Version\": \"2012-10-17\",    \"Statement\": [        {            \"Effect\": \"Allow\",            \"Action\": \"s3:GetObject\",            \"Resource\": \"arn:aws:s3:::my-bucket/*\"        }    ]}FunçõesAs funções permitem conceder permissões temporárias a serviços da AWS ou entidades confiáveis. Isso é útil para permitir que serviços acessem outros recursos em seu nome, sem a necessidade de compartilhar credenciais de acesso direto. Aqui está um exemplo de criação de uma função que permite que uma instância EC2 acesse um bucket S3:aws iam create-role --role-name myrole --assume-role-policy-document file://trust-policy.jsonAssume Role Policy DocumentO documento de política de confiança é um JSON que define quais entidades ou serviços podem assumir uma função. Aqui está um exemplo simplificado:{    \"Version\": \"2012-10-17\",    \"Statement\": [        {            \"Effect\": \"Allow\",            \"Principal\": {                \"Service\": \"ec2.amazonaws.com\"            },            \"Action\": \"sts:AssumeRole\"        }    ]}",
-            "content_html": "<h2 id=\"iam\">IAM</h2><p>A IAM (Identity and Access Management) é um serviço fundamental da AWS (Amazon Web Services) que permite gerenciar de forma segura o acesso aos recursos da AWS. Com a IAM, você pode criar e gerenciar usuários, grupos e funções, além de definir permissões detalhadas para controlar quem tem acesso a quais recursos e ações dentro da sua conta da AWS. Aqui estão alguns conceitos importantes e exemplos práticos de uso da IAM:</p><h4 id=\"usuários\">Usuários</h4><p>Um usuário é uma identidade que você cria para alguém ou algo (como uma aplicação) que precisa acessar sua conta da AWS. Cada usuário possui um nome de usuário exclusivo e credenciais de login. Aqui está um exemplo de criação de um usuário na IAM:</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>aws iam create-user --user-name myuser</code></pre></div></div><h4 id=\"grupos\">Grupos</h4><p>Um grupo é um conjunto de permissões que você pode aplicar a vários usuários. Você atribui políticas (conjuntos de permissões) aos grupos, e os usuários que pertencem ao grupo herdam essas permissões. Aqui está um exemplo de criação de um grupo na IAM e associação de um usuário a ele:</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>aws iam create-group --group-name mygroupaws iam add-user-to-group --group-name mygroup --user-name myuser</code></pre></div></div><h4 id=\"políticas\">Políticas</h4><p>As políticas definem as permissões de acesso em formato JSON. Elas especificam o que um usuário, grupo ou função pode fazer com recursos específicos. Aqui está um exemplo de criação de uma política que permite a leitura de um bucket S3:</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>{    \"Version\": \"2012-10-17\",    \"Statement\": [        {            \"Effect\": \"Allow\",            \"Action\": \"s3:GetObject\",            \"Resource\": \"arn:aws:s3:::my-bucket/*\"        }    ]}</code></pre></div></div><h4 id=\"funções\">Funções</h4><p>As funções permitem conceder permissões temporárias a serviços da AWS ou entidades confiáveis. Isso é útil para permitir que serviços acessem outros recursos em seu nome, sem a necessidade de compartilhar credenciais de acesso direto. Aqui está um exemplo de criação de uma função que permite que uma instância EC2 acesse um bucket S3:</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>aws iam create-role --role-name myrole --assume-role-policy-document file://trust-policy.json</code></pre></div></div><h4 id=\"assume-role-policy-document\">Assume Role Policy Document</h4><p>O documento de política de confiança é um JSON que define quais entidades ou serviços podem assumir uma função. Aqui está um exemplo simplificado:</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>{    \"Version\": \"2012-10-17\",    \"Statement\": [        {            \"Effect\": \"Allow\",            \"Principal\": {                \"Service\": \"ec2.amazonaws.com\"            },            \"Action\": \"sts:AssumeRole\"        }    ]}</code></pre></div></div>",
-            "url": "/2024/10/25/iam.html",
-            
-            
-            
-            "tags": ["iam","aws","security"],
-            
-            "date_published": "2024-10-25T00:00:00+00:00",
-            "date_modified": "2024-10-25T00:00:00+00:00",
             
                 "author": 
                 ""
@@ -570,6 +507,27 @@
             
             "date_published": "2024-08-01T00:00:00+00:00",
             "date_modified": "2024-08-01T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
+            "id": "/2024/02/19/iam.html",
+            "title": "aws/iam",
+            "summary": "IAM",
+            "content_text": "IAMA IAM (Identity and Access Management) é um serviço fundamental da AWS (Amazon Web Services) que permite gerenciar de forma segura o acesso aos recursos da AWS. Com a IAM, você pode criar e gerenciar usuários, grupos e funções, além de definir permissões detalhadas para controlar quem tem acesso a quais recursos e ações dentro da sua conta da AWS. Aqui estão alguns conceitos importantes e exemplos práticos de uso da IAM:UsuáriosUm usuário é uma identidade que você cria para alguém ou algo (como uma aplicação) que precisa acessar sua conta da AWS. Cada usuário possui um nome de usuário exclusivo e credenciais de login. Aqui está um exemplo de criação de um usuário na IAM:aws iam create-user --user-name myuserGruposUm grupo é um conjunto de permissões que você pode aplicar a vários usuários. Você atribui políticas (conjuntos de permissões) aos grupos, e os usuários que pertencem ao grupo herdam essas permissões. Aqui está um exemplo de criação de um grupo na IAM e associação de um usuário a ele:aws iam create-group --group-name mygroupaws iam add-user-to-group --group-name mygroup --user-name myuserPolíticasAs políticas definem as permissões de acesso em formato JSON. Elas especificam o que um usuário, grupo ou função pode fazer com recursos específicos. Aqui está um exemplo de criação de uma política que permite a leitura de um bucket S3:{    \"Version\": \"2012-10-17\",    \"Statement\": [        {            \"Effect\": \"Allow\",            \"Action\": \"s3:GetObject\",            \"Resource\": \"arn:aws:s3:::my-bucket/*\"        }    ]}FunçõesAs funções permitem conceder permissões temporárias a serviços da AWS ou entidades confiáveis. Isso é útil para permitir que serviços acessem outros recursos em seu nome, sem a necessidade de compartilhar credenciais de acesso direto. Aqui está um exemplo de criação de uma função que permite que uma instância EC2 acesse um bucket S3:aws iam create-role --role-name myrole --assume-role-policy-document file://trust-policy.jsonAssume Role Policy DocumentO documento de política de confiança é um JSON que define quais entidades ou serviços podem assumir uma função. Aqui está um exemplo simplificado:{    \"Version\": \"2012-10-17\",    \"Statement\": [        {            \"Effect\": \"Allow\",            \"Principal\": {                \"Service\": \"ec2.amazonaws.com\"            },            \"Action\": \"sts:AssumeRole\"        }    ]}",
+            "content_html": "<h2 id=\"iam\">IAM</h2><p>A IAM (Identity and Access Management) é um serviço fundamental da AWS (Amazon Web Services) que permite gerenciar de forma segura o acesso aos recursos da AWS. Com a IAM, você pode criar e gerenciar usuários, grupos e funções, além de definir permissões detalhadas para controlar quem tem acesso a quais recursos e ações dentro da sua conta da AWS. Aqui estão alguns conceitos importantes e exemplos práticos de uso da IAM:</p><h4 id=\"usuários\">Usuários</h4><p>Um usuário é uma identidade que você cria para alguém ou algo (como uma aplicação) que precisa acessar sua conta da AWS. Cada usuário possui um nome de usuário exclusivo e credenciais de login. Aqui está um exemplo de criação de um usuário na IAM:</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>aws iam create-user --user-name myuser</code></pre></div></div><h4 id=\"grupos\">Grupos</h4><p>Um grupo é um conjunto de permissões que você pode aplicar a vários usuários. Você atribui políticas (conjuntos de permissões) aos grupos, e os usuários que pertencem ao grupo herdam essas permissões. Aqui está um exemplo de criação de um grupo na IAM e associação de um usuário a ele:</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>aws iam create-group --group-name mygroupaws iam add-user-to-group --group-name mygroup --user-name myuser</code></pre></div></div><h4 id=\"políticas\">Políticas</h4><p>As políticas definem as permissões de acesso em formato JSON. Elas especificam o que um usuário, grupo ou função pode fazer com recursos específicos. Aqui está um exemplo de criação de uma política que permite a leitura de um bucket S3:</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>{    \"Version\": \"2012-10-17\",    \"Statement\": [        {            \"Effect\": \"Allow\",            \"Action\": \"s3:GetObject\",            \"Resource\": \"arn:aws:s3:::my-bucket/*\"        }    ]}</code></pre></div></div><h4 id=\"funções\">Funções</h4><p>As funções permitem conceder permissões temporárias a serviços da AWS ou entidades confiáveis. Isso é útil para permitir que serviços acessem outros recursos em seu nome, sem a necessidade de compartilhar credenciais de acesso direto. Aqui está um exemplo de criação de uma função que permite que uma instância EC2 acesse um bucket S3:</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>aws iam create-role --role-name myrole --assume-role-policy-document file://trust-policy.json</code></pre></div></div><h4 id=\"assume-role-policy-document\">Assume Role Policy Document</h4><p>O documento de política de confiança é um JSON que define quais entidades ou serviços podem assumir uma função. Aqui está um exemplo simplificado:</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>{    \"Version\": \"2012-10-17\",    \"Statement\": [        {            \"Effect\": \"Allow\",            \"Principal\": {                \"Service\": \"ec2.amazonaws.com\"            },            \"Action\": \"sts:AssumeRole\"        }    ]}</code></pre></div></div>",
+            "url": "/2024/02/19/iam.html",
+            
+            
+            
+            "tags": ["iam","aws","security"],
+            
+            "date_published": "2024-02-19T00:00:00+00:00",
+            "date_modified": "2024-02-19T00:00:00+00:00",
             
                 "author": 
                 ""
@@ -630,6 +588,48 @@
             
             
             "tags": ["lpi1","linux"],
+            
+            "date_published": "2024-02-19T00:00:00+00:00",
+            "date_modified": "2024-02-19T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
+            "id": "/2024/02/19/linux.html",
+            "title": "cheatsheet/ufw",
+            "summary": "Cheatsheet ufw",
+            "content_text": "Cheatsheet ufwhttps://medium.com/@sdbutalla/the-6-terminal-utilities-that-save-me-serious-time-and-simplify-my-workflow-1c44b46a4ec9",
+            "content_html": "<h2 id=\"cheatsheet-ufw\">Cheatsheet ufw</h2><p>https://medium.com/@sdbutalla/the-6-terminal-utilities-that-save-me-serious-time-and-simplify-my-workflow-1c44b46a4ec9</p>",
+            "url": "/2024/02/19/linux.html",
+            
+            
+            
+            "tags": ["ufw","ubuntu","firewall"],
+            
+            "date_published": "2024-02-19T00:00:00+00:00",
+            "date_modified": "2024-02-19T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
+            "id": "/2024/02/19/groovy.html",
+            "title": "cheatsheet/groovy",
+            "summary": "Cheatsheet groovy",
+            "content_text": "Cheatsheet groovy// Definir parâmetros de pipelineparameters {    string(name: 'PARAM1', defaultValue: 'valor_padrao', description: 'Descrição do parâmetro')    booleanParam(name: 'PARAM2', defaultValue: true, description: 'Descrição do parâmetro')    choice(name: 'PARAM3', choices: ['opcao1', 'opcao2', 'opcao3'], description: 'Descrição do parâmetro')}// Definir variáveis globaisdef VARIAVEL_GLOBAL = 'valor'// Stage para construir e testar o códigostage('Construir e Testar') {    // Checkout do repositório    git branch: 'master', url: 'https://exemplo.com/repo.git'    // Executar comandos de construção e teste    sh 'mvn clean package'    sh 'npm install'    sh 'npm test'}// Stage para implantar em ambiente de testestage('Implantar em Teste') {    // Executar implantação    sh 'kubectl apply -f teste.yaml'}// Stage para implantar em ambiente de produçãostage('Implantar em Produção') {    // Executar implantação    sh 'kubectl apply -f producao.yaml'}// Post-condiçõespost {    // Notificar por email em caso de falha    failure {        emailext(            subject: \"Pipeline Jenkins - Falha\",            body: \"Houve uma falha na execução da pipeline.\",            to: \"exemplo@email.com\"        )    }    // Enviar artefatos para armazenamento permanente    always {        archiveArtifacts 'target/*.jar'    }}// Função para executar um passo de limpezadef limpar() {    echo 'Executando passo de limpeza...'    // Implemente aqui as etapas de limpeza necessárias}",
+            "content_html": "<h2 id=\"cheatsheet-groovy\">Cheatsheet groovy</h2><div class=\"language-groovy highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\">// Definir parâmetros de pipeline</span><span class=\"n\">parameters</span> <span class=\"o\">{</span>    <span class=\"n\">string</span><span class=\"o\">(</span><span class=\"nl\">name:</span> <span class=\"s1\">'PARAM1'</span><span class=\"o\">,</span> <span class=\"nl\">defaultValue:</span> <span class=\"s1\">'valor_padrao'</span><span class=\"o\">,</span> <span class=\"nl\">description:</span> <span class=\"s1\">'Descrição do parâmetro'</span><span class=\"o\">)</span>    <span class=\"n\">booleanParam</span><span class=\"o\">(</span><span class=\"nl\">name:</span> <span class=\"s1\">'PARAM2'</span><span class=\"o\">,</span> <span class=\"nl\">defaultValue:</span> <span class=\"kc\">true</span><span class=\"o\">,</span> <span class=\"nl\">description:</span> <span class=\"s1\">'Descrição do parâmetro'</span><span class=\"o\">)</span>    <span class=\"n\">choice</span><span class=\"o\">(</span><span class=\"nl\">name:</span> <span class=\"s1\">'PARAM3'</span><span class=\"o\">,</span> <span class=\"nl\">choices:</span> <span class=\"o\">[</span><span class=\"s1\">'opcao1'</span><span class=\"o\">,</span> <span class=\"s1\">'opcao2'</span><span class=\"o\">,</span> <span class=\"s1\">'opcao3'</span><span class=\"o\">],</span> <span class=\"nl\">description:</span> <span class=\"s1\">'Descrição do parâmetro'</span><span class=\"o\">)</span><span class=\"o\">}</span><span class=\"c1\">// Definir variáveis globais</span><span class=\"kt\">def</span> <span class=\"n\">VARIAVEL_GLOBAL</span> <span class=\"o\">=</span> <span class=\"s1\">'valor'</span><span class=\"c1\">// Stage para construir e testar o código</span><span class=\"n\">stage</span><span class=\"o\">(</span><span class=\"s1\">'Construir e Testar'</span><span class=\"o\">)</span> <span class=\"o\">{</span>    <span class=\"c1\">// Checkout do repositório</span>    <span class=\"n\">git</span> <span class=\"nl\">branch:</span> <span class=\"s1\">'master'</span><span class=\"o\">,</span> <span class=\"nl\">url:</span> <span class=\"s1\">'https://exemplo.com/repo.git'</span>    <span class=\"c1\">// Executar comandos de construção e teste</span>    <span class=\"n\">sh</span> <span class=\"s1\">'mvn clean package'</span>    <span class=\"n\">sh</span> <span class=\"s1\">'npm install'</span>    <span class=\"n\">sh</span> <span class=\"s1\">'npm test'</span><span class=\"o\">}</span><span class=\"c1\">// Stage para implantar em ambiente de teste</span><span class=\"n\">stage</span><span class=\"o\">(</span><span class=\"s1\">'Implantar em Teste'</span><span class=\"o\">)</span> <span class=\"o\">{</span>    <span class=\"c1\">// Executar implantação</span>    <span class=\"n\">sh</span> <span class=\"s1\">'kubectl apply -f teste.yaml'</span><span class=\"o\">}</span><span class=\"c1\">// Stage para implantar em ambiente de produção</span><span class=\"n\">stage</span><span class=\"o\">(</span><span class=\"s1\">'Implantar em Produção'</span><span class=\"o\">)</span> <span class=\"o\">{</span>    <span class=\"c1\">// Executar implantação</span>    <span class=\"n\">sh</span> <span class=\"s1\">'kubectl apply -f producao.yaml'</span><span class=\"o\">}</span><span class=\"c1\">// Post-condições</span><span class=\"n\">post</span> <span class=\"o\">{</span>    <span class=\"c1\">// Notificar por email em caso de falha</span>    <span class=\"n\">failure</span> <span class=\"o\">{</span>        <span class=\"n\">emailext</span><span class=\"o\">(</span>            <span class=\"nl\">subject:</span> <span class=\"s2\">\"Pipeline Jenkins - Falha\"</span><span class=\"o\">,</span>            <span class=\"nl\">body:</span> <span class=\"s2\">\"Houve uma falha na execução da pipeline.\"</span><span class=\"o\">,</span>            <span class=\"nl\">to:</span> <span class=\"s2\">\"exemplo@email.com\"</span>        <span class=\"o\">)</span>    <span class=\"o\">}</span>    <span class=\"c1\">// Enviar artefatos para armazenamento permanente</span>    <span class=\"n\">always</span> <span class=\"o\">{</span>        <span class=\"n\">archiveArtifacts</span> <span class=\"s1\">'target/*.jar'</span>    <span class=\"o\">}</span><span class=\"o\">}</span><span class=\"c1\">// Função para executar um passo de limpeza</span><span class=\"kt\">def</span> <span class=\"nf\">limpar</span><span class=\"o\">()</span> <span class=\"o\">{</span>    <span class=\"n\">echo</span> <span class=\"s1\">'Executando passo de limpeza...'</span>    <span class=\"c1\">// Implemente aqui as etapas de limpeza necessárias</span><span class=\"o\">}</span></code></pre></div></div>",
+            "url": "/2024/02/19/groovy.html",
+            
+            
+            
+            "tags": ["groovy","linux"],
             
             "date_published": "2024-02-19T00:00:00+00:00",
             "date_modified": "2024-02-19T00:00:00+00:00",
