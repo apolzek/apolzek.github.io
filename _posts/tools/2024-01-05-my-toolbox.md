@@ -88,5 +88,6 @@ tags: tools
 | OpenSearch     | OpenSearch is the flexible, scalable, open-source way to build solutions for data-intensive applications                                             |
 | MariaDB        | MariaDB Server is one of the most popular open source relational databases                                                                           |
 | Redis          | Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache, and message broker                                |
+| Keycloak       |
 
 ### Extensions for Visual Studio Code
