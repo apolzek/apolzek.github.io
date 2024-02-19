@@ -169,30 +169,6 @@
     } ,
   
     {
-      "title"    : "cheatsheet/powershell",
-      "category" : "",
-      "tags"     : "powershell, linux",
-      "url"      : "/2024/12/01/powershell.html",
-      "date"     : "2024-12-01 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "cheatsheet/lpi2",
-      "category" : "",
-      "tags"     : "lpi2, linux",
-      "url"      : "/2024/12/01/lpi2.html",
-      "date"     : "2024-12-01 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "cheatsheet/lpi1",
-      "category" : "",
-      "tags"     : "lpi1, linux",
-      "url"      : "/2024/12/01/lpi1.html",
-      "date"     : "2024-12-01 00:00:00 +0000"
-    } ,
-  
-    {
       "title"    : "cheatsheet/ufw",
       "category" : "",
       "tags"     : "ufw, ubuntu, firewall",
@@ -205,14 +181,6 @@
       "category" : "",
       "tags"     : "groovy, linux",
       "url"      : "/2024/12/01/groovy.html",
-      "date"     : "2024-12-01 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "tools/k8s/cka",
-      "category" : "",
-      "tags"     : "cka, certification",
-      "url"      : "/2024/12/01/cka.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
@@ -246,6 +214,38 @@
       "tags"     : "self-assessment",
       "url"      : "/2024/08/01/self-assessment-1.html",
       "date"     : "2024-08-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "cheatsheet/powershell",
+      "category" : "",
+      "tags"     : "powershell, linux",
+      "url"      : "/2024/02/19/powershell.html",
+      "date"     : "2024-02-19 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "cheatsheet/git",
+      "category" : "",
+      "tags"     : "git, linux",
+      "url"      : "/2024/02/19/lpi2.html",
+      "date"     : "2024-02-19 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "cheatsheet/lpi1",
+      "category" : "",
+      "tags"     : "lpi1, linux",
+      "url"      : "/2024/02/19/lpi1.html",
+      "date"     : "2024-02-19 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "tools/k8s/cka",
+      "category" : "",
+      "tags"     : "cka, certification",
+      "url"      : "/2024/02/19/cka.html",
+      "date"     : "2024-02-19 00:00:00 +0000"
     } ,
   
     {
