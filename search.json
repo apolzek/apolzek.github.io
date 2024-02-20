@@ -193,6 +193,22 @@
     } ,
   
     {
+      "title"    : "cheatsheet/alias",
+      "category" : "",
+      "tags"     : "alias, linux",
+      "url"      : "/2024/02/20/alias.html",
+      "date"     : "2024-02-20 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "cheatsheet/tcpdump",
+      "category" : "",
+      "tags"     : "tcpdump, linux",
+      "url"      : "/2024/02/20/tcpdump.html",
+      "date"     : "2024-02-20 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "cheatsheet/regex",
       "category" : "",
       "tags"     : "regex, linux",

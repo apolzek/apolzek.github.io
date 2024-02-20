@@ -515,6 +515,48 @@
         },
     
         {
+            "id": "/2024/02/20/alias.html",
+            "title": "cheatsheet/alias",
+            "summary": "Cheatsheet alias",
+            "content_text": "Cheatsheet alias",
+            "content_html": "<h2 id=\"cheatsheet-alias\">Cheatsheet alias</h2>",
+            "url": "/2024/02/20/alias.html",
+            
+            
+            
+            "tags": ["alias","linux"],
+            
+            "date_published": "2024-02-20T00:00:00+00:00",
+            "date_modified": "2024-02-20T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
+            "id": "/2024/02/20/tcpdump.html",
+            "title": "cheatsheet/tcpdump",
+            "summary": "Cheatsheet tcpdump",
+            "content_text": "Cheatsheet tcpdump",
+            "content_html": "<h2 id=\"cheatsheet-tcpdump\">Cheatsheet tcpdump</h2>",
+            "url": "/2024/02/20/tcpdump.html",
+            
+            
+            
+            "tags": ["tcpdump","linux"],
+            
+            "date_published": "2024-02-20T00:00:00+00:00",
+            "date_modified": "2024-02-20T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
             "id": "/2024/02/20/regex.html",
             "title": "cheatsheet/regex",
             "summary": "Cheatsheet regex",
@@ -717,48 +759,6 @@
             
             "date_published": "2024-02-19T00:00:00+00:00",
             "date_modified": "2024-02-19T00:00:00+00:00",
-            
-                "author": 
-                ""
-                
-            
-        },
-    
-        {
-            "id": "/2024/02/19/cka.html",
-            "title": "tools/k8s/cka",
-            "summary": "CKA",
-            "content_text": "CKA",
-            "content_html": "<h2 id=\"cka\">CKA</h2>",
-            "url": "/2024/02/19/cka.html",
-            
-            
-            
-            "tags": ["cka","certification"],
-            
-            "date_published": "2024-02-19T00:00:00+00:00",
-            "date_modified": "2024-02-19T00:00:00+00:00",
-            
-                "author": 
-                ""
-                
-            
-        },
-    
-        {
-            "id": "/2024/02/11/ufw.html",
-            "title": "cheatsheet/ufw",
-            "summary": "Cheatsheet ufw",
-            "content_text": "Cheatsheet ufw# Habilitar o Firewallsudo ufw enable# Desabilitar o Firewallsudo ufw disable# Verificar o Status do Firewallsudo ufw status# Adicionar uma Regra de Permissão de Porta (por exemplo, porta 80/tcp)sudo ufw allow 80/tcp# Adicionar uma Regra de Permissão para um Range de Portas (por exemplo, portas de 8000 a 8010/tcp)sudo ufw allow 8000:8010/tcp# Adicionar uma Regra de Permissão para um Aplicativo Específico (por exemplo, OpenSSH)sudo ufw allow OpenSSH# Negar uma Porta (por exemplo, porta 22/tcp)sudo ufw deny 22/tcp# Limitar a taxa de conexões para um determinado serviço (por exemplo, SSH)sudo ufw limit ssh# Excluir uma Regra (por exemplo, excluir a regra que permite o tráfego na porta 80/tcp)sudo ufw delete allow 80/tcp# Habilitar ou Desabilitar o Loggingsudo ufw logging onsudo ufw logging off# Regras de IPv6 (substitua allow ou deny por allow6 ou deny6 para IPv6)sudo ufw allow6 80/tcpsudo ufw deny6 22/tcp# Permitir tráfego de uma porta UDP específicasudo ufw allow 53/udp",
-            "content_html": "<h2 id=\"cheatsheet-ufw\">Cheatsheet ufw</h2><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code># Habilitar o Firewallsudo ufw enable# Desabilitar o Firewallsudo ufw disable# Verificar o Status do Firewallsudo ufw status# Adicionar uma Regra de Permissão de Porta (por exemplo, porta 80/tcp)sudo ufw allow 80/tcp# Adicionar uma Regra de Permissão para um Range de Portas (por exemplo, portas de 8000 a 8010/tcp)sudo ufw allow 8000:8010/tcp# Adicionar uma Regra de Permissão para um Aplicativo Específico (por exemplo, OpenSSH)sudo ufw allow OpenSSH# Negar uma Porta (por exemplo, porta 22/tcp)sudo ufw deny 22/tcp# Limitar a taxa de conexões para um determinado serviço (por exemplo, SSH)sudo ufw limit ssh# Excluir uma Regra (por exemplo, excluir a regra que permite o tráfego na porta 80/tcp)sudo ufw delete allow 80/tcp# Habilitar ou Desabilitar o Loggingsudo ufw logging onsudo ufw logging off# Regras de IPv6 (substitua allow ou deny por allow6 ou deny6 para IPv6)sudo ufw allow6 80/tcpsudo ufw deny6 22/tcp# Permitir tráfego de uma porta UDP específicasudo ufw allow 53/udp</code></pre></div></div>",
-            "url": "/2024/02/11/ufw.html",
-            
-            
-            
-            "tags": ["ufw","ubuntu","firewall"],
-            
-            "date_published": "2024-02-11T00:00:00+00:00",
-            "date_modified": "2024-02-11T00:00:00+00:00",
             
                 "author": 
                 ""

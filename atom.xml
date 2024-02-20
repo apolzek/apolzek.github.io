@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-02-20T23:01:29+00:00</updated>
+ <updated>2024-02-20T23:57:17+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -721,6 +721,26 @@ func main&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&
    <updated>2024-08-01T00:00:00+00:00</updated>
    <id>/2024/08/01/self-assessment-1</id>
    <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>cheatsheet/alias</title>
+   <link href="/2024/02/20/alias.html"/>
+   <updated>2024-02-20T00:00:00+00:00</updated>
+   <id>/2024/02/20/alias</id>
+   <content type="html">&lt;h2 id=&quot;cheatsheet-alias&quot;&gt;Cheatsheet alias&lt;/h2&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>cheatsheet/tcpdump</title>
+   <link href="/2024/02/20/tcpdump.html"/>
+   <updated>2024-02-20T00:00:00+00:00</updated>
+   <id>/2024/02/20/tcpdump</id>
+   <content type="html">&lt;h2 id=&quot;cheatsheet-tcpdump&quot;&gt;Cheatsheet tcpdump&lt;/h2&gt;
+
 </content>
  </entry>
  
