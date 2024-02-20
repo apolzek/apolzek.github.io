@@ -193,6 +193,38 @@
     } ,
   
     {
+      "title"    : "cheatsheet/regex",
+      "category" : "",
+      "tags"     : "regex, linux",
+      "url"      : "/2024/02/20/regex.html",
+      "date"     : "2024-02-20 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "cheatsheet/openssh",
+      "category" : "",
+      "tags"     : "openssh, linux",
+      "url"      : "/2024/02/20/openssh.html",
+      "date"     : "2024-02-20 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "cheatsheet/nfs",
+      "category" : "",
+      "tags"     : "nfs, linux",
+      "url"      : "/2024/02/20/nfs.html",
+      "date"     : "2024-02-20 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "cheatsheet/awscli",
+      "category" : "",
+      "tags"     : "awscli, linux",
+      "url"      : "/2024/02/20/awscli.html",
+      "date"     : "2024-02-20 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "aws/iam",
       "category" : "",
       "tags"     : "iam, aws, security",

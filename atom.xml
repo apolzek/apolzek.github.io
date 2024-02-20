@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-02-19T23:18:58+00:00</updated>
+ <updated>2024-02-20T23:01:29+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -721,6 +721,46 @@ func main&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&
    <updated>2024-08-01T00:00:00+00:00</updated>
    <id>/2024/08/01/self-assessment-1</id>
    <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>cheatsheet/regex</title>
+   <link href="/2024/02/20/regex.html"/>
+   <updated>2024-02-20T00:00:00+00:00</updated>
+   <id>/2024/02/20/regex</id>
+   <content type="html">&lt;h2 id=&quot;cheatsheet-regex&quot;&gt;Cheatsheet regex&lt;/h2&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>cheatsheet/openssh</title>
+   <link href="/2024/02/20/openssh.html"/>
+   <updated>2024-02-20T00:00:00+00:00</updated>
+   <id>/2024/02/20/openssh</id>
+   <content type="html">&lt;h2 id=&quot;cheatsheet-openssh&quot;&gt;Cheatsheet openssh&lt;/h2&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>cheatsheet/nfs</title>
+   <link href="/2024/02/20/nfs.html"/>
+   <updated>2024-02-20T00:00:00+00:00</updated>
+   <id>/2024/02/20/nfs</id>
+   <content type="html">&lt;h2 id=&quot;cheatsheet-nfs&quot;&gt;Cheatsheet nfs&lt;/h2&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>cheatsheet/awscli</title>
+   <link href="/2024/02/20/awscli.html"/>
+   <updated>2024-02-20T00:00:00+00:00</updated>
+   <id>/2024/02/20/awscli</id>
+   <content type="html">&lt;h2 id=&quot;cheatsheet-awscli&quot;&gt;Cheatsheet awscli&lt;/h2&gt;
+
 </content>
  </entry>
  
