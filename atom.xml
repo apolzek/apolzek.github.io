@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-02-20T23:57:17+00:00</updated>
+ <updated>2024-02-24T18:01:17+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -771,6 +771,29 @@ func main&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&
    <id>/2024/02/20/nfs</id>
    <content type="html">&lt;h2 id=&quot;cheatsheet-nfs&quot;&gt;Cheatsheet nfs&lt;/h2&gt;
 
+</content>
+ </entry>
+ 
+ <entry>
+   <title>cheatsheet/certificates</title>
+   <link href="/2024/02/20/certificates.html"/>
+   <updated>2024-02-20T00:00:00+00:00</updated>
+   <id>/2024/02/20/certificates</id>
+   <content type="html">&lt;h2 id=&quot;cheatsheet-certificates&quot;&gt;Cheatsheet certificates&lt;/h2&gt;
+
+&lt;p&gt;https://github.com/Hakky54/certificate-ripper&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;crip print &lt;span class=&quot;nt&quot;&gt;--url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;https://stackoverflow.com/
+crip &lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;pkcs12 &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;https://github.com
+crip print &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;https://github.com &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;pem
+
+crip print &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;pem &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;https://youtube.com &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;https://github.com &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;https://stackoverflow.com &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;https://facebook.com
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
  

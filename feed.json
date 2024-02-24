@@ -620,6 +620,27 @@
         },
     
         {
+            "id": "/2024/02/20/certificates.html",
+            "title": "cheatsheet/certificates",
+            "summary": "Cheatsheet certificates",
+            "content_text": "Cheatsheet certificateshttps://github.com/Hakky54/certificate-rippercrip print --url=https://stackoverflow.com/crip export pkcs12 -u=https://github.comcrip print -u=https://github.com -f=pemcrip print -f=pem \\-u=https://youtube.com \\-u=https://github.com \\-u=https://stackoverflow.com \\-u=https://facebook.com",
+            "content_html": "<h2 id=\"cheatsheet-certificates\">Cheatsheet certificates</h2><p>https://github.com/Hakky54/certificate-ripper</p><div class=\"language-sh highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>crip print <span class=\"nt\">--url</span><span class=\"o\">=</span>https://stackoverflow.com/crip <span class=\"nb\">export </span>pkcs12 <span class=\"nt\">-u</span><span class=\"o\">=</span>https://github.comcrip print <span class=\"nt\">-u</span><span class=\"o\">=</span>https://github.com <span class=\"nt\">-f</span><span class=\"o\">=</span>pemcrip print <span class=\"nt\">-f</span><span class=\"o\">=</span>pem <span class=\"se\">\\</span><span class=\"nt\">-u</span><span class=\"o\">=</span>https://youtube.com <span class=\"se\">\\</span><span class=\"nt\">-u</span><span class=\"o\">=</span>https://github.com <span class=\"se\">\\</span><span class=\"nt\">-u</span><span class=\"o\">=</span>https://stackoverflow.com <span class=\"se\">\\</span><span class=\"nt\">-u</span><span class=\"o\">=</span>https://facebook.com</code></pre></div></div>",
+            "url": "/2024/02/20/certificates.html",
+            
+            
+            
+            "tags": ["certificates","linux"],
+            
+            "date_published": "2024-02-20T00:00:00+00:00",
+            "date_modified": "2024-02-20T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
             "id": "/2024/02/20/awscli.html",
             "title": "cheatsheet/awscli",
             "summary": "Cheatsheet awscli",
@@ -735,27 +756,6 @@
             
             
             "tags": ["ufw","ubuntu","firewall"],
-            
-            "date_published": "2024-02-19T00:00:00+00:00",
-            "date_modified": "2024-02-19T00:00:00+00:00",
-            
-                "author": 
-                ""
-                
-            
-        },
-    
-        {
-            "id": "/2024/02/19/groovy.html",
-            "title": "cheatsheet/groovy",
-            "summary": "Cheatsheet groovy",
-            "content_text": "Cheatsheet groovy// Definir parâmetros de pipelineparameters {    string(name: 'PARAM1', defaultValue: 'valor_padrao', description: 'Descrição do parâmetro')    booleanParam(name: 'PARAM2', defaultValue: true, description: 'Descrição do parâmetro')    choice(name: 'PARAM3', choices: ['opcao1', 'opcao2', 'opcao3'], description: 'Descrição do parâmetro')}// Definir variáveis globaisdef VARIAVEL_GLOBAL = 'valor'// Stage para construir e testar o códigostage('Construir e Testar') {    // Checkout do repositório    git branch: 'master', url: 'https://exemplo.com/repo.git'    // Executar comandos de construção e teste    sh 'mvn clean package'    sh 'npm install'    sh 'npm test'}// Stage para implantar em ambiente de testestage('Implantar em Teste') {    // Executar implantação    sh 'kubectl apply -f teste.yaml'}// Stage para implantar em ambiente de produçãostage('Implantar em Produção') {    // Executar implantação    sh 'kubectl apply -f producao.yaml'}// Post-condiçõespost {    // Notificar por email em caso de falha    failure {        emailext(            subject: \"Pipeline Jenkins - Falha\",            body: \"Houve uma falha na execução da pipeline.\",            to: \"exemplo@email.com\"        )    }    // Enviar artefatos para armazenamento permanente    always {        archiveArtifacts 'target/*.jar'    }}// Função para executar um passo de limpezadef limpar() {    echo 'Executando passo de limpeza...'    // Implemente aqui as etapas de limpeza necessárias}",
-            "content_html": "<h2 id=\"cheatsheet-groovy\">Cheatsheet groovy</h2><div class=\"language-groovy highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\">// Definir parâmetros de pipeline</span><span class=\"n\">parameters</span> <span class=\"o\">{</span>    <span class=\"n\">string</span><span class=\"o\">(</span><span class=\"nl\">name:</span> <span class=\"s1\">'PARAM1'</span><span class=\"o\">,</span> <span class=\"nl\">defaultValue:</span> <span class=\"s1\">'valor_padrao'</span><span class=\"o\">,</span> <span class=\"nl\">description:</span> <span class=\"s1\">'Descrição do parâmetro'</span><span class=\"o\">)</span>    <span class=\"n\">booleanParam</span><span class=\"o\">(</span><span class=\"nl\">name:</span> <span class=\"s1\">'PARAM2'</span><span class=\"o\">,</span> <span class=\"nl\">defaultValue:</span> <span class=\"kc\">true</span><span class=\"o\">,</span> <span class=\"nl\">description:</span> <span class=\"s1\">'Descrição do parâmetro'</span><span class=\"o\">)</span>    <span class=\"n\">choice</span><span class=\"o\">(</span><span class=\"nl\">name:</span> <span class=\"s1\">'PARAM3'</span><span class=\"o\">,</span> <span class=\"nl\">choices:</span> <span class=\"o\">[</span><span class=\"s1\">'opcao1'</span><span class=\"o\">,</span> <span class=\"s1\">'opcao2'</span><span class=\"o\">,</span> <span class=\"s1\">'opcao3'</span><span class=\"o\">],</span> <span class=\"nl\">description:</span> <span class=\"s1\">'Descrição do parâmetro'</span><span class=\"o\">)</span><span class=\"o\">}</span><span class=\"c1\">// Definir variáveis globais</span><span class=\"kt\">def</span> <span class=\"n\">VARIAVEL_GLOBAL</span> <span class=\"o\">=</span> <span class=\"s1\">'valor'</span><span class=\"c1\">// Stage para construir e testar o código</span><span class=\"n\">stage</span><span class=\"o\">(</span><span class=\"s1\">'Construir e Testar'</span><span class=\"o\">)</span> <span class=\"o\">{</span>    <span class=\"c1\">// Checkout do repositório</span>    <span class=\"n\">git</span> <span class=\"nl\">branch:</span> <span class=\"s1\">'master'</span><span class=\"o\">,</span> <span class=\"nl\">url:</span> <span class=\"s1\">'https://exemplo.com/repo.git'</span>    <span class=\"c1\">// Executar comandos de construção e teste</span>    <span class=\"n\">sh</span> <span class=\"s1\">'mvn clean package'</span>    <span class=\"n\">sh</span> <span class=\"s1\">'npm install'</span>    <span class=\"n\">sh</span> <span class=\"s1\">'npm test'</span><span class=\"o\">}</span><span class=\"c1\">// Stage para implantar em ambiente de teste</span><span class=\"n\">stage</span><span class=\"o\">(</span><span class=\"s1\">'Implantar em Teste'</span><span class=\"o\">)</span> <span class=\"o\">{</span>    <span class=\"c1\">// Executar implantação</span>    <span class=\"n\">sh</span> <span class=\"s1\">'kubectl apply -f teste.yaml'</span><span class=\"o\">}</span><span class=\"c1\">// Stage para implantar em ambiente de produção</span><span class=\"n\">stage</span><span class=\"o\">(</span><span class=\"s1\">'Implantar em Produção'</span><span class=\"o\">)</span> <span class=\"o\">{</span>    <span class=\"c1\">// Executar implantação</span>    <span class=\"n\">sh</span> <span class=\"s1\">'kubectl apply -f producao.yaml'</span><span class=\"o\">}</span><span class=\"c1\">// Post-condições</span><span class=\"n\">post</span> <span class=\"o\">{</span>    <span class=\"c1\">// Notificar por email em caso de falha</span>    <span class=\"n\">failure</span> <span class=\"o\">{</span>        <span class=\"n\">emailext</span><span class=\"o\">(</span>            <span class=\"nl\">subject:</span> <span class=\"s2\">\"Pipeline Jenkins - Falha\"</span><span class=\"o\">,</span>            <span class=\"nl\">body:</span> <span class=\"s2\">\"Houve uma falha na execução da pipeline.\"</span><span class=\"o\">,</span>            <span class=\"nl\">to:</span> <span class=\"s2\">\"exemplo@email.com\"</span>        <span class=\"o\">)</span>    <span class=\"o\">}</span>    <span class=\"c1\">// Enviar artefatos para armazenamento permanente</span>    <span class=\"n\">always</span> <span class=\"o\">{</span>        <span class=\"n\">archiveArtifacts</span> <span class=\"s1\">'target/*.jar'</span>    <span class=\"o\">}</span><span class=\"o\">}</span><span class=\"c1\">// Função para executar um passo de limpeza</span><span class=\"kt\">def</span> <span class=\"nf\">limpar</span><span class=\"o\">()</span> <span class=\"o\">{</span>    <span class=\"n\">echo</span> <span class=\"s1\">'Executando passo de limpeza...'</span>    <span class=\"c1\">// Implemente aqui as etapas de limpeza necessárias</span><span class=\"o\">}</span></code></pre></div></div>",
-            "url": "/2024/02/19/groovy.html",
-            
-            
-            
-            "tags": ["groovy","linux"],
             
             "date_published": "2024-02-19T00:00:00+00:00",
             "date_modified": "2024-02-19T00:00:00+00:00",
