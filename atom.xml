@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-02-24T18:01:17+00:00</updated>
+ <updated>2024-02-24T18:14:34+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -721,6 +721,180 @@ func main&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&
    <updated>2024-08-01T00:00:00+00:00</updated>
    <id>/2024/08/01/self-assessment-1</id>
    <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>development/golang/roadmap</title>
+   <link href="/2024/02/24/roadmap.html"/>
+   <updated>2024-02-24T00:00:00+00:00</updated>
+   <id>/2024/02/24/roadmap</id>
+   <content type="html">&lt;h2 id=&quot;roadmap&quot;&gt;Roadmap&lt;/h2&gt;
+
+&lt;h3 id=&quot;introdução-a-linguagem&quot;&gt;Introdução a linguagem&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Sobre a linguagem e seu histórico&lt;/li&gt;
+  &lt;li&gt;Motivações&lt;/li&gt;
+  &lt;li&gt;Instalação&lt;/li&gt;
+  &lt;li&gt;Configuração do ambiente no VSCode&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;desenvolvimento-de-apis&quot;&gt;Desenvolvimento de APIs&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Retomando conceitos de HTTP Server e Mux&lt;/li&gt;
+  &lt;li&gt;Criando Endpoints&lt;/li&gt;
+  &lt;li&gt;Apresentando principais frameworks e roteadores&lt;/li&gt;
+  &lt;li&gt;Trabalhando com “chi”&lt;/li&gt;
+  &lt;li&gt;Middlewares&lt;/li&gt;
+  &lt;li&gt;Autenticação e tokens JWT&lt;/li&gt;
+  &lt;li&gt;Documentando API com Swagger&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;foundation&quot;&gt;Foundation&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Primeiros passos&lt;/li&gt;
+  &lt;li&gt;Trabalhando com tipagem forte&lt;/li&gt;
+  &lt;li&gt;Arrays, Slices, Maps&lt;/li&gt;
+  &lt;li&gt;Laços de repetição, condicionais&lt;/li&gt;
+  &lt;li&gt;Ponteiros&lt;/li&gt;
+  &lt;li&gt;Funções, Structs, Métodos, Interfaces e Generics&lt;/li&gt;
+  &lt;li&gt;Trabalhando com packages&lt;/li&gt;
+  &lt;li&gt;Módulos&lt;/li&gt;
+  &lt;li&gt;Módulos privados&lt;/li&gt;
+  &lt;li&gt;Instalação de pacotes&lt;/li&gt;
+  &lt;li&gt;Compilando projetos Go&lt;/li&gt;
+  &lt;li&gt;Workspaces&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;concorrência-e-multithreading&quot;&gt;Concorrência e Multithreading&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Entendendo conceitos de concorrência e paralelismo&lt;/li&gt;
+  &lt;li&gt;Como Go aborda concorrência e schedulers&lt;/li&gt;
+  &lt;li&gt;Iniciando com Go Routines&lt;/li&gt;
+  &lt;li&gt;Contadores atômicos&lt;/li&gt;
+  &lt;li&gt;Trabalhando com Channels e buffers&lt;/li&gt;
+  &lt;li&gt;Utilizando recurso de Select&lt;/li&gt;
+  &lt;li&gt;Wait Groups&lt;/li&gt;
+  &lt;li&gt;Mutex&lt;/li&gt;
+  &lt;li&gt;Previnindo race conditions&lt;/li&gt;
+  &lt;li&gt;Desenvolvimento de workers utilizando channels&lt;/li&gt;
+  &lt;li&gt;Load Balancer&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;pacotes-importantes&quot;&gt;Pacotes importantes&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Manipulação de arquivos&lt;/li&gt;
+  &lt;li&gt;Chamadas HTTP&lt;/li&gt;
+  &lt;li&gt;Trabalhando com objetos Json&lt;/li&gt;
+  &lt;li&gt;Defer&lt;/li&gt;
+  &lt;li&gt;Desenvolvendo um sistema Busca CEP&lt;/li&gt;
+  &lt;li&gt;Trabalhando com HTTP&lt;/li&gt;
+  &lt;li&gt;Criando servidores HTTP&lt;/li&gt;
+  &lt;li&gt;Entendendo Multiplexers&lt;/li&gt;
+  &lt;li&gt;Servidor de arquivos&lt;/li&gt;
+  &lt;li&gt;Trabalhando com templates dinâmicos&lt;/li&gt;
+  &lt;li&gt;Aprofundando em HTTP utilizando Context&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;implementações&quot;&gt;Implementações&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;gRPC&lt;/li&gt;
+  &lt;li&gt;GraphQL&lt;/li&gt;
+  &lt;li&gt;Upload de arquivos na AWS S3&lt;/li&gt;
+  &lt;li&gt;Command line com cobra CLI&lt;/li&gt;
+  &lt;li&gt;Unit of Work&lt;/li&gt;
+  &lt;li&gt;Dependency Injection com Google Wire&lt;/li&gt;
+  &lt;li&gt;Manipulação de eventos (Event Dispatcher, Handlers, etc)&lt;/li&gt;
+  &lt;li&gt;Integração com RabbitMQ&lt;/li&gt;
+  &lt;li&gt;Gerenciamento de configuração com Viper&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;go-e-clean-architecture&quot;&gt;Go e Clean Architecture&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Iniciando com Clean Architecture&lt;/li&gt;
+  &lt;li&gt;Pontos importantes sobre arquitetura&lt;/li&gt;
+  &lt;li&gt;Keep options opened&lt;/li&gt;
+  &lt;li&gt;Use Cases&lt;/li&gt;
+  &lt;li&gt;Limites arquiteturais&lt;/li&gt;
+  &lt;li&gt;Input vs Output&lt;/li&gt;
+  &lt;li&gt;DTOs&lt;/li&gt;
+  &lt;li&gt;Entities&lt;/li&gt;
+  &lt;li&gt;Desenvolvendo camada de domínio&lt;/li&gt;
+  &lt;li&gt;Criando Use Cases&lt;/li&gt;
+  &lt;li&gt;Criando adaptador para banco de dados&lt;/li&gt;
+  &lt;li&gt;Criando adaptador para o RabbitMQ&lt;/li&gt;
+  &lt;li&gt;Servindo endpoints HTTP&lt;/li&gt;
+  &lt;li&gt;Consumindo mensagens com RabbitMQ&lt;/li&gt;
+  &lt;li&gt;Criando CLI para iniciar a aplicação&lt;/li&gt;
+  &lt;li&gt;Documentando aplicação&lt;/li&gt;
+  &lt;li&gt;Go Doc&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;pacote-context&quot;&gt;Pacote Context&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Entendendo o conceito de um context&lt;/li&gt;
+  &lt;li&gt;Armazenando e recuperando valores&lt;/li&gt;
+  &lt;li&gt;Background, Timeout, Deadline e Cancelations&lt;/li&gt;
+  &lt;li&gt;Context na prática&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;testes-automatizados&quot;&gt;Testes automatizados&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Iniciando com testes no Go&lt;/li&gt;
+  &lt;li&gt;Formas de asserção&lt;/li&gt;
+  &lt;li&gt;Pacotes úteis&lt;/li&gt;
+  &lt;li&gt;Trabalhando com Mocks&lt;/li&gt;
+  &lt;li&gt;Fuzzes e testes de mutação&lt;/li&gt;
+  &lt;li&gt;Testes em batch&lt;/li&gt;
+  &lt;li&gt;Benchmarking&lt;/li&gt;
+  &lt;li&gt;Criando suite de testes com Testify&lt;/li&gt;
+  &lt;li&gt;Testes End-to-end&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;bancos-de-dados&quot;&gt;Bancos de dados&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Entendendo como Go trabalha com banco de dados&lt;/li&gt;
+  &lt;li&gt;Estabelecendo conexão e realizando primeiras operações&lt;/li&gt;
+  &lt;li&gt;Boas práticas de segurança&lt;/li&gt;
+  &lt;li&gt;Realizando operações utilizando Context&lt;/li&gt;
+  &lt;li&gt;Go puro vs ORM&lt;/li&gt;
+  &lt;li&gt;Trabalhando com GORM&lt;/li&gt;
+  &lt;li&gt;Migrations&lt;/li&gt;
+  &lt;li&gt;SQLC: Geração automática de Queries&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;deploy&quot;&gt;Deploy&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Entendendo processo de compilação&lt;/li&gt;
+  &lt;li&gt;Gerando imagem Docker com multistage building&lt;/li&gt;
+  &lt;li&gt;Criando manifestos Kubernetes&lt;/li&gt;
+  &lt;li&gt;Realizando deploy no Kubernetes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;marketing-pessoal&quot;&gt;Marketing pessoal&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Imagem pessoal&lt;/li&gt;
+  &lt;li&gt;Autoridade&lt;/li&gt;
+  &lt;li&gt;Redes sociais&lt;/li&gt;
+  &lt;li&gt;Networking&lt;/li&gt;
+  &lt;li&gt;Seus projetos e sua marca pessoal&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;trabalho-em-equipe&quot;&gt;Trabalho em equipe&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Dificuldades enfrentadas pelo trabalho em equipe&lt;/li&gt;
+  &lt;li&gt;Como melhorar a formação de equipes&lt;/li&gt;
+  &lt;li&gt;Comunicação assertiva&lt;/li&gt;
+  &lt;li&gt;Perfil Comportamental&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;empreendedorismo&quot;&gt;Empreendedorismo&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Empreendedorismo social&lt;/li&gt;
+  &lt;li&gt;Empreendedorismo corporativo (intraempreendedorismo)&lt;/li&gt;
+  &lt;li&gt;Empreendedorismo digital&lt;/li&gt;
+  &lt;li&gt;Empreendedorismo Serial&lt;/li&gt;
+&lt;/ul&gt;
 </content>
  </entry>
  

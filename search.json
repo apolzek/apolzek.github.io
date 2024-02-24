@@ -193,6 +193,14 @@
     } ,
   
     {
+      "title"    : "development/golang/roadmap",
+      "category" : "",
+      "tags"     : "go, roadmap",
+      "url"      : "/2024/02/24/roadmap.html",
+      "date"     : "2024-02-24 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "cheatsheet/alias",
       "category" : "",
       "tags"     : "alias, linux",
