@@ -452,6 +452,27 @@
         },
     
         {
+            "id": "/2024/12/01/apache-airflow.html",
+            "title": "data/Apache Airflox",
+            "summary": "Apache Airflox",
+            "content_text": "Kafka",
+            "content_html": "<h2 id=\"kafka\">Kafka</h2>",
+            "url": "/2024/12/01/apache-airflow.html",
+            
+            
+            
+            "tags": ["apache","airflow"],
+            
+            "date_published": "2024-12-01T00:00:00+00:00",
+            "date_modified": "2024-12-01T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
             "id": "/2024/11/24/reverse-ssh-tunneling.html",
             "title": "development/golang/reverse-ssh-tunneling",
             "summary": "Reverse SSH Tunneling",
@@ -641,6 +662,27 @@
         },
     
         {
+            "id": "/2024/02/20/grafana.html",
+            "title": "cheatsheet/grafana",
+            "summary": "Cheatsheet grafana",
+            "content_text": "Cheatsheet grafanasudo docker exec -it afd21974a135 bashgrafana-cli admin reset-admin-password admin",
+            "content_html": "<h2 id=\"cheatsheet-grafana\">Cheatsheet grafana</h2><div class=\"language-bash highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">sudo </span>docker <span class=\"nb\">exec</span> <span class=\"nt\">-it</span> afd21974a135 bashgrafana-cli admin reset-admin-password admin</code></pre></div></div>",
+            "url": "/2024/02/20/grafana.html",
+            
+            
+            
+            "tags": ["grafana","linux"],
+            
+            "date_published": "2024-02-20T00:00:00+00:00",
+            "date_modified": "2024-02-20T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
             "id": "/2024/02/20/certificates.html",
             "title": "cheatsheet/certificates",
             "summary": "Cheatsheet certificates",
@@ -714,48 +756,6 @@
             
             
             "tags": ["powershell","linux"],
-            
-            "date_published": "2024-02-19T00:00:00+00:00",
-            "date_modified": "2024-02-19T00:00:00+00:00",
-            
-                "author": 
-                ""
-                
-            
-        },
-    
-        {
-            "id": "/2024/02/19/lpi2.html",
-            "title": "cheatsheet/git",
-            "summary": "Cheatsheet git",
-            "content_text": "Cheatsheet git",
-            "content_html": "<h2 id=\"cheatsheet-git\">Cheatsheet git</h2>",
-            "url": "/2024/02/19/lpi2.html",
-            
-            
-            
-            "tags": ["git","linux"],
-            
-            "date_published": "2024-02-19T00:00:00+00:00",
-            "date_modified": "2024-02-19T00:00:00+00:00",
-            
-                "author": 
-                ""
-                
-            
-        },
-    
-        {
-            "id": "/2024/02/19/lpi1.html",
-            "title": "cheatsheet/lpi1",
-            "summary": "Cheatsheet lpi1",
-            "content_text": "Cheatsheet lpi1",
-            "content_html": "<h2 id=\"cheatsheet-lpi1\">Cheatsheet lpi1</h2>",
-            "url": "/2024/02/19/lpi1.html",
-            
-            
-            
-            "tags": ["lpi1","linux"],
             
             "date_published": "2024-02-19T00:00:00+00:00",
             "date_modified": "2024-02-19T00:00:00+00:00",

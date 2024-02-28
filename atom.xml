@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-02-24T18:14:34+00:00</updated>
+ <updated>2024-02-28T12:52:43+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -573,6 +573,15 @@ func main&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&
  </entry>
  
  <entry>
+   <title>data/Apache Airflox</title>
+   <link href="/2024/12/01/apache-airflow.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/apache-airflow</id>
+   <content type="html">&lt;h2 id=&quot;kafka&quot;&gt;Kafka&lt;/h2&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>development/golang/reverse-ssh-tunneling</title>
    <link href="/2024/11/24/reverse-ssh-tunneling.html"/>
    <updated>2024-11-24T00:00:00+00:00</updated>
@@ -949,6 +958,19 @@ func main&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&
  </entry>
  
  <entry>
+   <title>cheatsheet/grafana</title>
+   <link href="/2024/02/20/grafana.html"/>
+   <updated>2024-02-20T00:00:00+00:00</updated>
+   <id>/2024/02/20/grafana</id>
+   <content type="html">&lt;h2 id=&quot;cheatsheet-grafana&quot;&gt;Cheatsheet grafana&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;docker &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; afd21974a135 bash
+grafana-cli admin reset-admin-password admin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>cheatsheet/certificates</title>
    <link href="/2024/02/20/certificates.html"/>
    <updated>2024-02-20T00:00:00+00:00</updated>
@@ -1175,11 +1197,11 @@ linhas
  </entry>
  
  <entry>
-   <title>cheatsheet/git</title>
+   <title>cheatsheet/lpi2</title>
    <link href="/2024/02/19/lpi2.html"/>
    <updated>2024-02-19T00:00:00+00:00</updated>
    <id>/2024/02/19/lpi2</id>
-   <content type="html">&lt;h2 id=&quot;cheatsheet-git&quot;&gt;Cheatsheet git&lt;/h2&gt;
+   <content type="html">&lt;h2 id=&quot;cheatsheet-lpi2&quot;&gt;Cheatsheet lpi2&lt;/h2&gt;
 </content>
  </entry>
  
@@ -1725,6 +1747,70 @@ Arquivo de Configuração do Terraform (.tf)&lt;/p&gt;
 &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;venv/bin/activate
 deactivate
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;requests&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;https://example.com&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Instalar um pacote&lt;/span&gt;
+pip3 &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pacote
+
+&lt;span class=&quot;c&quot;&gt;# Atualizar um pacote para a última versão&lt;/span&gt;
+pip3 &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--upgrade&lt;/span&gt; pacote
+
+&lt;span class=&quot;c&quot;&gt;# Desinstalar um pacote&lt;/span&gt;
+pip3 uninstall pacote
+
+&lt;span class=&quot;c&quot;&gt;# Listar pacotes instalados&lt;/span&gt;
+pip3 list
+
+&lt;span class=&quot;c&quot;&gt;# Mostrar informações sobre um pacote&lt;/span&gt;
+pip3 show pacote
+
+&lt;span class=&quot;c&quot;&gt;# Criar um arquivo requirements.txt com os pacotes instalados&lt;/span&gt;
+pip3 freeze &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; requirements.txt
+
+&lt;span class=&quot;c&quot;&gt;# Instalar pacotes a partir de um arquivo requirements.txt&lt;/span&gt;
+pip3 &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; requirements.txt
+
+&lt;span class=&quot;c&quot;&gt;# Mostrar pacotes desatualizados&lt;/span&gt;
+pip3 list &lt;span class=&quot;nt&quot;&gt;--outdated&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Mostrar a localização de um pacote instalado&lt;/span&gt;
+pip3 show &lt;span class=&quot;nt&quot;&gt;--files&lt;/span&gt; pacote
+
+&lt;span class=&quot;c&quot;&gt;# Procurar por pacotes&lt;/span&gt;
+pip3 search termo_de_pesquisa
+
+&lt;span class=&quot;c&quot;&gt;# Criar um ambiente virtual&lt;/span&gt;
+python3 &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; venv nome_do_ambiente_virtual
+
+&lt;span class=&quot;c&quot;&gt;# Ativar um ambiente virtual (Linux)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;nome_do_ambiente_virtual/bin/activate
+
+&lt;span class=&quot;c&quot;&gt;# Ativar um ambiente virtual (Windows)&lt;/span&gt;
+.&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;ome_do_ambiente_virtual&lt;span class=&quot;se&quot;&gt;\S&lt;/span&gt;cripts&lt;span class=&quot;se&quot;&gt;\a&lt;/span&gt;ctivate
+
+&lt;span class=&quot;c&quot;&gt;# Desativar um ambiente virtual&lt;/span&gt;
+deactivate
+
+&lt;span class=&quot;c&quot;&gt;# Remover um ambiente virtual&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-rf&lt;/span&gt; nome_do_ambiente_virtual
+
+&lt;span class=&quot;c&quot;&gt;# Criar um pacote a partir de um projeto&lt;/span&gt;
+python3 setup.py sdist
+
+&lt;span class=&quot;c&quot;&gt;# Instalar um pacote localmente&lt;/span&gt;
+pip3 &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;caminho/do/arquivo.tar.gz
+
+&lt;span class=&quot;c&quot;&gt;# Instalar um pacote diretamente do repositório Git&lt;/span&gt;
+pip3 &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;git+https://github.com/usuario/repo.git
+
+&lt;span class=&quot;c&quot;&gt;# Instalar um pacote em modo de edição (editável)&lt;/span&gt;
+pip3 &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; caminho/do/projeto
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;https://quickref.me/python.html&lt;/p&gt;
 </content>
  </entry>
  
@@ -1735,81 +1821,81 @@ deactivate
    <id>/2024/02/11/kubectl</id>
    <content type="html">&lt;h2 id=&quot;cheatsheet-kubectl&quot;&gt;Cheatsheet kubectl&lt;/h2&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Lista todos os pods em todos os namespaces.
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Lista todos os pods em todos os namespaces
 kubectl get pods --all-namespaces
 
-# Lista todos os serviços em todos os namespaces.
+# Lista todos os services em todos os namespaces
 kubectl get services --all-namespaces
 
-# Lista todos os deployments em todos os namespaces.
+# Lista todos os deployments em todos os namespaces
 kubectl get deployments --all-namespaces
 
-# Lista todos os namespaces.
+# Lista todos os namespaces
 kubectl get namespaces
 
-# Descreve um pod específico.
-kubectl describe pod nome_do_pod
+# Descreve um pod específico
+kubectl describe pod &amp;lt;nome_do_pod&amp;gt;
 
 # Descreve um serviço específico.
-kubectl describe service nome_do_servico
+kubectl describe service &amp;lt;nome_do_service&amp;gt;
 
-# Descreve um deployment específico.
-kubectl describe deployment nome_do_deployment
+# Descreve um deployment específico
+kubectl describe deployment &amp;lt;nome_do_deployment&amp;gt;
 
-# Exibe o registro de eventos de um pod específico.
-kubectl get events --field-selector involvedObject.name=nome_do_pod
+# Exibe o registro de eventos de um pod específico
+kubectl get events --field-selector involvedObject.name=&amp;lt;nome_do_pod&amp;gt;
 
-# Exibe os logs de um pod específico.
-kubectl logs nome_do_pod
+# Exibe os logs de um pod específico
+kubectl logs &amp;lt;nome_do_pod&amp;gt;
 
-# Executa um comando dentro de um pod específico.
-kubectl exec -it nome_do_pod -- comando_a_executar
+# Executa um comando dentro de um pod específico
+kubectl exec -it &amp;lt;nome_do_pod&amp;gt; -- comando_a_executar
 
-# Copia arquivos de/para um pod específico.
-kubectl cp arquivo.txt nome_do_pod:/caminho/destino
+# Copia arquivos de/para um pod específico
+kubectl cp arquivo.txt &amp;lt;nome_do_pod&amp;gt;:/caminho/destino
 
-# Cria um novo namespace.
+# Cria um novo namespace
 kubectl create namespace nome_do_namespace
 
-# Exclui um pod específico.
-kubectl delete pod nome_do_pod
+# Exclui um pod específico
+kubectl delete pod &amp;lt;nome_do_pod&amp;gt;
 
-# Escala um deployment para um número específico de réplicas.
+# Escala um deployment para um número específico de réplicas
 kubectl scale deployment nome_do_deployment --replicas=5
 
-# Atualiza uma imagem de container em um deployment.
+# Atualiza uma imagem de container em um deployment
 kubectl set image deployment/nome_do_deployment nome_do_container=nova_imagem:tag
 
-# Aplica as alterações definidas em um arquivo de manifesto YAML.
+# Aplica as alterações definidas em um arquivo de manifesto YAML
 kubectl apply -f arquivo.yaml
 
-# Executa um job de cron dentro do cluster.
+# Executa um job de cron dentro do cluster
 kubectl create job nome_do_job --image=imagem_do_job --schedule=&apos;*/1 * * * *&apos;
 
-# Exibe métricas de recursos do cluster.
+# Exibe métricas de recursos do cluster
 kubectl top nodes
 kubectl top pods
 
-# Exporta recursos do cluster para um arquivo YAML.
-kubectl get deployment nome_do_deployment -o yaml &amp;gt; deployment.yaml
+# Exporta recursos do cluster para um arquivo YAML
+kubectl get deployment &amp;lt;nome_do_deployment&amp;gt; -o yaml &amp;gt; deployment.yaml
 
-# Aplica atualizações em recursos do cluster com base em um arquivo YAML.
+# Aplica atualizações em recursos do cluster com base em um arquivo YAML
 kubectl apply -f deployment.yaml
 
-# Cria um tunnel seguro para um serviço dentro do cluster.
-kubectl port-forward nome_do_pod 8080:80
+# Cria um tunnel seguro para um serviço dentro do cluster
+kubectl port-forward &amp;lt;nome_do_pod&amp;gt; 8080:80
 
-# Habilita o encaminhamento de portas para um pod específico.
-kubectl port-forward nome_do_pod 8080:80
+# Habilita o encaminhamento de portas para um pod específico
+kubectl port-forward &amp;lt;nome_do_pod&amp;gt; 8080:80
 
 # Cria uma proxy de API para o cluster Kubernetes.
 kubectl proxy
 
-# Gera um diagrama de dependências de recursos do cluster.
-kubectl get service nome_do_servico -o json | kubectl-viz visualize
+# Gera um diagrama de dependências de recursos do cluster
+kubectl get service &amp;lt;nome_do_servico&amp;gt; -o json | kubectl-viz visualize
 
-# Exibe informações detalhadas sobre a configuração de rede de um pod específico.
-kubectl get pod nome_do_pod -o=jsonpath=&apos;{.spec.podIP}&apos;
+# Exibe informações detalhadas sobre a configuração de rede de um pod específico
+kubectl get pod &amp;lt;nome_do_pod&amp;gt; -o=jsonpath=&apos;{.spec.podIP}&apos;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
