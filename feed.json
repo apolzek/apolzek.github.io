@@ -11,27 +11,6 @@
 "items": [
     
         {
-            "id": "/2024/12/01/it-acronym.html",
-            "title": "opinions/it-acronyms",
-            "summary": "IT Acronyms",
-            "content_text": "IT Acronyms“Por favor, note que neste artigo, evitarei fazer comparações entre os itens mencionados, concentrando-me em analisá-los individualmente.”SOLID:Sigla:S: Single Responsibility PrincipleO: Open/Closed PrincipleL: Liskov Substitution PrincipleI: Interface Segregation PrincipleD: Dependency Inversion PrincipleEstes são princípios de design de software que visam criar código mais fácil de entender, manter e estender.YAGNI:Sigla:Y: You Ain’t Gonna Need ItPrincípio que sugere que você não deve adicionar funcionalidades ou complexidades ao seu código até que realmente precise delas. Evita o excesso de engenharia.BDD:B: Behavior-Driven DevelopmentD: DevelopmentMetodologia de desenvolvimento que se concentra no comportamento esperado do software, envolvendo colaboração entre desenvolvedores, testadores e partes interessadas.OOD:Sigla:O: Object-Oriented DesignD: DevelopmentRefere-se ao processo de usar princípios de design orientado a objetos durante o desenvolvimento de software para criar sistemas mais flexíveis e reutilizáveis.ACID:Sigla:A: AtomicityC: ConsistencyI: IsolationD: DurabilityPrincípios de transação em banco de dados que garantem a integridade dos dados mesmo em face de falhas.ORM:Sigla:O: Object-Relational MappingTécnica de programação que converte dados entre tipos de sistemas incompatíveis em linguagens de programação orientadas a objetos.MVC:Sigla:M: ModelV: ViewC: ControllerPadrão de arquitetura de software que separa a lógica de apresentação dos dados de um aplicativo.KISS:TDD:",
-            "content_html": "<h2 id=\"it-acronyms\">IT Acronyms</h2><p>“Por favor, note que neste artigo, evitarei fazer comparações entre os itens mencionados, concentrando-me em analisá-los individualmente.”</p><h4 id=\"solid\">SOLID:</h4><p><strong>Sigla</strong>:</p><p>S: Single Responsibility PrincipleO: Open/Closed PrincipleL: Liskov Substitution PrincipleI: Interface Segregation PrincipleD: Dependency Inversion Principle</p><p>Estes são princípios de design de software que visam criar código mais fácil de entender, manter e estender.</p><h4 id=\"yagni\">YAGNI:</h4><p><strong>Sigla</strong>:</p><p>Y: You Ain’t Gonna Need ItPrincípio que sugere que você não deve adicionar funcionalidades ou complexidades ao seu código até que realmente precise delas. Evita o excesso de engenharia.BDD:B: Behavior-Driven DevelopmentD: Development</p><p>Metodologia de desenvolvimento que se concentra no comportamento esperado do software, envolvendo colaboração entre desenvolvedores, testadores e partes interessadas.</p><h4 id=\"ood\">OOD:</h4><p><strong>Sigla</strong>:</p><p>O: Object-Oriented DesignD: Development</p><p>Refere-se ao processo de usar princípios de design orientado a objetos durante o desenvolvimento de software para criar sistemas mais flexíveis e reutilizáveis.</p><h4 id=\"acid\">ACID:</h4><p><strong>Sigla</strong>:</p><p>A: AtomicityC: ConsistencyI: IsolationD: Durability</p><p>Princípios de transação em banco de dados que garantem a integridade dos dados mesmo em face de falhas.</p><h4 id=\"orm\">ORM:</h4><p><strong>Sigla</strong>:</p><p>O: Object-Relational Mapping</p><p>Técnica de programação que converte dados entre tipos de sistemas incompatíveis em linguagens de programação orientadas a objetos.</p><h4 id=\"mvc\">MVC:</h4><p><strong>Sigla</strong>:</p><p>M: ModelV: ViewC: Controller</p><p>Padrão de arquitetura de software que separa a lógica de apresentação dos dados de um aplicativo.</p><h4 id=\"kiss\">KISS:</h4><h4 id=\"tdd\">TDD:</h4>",
-            "url": "/2024/12/01/it-acronym.html",
-            
-            
-            
-            
-            
-            "date_published": "2024-12-01T00:00:00+00:00",
-            "date_modified": "2024-12-01T00:00:00+00:00",
-            
-                "author": 
-                ""
-                
-            
-        },
-    
-        {
             "id": "/2024/12/01/linux-processes.html",
             "title": "operating-system/processes",
             "summary": "Processes",
@@ -515,27 +494,6 @@
         },
     
         {
-            "id": "/2024/08/01/self-assessment-1.html",
-            "title": "opinions/self-assessment-1",
-            "summary": "self-assessment-1",
-            "content_text": "",
-            "content_html": "",
-            "url": "/2024/08/01/self-assessment-1.html",
-            
-            
-            
-            
-            
-            "date_published": "2024-08-01T00:00:00+00:00",
-            "date_modified": "2024-08-01T00:00:00+00:00",
-            
-                "author": 
-                ""
-                
-            
-        },
-    
-        {
             "id": "/2024/02/24/roadmap.html",
             "title": "development/golang/roadmap",
             "summary": "roadmap",
@@ -560,8 +518,8 @@
             "id": "/2024/02/20/tcpdump.html",
             "title": "cheatsheet/tcpdump",
             "summary": "Cheatsheet tcpdump",
-            "content_text": "Cheatsheet tcpdump",
-            "content_html": "<h2 id=\"cheatsheet-tcpdump\">Cheatsheet tcpdump</h2>",
+            "content_text": "Cheatsheet tcpdump# Captura todos os pacotes na interface eth0tcpdump -i eth0# Captura apenas os primeiros 10 pacotestcpdump -i eth0 -c 10# Salva a captura em um arquivo chamado capture.pcaptcpdump -i eth0 -w capture.pcap# Lê pacotes de um arquivo de capturatcpdump -r capture.pcap# Captura pacotes TCP na porta 80tcpdump -i eth0 tcp port 80# Captura pacotes UDP na porta 53 (DNS)tcpdump -i eth0 udp port 53# Captura pacotes com o endereço IP de origem 192.168.1.1tcpdump -i eth0 src 192.168.1.1# Captura pacotes com o endereço IP de destino 192.168.1.1tcpdump -i eth0 dst 192.168.1.1# Captura pacotes contendo o endereço IP 192.168.1.1 (origem ou destino)tcpdump -i eth0 host 192.168.1.1# Captura pacotes entre os endereços IP 192.168.1.1 e 192.168.1.2tcpdump -i eth0 src 192.168.1.1 and dst 192.168.1.2# Captura pacotes TCP com a flag SYNtcpdump -i eth0 'tcp[tcpflags] &amp; (tcp-syn) != 0'# Captura pacotes TCP com a flag ACKtcpdump -i eth0 'tcp[tcpflags] &amp; (tcp-ack) != 0'# Captura pacotes TCP com a flag FINtcpdump -i eth0 'tcp[tcpflags] &amp; (tcp-fin) != 0'# Captura pacotes TCP com a flag RSTtcpdump -i eth0 'tcp[tcpflags] &amp; (tcp-rst) != 0'# Captura pacotes TCP com a flag PSHtcpdump -i eth0 'tcp[tcpflags] &amp; (tcp-psh) != 0'# Captura pacotes TCP com a flag URGtcpdump -i eth0 'tcp[tcpflags] &amp; (tcp-urg) != 0'# Captura pacotes com tamanho de pacote maior que 1000 bytestcpdump -i eth0 'greater 1000'# Captura pacotes com tamanho de pacote menor que 100 bytestcpdump -i eth0 'less 100'# Captura pacotes ARPtcpdump -i eth0 arp# Captura pacotes ICMPtcpdump -i eth0 icmp# Captura pacotes com endereço MAC de origem específicotcpdump -i eth0 ether src 00:11:22:33:44:55# Captura pacotes com endereço MAC de destino específicotcpdump -i eth0 ether dst 00:11:22:33:44:55# Captura pacotes VLAN com ID específicotcpdump -i eth0 vlan 100# Captura pacotes IP com Time to Live (TTL) específicotcpdump -i eth0 'ip[8] = 64'# Captura pacotes TCP com janela de recepção específicatcpdump -i eth0 'tcp[14:2] = 1024'# Captura pacotes com base em expressões regulares no conteúdo do pacotetcpdump -i eth0 -A 'tcp and src port 80 and (tcp[32:4] = 0x47455420 or tcp[32:4] = 0x504f5354)'# Captura pacotes IPv6tcpdump -i eth0 ip6# Captura pacotes com endereço IPv6 de origem específicotcpdump -i eth0 src host 2001:db8::1# Captura pacotes com endereço IPv6 de destino específicotcpdump -i eth0 dst host 2001:db8::1# Captura pacotes com base em extensões de cabeçalho IPv6tcpdump -i eth0 'ip6[6] = 58'# Captura pacotes com base em fluxos específicos de IPv6tcpdump -i eth0 'ip6[7] = 1'# Captura pacotes TCP com opções específicastcpdump -i eth0 'tcpO o tcpdump utiliza o Berkeley Packet Filter (BPF) para filtrar os pacotes de rede que devem ser capturados. O BPF é um mecanismo de filtragem de pacotes altamente eficiente que é implementado no nível do kernel do sistema operacional. Ele permite que o tcpdump especifique um conjunto de regras de filtragem que determinam quais pacotes de rede devem ser capturados e quais devem ser descartados.Quando você executa o tcpdump com um filtro específico, o comando é traduzido em instruções BPF que são carregadas no kernel. O kernel então usa essas instruções para filtrar os pacotes de rede em tempo real. Apenas os pacotes que correspondem ao filtro são copiados para o espaço do usuário para serem analisados e exibidos pelo tcpdump. Isso torna o processo de captura de pacotes muito eficiente, pois evita a cópia desnecessária de pacotes que não são de interesse para o espaço do usuário.Além disso, como o BPF opera no nível do kernel, ele pode processar pacotes muito rapidamente, o que é essencial para a captura de pacotes em redes de alta velocidade. Isso permite que o tcpdump capture e filtre pacotes em tempo real, mesmo em ambientes de rede com tráfego intenso.",
+            "content_html": "<h2 id=\"cheatsheet-tcpdump\">Cheatsheet tcpdump</h2><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code># Captura todos os pacotes na interface eth0tcpdump -i eth0# Captura apenas os primeiros 10 pacotestcpdump -i eth0 -c 10# Salva a captura em um arquivo chamado capture.pcaptcpdump -i eth0 -w capture.pcap# Lê pacotes de um arquivo de capturatcpdump -r capture.pcap# Captura pacotes TCP na porta 80tcpdump -i eth0 tcp port 80# Captura pacotes UDP na porta 53 (DNS)tcpdump -i eth0 udp port 53# Captura pacotes com o endereço IP de origem 192.168.1.1tcpdump -i eth0 src 192.168.1.1# Captura pacotes com o endereço IP de destino 192.168.1.1tcpdump -i eth0 dst 192.168.1.1# Captura pacotes contendo o endereço IP 192.168.1.1 (origem ou destino)tcpdump -i eth0 host 192.168.1.1# Captura pacotes entre os endereços IP 192.168.1.1 e 192.168.1.2tcpdump -i eth0 src 192.168.1.1 and dst 192.168.1.2# Captura pacotes TCP com a flag SYNtcpdump -i eth0 'tcp[tcpflags] &amp; (tcp-syn) != 0'# Captura pacotes TCP com a flag ACKtcpdump -i eth0 'tcp[tcpflags] &amp; (tcp-ack) != 0'# Captura pacotes TCP com a flag FINtcpdump -i eth0 'tcp[tcpflags] &amp; (tcp-fin) != 0'# Captura pacotes TCP com a flag RSTtcpdump -i eth0 'tcp[tcpflags] &amp; (tcp-rst) != 0'# Captura pacotes TCP com a flag PSHtcpdump -i eth0 'tcp[tcpflags] &amp; (tcp-psh) != 0'# Captura pacotes TCP com a flag URGtcpdump -i eth0 'tcp[tcpflags] &amp; (tcp-urg) != 0'# Captura pacotes com tamanho de pacote maior que 1000 bytestcpdump -i eth0 'greater 1000'# Captura pacotes com tamanho de pacote menor que 100 bytestcpdump -i eth0 'less 100'# Captura pacotes ARPtcpdump -i eth0 arp# Captura pacotes ICMPtcpdump -i eth0 icmp# Captura pacotes com endereço MAC de origem específicotcpdump -i eth0 ether src 00:11:22:33:44:55# Captura pacotes com endereço MAC de destino específicotcpdump -i eth0 ether dst 00:11:22:33:44:55# Captura pacotes VLAN com ID específicotcpdump -i eth0 vlan 100# Captura pacotes IP com Time to Live (TTL) específicotcpdump -i eth0 'ip[8] = 64'# Captura pacotes TCP com janela de recepção específicatcpdump -i eth0 'tcp[14:2] = 1024'# Captura pacotes com base em expressões regulares no conteúdo do pacotetcpdump -i eth0 -A 'tcp and src port 80 and (tcp[32:4] = 0x47455420 or tcp[32:4] = 0x504f5354)'# Captura pacotes IPv6tcpdump -i eth0 ip6# Captura pacotes com endereço IPv6 de origem específicotcpdump -i eth0 src host 2001:db8::1# Captura pacotes com endereço IPv6 de destino específicotcpdump -i eth0 dst host 2001:db8::1# Captura pacotes com base em extensões de cabeçalho IPv6tcpdump -i eth0 'ip6[6] = 58'# Captura pacotes com base em fluxos específicos de IPv6tcpdump -i eth0 'ip6[7] = 1'# Captura pacotes TCP com opções específicastcpdump -i eth0 'tcp</code></pre></div></div><p>O o tcpdump utiliza o Berkeley Packet Filter (BPF) para filtrar os pacotes de rede que devem ser capturados. O BPF é um mecanismo de filtragem de pacotes altamente eficiente que é implementado no nível do kernel do sistema operacional. Ele permite que o tcpdump especifique um conjunto de regras de filtragem que determinam quais pacotes de rede devem ser capturados e quais devem ser descartados.</p><p>Quando você executa o tcpdump com um filtro específico, o comando é traduzido em instruções BPF que são carregadas no kernel. O kernel então usa essas instruções para filtrar os pacotes de rede em tempo real. Apenas os pacotes que correspondem ao filtro são copiados para o espaço do usuário para serem analisados e exibidos pelo tcpdump. Isso torna o processo de captura de pacotes muito eficiente, pois evita a cópia desnecessária de pacotes que não são de interesse para o espaço do usuário.</p><p>Além disso, como o BPF opera no nível do kernel, ele pode processar pacotes muito rapidamente, o que é essencial para a captura de pacotes em redes de alta velocidade. Isso permite que o tcpdump capture e filtre pacotes em tempo real, mesmo em ambientes de rede com tráfego intenso.</p>",
             "url": "/2024/02/20/tcpdump.html",
             
             
@@ -756,6 +714,48 @@
             
             
             "tags": ["powershell","linux"],
+            
+            "date_published": "2024-02-19T00:00:00+00:00",
+            "date_modified": "2024-02-19T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
+            "id": "/2024/02/19/lpi2.html",
+            "title": "cheatsheet/lpi2",
+            "summary": "Cheatsheet lpi2",
+            "content_text": "Cheatsheet lpi2",
+            "content_html": "<h2 id=\"cheatsheet-lpi2\">Cheatsheet lpi2</h2>",
+            "url": "/2024/02/19/lpi2.html",
+            
+            
+            
+            "tags": ["lpi2","linux"],
+            
+            "date_published": "2024-02-19T00:00:00+00:00",
+            "date_modified": "2024-02-19T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
+            "id": "/2024/02/19/lpi1.html",
+            "title": "cheatsheet/lpi1",
+            "summary": "Cheatsheet lpi1",
+            "content_text": "Cheatsheet lpi1",
+            "content_html": "<h2 id=\"cheatsheet-lpi1\">Cheatsheet lpi1</h2>",
+            "url": "/2024/02/19/lpi1.html",
+            
+            
+            
+            "tags": ["lpi1","linux"],
             
             "date_published": "2024-02-19T00:00:00+00:00",
             "date_modified": "2024-02-19T00:00:00+00:00",

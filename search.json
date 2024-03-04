@@ -1,14 +1,6 @@
 [
   
     {
-      "title"    : "opinions/it-acronyms",
-      "category" : "",
-      "tags"     : "",
-      "url"      : "/2024/12/01/it-acronym.html",
-      "date"     : "2024-12-01 00:00:00 +0000"
-    } ,
-  
-    {
       "title"    : "operating-system/processes",
       "category" : "",
       "tags"     : "linux, processes",
@@ -190,14 +182,6 @@
       "tags"     : "eks, aws, kubernetes",
       "url"      : "/2024/10/25/eks.html",
       "date"     : "2024-10-25 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "opinions/self-assessment-1",
-      "category" : "",
-      "tags"     : "self-assessment",
-      "url"      : "/2024/08/01/self-assessment-1.html",
-      "date"     : "2024-08-01 00:00:00 +0000"
     } ,
   
     {
