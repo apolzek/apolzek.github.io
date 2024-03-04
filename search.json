@@ -209,14 +209,6 @@
     } ,
   
     {
-      "title"    : "cheatsheet/alias",
-      "category" : "",
-      "tags"     : "alias, linux",
-      "url"      : "/2024/02/20/alias.html",
-      "date"     : "2024-02-20 00:00:00 +0000"
-    } ,
-  
-    {
       "title"    : "cheatsheet/tcpdump",
       "category" : "",
       "tags"     : "tcpdump, linux",
@@ -269,6 +261,14 @@
       "category" : "",
       "tags"     : "awscli, linux",
       "url"      : "/2024/02/20/awscli.html",
+      "date"     : "2024-02-20 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "cheatsheet/alias",
+      "category" : "",
+      "tags"     : "alias, linux",
+      "url"      : "/2024/02/20/alias.html",
       "date"     : "2024-02-20 00:00:00 +0000"
     } ,
   

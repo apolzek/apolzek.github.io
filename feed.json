@@ -557,27 +557,6 @@
         },
     
         {
-            "id": "/2024/02/20/alias.html",
-            "title": "cheatsheet/alias",
-            "summary": "Cheatsheet alias",
-            "content_text": "Cheatsheet alias",
-            "content_html": "<h2 id=\"cheatsheet-alias\">Cheatsheet alias</h2>",
-            "url": "/2024/02/20/alias.html",
-            
-            
-            
-            "tags": ["alias","linux"],
-            
-            "date_published": "2024-02-20T00:00:00+00:00",
-            "date_modified": "2024-02-20T00:00:00+00:00",
-            
-                "author": 
-                ""
-                
-            
-        },
-    
-        {
             "id": "/2024/02/20/tcpdump.html",
             "title": "cheatsheet/tcpdump",
             "summary": "Cheatsheet tcpdump",
@@ -714,6 +693,27 @@
             
             
             "tags": ["awscli","linux"],
+            
+            "date_published": "2024-02-20T00:00:00+00:00",
+            "date_modified": "2024-02-20T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
+            "id": "/2024/02/20/alias.html",
+            "title": "cheatsheet/alias",
+            "summary": "Cheatsheet alias",
+            "content_text": "Cheatsheet aliasalias git_push=\"git add . ; git commit -m \\\"update by automation\\\"; git push\"alias golang_lab='current_date=$(date +%Y%m%d-%H%M%S); folder_name=\"golang-${current_date}\"; folder_path=\"/tmp/${folder_name}\"; mkdir \"$folder_path\"; echo $folder_path; cd $folder_path; touch main.go; code .'alias docker_reset='docker container rm -f $(docker container ls -qa); for i in $(docker volume ls | awk \"{print $2}\" | sed 1d); do docker volume rm -f $i; done'alias clip='xclip -selection clipboard'alias network_inspect='sudo lsof -i -P -n | grep LISTEN'",
+            "content_html": "<h2 id=\"cheatsheet-alias\">Cheatsheet alias</h2><div class=\"language-sh highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">alias </span><span class=\"nv\">git_push</span><span class=\"o\">=</span><span class=\"s2\">\"git add . ; git commit -m </span><span class=\"se\">\\\"</span><span class=\"s2\">update by automation</span><span class=\"se\">\\\"</span><span class=\"s2\">; git push\"</span><span class=\"nb\">alias </span><span class=\"nv\">golang_lab</span><span class=\"o\">=</span><span class=\"s1\">'current_date=$(date +%Y%m%d-%H%M%S); folder_name=\"golang-${current_date}\"; folder_path=\"/tmp/${folder_name}\"; mkdir \"$folder_path\"; echo $folder_path; cd $folder_path; touch main.go; code .'</span><span class=\"nb\">alias </span><span class=\"nv\">docker_reset</span><span class=\"o\">=</span><span class=\"s1\">'docker container rm -f $(docker container ls -qa); for i in $(docker volume ls | awk \"{print $2}\" | sed 1d); do docker volume rm -f $i; done'</span><span class=\"nb\">alias </span><span class=\"nv\">clip</span><span class=\"o\">=</span><span class=\"s1\">'xclip -selection clipboard'</span><span class=\"nb\">alias </span><span class=\"nv\">network_inspect</span><span class=\"o\">=</span><span class=\"s1\">'sudo lsof -i -P -n | grep LISTEN'</span></code></pre></div></div>",
+            "url": "/2024/02/20/alias.html",
+            
+            
+            
+            "tags": ["alias","linux"],
             
             "date_published": "2024-02-20T00:00:00+00:00",
             "date_modified": "2024-02-20T00:00:00+00:00",

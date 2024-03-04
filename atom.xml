@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-02-28T12:52:43+00:00</updated>
+ <updated>2024-03-04T22:31:45+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -908,16 +908,6 @@ func main&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&
  </entry>
  
  <entry>
-   <title>cheatsheet/alias</title>
-   <link href="/2024/02/20/alias.html"/>
-   <updated>2024-02-20T00:00:00+00:00</updated>
-   <id>/2024/02/20/alias</id>
-   <content type="html">&lt;h2 id=&quot;cheatsheet-alias&quot;&gt;Cheatsheet alias&lt;/h2&gt;
-
-</content>
- </entry>
- 
- <entry>
    <title>cheatsheet/tcpdump</title>
    <link href="/2024/02/20/tcpdump.html"/>
    <updated>2024-02-20T00:00:00+00:00</updated>
@@ -1000,6 +990,26 @@ crip print &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt;&lt;span class=&quot;
    <id>/2024/02/20/awscli</id>
    <content type="html">&lt;h2 id=&quot;cheatsheet-awscli&quot;&gt;Cheatsheet awscli&lt;/h2&gt;
 
+</content>
+ </entry>
+ 
+ <entry>
+   <title>cheatsheet/alias</title>
+   <link href="/2024/02/20/alias.html"/>
+   <updated>2024-02-20T00:00:00+00:00</updated>
+   <id>/2024/02/20/alias</id>
+   <content type="html">&lt;h2 id=&quot;cheatsheet-alias&quot;&gt;Cheatsheet alias&lt;/h2&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;git_push&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;git add . ; git commit -m &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;update by automation&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;; git push&quot;&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;golang_lab&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;current_date=$(date +%Y%m%d-%H%M%S); folder_name=&quot;golang-${current_date}&quot;; folder_path=&quot;/tmp/${folder_name}&quot;; mkdir &quot;$folder_path&quot;; echo $folder_path; cd $folder_path; touch main.go; code .&apos;&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;docker_reset&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;docker container rm -f $(docker container ls -qa); for i in $(docker volume ls | awk &quot;{print $2}&quot; | sed 1d); do docker volume rm -f $i; done&apos;&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;clip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;xclip -selection clipboard&apos;&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;network_inspect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;sudo lsof -i -P -n | grep LISTEN&apos;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
  
