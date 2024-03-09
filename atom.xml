@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-03-07T22:56:35+00:00</updated>
+ <updated>2024-03-09T18:46:00+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -1379,6 +1379,10 @@ sudo ufw allow 53/udp
    <updated>2024-02-11T00:00:00+00:00</updated>
    <id>/2024/02/11/tshoot</id>
    <content type="html">&lt;h2 id=&quot;cheatsheet-tshoot&quot;&gt;Cheatsheet tshoot&lt;/h2&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Executa os comandos em paralelo, ajuste o valor de -P para controlar o número de processos paralelos
+cat &quot;$tempfile&quot; | xargs -P 100 -I {} sh -c &quot;{}&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;important-commands&quot;&gt;Important Commands&lt;/h3&gt;
 
