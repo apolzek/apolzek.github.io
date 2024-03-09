@@ -5,8 +5,8 @@
 
 ## Rules
 
-- [FIX]
-- [NEW]
+- [CREATE]
 - [UPDATE]
 - [DELETE]
+- [FIX]
 - [REVIEW]
