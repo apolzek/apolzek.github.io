@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-03-11T12:10:18+00:00</updated>
+ <updated>2024-03-11T12:13:06+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -14,18 +14,18 @@
  
  <entry>
    <title>operating-system/processes</title>
-   <link href="/2024/12/01/linux-processes.html"/>
+   <link href="/2024/12/01/processes.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/linux-processes</id>
+   <id>/2024/12/01/processes</id>
    <content type="html">
 </content>
  </entry>
  
  <entry>
    <title>operating-system/linux-network</title>
-   <link href="/2024/12/01/linux-network.html"/>
+   <link href="/2024/12/01/network.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/linux-network</id>
+   <id>/2024/12/01/network</id>
    <content type="html">
 </content>
  </entry>
@@ -648,11 +648,13 @@ func main&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&
  </entry>
  
  <entry>
-   <title>operating-system/sockets</title>
-   <link href="/2024/03/11/linux-sockets.html"/>
+   <title>operating-system/linux/sockets</title>
+   <link href="/2024/03/11/sockets.html"/>
    <updated>2024-03-11T00:00:00+00:00</updated>
-   <id>/2024/03/11/linux-sockets</id>
-   <content type="html">&lt;p&gt;Em redes de computadores, sockets são endpoints de comunicação que permitem a troca de dados entre processos em uma rede. Eles são uma abstração fundamental para a comunicação em rede e são amplamente utilizados em sistemas operacionais, incluindo o Linux. Existem vários tipos de sockets, cada um adequado para diferentes tipos de comunicação. Aqui está um resumo detalhado dos principais tipos de sockets e como eles são usados no Linux:&lt;/p&gt;
+   <id>/2024/03/11/sockets</id>
+   <content type="html">&lt;h2 id=&quot;sockets-linux&quot;&gt;Sockets Linux&lt;/h2&gt;
+
+&lt;p&gt;Em redes de computadores, sockets são endpoints de comunicação que permitem a troca de dados entre processos em uma rede. Eles são uma abstração fundamental para a comunicação em rede e são amplamente utilizados em sistemas operacionais, incluindo o Linux. Existem vários tipos de sockets, cada um adequado para diferentes tipos de comunicação. Aqui está um resumo detalhado dos principais tipos de sockets e como eles são usados no Linux:&lt;/p&gt;
 
 &lt;h3 id=&quot;1-sockets-de-fluxo-stream-sockets&quot;&gt;1. Sockets de Fluxo (Stream Sockets)&lt;/h3&gt;
 &lt;ul&gt;
@@ -759,11 +761,10 @@ func main&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&
     &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;recv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1024&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;Recebido: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;decode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-
-&lt;span class=&quot;n&quot;&gt;server&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;py&lt;/span&gt;
-&lt;span class=&quot;sb&quot;&gt;``&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;python&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;socket&lt;/span&gt;
+&lt;p&gt;server.py&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;socket&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;HOST&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;127.0.0.1&apos;&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;PORT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;65432&lt;/span&gt;
 
@@ -2694,9 +2695,9 @@ ansible all -m setup
  
  <entry>
    <title>operating-system/linux-kernel-params</title>
-   <link href="/2024/01/05/linux-kernel-params.html"/>
+   <link href="/2024/01/05/kernel-params.html"/>
    <updated>2024-01-05T00:00:00+00:00</updated>
-   <id>/2024/01/05/linux-kernel-params</id>
+   <id>/2024/01/05/kernel-params</id>
    <content type="html">&lt;h2 id=&quot;linux-kernel-params&quot;&gt;Linux Kernel Params&lt;/h2&gt;
 
 &lt;p&gt;Para ajustar os parâmetros do kernel no Linux, você pode usar o comando &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sysctl&lt;/code&gt; para modificar configurações em tempo de execução. Para tornar as alterações permanentes, adicione as configurações ao arquivo de configuração &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/sysctl.conf&lt;/code&gt; ou a um arquivo em &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/sysctl.d/&lt;/code&gt;.&lt;/p&gt;

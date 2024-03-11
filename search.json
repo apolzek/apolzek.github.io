@@ -4,7 +4,7 @@
       "title"    : "operating-system/processes",
       "category" : "",
       "tags"     : "linux, processes",
-      "url"      : "/2024/12/01/linux-processes.html",
+      "url"      : "/2024/12/01/processes.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
@@ -12,7 +12,7 @@
       "title"    : "operating-system/linux-network",
       "category" : "",
       "tags"     : "linux, processes",
-      "url"      : "/2024/12/01/linux-network.html",
+      "url"      : "/2024/12/01/network.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
@@ -185,10 +185,10 @@
     } ,
   
     {
-      "title"    : "operating-system/sockets",
+      "title"    : "operating-system/linux/sockets",
       "category" : "",
-      "tags"     : "linux, sockets",
-      "url"      : "/2024/03/11/linux-sockets.html",
+      "tags"     : "sockets, linux",
+      "url"      : "/2024/03/11/sockets.html",
       "date"     : "2024-03-11 00:00:00 +0000"
     } ,
   
@@ -404,7 +404,7 @@
       "title"    : "operating-system/linux-kernel-params",
       "category" : "",
       "tags"     : "linux, params, sysctl",
-      "url"      : "/2024/01/05/linux-kernel-params.html",
+      "url"      : "/2024/01/05/kernel-params.html",
       "date"     : "2024-01-05 00:00:00 +0000"
     } ,
   
