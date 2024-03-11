@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-03-11T12:13:06+00:00</updated>
+ <updated>2024-03-11T16:30:09+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -22,7 +22,7 @@
  </entry>
  
  <entry>
-   <title>operating-system/linux-network</title>
+   <title>operating-system/network</title>
    <link href="/2024/12/01/network.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/network</id>
@@ -2694,11 +2694,11 @@ ansible all -m setup
  </entry>
  
  <entry>
-   <title>operating-system/linux-kernel-params</title>
+   <title>operating-system/kernel-params</title>
    <link href="/2024/01/05/kernel-params.html"/>
    <updated>2024-01-05T00:00:00+00:00</updated>
    <id>/2024/01/05/kernel-params</id>
-   <content type="html">&lt;h2 id=&quot;linux-kernel-params&quot;&gt;Linux Kernel Params&lt;/h2&gt;
+   <content type="html">&lt;h2 id=&quot;kernel-params&quot;&gt;Kernel Params&lt;/h2&gt;
 
 &lt;p&gt;Para ajustar os parâmetros do kernel no Linux, você pode usar o comando &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sysctl&lt;/code&gt; para modificar configurações em tempo de execução. Para tornar as alterações permanentes, adicione as configurações ao arquivo de configuração &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/sysctl.conf&lt;/code&gt; ou a um arquivo em &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/sysctl.d/&lt;/code&gt;.&lt;/p&gt;
 

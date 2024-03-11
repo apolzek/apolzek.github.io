@@ -33,15 +33,15 @@
     
         {
             "id": "/2024/12/01/network.html",
-            "title": "operating-system/linux-network",
-            "summary": "Linux Network",
+            "title": "operating-system/network",
+            "summary": "Network",
             "content_text": "",
             "content_html": "",
             "url": "/2024/12/01/network.html",
             
             
             
-            "tags": ["linux","processes"],
+            "tags": ["linux","network"],
             
             "date_published": "2024-12-01T00:00:00+00:00",
             "date_modified": "2024-12-01T00:00:00+00:00",

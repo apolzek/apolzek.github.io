@@ -9,9 +9,9 @@
     } ,
   
     {
-      "title"    : "operating-system/linux-network",
+      "title"    : "operating-system/network",
       "category" : "",
-      "tags"     : "linux, processes",
+      "tags"     : "linux, network",
       "url"      : "/2024/12/01/network.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
@@ -401,7 +401,7 @@
     } ,
   
     {
-      "title"    : "operating-system/linux-kernel-params",
+      "title"    : "operating-system/kernel-params",
       "category" : "",
       "tags"     : "linux, params, sysctl",
       "url"      : "/2024/01/05/kernel-params.html",
