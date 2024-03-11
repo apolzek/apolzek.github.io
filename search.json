@@ -185,6 +185,14 @@
     } ,
   
     {
+      "title"    : "operating-system/sockets",
+      "category" : "",
+      "tags"     : "linux, sockets",
+      "url"      : "/2024/03/11/linux-sockets.html",
+      "date"     : "2024-03-11 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "development/golang/dns-server",
       "category" : "",
       "tags"     : "go, dns-server",
