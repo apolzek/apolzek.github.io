@@ -94,6 +94,11 @@ func main() {
 }
 ```
 
+```
+sudo systemctl enable --now systemd-resolved
+sudo systemctl start systemd-resolved
+```
+
 ### References
 
 https://blog.stackademic.com/build-dns-server-using-golang-8a97db12a660
