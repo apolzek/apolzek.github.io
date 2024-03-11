@@ -1,12 +1,12 @@
 ---
 layout: post
-title: operating-system/linux-kernel-params
-description: Linux Kernel Params
-summary: Linux Kernel Params
+title: operating-system/kernel-params
+description: Kernel Params
+summary: Kernel Params
 tags: linux params sysctl
 ---
 
-## Linux Kernel Params
+## Kernel Params
 
 Para ajustar os parâmetros do kernel no Linux, você pode usar o comando `sysctl` para modificar configurações em tempo de execução. Para tornar as alterações permanentes, adicione as configurações ao arquivo de configuração `/etc/sysctl.conf` ou a um arquivo em `/etc/sysctl.d/`.
 
