@@ -62,8 +62,8 @@ tags: tools
 
 ### Productive environment
 
-| Tool           | Description                                                                                                                                          |
-| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Tool | Description |
+| ---- | ----------- |------------------------------------------------------------------- |
 | Kubernetes     | Open-source container orchestration platform for automating deployment, scaling, and management of containerized applications                        |
 | Apache Kafka   | Distributed event streaming platform for building real-time data pipelines and streaming applications                                                |
 | PostgreSQL     | Powerful, open-source relational database system known for its reliability and robust feature set                                                    |
@@ -91,3 +91,45 @@ tags: tools
 | Keycloak       |
 
 ### Extensions for Visual Studio Code
+
+| Extension ID                                 | Description |
+|----------------------------------------------|-------------|
+| `1yib.rust-bundle`                           |             |
+| `aaron-bond.better-comments`                 |             |
+| `alefragnani.bookmarks`                      |             |
+| `bracketpaircolordlw.bracket-pair-color-dlw` |             |
+| `chrmarti.regex`                             |             |
+| `cweijan.dbclient-jdbc`                      |             |
+| `cweijan.vscode-database-client2`            |             |
+| `donjayamanne.githistory`                    |             |
+| `dustypomerleau.rust-syntax`                 |             |
+| `eamodio.gitlens`                            |             |
+| `github.copilot`                             |             |
+| `github.copilot-chat`                        |             |
+| `golang.go`                                  |             |
+| `graphite.gti-vscode`                        |             |
+| `hiukky.flate`                               |             |
+| `humao.rest-client`                          |             |
+| `johnpapa.vscode-peacock`                    |             |
+| `lnav.lnav`                                  |             |
+| `mechatroner.rainbow-csv`                    |             |
+| `mhutchie.git-graph`                         |             |
+| `miguelsolorio.min-theme`                    |             |
+| `ms-azuretools.vscode-docker`                |             |
+| `ms-kubernetes-tools.vscode-kubernetes-tools`|             |
+| `ms-python.debugpy`                          |             |
+| `ms-python.python`                           |             |
+| `ms-python.vscode-pylance`                   |             |
+| `ms-vscode-remote.remote-containers`         |             |
+| `ms-vscode.cmake-tools`                      |             |
+| `ms-vscode.cpptools`                         |             |
+| `ms-vscode.cpptools-extension-pack`          |             |
+| `ms-vscode.cpptools-themes`                  |             |
+| `ms-vscode.makefile-tools`                   |             |
+| `pomdtr.excalidraw-editor`                   |             |
+| `rangav.vscode-thunder-client`               |             |
+| `redhat.vscode-yaml`                         |             |
+| `rust-lang.rust-analyzer`                    |             |
+| `serayuzgur.crates`                          |             |
+| `twxs.cmake`                                 |             |
+| `yzhang.markdown-all-in-one`                 |             |
