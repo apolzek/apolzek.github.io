@@ -52,6 +52,11 @@ plugins:
   - jekyll-sitemap
   - jekyll-relative-links
 
+# by apolzek
+paginate: 5 # Número de posts por página
+paginate_path: "/page:num/" # O caminho para as páginas paginadas
+
+
 collections:
   pages:
     output: true
