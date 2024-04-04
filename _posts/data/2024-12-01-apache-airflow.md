@@ -1,6 +1,6 @@
 ---
 layout: post
-title: data/Apache Airflox
+title: data/apache-airflox
 description: Apache Airflox
 summary: Apache Airflox
 tags: apache airflow
