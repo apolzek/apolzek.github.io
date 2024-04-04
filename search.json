@@ -1,7 +1,7 @@
 [
   
     {
-      "title"    : "operating-system/processes",
+      "title"    : "operating-system/linux/processes",
       "category" : "",
       "tags"     : "linux, processes",
       "url"      : "/2024/12/01/processes.html",
@@ -9,10 +9,18 @@
     } ,
   
     {
-      "title"    : "operating-system/network",
+      "title"    : "operating-system/linux/network",
       "category" : "",
       "tags"     : "linux, network",
       "url"      : "/2024/12/01/network.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "operating-system/linux/ebpf",
+      "category" : "",
+      "tags"     : "linux, ebpf",
+      "url"      : "/2024/12/01/ebpf.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
@@ -457,7 +465,7 @@
     } ,
   
     {
-      "title"    : "operating-system/kernel-params",
+      "title"    : "operating-system/linux/kernel-params",
       "category" : "",
       "tags"     : "linux, params, sysctl",
       "url"      : "/2024/01/05/kernel-params.html",

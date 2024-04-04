@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-04-04T02:23:46+00:00</updated>
+ <updated>2024-04-04T02:25:46+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -13,7 +13,7 @@
 
  
  <entry>
-   <title>operating-system/processes</title>
+   <title>operating-system/linux/processes</title>
    <link href="/2024/12/01/processes.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/processes</id>
@@ -22,10 +22,19 @@
  </entry>
  
  <entry>
-   <title>operating-system/network</title>
+   <title>operating-system/linux/network</title>
    <link href="/2024/12/01/network.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/network</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>operating-system/linux/ebpf</title>
+   <link href="/2024/12/01/ebpf.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/ebpf</id>
    <content type="html">
 </content>
  </entry>
@@ -3354,7 +3363,7 @@ Pax Romana - “A paz romana.”&lt;/p&gt;
  </entry>
  
  <entry>
-   <title>operating-system/kernel-params</title>
+   <title>operating-system/linux/kernel-params</title>
    <link href="/2024/01/05/kernel-params.html"/>
    <updated>2024-01-05T00:00:00+00:00</updated>
    <id>/2024/01/05/kernel-params</id>
