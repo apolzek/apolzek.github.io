@@ -65,6 +65,14 @@
     } ,
   
     {
+      "title"    : "development/golang/tests",
+      "category" : "",
+      "tags"     : "go, tests",
+      "url"      : "/2024/12/01/tests.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "development/golang/slices",
       "category" : "",
       "tags"     : "go, slices",
@@ -161,7 +169,7 @@
     } ,
   
     {
-      "title"    : "data/Apache Airflox",
+      "title"    : "data/apache-airflox",
       "category" : "",
       "tags"     : "apache, airflow",
       "url"      : "/2024/12/01/apache-airflow.html",
@@ -243,7 +251,7 @@
     {
       "title"    : "cheatsheet/lunarvim",
       "category" : "",
-      "tags"     : "lunarvim, vi, editor, 1991",
+      "tags"     : "lunarvim, vi, editor",
       "url"      : "/2024/03/04/lunarvim.html",
       "date"     : "2024-03-04 00:00:00 +0000"
     } ,
@@ -321,7 +329,7 @@
     } ,
   
     {
-      "title"    : "aws/iam",
+      "title"    : "cloud/aws/iam",
       "category" : "",
       "tags"     : "iam, aws, security",
       "url"      : "/2024/02/19/iam.html",
@@ -422,6 +430,14 @@
       "tags"     : "go, closures",
       "url"      : "/2024/01/28/closures.html",
       "date"     : "2024-01-28 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "latim/frases",
+      "category" : "",
+      "tags"     : "english",
+      "url"      : "/2024/01/20/frases.html",
+      "date"     : "2024-01-20 00:00:00 +0000"
     } ,
   
     {
