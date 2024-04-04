@@ -1,12 +1,12 @@
 ---
 layout: post
-title: tools/sre-tips
-description: sre-tips
-summary: sre-tips
+title: tools/sre-commands
+description: sre-commands
+summary: sre-commands
 tags: tools
 ---
 
-## sre-tips
+## sre-commands
 
 ```
 comando | xclip -selection clipboard
