@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-04-04T01:53:25+00:00</updated>
+ <updated>2024-04-04T02:15:33+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -500,7 +500,44 @@ func main&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&
    <link href="/2024/12/01/apache-airflow.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/apache-airflow</id>
-   <content type="html">&lt;h2 id=&quot;kafka&quot;&gt;Kafka&lt;/h2&gt;
+   <content type="html">&lt;h2 id=&quot;airflox&quot;&gt;Airflox&lt;/h2&gt;
+
+&lt;p&gt;O Apache Airflow é uma plataforma de gerenciamento de fluxo de trabalho de código aberto, originária do Airbnb, projetada para programar, organizar e monitorar fluxos de trabalho complexos. Com uma interface de usuário baseada na web para visualização de pipelines de processamento de dados em forma de DAGs (Directed Acyclic Graphs), o Airflow permite que os usuários gerenciem a orquestração de tarefas, garantindo que elas sejam executadas na ordem correta e no tempo certo. Você deve considerar o uso do Apache Airflow quando precisa de uma ferramenta para orquestrar tarefas complexas, dependências entre tarefas, e quando essas tarefas precisam ser executadas em horários específicos ou em resposta a certos gatilhos. Airflow é particularmente útil quando você tem fluxos de trabalho de dados que são complicados, repetitivos, e que necessitam de uma solução robusta para programação e monitoramento.&lt;/p&gt;
+
+&lt;h2 id=&quot;10-casos-de-uso-do-apache-airflow&quot;&gt;10 Casos de Uso do Apache Airflow&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;ETL (Extract, Transform, Load): Automatizar processos de ETL para extrair dados de várias fontes, transformá-los conforme necessário, e carregá-los em um sistema de destino, como um data warehouse.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Aprendizado de Máquina: Orquestrar pipelines de dados para treinamento de modelos de aprendizado de máquina, incluindo pré-processamento de dados, treinamento, avaliação de modelos e implantação.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Processamento de Big Data: Gerenciar fluxos de trabalho que envolvem processamento de grandes volumes de dados utilizando tecnologias como Hadoop, Spark, entre outras.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Automação de Pipelines de CI/CD: Integrar com ferramentas de CI/CD para automatizar a implantação de código e outros processos de integração e entrega contínuas.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Análise de Dados: Automatizar a execução de scripts de análise de dados, garantindo que os dados mais recentes sejam sempre utilizados.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Gerenciamento de Bancos de Dados: Executar tarefas de manutenção regulares em bancos de dados, como backups, atualizações de esquema e otimizações.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Processamento de Imagens e Vídeos: Automatizar o processamento em lote de imagens e vídeos, incluindo conversões de formato, compressão e análise de imagem.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Gerenciamento de Redes Sociais: Automatizar a coleta de dados de redes sociais para análise de tendências, engajamento do usuário e monitoramento de marca.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Monitoramento de Dados: Configurar alertas e verificações regulares de qualidade de dados para garantir a integridade e precisão dos dados ao longo do tempo.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Integração de Dados Multiplataforma: Orquestrar o fluxo de dados entre diferentes sistemas e plataformas, garantindo a sincronização e atualização de dados em tempo real ou em lotes.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
 </content>
  </entry>
  
@@ -664,6 +701,36 @@ func main&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&
    <id>/2024/04/03/docker-api</id>
    <content type="html">&lt;h2 id=&quot;docker-api&quot;&gt;docker-api&lt;/h2&gt;
 
+&lt;p&gt;go get github.com/docker/docker/client&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package main
+
+import (
+	&quot;context&quot;
+	&quot;fmt&quot;
+
+	&quot;github.com/docker/docker/api/types&quot;
+	&quot;github.com/docker/docker/client&quot;
+)
+
+func main() {
+	cli, err := client.NewClientWithOpts(client.FromEnv, client.WithAPIVersionNegotiation())
+	if err != nil {
+		panic(err)
+	}
+
+	containers, err := cli.ContainerList(context.Background(), types.ContainerListOptions{})
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(&quot;Lista de containers:&quot;)
+	for _, container := range containers {
+		fmt.Printf(&quot;ID: %s Image: %s Command: %s Created: %s Status: %s Names: %v\n&quot;,
+			container.ID[:10], container.Image, container.Command, container.Created, container.Status, container.Names)
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
  
@@ -680,11 +747,22 @@ func main&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&
  </entry>
  
  <entry>
-   <title>tools/sre-tips</title>
-   <link href="/2024/04/03/sre-tips.html"/>
+   <title>tools/sre-interview</title>
+   <link href="/2024/04/03/sre-interview.html"/>
    <updated>2024-04-03T00:00:00+00:00</updated>
-   <id>/2024/04/03/sre-tips</id>
-   <content type="html">&lt;h2 id=&quot;sre-tips&quot;&gt;sre-tips&lt;/h2&gt;
+   <id>/2024/04/03/sre-interview</id>
+   <content type="html">&lt;h2 id=&quot;sre-interview&quot;&gt;sre-interview&lt;/h2&gt;
+
+&lt;p&gt;Teorema CAP&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>tools/sre-commands</title>
+   <link href="/2024/04/03/sre-commands.html"/>
+   <updated>2024-04-03T00:00:00+00:00</updated>
+   <id>/2024/04/03/sre-commands</id>
+   <content type="html">&lt;h2 id=&quot;sre-commands&quot;&gt;sre-commands&lt;/h2&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;comando | xclip -selection clipboard
 
@@ -1272,6 +1350,82 @@ tcpdump -i eth0 &apos;tcp
    <id>/2024/02/20/openssh</id>
    <content type="html">&lt;h2 id=&quot;cheatsheet-openssh&quot;&gt;Cheatsheet openssh&lt;/h2&gt;
 
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Gerar um novo par de chaves SSH (algoritmo RSA, 4096 bits)&lt;/span&gt;
+ssh-keygen &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; rsa &lt;span class=&quot;nt&quot;&gt;-b&lt;/span&gt; 4096
+
+&lt;span class=&quot;c&quot;&gt;# Copiar a chave pública para um servidor remoto (para autenticação sem senha)&lt;/span&gt;
+ssh-copy-id usuario@servidor
+
+&lt;span class=&quot;c&quot;&gt;# Conectar-se a um servidor remoto via SSH&lt;/span&gt;
+ssh usuario@servidor
+
+&lt;span class=&quot;c&quot;&gt;# Executar um comando em um servidor remoto e sair&lt;/span&gt;
+ssh usuario@servidor &lt;span class=&quot;s1&quot;&gt;&apos;comando&apos;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Configurar um túnel SSH (Port Forwarding) - encaminhar porta local para remota&lt;/span&gt;
+ssh &lt;span class=&quot;nt&quot;&gt;-L&lt;/span&gt; porta_local:servidor_intermediário:porta_remota usuario@servidor_ssh
+
+&lt;span class=&quot;c&quot;&gt;# Encaminhar uma porta remota para uma local (Reverse Port Forwarding)&lt;/span&gt;
+ssh &lt;span class=&quot;nt&quot;&gt;-R&lt;/span&gt; porta_remota:localhost:porta_local usuario@servidor_ssh
+
+&lt;span class=&quot;c&quot;&gt;# Usar um arquivo de chave privada específico para a conexão SSH&lt;/span&gt;
+ssh &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; /caminho/para/chave_privada usuario@servidor
+
+&lt;span class=&quot;c&quot;&gt;# Conectar-se a um servidor utilizando uma porta específica&lt;/span&gt;
+ssh &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; porta usuario@servidor
+
+&lt;span class=&quot;c&quot;&gt;# Habilitar o modo verbose para depuração de conexões SSH&lt;/span&gt;
+ssh &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; usuario@servidor
+
+&lt;span class=&quot;c&quot;&gt;# Utilizar multiplexação de conexões para reutilizar conexões SSH existentes&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Primeiro, adicionar ao arquivo de configuração do SSH (~/.ssh/config):&lt;/span&gt;
+Host &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
+  ControlMaster auto
+  ControlPath ~/.ssh/sockets/%r@%h-%p
+  ControlPersist 600
+  
+&lt;span class=&quot;c&quot;&gt;# Copiar arquivos de/para um servidor usando SCP&lt;/span&gt;
+scp arquivo_local usuario@servidor:/caminho/destino
+scp usuario@servidor:/caminho/remoto/arquivo_local /caminho/destino/local
+
+&lt;span class=&quot;c&quot;&gt;# Copiar uma pasta inteira de/para um servidor usando SCP com opção -r&lt;/span&gt;
+scp &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; pasta_local usuario@servidor:/caminho/destino
+scp &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; usuario@servidor:/caminho/remoto/pasta_local /caminho/destino/local
+
+&lt;span class=&quot;c&quot;&gt;# Usar SFTP para transferir arquivos com um servidor&lt;/span&gt;
+sftp usuario@servidor
+
+&lt;span class=&quot;c&quot;&gt;# Lista branca de IPs (permitir somente IPs específicos no servidor SSH - editar /etc/hosts.allow)&lt;/span&gt;
+sshd : IP_1 IP_2 : allow
+
+&lt;span class=&quot;c&quot;&gt;# Bloquear IPs específicos (editar /etc/hosts.deny)&lt;/span&gt;
+sshd : IP_1 IP_2 : deny
+
+&lt;span class=&quot;c&quot;&gt;# Alterar a porta padrão do SSH (editar /etc/ssh/sshd_config e mudar a porta)&lt;/span&gt;
+Port 2222
+
+&lt;span class=&quot;c&quot;&gt;# Desabilitar login SSH como root (editar /etc/ssh/sshd_config)&lt;/span&gt;
+PermitRootLogin no
+
+&lt;span class=&quot;c&quot;&gt;# Limitar o tempo de vida de uma sessão SSH inativa (editar /etc/ssh/sshd_config)&lt;/span&gt;
+ClientAliveInterval 300
+ClientAliveCountMax 0
+
+&lt;span class=&quot;c&quot;&gt;# Forçar a utilização de autenticação por chave (editar /etc/ssh/sshd_config)&lt;/span&gt;
+PasswordAuthentication no
+
+&lt;span class=&quot;c&quot;&gt;# Recarregar a configuração do SSH sem reiniciar o serviço&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl reload sshd
+
+&lt;span class=&quot;c&quot;&gt;# Verificar a configuração do SSH para erros&lt;/span&gt;
+sshd &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Verificar quem está conectado via SSH&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;who&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Encerrar uma sessão SSH específica&lt;/span&gt;
+pkill &lt;span class=&quot;nt&quot;&gt;-9&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; pts/N
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
  
@@ -1282,6 +1436,90 @@ tcpdump -i eth0 &apos;tcp
    <id>/2024/02/20/nfs</id>
    <content type="html">&lt;h2 id=&quot;cheatsheet-nfs&quot;&gt;Cheatsheet nfs&lt;/h2&gt;
 
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Instalar os pacotes NFS no servidor&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;nfs-kernel-server
+
+&lt;span class=&quot;c&quot;&gt;# Instalar os pacotes NFS no cliente (Debian/Ubuntu)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;nfs-common
+
+&lt;span class=&quot;c&quot;&gt;# Habilitar e iniciar o serviço NFS no servidor&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl &lt;span class=&quot;nb&quot;&gt;enable&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--now&lt;/span&gt; nfs-server
+
+&lt;span class=&quot;c&quot;&gt;# Verificar o status do serviço NFS&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl status nfs-server
+
+&lt;span class=&quot;c&quot;&gt;# Exportar um diretório (adicionar ao /etc/exports)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/diretorio/compartilhado *(rw,sync,no_root_squash)&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;sudo tee&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt; /etc/exports
+
+&lt;span class=&quot;c&quot;&gt;# Aplicar as mudanças feitas no /etc/exports sem reiniciar o serviço&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;exportfs &lt;span class=&quot;nt&quot;&gt;-arv&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Mostrar as exportações atuais do servidor NFS&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;exportfs &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Reiniciar o serviço NFS para aplicar mudanças&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl restart nfs-server
+
+&lt;span class=&quot;c&quot;&gt;# Montar um sistema de arquivos NFS no cliente&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;mount servidor:/diretorio/compartilhado /ponto/de/montagem
+
+&lt;span class=&quot;c&quot;&gt;# Montar automaticamente um sistema de arquivos NFS no boot (adicionar ao /etc/fstab)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;servidor:/diretorio/compartilhado /ponto/de/montagem nfs defaults 0 0&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;sudo tee&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt; /etc/fstab
+
+&lt;span class=&quot;c&quot;&gt;# Verificar a conectividade NFS (ping)&lt;/span&gt;
+showmount &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; servidor
+
+&lt;span class=&quot;c&quot;&gt;# Listar todas as exportações disponíveis do servidor NFS&lt;/span&gt;
+showmount &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Desmontar um sistema de arquivos NFS&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;umount /ponto/de/montagem
+
+&lt;span class=&quot;c&quot;&gt;# Verificar estatísticas do NFS&lt;/span&gt;
+nfsstat
+
+&lt;span class=&quot;c&quot;&gt;# Forçar uma verificação de sistema de arquivos NFS no cliente&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;mount &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; remount /ponto/de/montagem
+
+&lt;span class=&quot;c&quot;&gt;# Mostrar a tabela de montagem do cliente NFS&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; /proc/mounts | &lt;span class=&quot;nb&quot;&gt;grep &lt;/span&gt;nfs
+
+&lt;span class=&quot;c&quot;&gt;# Atualizar a tabela de exportação no servidor NFS&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;exportfs &lt;span class=&quot;nt&quot;&gt;-ra&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Verificar a versão do NFS em uso&lt;/span&gt;
+nfsstat &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Verificar quais clientes estão montando um export&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;showmount &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Desabilitar uma exportação (remover do /etc/exports e aplicar com exportfs -arv)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo sed&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;/\/diretorio\/compartilhado/d&apos;&lt;/span&gt; /etc/exports &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;exportfs &lt;span class=&quot;nt&quot;&gt;-arv&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Bloquear acesso NFS de um IP específico (editar /etc/exports e reexportar)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo sed&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;s/*(rw,/192.168.1.100(ro,/&apos;&lt;/span&gt; /etc/exports &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;exportfs &lt;span class=&quot;nt&quot;&gt;-arv&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Permitir acesso NFS somente leitura (editar /etc/exports para um diretório)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo sed&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;s/rw/ro/&apos;&lt;/span&gt; /etc/exports &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;exportfs &lt;span class=&quot;nt&quot;&gt;-arv&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Alterar as opções de exportação para um diretório (editar /etc/exports)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;vim /etc/exports
+
+&lt;span class=&quot;c&quot;&gt;# Reiniciar o cliente NFS (em caso de problemas de montagem/navegação)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl restart nfs-client.target
+
+&lt;span class=&quot;c&quot;&gt;# Usar o NFS sobre TCP (editar /etc/fstab para adicionar a opção &quot;tcp&quot;)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;vim /etc/fstab
+
+&lt;span class=&quot;c&quot;&gt;# Aumentar o desempenho ajustando o tamanho do r/w (editar /etc/fstab)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;vim /etc/fstab
+
+&lt;span class=&quot;c&quot;&gt;# Forçar a utilização de uma versão específica do NFS (editar /etc/fstab)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;vim /etc/fstab
+
+&lt;span class=&quot;c&quot;&gt;# Verificar todos os pontos de montagem NFS e suas opções&lt;/span&gt;
+mount | &lt;span class=&quot;nb&quot;&gt;grep &lt;/span&gt;nfs
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
  
@@ -1668,17 +1906,6 @@ linhas
  </entry>
  
  <entry>
-   <title>cheatsheet/ufw</title>
-   <link href="/2024/02/19/linux.html"/>
-   <updated>2024-02-19T00:00:00+00:00</updated>
-   <id>/2024/02/19/linux</id>
-   <content type="html">&lt;h2 id=&quot;cheatsheet-ufw&quot;&gt;Cheatsheet ufw&lt;/h2&gt;
-
-&lt;p&gt;https://medium.com/@sdbutalla/the-6-terminal-utilities-that-save-me-serious-time-and-simplify-my-workflow-1c44b46a4ec9&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
    <title>cheatsheet/groovy</title>
    <link href="/2024/02/19/groovy.html"/>
    <updated>2024-02-19T00:00:00+00:00</updated>
@@ -1744,7 +1971,7 @@ linhas
  </entry>
  
  <entry>
-   <title>tools/k8s/cka</title>
+   <title>cheatsheet/cka</title>
    <link href="/2024/02/19/cka.html"/>
    <updated>2024-02-19T00:00:00+00:00</updated>
    <id>/2024/02/19/cka</id>

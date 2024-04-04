@@ -209,10 +209,18 @@
     } ,
   
     {
-      "title"    : "tools/sre-tips",
+      "title"    : "tools/sre-interview",
       "category" : "",
       "tags"     : "tools",
-      "url"      : "/2024/04/03/sre-tips.html",
+      "url"      : "/2024/04/03/sre-interview.html",
+      "date"     : "2024-04-03 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "tools/sre-commands",
+      "category" : "",
+      "tags"     : "tools",
+      "url"      : "/2024/04/03/sre-commands.html",
       "date"     : "2024-04-03 00:00:00 +0000"
     } ,
   
@@ -345,14 +353,6 @@
     } ,
   
     {
-      "title"    : "cheatsheet/ufw",
-      "category" : "",
-      "tags"     : "ufw, ubuntu, firewall",
-      "url"      : "/2024/02/19/linux.html",
-      "date"     : "2024-02-19 00:00:00 +0000"
-    } ,
-  
-    {
       "title"    : "cheatsheet/groovy",
       "category" : "",
       "tags"     : "groovy, linux",
@@ -361,7 +361,7 @@
     } ,
   
     {
-      "title"    : "tools/k8s/cka",
+      "title"    : "cheatsheet/cka",
       "category" : "",
       "tags"     : "cka, certification",
       "url"      : "/2024/02/19/cka.html",
