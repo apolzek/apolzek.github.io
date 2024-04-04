@@ -4,13 +4,22 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-04-04T02:31:27+00:00</updated>
+ <updated>2024-04-04T02:46:28+00:00</updated>
  <id></id>
  <author>
    <name></name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>data/tec-events</title>
+   <link href="/2024/12/01/tec-events.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/tec-events</id>
+   <content type="html">&lt;h2 id=&quot;tec-events&quot;&gt;tec-events&lt;/h2&gt;
+</content>
+ </entry>
  
  <entry>
    <title>operating-system/linux/processes</title>
@@ -510,6 +519,15 @@ func main&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/kafka-connect</id>
    <content type="html">&lt;h2 id=&quot;kafka-connect&quot;&gt;Kafka Connect&lt;/h2&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>data/ibmmq</title>
+   <link href="/2024/12/01/ibmmq.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/ibmmq</id>
+   <content type="html">&lt;h2 id=&quot;ibmmq&quot;&gt;ibmmq&lt;/h2&gt;
 </content>
  </entry>
  

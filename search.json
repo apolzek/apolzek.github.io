@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "data/tec-events",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/2024/12/01/tec-events.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "operating-system/linux/processes",
       "category" : "",
       "tags"     : "linux, processes",
@@ -173,6 +181,14 @@
       "category" : "",
       "tags"     : "kafka, kafka-connect",
       "url"      : "/2024/12/01/kafka-connect.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "data/ibmmq",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/2024/12/01/ibmmq.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
