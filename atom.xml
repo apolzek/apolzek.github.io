@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-04-04T02:25:46+00:00</updated>
+ <updated>2024-04-04T02:31:27+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -1608,6 +1608,24 @@ crip print &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt;&lt;span class=&quot;
  </entry>
  
  <entry>
+   <title>cloud/aws/security</title>
+   <link href="/2024/02/19/security.html"/>
+   <updated>2024-02-19T00:00:00+00:00</updated>
+   <id>/2024/02/19/security</id>
+   <content type="html">&lt;h2 id=&quot;security&quot;&gt;security&lt;/h2&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>cloud/aws/lambda</title>
+   <link href="/2024/02/19/lambda.html"/>
+   <updated>2024-02-19T00:00:00+00:00</updated>
+   <id>/2024/02/19/lambda</id>
+   <content type="html">&lt;h2 id=&quot;lambda&quot;&gt;lambda&lt;/h2&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>cloud/aws/iam</title>
    <link href="/2024/02/19/iam.html"/>
    <updated>2024-02-19T00:00:00+00:00</updated>
@@ -1777,6 +1795,24 @@ aws iam add-user-to-group --group-name mygroup --user-name myuser
     ]
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>cloud/aws/ec2</title>
+   <link href="/2024/02/19/ec2.html"/>
+   <updated>2024-02-19T00:00:00+00:00</updated>
+   <id>/2024/02/19/ec2</id>
+   <content type="html">&lt;h2 id=&quot;ec2&quot;&gt;ec2&lt;/h2&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>cloud/aws/cloud-front</title>
+   <link href="/2024/02/19/cloud-front.html"/>
+   <updated>2024-02-19T00:00:00+00:00</updated>
+   <id>/2024/02/19/cloud-front</id>
+   <content type="html">&lt;h2 id=&quot;cloud-front&quot;&gt;cloud-front&lt;/h2&gt;
 </content>
  </entry>
  
@@ -2788,76 +2824,6 @@ ansible all -m setup
     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>latim/frases</title>
-   <link href="/2024/01/20/frases.html"/>
-   <updated>2024-01-20T00:00:00+00:00</updated>
-   <id>/2024/01/20/frases</id>
-   <content type="html">&lt;h3 id=&quot;frases&quot;&gt;Frases&lt;/h3&gt;
-
-&lt;p&gt;Carpe Diem - “Aproveite o dia.”&lt;/p&gt;
-
-&lt;p&gt;Um convite para não desperdiçar o momento presente e agir agora, sem adiar.
-Veni, Vidi, Vici - “Vim, vi, venci.”&lt;/p&gt;
-
-&lt;p&gt;Atribuída a Júlio César após uma rápida vitória. Usada para expressar uma conquista rápida e eficaz.
-Amor Vincit Omnia - “O amor conquista tudo.”&lt;/p&gt;
-
-&lt;p&gt;Expressa a crença no poder supremo do amor sobre todos os obstáculos.
-Alea Iacta Est - “A sorte está lançada.”&lt;/p&gt;
-
-&lt;p&gt;Dito por Júlio César ao cruzar o rio Rubicão. Usado quando uma decisão importante é tomada e não há volta.
-Ad Astra Per Aspera - “Através das dificuldades até as estrelas.”&lt;/p&gt;
-
-&lt;p&gt;Encoraja a perseverança e a superação de desafios para alcançar grandes objetivos.
-Caveat Emptor - “Que o comprador esteja atento.”&lt;/p&gt;
-
-&lt;p&gt;Adverte o comprador a verificar a mercadoria antes da compra, pois a responsabilidade recai sobre ele.
-Et Cetera (etc.) - “E outras coisas.”&lt;/p&gt;
-
-&lt;p&gt;Usado para indicar uma lista contínua sem precisar enumerar todos os itens.
-In Vino Veritas - “No vinho, a verdade.”&lt;/p&gt;
-
-&lt;p&gt;Sugere que as pessoas são mais propensas a revelar suas verdadeiras intenções e sentimentos sob a influência do álcool.
-Tabula Rasa - “Tábua rasa.”&lt;/p&gt;
-
-&lt;p&gt;Refere-se à ideia de que a mente no nascimento é como uma lousa vazia, sem conhecimento ou preconceitos.
-Vox Populi, Vox Dei - “A voz do povo é a voz de Deus.”&lt;/p&gt;
-
-&lt;p&gt;A crença de que a opinião pública é um guia confiável para a verdade ou a política correta.
-Tempus Fugit - “O tempo voa.”&lt;/p&gt;
-
-&lt;p&gt;Um lembrete da passagem rápida do tempo e a importância de usá-lo sabiamente.
-Audere est Facere - “Ousar é fazer.”&lt;/p&gt;
-
-&lt;p&gt;Encoraja a ação e a coragem para alcançar resultados.
-Sic Transit Gloria Mundi - “Assim passa a glória do mundo.”&lt;/p&gt;
-
-&lt;p&gt;Uma reflexão sobre a natureza transitória da fama e do sucesso.
-Non Sequitur - “Não se segue.”&lt;/p&gt;
-
-&lt;p&gt;Uma conclusão ou afirmação que não segue logicamente o que a precedeu.
-Cogito, Ergo Sum - “Penso, logo existo.”&lt;/p&gt;
-
-&lt;p&gt;Proferida por René Descartes, expressa a ideia de que a capacidade de pensar prova a existência de alguém.
-Memento Mori - “Lembre-se de que você é mortal.”&lt;/p&gt;
-
-&lt;p&gt;Um lembrete da inevitabilidade da morte e a importância de viver uma vida significativa.
-Fiat Lux - “Faça-se a luz.”&lt;/p&gt;
-
-&lt;p&gt;Uma expressão bíblica usada para indicar a criação ou o início de algo novo.
-Errare Humanum Est - “Errar é humano.”&lt;/p&gt;
-
-&lt;p&gt;Reconhece a natureza falível do ser humano e a importância do perdão.
-A Priori - “Do anterior.”&lt;/p&gt;
-
-&lt;p&gt;Algo conhecido através da lógica ou raciocínio dedutivo, em vez de experiência.
-Pax Romana - “A paz romana.”&lt;/p&gt;
-
-&lt;p&gt;Refere-se ao longo período de paz relativa e estabilidade garantida pelo império romano.&lt;/p&gt;
 </content>
  </entry>
  

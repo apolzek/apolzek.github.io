@@ -337,10 +337,42 @@
     } ,
   
     {
+      "title"    : "cloud/aws/security",
+      "category" : "",
+      "tags"     : "security, aws, security",
+      "url"      : "/2024/02/19/security.html",
+      "date"     : "2024-02-19 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "cloud/aws/lambda",
+      "category" : "",
+      "tags"     : "lambda, aws, security",
+      "url"      : "/2024/02/19/lambda.html",
+      "date"     : "2024-02-19 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "cloud/aws/iam",
       "category" : "",
       "tags"     : "iam, aws, security",
       "url"      : "/2024/02/19/iam.html",
+      "date"     : "2024-02-19 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "cloud/aws/ec2",
+      "category" : "",
+      "tags"     : "ec2, aws, security",
+      "url"      : "/2024/02/19/ec2.html",
+      "date"     : "2024-02-19 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "cloud/aws/cloud-front",
+      "category" : "",
+      "tags"     : "cloud-front, aws",
+      "url"      : "/2024/02/19/cloud-front.html",
       "date"     : "2024-02-19 00:00:00 +0000"
     } ,
   
@@ -438,14 +470,6 @@
       "tags"     : "go, closures",
       "url"      : "/2024/01/28/closures.html",
       "date"     : "2024-01-28 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "latim/frases",
-      "category" : "",
-      "tags"     : "english",
-      "url"      : "/2024/01/20/frases.html",
-      "date"     : "2024-01-20 00:00:00 +0000"
     } ,
   
     {
