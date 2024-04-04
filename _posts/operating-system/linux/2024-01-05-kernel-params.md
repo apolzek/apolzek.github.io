@@ -1,6 +1,6 @@
 ---
 layout: post
-title: operating-system/kernel-params
+title: operating-system/linux/kernel-params
 description: Kernel Params
 summary: Kernel Params
 tags: linux params sysctl
