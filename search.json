@@ -185,10 +185,18 @@
     } ,
   
     {
-      "title"    : "tools/dockerfile-tips",
+      "title"    : "tools/docker/dockerfile",
       "category" : "",
       "tags"     : "tools, docker",
-      "url"      : "/2024/04/03/dockerfile-tips.html",
+      "url"      : "/2024/04/03/dockerfile.html",
+      "date"     : "2024-04-03 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "tools/docker/docker-api",
+      "category" : "",
+      "tags"     : "tools, docker",
+      "url"      : "/2024/04/03/docker-api.html",
       "date"     : "2024-04-03 00:00:00 +0000"
     } ,
   

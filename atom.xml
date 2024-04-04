@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-04-04T01:27:28+00:00</updated>
+ <updated>2024-04-04T01:53:25+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -648,11 +648,21 @@ func main&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&
  </entry>
  
  <entry>
-   <title>tools/dockerfile-tips</title>
-   <link href="/2024/04/03/dockerfile-tips.html"/>
+   <title>tools/docker/dockerfile</title>
+   <link href="/2024/04/03/dockerfile.html"/>
    <updated>2024-04-03T00:00:00+00:00</updated>
-   <id>/2024/04/03/dockerfile-tips</id>
-   <content type="html">&lt;h2 id=&quot;dockerfile-tips&quot;&gt;dockerfile-tips&lt;/h2&gt;
+   <id>/2024/04/03/dockerfile</id>
+   <content type="html">&lt;h2 id=&quot;dockerfile&quot;&gt;dockerfile&lt;/h2&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>tools/docker/docker-api</title>
+   <link href="/2024/04/03/docker-api.html"/>
+   <updated>2024-04-03T00:00:00+00:00</updated>
+   <id>/2024/04/03/docker-api</id>
+   <content type="html">&lt;h2 id=&quot;docker-api&quot;&gt;docker-api&lt;/h2&gt;
 
 </content>
  </entry>
@@ -1350,14 +1360,14 @@ crip print &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt;&lt;span class=&quot;
 
 &lt;p&gt;A IAM (Identity and Access Management) é um serviço fundamental da AWS (Amazon Web Services) que permite gerenciar de forma segura o acesso aos recursos da AWS. Com a IAM, você pode criar e gerenciar usuários, grupos e funções, além de definir permissões detalhadas para controlar quem tem acesso a quais recursos e ações dentro da sua conta da AWS. Aqui estão alguns conceitos importantes e exemplos práticos de uso da IAM:&lt;/p&gt;
 
-&lt;h4 id=&quot;usuários&quot;&gt;Usuários&lt;/h4&gt;
+&lt;h3 id=&quot;usuários&quot;&gt;Usuários&lt;/h3&gt;
 
 &lt;p&gt;Um usuário é uma identidade que você cria para alguém ou algo (como uma aplicação) que precisa acessar sua conta da AWS. Cada usuário possui um nome de usuário exclusivo e credenciais de login. Aqui está um exemplo de criação de um usuário na IAM:&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;aws iam create-user --user-name myuser
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h4 id=&quot;grupos&quot;&gt;Grupos&lt;/h4&gt;
+&lt;h3 id=&quot;grupos&quot;&gt;Grupos&lt;/h3&gt;
 
 &lt;p&gt;Um grupo é um conjunto de permissões que você pode aplicar a vários usuários. Você atribui políticas (conjuntos de permissões) aos grupos, e os usuários que pertencem ao grupo herdam essas permissões. Aqui está um exemplo de criação de um grupo na IAM e associação de um usuário a ele:&lt;/p&gt;
 
@@ -1366,7 +1376,7 @@ aws iam add-user-to-group --group-name mygroup --user-name myuser
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h4 id=&quot;políticas&quot;&gt;Políticas&lt;/h4&gt;
+&lt;h3 id=&quot;políticas&quot;&gt;Políticas&lt;/h3&gt;
 
 &lt;p&gt;As políticas definem as permissões de acesso em formato JSON. Elas especificam o que um usuário, grupo ou função pode fazer com recursos específicos. Aqui está um exemplo de criação de uma política que permite a leitura de um bucket S3:&lt;/p&gt;
 
@@ -1382,14 +1392,14 @@ aws iam add-user-to-group --group-name mygroup --user-name myuser
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h4 id=&quot;funções&quot;&gt;Funções&lt;/h4&gt;
+&lt;h3 id=&quot;funções&quot;&gt;Funções&lt;/h3&gt;
 
 &lt;p&gt;As funções permitem conceder permissões temporárias a serviços da AWS ou entidades confiáveis. Isso é útil para permitir que serviços acessem outros recursos em seu nome, sem a necessidade de compartilhar credenciais de acesso direto. Aqui está um exemplo de criação de uma função que permite que uma instância EC2 acesse um bucket S3:&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;aws iam create-role --role-name myrole --assume-role-policy-document file://trust-policy.json
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h4 id=&quot;assume-role-policy-document&quot;&gt;Assume Role Policy Document&lt;/h4&gt;
+&lt;h3 id=&quot;assume-role-policy-document&quot;&gt;Assume Role Policy Document&lt;/h3&gt;
 
 &lt;p&gt;O documento de política de confiança é um JSON que define quais entidades ou serviços podem assumir uma função. Aqui está um exemplo simplificado:&lt;/p&gt;
 
@@ -1402,6 +1412,111 @@ aws iam add-user-to-group --group-name mygroup --user-name myuser
                 &quot;Service&quot;: &quot;ec2.amazonaws.com&quot;
             },
             &quot;Action&quot;: &quot;sts:AssumeRole&quot;
+        }
+    ]
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;scp&quot;&gt;SCP&lt;/h3&gt;
+
+&lt;p&gt;SCP significa Service Control Policy. Trata-se de um tipo de política usada no AWS Organizations para gerenciar permissões em contas AWS dentro de uma organização. As SCPs permitem aos administradores centralizar o controle de acesso, especificando quais serviços e ações as contas membro podem ou não usar. Elas são aplicadas no nível da organização, unidades organizacionais (OUs) ou contas individuais, permitindo uma abordagem de segurança baseada em whitelist ou blacklist.&lt;/p&gt;
+
+&lt;p&gt;As SCPs são úteis para garantir a conformidade e aplicar políticas de segurança em larga escala. Por exemplo, uma organização pode querer restringir todas as contas para evitar a exclusão de logs do CloudTrail ou a desativação de criptografia de determinados serviços. As SCPs funcionam como um limite de permissão; elas não concedem permissões por si só mas podem ser usadas para restringir as permissões que seriam concedidas por outras políticas (como políticas de IAM).&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2012-10-17&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Statement&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Effect&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Allow&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Action&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;s3:GetObject&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;s3:PutObject&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;s3:ListBucket&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Resource&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;*&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Effect&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Deny&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Action&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;s3:*&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;NotAction&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;s3:GetObject&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;s3:PutObject&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;s3:ListBucket&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Resource&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;*&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;hard-policys&quot;&gt;Hard Policys&lt;/h4&gt;
+
+&lt;p&gt;Esta política de IAM permite listar e obter a localização de objetos no bucket S3 meu-bucket-exemplo com o prefixo “home/”, mas nega a exclusão de objetos na pasta “important-docs” a menos que a solicitação venha do intervalo de IP especificado “192.0.2.0/24”.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
+    &quot;Version&quot;: &quot;2012-10-17&quot;,
+    &quot;Statement&quot;: [
+        {
+            &quot;Effect&quot;: &quot;Allow&quot;,
+            &quot;Action&quot;: [
+                &quot;s3:ListBucket&quot;,
+                &quot;s3:GetBucketLocation&quot;
+            ],
+            &quot;Resource&quot;: &quot;arn:aws:s3:::meu-bucket-exemplo&quot;,
+            &quot;Condition&quot;: {
+                &quot;StringEquals&quot;: {
+                    &quot;s3:prefix&quot;: &quot;home/&quot;,
+                    &quot;s3:delimiter&quot;: &quot;/&quot;
+                }
+            }
+        },
+        {
+            &quot;Effect&quot;: &quot;Deny&quot;,
+            &quot;Action&quot;: &quot;s3:DeleteObject&quot;,
+            &quot;Resource&quot;: &quot;arn:aws:s3:::meu-bucket-exemplo/important-docs/*&quot;,
+            &quot;Condition&quot;: {
+                &quot;NotIpAddress&quot;: {
+                    &quot;aws:SourceIp&quot;: &quot;192.0.2.0/24&quot;
+                }
+            }
+        }
+    ]
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Esta política IAM permite a execução de uma função Lambda específica apenas por usuários autenticados com MFA e dentro do ano de 2023, e também permite a usuários com e-mails do domínio “meudominio.com” criar e escrever em grupos de logs do CloudWatch.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
+    &quot;Version&quot;: &quot;2012-10-17&quot;,
+    &quot;Statement&quot;: [
+        {
+            &quot;Effect&quot;: &quot;Allow&quot;,
+            &quot;Action&quot;: &quot;lambda:InvokeFunction&quot;,
+            &quot;Resource&quot;: &quot;arn:aws:lambda:us-east-1:123456789012:function:minha-funcao-lambda&quot;,
+            &quot;Condition&quot;: {
+                &quot;Bool&quot;: {
+                    &quot;aws:MultiFactorAuthPresent&quot;: &quot;true&quot;
+                },
+                &quot;DateGreaterThan&quot;: {
+                    &quot;aws:CurrentTime&quot;: &quot;2023-01-01T00:00:00Z&quot;
+                },
+                &quot;DateLessThan&quot;: {
+                    &quot;aws:CurrentTime&quot;: &quot;2023-12-31T23:59:59Z&quot;
+                }
+            }
+        },
+        {
+            &quot;Effect&quot;: &quot;Allow&quot;,
+            &quot;Action&quot;: [
+                &quot;logs:CreateLogGroup&quot;,
+                &quot;logs:CreateLogStream&quot;,
+                &quot;logs:PutLogEvents&quot;
+            ],
+            &quot;Resource&quot;: &quot;arn:aws:logs:us-east-1:123456789012:*&quot;,
+            &quot;Condition&quot;: {
+                &quot;StringLike&quot;: {
+                    &quot;aws:userid&quot;: &quot;*@meudominio.com&quot;
+                }
+            }
         }
     ]
 }

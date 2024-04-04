@@ -494,12 +494,33 @@
         },
     
         {
-            "id": "/2024/04/03/dockerfile-tips.html",
-            "title": "tools/dockerfile-tips",
-            "summary": "dockerfile-tips",
-            "content_text": "dockerfile-tips",
-            "content_html": "<h2 id=\"dockerfile-tips\">dockerfile-tips</h2>",
-            "url": "/2024/04/03/dockerfile-tips.html",
+            "id": "/2024/04/03/dockerfile.html",
+            "title": "tools/docker/dockerfile",
+            "summary": "dockerfile",
+            "content_text": "dockerfile",
+            "content_html": "<h2 id=\"dockerfile\">dockerfile</h2>",
+            "url": "/2024/04/03/dockerfile.html",
+            
+            
+            
+            "tags": ["tools","docker"],
+            
+            "date_published": "2024-04-03T00:00:00+00:00",
+            "date_modified": "2024-04-03T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
+            "id": "/2024/04/03/docker-api.html",
+            "title": "tools/docker/docker-api",
+            "summary": "docker-api",
+            "content_text": "docker-api",
+            "content_html": "<h2 id=\"docker-api\">docker-api</h2>",
+            "url": "/2024/04/03/docker-api.html",
             
             
             
@@ -735,27 +756,6 @@
             
             
             "tags": ["grafana","linux"],
-            
-            "date_published": "2024-02-20T00:00:00+00:00",
-            "date_modified": "2024-02-20T00:00:00+00:00",
-            
-                "author": 
-                ""
-                
-            
-        },
-    
-        {
-            "id": "/2024/02/20/certificates.html",
-            "title": "cheatsheet/certificates",
-            "summary": "Cheatsheet certificates",
-            "content_text": "Cheatsheet certificateshttps://github.com/Hakky54/certificate-rippercrip print --url=https://stackoverflow.com/crip export pkcs12 -u=https://github.comcrip print -u=https://github.com -f=pemcrip print -f=pem \\-u=https://youtube.com \\-u=https://github.com \\-u=https://stackoverflow.com \\-u=https://facebook.com",
-            "content_html": "<h2 id=\"cheatsheet-certificates\">Cheatsheet certificates</h2><p>https://github.com/Hakky54/certificate-ripper</p><div class=\"language-sh highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>crip print <span class=\"nt\">--url</span><span class=\"o\">=</span>https://stackoverflow.com/crip <span class=\"nb\">export </span>pkcs12 <span class=\"nt\">-u</span><span class=\"o\">=</span>https://github.comcrip print <span class=\"nt\">-u</span><span class=\"o\">=</span>https://github.com <span class=\"nt\">-f</span><span class=\"o\">=</span>pemcrip print <span class=\"nt\">-f</span><span class=\"o\">=</span>pem <span class=\"se\">\\</span><span class=\"nt\">-u</span><span class=\"o\">=</span>https://youtube.com <span class=\"se\">\\</span><span class=\"nt\">-u</span><span class=\"o\">=</span>https://github.com <span class=\"se\">\\</span><span class=\"nt\">-u</span><span class=\"o\">=</span>https://stackoverflow.com <span class=\"se\">\\</span><span class=\"nt\">-u</span><span class=\"o\">=</span>https://facebook.com</code></pre></div></div>",
-            "url": "/2024/02/20/certificates.html",
-            
-            
-            
-            "tags": ["certificates","linux"],
             
             "date_published": "2024-02-20T00:00:00+00:00",
             "date_modified": "2024-02-20T00:00:00+00:00",
