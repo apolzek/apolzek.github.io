@@ -8,6 +8,5 @@ tags: tools
 
 ## sftpgo
 
-```
 mkdir -p /tmp/sftpgo-data ; docker run --name some-sftpgo -p 8080:8080 -p 2022:2022 -e SFTPGO_DATA_PROVIDER__CREATE_DEFAULT_ADMIN='true' -e SFTPGO_DEFAULT_ADMIN_USERNAME='admin' -e SFTPGO_DEFAULT_ADMIN_PASSWORD='pass@123' -v /tmp/sftpgo-data:/sftpgo-data  -d drakkan/sftpgo:latest
-```
+ 
