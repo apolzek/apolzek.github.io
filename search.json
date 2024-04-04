@@ -185,9 +185,9 @@
     } ,
   
     {
-      "title"    : "tools/sftpgo",
+      "title"    : "tools/dockerfile-tips",
       "category" : "",
-      "tags"     : "tools",
+      "tags"     : "tools, docker",
       "url"      : "/2024/04/03/dockerfile-tips.html",
       "date"     : "2024-04-03 00:00:00 +0000"
     } ,
@@ -197,6 +197,14 @@
       "category" : "",
       "tags"     : "tools",
       "url"      : "/2024/04/03/sftpgo.html",
+      "date"     : "2024-04-03 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "tools/sre-tips",
+      "category" : "",
+      "tags"     : "tools",
+      "url"      : "/2024/04/03/sre-tips.html",
       "date"     : "2024-04-03 00:00:00 +0000"
     } ,
   

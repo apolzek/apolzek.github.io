@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-04-04T00:27:49+00:00</updated>
+ <updated>2024-04-04T01:27:28+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -648,13 +648,11 @@ func main&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&
  </entry>
  
  <entry>
-   <title>tools/sftpgo</title>
+   <title>tools/dockerfile-tips</title>
    <link href="/2024/04/03/dockerfile-tips.html"/>
    <updated>2024-04-03T00:00:00+00:00</updated>
    <id>/2024/04/03/dockerfile-tips</id>
-   <content type="html">&lt;h2 id=&quot;sftpgo&quot;&gt;sftpgo&lt;/h2&gt;
-
-&lt;p&gt;mkdir -p /tmp/sftpgo-data ; docker run –name some-sftpgo -p 8080:8080 -p 2022:2022 -e SFTPGO_DATA_PROVIDER__CREATE_DEFAULT_ADMIN=’true’ -e SFTPGO_DEFAULT_ADMIN_USERNAME=’admin’ -e SFTPGO_DEFAULT_ADMIN_PASSWORD=’pass@123’ -v /tmp/sftpgo-data:/sftpgo-data  -d drakkan/sftpgo:latest&lt;/p&gt;
+   <content type="html">&lt;h2 id=&quot;dockerfile-tips&quot;&gt;dockerfile-tips&lt;/h2&gt;
 
 </content>
  </entry>
@@ -667,6 +665,47 @@ func main&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&
    <content type="html">&lt;h2 id=&quot;sftpgo&quot;&gt;sftpgo&lt;/h2&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir -p /tmp/sftpgo-data ; docker run --name some-sftpgo -p 8080:8080 -p 2022:2022 -e SFTPGO_DATA_PROVIDER__CREATE_DEFAULT_ADMIN=&apos;true&apos; -e SFTPGO_DEFAULT_ADMIN_USERNAME=&apos;admin&apos; -e SFTPGO_DEFAULT_ADMIN_PASSWORD=&apos;pass@123&apos; -v /tmp/sftpgo-data:/sftpgo-data  -d drakkan/sftpgo:latest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>tools/sre-tips</title>
+   <link href="/2024/04/03/sre-tips.html"/>
+   <updated>2024-04-03T00:00:00+00:00</updated>
+   <id>/2024/04/03/sre-tips</id>
+   <content type="html">&lt;h2 id=&quot;sre-tips&quot;&gt;sre-tips&lt;/h2&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;comando | xclip -selection clipboard
+
+alias ccp=&apos;xclip -selection clipboard&apos;
+
+base64 /caminho/para/seu/arquivo | xclip -selection clipboard
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;listar arquivos de hoje, de forma recursiva, e mostrar o tamanho em MB&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;find . -type f -mtime 0 -exec ls -lh {} + | awk &apos;{ print $5, $9 }&apos;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Verificar as conexões externas à sua máquina, incluindo as portas que estão sendo utilizadas&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;netstat -tunap
+
+ss -tunap
+
+ss -tunap | grep -v &apos;127.0.0.1\|::1&apos;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ruby -run -ehttpd . -p8000
+php -S localhost:8000
+python3 -m http.server
+
+npm install -g http-server
+http-server -p 8000
+
+while true; do { echo -ne &quot;HTTP/1.1 200 OK\r\nContent-Length: $(wc -c &amp;lt;index.html)\r\nContent-Type: text/html\r\n\r\n&quot;; cat index.html; } | nc -l -p 8080; done
+
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>

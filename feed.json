@@ -495,15 +495,15 @@
     
         {
             "id": "/2024/04/03/dockerfile-tips.html",
-            "title": "tools/sftpgo",
-            "summary": "sftpgo",
-            "content_text": "sftpgomkdir -p /tmp/sftpgo-data ; docker run –name some-sftpgo -p 8080:8080 -p 2022:2022 -e SFTPGO_DATA_PROVIDER__CREATE_DEFAULT_ADMIN=’true’ -e SFTPGO_DEFAULT_ADMIN_USERNAME=’admin’ -e SFTPGO_DEFAULT_ADMIN_PASSWORD=’pass@123’ -v /tmp/sftpgo-data:/sftpgo-data  -d drakkan/sftpgo:latest",
-            "content_html": "<h2 id=\"sftpgo\">sftpgo</h2><p>mkdir -p /tmp/sftpgo-data ; docker run –name some-sftpgo -p 8080:8080 -p 2022:2022 -e SFTPGO_DATA_PROVIDER__CREATE_DEFAULT_ADMIN=’true’ -e SFTPGO_DEFAULT_ADMIN_USERNAME=’admin’ -e SFTPGO_DEFAULT_ADMIN_PASSWORD=’pass@123’ -v /tmp/sftpgo-data:/sftpgo-data  -d drakkan/sftpgo:latest</p>",
+            "title": "tools/dockerfile-tips",
+            "summary": "dockerfile-tips",
+            "content_text": "dockerfile-tips",
+            "content_html": "<h2 id=\"dockerfile-tips\">dockerfile-tips</h2>",
             "url": "/2024/04/03/dockerfile-tips.html",
             
             
             
-            
+            "tags": ["tools","docker"],
             
             "date_published": "2024-04-03T00:00:00+00:00",
             "date_modified": "2024-04-03T00:00:00+00:00",
@@ -521,6 +521,27 @@
             "content_text": "sftpgomkdir -p /tmp/sftpgo-data ; docker run --name some-sftpgo -p 8080:8080 -p 2022:2022 -e SFTPGO_DATA_PROVIDER__CREATE_DEFAULT_ADMIN='true' -e SFTPGO_DEFAULT_ADMIN_USERNAME='admin' -e SFTPGO_DEFAULT_ADMIN_PASSWORD='pass@123' -v /tmp/sftpgo-data:/sftpgo-data  -d drakkan/sftpgo:latest",
             "content_html": "<h2 id=\"sftpgo\">sftpgo</h2><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>mkdir -p /tmp/sftpgo-data ; docker run --name some-sftpgo -p 8080:8080 -p 2022:2022 -e SFTPGO_DATA_PROVIDER__CREATE_DEFAULT_ADMIN='true' -e SFTPGO_DEFAULT_ADMIN_USERNAME='admin' -e SFTPGO_DEFAULT_ADMIN_PASSWORD='pass@123' -v /tmp/sftpgo-data:/sftpgo-data  -d drakkan/sftpgo:latest</code></pre></div></div>",
             "url": "/2024/04/03/sftpgo.html",
+            
+            
+            
+            
+            
+            "date_published": "2024-04-03T00:00:00+00:00",
+            "date_modified": "2024-04-03T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
+            "id": "/2024/04/03/sre-tips.html",
+            "title": "tools/sre-tips",
+            "summary": "sre-tips",
+            "content_text": "sre-tipscomando | xclip -selection clipboardalias ccp='xclip -selection clipboard'base64 /caminho/para/seu/arquivo | xclip -selection clipboardlistar arquivos de hoje, de forma recursiva, e mostrar o tamanho em MBfind . -type f -mtime 0 -exec ls -lh {} + | awk '{ print $5, $9 }'Verificar as conexões externas à sua máquina, incluindo as portas que estão sendo utilizadasnetstat -tunapss -tunapss -tunap | grep -v '127.0.0.1\\|::1'ruby -run -ehttpd . -p8000php -S localhost:8000python3 -m http.servernpm install -g http-serverhttp-server -p 8000while true; do { echo -ne \"HTTP/1.1 200 OK\\r\\nContent-Length: $(wc -c &lt;index.html)\\r\\nContent-Type: text/html\\r\\n\\r\\n\"; cat index.html; } | nc -l -p 8080; done",
+            "content_html": "<h2 id=\"sre-tips\">sre-tips</h2><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>comando | xclip -selection clipboardalias ccp='xclip -selection clipboard'base64 /caminho/para/seu/arquivo | xclip -selection clipboard</code></pre></div></div><p>listar arquivos de hoje, de forma recursiva, e mostrar o tamanho em MB</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>find . -type f -mtime 0 -exec ls -lh {} + | awk '{ print $5, $9 }'</code></pre></div></div><p>Verificar as conexões externas à sua máquina, incluindo as portas que estão sendo utilizadas</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>netstat -tunapss -tunapss -tunap | grep -v '127.0.0.1\\|::1'</code></pre></div></div><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>ruby -run -ehttpd . -p8000php -S localhost:8000python3 -m http.servernpm install -g http-serverhttp-server -p 8000while true; do { echo -ne \"HTTP/1.1 200 OK\\r\\nContent-Length: $(wc -c &lt;index.html)\\r\\nContent-Type: text/html\\r\\n\\r\\n\"; cat index.html; } | nc -l -p 8080; done</code></pre></div></div>",
+            "url": "/2024/04/03/sre-tips.html",
             
             
             
@@ -735,27 +756,6 @@
             
             
             "tags": ["certificates","linux"],
-            
-            "date_published": "2024-02-20T00:00:00+00:00",
-            "date_modified": "2024-02-20T00:00:00+00:00",
-            
-                "author": 
-                ""
-                
-            
-        },
-    
-        {
-            "id": "/2024/02/20/awscli.html",
-            "title": "cheatsheet/awscli",
-            "summary": "Cheatsheet awscli",
-            "content_text": "Cheatsheet awscli",
-            "content_html": "<h2 id=\"cheatsheet-awscli\">Cheatsheet awscli</h2>",
-            "url": "/2024/02/20/awscli.html",
-            
-            
-            
-            "tags": ["awscli","linux"],
             
             "date_published": "2024-02-20T00:00:00+00:00",
             "date_modified": "2024-02-20T00:00:00+00:00",
