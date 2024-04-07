@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-04-04T02:46:28+00:00</updated>
+ <updated>2024-04-07T06:01:56+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -5627,6 +5627,25 @@ https://medium.com/wisemonks/foundations-of-golang-logging-a-comprehensive-prime
 
 &lt;p&gt;Containers are encapsulated, isolated environments that include an application and its dependencies, ensuring consistency across different computing environments. Unlike traditional virtualization, which involves running multiple operating systems on a hypervisor, containers share the host operating system’s kernel. This makes them lightweight, faster to start, and more resource-efficient.&lt;/p&gt;
 
+&lt;h2 id=&quot;docker-alternatives&quot;&gt;Docker alternatives&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Podman&lt;/li&gt;
+  &lt;li&gt;CRI-O&lt;/li&gt;
+  &lt;li&gt;containerd&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;tools&quot;&gt;Tools&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;lazydocker&lt;/li&gt;
+  &lt;li&gt;trivy&lt;/li&gt;
+  &lt;li&gt;dive&lt;/li&gt;
+  &lt;li&gt;docker compose&lt;/li&gt;
+  &lt;li&gt;watchtower&lt;/li&gt;
+  &lt;li&gt;docker-slim&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h2 id=&quot;basic-commands-for-containers&quot;&gt;Basic commands for containers&lt;/h2&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; # Criacao container em background
@@ -5753,6 +5772,7 @@ docker load -i nome_da_imagem.tar
 /etc/docker 
 /usr/libexec/docker 
 /usr/share/man/man1/docker.1.gz
+/var/lib/docker/volumes/
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;em&gt;/etc/docker/daemon.json&lt;/em&gt;&lt;/p&gt;
@@ -5850,29 +5870,13 @@ docker inspect --format=&apos;&apos; container-name # get image
 
 &lt;p&gt;Deleting the .git folder may cause problems in your git repository. If you want to delete all your commit history but keep the code in its current state, it is very safe to do it as in the following:&lt;/p&gt;
 
-&lt;p&gt;1) Checkout&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git checkout --orphan latest_branch&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;2) Add all the files&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git add -A&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;3) Commit the changes&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git commit -am &quot;commit message&quot;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;4) Delete the branch&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git branch -D main&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;5) Rename the current branch to main&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git branch -m main&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;6) Finally, force update your repository&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git push -f origin main&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git checkout &lt;span class=&quot;nt&quot;&gt;--orphan&lt;/span&gt; latest_branch
+git add &lt;span class=&quot;nt&quot;&gt;-A&lt;/span&gt;
+git commit &lt;span class=&quot;nt&quot;&gt;-am&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;commit message&quot;&lt;/span&gt;
+git branch &lt;span class=&quot;nt&quot;&gt;-D&lt;/span&gt; main
+git branch &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; main
+git push &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; origin main
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;em&gt;PS: this will not keep your old commit history around&lt;/em&gt;&lt;/p&gt;
 
