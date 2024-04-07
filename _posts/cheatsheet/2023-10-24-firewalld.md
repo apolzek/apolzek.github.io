@@ -60,3 +60,9 @@ sudo firewall-cmd --set-log-denied=no --permanent
 sudo systemctl start firewalld
 sudo systemctl stop firewalld
 ```
+
+Config 
+
+`/etc/firewalld/firewalld.conf.`
+
+![firewalld_structure_nftables](assets/img/firewalld_structure_nftables.png)
