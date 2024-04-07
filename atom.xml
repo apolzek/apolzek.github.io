@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-04-07T06:22:45+00:00</updated>
+ <updated>2024-04-07T06:30:19+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -4541,9 +4541,9 @@ kubectl scale &lt;span class=&quot;nt&quot;&gt;--replicas&lt;/span&gt;&lt;span c
    <id>/2023/10/24/context</id>
    <content type="html">&lt;h2 id=&quot;context&quot;&gt;Context&lt;/h2&gt;
 
-&lt;p&gt;Em Go (ou Golang), o contexto (context) é uma poderosa ferramenta que permite controlar a execução de operações concorrentes e paralelas. Ele é comumente usado para lidar com prazos, cancelamento de operações e valores associados com uma determinada goroutine (uma unidade leve de execução em Go). O contexto é especialmente útil em situações onde várias goroutines estão sendo executadas e você precisa coordenar ou gerenciar seu comportamento. Contextos basicamente utilizam channels por debaixo dos panos, nos quais, os processos que os utilizam precisam ficar ouvindo os sinais que recebem deste contexto em questao.&lt;/p&gt;
+&lt;p&gt;In Go (or Golang), the context is a powerful tool that allows you to control the execution of concurrent and parallel operations. It is commonly used to handle deadlines, cancel operations, and values associated with a particular goroutine (a lightweight thread of execution in Go). Context is especially useful in situations where multiple goroutines are being executed and you need to coordinate or manage their behavior. Contexts basically use channels under the hood, in which the processes that use them need to listen for signals they receive from this context.&lt;/p&gt;
 
-&lt;h3 id=&quot;onde-usar-&quot;&gt;Onde usar ?&lt;/h3&gt;
+&lt;h3 id=&quot;where-to-use-&quot;&gt;Where to use ?&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Context de tracing&lt;/li&gt;
@@ -4551,23 +4551,17 @@ kubectl scale &lt;span class=&quot;nt&quot;&gt;--replicas&lt;/span&gt;&lt;span c
   &lt;li&gt;Context em query SQL&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;3-tipos-de-contexto-em-go&quot;&gt;3 tipos de contexto em Go&lt;/h3&gt;
+&lt;h3 id=&quot;3-context-types&quot;&gt;3 context types&lt;/h3&gt;
 
-&lt;p&gt;&lt;strong&gt;Deadlines&lt;/strong&gt;: tempo maximo para o codigo terminar de ser executado(definir o ponto final)&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;WithDeadline: passa o horario final para terminar(horario maximo)&lt;/li&gt;
-  &lt;li&gt;WithTimeout: daqui a quanto tempo vai terminar&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Deadlines&lt;/strong&gt;: tempo maximo para o codigo terminar de ser executado(definir o ponto final)
+1) WithDeadline: passa o horario final para terminar(horario maximo)
+2) WithTimeout: daqui a quanto tempo vai terminar&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Cancellation Signals&lt;/strong&gt;: todos que estiverem escutando o contexto sao cancelados&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;WithCancel&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Cancellation Signals&lt;/strong&gt;: todos que estiverem escutando o contexto sao cancelados
+1) WithCancel&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Request-scoped values&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;WithValue: definir e mapear valores(em memoria)&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Request-scoped values&lt;/strong&gt;
+1) WithValue: definir e mapear valores(em memoria)&lt;/p&gt;
 
 &lt;h3 id=&quot;1-controlando-prazos-timeouts&quot;&gt;1. Controlando Prazos (Timeouts):&lt;/h3&gt;
 &lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;
@@ -4890,7 +4884,7 @@ sudo systemctl stop firewalld
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/firewalld/firewalld.conf.&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../assets/img/firewalld_structure_nftables.png&quot; alt=&quot;firewalld_structure_nftables&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;.img/firewalld_structure_nftables.png&quot; alt=&quot;firewalld_structure_nftables&quot; /&gt;&lt;/p&gt;
 </content>
  </entry>
  
