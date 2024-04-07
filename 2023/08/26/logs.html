@@ -48,6 +48,25 @@
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="n">log</span><span class="o">.</span><span class="n">Info</span><span class="p">()</span><span class="o">.</span><span class="n">Msg</span><span class="p">(</span><span class="s">"This is a log message using Zerolog"</span><span class="p">)</span>
 <span class="p">}</span>
+</code></pre></div></div> <h3 id="json-format-log"> Json format log <a href="#json-format-log">#</a> </h3> <div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+ <span class="s">"encoding/json"</span>
+ <span class="s">"log"</span>
+ <span class="s">"time"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+ <span class="n">logData</span> <span class="o">:=</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="k">interface</span><span class="p">{}{</span>
+  <span class="s">"event"</span><span class="o">:</span>     <span class="s">"ApplicationStarted"</span><span class="p">,</span>
+  <span class="s">"severity"</span><span class="o">:</span>  <span class="s">"Info"</span><span class="p">,</span>
+  <span class="s">"message"</span><span class="o">:</span>   <span class="s">"Application started"</span><span class="p">,</span>
+  <span class="s">"timestamp"</span><span class="o">:</span> <span class="n">time</span><span class="o">.</span><span class="n">Now</span><span class="p">(),</span>
+ <span class="p">}</span>
+
+ <span class="n">logJSON</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">json</span><span class="o">.</span><span class="n">Marshal</span><span class="p">(</span><span class="n">logData</span><span class="p">)</span>
+ <span class="n">log</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="kt">string</span><span class="p">(</span><span class="n">logJSON</span><span class="p">))</span>
+<span class="p">}</span>
 </code></pre></div></div> <h3 id="below-is-an-example-of-an-audit-strategy-with-logs-sending-to-elasticsearch"> Below is an example of an audit strategy with logs, sending to Elasticsearch <a href="#below-is-an-example-of-an-audit-strategy-with-logs-sending-to-elasticsearch">#</a> </h3> <div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">main</span>
 
 <span class="k">import</span> <span class="p">(</span>
@@ -142,24 +161,5 @@
 	<span class="n">initElasticsearchClient</span><span class="p">()</span>
 
 	<span class="n">eventExample</span><span class="p">()</span>
-<span class="p">}</span>
-</code></pre></div></div> <h3 id="json-format-log"> Json format log <a href="#json-format-log">#</a> </h3> <div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">main</span>
-
-<span class="k">import</span> <span class="p">(</span>
- <span class="s">"encoding/json"</span>
- <span class="s">"log"</span>
- <span class="s">"time"</span>
-<span class="p">)</span>
-
-<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
- <span class="n">logData</span> <span class="o">:=</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="k">interface</span><span class="p">{}{</span>
-  <span class="s">"event"</span><span class="o">:</span>     <span class="s">"ApplicationStarted"</span><span class="p">,</span>
-  <span class="s">"severity"</span><span class="o">:</span>  <span class="s">"Info"</span><span class="p">,</span>
-  <span class="s">"message"</span><span class="o">:</span>   <span class="s">"Application started"</span><span class="p">,</span>
-  <span class="s">"timestamp"</span><span class="o">:</span> <span class="n">time</span><span class="o">.</span><span class="n">Now</span><span class="p">(),</span>
- <span class="p">}</span>
-
- <span class="n">logJSON</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">json</span><span class="o">.</span><span class="n">Marshal</span><span class="p">(</span><span class="n">logData</span><span class="p">)</span>
- <span class="n">log</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="kt">string</span><span class="p">(</span><span class="n">logJSON</span><span class="p">))</span>
 <span class="p">}</span>
 </code></pre></div></div> <h3 id="references"> References <a href="#references">#</a> </h3> <p>https://medium.com/@alameerashraf/building-an-audit-log-system-for-a-go-application-ce131dc21394 https://www.elastic.co/pt/downloads/elasticsearch https://www.elastic.co/pt/downloads/kibana https://medium.com/wisemonks/foundations-of-golang-logging-a-comprehensive-primer-754c8477bc34</p> </section> <section> <nav class="post-nav"> <a class="post-nav-item post-nav-prev" href="/2023/08/25/generics.html"> <div class="nav-arrow">Previous</div> <span class="post-title">development/golang/generics</span> </a> <a class="post-nav-item post-nav-next" href="/2023/10/01/apt.html"> <div class="nav-arrow">Next</div> <span class="post-title">cheatsheet/apt</span> </a> </nav> </section> </main> <script> function setTheme(theme) { if (theme === "dark") { document.documentElement.setAttribute('data-theme', 'dark'); window.localStorage.setItem('theme', 'dark'); document.getElementById("theme-toggle").classList.add('sun'); document.getElementById("theme-toggle").classList.remove('moon'); } else { document.documentElement.setAttribute('data-theme', 'light'); window.localStorage.setItem('theme', 'light'); document.getElementById("theme-toggle").classList.add('moon'); document.getElementById("theme-toggle").classList.remove('sun'); } } let theme = localStorage.getItem('theme'); theme = theme || (window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light' : 'light'); setTheme(theme); function modeSwitcher() { let currentMode = document.documentElement.getAttribute('data-theme'); if (currentMode === "dark") { setTheme('light'); } else { setTheme('dark'); } } </script> <script src="https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js"></script> <script>addBackToTop({ diameter: 48, backgroundColor: 'rgb(196, 187, 240)', textColor: 'black' }) </script> </body> <footer class="social-footer"> <div class="social-footer-icons"> <a href="https://telegram.me/apolzek" title="dm me" target="_blank" rel="noopener noreferrer"><i class="fa fa-telegram" aria-hidden="true"></i></a> <!-- <a href="mailto:p0wex@pm.me" title="Email me"><i class="fa fa-envelope" aria-hidden="true"></i></a> <a href="https://github.com/P0WEX" title="Github profile, nothing much there, yet" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" aria-hidden="true"></i></a> <a href="/atom.xml" title="RSS feed" target="_blank" rel="noopener noreferrer"><i class="fa fa-rss" aria-hidden="true"></i></a> <a href="https://github.com/P0WEX/Gesko" title="Browse the code" target="_blank" rel="noopener noreferrer"><i class="fa fa-code" aria-hidden="true"></i></a> --> </div> </footer> <!-- Global site tag (gtag.js) - Google Analytics --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-61LXK24CDY"></script> <script> window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-61LXK24CDY'); </script> </html>
