@@ -65,4 +65,4 @@ Config
 
 `/etc/firewalld/firewalld.conf.`
 
-![firewalld_structure_nftables](assets/img/firewalld_structure_nftables.png)
+![firewalld_structure_nftables](https://apolzek.github.io/assets/img/firewalld_structure_nftables.png)
