@@ -97,3 +97,7 @@ Aqui estão os comandos para alterar cada um dos parâmetros mencionados, junto 
     ```
 
 Após alterar esses valores usando `sysctl -w`, você pode verificar se as configurações foram aplicadas usando `sysctl -a`. Para tornar as alterações permanentes, adicione as linhas correspondentes ao arquivo `/etc/sysctl.conf` ou a um arquivo em `/etc/sysctl.d/` e execute `sysctl -p` para recarregar as configurações.
+
+### References
+
+https://overcast.blog/kernel-tuning-and-optimization-for-kubernetes-a-guide-a3bdc8f7d255
