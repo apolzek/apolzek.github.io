@@ -8,7 +8,7 @@ tags: terraform
 
 ## Cheatsheet terraform
 
-```
+```sh
 # Inicializa o diretório do Terraform, baixando os plugins necessários para o provedor configurado.
 terraform init
 

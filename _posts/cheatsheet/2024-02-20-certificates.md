@@ -20,5 +20,4 @@ crip print -f=pem \
 -u=https://github.com \
 -u=https://stackoverflow.com \
 -u=https://facebook.com
-
 ```

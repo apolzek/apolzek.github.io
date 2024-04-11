@@ -22,7 +22,7 @@ In terms of use cases, Firewalld finds its primary application in enhancing syst
 
 In summary, Firewalld stands as a versatile and dynamic firewall solution for Linux, offering enhanced security, flexibility in rule management, and application integration capabilities in dynamic network environments.
 
-```
+```sh
 # Habilitar o Firewalld
 sudo systemctl start firewalld
 sudo systemctl enable firewalld
@@ -61,7 +61,7 @@ sudo systemctl start firewalld
 sudo systemctl stop firewalld
 ```
 
-Config 
+## Config 
 
 `/etc/firewalld/firewalld.conf.`
 
