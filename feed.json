@@ -11,16 +11,16 @@
 "items": [
     
         {
-            "id": "/2024/12/01/tec-events.html",
-            "title": "data/tec-events",
-            "summary": "tec-events",
-            "content_text": "tec-events",
-            "content_html": "<h2 id=\"tec-events\">tec-events</h2>",
-            "url": "/2024/12/01/tec-events.html",
+            "id": "/2024/12/01/systemd.html",
+            "title": "operating-system/linux/systemd",
+            "summary": "systemd",
+            "content_text": "",
+            "content_html": "",
+            "url": "/2024/12/01/systemd.html",
             
             
             
-            
+            "tags": ["linux","systemd"],
             
             "date_published": "2024-12-01T00:00:00+00:00",
             "date_modified": "2024-12-01T00:00:00+00:00",
@@ -77,8 +77,8 @@
             "id": "/2024/12/01/ebpf.html",
             "title": "operating-system/linux/ebpf",
             "summary": "ebpf",
-            "content_text": "",
-            "content_html": "",
+            "content_text": "https://www.kerno.io/blog/programming-the-kernel-with-ebpf",
+            "content_html": "<p>https://www.kerno.io/blog/programming-the-kernel-with-ebpf</p>",
             "url": "/2024/12/01/ebpf.html",
             
             
@@ -116,12 +116,12 @@
         },
     
         {
-            "id": "/2024/12/01/basicao.html",
-            "title": "development/ruby/basicao",
+            "id": "/2024/12/01/overview.html",
+            "title": "development/ruby/overview",
             "summary": "Overview",
             "content_text": "",
             "content_html": "",
-            "url": "/2024/12/01/basicao.html",
+            "url": "/2024/12/01/overview.html",
             
             
             
@@ -180,7 +180,7 @@
     
         {
             "id": "/2024/12/01/overview.html",
-            "title": "development/javascript/overview",
+            "title": "development/ruby/overview",
             "summary": "Overview",
             "content_text": "Overview",
             "content_html": "<h2 id=\"overview\">Overview</h2>",
@@ -434,9 +434,30 @@
             "id": "/2024/12/01/postgres.html",
             "title": "data/postgres",
             "summary": "Postgres",
-            "content_text": "Postgres",
-            "content_html": "<h2 id=\"postgres\">Postgres</h2>",
+            "content_text": "Postgreshttps://pigsty.io/blog/pg/pg-eat-db-world/",
+            "content_html": "<h2 id=\"postgres\">Postgres</h2><p>https://pigsty.io/blog/pg/pg-eat-db-world/</p>",
             "url": "/2024/12/01/postgres.html",
+            
+            
+            
+            
+            
+            "date_published": "2024-12-01T00:00:00+00:00",
+            "date_modified": "2024-12-01T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
+            "id": "/2024/12/01/mosquitto.html",
+            "title": "data/mosquitto",
+            "summary": "mosquitto",
+            "content_text": "mosquitto",
+            "content_html": "<h2 id=\"mosquitto\">mosquitto</h2>",
+            "url": "/2024/12/01/mosquitto.html",
             
             
             
@@ -599,6 +620,27 @@
         },
     
         {
+            "id": "/2024/04/03/sftpgo.html",
+            "title": "tools/sftpgo",
+            "summary": "q",
+            "content_text": "sftpgomkdir -p /tmp/sftpgo-data ; docker run --name some-sftpgo -p 8080:8080 -p 2022:2022 -e SFTPGO_DATA_PROVIDER__CREATE_DEFAULT_ADMIN='true' -e SFTPGO_DEFAULT_ADMIN_USERNAME='admin' -e SFTPGO_DEFAULT_ADMIN_PASSWORD='pass@123' -v /tmp/sftpgo-data:/sftpgo-data  -d drakkan/sftpgo:latest",
+            "content_html": "<h2 id=\"sftpgo\">sftpgo</h2><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>mkdir -p /tmp/sftpgo-data ; docker run --name some-sftpgo -p 8080:8080 -p 2022:2022 -e SFTPGO_DATA_PROVIDER__CREATE_DEFAULT_ADMIN='true' -e SFTPGO_DEFAULT_ADMIN_USERNAME='admin' -e SFTPGO_DEFAULT_ADMIN_PASSWORD='pass@123' -v /tmp/sftpgo-data:/sftpgo-data  -d drakkan/sftpgo:latest</code></pre></div></div>",
+            "url": "/2024/04/03/sftpgo.html",
+            
+            
+            
+            
+            
+            "date_published": "2024-04-03T00:00:00+00:00",
+            "date_modified": "2024-04-03T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
             "id": "/2024/04/03/dockerfile.html",
             "title": "tools/docker/dockerfile",
             "summary": "dockerfile",
@@ -641,32 +683,11 @@
         },
     
         {
-            "id": "/2024/04/03/sftpgo.html",
-            "title": "tools/sftpgo",
-            "summary": "sftpgo",
-            "content_text": "sftpgomkdir -p /tmp/sftpgo-data ; docker run --name some-sftpgo -p 8080:8080 -p 2022:2022 -e SFTPGO_DATA_PROVIDER__CREATE_DEFAULT_ADMIN='true' -e SFTPGO_DEFAULT_ADMIN_USERNAME='admin' -e SFTPGO_DEFAULT_ADMIN_PASSWORD='pass@123' -v /tmp/sftpgo-data:/sftpgo-data  -d drakkan/sftpgo:latest",
-            "content_html": "<h2 id=\"sftpgo\">sftpgo</h2><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>mkdir -p /tmp/sftpgo-data ; docker run --name some-sftpgo -p 8080:8080 -p 2022:2022 -e SFTPGO_DATA_PROVIDER__CREATE_DEFAULT_ADMIN='true' -e SFTPGO_DEFAULT_ADMIN_USERNAME='admin' -e SFTPGO_DEFAULT_ADMIN_PASSWORD='pass@123' -v /tmp/sftpgo-data:/sftpgo-data  -d drakkan/sftpgo:latest</code></pre></div></div>",
-            "url": "/2024/04/03/sftpgo.html",
-            
-            
-            
-            
-            
-            "date_published": "2024-04-03T00:00:00+00:00",
-            "date_modified": "2024-04-03T00:00:00+00:00",
-            
-                "author": 
-                ""
-                
-            
-        },
-    
-        {
             "id": "/2024/04/03/sre-interview.html",
             "title": "tools/sre-interview",
             "summary": "sre-interview",
-            "content_text": "sre-interviewTeorema CAP",
-            "content_html": "<h2 id=\"sre-interview\">sre-interview</h2><p>Teorema CAP</p>",
+            "content_text": "sre-interview  Teorema CAP  12 Factors  IaC  DDD  Container orchestration  Operating Systems          Linux      Windows        Message Broker  Observability and Monitoring          Prometheus      Grafana      FluentD      Fluentbit      OpenTelemetry      ",
+            "content_html": "<h2 id=\"sre-interview\">sre-interview</h2><ul>  <li>Teorema CAP</li>  <li>12 Factors</li>  <li>IaC</li>  <li>DDD</li>  <li>Container orchestration</li>  <li>Operating Systems    <ul>      <li>Linux</li>      <li>Windows</li>    </ul>  </li>  <li>Message Broker</li>  <li>Observability and Monitoring    <ul>      <li>Prometheus</li>      <li>Grafana</li>      <li>FluentD</li>      <li>Fluentbit</li>      <li>OpenTelemetry</li>    </ul>  </li></ul>",
             "url": "/2024/04/03/sre-interview.html",
             
             
@@ -738,27 +759,6 @@
             
             "date_published": "2024-03-11T00:00:00+00:00",
             "date_modified": "2024-03-11T00:00:00+00:00",
-            
-                "author": 
-                ""
-                
-            
-        },
-    
-        {
-            "id": "/2024/03/04/lunarvim.html",
-            "title": "cheatsheet/lunarvim",
-            "summary": "Cheatsheet lunarvim",
-            "content_text": "Cheatsheet lunarvim",
-            "content_html": "<h2 id=\"cheatsheet-lunarvim\">Cheatsheet lunarvim</h2>",
-            "url": "/2024/03/04/lunarvim.html",
-            
-            
-            
-            "tags": ["lunarvim","vi","editor"],
-            
-            "date_published": "2024-03-04T00:00:00+00:00",
-            "date_modified": "2024-03-04T00:00:00+00:00",
             
                 "author": 
                 ""

@@ -1,10 +1,10 @@
 [
   
     {
-      "title"    : "data/tec-events",
+      "title"    : "operating-system/linux/systemd",
       "category" : "",
-      "tags"     : "",
-      "url"      : "/2024/12/01/tec-events.html",
+      "tags"     : "linux, systemd",
+      "url"      : "/2024/12/01/systemd.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
@@ -41,10 +41,10 @@
     } ,
   
     {
-      "title"    : "development/ruby/basicao",
+      "title"    : "development/ruby/overview",
       "category" : "",
       "tags"     : "ruby, overview",
-      "url"      : "/2024/12/01/basicao.html",
+      "url"      : "/2024/12/01/overview.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
   
@@ -65,9 +65,9 @@
     } ,
   
     {
-      "title"    : "development/javascript/overview",
+      "title"    : "development/ruby/overview",
       "category" : "",
-      "tags"     : "python",
+      "tags"     : "ruby",
       "url"      : "/2024/12/01/overview.html",
       "date"     : "2024-12-01 00:00:00 +0000"
     } ,
@@ -169,6 +169,14 @@
     } ,
   
     {
+      "title"    : "data/mosquitto",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/2024/12/01/mosquitto.html",
+      "date"     : "2024-12-01 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "data/kafka",
       "category" : "",
       "tags"     : "kafka",
@@ -225,6 +233,14 @@
     } ,
   
     {
+      "title"    : "tools/sftpgo",
+      "category" : "",
+      "tags"     : "tools",
+      "url"      : "/2024/04/03/sftpgo.html",
+      "date"     : "2024-04-03 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "tools/docker/dockerfile",
       "category" : "",
       "tags"     : "tools, docker",
@@ -237,14 +253,6 @@
       "category" : "",
       "tags"     : "tools, docker",
       "url"      : "/2024/04/03/docker-api.html",
-      "date"     : "2024-04-03 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "tools/sftpgo",
-      "category" : "",
-      "tags"     : "tools",
-      "url"      : "/2024/04/03/sftpgo.html",
       "date"     : "2024-04-03 00:00:00 +0000"
     } ,
   
@@ -501,6 +509,14 @@
       "category" : "",
       "tags"     : "english",
       "url"      : "/2024/01/20/roadmap.html",
+      "date"     : "2024-01-20 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "english/frases-fundamentais",
+      "category" : "",
+      "tags"     : "english",
+      "url"      : "/2024/01/20/frases-fundamentais.html",
       "date"     : "2024-01-20 00:00:00 +0000"
     } ,
   

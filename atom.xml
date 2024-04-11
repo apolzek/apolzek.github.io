@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-04-08T12:13:46+00:00</updated>
+ <updated>2024-04-11T22:26:18+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -13,11 +13,11 @@
 
  
  <entry>
-   <title>data/tec-events</title>
-   <link href="/2024/12/01/tec-events.html"/>
+   <title>operating-system/linux/systemd</title>
+   <link href="/2024/12/01/systemd.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/tec-events</id>
-   <content type="html">&lt;h2 id=&quot;tec-events&quot;&gt;tec-events&lt;/h2&gt;
+   <id>/2024/12/01/systemd</id>
+   <content type="html">
 </content>
  </entry>
  
@@ -44,7 +44,7 @@
    <link href="/2024/12/01/ebpf.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/ebpf</id>
-   <content type="html">
+   <content type="html">&lt;p&gt;https://www.kerno.io/blog/programming-the-kernel-with-ebpf&lt;/p&gt;
 </content>
  </entry>
  
@@ -58,10 +58,10 @@
  </entry>
  
  <entry>
-   <title>development/ruby/basicao</title>
-   <link href="/2024/12/01/basicao.html"/>
+   <title>development/ruby/overview</title>
+   <link href="/2024/12/01/overview.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
-   <id>/2024/12/01/basicao</id>
+   <id>/2024/12/01/overview</id>
    <content type="html">
 </content>
  </entry>
@@ -85,7 +85,7 @@
  </entry>
  
  <entry>
-   <title>development/javascript/overview</title>
+   <title>development/ruby/overview</title>
    <link href="/2024/12/01/overview.html"/>
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/overview</id>
@@ -501,6 +501,17 @@ func main&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/postgres</id>
    <content type="html">&lt;h2 id=&quot;postgres&quot;&gt;Postgres&lt;/h2&gt;
+
+&lt;p&gt;https://pigsty.io/blog/pg/pg-eat-db-world/&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>data/mosquitto</title>
+   <link href="/2024/12/01/mosquitto.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/mosquitto</id>
+   <content type="html">&lt;h2 id=&quot;mosquitto&quot;&gt;mosquitto&lt;/h2&gt;
 </content>
  </entry>
  
@@ -732,6 +743,18 @@ func main&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&
  </entry>
  
  <entry>
+   <title>tools/sftpgo</title>
+   <link href="/2024/04/03/sftpgo.html"/>
+   <updated>2024-04-03T00:00:00+00:00</updated>
+   <id>/2024/04/03/sftpgo</id>
+   <content type="html">&lt;h2 id=&quot;sftpgo&quot;&gt;sftpgo&lt;/h2&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir -p /tmp/sftpgo-data ; docker run --name some-sftpgo -p 8080:8080 -p 2022:2022 -e SFTPGO_DATA_PROVIDER__CREATE_DEFAULT_ADMIN=&apos;true&apos; -e SFTPGO_DEFAULT_ADMIN_USERNAME=&apos;admin&apos; -e SFTPGO_DEFAULT_ADMIN_PASSWORD=&apos;pass@123&apos; -v /tmp/sftpgo-data:/sftpgo-data  -d drakkan/sftpgo:latest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>tools/docker/dockerfile</title>
    <link href="/2024/04/03/dockerfile.html"/>
    <updated>2024-04-03T00:00:00+00:00</updated>
@@ -782,25 +805,35 @@ func main() {
  </entry>
  
  <entry>
-   <title>tools/sftpgo</title>
-   <link href="/2024/04/03/sftpgo.html"/>
-   <updated>2024-04-03T00:00:00+00:00</updated>
-   <id>/2024/04/03/sftpgo</id>
-   <content type="html">&lt;h2 id=&quot;sftpgo&quot;&gt;sftpgo&lt;/h2&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir -p /tmp/sftpgo-data ; docker run --name some-sftpgo -p 8080:8080 -p 2022:2022 -e SFTPGO_DATA_PROVIDER__CREATE_DEFAULT_ADMIN=&apos;true&apos; -e SFTPGO_DEFAULT_ADMIN_USERNAME=&apos;admin&apos; -e SFTPGO_DEFAULT_ADMIN_PASSWORD=&apos;pass@123&apos; -v /tmp/sftpgo-data:/sftpgo-data  -d drakkan/sftpgo:latest
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
    <title>tools/sre-interview</title>
    <link href="/2024/04/03/sre-interview.html"/>
    <updated>2024-04-03T00:00:00+00:00</updated>
    <id>/2024/04/03/sre-interview</id>
    <content type="html">&lt;h2 id=&quot;sre-interview&quot;&gt;sre-interview&lt;/h2&gt;
 
-&lt;p&gt;Teorema CAP&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Teorema CAP&lt;/li&gt;
+  &lt;li&gt;12 Factors&lt;/li&gt;
+  &lt;li&gt;IaC&lt;/li&gt;
+  &lt;li&gt;DDD&lt;/li&gt;
+  &lt;li&gt;Container orchestration&lt;/li&gt;
+  &lt;li&gt;Operating Systems
+    &lt;ul&gt;
+      &lt;li&gt;Linux&lt;/li&gt;
+      &lt;li&gt;Windows&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Message Broker&lt;/li&gt;
+  &lt;li&gt;Observability and Monitoring
+    &lt;ul&gt;
+      &lt;li&gt;Prometheus&lt;/li&gt;
+      &lt;li&gt;Grafana&lt;/li&gt;
+      &lt;li&gt;FluentD&lt;/li&gt;
+      &lt;li&gt;Fluentbit&lt;/li&gt;
+      &lt;li&gt;OpenTelemetry&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 </content>
  </entry>
  
@@ -1275,102 +1308,102 @@ sudo systemctl start systemd-resolved
    <id>/2024/02/20/tcpdump</id>
    <content type="html">&lt;h2 id=&quot;cheatsheet-tcpdump&quot;&gt;Cheatsheet tcpdump&lt;/h2&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Captura todos os pacotes na interface eth0
-tcpdump -i eth0
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Captura todos os pacotes na interface eth0&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0
 
-# Captura apenas os primeiros 10 pacotes
-tcpdump -i eth0 -c 10
+&lt;span class=&quot;c&quot;&gt;# Captura apenas os primeiros 10 pacotes&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; 10
 
-# Salva a captura em um arquivo chamado capture.pcap
-tcpdump -i eth0 -w capture.pcap
+&lt;span class=&quot;c&quot;&gt;# Salva a captura em um arquivo chamado capture.pcap&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 &lt;span class=&quot;nt&quot;&gt;-w&lt;/span&gt; capture.pcap
 
-# Lê pacotes de um arquivo de captura
-tcpdump -r capture.pcap
+&lt;span class=&quot;c&quot;&gt;# Lê pacotes de um arquivo de captura&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; capture.pcap
 
-# Captura pacotes TCP na porta 80
-tcpdump -i eth0 tcp port 80
+&lt;span class=&quot;c&quot;&gt;# Captura pacotes TCP na porta 80&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 tcp port 80
 
-# Captura pacotes UDP na porta 53 (DNS)
-tcpdump -i eth0 udp port 53
+&lt;span class=&quot;c&quot;&gt;# Captura pacotes UDP na porta 53 (DNS)&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 udp port 53
 
-# Captura pacotes com o endereço IP de origem 192.168.1.1
-tcpdump -i eth0 src 192.168.1.1
+&lt;span class=&quot;c&quot;&gt;# Captura pacotes com o endereço IP de origem 192.168.1.1&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 src 192.168.1.1
 
-# Captura pacotes com o endereço IP de destino 192.168.1.1
-tcpdump -i eth0 dst 192.168.1.1
+&lt;span class=&quot;c&quot;&gt;# Captura pacotes com o endereço IP de destino 192.168.1.1&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 dst 192.168.1.1
 
-# Captura pacotes contendo o endereço IP 192.168.1.1 (origem ou destino)
-tcpdump -i eth0 host 192.168.1.1
+&lt;span class=&quot;c&quot;&gt;# Captura pacotes contendo o endereço IP 192.168.1.1 (origem ou destino)&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 host 192.168.1.1
 
-# Captura pacotes entre os endereços IP 192.168.1.1 e 192.168.1.2
-tcpdump -i eth0 src 192.168.1.1 and dst 192.168.1.2
+&lt;span class=&quot;c&quot;&gt;# Captura pacotes entre os endereços IP 192.168.1.1 e 192.168.1.2&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 src 192.168.1.1 and dst 192.168.1.2
 
-# Captura pacotes TCP com a flag SYN
-tcpdump -i eth0 &apos;tcp[tcpflags] &amp;amp; (tcp-syn) != 0&apos;
+&lt;span class=&quot;c&quot;&gt;# Captura pacotes TCP com a flag SYN&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 &lt;span class=&quot;s1&quot;&gt;&apos;tcp[tcpflags] &amp;amp; (tcp-syn) != 0&apos;&lt;/span&gt;
 
-# Captura pacotes TCP com a flag ACK
-tcpdump -i eth0 &apos;tcp[tcpflags] &amp;amp; (tcp-ack) != 0&apos;
+&lt;span class=&quot;c&quot;&gt;# Captura pacotes TCP com a flag ACK&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 &lt;span class=&quot;s1&quot;&gt;&apos;tcp[tcpflags] &amp;amp; (tcp-ack) != 0&apos;&lt;/span&gt;
 
-# Captura pacotes TCP com a flag FIN
-tcpdump -i eth0 &apos;tcp[tcpflags] &amp;amp; (tcp-fin) != 0&apos;
+&lt;span class=&quot;c&quot;&gt;# Captura pacotes TCP com a flag FIN&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 &lt;span class=&quot;s1&quot;&gt;&apos;tcp[tcpflags] &amp;amp; (tcp-fin) != 0&apos;&lt;/span&gt;
 
-# Captura pacotes TCP com a flag RST
-tcpdump -i eth0 &apos;tcp[tcpflags] &amp;amp; (tcp-rst) != 0&apos;
+&lt;span class=&quot;c&quot;&gt;# Captura pacotes TCP com a flag RST&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 &lt;span class=&quot;s1&quot;&gt;&apos;tcp[tcpflags] &amp;amp; (tcp-rst) != 0&apos;&lt;/span&gt;
 
-# Captura pacotes TCP com a flag PSH
-tcpdump -i eth0 &apos;tcp[tcpflags] &amp;amp; (tcp-psh) != 0&apos;
+&lt;span class=&quot;c&quot;&gt;# Captura pacotes TCP com a flag PSH&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 &lt;span class=&quot;s1&quot;&gt;&apos;tcp[tcpflags] &amp;amp; (tcp-psh) != 0&apos;&lt;/span&gt;
 
-# Captura pacotes TCP com a flag URG
-tcpdump -i eth0 &apos;tcp[tcpflags] &amp;amp; (tcp-urg) != 0&apos;
+&lt;span class=&quot;c&quot;&gt;# Captura pacotes TCP com a flag URG&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 &lt;span class=&quot;s1&quot;&gt;&apos;tcp[tcpflags] &amp;amp; (tcp-urg) != 0&apos;&lt;/span&gt;
 
-# Captura pacotes com tamanho de pacote maior que 1000 bytes
-tcpdump -i eth0 &apos;greater 1000&apos;
+&lt;span class=&quot;c&quot;&gt;# Captura pacotes com tamanho de pacote maior que 1000 bytes&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 &lt;span class=&quot;s1&quot;&gt;&apos;greater 1000&apos;&lt;/span&gt;
 
-# Captura pacotes com tamanho de pacote menor que 100 bytes
-tcpdump -i eth0 &apos;less 100&apos;
+&lt;span class=&quot;c&quot;&gt;# Captura pacotes com tamanho de pacote menor que 100 bytes&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 &lt;span class=&quot;s1&quot;&gt;&apos;less 100&apos;&lt;/span&gt;
 
-# Captura pacotes ARP
-tcpdump -i eth0 arp
+&lt;span class=&quot;c&quot;&gt;# Captura pacotes ARP&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 arp
 
-# Captura pacotes ICMP
-tcpdump -i eth0 icmp
+&lt;span class=&quot;c&quot;&gt;# Captura pacotes ICMP&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 icmp
 
-# Captura pacotes com endereço MAC de origem específico
-tcpdump -i eth0 ether src 00:11:22:33:44:55
+&lt;span class=&quot;c&quot;&gt;# Captura pacotes com endereço MAC de origem específico&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 ether src 00:11:22:33:44:55
 
-# Captura pacotes com endereço MAC de destino específico
-tcpdump -i eth0 ether dst 00:11:22:33:44:55
+&lt;span class=&quot;c&quot;&gt;# Captura pacotes com endereço MAC de destino específico&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 ether dst 00:11:22:33:44:55
 
-# Captura pacotes VLAN com ID específico
-tcpdump -i eth0 vlan 100
+&lt;span class=&quot;c&quot;&gt;# Captura pacotes VLAN com ID específico&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 vlan 100
 
-# Captura pacotes IP com Time to Live (TTL) específico
-tcpdump -i eth0 &apos;ip[8] = 64&apos;
+&lt;span class=&quot;c&quot;&gt;# Captura pacotes IP com Time to Live (TTL) específico&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 &lt;span class=&quot;s1&quot;&gt;&apos;ip[8] = 64&apos;&lt;/span&gt;
 
-# Captura pacotes TCP com janela de recepção específica
-tcpdump -i eth0 &apos;tcp[14:2] = 1024&apos;
+&lt;span class=&quot;c&quot;&gt;# Captura pacotes TCP com janela de recepção específica&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 &lt;span class=&quot;s1&quot;&gt;&apos;tcp[14:2] = 1024&apos;&lt;/span&gt;
 
-# Captura pacotes com base em expressões regulares no conteúdo do pacote
-tcpdump -i eth0 -A &apos;tcp and src port 80 and (tcp[32:4] = 0x47455420 or tcp[32:4] = 0x504f5354)&apos;
+&lt;span class=&quot;c&quot;&gt;# Captura pacotes com base em expressões regulares no conteúdo do pacote&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 &lt;span class=&quot;nt&quot;&gt;-A&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;tcp and src port 80 and (tcp[32:4] = 0x47455420 or tcp[32:4] = 0x504f5354)&apos;&lt;/span&gt;
 
-# Captura pacotes IPv6
-tcpdump -i eth0 ip6
+&lt;span class=&quot;c&quot;&gt;# Captura pacotes IPv6&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 ip6
 
-# Captura pacotes com endereço IPv6 de origem específico
-tcpdump -i eth0 src host 2001:db8::1
+&lt;span class=&quot;c&quot;&gt;# Captura pacotes com endereço IPv6 de origem específico&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 src host 2001:db8::1
 
-# Captura pacotes com endereço IPv6 de destino específico
-tcpdump -i eth0 dst host 2001:db8::1
+&lt;span class=&quot;c&quot;&gt;# Captura pacotes com endereço IPv6 de destino específico&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 dst host 2001:db8::1
 
-# Captura pacotes com base em extensões de cabeçalho IPv6
-tcpdump -i eth0 &apos;ip6[6] = 58&apos;
+&lt;span class=&quot;c&quot;&gt;# Captura pacotes com base em extensões de cabeçalho IPv6&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 &lt;span class=&quot;s1&quot;&gt;&apos;ip6[6] = 58&apos;&lt;/span&gt;
 
-# Captura pacotes com base em fluxos específicos de IPv6
-tcpdump -i eth0 &apos;ip6[7] = 1&apos;
+&lt;span class=&quot;c&quot;&gt;# Captura pacotes com base em fluxos específicos de IPv6&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 &lt;span class=&quot;s1&quot;&gt;&apos;ip6[7] = 1&apos;&lt;/span&gt;
 
-# Captura pacotes TCP com opções específicas
-tcpdump -i eth0 &apos;tcp
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;span class=&quot;c&quot;&gt;# Captura pacotes TCP com opções específicas&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 &lt;span class=&quot;s1&quot;&gt;&apos;tcp
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;O o tcpdump utiliza o Berkeley Packet Filter (BPF) para filtrar os pacotes de rede que devem ser capturados. O BPF é um mecanismo de filtragem de pacotes altamente eficiente que é implementado no nível do kernel do sistema operacional. Ele permite que o tcpdump especifique um conjunto de regras de filtragem que determinam quais pacotes de rede devem ser capturados e quais devem ser descartados.&lt;/p&gt;
 
@@ -1601,7 +1634,6 @@ crip print &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt;&lt;span class=&quot;
 &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;https://github.com &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;https://stackoverflow.com &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;https://facebook.com
-
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
@@ -2069,43 +2101,43 @@ linhas
    <id>/2024/02/11/ufw</id>
    <content type="html">&lt;h2 id=&quot;cheatsheet-ufw&quot;&gt;Cheatsheet ufw&lt;/h2&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Habilitar o Firewall
-sudo ufw enable
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Habilitar o Firewall&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;ufw &lt;span class=&quot;nb&quot;&gt;enable&lt;/span&gt;
 
-# Desabilitar o Firewall
-sudo ufw disable
+&lt;span class=&quot;c&quot;&gt;# Desabilitar o Firewall&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;ufw disable
 
-# Verificar o Status do Firewall
-sudo ufw status
+&lt;span class=&quot;c&quot;&gt;# Verificar o Status do Firewall&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;ufw status
 
-# Adicionar uma Regra de Permissão de Porta (por exemplo, porta 80/tcp)
-sudo ufw allow 80/tcp
+&lt;span class=&quot;c&quot;&gt;# Adicionar uma Regra de Permissão de Porta (por exemplo, porta 80/tcp)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;ufw allow 80/tcp
 
-# Adicionar uma Regra de Permissão para um Range de Portas (por exemplo, portas de 8000 a 8010/tcp)
-sudo ufw allow 8000:8010/tcp
+&lt;span class=&quot;c&quot;&gt;# Adicionar uma Regra de Permissão para um Range de Portas (por exemplo, portas de 8000 a 8010/tcp)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;ufw allow 8000:8010/tcp
 
-# Adicionar uma Regra de Permissão para um Aplicativo Específico (por exemplo, OpenSSH)
-sudo ufw allow OpenSSH
+&lt;span class=&quot;c&quot;&gt;# Adicionar uma Regra de Permissão para um Aplicativo Específico (por exemplo, OpenSSH)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;ufw allow OpenSSH
 
-# Negar uma Porta (por exemplo, porta 22/tcp)
-sudo ufw deny 22/tcp
+&lt;span class=&quot;c&quot;&gt;# Negar uma Porta (por exemplo, porta 22/tcp)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;ufw deny 22/tcp
 
-# Limitar a taxa de conexões para um determinado serviço (por exemplo, SSH)
-sudo ufw limit ssh
+&lt;span class=&quot;c&quot;&gt;# Limitar a taxa de conexões para um determinado serviço (por exemplo, SSH)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;ufw limit ssh
 
-# Excluir uma Regra (por exemplo, excluir a regra que permite o tráfego na porta 80/tcp)
-sudo ufw delete allow 80/tcp
+&lt;span class=&quot;c&quot;&gt;# Excluir uma Regra (por exemplo, excluir a regra que permite o tráfego na porta 80/tcp)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;ufw delete allow 80/tcp
 
-# Habilitar ou Desabilitar o Logging
-sudo ufw logging on
-sudo ufw logging off
+&lt;span class=&quot;c&quot;&gt;# Habilitar ou Desabilitar o Logging&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;ufw logging on
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;ufw logging off
 
-# Regras de IPv6 (substitua allow ou deny por allow6 ou deny6 para IPv6)
-sudo ufw allow6 80/tcp
-sudo ufw deny6 22/tcp
+&lt;span class=&quot;c&quot;&gt;# Regras de IPv6 (substitua allow ou deny por allow6 ou deny6 para IPv6)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;ufw allow6 80/tcp
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;ufw deny6 22/tcp
 
-# Permitir tráfego de uma porta UDP específica
-sudo ufw allow 53/udp
+&lt;span class=&quot;c&quot;&gt;# Permitir tráfego de uma porta UDP específica&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;ufw allow 53/udp
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
@@ -2409,62 +2441,62 @@ cat /etc/resolv.conf
    <id>/2024/02/11/terraform</id>
    <content type="html">&lt;h2 id=&quot;cheatsheet-terraform&quot;&gt;Cheatsheet terraform&lt;/h2&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Inicializa o diretório do Terraform, baixando os plugins necessários para o provedor configurado.
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Inicializa o diretório do Terraform, baixando os plugins necessários para o provedor configurado.&lt;/span&gt;
 terraform init
 
-# Valida a configuração do arquivo do Terraform, verificando se há erros de sintaxe ou referências inválidas.
+&lt;span class=&quot;c&quot;&gt;# Valida a configuração do arquivo do Terraform, verificando se há erros de sintaxe ou referências inválidas.&lt;/span&gt;
 terraform validate
 
-# Formata os arquivos de configuração do Terraform para seguir um estilo consistente.
-terraform fmt
+&lt;span class=&quot;c&quot;&gt;# Formata os arquivos de configuração do Terraform para seguir um estilo consistente.&lt;/span&gt;
+terraform &lt;span class=&quot;nb&quot;&gt;fmt&lt;/span&gt;
 
-# Gera um plano de execução do Terraform, mostrando as mudanças que serão aplicadas na infraestrutura.
+&lt;span class=&quot;c&quot;&gt;# Gera um plano de execução do Terraform, mostrando as mudanças que serão aplicadas na infraestrutura.&lt;/span&gt;
 terraform plan
 
-# Aplica as alterações planejadas no plano de execução do Terraform, modificando a infraestrutura de acordo.
+&lt;span class=&quot;c&quot;&gt;# Aplica as alterações planejadas no plano de execução do Terraform, modificando a infraestrutura de acordo.&lt;/span&gt;
 terraform apply
 
-# Destrói a infraestrutura provisionada pelo Terraform, removendo todos os recursos gerenciados.
+&lt;span class=&quot;c&quot;&gt;# Destrói a infraestrutura provisionada pelo Terraform, removendo todos os recursos gerenciados.&lt;/span&gt;
 terraform destroy
 
-# Cria um novo workspace no Terraform, permitindo gerenciar diferentes estados de infraestrutura.
+&lt;span class=&quot;c&quot;&gt;# Cria um novo workspace no Terraform, permitindo gerenciar diferentes estados de infraestrutura.&lt;/span&gt;
 terraform workspace new dev
 
-# Lista todos os workspaces disponíveis no Terraform.
+&lt;span class=&quot;c&quot;&gt;# Lista todos os workspaces disponíveis no Terraform.&lt;/span&gt;
 terraform workspace list
 
-# Seleciona um workspace específico no Terraform para ser utilizado nas operações subsequentes.
-terraform workspace select dev
+&lt;span class=&quot;c&quot;&gt;# Seleciona um workspace específico no Terraform para ser utilizado nas operações subsequentes.&lt;/span&gt;
+terraform workspace &lt;span class=&quot;k&quot;&gt;select &lt;/span&gt;dev
 
-# Importa um recurso existente de um provedor para o estado do Terraform.
+&lt;span class=&quot;c&quot;&gt;# Importa um recurso existente de um provedor para o estado do Terraform.&lt;/span&gt;
 terraform import aws_s3_bucket.example my-bucket
 
-# Lista todos os recursos gerenciados pelo Terraform no estado atual.
+&lt;span class=&quot;c&quot;&gt;# Lista todos os recursos gerenciados pelo Terraform no estado atual.&lt;/span&gt;
 terraform state list
 
-# Exibe o valor de uma saída (output) específica definida no arquivo de configuração do Terraform.
+&lt;span class=&quot;c&quot;&gt;# Exibe o valor de uma saída (output) específica definida no arquivo de configuração do Terraform.&lt;/span&gt;
 terraform output example_output
 
-# Gera um gráfico da infraestrutura gerenciada pelo Terraform e exporta como uma imagem PNG.
-terraform graph | dot -Tpng &amp;gt; graph.png
+&lt;span class=&quot;c&quot;&gt;# Gera um gráfico da infraestrutura gerenciada pelo Terraform e exporta como uma imagem PNG.&lt;/span&gt;
+terraform graph | dot &lt;span class=&quot;nt&quot;&gt;-Tpng&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; graph.png
 
-# Marca um recurso como &quot;sujado&quot;, forçando o Terraform a recreá-lo na próxima aplicação.
+&lt;span class=&quot;c&quot;&gt;# Marca um recurso como &quot;sujado&quot;, forçando o Terraform a recreá-lo na próxima aplicação.&lt;/span&gt;
 terraform taint aws_instance.example
 
-# Remove a marca de &quot;sujado&quot; de um recurso, permitindo que o Terraform continue gerenciando-o normalmente.
+&lt;span class=&quot;c&quot;&gt;# Remove a marca de &quot;sujado&quot; de um recurso, permitindo que o Terraform continue gerenciando-o normalmente.&lt;/span&gt;
 terraform untaint aws_instance.example
 
-# Inicializa o diretório do Terraform, usando um arquivo de configuração alternativo.
-terraform init -backend-config=config.tfbackend
+&lt;span class=&quot;c&quot;&gt;# Inicializa o diretório do Terraform, usando um arquivo de configuração alternativo.&lt;/span&gt;
+terraform init &lt;span class=&quot;nt&quot;&gt;-backend-config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;config.tfbackend
 
-# Aplica as alterações com aprovação automática, sem exigir interação do usuário.
-terraform apply -auto-approve
+&lt;span class=&quot;c&quot;&gt;# Aplica as alterações com aprovação automática, sem exigir interação do usuário.&lt;/span&gt;
+terraform apply &lt;span class=&quot;nt&quot;&gt;-auto-approve&lt;/span&gt;
 
-# Aplica as alterações em um workspace específico.
-terraform apply -var-file=dev.tfvars
+&lt;span class=&quot;c&quot;&gt;# Aplica as alterações em um workspace específico.&lt;/span&gt;
+terraform apply &lt;span class=&quot;nt&quot;&gt;-var-file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;dev.tfvars
 
-# Destrói a infraestrutura provisionada pelo Terraform em um workspace específico.
-terraform destroy -var-file=dev.tfvars
+&lt;span class=&quot;c&quot;&gt;# Destrói a infraestrutura provisionada pelo Terraform em um workspace específico.&lt;/span&gt;
+terraform destroy &lt;span class=&quot;nt&quot;&gt;-var-file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;dev.tfvars
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;strong&gt;terraform init&lt;/strong&gt;: Este comando é usado para inicializar um novo diretório de configuração do Terraform. Ele baixa os provedores e módulos especificados no arquivo de configuração.&lt;/p&gt;
@@ -2550,13 +2582,13 @@ pip3 show &lt;span class=&quot;nt&quot;&gt;--files&lt;/span&gt; pacote
 pip3 search termo_de_pesquisa
 
 &lt;span class=&quot;c&quot;&gt;# Criar um ambiente virtual&lt;/span&gt;
-python3 &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; venv nome_do_ambiente_virtual
+python3 &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; venv &lt;span class=&quot;nb&quot;&gt;env&lt;/span&gt;
 
 &lt;span class=&quot;c&quot;&gt;# Ativar um ambiente virtual (Linux)&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;nome_do_ambiente_virtual/bin/activate
+&lt;span class=&quot;nb&quot;&gt;source env&lt;/span&gt;/bin/activate
 
 &lt;span class=&quot;c&quot;&gt;# Ativar um ambiente virtual (Windows)&lt;/span&gt;
-.&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;ome_do_ambiente_virtual&lt;span class=&quot;se&quot;&gt;\S&lt;/span&gt;cripts&lt;span class=&quot;se&quot;&gt;\a&lt;/span&gt;ctivate
+.&lt;span class=&quot;se&quot;&gt;\e&lt;/span&gt;nv&lt;span class=&quot;se&quot;&gt;\S&lt;/span&gt;cripts&lt;span class=&quot;se&quot;&gt;\a&lt;/span&gt;ctivate
 
 &lt;span class=&quot;c&quot;&gt;# Desativar um ambiente virtual&lt;/span&gt;
 deactivate
@@ -2588,81 +2620,81 @@ pip3 &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;
    <id>/2024/02/11/kubectl</id>
    <content type="html">&lt;h2 id=&quot;cheatsheet-kubectl&quot;&gt;Cheatsheet kubectl&lt;/h2&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Lista todos os pods em todos os namespaces
-kubectl get pods --all-namespaces
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Lista todos os pods em todos os namespaces&lt;/span&gt;
+kubectl get pods &lt;span class=&quot;nt&quot;&gt;--all-namespaces&lt;/span&gt;
 
-# Lista todos os services em todos os namespaces
-kubectl get services --all-namespaces
+&lt;span class=&quot;c&quot;&gt;# Lista todos os services em todos os namespaces&lt;/span&gt;
+kubectl get services &lt;span class=&quot;nt&quot;&gt;--all-namespaces&lt;/span&gt;
 
-# Lista todos os deployments em todos os namespaces
-kubectl get deployments --all-namespaces
+&lt;span class=&quot;c&quot;&gt;# Lista todos os deployments em todos os namespaces&lt;/span&gt;
+kubectl get deployments &lt;span class=&quot;nt&quot;&gt;--all-namespaces&lt;/span&gt;
 
-# Lista todos os namespaces
+&lt;span class=&quot;c&quot;&gt;# Lista todos os namespaces&lt;/span&gt;
 kubectl get namespaces
 
-# Descreve um pod específico
+&lt;span class=&quot;c&quot;&gt;# Descreve um pod específico&lt;/span&gt;
 kubectl describe pod &amp;lt;nome_do_pod&amp;gt;
 
-# Descreve um serviço específico.
+&lt;span class=&quot;c&quot;&gt;# Descreve um serviço específico.&lt;/span&gt;
 kubectl describe service &amp;lt;nome_do_service&amp;gt;
 
-# Descreve um deployment específico
+&lt;span class=&quot;c&quot;&gt;# Descreve um deployment específico&lt;/span&gt;
 kubectl describe deployment &amp;lt;nome_do_deployment&amp;gt;
 
-# Exibe o registro de eventos de um pod específico
-kubectl get events --field-selector involvedObject.name=&amp;lt;nome_do_pod&amp;gt;
+&lt;span class=&quot;c&quot;&gt;# Exibe o registro de eventos de um pod específico&lt;/span&gt;
+kubectl get events &lt;span class=&quot;nt&quot;&gt;--field-selector&lt;/span&gt; involvedObject.name&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;lt;nome_do_pod&amp;gt;
 
-# Exibe os logs de um pod específico
+&lt;span class=&quot;c&quot;&gt;# Exibe os logs de um pod específico&lt;/span&gt;
 kubectl logs &amp;lt;nome_do_pod&amp;gt;
 
-# Executa um comando dentro de um pod específico
-kubectl exec -it &amp;lt;nome_do_pod&amp;gt; -- comando_a_executar
+&lt;span class=&quot;c&quot;&gt;# Executa um comando dentro de um pod específico&lt;/span&gt;
+kubectl &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; &amp;lt;nome_do_pod&amp;gt; &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; comando_a_executar
 
-# Copia arquivos de/para um pod específico
-kubectl cp arquivo.txt &amp;lt;nome_do_pod&amp;gt;:/caminho/destino
+&lt;span class=&quot;c&quot;&gt;# Copia arquivos de/para um pod específico&lt;/span&gt;
+kubectl &lt;span class=&quot;nb&quot;&gt;cp &lt;/span&gt;arquivo.txt &amp;lt;nome_do_pod&amp;gt;:/caminho/destino
 
-# Cria um novo namespace
+&lt;span class=&quot;c&quot;&gt;# Cria um novo namespace&lt;/span&gt;
 kubectl create namespace nome_do_namespace
 
-# Exclui um pod específico
+&lt;span class=&quot;c&quot;&gt;# Exclui um pod específico&lt;/span&gt;
 kubectl delete pod &amp;lt;nome_do_pod&amp;gt;
 
-# Escala um deployment para um número específico de réplicas
-kubectl scale deployment nome_do_deployment --replicas=5
+&lt;span class=&quot;c&quot;&gt;# Escala um deployment para um número específico de réplicas&lt;/span&gt;
+kubectl scale deployment nome_do_deployment &lt;span class=&quot;nt&quot;&gt;--replicas&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;5
 
-# Atualiza uma imagem de container em um deployment
-kubectl set image deployment/nome_do_deployment nome_do_container=nova_imagem:tag
+&lt;span class=&quot;c&quot;&gt;# Atualiza uma imagem de container em um deployment&lt;/span&gt;
+kubectl &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;image deployment/nome_do_deployment &lt;span class=&quot;nv&quot;&gt;nome_do_container&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;nova_imagem:tag
 
-# Aplica as alterações definidas em um arquivo de manifesto YAML
-kubectl apply -f arquivo.yaml
+&lt;span class=&quot;c&quot;&gt;# Aplica as alterações definidas em um arquivo de manifesto YAML&lt;/span&gt;
+kubectl apply &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; arquivo.yaml
 
-# Executa um job de cron dentro do cluster
-kubectl create job nome_do_job --image=imagem_do_job --schedule=&apos;*/1 * * * *&apos;
+&lt;span class=&quot;c&quot;&gt;# Executa um job de cron dentro do cluster&lt;/span&gt;
+kubectl create job nome_do_job &lt;span class=&quot;nt&quot;&gt;--image&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;imagem_do_job &lt;span class=&quot;nt&quot;&gt;--schedule&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;*/1 * * * *&apos;&lt;/span&gt;
 
-# Exibe métricas de recursos do cluster
+&lt;span class=&quot;c&quot;&gt;# Exibe métricas de recursos do cluster&lt;/span&gt;
 kubectl top nodes
 kubectl top pods
 
-# Exporta recursos do cluster para um arquivo YAML
-kubectl get deployment &amp;lt;nome_do_deployment&amp;gt; -o yaml &amp;gt; deployment.yaml
+&lt;span class=&quot;c&quot;&gt;# Exporta recursos do cluster para um arquivo YAML&lt;/span&gt;
+kubectl get deployment &amp;lt;nome_do_deployment&amp;gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; yaml &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; deployment.yaml
 
-# Aplica atualizações em recursos do cluster com base em um arquivo YAML
-kubectl apply -f deployment.yaml
+&lt;span class=&quot;c&quot;&gt;# Aplica atualizações em recursos do cluster com base em um arquivo YAML&lt;/span&gt;
+kubectl apply &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; deployment.yaml
 
-# Cria um tunnel seguro para um serviço dentro do cluster
+&lt;span class=&quot;c&quot;&gt;# Cria um tunnel seguro para um serviço dentro do cluster&lt;/span&gt;
 kubectl port-forward &amp;lt;nome_do_pod&amp;gt; 8080:80
 
-# Habilita o encaminhamento de portas para um pod específico
+&lt;span class=&quot;c&quot;&gt;# Habilita o encaminhamento de portas para um pod específico&lt;/span&gt;
 kubectl port-forward &amp;lt;nome_do_pod&amp;gt; 8080:80
 
-# Cria uma proxy de API para o cluster Kubernetes.
+&lt;span class=&quot;c&quot;&gt;# Cria uma proxy de API para o cluster Kubernetes.&lt;/span&gt;
 kubectl proxy
 
-# Gera um diagrama de dependências de recursos do cluster
-kubectl get service &amp;lt;nome_do_servico&amp;gt; -o json | kubectl-viz visualize
+&lt;span class=&quot;c&quot;&gt;# Gera um diagrama de dependências de recursos do cluster&lt;/span&gt;
+kubectl get service &amp;lt;nome_do_servico&amp;gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; json | kubectl-viz visualize
 
-# Exibe informações detalhadas sobre a configuração de rede de um pod específico
-kubectl get pod &amp;lt;nome_do_pod&amp;gt; -o=jsonpath=&apos;{.spec.podIP}&apos;
+&lt;span class=&quot;c&quot;&gt;# Exibe informações detalhadas sobre a configuração de rede de um pod específico&lt;/span&gt;
+kubectl get pod &amp;lt;nome_do_pod&amp;gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;jsonpath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;{.spec.podIP}&apos;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
@@ -2674,59 +2706,59 @@ kubectl get pod &amp;lt;nome_do_pod&amp;gt; -o=jsonpath=&apos;{.spec.podIP}&apos
    <id>/2024/02/11/ansible</id>
    <content type="html">&lt;h2 id=&quot;cheatsheet-ansible&quot;&gt;Cheatsheet ansible&lt;/h2&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Executa um playbook Ansible em hosts remotos.
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Executa um playbook Ansible em hosts remotos.&lt;/span&gt;
 ansible-playbook playbook.yml
 
-# Executa um playbook Ansible em hosts remotos com as credenciais especificadas.
-ansible-playbook playbook.yml -u usuário -k
+&lt;span class=&quot;c&quot;&gt;# Executa um playbook Ansible em hosts remotos com as credenciais especificadas.&lt;/span&gt;
+ansible-playbook playbook.yml &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; usuário &lt;span class=&quot;nt&quot;&gt;-k&lt;/span&gt;
 
-# Executa um playbook Ansible em hosts remotos usando a chave SSH especificada.
-ansible-playbook playbook.yml --private-key chave_ssh.pem
+&lt;span class=&quot;c&quot;&gt;# Executa um playbook Ansible em hosts remotos usando a chave SSH especificada.&lt;/span&gt;
+ansible-playbook playbook.yml &lt;span class=&quot;nt&quot;&gt;--private-key&lt;/span&gt; chave_ssh.pem
 
-# Executa um playbook Ansible em hosts remotos usando a chave SSH especificada e tornando-se sudo.
-ansible-playbook playbook.yml --private-key chave_ssh.pem --become
+&lt;span class=&quot;c&quot;&gt;# Executa um playbook Ansible em hosts remotos usando a chave SSH especificada e tornando-se sudo.&lt;/span&gt;
+ansible-playbook playbook.yml &lt;span class=&quot;nt&quot;&gt;--private-key&lt;/span&gt; chave_ssh.pem &lt;span class=&quot;nt&quot;&gt;--become&lt;/span&gt;
 
-# Executa um playbook Ansible em hosts remotos usando a chave SSH especificada e tornando-se sudo com a senha especificada.
-ansible-playbook playbook.yml --private-key chave_ssh.pem --become --become-password senha
+&lt;span class=&quot;c&quot;&gt;# Executa um playbook Ansible em hosts remotos usando a chave SSH especificada e tornando-se sudo com a senha especificada.&lt;/span&gt;
+ansible-playbook playbook.yml &lt;span class=&quot;nt&quot;&gt;--private-key&lt;/span&gt; chave_ssh.pem &lt;span class=&quot;nt&quot;&gt;--become&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--become-password&lt;/span&gt; senha
 
-# Executa um playbook Ansible em hosts remotos usando a chave SSH especificada, tornando-se sudo e definindo variáveis adicionais.
-ansible-playbook playbook.yml --private-key chave_ssh.pem --become --extra-vars &quot;variavel=valor&quot;
+&lt;span class=&quot;c&quot;&gt;# Executa um playbook Ansible em hosts remotos usando a chave SSH especificada, tornando-se sudo e definindo variáveis adicionais.&lt;/span&gt;
+ansible-playbook playbook.yml &lt;span class=&quot;nt&quot;&gt;--private-key&lt;/span&gt; chave_ssh.pem &lt;span class=&quot;nt&quot;&gt;--become&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--extra-vars&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;variavel=valor&quot;&lt;/span&gt;
 
-# Executa um playbook Ansible em hosts remotos, limitando-se a um grupo específico.
-ansible-playbook playbook.yml --limit grupo
+&lt;span class=&quot;c&quot;&gt;# Executa um playbook Ansible em hosts remotos, limitando-se a um grupo específico.&lt;/span&gt;
+ansible-playbook playbook.yml &lt;span class=&quot;nt&quot;&gt;--limit&lt;/span&gt; grupo
 
-# Executa um playbook Ansible em hosts remotos, ignorando erros de host indisponível.
-ansible-playbook playbook.yml --skip-tags no_available_host
+&lt;span class=&quot;c&quot;&gt;# Executa um playbook Ansible em hosts remotos, ignorando erros de host indisponível.&lt;/span&gt;
+ansible-playbook playbook.yml &lt;span class=&quot;nt&quot;&gt;--skip-tags&lt;/span&gt; no_available_host
 
-# Executa um playbook Ansible em hosts remotos, forçando a atualização dos handlers.
-ansible-playbook playbook.yml --force-handlers
+&lt;span class=&quot;c&quot;&gt;# Executa um playbook Ansible em hosts remotos, forçando a atualização dos handlers.&lt;/span&gt;
+ansible-playbook playbook.yml &lt;span class=&quot;nt&quot;&gt;--force-handlers&lt;/span&gt;
 
-# Executa um playbook Ansible em hosts remotos, mostrando apenas mensagens de erro e informações de falha.
-ansible-playbook playbook.yml --tags error
+&lt;span class=&quot;c&quot;&gt;# Executa um playbook Ansible em hosts remotos, mostrando apenas mensagens de erro e informações de falha.&lt;/span&gt;
+ansible-playbook playbook.yml &lt;span class=&quot;nt&quot;&gt;--tags&lt;/span&gt; error
 
-# Executa um playbook Ansible em hosts remotos, exibindo mensagens de debug.
-ansible-playbook playbook.yml -vvv
+&lt;span class=&quot;c&quot;&gt;# Executa um playbook Ansible em hosts remotos, exibindo mensagens de debug.&lt;/span&gt;
+ansible-playbook playbook.yml &lt;span class=&quot;nt&quot;&gt;-vvv&lt;/span&gt;
 
-# Executa um comando ad-hoc Ansible em hosts remotos.
-ansible all -m command -a &quot;comando_a_executar&quot;
+&lt;span class=&quot;c&quot;&gt;# Executa um comando ad-hoc Ansible em hosts remotos.&lt;/span&gt;
+ansible all &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;comando_a_executar&quot;&lt;/span&gt;
 
-# Executa um comando ad-hoc Ansible em hosts remotos, usando sudo.
-ansible all -m command -a &quot;comando_a_executar&quot; --become
+&lt;span class=&quot;c&quot;&gt;# Executa um comando ad-hoc Ansible em hosts remotos, usando sudo.&lt;/span&gt;
+ansible all &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;comando_a_executar&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--become&lt;/span&gt;
 
-# Executa um comando ad-hoc Ansible em hosts remotos, usando sudo com a senha especificada.
-ansible all -m command -a &quot;comando_a_executar&quot; --become --ask-become-pass
+&lt;span class=&quot;c&quot;&gt;# Executa um comando ad-hoc Ansible em hosts remotos, usando sudo com a senha especificada.&lt;/span&gt;
+ansible all &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;comando_a_executar&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--become&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--ask-become-pass&lt;/span&gt;
 
-# Executa um comando ad-hoc Ansible em hosts remotos, usando um módulo específico.
-ansible all -m nome_do_modulo -a &quot;argumentos_do_modulo&quot;
+&lt;span class=&quot;c&quot;&gt;# Executa um comando ad-hoc Ansible em hosts remotos, usando um módulo específico.&lt;/span&gt;
+ansible all &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; nome_do_modulo &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;argumentos_do_modulo&quot;&lt;/span&gt;
 
-# Executa um comando ad-hoc Ansible em hosts remotos, definindo variáveis adicionais.
-ansible all -m command -a &quot;comando_a_executar&quot; -e &quot;variavel=valor&quot;
+&lt;span class=&quot;c&quot;&gt;# Executa um comando ad-hoc Ansible em hosts remotos, definindo variáveis adicionais.&lt;/span&gt;
+ansible all &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;comando_a_executar&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;variavel=valor&quot;&lt;/span&gt;
 
-# Gera uma lista de hosts disponíveis.
-ansible all --list-hosts
+&lt;span class=&quot;c&quot;&gt;# Gera uma lista de hosts disponíveis.&lt;/span&gt;
+ansible all &lt;span class=&quot;nt&quot;&gt;--list-hosts&lt;/span&gt;
 
-# Exibe os fatos (facts) coletados dos hosts.
-ansible all -m setup
+&lt;span class=&quot;c&quot;&gt;# Exibe os fatos (facts) coletados dos hosts.&lt;/span&gt;
+ansible all &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; setup
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
@@ -2862,6 +2894,125 @@ ansible all -m setup
    <updated>2024-01-20T00:00:00+00:00</updated>
    <id>/2024/01/20/roadmap</id>
    <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>english/frases-fundamentais</title>
+   <link href="/2024/01/20/frases-fundamentais.html"/>
+   <updated>2024-01-20T00:00:00+00:00</updated>
+   <id>/2024/01/20/frases-fundamentais</id>
+   <content type="html">&lt;h2 id=&quot;frases-fundamentais&quot;&gt;Frases fundamentais&lt;/h2&gt;
+
+&lt;p&gt;Cumprimentos&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Hey!
+Hi there!
+What&apos;s up?
+Howdy!
+Hey, how&apos;s it going?
+Yo!
+Hiya!
+Hey, what&apos;s going on?
+&apos;Sup?
+Hello, mate!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Desculpas&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;I&apos;m sorry
+That&apos;s ok # Ok não foi nada
+
+Excuse me
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Pedir algo&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Can I have a pen, please ?
+May I have a cup of water ?
+Could I have a pencil? ?
+
+Sure - Claro
+Here - Ta aqui
+Here, it is
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Elogiar&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;I like your hair
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Esperar algo&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Just a sec
+Just a second
+Just a minuto
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Agradecer&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;You&apos;re welcome
+No problem
+No prob
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Pedir para falar mais devagar&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Could you please speak a bit slower ? 
+Could you please spell that ?
+Could you please type that ?
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Quando não entendeu algo&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;I&apos;m sorry. I didn&apos;t get that - Desculpe eu não entendi
+Sorry, I don&apos;t get it
+I don&apos;t know that word
+
+Ok, gotcha ! / I got you - Entendi
+Oh really !
+That makes sense
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Eu acho / Eu não acho&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;I think so
+I don&apos;t think so
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;What&apos;s the opposite of beatiful ? - Qual o oposto de bonito ?
+That&apos;s it - Acabou / Terminou
+How about a beer ? - Que tal uma cerveja ?
+How about you ? - E quanto a você ?
+Awesome - Legal  Incrível
+Never mind - Sem problemas / Deixa pra lá
+
+Let me check - Deixa eu verificar
+Who cares ? Quem se importa
+I mean it - Estou falando sério
+Not yet - Ainda não
+Don&apos;t push - Não força a barra / Não abusa
+It&apos;s nonsense ! - Isso é um absurdo
+Not anymore - Não mais
+Take it easy ! - Vai com calma
+Don&apos;t give up ! - Não desista
+As always - Como sempre
+It&apos;s enough - Isso é suficiente / Chega !
+Say when - Diga quando ..(quando for suficiente)
+Whatever ! - Tanto faz !
+It depends ! - Depende !
+It depends on the situation - Isso depende da situação
+I don&apos;t care - Eu não ligo
+I don&apos;t mind - Isso não me incomoda
+Did you buy it ? - Você engoliu essa ? / Você comprou essa história
+Are you sure ? - Tem certeza ?
+How come ? - Como assim ? Por que ?
+Let me know - Me avisa
+Say it again, please - Repita por favor
+No way ! - De jeito nenhum !
+Go for it - Vai nessa / Vai fundo
+Keep me posted - Me mantenha informado
+Go figure - Vai saber / Vai entender
+That was close - Essa foi quase / Foi por pouco
+I&apos;m on my way - Estou a caminho
+I don&apos;t get it - Não entendi
+My bad - Foi mal
+It happenes - Acontece
+What now ? - E agora ?
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;https://www.youtube.com/watch?v=p6ecX0QXhRw&lt;/p&gt;
 </content>
  </entry>
  
@@ -3354,6 +3505,8 @@ ansible all -m setup
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
+
+&lt;p&gt;https://github.com/fujiapple852/trippy&lt;/p&gt;
 </content>
  </entry>
  
@@ -4857,45 +5010,45 @@ kubectl scale &lt;span class=&quot;nt&quot;&gt;--replicas&lt;/span&gt;&lt;span c
 
 &lt;p&gt;In summary, Firewalld stands as a versatile and dynamic firewall solution for Linux, offering enhanced security, flexibility in rule management, and application integration capabilities in dynamic network environments.&lt;/p&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Habilitar o Firewalld
-sudo systemctl start firewalld
-sudo systemctl enable firewalld
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Habilitar o Firewalld&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl start firewalld
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl &lt;span class=&quot;nb&quot;&gt;enable &lt;/span&gt;firewalld
 
-# Desabilitar o Firewalld
-sudo systemctl stop firewalld
-sudo systemctl disable firewalld
+&lt;span class=&quot;c&quot;&gt;# Desabilitar o Firewalld&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl stop firewalld
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl disable firewalld
 
-# Verificar o Status do Firewalld
-sudo systemctl status firewalld
+&lt;span class=&quot;c&quot;&gt;# Verificar o Status do Firewalld&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl status firewalld
 
-# Listar as Zonas Disponíveis
-sudo firewall-cmd --get-zones
+&lt;span class=&quot;c&quot;&gt;# Listar as Zonas Disponíveis&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;firewall-cmd &lt;span class=&quot;nt&quot;&gt;--get-zones&lt;/span&gt;
 
-# Definir uma Zona Padrão (substitua &apos;public&apos; pelo nome da zona desejada)
-sudo firewall-cmd --set-default-zone=public
+&lt;span class=&quot;c&quot;&gt;# Definir uma Zona Padrão (substitua &apos;public&apos; pelo nome da zona desejada)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;firewall-cmd &lt;span class=&quot;nt&quot;&gt;--set-default-zone&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;public
 
-# Adicionar uma Regra de Permissão de Porta (por exemplo, porta 80/tcp)
-sudo firewall-cmd --add-port=80/tcp --permanent
+&lt;span class=&quot;c&quot;&gt;# Adicionar uma Regra de Permissão de Porta (por exemplo, porta 80/tcp)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;firewall-cmd &lt;span class=&quot;nt&quot;&gt;--add-port&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;80/tcp &lt;span class=&quot;nt&quot;&gt;--permanent&lt;/span&gt;
 
-# Recarregar o Firewalld para Aplicar Alterações Permanentes
-sudo firewall-cmd --reload
+&lt;span class=&quot;c&quot;&gt;# Recarregar o Firewalld para Aplicar Alterações Permanentes&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;firewall-cmd &lt;span class=&quot;nt&quot;&gt;--reload&lt;/span&gt;
 
-# Adicionar uma Regra de Serviço (por exemplo, SSH)
-sudo firewall-cmd --add-service=ssh --permanent
+&lt;span class=&quot;c&quot;&gt;# Adicionar uma Regra de Serviço (por exemplo, SSH)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;firewall-cmd &lt;span class=&quot;nt&quot;&gt;--add-service&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ssh &lt;span class=&quot;nt&quot;&gt;--permanent&lt;/span&gt;
 
-# Remover uma Regra de Serviço (por exemplo, SSH)
-sudo firewall-cmd --remove-service=ssh --permanent
+&lt;span class=&quot;c&quot;&gt;# Remover uma Regra de Serviço (por exemplo, SSH)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;firewall-cmd &lt;span class=&quot;nt&quot;&gt;--remove-service&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ssh &lt;span class=&quot;nt&quot;&gt;--permanent&lt;/span&gt;
 
-# Habilitar ou Desabilitar o Logging (substitua &apos;yes&apos; ou &apos;no&apos; conforme necessário)
-sudo firewall-cmd --set-log-denied=yes --permanent
-sudo firewall-cmd --set-log-denied=no --permanent
+&lt;span class=&quot;c&quot;&gt;# Habilitar ou Desabilitar o Logging (substitua &apos;yes&apos; ou &apos;no&apos; conforme necessário)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;firewall-cmd &lt;span class=&quot;nt&quot;&gt;--set-log-denied&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;yes&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--permanent&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;firewall-cmd &lt;span class=&quot;nt&quot;&gt;--set-log-denied&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;no &lt;span class=&quot;nt&quot;&gt;--permanent&lt;/span&gt;
 
-# Ativar ou Desativar o Firewalld
-sudo systemctl start firewalld
-sudo systemctl stop firewalld
+&lt;span class=&quot;c&quot;&gt;# Ativar ou Desativar o Firewalld&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl start firewalld
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl stop firewalld
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Config&lt;/p&gt;
+&lt;h2 id=&quot;config&quot;&gt;Config&lt;/h2&gt;
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/firewalld/firewalld.conf.&lt;/code&gt;&lt;/p&gt;
 
@@ -5725,6 +5878,7 @@ docker run -it --entrypoint sh soumyansh/demo.jar
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;commands-to-copy-files-between-host-and-container&quot;&gt;Commands to copy files between host and container&lt;/h2&gt;
+
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Copiar arquivo do host para o containe
 docker cp /tmp/origin meu-container-nginx:/tmp r
 
@@ -5736,6 +5890,7 @@ docker cp meu-container-nginx:/tmp/whoami
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;commands-to-view-and-limit-resources&quot;&gt;Commands to view and limit resources&lt;/h2&gt;
+
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Exibir um stream contínuo de estatísticas de uso de recursos de containers ativos
 docker stats
 
@@ -5756,6 +5911,7 @@ docker update --cpus=&quot;.5&quot; nginx-do-bem # altera apenas liomite de CPU
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;remove-all-images-containers-or-volumes&quot;&gt;Remove all images, containers or volumes&lt;/h2&gt;
+
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Limpeza dos containers e volumes associados
 docker system prune -a --volumes # 
 
@@ -5770,6 +5926,7 @@ docker container rm -f $(docker container ls -qa); for i in $(docker volume ls |
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;basic-build-commands&quot;&gt;Basic build commands&lt;/h2&gt;
+
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Este comando é usado para construir uma imagem Docker a partir de um arquivo Dockerfile localizado no caminho especificado
 docker build -t minha-imagem:latest /caminho/do/Dockerfile
 
@@ -5781,6 +5938,7 @@ docker build -f Dockerfile.debug .
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;basic-commands-for-images&quot;&gt;Basic commands for images&lt;/h2&gt;
+
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker image build
 docker image history
 docker image import
@@ -5799,11 +5957,13 @@ docker search --filter is-official=true --filter stars=3 busybox
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;convert-image-to-file-and-then-import-again&quot;&gt;Convert image to file and then import again&lt;/h2&gt;
+
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker save -o nome_da_imagem.tar nome_da_imagem
 docker load -i nome_da_imagem.tar
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;docker-on-my-local-machine&quot;&gt;Docker on my local machine&lt;/h2&gt;
+
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/usr/bin/docker 
 /etc/docker 
 /usr/libexec/docker 
