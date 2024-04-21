@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-04-21T19:03:36+00:00</updated>
+ <updated>2024-04-21T19:57:29+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -45,6 +45,24 @@
    <updated>2024-12-01T00:00:00+00:00</updated>
    <id>/2024/12/01/ebpf</id>
    <content type="html">&lt;p&gt;https://www.kerno.io/blog/programming-the-kernel-with-ebpf&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>networking/packet-analysis</title>
+   <link href="/2024/12/01/packet-analysis.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/packet-analysis</id>
+   <content type="html">&lt;h2 id=&quot;packet-analysis&quot;&gt;packet-analysis&lt;/h2&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>life-and-health/feeding</title>
+   <link href="/2024/12/01/feeding.html"/>
+   <updated>2024-12-01T00:00:00+00:00</updated>
+   <id>/2024/12/01/feeding</id>
+   <content type="html">&lt;h2 id=&quot;feeding&quot;&gt;feeding&lt;/h2&gt;
 </content>
  </entry>
  
@@ -812,25 +830,70 @@ func main() {
    <content type="html">&lt;h2 id=&quot;sre-interview&quot;&gt;sre-interview&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Teorema CAP&lt;/li&gt;
+  &lt;li&gt;Cap theorem&lt;/li&gt;
   &lt;li&gt;12 Factors&lt;/li&gt;
-  &lt;li&gt;IaC&lt;/li&gt;
+  &lt;li&gt;Authentication and Authorization&lt;/li&gt;
+  &lt;li&gt;Rest x gRPC x GraphQL&lt;/li&gt;
+  &lt;li&gt;IaC
+    &lt;ul&gt;
+      &lt;li&gt;Terraform&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
   &lt;li&gt;DDD&lt;/li&gt;
-  &lt;li&gt;Container orchestration&lt;/li&gt;
+  &lt;li&gt;Container orchestration
+    &lt;ul&gt;
+      &lt;li&gt;Kubernetes&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
   &lt;li&gt;Operating Systems
     &lt;ul&gt;
-      &lt;li&gt;Linux&lt;/li&gt;
+      &lt;li&gt;Linux
+        &lt;ul&gt;
+          &lt;li&gt;Kernel Params&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
       &lt;li&gt;Windows&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;Message Broker&lt;/li&gt;
+  &lt;li&gt;Message Broker
+    &lt;ul&gt;
+      &lt;li&gt;RabbitMQ&lt;/li&gt;
+      &lt;li&gt;Apache Kafka&lt;/li&gt;
+      &lt;li&gt;ActiveMQ&lt;/li&gt;
+      &lt;li&gt;Amazon SQS&lt;/li&gt;
+      &lt;li&gt;Microsoft Azure Service Bus&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
   &lt;li&gt;Observability and Monitoring
     &lt;ul&gt;
+      &lt;li&gt;DORA&lt;/li&gt;
       &lt;li&gt;Prometheus&lt;/li&gt;
       &lt;li&gt;Grafana&lt;/li&gt;
       &lt;li&gt;FluentD&lt;/li&gt;
       &lt;li&gt;Fluentbit&lt;/li&gt;
       &lt;li&gt;OpenTelemetry&lt;/li&gt;
+      &lt;li&gt;eBPF&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;CICD
+    &lt;ul&gt;
+      &lt;li&gt;Jenkins&lt;/li&gt;
+      &lt;li&gt;Github Actions&lt;/li&gt;
+      &lt;li&gt;GitlabCI&lt;/li&gt;
+      &lt;li&gt;Bitbucket Pipelines&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Programming
+    &lt;ul&gt;
+      &lt;li&gt;Python&lt;/li&gt;
+      &lt;li&gt;Golang&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Cloud
+    &lt;ul&gt;
+      &lt;li&gt;AWS&lt;/li&gt;
+      &lt;li&gt;Azure&lt;/li&gt;
+      &lt;li&gt;Google Cloud Platform&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -844,36 +907,31 @@ func main() {
    <id>/2024/04/03/sre-commands</id>
    <content type="html">&lt;h2 id=&quot;sre-commands&quot;&gt;sre-commands&lt;/h2&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;comando | xclip -selection clipboard
+&lt;p&gt;copy/paste using xclip&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;comando&amp;gt; | xclip &lt;span class=&quot;nt&quot;&gt;-selection&lt;/span&gt; clipboard
+&lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt; | xclip &lt;span class=&quot;nt&quot;&gt;-selection&lt;/span&gt; clipboard
 
-alias ccp=&apos;xclip -selection clipboard&apos;
-
-base64 /caminho/para/seu/arquivo | xclip -selection clipboard
-
+&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ccp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;xclip -selection clipboard&apos;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;base64&lt;/span&gt; ~/.bashrc | xclip &lt;span class=&quot;nt&quot;&gt;-selection&lt;/span&gt; clipboard
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;listar arquivos de hoje, de forma recursiva, e mostrar o tamanho em MB&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;find . -type f -mtime 0 -exec ls -lh {} + | awk &apos;{ print $5, $9 }&apos;
+&lt;p&gt;list today’s files, recursively, and show the size in MB&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;find &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-type&lt;/span&gt; f &lt;span class=&quot;nt&quot;&gt;-mtime&lt;/span&gt; 0 &lt;span class=&quot;nt&quot;&gt;-exec&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-lh&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; + | &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;{ print $5, $9 }&apos;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Verificar as conexões externas à sua máquina, incluindo as portas que estão sendo utilizadas&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;netstat -tunap
-
-ss -tunap
-
-ss -tunap | grep -v &apos;127.0.0.1\|::1&apos;
+&lt;p&gt;check the external connections to your machine, including the ports being used&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;netstat &lt;span class=&quot;nt&quot;&gt;-tunap&lt;/span&gt;
+ss &lt;span class=&quot;nt&quot;&gt;-tunap&lt;/span&gt;
+ss &lt;span class=&quot;nt&quot;&gt;-tunap&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;127.0.0.1\|::1&apos;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ruby -run -ehttpd . -p8000
-php -S localhost:8000
-python3 -m http.server
-
-npm install -g http-server
-http-server -p 8000
-
-while true; do { echo -ne &quot;HTTP/1.1 200 OK\r\nContent-Length: $(wc -c &amp;lt;index.html)\r\nContent-Type: text/html\r\n\r\n&quot;; cat index.html; } | nc -l -p 8080; done
-
+&lt;p&gt;create http server(ways)&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ruby &lt;span class=&quot;nt&quot;&gt;-run&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-ehttpd&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p8000&lt;/span&gt;
+php &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; localhost:8000
+python3 &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; http.server
+npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-g&lt;/span&gt; http-server
+http-server &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 8000
+&lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-ne&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;HTTP/1.1 200 OK&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Content-Length: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;wc&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &amp;lt;index.html&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Content-Type: text/html&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r\n\r\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;index.html&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; | nc &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 8080&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
@@ -3073,6 +3131,15 @@ What now ? - E agora ?
  </entry>
  
  <entry>
+   <title>english/100-expressions</title>
+   <link href="/2024/01/20/100-expressions.html"/>
+   <updated>2024-01-20T00:00:00+00:00</updated>
+   <id>/2024/01/20/100-expressions</id>
+   <content type="html">&lt;h2 id=&quot;frases-fundamentais&quot;&gt;Frases fundamentais&lt;/h2&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>tools/my-toolbox</title>
    <link href="/2024/01/05/my-toolbox.html"/>
    <updated>2024-01-05T00:00:00+00:00</updated>
@@ -4647,6 +4714,98 @@ Um módulo é geralmente associado a um repositório Git e contém informações
  </entry>
  
  <entry>
+   <title>latim/frases-comuns</title>
+   <link href="/2024/01/01/frases-comuns.html"/>
+   <updated>2024-01-01T00:00:00+00:00</updated>
+   <id>/2024/01/01/frases-comuns</id>
+   <content type="html">&lt;h3 id=&quot;frases-comuns&quot;&gt;frases-comuns&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Carpe Diem&lt;/strong&gt; - &lt;em&gt;“Aproveite o dia.”&lt;/em&gt;
+Um convite para não desperdiçar o momento presente e agir agora, sem adiar.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Veni, Vidi, Vici&lt;/strong&gt; - &lt;em&gt;“Vim, vi, venci.”&lt;/em&gt;
+Atribuída a Júlio César após uma rápida vitória. Usada para expressar uma conquista rápida e eficaz.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Amor Vincit Omnia&lt;/strong&gt; - &lt;em&gt;“O amor conquista tudo.”&lt;/em&gt;
+Expressa a crença no poder supremo do amor sobre todos os obstáculos.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Alea Iacta Est&lt;/strong&gt; - &lt;em&gt;“A sorte está lançada.”&lt;/em&gt;
+Dito por Júlio César ao cruzar o rio Rubicão. Usado quando uma decisão importante é tomada e não há volta.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Ad Astra Per Aspera&lt;/strong&gt; - &lt;em&gt;“Através das dificuldades até as estrelas.”&lt;/em&gt;
+Encoraja a perseverança e a superação de desafios para alcançar grandes objetivos.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Caveat Emptor&lt;/strong&gt; - &lt;em&gt;“Que o comprador esteja atento.”&lt;/em&gt;
+Adverte o comprador a verificar a mercadoria antes da compra, pois a responsabilidade recai sobre ele.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Et Cetera (etc.)&lt;/strong&gt; - &lt;em&gt;“E outras coisas.”&lt;/em&gt;
+Usado para indicar uma lista contínua sem precisar enumerar todos os itens.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;In Vino Veritas&lt;/strong&gt; - &lt;em&gt;“No vinho, a verdade.”&lt;/em&gt;
+Sugere que as pessoas são mais propensas a revelar suas verdadeiras intenções e sentimentos sob a influência do álcool.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Tabula Rasa&lt;/strong&gt; - &lt;em&gt;“Tábua rasa.”&lt;/em&gt;
+Refere-se à ideia de que a mente no nascimento é como uma lousa vazia, sem conhecimento ou preconceitos.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Vox Populi, Vox Dei&lt;/strong&gt; - &lt;em&gt;“A voz do povo é a voz de Deus.”&lt;/em&gt;
+A crença de que a opinião pública é um guia confiável para a verdade ou a política correta.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Tempus Fugit&lt;/strong&gt; - &lt;em&gt;“O tempo voa.”&lt;/em&gt;
+Um lembrete da passagem rápida do tempo e a importância de usá-lo sabiamente.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Audere est Facere&lt;/strong&gt; - &lt;em&gt;“Ousar é fazer.”&lt;/em&gt;
+Encoraja a ação e a coragem para alcançar resultados.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Sic Transit Gloria Mundi&lt;/strong&gt; - &lt;em&gt;“Assim passa a glória do mundo.”&lt;/em&gt;
+Uma reflexão sobre a natureza transitória da fama e do sucesso.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Non Sequitur&lt;/strong&gt; - &lt;em&gt;“Não se segue.”&lt;/em&gt;
+Uma conclusão ou afirmação que não segue logicamente o que a precedeu.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Cogito, Ergo Sum&lt;/strong&gt; - &lt;em&gt;“Penso, logo existo.”&lt;/em&gt;
+Proferida por René Descartes, expressa a ideia de que a capacidade de pensar prova a existência de alguém.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Memento Mori&lt;/strong&gt; - &lt;em&gt;“Lembre-se de que você é mortal.”&lt;/em&gt;
+Um lembrete da inevitabilidade da morte e a importância de viver uma vida significativa.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Fiat Lux&lt;/strong&gt; - &lt;em&gt;“Faça-se a luz.”&lt;/em&gt;
+Uma expressão bíblica usada para indicar a criação ou o início de algo novo.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Errare Humanum Est&lt;/strong&gt; - &lt;em&gt;“Errar é humano.”&lt;/em&gt;
+Reconhece a natureza falível do ser humano e a importância do perdão.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;A Priori&lt;/strong&gt; - &lt;em&gt;“Do anterior.”&lt;/em&gt;
+Algo conhecido através da lógica ou raciocínio dedutivo, em vez de experiência.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Pax Romana&lt;/strong&gt; - &lt;em&gt;“A paz romana.”&lt;/em&gt;
+Refere-se ao longo período de paz relativa e estabilidade garantida pelo Império Romano.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>tools/k8s/install-k8s</title>
    <link href="/2023/11/19/install-k8s.html"/>
    <updated>2023-11-19T00:00:00+00:00</updated>
@@ -5862,6 +6021,15 @@ https://medium.com/wisemonks/foundations-of-golang-logging-a-comprehensive-prime
  </entry>
  
  <entry>
+   <title>development/books/sre-google</title>
+   <link href="/2023/08/25/sre-google.html"/>
+   <updated>2023-08-25T00:00:00+00:00</updated>
+   <id>/2023/08/25/sre-google</id>
+   <content type="html">&lt;h2 id=&quot;sre-google&quot;&gt;sre-google&lt;/h2&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>cheatsheet/docker</title>
    <link href="/2023/08/12/docker.html"/>
    <updated>2023-08-12T00:00:00+00:00</updated>
@@ -6119,6 +6287,16 @@ docker inspect --format=&apos;&apos; container-name # get image
    <updated>2023-07-28T00:00:00+00:00</updated>
    <id>/2023/07/28/undoing-things</id>
    <content type="html">&lt;h2 id=&quot;undoing-things&quot;&gt;undoing-things&lt;/h2&gt;
+
+&lt;p&gt;If you haven’t pushed the changes to the remote repository yet, you can undo the commit using the git reset command. To undo the last commit while keeping the commit’s changes in your working directory, use:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git reset HEAD~1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you’ve already pushed and want to remove the last commit from the remote repository, you can use the git push command with the –force or -f option.&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git push origin HEAD~1 &lt;span class=&quot;nt&quot;&gt;--force&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
  
