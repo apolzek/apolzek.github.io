@@ -18,7 +18,7 @@ Hey, how's it going?
 Yo!
 Hiya!
 Hey, what's going on?
-'Sup?
+Sup?
 Hello, mate!
 ```
 
@@ -84,6 +84,7 @@ I think so
 I don't think so
 ```
 
+Outros
 ```
 What's the opposite of beatiful ? - Qual o oposto de bonito ?
 That's it - Acabou / Terminou
