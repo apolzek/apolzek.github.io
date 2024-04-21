@@ -1,12 +1,12 @@
 ---
 layout: post
-title: latim/frases
-description: frases
-summary: frases
+title: latim/frases-comuns
+description: frases-comuns
+summary: frases-comuns
 tags: latim
 ---
 
-### Frases
+### frases-comuns
 
 - **Carpe Diem** - _"Aproveite o dia."_
   Um convite para não desperdiçar o momento presente e agir agora, sem adiar.
