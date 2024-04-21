@@ -617,6 +617,14 @@
     } ,
   
     {
+      "title"    : "tools/git/undoing-things",
+      "category" : "",
+      "tags"     : "git, history, github",
+      "url"      : "/2023/07/28/undoing-things.html",
+      "date"     : "2023-07-28 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "tools/git/delete-all-commit-history-github",
       "category" : "",
       "tags"     : "git, history, github",

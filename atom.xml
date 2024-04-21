@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-04-21T19:01:24+00:00</updated>
+ <updated>2024-04-21T19:03:36+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -6110,6 +6110,15 @@ docker inspect --format=&apos;&apos; container-name # get image
 
 &lt;p&gt;&lt;strong&gt;Purpose:&lt;/strong&gt; iptables configures Linux kernel packet filtering rules, and IP Masquerading enables Network Address Translation (NAT).
 &lt;strong&gt;How Docker Uses It:&lt;/strong&gt; Uses iptables for network address translation, allowing containers to communicate externally using the host machine’s IP address.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>tools/git/undoing-things</title>
+   <link href="/2023/07/28/undoing-things.html"/>
+   <updated>2023-07-28T00:00:00+00:00</updated>
+   <id>/2023/07/28/undoing-things</id>
+   <content type="html">&lt;h2 id=&quot;undoing-things&quot;&gt;undoing-things&lt;/h2&gt;
 </content>
  </entry>
  
