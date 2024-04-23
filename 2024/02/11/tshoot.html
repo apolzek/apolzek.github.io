@@ -12,6 +12,12 @@ ip addr show
 # Verificar se um host está acessível na rede
 ping endereço_do_host
 
+# cria um proxy TCP na porta 6000 que encaminha todas as conexões recebidas para o endereço 127.0.0.1 na porta 5000
+socat TCP-LISTEN:6000,fork,reuseaddr TCP:127.0.0.1:5000
+
+# pega o output do terminal e salva no arquivo.txt 
+script -f -a arquivo.txt
+
 # Verificar a rota padrão
 ip route show
 
