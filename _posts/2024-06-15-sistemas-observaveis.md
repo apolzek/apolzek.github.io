@@ -1,6 +1,6 @@
 ---
 layout: post
-title: cheatsheet/sistemas-observaveis
+title: sistemas-observaveis
 description: Sistemas Observáveis
 summary: Sistemas Observáveis
 tags: observabilidade monitoramento
