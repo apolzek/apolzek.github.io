@@ -9,9 +9,13 @@ tags: observabilidade monitoramento
 Antes de iniciar, reflita sobre as seguintes questões:
 
 1) Como saber quando a observabilidade foi alcançada?
+
 2) Para obter observabilidade, é necessário ter monitoramento previamente?
+
 3) Qual é o investimento apropriado para assegurar a observabilidade de um sistema ou produto?
+
 4) Quais questões podem ser respondidas ao se atingir o estágio de observabilidade em um sistema?
+
 5) Os dados relacionados ao negócio também fazem parte da observabilidade?
 
 Talvez ao ouvir o termo "observabilidade", venha imediatamente à mente uma pilha de ferramentas e belos dashboards. Também pensamos nos pilares como logs, traces e métricas. Mas, afinal, o que isso realmente significa? Eu costumo pensar que *é a capacidade de entender como o sistema está funcionando em determinado momento, sem a necessidade de grandes esforços mentais*. Envolve ter uma visão abrangente **e** profunda de um sistema e suas dependências. Afinal, nosso sistema não pode parar, ou pode? A questão é relativa, pois temos diferentes tipos de serviços com variados tamanhos e níveis de complexidade. A verdade é que, nos últimos anos, toda uma indústria tem se movimentado para criar ferramentas avançadas nesse contexto, e eu espero mostrar por quê.
