@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "futuro-do-brasil",
+      "category" : "",
+      "tags"     : "política, brasil",
+      "url"      : "/2024/06/22/futuro-do-brasil.html",
+      "date"     : "2024-06-22 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "sistemas-observaveis",
       "category" : "",
       "tags"     : "observabilidade, monitoramento",
