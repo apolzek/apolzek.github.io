@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-06-07T19:11:47+00:00</updated>
+ <updated>2024-06-07T20:19:23+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -28,11 +28,15 @@
    <id>/2024/06/07/sistemas-observaveis</id>
    <content type="html">&lt;p&gt;Antes de iniciar, reflita sobre as seguintes questões:&lt;/p&gt;
 
-&lt;p&gt;1) Como saber quando a observabilidade foi alcançada?
-2) Para obter observabilidade, é necessário ter monitoramento previamente?
-3) Qual é o investimento apropriado para assegurar a observabilidade de um sistema ou produto?
-4) Quais questões podem ser respondidas ao se atingir o estágio de observabilidade em um sistema?
-5) Os dados relacionados ao negócio também fazem parte da observabilidade?&lt;/p&gt;
+&lt;p&gt;1) Como saber quando a observabilidade foi alcançada?&lt;/p&gt;
+
+&lt;p&gt;2) Para obter observabilidade, é necessário ter monitoramento previamente?&lt;/p&gt;
+
+&lt;p&gt;3) Qual é o investimento apropriado para assegurar a observabilidade de um sistema ou produto?&lt;/p&gt;
+
+&lt;p&gt;4) Quais questões podem ser respondidas ao se atingir o estágio de observabilidade em um sistema?&lt;/p&gt;
+
+&lt;p&gt;5) Os dados relacionados ao negócio também fazem parte da observabilidade?&lt;/p&gt;
 
 &lt;p&gt;Talvez ao ouvir o termo “observabilidade”, venha imediatamente à mente uma pilha de ferramentas e belos dashboards. Também pensamos nos pilares como logs, traces e métricas. Mas, afinal, o que isso realmente significa? Eu costumo pensar que &lt;em&gt;é a capacidade de entender como o sistema está funcionando em determinado momento, sem a necessidade de grandes esforços mentais&lt;/em&gt;. Envolve ter uma visão abrangente &lt;strong&gt;e&lt;/strong&gt; profunda de um sistema e suas dependências. Afinal, nosso sistema não pode parar, ou pode? A questão é relativa, pois temos diferentes tipos de serviços com variados tamanhos e níveis de complexidade. A verdade é que, nos últimos anos, toda uma indústria tem se movimentado para criar ferramentas avançadas nesse contexto, e eu espero mostrar por quê.&lt;/p&gt;
 
