@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-06-11T23:09:58+00:00</updated>
+ <updated>2024-06-11T23:11:24+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>dicionario-tech</title>
-   <link href="/2024/06/22/dicionario-tech.html"/>
-   <updated>2024-06-22T00:00:00+00:00</updated>
-   <id>/2024/06/22/dicionario-tech</id>
+   <link href="/2024/06/08/dicionario-tech.html"/>
+   <updated>2024-06-08T00:00:00+00:00</updated>
+   <id>/2024/06/08/dicionario tech</id>
    <content type="html">&lt;p&gt;KISS
 DRY
 CQRS
