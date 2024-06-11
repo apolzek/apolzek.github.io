@@ -11,6 +11,27 @@
 "items": [
     
         {
+            "id": "/2024/08/11/tips-and-tricks.html",
+            "title": "tips-and-tricks",
+            "summary": "Tips And Tricks",
+            "content_text": "",
+            "content_html": "",
+            "url": "/2024/08/11/tips-and-tricks.html",
+            
+            
+            
+            "tags": ["tips","linux"],
+            
+            "date_published": "2024-08-11T00:00:00+00:00",
+            "date_modified": "2024-08-11T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
             "id": "/2024/07/11/dicionario-tech.html",
             "title": "dicionario-tech",
             "summary": "Dicionário Tech",

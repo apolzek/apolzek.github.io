@@ -4,13 +4,22 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-06-11T23:13:03+00:00</updated>
+ <updated>2024-06-11T23:14:23+00:00</updated>
  <id></id>
  <author>
    <name></name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>tips-and-tricks</title>
+   <link href="/2024/08/11/tips-and-tricks.html"/>
+   <updated>2024-08-11T00:00:00+00:00</updated>
+   <id>/2024/08/11/tips-and-tricks</id>
+   <content type="html">
+</content>
+ </entry>
  
  <entry>
    <title>dicionario-tech</title>

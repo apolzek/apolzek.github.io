@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "tips-and-tricks",
+      "category" : "",
+      "tags"     : "tips, linux",
+      "url"      : "/2024/08/11/tips-and-tricks.html",
+      "date"     : "2024-08-11 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "dicionario-tech",
       "category" : "",
       "tags"     : "tech, words",
