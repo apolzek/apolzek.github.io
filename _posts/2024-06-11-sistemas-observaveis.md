@@ -1,6 +1,6 @@
 ---
 layout: post
-title: sistemas-observaveis
+title: Sistemas Observáveis
 description: Sistemas Observáveis
 summary: Sistemas Observáveis
 tags: observabilidade monitoramento
