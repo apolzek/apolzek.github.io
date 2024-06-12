@@ -1,10 +1,10 @@
 [
   
     {
-      "title"    : "tips-and-tricks",
+      "title"    : "SRE Tips and Tricks",
       "category" : "",
       "tags"     : "tips, linux",
-      "url"      : "/2024/08/11/tips-and-tricks.html",
+      "url"      : "/2024/08/11/sre-tips-and-tricks.html",
       "date"     : "2024-08-11 00:00:00 +0000"
     } ,
   
@@ -17,10 +17,10 @@
     } ,
   
     {
-      "title"    : "Sistemas Observáveis",
+      "title"    : "Sistemas Observáveis - Parte 1",
       "category" : "",
       "tags"     : "observabilidade, monitoramento",
-      "url"      : "/2024/06/11/sistemas-observaveis.html",
+      "url"      : "/2024/06/11/sistemas-observaveis-parte-1.html",
       "date"     : "2024-06-11 00:00:00 +0000"
     } 
   
