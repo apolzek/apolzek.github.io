@@ -1,7 +1,7 @@
 ---
 layout: post
-title: tips-and-tricks
+title: SRE Tips and Tricks
 description: Tips And Tricks
-summary: Tips And Tricks
+summary:
 tags: tips linux
 ---
