@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-06-12T20:58:52+00:00</updated>
+ <updated>2024-06-18T01:36:12+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -45,24 +45,10 @@ alias docker_killall=’docker rm -f $(docker ps -aq)’&lt;/p&gt;
  </entry>
  
  <entry>
-   <title>dicionario-tech</title>
-   <link href="/2024/07/11/dicionario-tech.html"/>
-   <updated>2024-07-11T00:00:00+00:00</updated>
-   <id>/2024/07/11/dicionario-tech</id>
-   <content type="html">&lt;p&gt;KISS
-DRY
-CQRS
-JWT&lt;/p&gt;
-
-&lt;p&gt;Basic, Digestor ser complexo, pode ser abordado de diferentes formas dentro das empre, Cookie, Session, Token, JWT, API key&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
    <title>Sistemas Observáveis - Parte 1</title>
-   <link href="/2024/06/11/sistemas-observaveis-parte-1.html"/>
-   <updated>2024-06-11T00:00:00+00:00</updated>
-   <id>/2024/06/11/sistemas-observaveis-parte-1</id>
+   <link href="/2024/07/12/sistemas-observaveis-parte-1.html"/>
+   <updated>2024-07-12T00:00:00+00:00</updated>
+   <id>/2024/07/12/sistemas-observaveis-parte-1</id>
    <content type="html">&lt;p&gt;Antes de iniciar, responda as seguintes questões mentalmente:&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;1) É necessário ter monitoramento previamente para alcançar a observabilidade?&lt;/strong&gt;&lt;/p&gt;
@@ -95,6 +81,20 @@ JWT&lt;/p&gt;
 
 &lt;p&gt;O cenário hipotético acima ressalta a importância fundamental de um engenheiro competente. As mentes hábeis selecionarão as ferramentas adequadas, que se assemelham a uma terra fértil para o plantio. Estas auxiliarão na geração, captura e armazenamento de dados sobre os sistemas. Posteriormente, o mesmo engenheiro hábil os correlacionará de modo a representarem aspectos significativos do negócio. A agregação desses dados, apresentada de forma simplificada, proporciona uma visão compreensível mesmo para aqueles que não compartilham da mesma visão holística. Em síntese, alguém pensará de antemão para que os subsequentes não precisem fazê-lo. Trata-se de um projeto de melhoria contínua que jamais se encerra. O reflexo disso é ter dados bons o suficiente para montar alarmes eficazes que vão ajudar a responder a incidentes de maneira rápida. Repita esse fluxo várias vezes, pois observabilidade está mais para um processo contínuo do que um estado final.&lt;/p&gt;
 
+</content>
+ </entry>
+ 
+ <entry>
+   <title>dicionario-tech</title>
+   <link href="/2024/07/11/dicionario-tech.html"/>
+   <updated>2024-07-11T00:00:00+00:00</updated>
+   <id>/2024/07/11/dicionario-tech</id>
+   <content type="html">&lt;p&gt;KISS
+DRY
+CQRS
+JWT&lt;/p&gt;
+
+&lt;p&gt;Basic, Digestor ser complexo, pode ser abordado de diferentes formas dentro das empre, Cookie, Session, Token, JWT, API key&lt;/p&gt;
 </content>
  </entry>
  
