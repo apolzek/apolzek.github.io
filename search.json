@@ -22,6 +22,14 @@
       "tags"     : "tech, words",
       "url"      : "/2024/07/11/dicionario-tech.html",
       "date"     : "2024-07-11 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "🚨 Meu alerta é eficaz ?",
+      "category" : "",
+      "tags"     : "prometheus, alerts",
+      "url"      : "/2024/07/09/meu-alerta-e-eficaz.html",
+      "date"     : "2024-07-09 00:00:00 +0000"
     } 
   
 ]

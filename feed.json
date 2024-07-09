@@ -71,6 +71,27 @@
                 ""
                 
             
+        },
+    
+        {
+            "id": "/2024/07/09/meu-alerta-e-eficaz.html",
+            "title": "🚨 Meu alerta é eficaz ?",
+            "summary": "Uma breve reflexão sobre a criação de alertas que realmente funcionam como deveriam",
+            "content_text": "",
+            "content_html": "",
+            "url": "/2024/07/09/meu-alerta-e-eficaz.html",
+            
+            
+            
+            "tags": ["prometheus","alerts"],
+            
+            "date_published": "2024-07-09T00:00:00+00:00",
+            "date_modified": "2024-07-09T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
         }
     
     ]
