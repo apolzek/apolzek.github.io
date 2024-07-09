@@ -4,13 +4,40 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-07-09T14:46:56+00:00</updated>
+ <updated>2024-07-09T23:09:23+00:00</updated>
  <id></id>
  <author>
    <name></name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>🚨 Meu alerta é eficaz ?</title>
+   <link href="/2024/09/09/meu-alerta-e-eficaz.html"/>
+   <updated>2024-09-09T00:00:00+00:00</updated>
+   <id>/2024/09/09/meu-alerta-e-eficaz</id>
+   <content type="html">&lt;p&gt;Eu não quero te iludir, talvez você saia daqui com mais dúvidas do que respostas.. faz parte&lt;/p&gt;
+
+&lt;p&gt;Vamos raciocinar.. através de métricas conseguimos ter de maneira quantificada como as coisas estão. Coisas podem um banco de dados, um aplicação, uma rede de computares ou até uma geladeira. Antes de prosseguir é válido reforçar algo, alguns sistemas já possuem métricas nativamente, outros possuem exporters(programas especializados) que conseguem extrair isso pra você. Um terceiro caso é você mesmo criar suas métricas através de instrumentação de código ou técnica similar. O ponto aqui é, para criar bons alarmes você precisa de boas métricas. Sem isso fica inviável seguir. Assim como testes unitários dos software imagine que as métricas tem um coverage, ou seja, elas cobrem uma porcentagem(%) da superfície que você deseja monitorar. Mas até aqui tudo bem, sei que suas métricas são boas e suficientes.&lt;/p&gt;
+
+&lt;p&gt;Com as métricas em mão, você precisa montar seus alertas e aqui vem o primeiro grande desafio. Se você está usando prometheus terá que lidar com promql, se usa NewRelic terá que lidar com nrql e por ai vai. Não adianta se esconder, encare esse desfio de frente.&lt;/p&gt;
+
+&lt;p&gt;$__rate_interval&lt;/p&gt;
+
+&lt;p&gt;2024-07-09 16:11:08&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;app_request_latency_seconds_bucket {__name__=&quot;app_request_latency_seconds_bucket&quot;, endpoint=&quot;/&quot;, instance=&quot;flask-app:5000&quot;, job=&quot;app_exporter&quot;, le=&quot;1.0&quot;, method=&quot;GET&quot;}
+117
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;2024-07-09 16:28:08&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;app_request_latency_seconds_bucket {__name__=&quot;app_request_latency_seconds_bucket&quot;, endpoint=&quot;/&quot;, instance=&quot;flask-app:5000&quot;, job=&quot;app_exporter&quot;, le=&quot;1.0&quot;, method=&quot;GET&quot;}
+318
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Vamos fazer 318 - 117 / 1020 = 0,197058824&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>SRE Tips and Tricks</title>
@@ -85,25 +112,116 @@ alias docker_killall=’docker rm -f $(docker ps -aq)’&lt;/p&gt;
  </entry>
  
  <entry>
-   <title>dicionario-tech</title>
-   <link href="/2024/07/11/dicionario-tech.html"/>
-   <updated>2024-07-11T00:00:00+00:00</updated>
-   <id>/2024/07/11/dicionario-tech</id>
-   <content type="html">&lt;p&gt;KISS
-DRY
-CQRS
-JWT&lt;/p&gt;
-
-&lt;p&gt;Basic, Digestor ser complexo, pode ser abordado de diferentes formas dentro das empre, Cookie, Session, Token, JWT, API key&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>🚨 Meu alerta é eficaz ?</title>
-   <link href="/2024/07/09/meu-alerta-e-eficaz.html"/>
-   <updated>2024-07-09T00:00:00+00:00</updated>
-   <id>/2024/07/09/meu-alerta-e-eficaz</id>
-   <content type="html">
+   <title>Tip Dicionário do SRE</title>
+   <link href="/2024/07/08/tips-dicionario-do-sre.html"/>
+   <updated>2024-07-08T00:00:00+00:00</updated>
+   <id>/2024/07/08/tips-dicionario-do-sre</id>
+   <content type="html">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Termo&lt;/th&gt;
+      &lt;th&gt;Definição&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;API&lt;/td&gt;
+      &lt;td&gt;Interface de Programação de Aplicações. Um conjunto de rotinas e padrões para utilização de funcionalidades por aplicativos externos.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;A/B Testing&lt;/td&gt;
+      &lt;td&gt;Teste A/B. Método estatístico para comparar duas versões de um aplicativo ou página web para determinar qual é mais eficaz.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Basic Authentication&lt;/td&gt;
+      &lt;td&gt;Autenticação Básica. Método simples de autenticação HTTP usando usuário e senha codificados em base64.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Clean Code&lt;/td&gt;
+      &lt;td&gt;Código Limpo. Princípios e práticas para escrever código legível, modular e de fácil manutenção.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Cookie&lt;/td&gt;
+      &lt;td&gt;Pequeno arquivo enviado pelo servidor e armazenado localmente no navegador, usado para gerenciar sessões e autenticação.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;CQRS&lt;/td&gt;
+      &lt;td&gt;Command Query Responsibility Segregation. Padrão de design que separa a leitura e escrita de dados em diferentes modelos.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Dependency Injection&lt;/td&gt;
+      &lt;td&gt;Injeção de Dependência. Padrão de design que permite passar dependências para um objeto em tempo de execução, melhorando a modularidade e testabilidade do código.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Docker&lt;/td&gt;
+      &lt;td&gt;Plataforma para desenvolver, enviar e executar aplicativos em containers. Facilita o empacotamento de uma aplicação e suas dependências em um único objeto.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;DRY&lt;/td&gt;
+      &lt;td&gt;Don’t Repeat Yourself. Princípio de desenvolvimento para reduzir duplicação de código através de abstração e reutilização.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Event Sourcing&lt;/td&gt;
+      &lt;td&gt;Padrão de arquitetura onde o estado de um sistema é determinado por uma sequência de eventos registrados, permitindo reconstruir o estado atual a partir do histórico de eventos.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;GraphQL&lt;/td&gt;
+      &lt;td&gt;Linguagem de consulta e runtime para APIs. Permite aos clientes definir a estrutura de dados que precisam, facilitando consultas eficientes e flexíveis.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Idempotency&lt;/td&gt;
+      &lt;td&gt;Idempotência. Propriedade de operações que podem ser aplicadas múltiplas vezes sem alterar o resultado além da primeira aplicação.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;JWT&lt;/td&gt;
+      &lt;td&gt;JSON Web Token. Formato compacto para transmitir informações entre partes como um objeto JSON. Usado para autenticação em APIs.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Kubernetes&lt;/td&gt;
+      &lt;td&gt;Sistema open-source para automatizar a implantação, o dimensionamento e a gestão de aplicativos em containers.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Microservices&lt;/td&gt;
+      &lt;td&gt;Microserviços. Arquitetura de software que organiza uma aplicação como um conjunto de serviços independentes, cada um focado em uma tarefa específica.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;ORM&lt;/td&gt;
+      &lt;td&gt;Object-Relational Mapping. Técnica de programação que mapeia objetos de um sistema orientado a objetos para representações de dados relacionais.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Round Robin&lt;/td&gt;
+      &lt;td&gt;Método de balanceamento de carga que distribui requisições igualmente entre os servidores disponíveis, sem considerar o estado anterior.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Session&lt;/td&gt;
+      &lt;td&gt;Sessão. Manutenção de estado entre requisições de um usuário em uma aplicação web.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SOLID&lt;/td&gt;
+      &lt;td&gt;Princípios de design de software que promovem um código mais limpo, flexível e fácil de manter: Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation e Dependency Inversion.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;TDD&lt;/td&gt;
+      &lt;td&gt;Test-Driven Development. Método de desenvolvimento de software onde testes automatizados são escritos antes do código de produção.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Token&lt;/td&gt;
+      &lt;td&gt;Token. Pequeno pacote de dados que serve como um identificador único e seguro para autenticação e autorização.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;URL&lt;/td&gt;
+      &lt;td&gt;Uniform Resource Locator. Endereço que define o local de um recurso na web.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;URI&lt;/td&gt;
+      &lt;td&gt;Uniform Resource Identifier. Identificador único que define o local de um recurso na web.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;WebSockets&lt;/td&gt;
+      &lt;td&gt;Protocolo de comunicação bidirecional, full-duplex, entre um cliente e um servidor web, adequado para aplicações que requerem comunicação em tempo real.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 </content>
  </entry>
  

@@ -11,6 +11,27 @@
 "items": [
     
         {
+            "id": "/2024/09/09/meu-alerta-e-eficaz.html",
+            "title": "🚨 Meu alerta é eficaz ?",
+            "summary": "Uma breve reflexão sobre a criação de alertas que realmente funcionam como deveriam",
+            "content_text": "Eu não quero te iludir, talvez você saia daqui com mais dúvidas do que respostas.. faz parteVamos raciocinar.. através de métricas conseguimos ter de maneira quantificada como as coisas estão. Coisas podem um banco de dados, um aplicação, uma rede de computares ou até uma geladeira. Antes de prosseguir é válido reforçar algo, alguns sistemas já possuem métricas nativamente, outros possuem exporters(programas especializados) que conseguem extrair isso pra você. Um terceiro caso é você mesmo criar suas métricas através de instrumentação de código ou técnica similar. O ponto aqui é, para criar bons alarmes você precisa de boas métricas. Sem isso fica inviável seguir. Assim como testes unitários dos software imagine que as métricas tem um coverage, ou seja, elas cobrem uma porcentagem(%) da superfície que você deseja monitorar. Mas até aqui tudo bem, sei que suas métricas são boas e suficientes.Com as métricas em mão, você precisa montar seus alertas e aqui vem o primeiro grande desafio. Se você está usando prometheus terá que lidar com promql, se usa NewRelic terá que lidar com nrql e por ai vai. Não adianta se esconder, encare esse desfio de frente.$__rate_interval2024-07-09 16:11:08app_request_latency_seconds_bucket {__name__=\"app_request_latency_seconds_bucket\", endpoint=\"/\", instance=\"flask-app:5000\", job=\"app_exporter\", le=\"1.0\", method=\"GET\"}1172024-07-09 16:28:08app_request_latency_seconds_bucket {__name__=\"app_request_latency_seconds_bucket\", endpoint=\"/\", instance=\"flask-app:5000\", job=\"app_exporter\", le=\"1.0\", method=\"GET\"}318Vamos fazer 318 - 117 / 1020 = 0,197058824",
+            "content_html": "<p>Eu não quero te iludir, talvez você saia daqui com mais dúvidas do que respostas.. faz parte</p><p>Vamos raciocinar.. através de métricas conseguimos ter de maneira quantificada como as coisas estão. Coisas podem um banco de dados, um aplicação, uma rede de computares ou até uma geladeira. Antes de prosseguir é válido reforçar algo, alguns sistemas já possuem métricas nativamente, outros possuem exporters(programas especializados) que conseguem extrair isso pra você. Um terceiro caso é você mesmo criar suas métricas através de instrumentação de código ou técnica similar. O ponto aqui é, para criar bons alarmes você precisa de boas métricas. Sem isso fica inviável seguir. Assim como testes unitários dos software imagine que as métricas tem um coverage, ou seja, elas cobrem uma porcentagem(%) da superfície que você deseja monitorar. Mas até aqui tudo bem, sei que suas métricas são boas e suficientes.</p><p>Com as métricas em mão, você precisa montar seus alertas e aqui vem o primeiro grande desafio. Se você está usando prometheus terá que lidar com promql, se usa NewRelic terá que lidar com nrql e por ai vai. Não adianta se esconder, encare esse desfio de frente.</p><p>$__rate_interval</p><p>2024-07-09 16:11:08</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>app_request_latency_seconds_bucket {__name__=\"app_request_latency_seconds_bucket\", endpoint=\"/\", instance=\"flask-app:5000\", job=\"app_exporter\", le=\"1.0\", method=\"GET\"}117</code></pre></div></div><p>2024-07-09 16:28:08</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>app_request_latency_seconds_bucket {__name__=\"app_request_latency_seconds_bucket\", endpoint=\"/\", instance=\"flask-app:5000\", job=\"app_exporter\", le=\"1.0\", method=\"GET\"}318</code></pre></div></div><p>Vamos fazer 318 - 117 / 1020 = 0,197058824</p>",
+            "url": "/2024/09/09/meu-alerta-e-eficaz.html",
+            
+            
+            
+            "tags": ["prometheus","alerts"],
+            
+            "date_published": "2024-09-09T00:00:00+00:00",
+            "date_modified": "2024-09-09T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
             "id": "/2024/08/11/sre-tips-and-tricks.html",
             "title": "SRE Tips and Tricks",
             "summary": "Tips And Tricks",
@@ -53,40 +74,19 @@
         },
     
         {
-            "id": "/2024/07/11/dicionario-tech.html",
-            "title": "dicionario-tech",
-            "summary": "Dicionário Tech",
-            "content_text": "KISSDRYCQRSJWTBasic, Digestor ser complexo, pode ser abordado de diferentes formas dentro das empre, Cookie, Session, Token, JWT, API key",
-            "content_html": "<p>KISSDRYCQRSJWT</p><p>Basic, Digestor ser complexo, pode ser abordado de diferentes formas dentro das empre, Cookie, Session, Token, JWT, API key</p>",
-            "url": "/2024/07/11/dicionario-tech.html",
+            "id": "/2024/07/08/tips-dicionario-do-sre.html",
+            "title": "Tip Dicionário do SRE",
+            "summary": "Apenas algumas palavras e acrônimos são comumente utilizados",
+            "content_text": "            Termo      Definição                  API      Interface de Programação de Aplicações. Um conjunto de rotinas e padrões para utilização de funcionalidades por aplicativos externos.              A/B Testing      Teste A/B. Método estatístico para comparar duas versões de um aplicativo ou página web para determinar qual é mais eficaz.              Basic Authentication      Autenticação Básica. Método simples de autenticação HTTP usando usuário e senha codificados em base64.              Clean Code      Código Limpo. Princípios e práticas para escrever código legível, modular e de fácil manutenção.              Cookie      Pequeno arquivo enviado pelo servidor e armazenado localmente no navegador, usado para gerenciar sessões e autenticação.              CQRS      Command Query Responsibility Segregation. Padrão de design que separa a leitura e escrita de dados em diferentes modelos.              Dependency Injection      Injeção de Dependência. Padrão de design que permite passar dependências para um objeto em tempo de execução, melhorando a modularidade e testabilidade do código.              Docker      Plataforma para desenvolver, enviar e executar aplicativos em containers. Facilita o empacotamento de uma aplicação e suas dependências em um único objeto.              DRY      Don’t Repeat Yourself. Princípio de desenvolvimento para reduzir duplicação de código através de abstração e reutilização.              Event Sourcing      Padrão de arquitetura onde o estado de um sistema é determinado por uma sequência de eventos registrados, permitindo reconstruir o estado atual a partir do histórico de eventos.              GraphQL      Linguagem de consulta e runtime para APIs. Permite aos clientes definir a estrutura de dados que precisam, facilitando consultas eficientes e flexíveis.              Idempotency      Idempotência. Propriedade de operações que podem ser aplicadas múltiplas vezes sem alterar o resultado além da primeira aplicação.              JWT      JSON Web Token. Formato compacto para transmitir informações entre partes como um objeto JSON. Usado para autenticação em APIs.              Kubernetes      Sistema open-source para automatizar a implantação, o dimensionamento e a gestão de aplicativos em containers.              Microservices      Microserviços. Arquitetura de software que organiza uma aplicação como um conjunto de serviços independentes, cada um focado em uma tarefa específica.              ORM      Object-Relational Mapping. Técnica de programação que mapeia objetos de um sistema orientado a objetos para representações de dados relacionais.              Round Robin      Método de balanceamento de carga que distribui requisições igualmente entre os servidores disponíveis, sem considerar o estado anterior.              Session      Sessão. Manutenção de estado entre requisições de um usuário em uma aplicação web.              SOLID      Princípios de design de software que promovem um código mais limpo, flexível e fácil de manter: Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation e Dependency Inversion.              TDD      Test-Driven Development. Método de desenvolvimento de software onde testes automatizados são escritos antes do código de produção.              Token      Token. Pequeno pacote de dados que serve como um identificador único e seguro para autenticação e autorização.              URL      Uniform Resource Locator. Endereço que define o local de um recurso na web.              URI      Uniform Resource Identifier. Identificador único que define o local de um recurso na web.              WebSockets      Protocolo de comunicação bidirecional, full-duplex, entre um cliente e um servidor web, adequado para aplicações que requerem comunicação em tempo real.      ",
+            "content_html": "<table>  <thead>    <tr>      <th>Termo</th>      <th>Definição</th>    </tr>  </thead>  <tbody>    <tr>      <td>API</td>      <td>Interface de Programação de Aplicações. Um conjunto de rotinas e padrões para utilização de funcionalidades por aplicativos externos.</td>    </tr>    <tr>      <td>A/B Testing</td>      <td>Teste A/B. Método estatístico para comparar duas versões de um aplicativo ou página web para determinar qual é mais eficaz.</td>    </tr>    <tr>      <td>Basic Authentication</td>      <td>Autenticação Básica. Método simples de autenticação HTTP usando usuário e senha codificados em base64.</td>    </tr>    <tr>      <td>Clean Code</td>      <td>Código Limpo. Princípios e práticas para escrever código legível, modular e de fácil manutenção.</td>    </tr>    <tr>      <td>Cookie</td>      <td>Pequeno arquivo enviado pelo servidor e armazenado localmente no navegador, usado para gerenciar sessões e autenticação.</td>    </tr>    <tr>      <td>CQRS</td>      <td>Command Query Responsibility Segregation. Padrão de design que separa a leitura e escrita de dados em diferentes modelos.</td>    </tr>    <tr>      <td>Dependency Injection</td>      <td>Injeção de Dependência. Padrão de design que permite passar dependências para um objeto em tempo de execução, melhorando a modularidade e testabilidade do código.</td>    </tr>    <tr>      <td>Docker</td>      <td>Plataforma para desenvolver, enviar e executar aplicativos em containers. Facilita o empacotamento de uma aplicação e suas dependências em um único objeto.</td>    </tr>    <tr>      <td>DRY</td>      <td>Don’t Repeat Yourself. Princípio de desenvolvimento para reduzir duplicação de código através de abstração e reutilização.</td>    </tr>    <tr>      <td>Event Sourcing</td>      <td>Padrão de arquitetura onde o estado de um sistema é determinado por uma sequência de eventos registrados, permitindo reconstruir o estado atual a partir do histórico de eventos.</td>    </tr>    <tr>      <td>GraphQL</td>      <td>Linguagem de consulta e runtime para APIs. Permite aos clientes definir a estrutura de dados que precisam, facilitando consultas eficientes e flexíveis.</td>    </tr>    <tr>      <td>Idempotency</td>      <td>Idempotência. Propriedade de operações que podem ser aplicadas múltiplas vezes sem alterar o resultado além da primeira aplicação.</td>    </tr>    <tr>      <td>JWT</td>      <td>JSON Web Token. Formato compacto para transmitir informações entre partes como um objeto JSON. Usado para autenticação em APIs.</td>    </tr>    <tr>      <td>Kubernetes</td>      <td>Sistema open-source para automatizar a implantação, o dimensionamento e a gestão de aplicativos em containers.</td>    </tr>    <tr>      <td>Microservices</td>      <td>Microserviços. Arquitetura de software que organiza uma aplicação como um conjunto de serviços independentes, cada um focado em uma tarefa específica.</td>    </tr>    <tr>      <td>ORM</td>      <td>Object-Relational Mapping. Técnica de programação que mapeia objetos de um sistema orientado a objetos para representações de dados relacionais.</td>    </tr>    <tr>      <td>Round Robin</td>      <td>Método de balanceamento de carga que distribui requisições igualmente entre os servidores disponíveis, sem considerar o estado anterior.</td>    </tr>    <tr>      <td>Session</td>      <td>Sessão. Manutenção de estado entre requisições de um usuário em uma aplicação web.</td>    </tr>    <tr>      <td>SOLID</td>      <td>Princípios de design de software que promovem um código mais limpo, flexível e fácil de manter: Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation e Dependency Inversion.</td>    </tr>    <tr>      <td>TDD</td>      <td>Test-Driven Development. Método de desenvolvimento de software onde testes automatizados são escritos antes do código de produção.</td>    </tr>    <tr>      <td>Token</td>      <td>Token. Pequeno pacote de dados que serve como um identificador único e seguro para autenticação e autorização.</td>    </tr>    <tr>      <td>URL</td>      <td>Uniform Resource Locator. Endereço que define o local de um recurso na web.</td>    </tr>    <tr>      <td>URI</td>      <td>Uniform Resource Identifier. Identificador único que define o local de um recurso na web.</td>    </tr>    <tr>      <td>WebSockets</td>      <td>Protocolo de comunicação bidirecional, full-duplex, entre um cliente e um servidor web, adequado para aplicações que requerem comunicação em tempo real.</td>    </tr>  </tbody></table>",
+            "url": "/2024/07/08/tips-dicionario-do-sre.html",
             
             
             
-            "tags": ["tech","words"],
+            "tags": ["sre","words"],
             
-            "date_published": "2024-07-11T00:00:00+00:00",
-            "date_modified": "2024-07-11T00:00:00+00:00",
-            
-                "author": 
-                ""
-                
-            
-        },
-    
-        {
-            "id": "/2024/07/09/meu-alerta-e-eficaz.html",
-            "title": "🚨 Meu alerta é eficaz ?",
-            "summary": "Uma breve reflexão sobre a criação de alertas que realmente funcionam como deveriam",
-            "content_text": "",
-            "content_html": "",
-            "url": "/2024/07/09/meu-alerta-e-eficaz.html",
-            
-            
-            
-            "tags": ["prometheus","alerts"],
-            
-            "date_published": "2024-07-09T00:00:00+00:00",
-            "date_modified": "2024-07-09T00:00:00+00:00",
+            "date_published": "2024-07-08T00:00:00+00:00",
+            "date_modified": "2024-07-08T00:00:00+00:00",
             
                 "author": 
                 ""
