@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-07-10T22:29:56+00:00</updated>
+ <updated>2024-07-14T13:14:58+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -154,6 +154,15 @@
  </entry>
  
  <entry>
+   <title></title>
+   <link href="/2024/07/14/2024-07-08-tip-sre-interview.html"/>
+   <updated>2024-07-14T13:14:58+00:00</updated>
+   <id>/2024/07/14/2024-07-08-tip-sre-interview</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
    <title>Sistemas Observáveis - Parte 1</title>
    <link href="/2024/07/12/sistemas-observaveis-parte-1.html"/>
    <updated>2024-07-12T00:00:00+00:00</updated>
@@ -194,46 +203,47 @@
  </entry>
  
  <entry>
-   <title></title>
-   <link href="/2024/07/10/2024-07-08-tip-sre-interview.html"/>
-   <updated>2024-07-10T22:29:56+00:00</updated>
-   <id>/2024/07/10/2024-07-08-tip-sre-interview</id>
-   <content type="html">
-</content>
- </entry>
- 
- <entry>
    <title>SRE Tips and Tricks</title>
    <link href="/2024/07/01/sre-tips-and-tricks.html"/>
    <updated>2024-07-01T00:00:00+00:00</updated>
    <id>/2024/07/01/sre-tips-and-tricks</id>
-   <content type="html">&lt;h2 id=&quot;tip-1-use-um-multiple-runtime-version-manager&quot;&gt;Tip 1: Use um Multiple Runtime Version Manager&lt;/h2&gt;
+   <content type="html">&lt;h2 id=&quot;tip-1-use-um-gerenciador-de-versões-multiple-runtime-version-manager&quot;&gt;Tip 1: Use um Gerenciador de versões (Multiple Runtime Version Manager)&lt;/h2&gt;
 
-&lt;p&gt;Vamos começar com a melhor dica… se você precisa usar mais de uma versão de uma &lt;strong&gt;ferramenta&lt;/strong&gt; ou &lt;strong&gt;linguagem de programação&lt;/strong&gt;, use um Gerenciador de Versão para fazer isso. Essa é pra você que num dia está rodando projeto Java 11 e no outro precisa de Java 22. Ou para aquele SRE que precisa alternar entre versões de terraform e fica usando &lt;em&gt;tfenv&lt;/em&gt;. Essa dica te ajuda nos estudos, no trampo e também a deixar de lado aquela preguiça de ter que instalar coisas pra testar um projeto ou ferramenta aleatória. Desse jeito fica &lt;strong&gt;EASY&lt;/strong&gt; e se você faz tudo certinho, seu ambiente local não vai quebrar &lt;em&gt;#confia&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;É natural precisarmos de mais de uma versão de uma ferramenta ou de uma linguagem de programação. Use um gerenciador de versões para fazer isso. Essa é pra você que, num dia, está rodando um projeto em Java 11 e, no outro, precisa de Java 22. Ou para aquele SRE que precisa alternar entre versões de Terraform e fica usando tfenv. Isso pode te ajudar nos estudos, no trabalho e também a deixar de lado aquela preguiça de ter que instalar coisas para testar um projeto ou ferramenta aleatória do GitHub. Desse jeito, fica easy e, se você faz tudo certinho, não quebra seu Linux #confia. Abaixo estão boas alternativas com alguns exemplos de como fazer isso:&lt;/p&gt;
+
+&lt;h4 id=&quot;asdf&quot;&gt;asdf&lt;/h4&gt;
 
 &lt;p&gt;&lt;strong&gt;asdf&lt;/strong&gt;: https://asdf-vm.com/&lt;/p&gt;
 
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;asdf &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;mise&quot;&gt;mise&lt;/h4&gt;
+
 &lt;p&gt;&lt;strong&gt;mise&lt;/strong&gt;: https://mise.jdx.dev/&lt;/p&gt;
 
-&lt;h2 id=&quot;tip-2-use-alias-mermão&quot;&gt;Tip 2: Use alias mermão&lt;/h2&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mise use &lt;span class=&quot;nt&quot;&gt;-g&lt;/span&gt; ruby@3.2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Mano, alias é igual cueca, cada um tem o seu. Se você tem contato constante com terminal Linux, configure seuas alias pra ganhar tempo e aumentar a produtividade. Muita coisa é importante memorizar, mas no geral a gente acaba usando técnicas como man e –help. Abaixo estão alguns alias retardados que eu utilizo.&lt;/p&gt;
+&lt;h2 id=&quot;tip-2-alias&quot;&gt;Tip 2: Alias&lt;/h2&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;alias ls&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;ls --color=auto&apos;&lt;/span&gt;
+&lt;p&gt;Essa dica pode te fazer economizar um bom tempo. Alias são apelidos para outros comandos, que normalmente são grandes e/ou complexos.&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;alias ls&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;ls --color=auto&apos;&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;alias grep&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;grep --color=auto&apos;&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;docker_killall&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;docker rm -f $(docker ps -aq)&apos;&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;MONITOR_ALL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;xrandr --output HDMI-1 --mode 1920x1080 --primary --left-of eDP-1 --output eDP-1 --auto&apos;&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;MONITOR_JUST_HDMI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;xrandr --output HDMI-1 --mode 1920x1080 --primary --output eDP-1 --off&apos;&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;MONITOR_JUST_NOTEBOOK&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;xrandr --output HDMI-1 --off --output eDP-1 --auto&apos;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;KEYBOARD_LOCAL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;setxkbmap -model thinkpad -layout br -variant abnt2&apos;&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;MONITOR_NOTEBOOK_BRILHANTE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;xrandr --output eDP-1 --brightness 1.2&apos;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;KEYBOARD_LOCAL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;setxkbmap -model thinkpad -layout br -variant abnt2&apos;&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;clip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;xclip -selection clipboard&apos;&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;WIFIPASS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;echo \# cat /etc/NetworkManager/system-connections/*&apos;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;tip-3-use-docker-kind-docker-compose-local-stack-sem-medooo-de-ser-feliz&quot;&gt;Tip 3: Use docker, kind, docker compose, local stack SEM MEDOOO de ser feliz&lt;/h2&gt;
 
-&lt;p&gt;Crie ambientes isolados pra realizar seus testes. O jeito mais fácil é usando containers. Seja com docker ou podman, crie manifestos completos montando ambientes que você precisa. Dessa forma você isola faz isolamento, consegue setar diferentes versões, consegue testar aquivos de configuração e também limitar utilização de recursos.&lt;/p&gt;
+&lt;p&gt;Crie ambientes isolados pra realizar seus testes usando containers. Seja com docker ou podman, crie manifestos completos montando ambientes que você precisa. Dessa forma você protege seu ambiente local, além disso consegue setar diferentes versões, consegue testar aquivos de configuração e também limitar utilização de recursos computacionais.&lt;/p&gt;
 
 &lt;h2 id=&quot;tip-4-saiba-fazer-a-mesma-coisa-de-diferentes-formas&quot;&gt;Tip 4: Saiba fazer a mesma coisa de diferentes formas&lt;/h2&gt;
 

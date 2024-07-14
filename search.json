@@ -17,19 +17,19 @@
     } ,
   
     {
+      "title"    : "",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/2024/07/14/2024-07-08-tip-sre-interview.html",
+      "date"     : "2024-07-14 13:14:58 +0000"
+    } ,
+  
+    {
       "title"    : "Sistemas Observáveis - Parte 1",
       "category" : "",
       "tags"     : "observabilidade, monitoramento",
       "url"      : "/2024/07/12/sistemas-observaveis-parte-1.html",
       "date"     : "2024-07-12 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "",
-      "category" : "",
-      "tags"     : "",
-      "url"      : "/2024/07/10/2024-07-08-tip-sre-interview.html",
-      "date"     : "2024-07-10 22:29:56 +0000"
     } ,
   
     {
