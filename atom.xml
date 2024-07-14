@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-07-14T13:17:46+00:00</updated>
+ <updated>2024-07-14T13:21:57+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -127,19 +127,10 @@
  </entry>
  
  <entry>
-   <title></title>
-   <link href="/2024/07/14/2024-07-08-tip-sre-interview.html"/>
-   <updated>2024-07-14T13:17:46+00:00</updated>
-   <id>/2024/07/14/2024-07-08-tip-sre-interview</id>
-   <content type="html">
-</content>
- </entry>
- 
- <entry>
    <title>Sistemas Observáveis - Parte 1</title>
-   <link href="/2024/07/12/sistemas-observaveis-parte-1.html"/>
-   <updated>2024-07-12T00:00:00+00:00</updated>
-   <id>/2024/07/12/sistemas-observaveis-parte-1</id>
+   <link href="/2024/09/12/sistemas-observaveis-parte-1.html"/>
+   <updated>2024-09-12T00:00:00+00:00</updated>
+   <id>/2024/09/12/sistemas-observaveis-parte-1</id>
    <content type="html">&lt;p&gt;Antes de iniciar, responda as seguintes questões mentalmente:&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;1) É necessário ter monitoramento previamente para alcançar a observabilidade?&lt;/strong&gt;&lt;/p&gt;
@@ -176,7 +167,16 @@
  </entry>
  
  <entry>
-   <title>Por que não alarmou ?</title>
+   <title></title>
+   <link href="/2024/07/14/2024-07-08-tip-sre-interview.html"/>
+   <updated>2024-07-14T13:21:57+00:00</updated>
+   <id>/2024/07/14/2024-07-08-tip-sre-interview</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>😭 Por que não alarmou ?</title>
    <link href="/2024/07/09/por-que-nao-alarmou.html"/>
    <updated>2024-07-09T00:00:00+00:00</updated>
    <id>/2024/07/09/por-que-nao-alarmou</id>
@@ -207,15 +207,20 @@
    <link href="/2024/07/01/sre-tips-and-tricks.html"/>
    <updated>2024-07-01T00:00:00+00:00</updated>
    <id>/2024/07/01/sre-tips-and-tricks</id>
-   <content type="html">&lt;h2 id=&quot;tip-1-use-um-gerenciador-de-versões-multiple-runtime-version-manager&quot;&gt;Tip 1: Use um Gerenciador de versões (Multiple Runtime Version Manager)&lt;/h2&gt;
+   <content type="html">&lt;h2 id=&quot;1---use-um-gerenciador-de-versões-multiple-runtime-version-manager&quot;&gt;1 - Use um Gerenciador de versões (Multiple Runtime Version Manager)&lt;/h2&gt;
 
-&lt;p&gt;É natural precisarmos de mais de uma versão de uma ferramenta ou de uma linguagem de programação. Use um gerenciador de versões para fazer isso. Essa é pra você que, num dia, está rodando um projeto em Java 11 e, no outro, precisa de Java 22. Ou para aquele SRE que precisa alternar entre versões de Terraform e fica usando tfenv. Isso pode te ajudar nos estudos, no trabalho e também a deixar de lado aquela preguiça de ter que instalar coisas para testar um projeto ou ferramenta aleatória do GitHub. Desse jeito, fica easy e, se você faz tudo certinho, não quebra seu Linux #confia. Abaixo estão boas alternativas com alguns exemplos de como fazer isso:&lt;/p&gt;
+&lt;p&gt;É natural precisarmos de mais de uma versão de uma ferramenta ou de uma linguagem de programação. Use um gerenciador de versões para fazer isso. Essa é pra você que, num dia, está rodando um projeto em Java 11 e, no outro, precisa de Java 22. Ou para aquele SRE que precisa alternar entre versões de Terraform e fica usando tfenv. Isso pode te ajudar nos estudos, no trabalho e também a deixar de lado aquela preguiça de ter que instalar coisas para testar um projeto ou ferramenta aleatória do GitHub. Desse jeito, fica easy e, se você faz tudo certinho, não quebra seu Linux &lt;em&gt;#confia&lt;/em&gt;. Abaixo estão boas alternativas com alguns exemplos de como fazer isso:&lt;/p&gt;
 
 &lt;h4 id=&quot;asdf&quot;&gt;asdf&lt;/h4&gt;
 
 &lt;p&gt;&lt;strong&gt;asdf&lt;/strong&gt;: https://asdf-vm.com/&lt;/p&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;asdf &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;
+asdf plugin add java
+asdf &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;java graalvm-22.3.0+java19
+asdf global java graalvm-22.3.0+java19
+&lt;span class=&quot;nb&quot;&gt;tail&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/.tool-versions
+java &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h4 id=&quot;mise&quot;&gt;mise&lt;/h4&gt;
@@ -225,7 +230,7 @@
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mise use &lt;span class=&quot;nt&quot;&gt;-g&lt;/span&gt; ruby@3.2
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;tip-2-alias&quot;&gt;Tip 2: Alias&lt;/h2&gt;
+&lt;h2 id=&quot;2---alias&quot;&gt;2 - Alias&lt;/h2&gt;
 
 &lt;p&gt;Essa dica pode te fazer economizar um bom tempo. Alias são apelidos para outros comandos, que normalmente são grandes e/ou complexos.&lt;/p&gt;
 
@@ -241,11 +246,11 @@
 &lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;WIFIPASS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;echo \# cat /etc/NetworkManager/system-connections/*&apos;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;tip-3-use-docker-kind-docker-compose-local-stack-sem-medooo-de-ser-feliz&quot;&gt;Tip 3: Use docker, kind, docker compose, local stack SEM MEDOOO de ser feliz&lt;/h2&gt;
+&lt;h2 id=&quot;3---use-docker-kind-docker-compose-local-stack-sem-medooo-de-ser-feliz&quot;&gt;3 - Use docker, kind, docker compose, local stack SEM MEDOOO de ser feliz&lt;/h2&gt;
 
 &lt;p&gt;Crie ambientes isolados pra realizar seus testes usando containers. Seja com docker ou podman, crie manifestos completos montando ambientes que você precisa. Dessa forma você protege seu ambiente local, além disso consegue setar diferentes versões, consegue testar aquivos de configuração e também limitar utilização de recursos computacionais.&lt;/p&gt;
 
-&lt;h2 id=&quot;tip-4-saiba-fazer-a-mesma-coisa-de-diferentes-formas&quot;&gt;Tip 4: Saiba fazer a mesma coisa de diferentes formas&lt;/h2&gt;
+&lt;h2 id=&quot;4---saiba-fazer-a-mesma-coisa-de-diferentes-formas&quot;&gt;4 - Saiba fazer a mesma coisa de diferentes formas&lt;/h2&gt;
 
 &lt;p&gt;Yeeep, normalmente existem várias maneiras de se fazer a mesma coisa. Para uns ter um PADRÃO é tudo e eu concordo, mas não é nesse sentido que essa dica quer dizer. Eu estou falando de conseguir dansar qualquer ritmo de dança. Suponha que você precisa criar um servidor http local e você só sabe fazer usando python.. então você acaba dependendo do python. Tenha em mente que normalmente dá pra fazer de forma diferente e sabendo disso você consegue atuar em situações adversas.&lt;/p&gt;
 
@@ -253,8 +258,6 @@
 gem install webrick
 ruby -run -ehttpd . -p8000
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;tip-5-unix-tools&quot;&gt;Tip 5: UNIX tools&lt;/h2&gt;
 
 &lt;h2 id=&quot;tip-6-redes-de-computadores-tente-aprender-isso-em-profundidade-não-apenas-superficialmente&quot;&gt;Tip 6: Redes de Computadores, tente aprender isso em profundidade, não apenas superficialmente&lt;/h2&gt;
 </content>
