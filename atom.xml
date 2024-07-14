@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-07-14T13:14:58+00:00</updated>
+ <updated>2024-07-14T13:17:46+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -127,36 +127,9 @@
  </entry>
  
  <entry>
-   <title>🚨 Meu alerta é eficaz ?</title>
-   <link href="/2024/09/09/meu-alerta-e-eficaz.html"/>
-   <updated>2024-09-09T00:00:00+00:00</updated>
-   <id>/2024/09/09/meu-alerta-e-eficaz</id>
-   <content type="html">&lt;p&gt;Eu não quero te iludir, talvez você saia daqui com mais dúvidas do que respostas.. faz parte&lt;/p&gt;
-
-&lt;p&gt;Vamos raciocinar.. através de métricas conseguimos ter de maneira quantificada como as coisas estão. Coisas podem um banco de dados, um aplicação, uma rede de computares ou até uma geladeira. Antes de prosseguir é válido reforçar algo, alguns sistemas já possuem métricas nativamente, outros possuem exporters(programas especializados) que conseguem extrair isso pra você. Um terceiro caso é você mesmo criar suas métricas através de instrumentação de código ou técnica similar. O ponto aqui é, para criar bons alarmes você precisa de boas métricas. Sem isso fica inviável seguir. Assim como testes unitários dos software imagine que as métricas tem um coverage, ou seja, elas cobrem uma porcentagem(%) da superfície que você deseja monitorar. Mas até aqui tudo bem, sei que suas métricas são boas e suficientes.&lt;/p&gt;
-
-&lt;p&gt;Com as métricas em mão, você precisa montar seus alertas e aqui vem o primeiro grande desafio. Se você está usando prometheus terá que lidar com promql, se usa NewRelic terá que lidar com nrql e por ai vai. Não adianta se esconder, encare esse desfio de frente.&lt;/p&gt;
-
-&lt;p&gt;$__rate_interval&lt;/p&gt;
-
-&lt;p&gt;2024-07-09 16:11:08&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;app_request_latency_seconds_bucket {__name__=&quot;app_request_latency_seconds_bucket&quot;, endpoint=&quot;/&quot;, instance=&quot;flask-app:5000&quot;, job=&quot;app_exporter&quot;, le=&quot;1.0&quot;, method=&quot;GET&quot;}
-117
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;2024-07-09 16:28:08&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;app_request_latency_seconds_bucket {__name__=&quot;app_request_latency_seconds_bucket&quot;, endpoint=&quot;/&quot;, instance=&quot;flask-app:5000&quot;, job=&quot;app_exporter&quot;, le=&quot;1.0&quot;, method=&quot;GET&quot;}
-318
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Vamos fazer 318 - 117 / 1020 = 0,197058824&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
    <title></title>
    <link href="/2024/07/14/2024-07-08-tip-sre-interview.html"/>
-   <updated>2024-07-14T13:14:58+00:00</updated>
+   <updated>2024-07-14T13:17:46+00:00</updated>
    <id>/2024/07/14/2024-07-08-tip-sre-interview</id>
    <content type="html">
 </content>
@@ -199,6 +172,33 @@
 
 &lt;p&gt;O cenário hipotético acima ressalta a importância fundamental de um engenheiro competente. As mentes hábeis selecionarão as ferramentas adequadas, que se assemelham a uma terra fértil para o plantio. Estas auxiliarão na geração, captura e armazenamento de dados sobre os sistemas. Posteriormente, o mesmo engenheiro hábil os correlacionará de modo a representarem aspectos significativos do negócio. A agregação desses dados, apresentada de forma simplificada, proporciona uma visão compreensível mesmo para aqueles que não compartilham da mesma visão holística. Em síntese, alguém pensará de antemão para que os subsequentes não precisem fazê-lo. Trata-se de um projeto de melhoria contínua que jamais se encerra. O reflexo disso é ter dados bons o suficiente para montar alarmes eficazes que vão ajudar a responder a incidentes de maneira rápida. Repita esse fluxo várias vezes, pois observabilidade está mais para um processo contínuo do que um estado final.&lt;/p&gt;
 
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Por que não alarmou ?</title>
+   <link href="/2024/07/09/por-que-nao-alarmou.html"/>
+   <updated>2024-07-09T00:00:00+00:00</updated>
+   <id>/2024/07/09/por-que-nao-alarmou</id>
+   <content type="html">&lt;p&gt;Eu não quero te iludir, talvez você saia daqui com mais dúvidas do que respostas.. faz parte&lt;/p&gt;
+
+&lt;p&gt;Vamos raciocinar.. através de métricas conseguimos ter de maneira quantificada como as coisas estão. Coisas podem um banco de dados, um aplicação, uma rede de computares ou até uma geladeira. Antes de prosseguir é válido reforçar algo, alguns sistemas já possuem métricas nativamente, outros possuem exporters(programas especializados) que conseguem extrair isso pra você. Um terceiro caso é você mesmo criar suas métricas através de instrumentação de código ou técnica similar. O ponto aqui é, para criar bons alarmes você precisa de boas métricas. Sem isso fica inviável seguir. Assim como testes unitários dos software imagine que as métricas tem um coverage, ou seja, elas cobrem uma porcentagem(%) da superfície que você deseja monitorar. Mas até aqui tudo bem, sei que suas métricas são boas e suficientes.&lt;/p&gt;
+
+&lt;p&gt;Com as métricas em mão, você precisa montar seus alertas e aqui vem o primeiro grande desafio. Se você está usando prometheus terá que lidar com promql, se usa NewRelic terá que lidar com nrql e por ai vai. Não adianta se esconder, encare esse desfio de frente.&lt;/p&gt;
+
+&lt;p&gt;$__rate_interval&lt;/p&gt;
+
+&lt;p&gt;2024-07-09 16:11:08&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;app_request_latency_seconds_bucket {__name__=&quot;app_request_latency_seconds_bucket&quot;, endpoint=&quot;/&quot;, instance=&quot;flask-app:5000&quot;, job=&quot;app_exporter&quot;, le=&quot;1.0&quot;, method=&quot;GET&quot;}
+117
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;2024-07-09 16:28:08&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;app_request_latency_seconds_bucket {__name__=&quot;app_request_latency_seconds_bucket&quot;, endpoint=&quot;/&quot;, instance=&quot;flask-app:5000&quot;, job=&quot;app_exporter&quot;, le=&quot;1.0&quot;, method=&quot;GET&quot;}
+318
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Vamos fazer 318 - 117 / 1020 = 0,197058824&lt;/p&gt;
 </content>
  </entry>
  

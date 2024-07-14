@@ -32,27 +32,6 @@
         },
     
         {
-            "id": "/2024/09/09/meu-alerta-e-eficaz.html",
-            "title": "🚨 Meu alerta é eficaz ?",
-            "summary": "Uma breve reflexão sobre a criação de alertas que realmente funcionam como deveriam",
-            "content_text": "Eu não quero te iludir, talvez você saia daqui com mais dúvidas do que respostas.. faz parteVamos raciocinar.. através de métricas conseguimos ter de maneira quantificada como as coisas estão. Coisas podem um banco de dados, um aplicação, uma rede de computares ou até uma geladeira. Antes de prosseguir é válido reforçar algo, alguns sistemas já possuem métricas nativamente, outros possuem exporters(programas especializados) que conseguem extrair isso pra você. Um terceiro caso é você mesmo criar suas métricas através de instrumentação de código ou técnica similar. O ponto aqui é, para criar bons alarmes você precisa de boas métricas. Sem isso fica inviável seguir. Assim como testes unitários dos software imagine que as métricas tem um coverage, ou seja, elas cobrem uma porcentagem(%) da superfície que você deseja monitorar. Mas até aqui tudo bem, sei que suas métricas são boas e suficientes.Com as métricas em mão, você precisa montar seus alertas e aqui vem o primeiro grande desafio. Se você está usando prometheus terá que lidar com promql, se usa NewRelic terá que lidar com nrql e por ai vai. Não adianta se esconder, encare esse desfio de frente.$__rate_interval2024-07-09 16:11:08app_request_latency_seconds_bucket {__name__=\"app_request_latency_seconds_bucket\", endpoint=\"/\", instance=\"flask-app:5000\", job=\"app_exporter\", le=\"1.0\", method=\"GET\"}1172024-07-09 16:28:08app_request_latency_seconds_bucket {__name__=\"app_request_latency_seconds_bucket\", endpoint=\"/\", instance=\"flask-app:5000\", job=\"app_exporter\", le=\"1.0\", method=\"GET\"}318Vamos fazer 318 - 117 / 1020 = 0,197058824",
-            "content_html": "<p>Eu não quero te iludir, talvez você saia daqui com mais dúvidas do que respostas.. faz parte</p><p>Vamos raciocinar.. através de métricas conseguimos ter de maneira quantificada como as coisas estão. Coisas podem um banco de dados, um aplicação, uma rede de computares ou até uma geladeira. Antes de prosseguir é válido reforçar algo, alguns sistemas já possuem métricas nativamente, outros possuem exporters(programas especializados) que conseguem extrair isso pra você. Um terceiro caso é você mesmo criar suas métricas através de instrumentação de código ou técnica similar. O ponto aqui é, para criar bons alarmes você precisa de boas métricas. Sem isso fica inviável seguir. Assim como testes unitários dos software imagine que as métricas tem um coverage, ou seja, elas cobrem uma porcentagem(%) da superfície que você deseja monitorar. Mas até aqui tudo bem, sei que suas métricas são boas e suficientes.</p><p>Com as métricas em mão, você precisa montar seus alertas e aqui vem o primeiro grande desafio. Se você está usando prometheus terá que lidar com promql, se usa NewRelic terá que lidar com nrql e por ai vai. Não adianta se esconder, encare esse desfio de frente.</p><p>$__rate_interval</p><p>2024-07-09 16:11:08</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>app_request_latency_seconds_bucket {__name__=\"app_request_latency_seconds_bucket\", endpoint=\"/\", instance=\"flask-app:5000\", job=\"app_exporter\", le=\"1.0\", method=\"GET\"}117</code></pre></div></div><p>2024-07-09 16:28:08</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>app_request_latency_seconds_bucket {__name__=\"app_request_latency_seconds_bucket\", endpoint=\"/\", instance=\"flask-app:5000\", job=\"app_exporter\", le=\"1.0\", method=\"GET\"}318</code></pre></div></div><p>Vamos fazer 318 - 117 / 1020 = 0,197058824</p>",
-            "url": "/2024/09/09/meu-alerta-e-eficaz.html",
-            
-            
-            
-            "tags": ["prometheus","alerts"],
-            
-            "date_published": "2024-09-09T00:00:00+00:00",
-            "date_modified": "2024-09-09T00:00:00+00:00",
-            
-                "author": 
-                ""
-                
-            
-        },
-    
-        {
             "id": "/2024/07/14/2024-07-08-tip-sre-interview.html",
             "title": null,
             "summary": null,
@@ -64,8 +43,8 @@
             
             
             
-            "date_published": "2024-07-14T13:14:58+00:00",
-            "date_modified": "2024-07-14T13:14:58+00:00",
+            "date_published": "2024-07-14T13:17:46+00:00",
+            "date_modified": "2024-07-14T13:17:46+00:00",
             
                 "author": 
                 ""
@@ -87,6 +66,27 @@
             
             "date_published": "2024-07-12T00:00:00+00:00",
             "date_modified": "2024-07-12T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
+            "id": "/2024/07/09/por-que-nao-alarmou.html",
+            "title": "Por que não alarmou ?",
+            "summary": "Uma breve reflexão sobre a criação de alertas que realmente funcionam como deveriam",
+            "content_text": "Eu não quero te iludir, talvez você saia daqui com mais dúvidas do que respostas.. faz parteVamos raciocinar.. através de métricas conseguimos ter de maneira quantificada como as coisas estão. Coisas podem um banco de dados, um aplicação, uma rede de computares ou até uma geladeira. Antes de prosseguir é válido reforçar algo, alguns sistemas já possuem métricas nativamente, outros possuem exporters(programas especializados) que conseguem extrair isso pra você. Um terceiro caso é você mesmo criar suas métricas através de instrumentação de código ou técnica similar. O ponto aqui é, para criar bons alarmes você precisa de boas métricas. Sem isso fica inviável seguir. Assim como testes unitários dos software imagine que as métricas tem um coverage, ou seja, elas cobrem uma porcentagem(%) da superfície que você deseja monitorar. Mas até aqui tudo bem, sei que suas métricas são boas e suficientes.Com as métricas em mão, você precisa montar seus alertas e aqui vem o primeiro grande desafio. Se você está usando prometheus terá que lidar com promql, se usa NewRelic terá que lidar com nrql e por ai vai. Não adianta se esconder, encare esse desfio de frente.$__rate_interval2024-07-09 16:11:08app_request_latency_seconds_bucket {__name__=\"app_request_latency_seconds_bucket\", endpoint=\"/\", instance=\"flask-app:5000\", job=\"app_exporter\", le=\"1.0\", method=\"GET\"}1172024-07-09 16:28:08app_request_latency_seconds_bucket {__name__=\"app_request_latency_seconds_bucket\", endpoint=\"/\", instance=\"flask-app:5000\", job=\"app_exporter\", le=\"1.0\", method=\"GET\"}318Vamos fazer 318 - 117 / 1020 = 0,197058824",
+            "content_html": "<p>Eu não quero te iludir, talvez você saia daqui com mais dúvidas do que respostas.. faz parte</p><p>Vamos raciocinar.. através de métricas conseguimos ter de maneira quantificada como as coisas estão. Coisas podem um banco de dados, um aplicação, uma rede de computares ou até uma geladeira. Antes de prosseguir é válido reforçar algo, alguns sistemas já possuem métricas nativamente, outros possuem exporters(programas especializados) que conseguem extrair isso pra você. Um terceiro caso é você mesmo criar suas métricas através de instrumentação de código ou técnica similar. O ponto aqui é, para criar bons alarmes você precisa de boas métricas. Sem isso fica inviável seguir. Assim como testes unitários dos software imagine que as métricas tem um coverage, ou seja, elas cobrem uma porcentagem(%) da superfície que você deseja monitorar. Mas até aqui tudo bem, sei que suas métricas são boas e suficientes.</p><p>Com as métricas em mão, você precisa montar seus alertas e aqui vem o primeiro grande desafio. Se você está usando prometheus terá que lidar com promql, se usa NewRelic terá que lidar com nrql e por ai vai. Não adianta se esconder, encare esse desfio de frente.</p><p>$__rate_interval</p><p>2024-07-09 16:11:08</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>app_request_latency_seconds_bucket {__name__=\"app_request_latency_seconds_bucket\", endpoint=\"/\", instance=\"flask-app:5000\", job=\"app_exporter\", le=\"1.0\", method=\"GET\"}117</code></pre></div></div><p>2024-07-09 16:28:08</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>app_request_latency_seconds_bucket {__name__=\"app_request_latency_seconds_bucket\", endpoint=\"/\", instance=\"flask-app:5000\", job=\"app_exporter\", le=\"1.0\", method=\"GET\"}318</code></pre></div></div><p>Vamos fazer 318 - 117 / 1020 = 0,197058824</p>",
+            "url": "/2024/07/09/por-que-nao-alarmou.html",
+            
+            
+            
+            "tags": ["prometheus","alerts"],
+            
+            "date_published": "2024-07-09T00:00:00+00:00",
+            "date_modified": "2024-07-09T00:00:00+00:00",
             
                 "author": 
                 ""
