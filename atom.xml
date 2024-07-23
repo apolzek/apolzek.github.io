@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-07-23T20:17:09+00:00</updated>
+ <updated>2024-07-23T20:23:19+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -169,7 +169,7 @@
  <entry>
    <title></title>
    <link href="/2024/07/23/2024-07-08-tip-sre-interview.html"/>
-   <updated>2024-07-23T20:17:09+00:00</updated>
+   <updated>2024-07-23T20:23:19+00:00</updated>
    <id>/2024/07/23/2024-07-08-tip-sre-interview</id>
    <content type="html">
 </content>
@@ -180,7 +180,7 @@
    <link href="/2024/07/09/por-que-nao-alarmou.html"/>
    <updated>2024-07-09T00:00:00+00:00</updated>
    <id>/2024/07/09/por-que-nao-alarmou</id>
-   <content type="html">&lt;h1 id=&quot;-por-que-não-alarmou-&quot;&gt;😭 Por que não alarmou ?&lt;/h1&gt;
+   <content type="html">&lt;p&gt;Já aconteceu de você criar um alarme e ele não funcionar como esperado ? Você estava em uma situação caótica e não percebeu ? Bem, isso já aconteceu comigo, e me gerou algumas lições que vou compartilhar a seguir.&lt;/p&gt;
 
 &lt;h2 id=&quot;feijão-com-arroz&quot;&gt;Feijão com arroz&lt;/h2&gt;
 
