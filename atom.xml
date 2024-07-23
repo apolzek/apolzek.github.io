@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-07-23T20:47:55+00:00</updated>
+ <updated>2024-07-23T22:34:17+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -57,17 +57,17 @@
    <link href="/2024/07/09/por-que-nao-alarmou.html"/>
    <updated>2024-07-09T00:00:00+00:00</updated>
    <id>/2024/07/09/por-que-nao-alarmou</id>
-   <content type="html">&lt;p&gt;Já aconteceu de você criar um alarme e ele não funcionar como esperado ? Você estava em uma situação caótica e não percebeu ? Bem, isso já aconteceu comigo, e me gerou algumas lições que vou compartilhar a seguir.&lt;/p&gt;
+   <content type="html">&lt;p&gt;Já aconteceu de você configurar um alarme e ele não funcionar como esperado ? Seu SLA estava sendo comprometido sem que você soubesse ? Isso aconteceu comigo e me trouxe algumas lições importantes que gostaria de compartilhar.&lt;/p&gt;
 
 &lt;h2 id=&quot;feijão-com-arroz&quot;&gt;Feijão com arroz&lt;/h2&gt;
 
 &lt;p&gt;Antes de pensar em alertas eficazes, é essencial ter um sistema de monitoramento robusto que colete boas métricas em intervalos apropriados, levando em consideração a criticidade do contexto analisado. Mas o que são exatamente “&lt;strong&gt;boas métricas&lt;/strong&gt;”? Em geral, são métricas relevantes, contextualizadas, consistentes, confiáveis e bem categorizadas.&lt;/p&gt;
 
-&lt;p&gt;Partindo do pressuposto de que você já tem tudo isso, é hora de configurar os alarmes. Você pode usar ferramentas populares para essa tarefa, como o Alertmanager e o Grafana. Elas funcionam de maneira similar e os ingredientes são os mesmos: um nome para o alerta, uma métrica, um limite (threshold), um canal de notificação e informações adicionais, como descrição e nível de criticidade. Embora o processo seja relativamente simples, configurar um alarme pode exigir atenção a detalhes importantes, como ajustar corretamente o limite em relação aos seus pontos de dados(data points). Outro aspecto crucial é agrupar alarmes correlacionados, já que certos problemas podem desencadear uma cascata de subproblemas, resultando em múltiplos alertas durante um incidente.&lt;/p&gt;
+&lt;p&gt;Partindo do pressuposto de que você já tem tudo isso, é hora de configurar os alarmes. Você pode usar ferramentas populares para essa tarefa, como o Alertmanager e o Grafana. Elas funcionam de maneira similar e os ingredientes são os mesmos: um nome para o alerta, uma métrica, um limite (threshold), um canal de notificação e informações adicionais, como descrição e nível de criticidade. Embora o processo seja relativamente simples, configurar um alarme pode exigir atenção a detalhes importantes, como ajustar corretamente o threshold em relação aos seus pontos de dados(data points) ou agrupar alarmes correlacionados, já que certos problemas podem desencadear uma cascata de subproblemas, resultando em múltiplos alertas durante um incidente. “O TOQUE DO CELULAR CHEGA A DAR ARREPIO”&lt;/p&gt;
 
 &lt;h2 id=&quot;quantidade-x-qualidade&quot;&gt;Quantidade x Qualidade&lt;/h2&gt;
 
-&lt;p&gt;O conceito de “code coverage” ou cobertura de código, que mede a extensão em que o código-fonte de um programa é testado, pode ser aplicado à criação de alarmes, resultando no que podemos chamar de “alarm coverage”. A ideia é mapear os problemas mais graves de uma perspectiva global e, em seguida, abordar os pontos menores conforme seu nível de impacto. À medida que se aumenta a cobertura de alarmes menores, as chances de ser pego de surpresa diminuem. Lembre-se, trabalhar com observabilidade consiste em melhoria contínua, não em um estado final. Sempre há necessidade de revisão, pois o sistema provavelmente está em constante mudança, e o nível de carga que você recebe tende a variar ao longo do tempo.&lt;/p&gt;
+&lt;p&gt;O conceito de ‘code coverage’ ou cobertura de código, que mede a extensão em que o código-fonte de um programa é testado, pode ser aplicado à criação de alarmes, resultando no que podemos chamar de ‘alarm coverage’. A ideia é mapear possíveis problemas e classificá-los de acordo com seu impacto. Uma abordagem top-down pode ser útil nesse processo. Ao contrário do que muitos pensam, ter uma grande quantidade de alarmes não significa ter um monitoramento abrangente. Na verdade, ser efetivo é ter alarmes suficientes para cobrir pontos críticos do seu sistema com limiares sensatos para cada objeto monitorado. Lembre-se de que trabalhar com observabilidade é um processo de melhoria contínua, e não um estado final. Sempre há necessidade de revisão, pois o sistema está em constante mudança e o nível de carga que você recebe tende a variar ao longo do tempo.&lt;/p&gt;
 
 &lt;h2 id=&quot;p95-p50--média&quot;&gt;P95, P50 &amp;gt; Média&lt;/h2&gt;
 
@@ -77,7 +77,12 @@
 
 &lt;p&gt;Dois aspectos críticos na configuração de alarmes são o threshold (limite de alarme) e o tempo de coleta. Compreender e ajustar adequadamente esses parâmetros pode fazer a diferença entre um sistema bem monitorado e um que gera muitos falsos positivos ou, pior, não detecta problemas críticos a tempo. O threshold é o valor de referência que, quando atingido ou ultrapassado, aciona um alarme. A escolha do threshold é fundamental, pois define quando o sistema deve alertar os administradores sobre uma possível anomalia ou falha. O tempo de coleta refere-se ao intervalo de tempo usado para coletar e analisar métricas antes de acionar um alarme. Esse intervalo pode variar de segundos a minutos, dependendo da criticidade da métrica e do comportamento do sistema.&lt;/p&gt;
 
-&lt;p&gt;2024-07-09 16:11:08&lt;/p&gt;
+&lt;h2 id=&quot;monitoramento-proativo&quot;&gt;Monitoramento Proativo&lt;/h2&gt;
+
+&lt;h2 id=&quot;documentação-e-procedimentos&quot;&gt;Documentação e Procedimentos&lt;/h2&gt;
+
+&lt;p&gt;##&lt;/p&gt;
+
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;app_request_latency_seconds_bucket {__name__=&quot;app_request_latency_seconds_bucket&quot;, endpoint=&quot;/&quot;, instance=&quot;flask-app:5000&quot;, job=&quot;app_exporter&quot;, le=&quot;1.0&quot;, method=&quot;GET&quot;}
 117
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
