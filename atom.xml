@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-07-24T20:46:05+00:00</updated>
+ <updated>2024-08-06T19:40:02+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -93,120 +93,6 @@
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;app_request_latency_seconds_bucket {__name__=&quot;app_request_latency_seconds_bucket&quot;, endpoint=&quot;/&quot;, instance=&quot;flask-app:5000&quot;, job=&quot;app_exporter&quot;, le=&quot;1.0&quot;, method=&quot;GET&quot;}
 318
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>Dicionário do SRE</title>
-   <link href="/2024/07/08/dicionario-do-sre.html"/>
-   <updated>2024-07-08T00:00:00+00:00</updated>
-   <id>/2024/07/08/dicionario-do-sre</id>
-   <content type="html">&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Termo&lt;/th&gt;
-      &lt;th&gt;Definição&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;API&lt;/td&gt;
-      &lt;td&gt;Interface de Programação de Aplicações. Um conjunto de rotinas e padrões para utilização de funcionalidades por aplicativos externos.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;A/B Testing&lt;/td&gt;
-      &lt;td&gt;Teste A/B. Método estatístico para comparar duas versões de um aplicativo ou página web para determinar qual é mais eficaz.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Basic Authentication&lt;/td&gt;
-      &lt;td&gt;Autenticação Básica. Método simples de autenticação HTTP usando usuário e senha codificados em base64.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Clean Code&lt;/td&gt;
-      &lt;td&gt;Código Limpo. Princípios e práticas para escrever código legível, modular e de fácil manutenção.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Cookie&lt;/td&gt;
-      &lt;td&gt;Pequeno arquivo enviado pelo servidor e armazenado localmente no navegador, usado para gerenciar sessões e autenticação.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;CQRS&lt;/td&gt;
-      &lt;td&gt;Command Query Responsibility Segregation. Padrão de design que separa a leitura e escrita de dados em diferentes modelos.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Dependency Injection&lt;/td&gt;
-      &lt;td&gt;Injeção de Dependência. Padrão de design que permite passar dependências para um objeto em tempo de execução, melhorando a modularidade e testabilidade do código.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Docker&lt;/td&gt;
-      &lt;td&gt;Plataforma para desenvolver, enviar e executar aplicativos em containers. Facilita o empacotamento de uma aplicação e suas dependências em um único objeto.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;DRY&lt;/td&gt;
-      &lt;td&gt;Don’t Repeat Yourself. Princípio de desenvolvimento para reduzir duplicação de código através de abstração e reutilização.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Event Sourcing&lt;/td&gt;
-      &lt;td&gt;Padrão de arquitetura onde o estado de um sistema é determinado por uma sequência de eventos registrados, permitindo reconstruir o estado atual a partir do histórico de eventos.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;GraphQL&lt;/td&gt;
-      &lt;td&gt;Linguagem de consulta e runtime para APIs. Permite aos clientes definir a estrutura de dados que precisam, facilitando consultas eficientes e flexíveis.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Idempotency&lt;/td&gt;
-      &lt;td&gt;Idempotência. Propriedade de operações que podem ser aplicadas múltiplas vezes sem alterar o resultado além da primeira aplicação.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;JWT&lt;/td&gt;
-      &lt;td&gt;JSON Web Token. Formato compacto para transmitir informações entre partes como um objeto JSON. Usado para autenticação em APIs.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Kubernetes&lt;/td&gt;
-      &lt;td&gt;Sistema open-source para automatizar a implantação, o dimensionamento e a gestão de aplicativos em containers.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Microservices&lt;/td&gt;
-      &lt;td&gt;Microserviços. Arquitetura de software que organiza uma aplicação como um conjunto de serviços independentes, cada um focado em uma tarefa específica.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;ORM&lt;/td&gt;
-      &lt;td&gt;Object-Relational Mapping. Técnica de programação que mapeia objetos de um sistema orientado a objetos para representações de dados relacionais.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Round Robin&lt;/td&gt;
-      &lt;td&gt;Método de balanceamento de carga que distribui requisições igualmente entre os servidores disponíveis, sem considerar o estado anterior.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Session&lt;/td&gt;
-      &lt;td&gt;Sessão. Manutenção de estado entre requisições de um usuário em uma aplicação web.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;SOLID&lt;/td&gt;
-      &lt;td&gt;Princípios de design de software que promovem um código mais limpo, flexível e fácil de manter: Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation e Dependency Inversion.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;TDD&lt;/td&gt;
-      &lt;td&gt;Test-Driven Development. Método de desenvolvimento de software onde testes automatizados são escritos antes do código de produção.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Token&lt;/td&gt;
-      &lt;td&gt;Token. Pequeno pacote de dados que serve como um identificador único e seguro para autenticação e autorização.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;URL&lt;/td&gt;
-      &lt;td&gt;Uniform Resource Locator. Endereço que define o local de um recurso na web.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;URI&lt;/td&gt;
-      &lt;td&gt;Uniform Resource Identifier. Identificador único que define o local de um recurso na web.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;WebSockets&lt;/td&gt;
-      &lt;td&gt;Protocolo de comunicação bidirecional, full-duplex, entre um cliente e um servidor web, adequado para aplicações que requerem comunicação em tempo real.&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
 </content>
  </entry>
  

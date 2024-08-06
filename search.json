@@ -17,14 +17,6 @@
     } ,
   
     {
-      "title"    : "Dicionário do SRE",
-      "category" : "",
-      "tags"     : "sre, words",
-      "url"      : "/2024/07/08/dicionario-do-sre.html",
-      "date"     : "2024-07-08 00:00:00 +0000"
-    } ,
-  
-    {
       "title"    : "SRE Tips and Tricks",
       "category" : "",
       "tags"     : "tips, linux, sre",
