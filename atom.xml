@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-08-06T19:40:02+00:00</updated>
+ <updated>2024-08-07T16:57:34+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -63,17 +63,46 @@
 
 &lt;p&gt;Antes de pensar em alertas eficazes, é essencial ter um sistema de monitoramento robusto que colete boas métricas em intervalos apropriados, levando em consideração a criticidade do contexto analisado. Mas o que são exatamente “&lt;strong&gt;boas métricas&lt;/strong&gt;”? Em geral, são métricas relevantes, contextualizadas, consistentes, confiáveis e bem categorizadas(labels).&lt;/p&gt;
 
-&lt;p&gt;Partindo do pressuposto de que você já tem tudo isso, é hora de configurar os alarmes. Você pode usar ferramentas populares para essa tarefa, como o Alertmanager e o Grafana. Elas funcionam de maneira similar e os ingredientes são os mesmos: um nome para o alerta, uma métrica, um limite (threshold), um canal de notificação e informações adicionais, como descrição e nível de criticidade. Embora o processo seja relativamente simples, configurar um alarme pode exigir atenção a detalhes importantes, como ajustar corretamente o threshold em relação aos seus pontos de dados(data points) ou agrupar alarmes correlacionados, já que certos problemas podem desencadear uma cascata de subproblemas, resultando em múltiplos alertas durante um incidente. “O TOQUE DO CELULAR CHEGA A DAR ARREPIO”&lt;/p&gt;
+&lt;p&gt;Partindo do pressuposto de que você já tem tudo isso, é hora de configurar os alarmes. Você pode usar ferramentas populares para essa tarefa, como o Alertmanager e o Grafana. Elas funcionam de maneira similar e os ingredientes são os mesmos: um nome para o alerta, uma métrica, um limite (threshold), um canal de notificação e informações adicionais, como descrição e nível de criticidade. Embora o processo seja relativamente simples, configurar um alarme pode exigir atenção a detalhes importantes, como ajustar corretamente o threshold em relação aos seus pontos de dados(data points) ou agrupar alarmes correlacionados, já que certos problemas podem desencadear uma cascata de subproblemas, resultando em múltiplos alertas durante um incidente(e um telefone tocando freneticamente).&lt;/p&gt;
 
-&lt;p&gt;De maneira geral, os alarmes estarão relacionados às principais métricas do objeto ou contexto monitorado. Por exemplo, se você está monitorando um microsserviço, vai querer saber coisas como response time, latency, throughput, resource utilization, além de acompanhar CPU, memory e I/O. Se você está monitorando uma rede, vai querer saber coisas como latency, packet error rate, packet loss rate, network utilization, response time, number of sessions, throughput, inbound and outbound traffic e active connections. Se está monitorando um banco de dados começa a olhar coisas como query performance, response time, throughput, CPU usage, memory usage, disk I/O, connection count, query execution time, cache hit ratio, deadlocks, index usage, replication lag e transaction rate. Veja bem, CPU, memória e disco são o básico da observabilidade, e se bem monitorados, podem te poupar uma grande dor de cabeça.&lt;/p&gt;
+&lt;p&gt;De maneira geral, os alarmes estarão relacionados às principais métricas do objeto ou contexto monitorado. Por exemplo, se você está monitorando um &lt;strong&gt;microsserviço&lt;/strong&gt;, vai querer saber coisas como &lt;em&gt;response time, latency, throughput, resource utilization&lt;/em&gt;, além de acompanhar &lt;em&gt;CPU, memory e I/O&lt;/em&gt;. Se você está monitorando uma &lt;strong&gt;rede&lt;/strong&gt;, vai querer saber coisas como &lt;em&gt;latency, packet error rate, packet loss rate, network utilization, response time, number of sessions, throughput, inbound and outbound traffic e active connections&lt;/em&gt;. Se está monitorando um &lt;strong&gt;banco de dados&lt;/strong&gt; começa a olhar coisas como &lt;em&gt;query performance, response time, throughput, CPU usage, memory usage, disk I/O, connection count, query execution time, deadlocks, index usage, replication lag e transaction rate&lt;/em&gt;. Veja bem, CPU, memória e disco são métricas essenciais na maioria dos casos e se você as analisar com atenção, elas podem ajudar a prever possíveis catástrofes.&lt;/p&gt;
 
 &lt;h2 id=&quot;quantidade-x-qualidade&quot;&gt;Quantidade x Qualidade&lt;/h2&gt;
 
-&lt;p&gt;O conceito de ‘code coverage’ ou cobertura de código, que mede a extensão em que o código-fonte de um programa é testado, pode ser aplicado à criação de alarmes, resultando no que podemos chamar de ‘alarm coverage’. A ideia é mapear possíveis problemas e classificá-los de acordo com seu impacto. Uma abordagem top-down pode ser útil nesse processo. Ao contrário do que muitos pensam, ter uma grande quantidade de alarmes não significa ter um monitoramento abrangente. Na verdade, ser efetivo é ter alarmes suficientes para cobrir pontos críticos do seu sistema com limiares sensatos para cada objeto monitorado. Lembre-se de que trabalhar com observabilidade é um processo de melhoria contínua, e não um estado final. Sempre há necessidade de revisão, pois o sistema está em constante mudança e o nível de carga que você recebe tende a variar ao longo do tempo.&lt;/p&gt;
+&lt;p&gt;O conceito de &lt;em&gt;code coverage&lt;/em&gt; (cobertura de código), que mede a extensão em que o código-fonte de um programa é testado, pode ser aplicado à criação de alarmes, resultando no que chamamos de &lt;em&gt;alarm coverage&lt;/em&gt;. A ideia é mapear possíveis problemas e classificá-los de acordo com seu impacto. Apesar de isso naturalmente sugerir que você deve ter muitos alarmes em toda a superfície, tenha em mente que, na verdade, você precisa apenas de alarmes nos lugares certos, aqueles que possuem alto impacto no seu SLA. Uma abordagem top-down pode ser útil nesse processo. Lembre-se também de que trabalhar com observabilidade é um processo de melhoria contínua, e não um estado final. Sempre há necessidade de revisão, pois o sistema está em constante mudança e o nível de carga que você recebe tende a variar ao longo do tempo. Resumindo..&lt;/p&gt;
 
-&lt;h2 id=&quot;p95-p50--média&quot;&gt;P95, P50 &amp;gt; Média&lt;/h2&gt;
+&lt;p&gt;“Se tratando de alarmes, ser efetivo é ter alarmes suficientes para cobrir pontos críticos do seu sistema com limiares sensatos para cada objeto monitorado”.&lt;/p&gt;
 
-&lt;p&gt;Em sistemas de monitoramento e métricas, a análise de desempenho é crucial para garantir a eficiência e a confiabilidade. Percentis como P50 (percentil 50) e P95 (percentil 95) são ferramentas valiosas nesse contexto, pois oferecem uma visão detalhada do comportamento dos dados e ajudam a identificar problemas de desempenho que podem não ser evidentes com métricas básicas como a média. Enquanto o P50 oferece uma visão sobre o desempenho central, o P95 foca na variabilidade e nos casos mais extremos. Juntas, essas métricas proporcionam uma compreensão mais completa do desempenho do sistema.&lt;/p&gt;
+&lt;h2 id=&quot;média-moda-e-mediana&quot;&gt;Média, Moda e Mediana&lt;/h2&gt;
+
+&lt;p&gt;O texto abaixo foi extraído do site &lt;a href=&quot;https://www.todamateria.com.br/&quot;&gt;todamateria&lt;/a&gt;, acessível por &lt;a href=&quot;https://www.todamateria.com.br/media-moda-e-mediana/&quot;&gt;esse link&lt;/a&gt;. É importante entender esses conceitos para evitar o que se chama de “tiro no pé” ao tratar de alarmes.&lt;/p&gt;
+
+&lt;p&gt;A &lt;strong&gt;média&lt;/strong&gt; (Me) é calculada somando-se todos os valores de um conjunto de dados e dividindo-se pelo número de elementos deste conjunto. Como a média é uma medida sensível aos valores da amostra, é mais adequada para situações em que os dados são distribuídos mais ou menos de forma uniforme, ou seja, valores sem grandes discrepâncias.&lt;/p&gt;
+
+&lt;p&gt;A &lt;strong&gt;Moda&lt;/strong&gt; (Mo) representa o valor mais frequente de um conjunto de dados, sendo assim, para defini-la basta observar a frequência com que os valores aparecem. Um conjunto de dados é chamado de bimodal quando apresenta duas modas, ou seja, dois valores são mais frequentes.&lt;/p&gt;
+
+&lt;p&gt;A &lt;strong&gt;Mediana&lt;/strong&gt; (Md) representa o valor central de um conjunto de dados. Para encontrar o valor da mediana é necessário colocar os valores em ordem crescente ou decrescente. Quando o número elementos de um conjunto é par, a mediana é encontrada pela média dos dois valores centrais. Assim, esses valores são somados e divididos por dois.&lt;/p&gt;
+
+&lt;p&gt;‘Os conceitos acima foram referenciados para lembrar algumas coisas ao usar essas funções em métricas. A primeira coisa é que normalmente a média não existe (o valor dela não existe). A segunda coisa é que se os números usados para calcular a média podem não ter proximidade, inviabilizando o real status do que se monitora.’&lt;/p&gt;
+
+&lt;h2 id=&quot;p50-p75-95-p99-pqprs&quot;&gt;P50, P75, 95, P99, PQP(rs)..&lt;/h2&gt;
+
+&lt;p&gt;Em sistemas de monitoramento, a análise de desempenho é fundamental para garantir eficiência e confiabilidade. Percentis, como P50 (percentil 50) e P95 (percentil 95), são ferramentas valiosas nesse contexto, pois oferecem uma visão detalhada do comportamento dos dados e ajudam a identificar problemas de desempenho que podem não ser evidentes com métricas básicas, como a média. A mediana, por ser uma medida estável, é eficaz para identificar tendências de longo prazo. No entanto, ela pode não capturar tendências ou anomalias de curto prazo. motherfuck, o que usar então ? Vamos usar &lt;strong&gt;percentis&lt;/strong&gt;, eles são medidas estatísticas que dividem um conjunto de dados em 100 partes iguais, permitindo analisar a distribuição dos dados em uma escala mais detalhada. Em termos de métricas, percentis são usados para entender a posição relativa de um valor dentro de um conjunto de dados e para identificar como os dados se distribuem em torno de valores específicos.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;P50 (percentil 50): Também conhecido como mediana, é o valor que divide o conjunto de dados em duas partes iguais, com 50% dos dados abaixo e 50% acima desse valor. É útil para medir a tendência central.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;P75 (percentil 75): É uma medida estatística que representa o valor abaixo do qual 75% dos dados em um conjunto se encontram.Esse percentil é útil para entender melhor a distribuição dos dados e identificar o ponto onde a maioria dos valores se concentra, excluindo os 25% mais altos. Em análise de desempenho, por exemplo, o P75 pode ajudar a identificar a carga de trabalho ou o tempo de resposta típico, excluindo os valores mais extremos que poderiam distorcer a visão geral.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;P95 (percentil 95): É o valor abaixo do qual 95% dos dados se encontram. Em outras palavras, 5% dos dados são maiores que o P95. Esse percentil é útil para identificar valores extremos e entender a cauda superior da distribuição.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;P99 (percentil 99): É o valor abaixo do qual 99% dos dados se encontram. Isso ajuda a identificar eventos raros ou extremos, que podem ser críticos em análises de desempenho e monitoramento.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h2 id=&quot;threshold-e-tempo-de-coleta&quot;&gt;Threshold e Tempo de Coleta&lt;/h2&gt;
 
@@ -83,7 +112,7 @@
 
 &lt;h2 id=&quot;documentação-e-procedimentos&quot;&gt;Documentação e Procedimentos&lt;/h2&gt;
 
-&lt;p&gt;##&lt;/p&gt;
+&lt;h2 id=&quot;alertas-baseados-em-logs&quot;&gt;Alertas baseados em logs&lt;/h2&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;app_request_latency_seconds_bucket {__name__=&quot;app_request_latency_seconds_bucket&quot;, endpoint=&quot;/&quot;, instance=&quot;flask-app:5000&quot;, job=&quot;app_exporter&quot;, le=&quot;1.0&quot;, method=&quot;GET&quot;}
 117
