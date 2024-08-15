@@ -1,27 +1,3 @@
 [
   
-    {
-      "title"    : "Sistemas Observáveis - Parte 1",
-      "category" : "",
-      "tags"     : "observabilidade, monitoramento",
-      "url"      : "/2025/09/12/sistemas-observaveis-parte-1.html",
-      "date"     : "2025-09-12 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "😭 Por que não alarmou ?",
-      "category" : "",
-      "tags"     : "prometheus, alerts",
-      "url"      : "/2024/07/09/por-que-nao-alarmou.html",
-      "date"     : "2024-07-09 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "SRE Tips and Tricks",
-      "category" : "",
-      "tags"     : "tips, linux, sre",
-      "url"      : "/2024/07/01/sre-tips-and-tricks.html",
-      "date"     : "2024-07-01 00:00:00 +0000"
-    } 
-  
 ]
