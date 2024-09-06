@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estilo Preto com Verde</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css">
+    <style>
+        body {
+            background-color: #000000; /* Preto */
+            color: #00ff00; /* Verde */
+            font-family: 'Courier New', Courier, monospace; /* Fonte estilo terminal */
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #00ff00; /* Verde */
+        }
+
+        /* Estilo para código em bloco */
+        .markdown-body pre, .markdown-body code {
+            background-color: #002b36; /* Fundo do terminal */
+            color: #00ff00; /* Verde */
+            border-radius: 4px;
+            padding: 10px;
+        }
+
+        /* Estilo adicional para código em bloco */
+        .markdown-body pre {
+            border: 1px solid #00ff00; /* Borda verde */
+            overflow-x: auto; /* Rolagem horizontal se necessário */
+            white-space: pre; /* Mantém a formatação do código */
+            margin: 20px 0;
+        }
+
+        /* Estilo para código em linha */
+        code {
+            background-color: #002b36; /* Fundo do terminal */
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .code-example {
+            margin: 20px 0;
+        }
+
+        /* Estilo para tabela */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #00ff00; /* Borda verde */
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #003d33; /* Fundo do cabeçalho */
+            color: #00ff00; /* Verde */
+        }
+
+        tr:nth-child(even) {
+            background-color: #002b36; /* Fundo das linhas pares */
+        }
+
+        tr:nth-child(odd) {
+            background-color: #001a13; /* Fundo das linhas ímpares */
+        }
+    </style>
+</head>
+<body>
+    <h1>Estilo Preto com Verde</h1>
+    <p>Bem-vindo à página de exemplo com estilo preto e verde, inspirado em terminais antigos.</p>
+
+    <h2>Exemplo de Código em Linha</h2>
+    <p>Este é um exemplo de código em linha: <code>console.log('Hello, World!');</code></p>
+
+    <h2>Exemplo de Código em Bloco</h2>
+    <div class="code-example markdown-body">
+        <pre><code>
+function greet(name) {
+    console.log('Hello, ' + name + '!');
+}
+
+greet('World');
+        </code></pre>
+    </div>
+
+    <h2>Tabela de Exemplo</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Coluna 1</th>
+                <th>Coluna 2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Valor 1</td>
+                <td>Valor 2</td>
+            </tr>
+            <tr>
+                <td>Valor 3</td>
+                <td>Valor 4</td>
+            </tr>
+            <tr>
+                <td>Valor 5</td>
+                <td>Valor 6</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Outro Exemplo</h3>
+    <p>Aqui está outro exemplo de código em linha: <code>let x = 10;</code></p>
+</body>
+</html>
