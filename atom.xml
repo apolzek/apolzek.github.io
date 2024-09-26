@@ -4,13 +4,43 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-09-25T15:21:41+00:00</updated>
+ <updated>2024-09-26T12:08:17+00:00</updated>
  <id></id>
  <author>
    <name></name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>DISCLAIMER</title>
+   <link href="/2014/09/26/DISCLAIMER.html"/>
+   <updated>2014-09-26T00:00:00+00:00</updated>
+   <id>/2014/09/26/DISCLAIMER</id>
+   <content type="html">&lt;h2 id=&quot;disclaimer&quot;&gt;DISCLAIMER&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;My first language is Brazilian Portuguese, but I’m learning English and will use it here. You will likely see some writing mistakes; it’s part of learning&lt;/li&gt;
+  &lt;li&gt;I have worked as a Reliability Engineer only in Brazil (until now)&lt;/li&gt;
+  &lt;li&gt;I plan to discuss reliability topics and other subjects like safety, processes, governance, and soft skills&lt;/li&gt;
+  &lt;li&gt;Feedback is always welcome as long as it’s constructive. Feel free to contact me on Telegram or Discord, but please be respectful&lt;/li&gt;
+  &lt;li&gt;Remember, everything here is open to discussion. You should form your own opinions&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;goals&quot;&gt;GOALS&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Talk about tools that are not well-known but have great potential&lt;/li&gt;
+  &lt;li&gt;Track my studies with short reflective articles&lt;/li&gt;
+  &lt;li&gt;Share my views on technologies, processes, and products&lt;/li&gt;
+  &lt;li&gt;Soon, I will revisit my notes to see how my views on certain topics have changed&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;🇧🇷 “A única maneira de fazer as coisas funcionarem bem é entendendo o motivo pelo qual elas quebram.”
+🇺🇸 “The only way to make things work well is by understanding why they break.”&lt;/p&gt;
+
+</content>
+ </entry>
  
 
 </feed>
