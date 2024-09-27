@@ -11,6 +11,27 @@
 "items": [
     
         {
+            "id": "/2014/09/27/l0calh0t-startup.html",
+            "title": "l0calh0t Startup - starting on localhost - day 1",
+            "summary": "Building the l0calh0t Startup",
+            "content_text": "About the projectI recently saw a project on YouTube where the YouTuber created a complete technology environment to support a fake product. It focuses on SRE and DevOps techniques. I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the l0calh0t startup. You can follow the progress of this through a series of articles on this blog!note: don’t take me too seriouslyI know there are already similar projects on the internet, but most of them focus on development and not on operations. I have two main goals. The first is to test technologies, discuss decisions and show concerns that usually arise when our project goes into production. The second is to perhaps make some money with this. My initial focus is Brazilian software developers. In general, I get along well with developers. I believe it is because every day I help them solve problems. Developers change, but the problems are usually the same.Let’s get started. What follows is information about the startup. To be quite honest, what I intend to build already exists, something similar to render.com. But my ideas go a little further. Let’s go together and for any tips or corrections, contact me on Telegram @apolzek.l0calh0t 🚀🚀🚀About the startupl0calh0t is an innovative startup that simplifies hosting for testing applications, tailored for developers of all levels, SREs, DevOps, and QAs. By abstracting infrastructure and networking, it enables fast, cost-effective container deployment. Users can make applications publicly accessible or control access as needed. Unlike traditional solutions focused on large enterprises with strict SLAs, l0calh0t prioritizes simplicity and accessibility, creating an agile environment for rapid testing and iteration.",
+            "content_html": "<h2 id=\"about-the-project\">About the project</h2><p>I recently saw a project on YouTube where the YouTuber created a complete technology environment to support a fake product. It focuses on SRE and DevOps techniques. I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the l0calh0t startup. You can follow the progress of this through a series of articles on this blog!</p><p><strong>note</strong>: <em>don’t take me too seriously</em></p><p>I know there are already similar projects on the internet, but most of them focus on development and not on operations. I have two main goals. The first is to test technologies, discuss decisions and show concerns that usually arise when our project goes into production. The second is to perhaps make some money with this. My initial focus is Brazilian software developers. In general, I get along well with developers. I believe it is because every day I help them solve problems. Developers change, but the problems are usually the same.</p><p>Let’s get started. What follows is information about the startup. To be quite honest, what I intend to build already exists, something similar to render.com. But my ideas go a little further. Let’s go together and for any tips or corrections, contact me on Telegram <strong>@apolzek</strong>.</p><h2 id=\"l0calh0t-\">l0calh0t 🚀🚀🚀</h2><h3 id=\"about-the-startup\">About the startup</h3><p><strong>l0calh0t</strong> is an innovative startup that simplifies hosting for testing applications, tailored for developers of all levels, SREs, DevOps, and QAs. By abstracting infrastructure and networking, it enables fast, cost-effective container deployment. Users can make applications publicly accessible or control access as needed. Unlike traditional solutions focused on large enterprises with strict SLAs, l0calh0t prioritizes simplicity and accessibility, creating an agile environment for rapid testing and iteration.</p>",
+            "url": "/2014/09/27/l0calh0t-startup.html",
+            
+            
+            
+            "tags": ["devops","sre","project","startup"],
+            
+            "date_published": "2014-09-27T00:00:00+00:00",
+            "date_modified": "2014-09-27T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
             "id": "/2014/09/26/DISCLAIMER.html",
             "title": "DISCLAIMER",
             "summary": "DISCLAIMER and GOALS",
