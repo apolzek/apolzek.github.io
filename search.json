@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "SRE Kit for the End of the World",
+      "category" : "",
+      "tags"     : "tools, sre, toolbox, linux",
+      "url"      : "/2014/09/29/sre-kit-for-the-end-of-the-world.html",
+      "date"     : "2014-09-29 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "l0calh0t Startup - starting on localhost - day 1",
       "category" : "",
       "tags"     : "devops, sre, project, startup",
