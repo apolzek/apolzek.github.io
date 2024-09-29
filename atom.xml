@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-09-29T00:07:36+00:00</updated>
+ <updated>2024-09-29T01:19:50+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -28,13 +28,14 @@
    <id>/2024/09/28/containers-mastery</id>
    <content type="html">&lt;h2 id=&quot;what-is-linux-container-&quot;&gt;What is Linux container ?&lt;/h2&gt;
 
-&lt;p&gt;A Linux container is a lightweight and portable unit that encapsulates an application and its dependencies. Containers utilize key Linux kernel features for process isolation and resource management, including namespaces (for isolating resources like PID, network, and filesystem) and control groups (cgroups) (for limiting and prioritizing resource usage). Additionally, union file systems enable efficient layering and storage of container images. Together, these features allow containers to operate efficiently and securely on a shared host.&lt;/p&gt;
+&lt;p&gt;A Linux container is a lightweight and portable unit that encapsulates an application and its dependencies. Containers utilize key Linux kernel features for process isolation and resource management, including namespaces (for isolating resources like PID, network, and filesystem) and control groups (cgroups) (for limiting and prioritizing resource usage). Additionally, union file systems enable efficient layering and storage of container images. Together, these features allow containers to operate efficiently and securely on a shared host. Basically a container image is composed of&lt;/p&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;                -&amp;gt; Dependencies
-Container image -&amp;gt; Application code
-                -&amp;gt; Container configuration
-                -&amp;gt; Base image
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;Dependencies&lt;/li&gt;
+  &lt;li&gt;Application code&lt;/li&gt;
+  &lt;li&gt;Container configuration&lt;/li&gt;
+  &lt;li&gt;Base image&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h2 id=&quot;container-runtime&quot;&gt;Container runtime&lt;/h2&gt;
 
@@ -58,6 +59,16 @@ Container image -&amp;gt; Application code
 
 &lt;p&gt;Having secure base images for containers is crucial for maintaining the overall security of the host system. Images without elevated privileges help minimize potential attack vectors, reducing the risk of container escape and unauthorized access to the host. While concerns about insecure images are valid, it’s important to note that this is not the worst-case scenario, as containers typically run in a private network. For an attacker to exploit these vulnerabilities significantly, they would need to compromise additional components of the infrastructure, making it a more complex attack path. Therefore, while secure base images are essential, the overall security posture can still be robust with proper network isolation and access controls in place.&lt;/p&gt;
 
+&lt;p&gt;SAST (Static Application Security Testing) and SCA (Software Composition Analysis) are essential complementary approaches for ensuring application security. While SAST analyzes the source code for vulnerabilities before execution, SCA focuses on third-party libraries and dependencies, checking for known flaws. Integrating both practices is crucial, as it allows for the identification of internal code issues and external risks associated with software components. Tools like SonarQube and Fortify for SAST, and Black Duck and Snyk for SCA, provide robust solutions to mitigate vulnerabilities, offering more comprehensive security throughout the software development lifecycle.&lt;/p&gt;
+
+&lt;p&gt;In summary, ensure that you use secure base images that prevent vulnerabilities and do not allow root access. Conduct thorough security testing and utilize a scanning tool with an up-to-date CVE database. Keep your images minimal, as even a simple curl command can be exploited by skilled attackers. Implement read-only filesystems to enhance security and adopt practices that make updating images simple and efficient.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Quay&lt;/li&gt;
+  &lt;li&gt;trivy&lt;/li&gt;
+  &lt;li&gt;Docker Desktop (Docker Scout) Vulnerability Scan&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h2 id=&quot;container-registry&quot;&gt;Container registry&lt;/h2&gt;
 
 &lt;p&gt;A container registry is a centralized repository where container images are stored, managed, and distributed. Examples of usage include:&lt;/p&gt;
@@ -80,6 +91,30 @@ Container image -&amp;gt; Application code
   &lt;li&gt;Docker CLI&lt;/li&gt;
   &lt;li&gt;ctr&lt;/li&gt;
   &lt;li&gt;lazydocker&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;special-images&quot;&gt;Special images&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;dbeaver/cloudbeaver&lt;/li&gt;
+  &lt;li&gt;netdata/netdata&lt;/li&gt;
+  &lt;li&gt;lscr.io/linuxserver/wireshark:latest&lt;/li&gt;
+  &lt;li&gt;nicolargo/glances&lt;/li&gt;
+  &lt;li&gt;minio/minio&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;building-my-images&quot;&gt;Building my images&lt;/h2&gt;
+
+&lt;p&gt;Typically, each programming language adheres to certain conventions for images. The goal is usually to create a lightweight and secure image. We can leverage concepts such as multi-stage builds and base images with community support. Some best practices include:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Use Multi-Stage Builds: This approach allows you to minimize the final image size by separating the build environment from the production environment.&lt;/li&gt;
+  &lt;li&gt;Choose Official Base Images: Opt for official images from reputable sources to ensure security and reliability.&lt;/li&gt;
+  &lt;li&gt;Keep Images Lightweight: Remove unnecessary files and dependencies to reduce the image size and improve performance.&lt;/li&gt;
+  &lt;li&gt;Regularly Update Images: Stay current with updates to base images and dependencies to mitigate security vulnerabilities.&lt;/li&gt;
+  &lt;li&gt;Use Specific Version Tags: Instead of using “latest,” specify the exact version of images to avoid unexpected changes in your application.&lt;/li&gt;
+  &lt;li&gt;Scan for Vulnerabilities: Regularly scan your images for known vulnerabilities to maintain security.&lt;/li&gt;
+  &lt;li&gt;Document Image Purpose and Usage: Include clear documentation about the image’s purpose, usage, and configuration to facilitate easier maintenance and onboarding.&lt;/li&gt;
 &lt;/ul&gt;
 </content>
  </entry>
