@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-09-29T03:06:25+00:00</updated>
+ <updated>2024-09-29T21:49:15+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -13,11 +13,11 @@
 
  
  <entry>
-   <title>SRE Kit for the End of the World</title>
+   <title>🛠️ SRE Kit for the End of the World</title>
    <link href="/2024/09/29/sre-kit-for-the-end-of-the-world.html"/>
    <updated>2024-09-29T00:00:00+00:00</updated>
    <id>/2024/09/29/sre-kit-for-the-end-of-the-world</id>
-   <content type="html">&lt;p&gt;LINUX rs&lt;/p&gt;
+   <content type="html">&lt;p&gt;kind&lt;/p&gt;
 
 &lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kind.x-k8s.io/v1alpha4&lt;/span&gt;
 &lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Cluster&lt;/span&gt;
@@ -36,102 +36,159 @@
  </entry>
  
  <entry>
-   <title>Kafka on Kubernetes using Kind.</title>
-   <link href="/2024/09/29/kafka-on-kubernetes-using-kind.html"/>
+   <title>🪄 Spells for Linux Shell</title>
+   <link href="/2024/09/29/spells-for-linux-shell.html"/>
    <updated>2024-09-29T00:00:00+00:00</updated>
-   <id>/2024/09/29/kafka-on-kubernetes-using-kind</id>
-   <content type="html">&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apiVersion: kind.x-k8s.io/v1alpha4
-kind: Cluster
-nodes:
-- role: control-plane
-  extraPortMappings:
-  - containerPort: 30092
-    hostPort: 30092
-    listenAddress: &quot;0.0.0.0&quot; # Optional, defaults to &quot;0.0.0.0&quot;
-    protocol: tcp # Optional, defaults to tcp
-- role: worker
-- role: worker
-- role: worker
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;kind create cluster –config kind-config –name my-cluster
-kubectl create ns kafka&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apiVersion: apps/v1
-kind: StatefulSet
-metadata:
-  name: kafka
-  namespace: kafka
-  labels:
-    app: kafka-app
-spec:
-  serviceName: kafka-svc
-  replicas: 3
-  selector:
-    matchLabels:
-      app: kafka-app
-  template:
-    metadata:
-      labels:
-        app: kafka-app
-    spec:
-      containers:
-        - name: kafka-container
-          image: doughgle/kafka-kraft
-          ports:
-            - containerPort: 9092
-            - containerPort: 9093
-          env:
-            - name: REPLICAS
-              value: &apos;3&apos;
-            - name: SERVICE
-              value: kafka-svc
-            - name: NAMESPACE
-              value: kafka
-            - name: SHARE_DIR
-              value: /mnt/kafka
-            - name: CLUSTER_ID
-              value: bXktY2x1c3Rlci0xMjM0NQ==
-            - name: DEFAULT_REPLICATION_FACTOR
-              value: &apos;3&apos;
-            - name: DEFAULT_MIN_INSYNC_REPLICAS
-              value: &apos;2&apos;
-          volumeMounts:
-            - name: data
-              mountPath: /mnt/kafka
-  volumeClaimTemplates:
-    - metadata:
-        name: data
-      spec:
-        accessModes:
-          - &quot;ReadWriteOnce&quot;
-        resources:
-          requests:
-            storage: &quot;1Gi&quot;
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: kafka-svc
-  namespace: kafka
-  labels:
-    app: kafka-app
-spec:
-  type: NodePort
-  ports:
-    - name: &apos;9092&apos;
-      port: 9092
-      protocol: TCP
-      targetPort: 9092
-      nodePort: 30092
-  selector:
-    app: kafka-app
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+   <id>/2024/09/29/spells-for-linux-shell</id>
+   <content type="html">
 </content>
  </entry>
  
  <entry>
-   <title>Containers Mastery</title>
+   <title>Kafka on Kubernetes using Kind</title>
+   <link href="/2024/09/29/kafka-on-kubernetes-using-kind.html"/>
+   <updated>2024-09-29T00:00:00+00:00</updated>
+   <id>/2024/09/29/kafka-on-kubernetes-using-kind</id>
+   <content type="html">&lt;h2 id=&quot;kafka-on-kubernetes-using-kind&quot;&gt;Kafka on Kubernetes using Kind&lt;/h2&gt;
+
+&lt;p&gt;Recently, I came across an article on Medium that explains how to set up a local environment with Kafka in a test folder, using the Kubernetes StatefulSet concept. I decided to bring it to my blog, adding some tips and additional information. Although my knowledge of Kafka is still basic, I already have a few applications in production using this tool — and it’s amazing how well they perform. I was also responsible for creating a solution using Kafka Connect, Kafka, and CDC for the Boleto product.&lt;/p&gt;
+
+&lt;p&gt;What follows is a simple and easy way to set up a local development environment with Kafka. I’ll also provide a brief introduction to Kafka and explain how you can use this solution in your projects. It’s important to note that this article is not a “How to run Kafka in production” guide, so keep that in mind. I may also add a Kafka command cheatsheet to make my life easier in the future.&lt;/p&gt;
+
+&lt;p&gt;If you’re not familiar with Kind, it’s an easy way to run Kubernetes locally. With Kind, you can use specific Kubernetes versions, configure the network to expose the API server or ports to the host, upload images, and do many other things. Simply install Docker or Podman first, and then install Kind. It’s a straightforward and easy process.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Create kind configuration&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;em&gt;kind-config.yaml&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kind.x-k8s.io/v1alpha4&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Cluster&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;control-plane&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;extraPortMappings&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;containerPort&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;30092&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;hostPort&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;30092&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;listenAddress&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;0.0.0.0&quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Optional, defaults to &quot;0.0.0.0&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;protocol&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;tcp&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Optional, defaults to tcp&lt;/span&gt;
+&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;worker&lt;/span&gt;
+&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;worker&lt;/span&gt;
+&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;worker&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Create a kind cluster&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kind create cluster &lt;span class=&quot;nt&quot;&gt;--config&lt;/span&gt; kind-config.yaml &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; my-cluster
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Create kafka StatefulSet and Namespace&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;em&gt;kafka.yaml&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;v1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Namespace&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kafka&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kafka&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;apps/v1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;StatefulSet&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kafka&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;namespace&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kafka&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kafka-app&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;serviceName&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kafka-svc&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;replicas&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;selector&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;matchLabels&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kafka-app&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kafka-app&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;containers&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kafka-container&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;doughgle/kafka-kraft&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;ports&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;containerPort&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;9092&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;containerPort&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;9093&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;REPLICAS&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;3&apos;&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;SERVICE&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kafka-svc&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;NAMESPACE&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kafka&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;SHARE_DIR&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/mnt/kafka&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;CLUSTER_ID&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;bXktY2x1c3Rlci0xMjM0NQ==&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;DEFAULT_REPLICATION_FACTOR&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;3&apos;&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;DEFAULT_MIN_INSYNC_REPLICAS&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;2&apos;&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;volumeMounts&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;data&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;mountPath&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/mnt/kafka&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;volumeClaimTemplates&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;data&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;accessModes&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;ReadWriteOnce&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;resources&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;requests&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;storage&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;1Gi&quot;&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;v1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Service&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kafka-svc&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;namespace&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kafka&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kafka-app&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;NodePort&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;ports&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;9092&apos;&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;9092&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;protocol&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;TCP&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;targetPort&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;9092&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;nodePort&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;30092&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;selector&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kafka-app&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; kafka-0 &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; kafka &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; bash
+kafka-topics.sh &lt;span class=&quot;nt&quot;&gt;--create&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--topic&lt;/span&gt; my-topic &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt;/span&gt; kafka-svc:9092
+kafka-topics.sh &lt;span class=&quot;nt&quot;&gt;--list&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--topic&lt;/span&gt; my-topic &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt;/span&gt; kafka-svc:9092
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; kafka-1 &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; kafka &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; bash
+kafka-console-producer.sh  &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt;/span&gt; kafka-svc:9092 &lt;span class=&quot;nt&quot;&gt;--topic&lt;/span&gt; my-topic
+kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt;/span&gt; kafka-svc:9092 &lt;span class=&quot;nt&quot;&gt;--topic&lt;/span&gt; my-topic
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kafka-topics.sh &lt;span class=&quot;nt&quot;&gt;--delete&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--topic&lt;/span&gt; my-topic &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt;/span&gt; kafka-svc:9092
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;kafka-kraft-x-kafka-with-zookeeper&quot;&gt;Kafka KRaft x Kafka with ZooKeeper&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Kafka KRaft Installation&lt;/strong&gt;: KRaft is Kafka’s new built-in consensus mechanism that eliminates the need for ZooKeeper. In a KRaft-based installation, Kafka brokers manage metadata and leader election directly, which simplifies the architecture by reducing dependencies. KRaft is becoming the default option in newer Kafka versions because it provides better scalability, faster failover, and an overall more streamlined operation.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Kafka with ZooKeeper&lt;/strong&gt;: In traditional Kafka deployments, ZooKeeper is used to manage the cluster’s metadata, such as broker details and topic configurations. ZooKeeper handles tasks like leader election and tracking which brokers are active. While this setup has been robust for years, it adds complexity by requiring an additional service (ZooKeeper) that must be installed, managed, and maintained alongside Kafka.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>📦 Containers Mastery</title>
    <link href="/2024/09/28/containers-mastery.html"/>
    <updated>2024-09-28T00:00:00+00:00</updated>
    <id>/2024/09/28/containers-mastery</id>
@@ -225,14 +282,22 @@ spec:
   &lt;li&gt;Scan for Vulnerabilities: Regularly scan your images for known vulnerabilities to maintain security.&lt;/li&gt;
   &lt;li&gt;Document Image Purpose and Usage: Include clear documentation about the image’s purpose, usage, and configuration to facilitate easier maintenance and onboarding.&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h2 id=&quot;docker-processes-on-linux&quot;&gt;Docker processes on linux&lt;/h2&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;lsns
+ls -l /proc/&amp;lt;PID&amp;gt;/ns
+ls -l /proc/$(docker inspect --format &apos;&apos; &amp;lt;container_name&amp;gt;)/ns
+nsenter --target &amp;lt;PID&amp;gt; --mount --uts --ipc --net --pid
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
  
  <entry>
-   <title>l0calh0t Startup - starting on localhost - day 1</title>
-   <link href="/2024/09/27/l0calh0t-startup.html"/>
+   <title>l0calh0t Startup - day 1</title>
+   <link href="/2024/09/27/l0calh0t-startup-day1.html"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/l0calh0t-startup</id>
+   <id>/2024/09/27/l0calh0t-startup-day1</id>
    <content type="html">&lt;h2 id=&quot;about-the-project&quot;&gt;About the project&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete technology environment to support a fake product. I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;l0calh0t&lt;/strong&gt; startup. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;

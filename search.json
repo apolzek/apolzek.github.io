@@ -1,7 +1,7 @@
 [
   
     {
-      "title"    : "SRE Kit for the End of the World",
+      "title"    : "🛠️ SRE Kit for the End of the World",
       "category" : "",
       "tags"     : "tools, sre, toolbox, linux",
       "url"      : "/2024/09/29/sre-kit-for-the-end-of-the-world.html",
@@ -9,7 +9,15 @@
     } ,
   
     {
-      "title"    : "Kafka on Kubernetes using Kind.",
+      "title"    : "🪄 Spells for Linux Shell",
+      "category" : "",
+      "tags"     : "linux, shell, script, bash",
+      "url"      : "/2024/09/29/spells-for-linux-shell.html",
+      "date"     : "2024-09-29 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "Kafka on Kubernetes using Kind",
       "category" : "",
       "tags"     : "kafka, kind, kubernetes",
       "url"      : "/2024/09/29/kafka-on-kubernetes-using-kind.html",
@@ -17,7 +25,7 @@
     } ,
   
     {
-      "title"    : "Containers Mastery",
+      "title"    : "📦 Containers Mastery",
       "category" : "",
       "tags"     : "linux, containers, docker",
       "url"      : "/2024/09/28/containers-mastery.html",
@@ -25,10 +33,10 @@
     } ,
   
     {
-      "title"    : "l0calh0t Startup - starting on localhost - day 1",
+      "title"    : "l0calh0t Startup - day 1",
       "category" : "",
       "tags"     : "devops, sre, project, startup",
-      "url"      : "/2024/09/27/l0calh0t-startup.html",
+      "url"      : "/2024/09/27/l0calh0t-startup-day1.html",
       "date"     : "2024-09-27 00:00:00 +0000"
     } ,
   
