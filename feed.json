@@ -14,13 +14,34 @@
             "id": "/2024/09/29/sre-kit-for-the-end-of-the-world.html",
             "title": "SRE Kit for the End of the World",
             "summary": "Chaos is Inevitable",
-            "content_text": "LINUX rs",
-            "content_html": "<p>LINUX rs</p>",
+            "content_text": "LINUX rsapiVersion: kind.x-k8s.io/v1alpha4kind: Clusternodes:- role: control-plane  extraPortMappings:  - containerPort: 30092    hostPort: 30092    listenAddress: \"0.0.0.0\" # Optional, defaults to \"0.0.0.0\"    protocol: tcp # Optional, defaults to tcp- role: worker- role: worker- role: worker",
+            "content_html": "<p>LINUX rs</p><div class=\"language-yaml highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"na\">apiVersion</span><span class=\"pi\">:</span> <span class=\"s\">kind.x-k8s.io/v1alpha4</span><span class=\"na\">kind</span><span class=\"pi\">:</span> <span class=\"s\">Cluster</span><span class=\"na\">nodes</span><span class=\"pi\">:</span><span class=\"pi\">-</span> <span class=\"na\">role</span><span class=\"pi\">:</span> <span class=\"s\">control-plane</span>  <span class=\"na\">extraPortMappings</span><span class=\"pi\">:</span>  <span class=\"pi\">-</span> <span class=\"na\">containerPort</span><span class=\"pi\">:</span> <span class=\"m\">30092</span>    <span class=\"na\">hostPort</span><span class=\"pi\">:</span> <span class=\"m\">30092</span>    <span class=\"na\">listenAddress</span><span class=\"pi\">:</span> <span class=\"s2\">\"</span><span class=\"s\">0.0.0.0\"</span> <span class=\"c1\"># Optional, defaults to \"0.0.0.0\"</span>    <span class=\"na\">protocol</span><span class=\"pi\">:</span> <span class=\"s\">tcp</span> <span class=\"c1\"># Optional, defaults to tcp</span><span class=\"pi\">-</span> <span class=\"na\">role</span><span class=\"pi\">:</span> <span class=\"s\">worker</span><span class=\"pi\">-</span> <span class=\"na\">role</span><span class=\"pi\">:</span> <span class=\"s\">worker</span><span class=\"pi\">-</span> <span class=\"na\">role</span><span class=\"pi\">:</span> <span class=\"s\">worker</span></code></pre></div></div>",
             "url": "/2024/09/29/sre-kit-for-the-end-of-the-world.html",
             
             
             
             "tags": ["tools","sre","toolbox","linux"],
+            
+            "date_published": "2024-09-29T00:00:00+00:00",
+            "date_modified": "2024-09-29T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
+            "id": "/2024/09/29/kafka-on-kubernetes-using-kind.html",
+            "title": "Kafka on Kubernetes using Kind.",
+            "summary": null,
+            "content_text": "apiVersion: kind.x-k8s.io/v1alpha4kind: Clusternodes:- role: control-plane  extraPortMappings:  - containerPort: 30092    hostPort: 30092    listenAddress: \"0.0.0.0\" # Optional, defaults to \"0.0.0.0\"    protocol: tcp # Optional, defaults to tcp- role: worker- role: worker- role: workerkind create cluster –config kind-config –name my-clusterkubectl create ns kafkaapiVersion: apps/v1kind: StatefulSetmetadata:  name: kafka  namespace: kafka  labels:    app: kafka-appspec:  serviceName: kafka-svc  replicas: 3  selector:    matchLabels:      app: kafka-app  template:    metadata:      labels:        app: kafka-app    spec:      containers:        - name: kafka-container          image: doughgle/kafka-kraft          ports:            - containerPort: 9092            - containerPort: 9093          env:            - name: REPLICAS              value: '3'            - name: SERVICE              value: kafka-svc            - name: NAMESPACE              value: kafka            - name: SHARE_DIR              value: /mnt/kafka            - name: CLUSTER_ID              value: bXktY2x1c3Rlci0xMjM0NQ==            - name: DEFAULT_REPLICATION_FACTOR              value: '3'            - name: DEFAULT_MIN_INSYNC_REPLICAS              value: '2'          volumeMounts:            - name: data              mountPath: /mnt/kafka  volumeClaimTemplates:    - metadata:        name: data      spec:        accessModes:          - \"ReadWriteOnce\"        resources:          requests:            storage: \"1Gi\"---apiVersion: v1kind: Servicemetadata:  name: kafka-svc  namespace: kafka  labels:    app: kafka-appspec:  type: NodePort  ports:    - name: '9092'      port: 9092      protocol: TCP      targetPort: 9092      nodePort: 30092  selector:    app: kafka-app",
+            "content_html": "<div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>apiVersion: kind.x-k8s.io/v1alpha4kind: Clusternodes:- role: control-plane  extraPortMappings:  - containerPort: 30092    hostPort: 30092    listenAddress: \"0.0.0.0\" # Optional, defaults to \"0.0.0.0\"    protocol: tcp # Optional, defaults to tcp- role: worker- role: worker- role: worker</code></pre></div></div><p>kind create cluster –config kind-config –name my-clusterkubectl create ns kafka</p><div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>apiVersion: apps/v1kind: StatefulSetmetadata:  name: kafka  namespace: kafka  labels:    app: kafka-appspec:  serviceName: kafka-svc  replicas: 3  selector:    matchLabels:      app: kafka-app  template:    metadata:      labels:        app: kafka-app    spec:      containers:        - name: kafka-container          image: doughgle/kafka-kraft          ports:            - containerPort: 9092            - containerPort: 9093          env:            - name: REPLICAS              value: '3'            - name: SERVICE              value: kafka-svc            - name: NAMESPACE              value: kafka            - name: SHARE_DIR              value: /mnt/kafka            - name: CLUSTER_ID              value: bXktY2x1c3Rlci0xMjM0NQ==            - name: DEFAULT_REPLICATION_FACTOR              value: '3'            - name: DEFAULT_MIN_INSYNC_REPLICAS              value: '2'          volumeMounts:            - name: data              mountPath: /mnt/kafka  volumeClaimTemplates:    - metadata:        name: data      spec:        accessModes:          - \"ReadWriteOnce\"        resources:          requests:            storage: \"1Gi\"---apiVersion: v1kind: Servicemetadata:  name: kafka-svc  namespace: kafka  labels:    app: kafka-appspec:  type: NodePort  ports:    - name: '9092'      port: 9092      protocol: TCP      targetPort: 9092      nodePort: 30092  selector:    app: kafka-app</code></pre></div></div>",
+            "url": "/2024/09/29/kafka-on-kubernetes-using-kind.html",
+            
+            
+            
+            "tags": ["kafka","kind","kubernetes"],
             
             "date_published": "2024-09-29T00:00:00+00:00",
             "date_modified": "2024-09-29T00:00:00+00:00",

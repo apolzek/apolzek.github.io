@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-09-29T01:19:50+00:00</updated>
+ <updated>2024-09-29T03:06:25+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -18,6 +18,115 @@
    <updated>2024-09-29T00:00:00+00:00</updated>
    <id>/2024/09/29/sre-kit-for-the-end-of-the-world</id>
    <content type="html">&lt;p&gt;LINUX rs&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kind.x-k8s.io/v1alpha4&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Cluster&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;control-plane&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;extraPortMappings&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;containerPort&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;30092&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;hostPort&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;30092&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;listenAddress&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;0.0.0.0&quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Optional, defaults to &quot;0.0.0.0&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;protocol&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;tcp&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Optional, defaults to tcp&lt;/span&gt;
+&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;worker&lt;/span&gt;
+&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;worker&lt;/span&gt;
+&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;worker&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Kafka on Kubernetes using Kind.</title>
+   <link href="/2024/09/29/kafka-on-kubernetes-using-kind.html"/>
+   <updated>2024-09-29T00:00:00+00:00</updated>
+   <id>/2024/09/29/kafka-on-kubernetes-using-kind</id>
+   <content type="html">&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apiVersion: kind.x-k8s.io/v1alpha4
+kind: Cluster
+nodes:
+- role: control-plane
+  extraPortMappings:
+  - containerPort: 30092
+    hostPort: 30092
+    listenAddress: &quot;0.0.0.0&quot; # Optional, defaults to &quot;0.0.0.0&quot;
+    protocol: tcp # Optional, defaults to tcp
+- role: worker
+- role: worker
+- role: worker
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;kind create cluster –config kind-config –name my-cluster
+kubectl create ns kafka&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: kafka
+  namespace: kafka
+  labels:
+    app: kafka-app
+spec:
+  serviceName: kafka-svc
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kafka-app
+  template:
+    metadata:
+      labels:
+        app: kafka-app
+    spec:
+      containers:
+        - name: kafka-container
+          image: doughgle/kafka-kraft
+          ports:
+            - containerPort: 9092
+            - containerPort: 9093
+          env:
+            - name: REPLICAS
+              value: &apos;3&apos;
+            - name: SERVICE
+              value: kafka-svc
+            - name: NAMESPACE
+              value: kafka
+            - name: SHARE_DIR
+              value: /mnt/kafka
+            - name: CLUSTER_ID
+              value: bXktY2x1c3Rlci0xMjM0NQ==
+            - name: DEFAULT_REPLICATION_FACTOR
+              value: &apos;3&apos;
+            - name: DEFAULT_MIN_INSYNC_REPLICAS
+              value: &apos;2&apos;
+          volumeMounts:
+            - name: data
+              mountPath: /mnt/kafka
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes:
+          - &quot;ReadWriteOnce&quot;
+        resources:
+          requests:
+            storage: &quot;1Gi&quot;
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafka-svc
+  namespace: kafka
+  labels:
+    app: kafka-app
+spec:
+  type: NodePort
+  ports:
+    - name: &apos;9092&apos;
+      port: 9092
+      protocol: TCP
+      targetPort: 9092
+      nodePort: 30092
+  selector:
+    app: kafka-app
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
  
@@ -198,7 +307,6 @@
 &lt;p&gt;🇧🇷 “A única maneira de fazer as coisas funcionarem bem é entendendo o motivo pelo qual elas quebram.”&lt;/p&gt;
 
 &lt;p&gt;🇺🇸 “The only way to make things work well is by understanding why they break.”&lt;/p&gt;
-
 </content>
  </entry>
  

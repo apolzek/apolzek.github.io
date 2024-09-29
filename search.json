@@ -9,6 +9,14 @@
     } ,
   
     {
+      "title"    : "Kafka on Kubernetes using Kind.",
+      "category" : "",
+      "tags"     : "kafka, kind, kubernetes",
+      "url"      : "/2024/09/29/kafka-on-kubernetes-using-kind.html",
+      "date"     : "2024-09-29 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "Containers Mastery",
       "category" : "",
       "tags"     : "linux, containers, docker",
