@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-09-29T21:49:15+00:00</updated>
+ <updated>2024-09-29T21:58:51+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -294,7 +294,7 @@ nsenter --target &amp;lt;PID&amp;gt; --mount --uts --ipc --net --pid
  </entry>
  
  <entry>
-   <title>l0calh0t Startup - day 1</title>
+   <title>💡 l0calh0t Startup - day 1</title>
    <link href="/2024/09/27/l0calh0t-startup-day1.html"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
    <id>/2024/09/27/l0calh0t-startup-day1</id>
@@ -344,7 +344,7 @@ nsenter --target &amp;lt;PID&amp;gt; --mount --uts --ipc --net --pid
  </entry>
  
  <entry>
-   <title>DISCLAIMER</title>
+   <title>⚠️ DISCLAIMER</title>
    <link href="/2024/09/26/DISCLAIMER.html"/>
    <updated>2024-09-26T00:00:00+00:00</updated>
    <id>/2024/09/26/DISCLAIMER</id>
