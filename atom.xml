@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-09-28T23:17:25+00:00</updated>
+ <updated>2024-09-29T00:07:36+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -14,18 +14,81 @@
  
  <entry>
    <title>SRE Kit for the End of the World</title>
-   <link href="/2014/09/29/sre-kit-for-the-end-of-the-world.html"/>
-   <updated>2014-09-29T00:00:00+00:00</updated>
-   <id>/2014/09/29/sre-kit-for-the-end-of-the-world</id>
+   <link href="/2024/09/29/sre-kit-for-the-end-of-the-world.html"/>
+   <updated>2024-09-29T00:00:00+00:00</updated>
+   <id>/2024/09/29/sre-kit-for-the-end-of-the-world</id>
    <content type="html">&lt;p&gt;LINUX rs&lt;/p&gt;
 </content>
  </entry>
  
  <entry>
+   <title>Containers Mastery</title>
+   <link href="/2024/09/28/containers-mastery.html"/>
+   <updated>2024-09-28T00:00:00+00:00</updated>
+   <id>/2024/09/28/containers-mastery</id>
+   <content type="html">&lt;h2 id=&quot;what-is-linux-container-&quot;&gt;What is Linux container ?&lt;/h2&gt;
+
+&lt;p&gt;A Linux container is a lightweight and portable unit that encapsulates an application and its dependencies. Containers utilize key Linux kernel features for process isolation and resource management, including namespaces (for isolating resources like PID, network, and filesystem) and control groups (cgroups) (for limiting and prioritizing resource usage). Additionally, union file systems enable efficient layering and storage of container images. Together, these features allow containers to operate efficiently and securely on a shared host.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;                -&amp;gt; Dependencies
+Container image -&amp;gt; Application code
+                -&amp;gt; Container configuration
+                -&amp;gt; Base image
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;container-runtime&quot;&gt;Container runtime&lt;/h2&gt;
+
+&lt;p&gt;A container runtime is a software component that is responsible for running and managing containers. Containers are lightweight, portable units that package an application and its dependencies, allowing them to run consistently across different environments.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Docker&lt;/li&gt;
+  &lt;li&gt;containerd&lt;/li&gt;
+  &lt;li&gt;CRI-O&lt;/li&gt;
+  &lt;li&gt;runc&lt;/li&gt;
+  &lt;li&gt;Podman&lt;/li&gt;
+  &lt;li&gt;LXC/LXD&lt;/li&gt;
+  &lt;li&gt;systemd-nspawn (Don’t be angry with me)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;dont-compare-docker-with-kubernetes&quot;&gt;Don’t compare Docker with Kubernetes&lt;/h2&gt;
+
+&lt;p&gt;It just doesn’t make sense.. comparing Docker and Kubernetes can be confusing for beginners because they serve different purposes: Docker implements the concept of containers, while Kubernetes orchestrates those containers. An analogy is comparing a car (Docker) to a traffic system (Kubernetes); the car allows you to drive (create and run containers), while the traffic system manages the flow of multiple cars (orchestrates the deployment and scaling of containers). This distinction is crucial, as it clarifies that Docker focuses on the containerization process itself, while Kubernetes handles the management of containerized applications at scale.&lt;/p&gt;
+
+&lt;h2 id=&quot;container-security&quot;&gt;Container Security&lt;/h2&gt;
+
+&lt;p&gt;Having secure base images for containers is crucial for maintaining the overall security of the host system. Images without elevated privileges help minimize potential attack vectors, reducing the risk of container escape and unauthorized access to the host. While concerns about insecure images are valid, it’s important to note that this is not the worst-case scenario, as containers typically run in a private network. For an attacker to exploit these vulnerabilities significantly, they would need to compromise additional components of the infrastructure, making it a more complex attack path. Therefore, while secure base images are essential, the overall security posture can still be robust with proper network isolation and access controls in place.&lt;/p&gt;
+
+&lt;h2 id=&quot;container-registry&quot;&gt;Container registry&lt;/h2&gt;
+
+&lt;p&gt;A container registry is a centralized repository where container images are stored, managed, and distributed. Examples of usage include:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Docker Hub&lt;/li&gt;
+  &lt;li&gt;Google Container Registry (GCR)&lt;/li&gt;
+  &lt;li&gt;Amazon Elastic Container Registry (ECR)&lt;/li&gt;
+  &lt;li&gt;Azure Container Registry (ACR)&lt;/li&gt;
+  &lt;li&gt;Harbor&lt;/li&gt;
+  &lt;li&gt;Quay&lt;/li&gt;
+  &lt;li&gt;GitLab Container Registry&lt;/li&gt;
+  &lt;li&gt;JFrog Container Registry&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;tools-for-working-with-containers&quot;&gt;Tools for working with containers&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;dive&lt;/li&gt;
+  &lt;li&gt;Docker CLI&lt;/li&gt;
+  &lt;li&gt;ctr&lt;/li&gt;
+  &lt;li&gt;lazydocker&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>l0calh0t Startup - starting on localhost - day 1</title>
-   <link href="/2014/09/27/l0calh0t-startup.html"/>
-   <updated>2014-09-27T00:00:00+00:00</updated>
-   <id>/2014/09/27/l0calh0t-startup</id>
+   <link href="/2024/09/27/l0calh0t-startup.html"/>
+   <updated>2024-09-27T00:00:00+00:00</updated>
+   <id>/2024/09/27/l0calh0t-startup</id>
    <content type="html">&lt;h2 id=&quot;about-the-project&quot;&gt;About the project&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete technology environment to support a fake product. I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;l0calh0t&lt;/strong&gt; startup. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -73,9 +136,9 @@
  
  <entry>
    <title>DISCLAIMER</title>
-   <link href="/2014/09/26/DISCLAIMER.html"/>
-   <updated>2014-09-26T00:00:00+00:00</updated>
-   <id>/2014/09/26/DISCLAIMER</id>
+   <link href="/2024/09/26/DISCLAIMER.html"/>
+   <updated>2024-09-26T00:00:00+00:00</updated>
+   <id>/2024/09/26/DISCLAIMER</id>
    <content type="html">&lt;h2 id=&quot;disclaimer&quot;&gt;DISCLAIMER&lt;/h2&gt;
 
 &lt;ul&gt;

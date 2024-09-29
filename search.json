@@ -4,24 +4,32 @@
       "title"    : "SRE Kit for the End of the World",
       "category" : "",
       "tags"     : "tools, sre, toolbox, linux",
-      "url"      : "/2014/09/29/sre-kit-for-the-end-of-the-world.html",
-      "date"     : "2014-09-29 00:00:00 +0000"
+      "url"      : "/2024/09/29/sre-kit-for-the-end-of-the-world.html",
+      "date"     : "2024-09-29 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "Containers Mastery",
+      "category" : "",
+      "tags"     : "linux, containers, docker",
+      "url"      : "/2024/09/28/containers-mastery.html",
+      "date"     : "2024-09-28 00:00:00 +0000"
     } ,
   
     {
       "title"    : "l0calh0t Startup - starting on localhost - day 1",
       "category" : "",
       "tags"     : "devops, sre, project, startup",
-      "url"      : "/2014/09/27/l0calh0t-startup.html",
-      "date"     : "2014-09-27 00:00:00 +0000"
+      "url"      : "/2024/09/27/l0calh0t-startup.html",
+      "date"     : "2024-09-27 00:00:00 +0000"
     } ,
   
     {
       "title"    : "DISCLAIMER",
       "category" : "",
       "tags"     : "disclaimer, goals",
-      "url"      : "/2014/09/26/DISCLAIMER.html",
-      "date"     : "2014-09-26 00:00:00 +0000"
+      "url"      : "/2024/09/26/DISCLAIMER.html",
+      "date"     : "2024-09-26 00:00:00 +0000"
     } 
   
 ]
