@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-10-01T23:38:15+00:00</updated>
+ <updated>2024-10-01T23:47:39+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -57,9 +57,7 @@
 
 &lt;p&gt;If you’re not familiar with Kind, it’s an easy way to run Kubernetes locally. With Kind, you can use specific Kubernetes versions, configure the network to expose the API server or ports to the host, upload images, and do many other things. Simply install Docker or Podman first, and then install Kind. It’s a straightforward and easy process.&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;Create kind configuration&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;1) Create kind configuration&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;kind-config.yaml&lt;/em&gt;&lt;/p&gt;
 &lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kind.x-k8s.io/v1alpha4&lt;/span&gt;
@@ -76,16 +74,12 @@
 &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;worker&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;Create a kind cluster&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;2) Create a kind cluster&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kind create cluster &lt;span class=&quot;nt&quot;&gt;--config&lt;/span&gt; kind-config.yaml &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; my-cluster
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;Create kafka StatefulSet and Namespace&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;3) Create kafka StatefulSet and Namespace&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;kafka.yaml&lt;/em&gt;&lt;/p&gt;
 &lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;v1&lt;/span&gt;
@@ -175,6 +169,8 @@ kafka-topics.sh &lt;span class=&quot;nt&quot;&gt;--list&lt;/span&gt; &lt;span cl
 kafka-console-producer.sh  &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt;/span&gt; kafka-svc:9092 &lt;span class=&quot;nt&quot;&gt;--topic&lt;/span&gt; my-topic
 kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt;/span&gt; kafka-svc:9092 &lt;span class=&quot;nt&quot;&gt;--topic&lt;/span&gt; my-topic
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;4) Create topic&lt;/p&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kafka-topics.sh &lt;span class=&quot;nt&quot;&gt;--delete&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--topic&lt;/span&gt; my-topic &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt;/span&gt; kafka-svc:9092
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
