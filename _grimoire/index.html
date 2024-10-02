@@ -1,0 +1,21 @@
+Are you here again ?
+
+>>>>>>>>>> Enviar texto via icmp
+# Envio
+payload=$(echo -n "Hello" | xxd -p)
+echo $payload
+len=$(($(echo $payload | wc -c | tr -s " ") + 2))
+echo $len
+ping -s$len -c4 -p$payload 127.0.0.1
+# Recebimento
+tshark -l -i lo0 -Y "icmp" -T fields -e data | xxd -r
+>>>>>>>>>> 
+
+>>>>>>>>>> Delete all commit history on Github
+git checkout --orphan latest_branch
+git add -A
+git commit -am "reset configs"
+git branch -D main
+git branch -m main
+git push -f origin main
+>>>>>>>>>>
