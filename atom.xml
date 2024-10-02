@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-10-02T12:28:24+00:00</updated>
+ <updated>2024-10-02T17:43:39+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -26,21 +26,7 @@
    <link href="/2024/09/29/sre-kit-for-the-end-of-the-world.html"/>
    <updated>2024-09-29T00:00:00+00:00</updated>
    <id>/2024/09/29/sre-kit-for-the-end-of-the-world</id>
-   <content type="html">&lt;p&gt;kind&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kind.x-k8s.io/v1alpha4&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Cluster&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;control-plane&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;extraPortMappings&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;containerPort&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;30092&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;hostPort&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;30092&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;listenAddress&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;0.0.0.0&quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Optional, defaults to &quot;0.0.0.0&quot;&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;protocol&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;tcp&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Optional, defaults to tcp&lt;/span&gt;
-&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;worker&lt;/span&gt;
-&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;worker&lt;/span&gt;
-&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;worker&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+   <content type="html">&lt;p&gt;&lt;em&gt;in progress..&lt;/em&gt;&lt;/p&gt;
 </content>
  </entry>
  
@@ -49,7 +35,7 @@
    <link href="/2024/09/29/spells-for-linux-shell.html"/>
    <updated>2024-09-29T00:00:00+00:00</updated>
    <id>/2024/09/29/spells-for-linux-shell</id>
-   <content type="html">
+   <content type="html">&lt;p&gt;in progress..&lt;/p&gt;
 </content>
  </entry>
  
@@ -169,17 +155,21 @@
     &lt;span class=&quot;na&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kafka-app&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;p&gt;4) Create a topic&lt;/p&gt;
+
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; kafka-0 &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; kafka &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; bash
 kafka-topics.sh &lt;span class=&quot;nt&quot;&gt;--create&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--topic&lt;/span&gt; my-topic &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt;/span&gt; kafka-svc:9092
 kafka-topics.sh &lt;span class=&quot;nt&quot;&gt;--list&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--topic&lt;/span&gt; my-topic &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt;/span&gt; kafka-svc:9092
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;5) Produce and consume message&lt;/p&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; kafka-1 &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; kafka &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; bash
 kafka-console-producer.sh  &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt;/span&gt; kafka-svc:9092 &lt;span class=&quot;nt&quot;&gt;--topic&lt;/span&gt; my-topic
 kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt;/span&gt; kafka-svc:9092 &lt;span class=&quot;nt&quot;&gt;--topic&lt;/span&gt; my-topic
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;4) Create topic&lt;/p&gt;
+&lt;p&gt;6) Delete topic&lt;/p&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kafka-topics.sh &lt;span class=&quot;nt&quot;&gt;--delete&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--topic&lt;/span&gt; my-topic &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt;/span&gt; kafka-svc:9092
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -288,13 +278,42 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
   &lt;li&gt;Document Image Purpose and Usage: Include clear documentation about the image’s purpose, usage, and configuration to facilitate easier maintenance and onboarding.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;docker-processes-on-linux&quot;&gt;Docker processes on linux&lt;/h2&gt;
+&lt;h2 id=&quot;deep-dive--not-today&quot;&gt;Deep dive ? not today..&lt;/h2&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;lsns
-ls -l /proc/&amp;lt;PID&amp;gt;/ns
-ls -l /proc/$(docker inspect --format &apos;&apos; &amp;lt;container_name&amp;gt;)/ns
-nsenter --target &amp;lt;PID&amp;gt; --mount --uts --ipc --net --pid
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id=&quot;namespaces-and-cgroups-architecture&quot;&gt;Namespaces and Cgroups Architecture&lt;/h4&gt;
+&lt;p&gt;Namespaces are a fundamental aspect of containerization, providing isolation for various resources on a Linux system. Each namespace creates a distinct environment for processes, ensuring that they only interact with their own set of resources. For example, the PID namespace allows processes to have their own process IDs, making it appear as though they are the only ones running on the system. Similarly, network namespaces enable containers to have unique network interfaces and IP addresses, preventing interference between containers. Understanding how these namespaces work is essential for developers to effectively manage resource allocation and maintain a secure environment.&lt;/p&gt;
+
+&lt;p&gt;Control groups (cgroups) complement namespaces by allowing for fine-grained resource management. They enable administrators to limit and prioritize CPU, memory, and I/O usage for groups of processes, ensuring that no single container can monopolize system resources. With cgroups, users can define resource limits, monitor usage, and enforce constraints in a way that is transparent to the applications running within the containers. This architecture not only optimizes resource allocation but also enhances overall system stability by preventing resource contention.&lt;/p&gt;
+
+&lt;h4 id=&quot;overlay-filesystem-and-copy-on-write&quot;&gt;Overlay Filesystem and Copy-on-Write&lt;/h4&gt;
+&lt;p&gt;The Overlay filesystem is a crucial technology in containerization, facilitating the creation of layered filesystems that optimize storage and performance. By allowing multiple layers to be stacked, OverlayFS enables efficient management of container images, where each layer can be modified without affecting the underlying layers. This Copy-on-Write (CoW) mechanism ensures that changes made to a file in a container do not overwrite the original file in the base image. Instead, the container creates a new layer for modifications, allowing for quick and efficient updates while conserving disk space.&lt;/p&gt;
+
+&lt;p&gt;Using OverlayFS not only improves storage efficiency but also enhances the speed of container operations. As containers are deployed, they only need to load the layers that have changed, significantly reducing the time required to start a container. Additionally, this layering approach allows for easy version control and rollback capabilities. If a change introduces an issue, reverting to a previous version can be done swiftly by switching back to the corresponding base image, thereby minimizing downtime and potential disruptions.&lt;/p&gt;
+
+&lt;h4 id=&quot;container-runtimes-comparison&quot;&gt;Container Runtimes Comparison&lt;/h4&gt;
+&lt;p&gt;Container runtimes are essential components that facilitate the execution and management of containers, each with unique features and capabilities. Docker, for instance, is a widely recognized runtime that simplifies the process of building, running, and sharing containers. On the other hand, containerd serves as a high-level container runtime, providing a robust platform for managing the complete lifecycle of containers. CRI-O, specifically designed for Kubernetes, focuses on optimizing the performance and resource utilization of containerized applications within orchestration environments. Each runtime caters to different needs, making it important for developers to choose the right one based on their specific use cases and operational requirements.&lt;/p&gt;
+
+&lt;p&gt;When comparing these runtimes, one must consider factors such as performance, compatibility, and community support. While Docker provides an all-in-one solution for container management, it may introduce overhead that isn’t present in lighter runtimes like runc, which focuses solely on running containers. Additionally, Podman offers a daemonless experience that enables users to run containers without needing a central service, appealing to those who prioritize security and simplicity. Ultimately, understanding the distinctions between these runtimes helps developers select the most appropriate tools for their containerization strategies.&lt;/p&gt;
+
+&lt;h4 id=&quot;network-namespaces-and-networking-models&quot;&gt;Network Namespaces and Networking Models&lt;/h4&gt;
+&lt;p&gt;Network namespaces are critical for ensuring that containers can communicate while remaining isolated from one another. Each network namespace has its own network stack, including interfaces, routing tables, and firewall rules, allowing containers to function as if they are on separate hosts. This isolation is essential for security, as it prevents unauthorized access between containers and enhances overall system integrity. Additionally, networking models such as bridge networking, overlay networking, and macvlan provide different levels of connectivity and isolation, enabling users to tailor their networking setup based on application needs and deployment scenarios.&lt;/p&gt;
+
+&lt;p&gt;Understanding these networking models is crucial for optimizing communication between containers. For instance, bridge networking is often used for simpler applications that require direct communication with the host, while overlay networking is ideal for applications deployed across multiple hosts in a cluster, such as those orchestrated by Kubernetes. By leveraging tools like Flannel, Calico, or Cilium, developers can create robust networking solutions that enhance container security and performance. The choice of networking model significantly impacts the architecture of containerized applications and their ability to scale effectively.&lt;/p&gt;
+
+&lt;h4 id=&quot;advanced-container-security&quot;&gt;Advanced Container Security&lt;/h4&gt;
+&lt;p&gt;Container security is a multifaceted discipline that involves implementing various strategies to safeguard containerized applications from potential threats. One of the primary focuses is ensuring the use of secure base images, as vulnerabilities in these images can lead to significant risks. Images should be built without elevated privileges to minimize the attack surface, reducing the chances of container escape and unauthorized access to the host system. Additionally, regular vulnerability scanning is essential to identify and remediate any security flaws in the base images and application dependencies, maintaining a strong security posture throughout the container lifecycle.&lt;/p&gt;
+
+&lt;p&gt;Advanced security measures extend beyond just using secure images; they also encompass implementing Linux capabilities to limit permissions, using Seccomp to filter system calls, and configuring AppArmor profiles for enhanced security. Rootless containers further elevate security by allowing users to run containers without root privileges, significantly reducing the risk of privilege escalation attacks. By integrating these practices, organizations can create a layered security approach that effectively mitigates potential risks while ensuring that containerized applications remain robust and resilient against emerging threats.&lt;/p&gt;
+
+&lt;h4 id=&quot;volume-management-and-data-persistence&quot;&gt;Volume Management and Data Persistence&lt;/h4&gt;
+&lt;p&gt;Effective volume management is essential for ensuring data persistence in containerized applications. Unlike traditional virtual machines, containers are ephemeral, meaning any data stored within a container is lost once it is stopped or removed. To address this challenge, Docker and other container orchestration platforms provide mechanisms for managing volumes, which allow data to persist independently of the container lifecycle. Volumes can be created and managed easily, enabling developers to store important data, such as databases or user uploads, securely.&lt;/p&gt;
+
+&lt;p&gt;There are two primary types of storage options for containers: bind mounts and named volumes. Bind mounts allow specific directories on the host to be mounted into a container, providing direct access to host files. However, they can introduce complexity and potential security risks if not managed properly. In contrast, named volumes are managed by the container runtime, offering a more abstracted approach that simplifies data management. By adopting best practices for volume management, such as isolating data from application logic and regularly backing up volumes, developers can ensure that their applications maintain data integrity and resilience in production environments.&lt;/p&gt;
+
+&lt;h4 id=&quot;advanced-container-orchestration&quot;&gt;Advanced Container Orchestration&lt;/h4&gt;
+&lt;p&gt;Advanced container orchestration is crucial for managing the deployment, scaling, and operation of containerized applications in complex environments. Kubernetes, as a leading orchestration platform, provides robust features for automating the management of containerized applications across clusters. It facilitates load balancing, automated scaling, and self-healing capabilities, allowing organizations to maintain high availability and performance in their applications. Understanding Kubernetes internals, such as the roles of the kubelet, kube-scheduler, and controller manager, empowers developers to optimize their deployment strategies and resource allocation effectively.&lt;/p&gt;
+
+&lt;p&gt;In addition to Kubernetes, modern orchestration frameworks also support advanced deployment strategies, such as blue-green deployments and canary releases. These methods enable teams to introduce new features gradually, minimizing risk and ensuring a smooth user experience. By leveraging ConfigMaps and Secrets, developers can manage application configurations and sensitive data securely within the orchestration platform. Ultimately, mastering advanced orchestration techniques enhances the efficiency and reliability of containerized applications, driving innovation and agility in software development and deployment.&lt;/p&gt;
 </content>
  </entry>
  
@@ -311,13 +330,15 @@ nsenter --target &amp;lt;PID&amp;gt; --mount --uts --ipc --net --pid
 
 &lt;p&gt;I know there are already similar projects on the internet, but most of them focus on &lt;em&gt;development&lt;/em&gt; and not on &lt;em&gt;operations&lt;/em&gt;. I have two main goals. The first is to test technologies, discuss decisions and show concerns that usually arise when our project goes into production. The second is to perhaps make some money with this. My initial focus is Brazilian software developers. In general, I get along well with developers. I believe it is because every day I help them solve problems. Developers change, but the problems are usually the same.&lt;/p&gt;
 
-&lt;p&gt;Let’s get started. What follows is information about the startup. To be quite honest, what I intend to build already exists, something similar to &lt;em&gt;render.com&lt;/em&gt;. But my ideas go a little further. Let’s go together and for any tips or corrections, contact me on Telegram &lt;strong&gt;@apolzek&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Let’s get started. What follows is information about the startup. To be quite honest, what I intend to build already exists, something similar to &lt;em&gt;render.com&lt;/em&gt;.. but my ideas go a little further(if I can implement it, of course xD).&lt;/p&gt;
 
 &lt;h2 id=&quot;l0calh0t-&quot;&gt;l0calh0t 🚀🚀🚀&lt;/h2&gt;
 
 &lt;h3 id=&quot;about-the-startup&quot;&gt;About the startup&lt;/h3&gt;
 
-&lt;p&gt;&lt;strong&gt;l0calh0t&lt;/strong&gt; is an innovative startup that simplifies container-based application hosting, designed for developers of all levels, SREs, DevOps, and QAs. By abstracting infrastructure and networking, it enables fast, cost-effective container deployment. Users can make applications publicly accessible or control access as needed. Unlike traditional solutions focused on large enterprises with strict SLAs, &lt;strong&gt;l0calh0t&lt;/strong&gt; prioritizes simplicity and accessibility, creating an agile environment for rapid testing and iteration, without the complexity of managing traditional servers.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;l0calh0t&lt;/strong&gt; is not introducing an innovative solution but rather offering &lt;strong&gt;a new way of delivering container-based application hosting&lt;/strong&gt;, designed for developers of all levels, SREs, DevOps, and QAs. By abstracting infrastructure and networking, it enables fast, cost-effective container deployment. Users can make applications publicly accessible or control access as needed. Unlike traditional solutions focused on large enterprises with strict SLAs, &lt;strong&gt;l0calh0t&lt;/strong&gt; prioritizes simplicity and accessibility, creating an agile environment for rapid testing and iteration, without the complexity of managing traditional servers.&lt;/p&gt;
+
+&lt;p&gt;I’m still thinking about the legal issues..&lt;/p&gt;
 
 &lt;h3 id=&quot;about-the-idea&quot;&gt;About the idea&lt;/h3&gt;
 
@@ -340,11 +361,15 @@ nsenter --target &amp;lt;PID&amp;gt; --mount --uts --ipc --net --pid
   &lt;li&gt;EndeavourOS&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Let’s see how long it will be viable to run locally. In general, I think the best route, if there’s enough money, would be to go for on-premises. But to validate the idea in the market (in production), I could use a cloud solution. I haven’t decided on this yet, so applying some project management now is essential to avoid going crazy!&lt;/p&gt;
+&lt;p&gt;Let’s see how long it will be viable to run locally. In general, I think the best route, if there’s enough money, would be to go for on-premises. But to validate the idea in the market (in production), I could use a cloud solution. I haven’t decided on this yet&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;[2024-10-02 15:27:45]&lt;/strong&gt; UPDATE - &lt;em&gt;I changed my mind, after thinking for a while I decided to buy hardware, here we go !!!&lt;/em&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;end&quot;&gt;End(?)&lt;/h3&gt;
 
-&lt;p&gt;So, that’s it. I’ve reached the end of my first article. I hope I’ve been clear about my idea. In the end, even if everything goes wrong, I will have gained valuable knowledge. These notes may be useful to someone else, and even to my future self. What’s coming next? A series of reflections, articles about random tools, and some not-so-professional code.&lt;/p&gt;
+&lt;p&gt;So, that’s it. I’ve reached the end of my first article. I hope I’ve been clear about my idea. In the end, even if everything goes wrong, I will have gained valuable knowledge. These notes may be useful to someone else, and even to my future self. What’s coming next? A series of reflections, articles about random tools, and some not-so-professional code &lt;strong&gt;(&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p&gt;See you around, fellas!!&lt;/p&gt;
 </content>
  </entry>
  
@@ -356,6 +381,7 @@ nsenter --target &amp;lt;PID&amp;gt; --mount --uts --ipc --net --pid
    <content type="html">&lt;h2 id=&quot;disclaimer&quot;&gt;DISCLAIMER&lt;/h2&gt;
 
 &lt;ul&gt;
+  &lt;li&gt;I write for myself&lt;/li&gt;
   &lt;li&gt;My first language is Brazilian Portuguese, but I’m learning English and will use it here. You will likely see some writing mistakes; it’s part of learning&lt;/li&gt;
   &lt;li&gt;I have worked as a Reliability Engineer only in Brazil (&lt;em&gt;until now&lt;/em&gt;)&lt;/li&gt;
   &lt;li&gt;I plan to discuss reliability topics and other subjects like security, processes, governance, and soft skills&lt;/li&gt;
