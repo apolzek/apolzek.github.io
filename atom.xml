@@ -4,13 +4,22 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-10-01T23:47:39+00:00</updated>
+ <updated>2024-10-02T12:28:24+00:00</updated>
  <id></id>
  <author>
    <name></name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>The distance between &quot;getting started&quot; and &quot;production ready&quot;</title>
+   <link href="/2024/10/10/getting-started-x-production-ready.html"/>
+   <updated>2024-10-10T00:00:00+00:00</updated>
+   <id>/2024/10/10/getting-started-x-production-ready</id>
+   <content type="html">&lt;h1 id=&quot;the-distance-between-getting-started-and-production-ready&quot;&gt;The distance between “getting started” and “production ready”&lt;/h1&gt;
+</content>
+ </entry>
  
  <entry>
    <title>🛠️ SRE Kit for the End of the World</title>

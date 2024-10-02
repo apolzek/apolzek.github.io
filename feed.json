@@ -11,6 +11,27 @@
 "items": [
     
         {
+            "id": "/2024/10/10/getting-started-x-production-ready.html",
+            "title": "The distance between \"getting started\" and \"production ready\"",
+            "summary": null,
+            "content_text": "The distance between “getting started” and “production ready”",
+            "content_html": "<h1 id=\"the-distance-between-getting-started-and-production-ready\">The distance between “getting started” and “production ready”</h1>",
+            "url": "/2024/10/10/getting-started-x-production-ready.html",
+            
+            
+            
+            
+            
+            "date_published": "2024-10-10T00:00:00+00:00",
+            "date_modified": "2024-10-10T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
             "id": "/2024/09/29/sre-kit-for-the-end-of-the-world.html",
             "title": "🛠️ SRE Kit for the End of the World",
             "summary": "Chaos is Inevitable",
