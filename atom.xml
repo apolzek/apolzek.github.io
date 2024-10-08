@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-10-08T15:20:16+00:00</updated>
+ <updated>2024-10-08T16:06:39+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -55,7 +55,7 @@
    <id>/2024/09/29/spells-for-linux-shell</id>
    <content type="html">&lt;h2 id=&quot;-spells-for-linux-shell&quot;&gt;🪄 Spells for Linux Shell&lt;/h2&gt;
 
-&lt;h3 id=&quot;loop-command-x-script&quot;&gt;loop command x script&lt;/h3&gt;
+&lt;h3 id=&quot;1-loop-command-x-script&quot;&gt;1. loop command x script&lt;/h3&gt;
 
 &lt;h4 id=&quot;command&quot;&gt;command&lt;/h4&gt;
 
@@ -148,7 +148,7 @@
 &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;background-processes&quot;&gt;background processes&lt;/h3&gt;
+&lt;h3 id=&quot;2-background-processes&quot;&gt;2. background processes&lt;/h3&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
 
@@ -173,7 +173,7 @@
 &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;All processes have finished.&quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;debugging&quot;&gt;debugging&lt;/h3&gt;
+&lt;h3 id=&quot;3-debugging&quot;&gt;3. debugging&lt;/h3&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
 
