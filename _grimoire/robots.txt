@@ -1,0 +1,5 @@
+https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/_grimoire/asdf.txt
+https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/_grimoire/gists.txt
+https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/_grimoire/names.txt
+https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/_grimoire/tricks.txt
+https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/_grimoire/youtube-channels.txt
