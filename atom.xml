@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-10-08T14:03:15+00:00</updated>
+ <updated>2024-10-08T15:09:38+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -53,7 +53,104 @@
    <link href="/2024/09/29/spells-for-linux-shell.html"/>
    <updated>2024-09-29T00:00:00+00:00</updated>
    <id>/2024/09/29/spells-for-linux-shell</id>
-   <content type="html">&lt;p&gt;in progress..&lt;/p&gt;
+   <content type="html">&lt;h2 id=&quot;-spells-for-linux-shell&quot;&gt;🪄 Spells for Linux Shell&lt;/h2&gt;
+
+&lt;h3 id=&quot;loop-command-x-script&quot;&gt;loop command x script&lt;/h3&gt;
+
+&lt;h4 id=&quot;command&quot;&gt;command&lt;/h4&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;i &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;1..5&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;done
+
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$count&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-le&lt;/span&gt; 5 &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;count++&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;script&quot;&gt;script&lt;/h4&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Counting to 5 with a for loop:&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;i &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;1..5&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do
+    &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;done
+
+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Counting to 5 with a while loop:&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
+&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$count&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-le&lt;/span&gt; 5 &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do
+    &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$count&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;count++&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;signals&quot;&gt;signals&lt;/h3&gt;
+
+&lt;h4 id=&quot;sigint&quot;&gt;SIGINT&lt;/h4&gt;
+
+&lt;p&gt;This script creates a temporary file and displays a goodbye message when it receives a SIGINT signal (e.g., when the user presses Ctrl+C).&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Function that will be called when the script receives the SIGINT signal&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;function &lt;/span&gt;exitMsg &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;you sent a signal to end, byby !!&quot;&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# command here&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Sets up the trap to call the cleanup function when the script receives SIGINT&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;trap &lt;/span&gt;exitMsg SIGINT
+
+&lt;span class=&quot;nb&quot;&gt;sleep &lt;/span&gt;5
+
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Creating a temporary file...&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;touch&lt;/span&gt; /tmp/apolzek &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;1  &lt;span class=&quot;c&quot;&gt;# Creates a temporary file or exits with an error&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;sigterm&quot;&gt;SIGTERM&lt;/h4&gt;
+
+&lt;p&gt;This script starts a web server that runs indefinitely and shuts down gracefully when it receives a SIGTERM signal. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kill &amp;lt;PID&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Function called upon receiving SIGTERM&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;function &lt;/span&gt;terminateMsg &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Received SIGTERM, shutting down the server gracefully...&quot;&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# Here you can add commands to close connections or save the state&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Sets up the trap for SIGTERM&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;trap &lt;/span&gt;terminateMsg SIGTERM
+
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Starting web server...&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do
+    &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Server is running... (PID: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$$&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;)&quot;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;sleep &lt;/span&gt;2  &lt;span class=&quot;c&quot;&gt;# Simulates the server&apos;s running time&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;sighub&quot;&gt;SIGHUB&lt;/h4&gt;
+
+&lt;p&gt;This script starts a daemon that runs indefinitely and reloads its configuration when it receives a SIGHUP signal. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kill -HUP &amp;lt;PID&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Function called upon receiving SIGHUP&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;function &lt;/span&gt;reloadMsg &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Received SIGHUP, reloading configuration...&quot;&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# Here you can add commands to reload the configurations&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# Example: source /etc/mydaemon/config.conf&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Sets up the trap for SIGHUP&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;trap &lt;/span&gt;reloadMsg SIGHUP
+
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Starting my daemon...&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do
+    &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Daemon is running... (PID: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$$&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;)&quot;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;sleep &lt;/span&gt;5  &lt;span class=&quot;c&quot;&gt;# Simulates the daemon&apos;s running time&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 </content>
  </entry>
  
@@ -379,7 +476,7 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
   &lt;li&gt;EndeavourOS&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;[2024-10-02 15:27:45]&lt;/strong&gt; UPDATE - &lt;em&gt;I’ve decided that a hardware upgrade is unfeasible… it’s time to build a new computer, but since the budget is limited, let’s do some research !!!&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;[2024-10-02 15:27:45]&lt;/strong&gt; UPDATE - &lt;em&gt;I’ve decided that a hardware upgrade is unfeasible… It’s time to build a new PC. !!!&lt;/em&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;end&quot;&gt;End(?)&lt;/h3&gt;
 
