@@ -44,7 +44,7 @@ My computer settings are
 - 440G SSD; 
 - EndeavourOS
 
-**[2024-10-02 15:27:45]** UPDATE - *I’ve decided that a hardware upgrade is unfeasible... it’s time to build a new computer, but since the budget is limited, let’s do some research !!!*
+**[2024-10-02 15:27:45]** UPDATE - *I’ve decided that a hardware upgrade is unfeasible... It’s time to build a new PC. !!!*
 
 ### End(?)
 
