@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-10-08T15:09:38+00:00</updated>
+ <updated>2024-10-08T15:20:16+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -84,7 +84,6 @@
 &lt;h3 id=&quot;signals&quot;&gt;signals&lt;/h3&gt;
 
 &lt;h4 id=&quot;sigint&quot;&gt;SIGINT&lt;/h4&gt;
-
 &lt;p&gt;This script creates a temporary file and displays a goodbye message when it receives a SIGINT signal (e.g., when the user presses Ctrl+C).&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
@@ -106,7 +105,6 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h4 id=&quot;sigterm&quot;&gt;SIGTERM&lt;/h4&gt;
-
 &lt;p&gt;This script starts a web server that runs indefinitely and shuts down gracefully when it receives a SIGTERM signal. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kill &amp;lt;PID&amp;gt;&lt;/code&gt;&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
@@ -129,7 +127,6 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h4 id=&quot;sighub&quot;&gt;SIGHUB&lt;/h4&gt;
-
 &lt;p&gt;This script starts a daemon that runs indefinitely and reloads its configuration when it receives a SIGHUP signal. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kill -HUP &amp;lt;PID&amp;gt;&lt;/code&gt;&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
@@ -151,6 +148,47 @@
 &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;h3 id=&quot;background-processes&quot;&gt;background processes&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Starting background processes...&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Process 1&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sleep &lt;/span&gt;3 &amp;amp;  &lt;span class=&quot;c&quot;&gt;# This simulates a long-running task&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;pid1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$!&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# Get the process ID of process 1&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Process 2&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sleep &lt;/span&gt;9 &amp;amp;  &lt;span class=&quot;c&quot;&gt;# This simulates a shorter task&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;pid2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$!&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# Get the process ID of process 2&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Wait for process 1 to finish and notify&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;wait&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$pid1&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Process 1 has completed.&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Wait for process 2 to finish and notify&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;wait&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$pid2&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Process 2 has completed.&quot;&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;All processes have finished.&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;debugging&quot;&gt;debugging&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-x&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# Enable debugging mode&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Starting the script...&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Doing something...&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sleep &lt;/span&gt;1
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Ending the script.&quot;&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; +x  &lt;span class=&quot;c&quot;&gt;# Disable debugging mode&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;now debugging mode is disable&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;did you understand ?&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
  
