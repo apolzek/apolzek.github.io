@@ -4,13 +4,69 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-10-08T13:41:18+00:00</updated>
+ <updated>2024-10-08T13:43:28+00:00</updated>
  <id></id>
  <author>
    <name></name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>💡 l0calh0t Startup - day 1</title>
+   <link href="/2024/10/10/l0calh0t-startup-day2.html"/>
+   <updated>2024-10-10T00:00:00+00:00</updated>
+   <id>/2024/10/10/l0calh0t-startup-day2</id>
+   <content type="html">&lt;h2 id=&quot;about-the-project&quot;&gt;About the project&lt;/h2&gt;
+
+&lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete technology environment to support a fake product. I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;l0calh0t&lt;/strong&gt; startup. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;note&lt;/strong&gt;: &lt;em&gt;don’t take me too seriously&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I know there are already similar projects on the internet, but most of them focus on &lt;em&gt;development&lt;/em&gt; and not on &lt;em&gt;operations&lt;/em&gt;. I have two main goals. The first is to test technologies, discuss decisions and show concerns that usually arise when our project goes into production. The second is to perhaps make some money with this. My initial focus is Brazilian software developers. In general, I get along well with developers. I believe it is because every day I help them solve problems. Developers change, but the problems are usually the same.&lt;/p&gt;
+
+&lt;p&gt;Let’s get started. What follows is information about the startup. To be quite honest, what I intend to build already exists, something similar to &lt;em&gt;render.com&lt;/em&gt;.. but my ideas go a little further(if I can implement it, of course xD).&lt;/p&gt;
+
+&lt;h2 id=&quot;l0calh0t-&quot;&gt;l0calh0t 🚀🚀🚀&lt;/h2&gt;
+
+&lt;h3 id=&quot;about-the-startup&quot;&gt;About the startup&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;l0calh0t&lt;/strong&gt; is not introducing an innovative solution but rather offering &lt;strong&gt;a new way of delivering container-based application hosting&lt;/strong&gt;, designed for developers of all levels, SREs, DevOps, and QAs. By abstracting infrastructure and networking, it enables fast, cost-effective container deployment. Users can make applications publicly accessible or control access as needed. Unlike traditional solutions focused on large enterprises with strict SLAs, &lt;strong&gt;l0calh0t&lt;/strong&gt; prioritizes simplicity and accessibility, creating an agile environment for rapid testing and iteration, without the complexity of managing traditional servers.&lt;/p&gt;
+
+&lt;p&gt;I’m still thinking about the legal issues..&lt;/p&gt;
+
+&lt;h3 id=&quot;about-the-idea&quot;&gt;About the idea&lt;/h3&gt;
+
+&lt;p&gt;The idea is basically a &lt;em&gt;render.com&lt;/em&gt; with some differences. I want to do something more “api first”. I want to do it in a way that is similar to the way people work with containers locally and I also want to offer a way for them to have details about their applications by adding components to the infrastructure that abstract away the complexity of doing so.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-do-i-need&quot;&gt;What do I need?&lt;/h3&gt;
+
+&lt;p&gt;Considering that I have no money, no computing resources, and no advanced programming skills (that makes it hard 🤣🤣), I need to focus on something simple that works. I want to create a business abstraction on top of Kubernetes and put all the complexity into it using tools I have experience with. I need a cheap domain like &lt;strong&gt;localhot.io&lt;/strong&gt;. I need a payment method and reasonable bandwidth. I want to physically separate the servers where the startup’s applications are from the servers where the end-user containers will be. I need to think about security and a business model that is viable for Brazilian developers.&lt;/p&gt;
+
+&lt;p&gt;For the first poc’s, the simpler the better. I intend to use python or golang for this. I will use kind as the local kubernetes environment, the local registry of my machine for the images and also my local network (I run a certain risk).The networking part is very important in this project, but first I want a functional MVP.&lt;/p&gt;
+
+&lt;h3 id=&quot;about-my-localhost-workstation&quot;&gt;About my localhost (workstation)&lt;/h3&gt;
+
+&lt;p&gt;My computer settings are&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Intel(R) Core(TM) i5-9400 CPU @ 2.90GHz;&lt;/li&gt;
+  &lt;li&gt;16 RAM;&lt;/li&gt;
+  &lt;li&gt;440G SSD;&lt;/li&gt;
+  &lt;li&gt;EndeavourOS&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Let’s see how long it will be viable to run locally. In general, I think the best route, if there’s enough money, would be to go for on-premises. But to validate the idea in the market (in production), I could use a cloud solution. I haven’t decided on this yet&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;[2024-10-02 15:27:45]&lt;/strong&gt; UPDATE - &lt;em&gt;I changed my mind, after thinking for a while I decided to buy hardware, here we go !!!&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;end&quot;&gt;End(?)&lt;/h3&gt;
+
+&lt;p&gt;So, that’s it. I’ve reached the end of my first article. I hope I’ve been clear about my idea. In the end, even if everything goes wrong, I will have gained valuable knowledge. These notes may be useful to someone else, and even to my future self. What’s coming next? A series of reflections, articles about random tools, and some not-so-professional code &lt;strong&gt;(&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p&gt;See you around, fellas!!&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>The distance between &quot;getting started&quot; and &quot;production ready&quot;</title>
@@ -400,8 +456,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
 
 &lt;h2 id=&quot;remember&quot;&gt;REMEMBER&lt;/h2&gt;
 
-&lt;p&gt;🇺🇸 “The only way to make things work well is by understanding why they break.”
-🇧🇷 “A única maneira de fazer as coisas funcionarem bem é entendendo o motivo pelo qual elas quebram.”&lt;/p&gt;
+&lt;p&gt;🇺🇸 “The only way to make things work well is by understanding why they break.”&lt;/p&gt;
+
+&lt;p&gt;🇧🇷 “A única maneira de fazer as coisas funcionarem bem é entendendo o motivo pelo qual elas quebram.”&lt;/p&gt;
 
 </content>
  </entry>
