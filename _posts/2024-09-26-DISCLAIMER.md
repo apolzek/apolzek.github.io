@@ -4,7 +4,7 @@ title: ⚠️ DISCLAIMER
 description: DISCLAIMER and GOALS
 summary: DISCLAIMER and GOALS
 tags: disclaimer goals
-minute: 1
+minute: 2
 ---
 
 ## DISCLAIMER
