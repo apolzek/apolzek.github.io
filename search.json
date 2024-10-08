@@ -1,7 +1,15 @@
 [
   
     {
-      "title"    : "💡 l0calh0t Startup - day 1",
+      "title"    : "SRE interview questions",
+      "category" : "",
+      "tags"     : "sre, interview",
+      "url"      : "/2024/10/10/sre-interview-questions.html",
+      "date"     : "2024-10-10 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "💡 l0calh0t Startup - day 2",
       "category" : "",
       "tags"     : "devops, sre, project, startup",
       "url"      : "/2024/10/10/l0calh0t-startup-day2.html",
