@@ -37,7 +37,7 @@ while [ $count -le 5 ]; do
 done
 ```
 
-### signals
+### 2. signals
 
 #### SIGINT
 This script creates a temporary file and displays a goodbye message when it receives a SIGINT signal (e.g., when the user presses Ctrl+C).
@@ -107,7 +107,7 @@ while true; do
 done
 ```
 
-### 2. background processes
+### 3. background processes
 
 ```bash
 #!/bin/bash
@@ -133,7 +133,7 @@ echo "Process 2 has completed."
 echo "All processes have finished."
 ```
 
-### 3. debugging
+### 4. debugging
 
 ```bash
 #!/bin/bash
