@@ -25,6 +25,14 @@
     } ,
   
     {
+      "title"    : "AWS IAM",
+      "category" : "",
+      "tags"     : "aws",
+      "url"      : "/2024/10/10/aws-iam.html",
+      "date"     : "2024-10-10 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "🛠️ SRE Kit for the End of the World",
       "category" : "",
       "tags"     : "tools, sre, toolbox, linux",

@@ -74,6 +74,27 @@
         },
     
         {
+            "id": "/2024/10/10/aws-iam.html",
+            "title": "AWS IAM",
+            "summary": null,
+            "content_text": "AWS IAM",
+            "content_html": "<h2 id=\"aws-iam\">AWS IAM</h2>",
+            "url": "/2024/10/10/aws-iam.html",
+            
+            
+            
+            
+            
+            "date_published": "2024-10-10T00:00:00+00:00",
+            "date_modified": "2024-10-10T00:00:00+00:00",
+            
+                "author": 
+                ""
+                
+            
+        },
+    
+        {
             "id": "/2024/09/29/sre-kit-for-the-end-of-the-world.html",
             "title": "🛠️ SRE Kit for the End of the World",
             "summary": "Chaos is Inevitable",

@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-10-08T16:45:33+00:00</updated>
+ <updated>2024-10-08T16:47:16+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -36,6 +36,15 @@
    <updated>2024-10-10T00:00:00+00:00</updated>
    <id>/2024/10/10/getting-started-x-production-ready</id>
    <content type="html">&lt;h1 id=&quot;the-distance-between-getting-started-and-production-ready&quot;&gt;The distance between “getting started” and “production ready”&lt;/h1&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>AWS IAM</title>
+   <link href="/2024/10/10/aws-iam.html"/>
+   <updated>2024-10-10T00:00:00+00:00</updated>
+   <id>/2024/10/10/aws-iam</id>
+   <content type="html">&lt;h2 id=&quot;aws-iam&quot;&gt;AWS IAM&lt;/h2&gt;
 </content>
  </entry>
  
