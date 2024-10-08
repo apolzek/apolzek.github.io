@@ -40,7 +40,6 @@ done
 ### signals
 
 #### SIGINT
-
 This script creates a temporary file and displays a goodbye message when it receives a SIGINT signal (e.g., when the user presses Ctrl+C).
 
 ```bash
@@ -63,7 +62,6 @@ touch /tmp/apolzek || exit 1  # Creates a temporary file or exits with an error
 ```
 
 #### SIGTERM
-
 This script starts a web server that runs indefinitely and shuts down gracefully when it receives a SIGTERM signal. `kill <PID>`
 
 ```bash
@@ -87,7 +85,6 @@ done
 ```
 
 #### SIGHUB
-
 This script starts a daemon that runs indefinitely and reloads its configuration when it receives a SIGHUP signal. `kill -HUP <PID>`
 
 ```bash
@@ -110,3 +107,46 @@ while true; do
 done
 ```
 
+### background processes
+
+```bash
+#!/bin/bash
+
+echo "Starting background processes..."
+
+# Process 1
+sleep 3 &  # This simulates a long-running task
+pid1=$!  # Get the process ID of process 1
+
+# Process 2
+sleep 9 &  # This simulates a shorter task
+pid2=$!  # Get the process ID of process 2
+
+# Wait for process 1 to finish and notify
+wait $pid1
+echo "Process 1 has completed."
+
+# Wait for process 2 to finish and notify
+wait $pid2
+echo "Process 2 has completed."
+
+echo "All processes have finished."
+```
+
+### debugging
+
+```bash
+#!/bin/bash
+
+set -x  # Enable debugging mode
+
+echo "Starting the script..."
+echo "Doing something..."
+sleep 1
+echo "Ending the script."
+
+set +x  # Disable debugging mode
+
+echo "now debugging mode is disable"
+echo "did you understand ?"
+```
