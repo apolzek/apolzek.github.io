@@ -4,7 +4,7 @@ title: 💡 l0calh0t Startup - day 1
 description: Building the l0calh0t Startup
 summary: Building the l0calh0t Startup
 tags: devops sre project startup
-minute: 3
+minute: 5
 ---
 
 ## About the project
@@ -44,9 +44,7 @@ My computer settings are
 - 440G SSD; 
 - EndeavourOS
 
-Let’s see how long it will be viable to run locally. In general, I think the best route, if there’s enough money, would be to go for on-premises. But to validate the idea in the market (in production), I could use a cloud solution. I haven't decided on this yet
-
-**[2024-10-02 15:27:45]** UPDATE - *I changed my mind, after thinking for a while I decided to buy hardware, here we go !!!*
+**[2024-10-02 15:27:45]** UPDATE - *I’ve decided that a hardware upgrade is unfeasible... it’s time to build a new computer, but since the budget is limited, let’s do some research !!!*
 
 ### End(?)
 
