@@ -25,6 +25,6 @@ minute: 1
 
 ## REMEMBER
 
+🇺🇸 "The only way to make things work well is by understanding why they break."
 🇧🇷 "A única maneira de fazer as coisas funcionarem bem é entendendo o motivo pelo qual elas quebram."
 
-🇺🇸 "The only way to make things work well is by understanding why they break."
