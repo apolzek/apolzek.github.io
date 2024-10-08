@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-10-08T16:25:00+00:00</updated>
+ <updated>2024-10-08T16:41:02+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -44,7 +44,187 @@
    <link href="/2024/09/29/sre-kit-for-the-end-of-the-world.html"/>
    <updated>2024-09-29T00:00:00+00:00</updated>
    <id>/2024/09/29/sre-kit-for-the-end-of-the-world</id>
-   <content type="html">&lt;p&gt;&lt;em&gt;in progress..&lt;/em&gt;&lt;/p&gt;
+   <content type="html">&lt;h2 id=&quot;️-sre-kit-for-the-end-of-the-world&quot;&gt;🛠️ SRE Kit for the End of the World&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;strong&gt;Tool&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;Description&lt;/strong&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;ping&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Sends ICMP echo requests to a network host to test connectivity and latency. Useful for checking if a host is reachable.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;traceroute&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Traces the path packets take to a destination, identifying network hops and where delays or packet losses occur.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;netstat&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Displays network connections, routing tables, and interface statistics. Helpful for diagnosing network issues and checking active connections.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;ss&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;A modern alternative to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;netstat&lt;/code&gt;, used for displaying more detailed socket and network connection information.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;tcpdump&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Captures network traffic for analysis. Useful for diagnosing low-level network issues and packet inspection.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;dig&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Queries DNS servers for domain information, such as IP addresses. Helpful for diagnosing DNS resolution issues.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;nslookup&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Similar to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dig&lt;/code&gt;, used for querying DNS information. Useful for simple DNS queries and debugging domain resolution issues.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;top&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Displays real-time information about system processes, CPU, and memory usage. Useful for identifying resource-hungry processes.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;htop&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;An improved version of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;top&lt;/code&gt; with an interactive, user-friendly interface. Useful for visualizing system resource usage.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;iostat&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Reports CPU and I/O statistics for devices. Useful for diagnosing disk I/O performance issues.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;vmstat&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Reports virtual memory statistics, including processes, memory, paging, and CPU usage. Useful for spotting memory bottlenecks.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;df&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Displays disk space usage for file systems. Useful for checking if any file system is running out of space.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;du&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Summarizes disk usage of files and directories. Useful for identifying large files or directories consuming disk space.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;free&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Shows the amount of free and used memory in the system. Useful for diagnosing memory availability issues.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;lsof&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Lists open files and network connections. Useful for identifying which processes have specific files or sockets open.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;strace&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Traces system calls made by a process. Useful for debugging issues where a program is failing due to system calls.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;dstat&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Combines system resource statistics in real-time (disk, network, CPU, memory). Useful for holistic system performance monitoring.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;systemctl&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Manages system services on Linux. Useful for starting, stopping, or checking the status of services and troubleshooting service issues.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;journalctl&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Queries and displays system logs from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;systemd&lt;/code&gt;. Useful for troubleshooting service issues, crashes, and other system events.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;ps&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Lists running processes. Useful for investigating which processes are running, hung, or consuming too many resources.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;grep&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Searches for patterns within text. Useful for filtering logs or command output for specific keywords or patterns.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;awk&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;A powerful text processing tool used for extracting and transforming data from files or input streams.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;sed&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Stream editor for filtering and transforming text. Often used to edit configuration files or command outputs in scripts.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;curl&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Transfers data to or from a server using various protocols (HTTP, FTP). Useful for testing API endpoints or downloading files.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;wget&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Retrieves files from web servers. Can be used for downloading files or mirroring websites.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;ip&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Configures network interfaces and displays network configuration. Replaces older &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ifconfig&lt;/code&gt; for advanced network diagnostics.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;hostnamectl&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Controls and configures system hostname and related settings. Useful for managing the system identity over the network.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;uptime&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Displays how long the system has been running along with the system load average. Useful for diagnosing system stability issues.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;nc (netcat)&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;A versatile networking tool for reading, writing, and redirecting data over TCP/IP networks. Useful for debugging connectivity issues.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;arp&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Displays or manipulates the ARP (Address Resolution Protocol) table. Useful for diagnosing issues with IP to MAC address resolution.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;iptraf-ng&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;A real-time network monitoring utility that provides detailed statistics about network traffic. Useful for diagnosing traffic issues.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;iftop&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Displays bandwidth usage on an interface by host. Useful for identifying bandwidth-intensive connections.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;mtr&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Combines the functionality of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ping&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;traceroute&lt;/code&gt; in a single tool, continuously analyzing the network route. Useful for long-term network diagnostics.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;whois&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Queries the WHOIS database for domain information such as ownership, expiration, and registrar data. Useful for domain-related troubleshooting.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;sar&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Collects, reports, and saves system activity information, including CPU, memory, I/O, and network statistics. Useful for long-term performance analysis.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;perf&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Performance analysis tool for Linux that measures CPU and system performance metrics. Useful for in-depth performance troubleshooting.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;nmap&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;A network scanning tool that discovers devices and services on a network. Useful for security audits and network diagnostics.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;ipmitool&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Allows management and monitoring of hardware devices using IPMI. Useful for hardware troubleshooting and server health monitoring.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;sshd&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Secure Shell (SSH) daemon for remote system management. Useful for securely accessing systems to troubleshoot remotely.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;rkhunter&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Scans for rootkits and security vulnerabilities. Useful for identifying security breaches or malware.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;rsync&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Efficiently synchronizes files between systems over a network. Useful for backups, data migration, or troubleshooting file transfer issues.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;ethtool&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Displays and modifies network interface card (NIC) settings. Useful for diagnosing or tuning network performance issues at the hardware level.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
 </content>
  </entry>
  
@@ -344,17 +524,11 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
 
 &lt;p&gt;A Linux container is a lightweight and portable unit that encapsulates an application and its dependencies. Containers utilize key Linux kernel features for process isolation and resource management, including namespaces (for isolating resources like PID, network, and filesystem) and control groups (cgroups) (for limiting and prioritizing resource usage). Additionally, union file systems enable efficient layering and storage of container images. Together, these features allow containers to operate efficiently and securely on a shared host. Basically a container image is composed of&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Dependencies&lt;/li&gt;
-  &lt;li&gt;Application code&lt;/li&gt;
-  &lt;li&gt;Container configuration&lt;/li&gt;
-  &lt;li&gt;Base image&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Dependencies  + Application code + Container configuration + Base image&lt;/code&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;container-runtime&quot;&gt;Container runtime&lt;/h2&gt;
 
-&lt;p&gt;A container runtime is a software component that is responsible for running and managing containers. Containers are lightweight, portable units that package an application and its dependencies, allowing them to run consistently across different environments.&lt;/p&gt;
-
+&lt;p&gt;A container runtime is a software component that is responsible for running and managing containers.&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Docker&lt;/li&gt;
   &lt;li&gt;containerd&lt;/li&gt;
@@ -373,7 +547,7 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
 
 &lt;p&gt;Having secure base images for containers is crucial for maintaining the overall security of the host system. Images without elevated privileges help minimize potential attack vectors, reducing the risk of container escape and unauthorized access to the host. While concerns about insecure images are valid, it’s important to note that this is not the worst-case scenario, as containers typically run in a private network. For an attacker to exploit these vulnerabilities significantly, they would need to compromise additional components of the infrastructure, making it a more complex attack path. Therefore, while secure base images are essential, the overall security posture can still be robust with proper network isolation and access controls in place.&lt;/p&gt;
 
-&lt;p&gt;SAST (Static Application Security Testing) and SCA (Software Composition Analysis) are essential complementary approaches for ensuring application security. While SAST analyzes the source code for vulnerabilities before execution, SCA focuses on third-party libraries and dependencies, checking for known flaws. Integrating both practices is crucial, as it allows for the identification of internal code issues and external risks associated with software components. Tools like SonarQube and Fortify for SAST, and Black Duck and Snyk for SCA, provide robust solutions to mitigate vulnerabilities, offering more comprehensive security throughout the software development lifecycle.&lt;/p&gt;
+&lt;p&gt;Now, talking about the application code that is inside the container.. SAST (Static Application Security Testing) and SCA (Software Composition Analysis) are essential complementary approaches for ensuring application security. While SAST analyzes the source code for vulnerabilities before execution, SCA focuses on third-party libraries and dependencies, checking for known flaws. Integrating both practices is crucial, as it allows for the identification of internal code issues and external risks associated with software components. Tools like SonarQube and Fortify for SAST, and Black Duck and Snyk for SCA, provide robust solutions to mitigate vulnerabilities, offering more comprehensive security throughout the software development lifecycle.&lt;/p&gt;
 
 &lt;p&gt;In summary, ensure that you use secure base images that prevent vulnerabilities and do not allow root access. Conduct thorough security testing and utilize a scanning tool with an up-to-date CVE database. Keep your images minimal, as even a simple curl command can be exploited by skilled attackers. Implement read-only filesystems to enhance security and adopt practices that make updating images simple and efficient.&lt;/p&gt;
 
@@ -431,7 +605,7 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
   &lt;li&gt;Document Image Purpose and Usage: Include clear documentation about the image’s purpose, usage, and configuration to facilitate easier maintenance and onboarding.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;deep-dive--not-today&quot;&gt;Deep dive ? not today..&lt;/h2&gt;
+&lt;h2 id=&quot;deep-dive--not-todaybut-you-need-to-know&quot;&gt;Deep dive ? not today..but you need to know&lt;/h2&gt;
 
 &lt;h4 id=&quot;namespaces-and-cgroups-architecture&quot;&gt;Namespaces and Cgroups Architecture&lt;/h4&gt;
 &lt;p&gt;Namespaces are a fundamental aspect of containerization, providing isolation for various resources on a Linux system. Each namespace creates a distinct environment for processes, ensuring that they only interact with their own set of resources. For example, the PID namespace allows processes to have their own process IDs, making it appear as though they are the only ones running on the system. Similarly, network namespaces enable containers to have unique network interfaces and IP addresses, preventing interference between containers. Understanding how these namespaces work is essential for developers to effectively manage resource allocation and maintain a secure environment.&lt;/p&gt;
@@ -454,8 +628,6 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
 &lt;p&gt;Understanding these networking models is crucial for optimizing communication between containers. For instance, bridge networking is often used for simpler applications that require direct communication with the host, while overlay networking is ideal for applications deployed across multiple hosts in a cluster, such as those orchestrated by Kubernetes. By leveraging tools like Flannel, Calico, or Cilium, developers can create robust networking solutions that enhance container security and performance. The choice of networking model significantly impacts the architecture of containerized applications and their ability to scale effectively.&lt;/p&gt;
 
 &lt;h4 id=&quot;advanced-container-security&quot;&gt;Advanced Container Security&lt;/h4&gt;
-&lt;p&gt;Container security is a multifaceted discipline that involves implementing various strategies to safeguard containerized applications from potential threats. One of the primary focuses is ensuring the use of secure base images, as vulnerabilities in these images can lead to significant risks. Images should be built without elevated privileges to minimize the attack surface, reducing the chances of container escape and unauthorized access to the host system. Additionally, regular vulnerability scanning is essential to identify and remediate any security flaws in the base images and application dependencies, maintaining a strong security posture throughout the container lifecycle.&lt;/p&gt;
-
 &lt;p&gt;Advanced security measures extend beyond just using secure images; they also encompass implementing Linux capabilities to limit permissions, using Seccomp to filter system calls, and configuring AppArmor profiles for enhanced security. Rootless containers further elevate security by allowing users to run containers without root privileges, significantly reducing the risk of privilege escalation attacks. By integrating these practices, organizations can create a layered security approach that effectively mitigates potential risks while ensuring that containerized applications remain robust and resilient against emerging threats.&lt;/p&gt;
 
 &lt;h4 id=&quot;volume-management-and-data-persistence&quot;&gt;Volume Management and Data Persistence&lt;/h4&gt;
