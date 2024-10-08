@@ -7,8 +7,6 @@ tags: tools sre toolbox linux
 minute: 5
 ---
 
-## 🛠️ SRE Kit for the End of the World
-
 | **Tool**        | **Description**                                                                                                                                             |
 | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **ping**        | Sends ICMP echo requests to a network host to test connectivity and latency. Useful for checking if a host is reachable.                                    |
