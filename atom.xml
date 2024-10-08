@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-10-08T00:11:41+00:00</updated>
+ <updated>2024-10-08T13:23:18+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -400,9 +400,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
 
 &lt;h2 id=&quot;remember&quot;&gt;REMEMBER&lt;/h2&gt;
 
-&lt;p&gt;🇧🇷 “A única maneira de fazer as coisas funcionarem bem é entendendo o motivo pelo qual elas quebram.”&lt;/p&gt;
+&lt;p&gt;🇺🇸 “The only way to make things work well is by understanding why they break.”
+🇧🇷 “A única maneira de fazer as coisas funcionarem bem é entendendo o motivo pelo qual elas quebram.”&lt;/p&gt;
 
-&lt;p&gt;🇺🇸 “The only way to make things work well is by understanding why they break.”&lt;/p&gt;
 </content>
  </entry>
  
