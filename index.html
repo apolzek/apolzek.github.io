@@ -52,13 +52,18 @@ layout: default
 </section>
 
 <style>
-    .blink {
-        animation: blink-animation 5s steps(5, start) infinite;
-    }
-
-    @keyframes blink-animation {
-        to {
-            visibility: hidden;
-        }
+    .hidden {
+        visibility: hidden;
     }
 </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var element = document.getElementById('intro');
+        element.classList.add('hidden');
+
+        setTimeout(function () {
+            element.classList.remove('hidden');
+        }, 8000);
+    });
+</script>
