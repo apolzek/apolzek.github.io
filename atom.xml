@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-10-08T16:09:23+00:00</updated>
+ <updated>2024-10-08T16:10:20+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -81,7 +81,7 @@
 &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;signals&quot;&gt;signals&lt;/h3&gt;
+&lt;h3 id=&quot;2-signals&quot;&gt;2. signals&lt;/h3&gt;
 
 &lt;h4 id=&quot;sigint&quot;&gt;SIGINT&lt;/h4&gt;
 &lt;p&gt;This script creates a temporary file and displays a goodbye message when it receives a SIGINT signal (e.g., when the user presses Ctrl+C).&lt;/p&gt;
@@ -148,7 +148,7 @@
 &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;2-background-processes&quot;&gt;2. background processes&lt;/h3&gt;
+&lt;h3 id=&quot;3-background-processes&quot;&gt;3. background processes&lt;/h3&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
 
@@ -173,7 +173,7 @@
 &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;All processes have finished.&quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;3-debugging&quot;&gt;3. debugging&lt;/h3&gt;
+&lt;h3 id=&quot;4-debugging&quot;&gt;4. debugging&lt;/h3&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
 

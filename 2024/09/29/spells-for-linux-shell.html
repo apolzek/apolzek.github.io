@@ -14,7 +14,7 @@
     </span><span class="nb">echo</span> <span class="nv">$count</span>
     <span class="o">((</span>count++<span class="o">))</span>
 <span class="k">done</span>
-</code></pre></div></div> <h3 id="signals"> signals <a href="#signals">#</a> </h3> <h4 id="sigint"> SIGINT <a href="#sigint">#</a> </h4> <p>This script creates a temporary file and displays a goodbye message when it receives a SIGINT signal (e.g., when the user presses Ctrl+C).</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+</code></pre></div></div> <h3 id="2-signals"> 2. signals <a href="#2-signals">#</a> </h3> <h4 id="sigint"> SIGINT <a href="#sigint">#</a> </h4> <p>This script creates a temporary file and displays a goodbye message when it receives a SIGINT signal (e.g., when the user presses Ctrl+C).</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
 
 <span class="c"># Function that will be called when the script receives the SIGINT signal</span>
 <span class="k">function </span>exitMsg <span class="o">{</span>
@@ -64,7 +64,7 @@
     </span><span class="nb">echo</span> <span class="s2">"Daemon is running... (PID: </span><span class="nv">$$</span><span class="s2">)"</span>
     <span class="nb">sleep </span>5  <span class="c"># Simulates the daemon's running time</span>
 <span class="k">done</span>
-</code></pre></div></div> <h3 id="2-background-processes"> 2. background processes <a href="#2-background-processes">#</a> </h3> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+</code></pre></div></div> <h3 id="3-background-processes"> 3. background processes <a href="#3-background-processes">#</a> </h3> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
 
 <span class="nb">echo</span> <span class="s2">"Starting background processes..."</span>
 
@@ -85,7 +85,7 @@
 <span class="nb">echo</span> <span class="s2">"Process 2 has completed."</span>
 
 <span class="nb">echo</span> <span class="s2">"All processes have finished."</span>
-</code></pre></div></div> <h3 id="3-debugging"> 3. debugging <a href="#3-debugging">#</a> </h3> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+</code></pre></div></div> <h3 id="4-debugging"> 4. debugging <a href="#4-debugging">#</a> </h3> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
 
 <span class="nb">set</span> <span class="nt">-x</span>  <span class="c"># Enable debugging mode</span>
 
