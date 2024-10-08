@@ -1,0 +1,4 @@
+https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/_grimoire/asdf.html
+https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/_grimoire/tricks.html
+https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/_grimoire/scripts.html
+https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/_grimoire/names.txt
