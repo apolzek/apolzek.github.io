@@ -9,7 +9,7 @@ minute: 0
 
 ## 🪄 Spells for Linux Shell
 
-### loop command x script
+### 1. loop command x script
 
 #### command
 
@@ -107,7 +107,7 @@ while true; do
 done
 ```
 
-### background processes
+### 2. background processes
 
 ```bash
 #!/bin/bash
@@ -133,7 +133,7 @@ echo "Process 2 has completed."
 echo "All processes have finished."
 ```
 
-### debugging
+### 3. debugging
 
 ```bash
 #!/bin/bash
