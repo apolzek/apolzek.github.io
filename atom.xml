@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-10-08T16:58:58+00:00</updated>
+ <updated>2024-10-08T17:04:46+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -53,9 +53,7 @@
    <link href="/2024/09/29/sre-kit-for-the-end-of-the-world.html"/>
    <updated>2024-09-29T00:00:00+00:00</updated>
    <id>/2024/09/29/sre-kit-for-the-end-of-the-world</id>
-   <content type="html">&lt;h2 id=&quot;️-sre-kit-for-the-end-of-the-world&quot;&gt;🛠️ SRE Kit for the End of the World&lt;/h2&gt;
-
-&lt;table&gt;
+   <content type="html">&lt;table&gt;
   &lt;thead&gt;
     &lt;tr&gt;
       &lt;th&gt;&lt;strong&gt;Tool&lt;/strong&gt;&lt;/th&gt;
