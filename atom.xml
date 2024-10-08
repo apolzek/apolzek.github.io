@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-10-08T17:42:16+00:00</updated>
+ <updated>2024-10-08T17:43:05+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -734,6 +734,15 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
 
 &lt;p&gt;🇧🇷 “A única maneira de fazer as coisas funcionarem bem é entendendo o motivo pelo qual elas quebram.”&lt;/p&gt;
 
+</content>
+ </entry>
+ 
+ <entry>
+   <title>shortcuts</title>
+   <link href="/1995/10/05/shortcuts.html"/>
+   <updated>1995-10-05T00:00:00+00:00</updated>
+   <id>/1995/10/05/shortcuts</id>
+   <content type="html">
 </content>
  </entry>
  
