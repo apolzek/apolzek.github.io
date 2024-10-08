@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-10-08T13:54:05+00:00</updated>
+ <updated>2024-10-08T14:03:15+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -379,9 +379,7 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
   &lt;li&gt;EndeavourOS&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Let’s see how long it will be viable to run locally. In general, I think the best route, if there’s enough money, would be to go for on-premises. But to validate the idea in the market (in production), I could use a cloud solution. I haven’t decided on this yet&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;[2024-10-02 15:27:45]&lt;/strong&gt; UPDATE - &lt;em&gt;I changed my mind, after thinking for a while I decided to buy hardware, here we go !!!&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;[2024-10-02 15:27:45]&lt;/strong&gt; UPDATE - &lt;em&gt;I’ve decided that a hardware upgrade is unfeasible… it’s time to build a new computer, but since the budget is limited, let’s do some research !!!&lt;/em&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;end&quot;&gt;End(?)&lt;/h3&gt;
 
