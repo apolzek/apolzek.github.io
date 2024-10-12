@@ -1,0 +1,100 @@
+
+# Download .NET
+asdf plugin-add dotnet-core https://github.com/emersonsoares/asdf-dotnet-core.git
+asdf list all dotnet-core
+asdf install dotnet-core 6.0.416
+asdf global dotnet-core 6.0.416
+dotnet --version
+asdf install dotnet-core 6.0.200
+asdf global dotnet-core 6.0.200
+
+# Dowload Nodejs
+asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+asdf install nodejs latest
+asdf global nodejs latest
+
+# Download Java
+asdf plugin add java
+asdf install java graalvm-22.3.0+java19
+asdf global java graalvm-22.3.0+java19
+tail $HOME/.tool-versions
+
+# Download awscli
+asdf plugin add awscli
+asdf install awscli latest
+asdf global awscli latest
+
+# Download docker-slim
+asdf plugin add docker-slim
+asdf install docker-slim latest
+asdf global docker-slim latest
+
+# Download bat
+asdf plugin add bat
+asdf install bat latest
+asdf global bat latest
+
+# Download cfssl
+asdf plugin add cfssl
+asdf install cfssl latest
+asdf global cfssl latest
+
+# Download lazygit
+asdf plugin add lazygit
+asdf install lazygit latest
+asdf global lazygit latest
+
+# Download Maven
+asdf plugin-add maven 
+asdf install maven 3.5.0
+asdf global maven 3.5.0
+
+# Download jq
+asdf plugin add jq
+asdf install jq latest
+asdf global jq latest
+
+# Download kubectx
+asdf plugin-add kubectx https://github.com/virtualstaticvoid/asdf-kubectx.git
+asdf install kubectx latest
+asdf global kubectx latest
+
+# Download yamllint
+asdf plugin add yamllint
+asdf install yamlint latest
+asdf global yamllint latest
+
+# Download Rust
+asdf plugin-add rust https://github.com/code-lever/asdf-rust.git
+asdf install rust latest
+asdf global rust latest
+
+# Download Trivy
+asdf plugin add trivy https://github.com/zufardhiyaulhaq/asdf-trivy.git
+asdf install trivy latest
+asdf global trivy latest
+
+# Download Terraform
+asdf plugin add terraform
+asdf install terraform latest
+asdf global terraform latest
+
+# Download Helm
+asdf plugin-add helm https://github.com/Antiarchitect/asdf-helm.git
+asdf install helm latest
+asdf global  helm latest
+
+# Download Helm docs
+asdf plugin-add helm-docs https://github.com/sudermanjr/asdf-helm-docs.git
+asdf install helm-docs latest
+asdf global helm-docs latest
+
+# Download fzf
+asdf plugin add fzf https://github.com/kompiro/asdf-fzf.git
+asdf install fzf latest
+asdf global fzf latest
+
+# Download websocat
+asdf plugin add websocat
+asdf install websocat latest
+asdf global websocat latest
