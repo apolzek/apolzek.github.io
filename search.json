@@ -33,6 +33,14 @@
     } ,
   
     {
+      "title"    : "shortcuts",
+      "category" : "",
+      "tags"     : "shortcuts",
+      "url"      : "/2024/10/09/shortcuts.html",
+      "date"     : "2024-10-09 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "🛠️ SRE Kit for the End of the World",
       "category" : "",
       "tags"     : "tools, sre, toolbox, linux",
@@ -78,14 +86,6 @@
       "tags"     : "disclaimer, goals",
       "url"      : "/2024/09/26/DISCLAIMER.html",
       "date"     : "2024-09-26 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "shortcuts",
-      "category" : "",
-      "tags"     : "shortcuts",
-      "url"      : "/2024/09/09/shortcuts.html",
-      "date"     : "2024-09-09 00:00:00 +0000"
     } 
   
 ]
