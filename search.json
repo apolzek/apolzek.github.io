@@ -1,11 +1,35 @@
 [
   
     {
+      "title"    : "AWS IAM",
+      "category" : "",
+      "tags"     : "aws",
+      "url"      : "/2025/10/10/aws-iam.html",
+      "date"     : "2025-10-10 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "shortcuts",
+      "category" : "",
+      "tags"     : "shortcuts",
+      "url"      : "/2025/10/09/shortcuts.html",
+      "date"     : "2025-10-09 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "🛠️ SRE Kit for the End of the World",
+      "category" : "",
+      "tags"     : "tools, sre, toolbox, linux",
+      "url"      : "/2025/09/29/sre-kit-for-the-end-of-the-world.html",
+      "date"     : "2025-09-29 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "SRE interview questions",
       "category" : "",
       "tags"     : "sre, interview",
-      "url"      : "/2024/10/10/sre-interview-questions.html",
-      "date"     : "2024-10-10 00:00:00 +0000"
+      "url"      : "/2024/10/13/sre-interview-questions.html",
+      "date"     : "2024-10-13 00:00:00 +0000"
     } ,
   
     {
@@ -22,30 +46,6 @@
       "tags"     : "tools",
       "url"      : "/2024/10/10/getting-started-x-production-ready.html",
       "date"     : "2024-10-10 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "AWS IAM",
-      "category" : "",
-      "tags"     : "aws",
-      "url"      : "/2024/10/10/aws-iam.html",
-      "date"     : "2024-10-10 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "shortcuts",
-      "category" : "",
-      "tags"     : "shortcuts",
-      "url"      : "/2024/10/09/shortcuts.html",
-      "date"     : "2024-10-09 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "🛠️ SRE Kit for the End of the World",
-      "category" : "",
-      "tags"     : "tools, sre, toolbox, linux",
-      "url"      : "/2024/09/29/sre-kit-for-the-end-of-the-world.html",
-      "date"     : "2024-09-29 00:00:00 +0000"
     } ,
   
     {
