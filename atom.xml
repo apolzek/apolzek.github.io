@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-10-12T18:51:57+00:00</updated>
+ <updated>2024-10-12T19:42:36+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -44,7 +44,58 @@
    <link href="/2024/10/10/aws-iam.html"/>
    <updated>2024-10-10T00:00:00+00:00</updated>
    <id>/2024/10/10/aws-iam</id>
-   <content type="html">&lt;h2 id=&quot;aws-iam&quot;&gt;AWS IAM&lt;/h2&gt;
+   <content type="html">&lt;h2 id=&quot;iam-overview&quot;&gt;IAM Overview&lt;/h2&gt;
+
+&lt;p&gt;AWS Identity and Access Management (IAM) is a crucial service within Amazon Web Services (AWS) that helps organizations securely manage access to their cloud resources. Effective access management is vital for maintaining security and operational efficiency, especially in production environments where misconfigurations can lead to vulnerabilities.&lt;/p&gt;
+
+&lt;h3 id=&quot;iam-users-groups-and-roles&quot;&gt;IAM Users, Groups, and Roles&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;IAM Users&lt;/strong&gt;: These are individual identities within AWS, typically representing people or applications. Each user has specific credentials, such as access keys for programmatic access or passwords for the AWS Management Console. Users are granted permissions tailored to their roles—for instance, a developer may access AWS Lambda and S3, while an application user might only need API Gateway access.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;IAM Groups&lt;/strong&gt;: Groups are collections of IAM users that share the same permissions. By assigning permissions to a group rather than individual users, organizations can simplify permission management, especially in larger teams. For example, a “Developers” group can be assigned permissions to deploy code, ensuring efficient access control.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;IAM Roles&lt;/strong&gt;: Roles are temporary identities that can be assumed by users or services. Unlike IAM users, roles do not have long-term credentials. They provide temporary security credentials, making them ideal for scenarios like allowing EC2 instances to access S3 without hardcoding credentials. Roles are also useful for cross-account access, enhancing security by limiting the exposure of long-term credentials.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;best-practices-for-iam&quot;&gt;Best Practices for IAM&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Principle of Least Privilege&lt;/strong&gt;: Grant users only the permissions they need to perform their tasks, reducing the risk of accidental or malicious misuse.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Avoid Using Root Account&lt;/strong&gt;: The root account has unrestricted access and should be reserved for specific administrative tasks.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Implement Multi-Factor Authentication (MFA)&lt;/strong&gt;: MFA adds an extra layer of security, requiring users to verify their identity with a second factor, like a mobile device.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Regular Audits and Monitoring&lt;/strong&gt;: Utilize tools like AWS CloudTrail to track who accesses what resources, helping to identify excessive permissions and unusual activity.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;By following these best practices, organizations can create a secure and efficient environment in AWS.&lt;/p&gt;
+
+&lt;h2 id=&quot;advanced-iam-concepts&quot;&gt;Advanced IAM Concepts&lt;/h2&gt;
+
+&lt;p&gt;As organizations grow their use of AWS, managing permissions becomes more complex. Advanced features such as &lt;strong&gt;Permission Boundaries&lt;/strong&gt; and &lt;strong&gt;Service Control Policies (SCPs)&lt;/strong&gt; are essential for maintaining security in larger, multi-account setups.&lt;/p&gt;
+
+&lt;h3 id=&quot;permission-boundaries&quot;&gt;Permission Boundaries&lt;/h3&gt;
+
+&lt;p&gt;Permission Boundaries define the maximum permissions that IAM users or roles can have. They act as guardrails to prevent users from granting themselves excessive permissions. For instance, a DevOps team might be allowed to create new IAM roles but restricted from managing critical infrastructure.&lt;/p&gt;
+
+&lt;h3 id=&quot;service-control-policies-scps&quot;&gt;Service Control Policies (SCPs)&lt;/h3&gt;
+
+&lt;p&gt;SCPs work within AWS Organizations to control access across multiple accounts. They don’t grant permissions themselves but set the maximum allowable permissions in an account. SCPs are particularly useful for enforcing security policies, like restricting access to certain AWS regions or preventing risky actions across accounts.&lt;/p&gt;
+
+&lt;h3 id=&quot;advanced-iam-security-practices&quot;&gt;Advanced IAM Security Practices&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;IAM Policy Conditions&lt;/strong&gt;: These allow for fine-tuning permissions based on attributes like IP addresses or specific time frames.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;IAM Access Analyzer&lt;/strong&gt;: This tool helps identify publicly shared resources or access to external accounts, highlighting potential security risks.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;MFA Enforcement&lt;/strong&gt;: Require users, especially those with privileged roles, to authenticate using MFA for sensitive actions.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;AWS IAM offers a comprehensive set of tools for managing permissions in cloud environments. As organizations scale, leveraging advanced features like Permission Boundaries and SCPs becomes crucial for maintaining security and compliance. By implementing best practices and advanced techniques, organizations can effectively mitigate risks and ensure a robust security posture in their AWS environments.&lt;/p&gt;
 </content>
  </entry>
  
@@ -253,187 +304,6 @@
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-
-&lt;h2 id=&quot;endeavouros-i3wm&quot;&gt;EndeavourOS i3wm&lt;/h2&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;&lt;strong&gt;Shortcut&lt;/strong&gt;&lt;/th&gt;
-      &lt;th&gt;&lt;strong&gt;Description&lt;/strong&gt;&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + Enter&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Open a new terminal window (usually Alacritty by default).&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + Shift + Q&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Kill the focused window (close the application).&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + D&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Open the application launcher (typically &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dmenu&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rofi&lt;/code&gt;).&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + Shift + E&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Logout, suspend, reboot, or shutdown options (default EndeavourOS menu).&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + Arrow Keys (←↓↑→)&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Move focus between windows (left, down, up, right).&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + H/J/K/L&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Move focus between windows using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vim-like&lt;/code&gt; keys (left, down, up, right).&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + Shift + Arrow Keys&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Move the focused window to a different position (left, down, up, right).&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + Shift + H/J/K/L&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Move the focused window to a different position using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vim-like&lt;/code&gt; keys.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + F&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Toggle fullscreen for the focused window.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + V&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Split the current container vertically.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + H&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Split the current container horizontally.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + S&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Toggle stacking layout (change tiling layout to stacking mode).&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + W&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Toggle tabbed layout (change tiling layout to tabbed mode).&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + E&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Switch to tiling layout (default layout).&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + Shift + Space&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Toggle floating mode for the focused window.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + Shift + C&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Reload the i3wm configuration file without restarting.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + R&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Enter resize mode to resize the focused window.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + Number (1-9)&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Switch to workspace number 1-9.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + Shift + Number&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Move the focused window to workspace number 1-9.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + P&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Take a screenshot (EndeavourOS default shortcut).&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + Shift + P&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Take a screenshot of a selected area.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + Ctrl + R&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Restart i3wm (without closing applications).&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + Left Mouse Button&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Drag floating windows with the mouse.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + Right Mouse Button&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Resize floating windows with the mouse.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + Shift + Space&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Toggle between tiling and floating window modes for the focused window.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + Shift + F&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Toggle fullscreen for the current window.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + Shift + R&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Restart i3wm (to apply changes in configuration).&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + T&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Toggle tiling mode for the current container.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + Shift + V&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Paste clipboard contents into the current window (if terminal).&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + 0&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Move the focused window to the scratchpad (hidden space for windows).&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + Shift + 0&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Restore the scratchpad window to the current workspace.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + B&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Toggle the visibility of the status bar (polybar or i3bar).&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl + Alt + L&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Lock the screen (typically using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;i3lock&lt;/code&gt; or another lock tool).&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + Shift + Arrow Up/Down&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Change workspace to the next or previous number.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + Shift + T&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Open a new tabbed window inside a container.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + Shift + D&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Duplicate the focused window to a different workspace.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + Z&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Focus parent container of the focused window.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + A&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Focus all windows in the current container.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + Shift + N&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Focus the next window in the current workspace.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mod + Ctrl + Shift + F&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Toggle forcefully fullscreen for the focused window.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl + Shift + Print&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Take a screenshot of the whole screen and save it (typically with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;scrot&lt;/code&gt;).&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl + Print&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Take a screenshot and copy it to clipboard.&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
 </content>
  </entry>
  
@@ -631,7 +501,7 @@
    <id>/2024/09/29/spells-for-linux-shell</id>
    <content type="html">&lt;h2 id=&quot;-spells-for-linux-shell&quot;&gt;🪄 Spells for Linux Shell&lt;/h2&gt;
 
-&lt;h3 id=&quot;1-loop-command-x-script&quot;&gt;1. loop command x script&lt;/h3&gt;
+&lt;h3 id=&quot;1-looping-command-x-script&quot;&gt;1. LOOPING: command x script&lt;/h3&gt;
 
 &lt;h4 id=&quot;command&quot;&gt;command&lt;/h4&gt;
 
@@ -1046,7 +916,7 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  </entry>
  
  <entry>
-   <title>l0calh0t Startup - day 1</title>
+   <title>💡 l0calh0t Startup - day 1</title>
    <link href="/2024/09/27/l0calh0t-startup-day1.html"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
    <id>/2024/09/27/l0calh0t-startup-day1</id>
@@ -1095,7 +965,7 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
 
 &lt;p&gt;So, that’s it. I’ve reached the end of my first article. I hope I’ve been clear about my idea. In the end, even if everything goes wrong, I will have gained valuable knowledge. These notes may be useful to someone else, and even to my future self. What’s coming next? A series of reflections, articles about random tools, and some not-so-professional code &lt;strong&gt;(&lt;/strong&gt;:&lt;/p&gt;
 
-&lt;p&gt;See you around, fellas!!&lt;/p&gt;
+&lt;p&gt;See you around !&lt;/p&gt;
 </content>
  </entry>
  
@@ -1129,7 +999,6 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
 &lt;p&gt;🇺🇸 “The only way to make things work well is by understanding why they break.”&lt;/p&gt;
 
 &lt;p&gt;🇧🇷 “A única maneira de fazer as coisas funcionarem bem é entendendo o motivo pelo qual elas quebram.”&lt;/p&gt;
-
 </content>
  </entry>
  
