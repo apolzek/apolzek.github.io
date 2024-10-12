@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-10-08T17:43:05+00:00</updated>
+ <updated>2024-10-12T18:20:00+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -650,7 +650,7 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  </entry>
  
  <entry>
-   <title>💡 l0calh0t Startup - day 1</title>
+   <title>l0calh0t Startup - day 1</title>
    <link href="/2024/09/27/l0calh0t-startup-day1.html"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
    <id>/2024/09/27/l0calh0t-startup-day1</id>
@@ -704,7 +704,7 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  </entry>
  
  <entry>
-   <title>⚠️ DISCLAIMER</title>
+   <title>DISCLAIMER</title>
    <link href="/2024/09/26/DISCLAIMER.html"/>
    <updated>2024-09-26T00:00:00+00:00</updated>
    <id>/2024/09/26/DISCLAIMER</id>
@@ -739,9 +739,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>shortcuts</title>
-   <link href="/1995/10/05/shortcuts.html"/>
-   <updated>1995-10-05T00:00:00+00:00</updated>
-   <id>/1995/10/05/shortcuts</id>
+   <link href="/2024/09/09/shortcuts.html"/>
+   <updated>2024-09-09T00:00:00+00:00</updated>
+   <id>/2024/09/09/shortcuts</id>
    <content type="html">
 </content>
  </entry>

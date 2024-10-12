@@ -65,7 +65,7 @@
     } ,
   
     {
-      "title"    : "💡 l0calh0t Startup - day 1",
+      "title"    : "l0calh0t Startup - day 1",
       "category" : "",
       "tags"     : "devops, sre, project, startup",
       "url"      : "/2024/09/27/l0calh0t-startup-day1.html",
@@ -73,7 +73,7 @@
     } ,
   
     {
-      "title"    : "⚠️ DISCLAIMER",
+      "title"    : "DISCLAIMER",
       "category" : "",
       "tags"     : "disclaimer, goals",
       "url"      : "/2024/09/26/DISCLAIMER.html",
@@ -84,8 +84,8 @@
       "title"    : "shortcuts",
       "category" : "",
       "tags"     : "shortcuts",
-      "url"      : "/1995/10/05/shortcuts.html",
-      "date"     : "1995-10-05 00:00:00 +0000"
+      "url"      : "/2024/09/09/shortcuts.html",
+      "date"     : "2024-09-09 00:00:00 +0000"
     } 
   
 ]
