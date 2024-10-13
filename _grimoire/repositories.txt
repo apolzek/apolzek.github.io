@@ -1,0 +1,50 @@
+# by apolzek
+https://github.com/apolzek/shared
+https://github.com/apolzek/manifests
+
+# others
+
+# 🔐 A CLI tool to extract server certificates
+https://github.com/Hakky54/certificate-ripper
+
+# git clone all repositories and gists from a given GitHub username
+https://github.com/merces/repoget
+
+# A collection of docker-compose files
+https://github.com/jonatan-ivanov/local-services/
+
+# Code examples of Design Patterns in various languages: C#, C++, Go, Java, JavaScript, Python, and Swift.
+https://github.com/MilovanTomasevic/Design-Patterns
+
+# WebDriver for Firefox
+https://github.com/mozilla/geckodriver
+
+# Scalable and flexible workflow orchestration platform that seamlessly unifies data, ML and analytics stacks.
+https://github.com/flyteorg/flyte
+
+# A Grub Theme in the style of Minecraft!
+https://github.com/Lxtharia/minegrub-theme
+
+# Nextcloud
+https://github.com/nextcloud
+
+# Deploy a Production Ready Kubernetes Cluster
+https://github.com/kubernetes-sigs/kubespray
+
+# GPT4All: Run Local LLMs on Any Device. Open-source and available for commercial use.
+https://github.com/nomic-ai/gpt4all
+
+# A cli that exposes your local resources to kubernetes
+https://github.com/omrikiei/ktunnel
+
+# CasaOS
+https://github.com/IceWhaleTech/CasaOS
+
+# Helm chart for Vaultwarden, the (unofficial) Bitwarden-compatible server written in Rust, formerly known as bitwarden_rs
+https://github.com/guerzon/vaultwarden
+
+# A Go CRUD API framework so simple a baby could use it.
+https://github.com/calvinmclean/babyapi?tab=readme-ov-file
+
+# ⏰ 🔥 A TCP proxy to simulate network and system conditions for chaos and resiliency testing
+https://github.com/Shopify/toxiproxy

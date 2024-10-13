@@ -39,6 +39,14 @@ done
 
 ### 2. signals
 
+Some scenarios that make sense to deal with signals..
+
+- Cleaning Temporary Files
+- Graceful Interruption of Services
+- Avoiding Database Corruption
+- Releasing Network or Hardware Resources
+- Maintaining Consistent Variable State-
+
 #### SIGINT
 This script creates a temporary file and displays a goodbye message when it receives a SIGINT signal (e.g., when the user presses Ctrl+C).
 
