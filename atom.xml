@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-10-12T19:49:35+00:00</updated>
+ <updated>2024-10-13T19:15:09+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -528,6 +528,16 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;2-signals&quot;&gt;2. signals&lt;/h3&gt;
+
+&lt;p&gt;Some scenarios that make sense to deal with signals..&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Cleaning Temporary Files&lt;/li&gt;
+  &lt;li&gt;Graceful Interruption of Services&lt;/li&gt;
+  &lt;li&gt;Avoiding Database Corruption&lt;/li&gt;
+  &lt;li&gt;Releasing Network or Hardware Resources&lt;/li&gt;
+  &lt;li&gt;Maintaining Consistent Variable State-&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h4 id=&quot;sigint&quot;&gt;SIGINT&lt;/h4&gt;
 &lt;p&gt;This script creates a temporary file and displays a goodbye message when it receives a SIGINT signal (e.g., when the user presses Ctrl+C).&lt;/p&gt;

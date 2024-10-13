@@ -14,7 +14,7 @@
     </span><span class="nb">echo</span> <span class="nv">$count</span>
     <span class="o">((</span>count++<span class="o">))</span>
 <span class="k">done</span>
-</code></pre></div></div> <h3 id="2-signals"> 2. signals <a href="#2-signals">#</a> </h3> <h4 id="sigint"> SIGINT <a href="#sigint">#</a> </h4> <p>This script creates a temporary file and displays a goodbye message when it receives a SIGINT signal (e.g., when the user presses Ctrl+C).</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+</code></pre></div></div> <h3 id="2-signals"> 2. signals <a href="#2-signals">#</a> </h3> <p>Some scenarios that make sense to deal with signals..</p> <ul> <li>Cleaning Temporary Files</li> <li>Graceful Interruption of Services</li> <li>Avoiding Database Corruption</li> <li>Releasing Network or Hardware Resources</li> <li>Maintaining Consistent Variable State-</li> </ul> <h4 id="sigint"> SIGINT <a href="#sigint">#</a> </h4> <p>This script creates a temporary file and displays a goodbye message when it receives a SIGINT signal (e.g., when the user presses Ctrl+C).</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
 
 <span class="c"># Function that will be called when the script receives the SIGINT signal</span>
 <span class="k">function </span>exitMsg <span class="o">{</span>
