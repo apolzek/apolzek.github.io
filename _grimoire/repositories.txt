@@ -2,6 +2,14 @@
 https://github.com/apolzek/shared
 https://github.com/apolzek/manifests
 
+# golang
+
+# Table-writer and more in golang!
+https://github.com/jedib0t/go-pretty
+
+# A Go CRUD API framework so simple a baby could use it.
+https://github.com/calvinmclean/babyapi?tab=readme-ov-file
+
 # others
 
 # 🔐 A CLI tool to extract server certificates
@@ -42,9 +50,6 @@ https://github.com/IceWhaleTech/CasaOS
 
 # Helm chart for Vaultwarden, the (unofficial) Bitwarden-compatible server written in Rust, formerly known as bitwarden_rs
 https://github.com/guerzon/vaultwarden
-
-# A Go CRUD API framework so simple a baby could use it.
-https://github.com/calvinmclean/babyapi?tab=readme-ov-file
 
 # ⏰ 🔥 A TCP proxy to simulate network and system conditions for chaos and resiliency testing
 https://github.com/Shopify/toxiproxy

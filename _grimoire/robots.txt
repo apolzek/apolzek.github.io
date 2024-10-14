@@ -1,6 +1,10 @@
 https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/_grimoire/asdf.txt
 https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/_grimoire/aur.txt
+https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/_grimoire/books.txt
+https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/_grimoire/endeavouros.txt
 https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/_grimoire/gists.txt
 https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/_grimoire/names.txt
+https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/_grimoire/osa.txt
+https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/_grimoire/setup.txt
 https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/_grimoire/tricks.txt
 https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/_grimoire/youtube-channels.txt
