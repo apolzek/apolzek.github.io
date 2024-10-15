@@ -4,7 +4,7 @@ title: 📦 Containers Mastery
 description: Tips and Tricks for Containers
 summary: Tips and Tricks for Containers
 tags: linux containers docker
-minute: 15
+minute: 19
 ---
 
 ## What is Linux container ?

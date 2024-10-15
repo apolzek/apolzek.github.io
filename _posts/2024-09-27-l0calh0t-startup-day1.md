@@ -4,7 +4,7 @@ title: 💡 l0calh0t Startup - day 1
 description: Building the l0calh0t Startup
 summary: Building the l0calh0t Startup
 tags: devops sre project startup
-minute: 5
+minute: 12
 ---
 
 ## About the project

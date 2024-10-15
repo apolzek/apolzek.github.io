@@ -43,3 +43,5 @@ A Security Analyst is responsible for protecting an organization’s information
 ### Manager
 
 A Manager plays a crucial role in guiding and overseeing teams to achieve organizational goals. Their main responsibility is to plan, coordinate, and execute projects while ensuring that team members have the resources and support they need to succeed. Managers focus on setting clear objectives, monitoring progress, and fostering a positive work environment that encourages collaboration and productivity. They also handle budgeting, performance evaluations, and conflict resolution, ensuring that the team operates efficiently and effectively. Ultimately, a Manager aims to align team efforts with the company's vision, drive results, and facilitate professional development for team members.
+
+## Demotivating technical people

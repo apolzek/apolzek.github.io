@@ -4,7 +4,7 @@ title: Kafka on Kubernetes using Kind
 description: 
 summary: 
 tags: kafka kind kubernetes
-minute: 12
+minute: 15
 ---
 
 ## Kafka on Kubernetes using Kind
