@@ -4,13 +4,56 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-10-14T14:16:31+00:00</updated>
+ <updated>2024-10-15T17:06:20+00:00</updated>
  <id></id>
  <author>
    <name></name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Entropy in the Corporate World</title>
+   <link href="/2025/10/10/entropy-in-the-corporate-world.html"/>
+   <updated>2025-10-10T00:00:00+00:00</updated>
+   <id>/2025/10/10/entropy-in-the-corporate-world</id>
+   <content type="html">&lt;h2 id=&quot;what-results-from-not-cleaning-your-house-regularly-&quot;&gt;What results from not cleaning your house regularly ?&lt;/h2&gt;
+
+&lt;p&gt;The subject discussed here is entropy, obviously… so I’ll start by saying the obvious and then pull out some threads for reflection.&lt;/p&gt;
+
+&lt;p&gt;Entropy in a corporate environment refers to the natural tendency for things to become disorganized or chaotic over time. It’s like how your desk gets messy if you don’t clean it up regularly, or how projects can spin out of control without proper management. In the business world, this concept applies to everything from company processes to team dynamics.&lt;/p&gt;
+
+&lt;p&gt;As businesses grow or face changes—whether it’s new technology, market shifts, or internal restructuring—things can become increasingly complex and harder to manage. Without regular attention, processes can slow down, communication can break down, and overall efficiency drops. This is corporate entropy in action: the gradual decline into disorder unless steps are taken to maintain structure.&lt;/p&gt;
+
+&lt;p&gt;Leaders and managers often have to deal with this by putting systems in place to keep the “chaos” under control. They use strategies like improving communication, streamlining workflows, or even bringing in new tech to reduce entropy and keep the company running smoothly.&lt;/p&gt;
+
+&lt;p&gt;In essence, entropy is just a reminder that without constant effort to maintain order, things in the business world can quickly become chaotic, leading to inefficiency and potential failure. It’s why companies need to stay proactive in managing change and complexity.&lt;/p&gt;
+
+&lt;h2 id=&quot;different-roles-and-what-they-really-want&quot;&gt;Different roles and what they really want&lt;/h2&gt;
+
+&lt;p&gt;In the world of technology, there are numerous roles such as Software Engineer, DevOps Engineer, Security Analyst, Project Manager, Software Architect, Data Analyst, Data Engineer, Data Scientist, Network Engineer, IT Manager, User Experience Designer, Technical Support Analyst, AI Specialist, Database Administrator, Cloud Specialist, Quality Engineer, Systems Analyst, and many more. To keep it concise, we’ll focus on detailing just a few of these. There’s a purpose behind this, and I’ll explain it to you shortly.&lt;/p&gt;
+
+&lt;h3 id=&quot;sre&quot;&gt;SRE&lt;/h3&gt;
+
+&lt;p&gt;As SREs, our main goal is to make sure our service levels are always met. We want to maintain a healthy and stable system/product, one that can be updated without causing disruptions. It’s crucial to have visibility into its state and all its components. We need to collaborate effectively with a strong focus on security, stay within budget, automate repetitive tasks, and be prepared to handle any potential incidents swiftly and efficiently.&lt;/p&gt;
+
+&lt;h3 id=&quot;dbre&quot;&gt;DBRE&lt;/h3&gt;
+
+&lt;p&gt;A Database Reliability Engineer (DBRE) aims to ensure that databases are always reliable, highly available, and optimized for performance. Their main goal is to maintain the stability and scalability of database systems, ensuring they can handle increasing loads without sacrificing efficiency. They focus on automating database management tasks like backups, scaling, and monitoring, while ensuring data security and integrity. A DBRE wants a database that is resilient, can be updated or maintained without downtime, and operates efficiently under all conditions, providing a solid foundation for applications to run smoothly.&lt;/p&gt;
+
+&lt;h3 id=&quot;software-engineer&quot;&gt;Software Engineer&lt;/h3&gt;
+
+&lt;p&gt;A Software Engineer focuses on designing, developing, and maintaining reliable and efficient software solutions. Their main goal is to build applications that are scalable, robust, and user-friendly, addressing both functionality and performance. They write clean, maintainable code and collaborate with teams to solve complex problems through software. A Software Engineer aims to deliver products that meet user needs, integrate seamlessly with other systems, and can evolve over time with minimal technical debt, ensuring the software remains flexible and adaptable as requirements change.&lt;/p&gt;
+
+&lt;h3 id=&quot;security-analyst&quot;&gt;Security Analyst&lt;/h3&gt;
+
+&lt;p&gt;A Security Analyst is responsible for protecting an organization’s information systems and sensitive data from cyber threats. Their main goal is to identify vulnerabilities, monitor for security breaches, and respond to incidents to mitigate risks. They conduct regular security assessments, implement security policies, and ensure compliance with regulations and standards. A Security Analyst analyzes security events, investigates potential threats, and collaborates with other teams to strengthen the organization’s overall security posture. Ultimately, they aim to create a secure environment that safeguards the organization’s assets and maintains the trust of customers and stakeholders.&lt;/p&gt;
+
+&lt;h3 id=&quot;manager&quot;&gt;Manager&lt;/h3&gt;
+
+&lt;p&gt;A Manager plays a crucial role in guiding and overseeing teams to achieve organizational goals. Their main responsibility is to plan, coordinate, and execute projects while ensuring that team members have the resources and support they need to succeed. Managers focus on setting clear objectives, monitoring progress, and fostering a positive work environment that encourages collaboration and productivity. They also handle budgeting, performance evaluations, and conflict resolution, ensuring that the team operates efficiently and effectively. Ultimately, a Manager aims to align team efforts with the company’s vision, drive results, and facilitate professional development for team members.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>AWS IAM</title>
@@ -472,7 +515,23 @@
    <link href="/2024/10/13/sre-interview-questions.html"/>
    <updated>2024-10-13T00:00:00+00:00</updated>
    <id>/2024/10/13/sre-interview-questions</id>
-   <content type="html">&lt;h2 id=&quot;sre-interview-questions&quot;&gt;SRE interview questions&lt;/h2&gt;
+   <content type="html">&lt;h2 id=&quot;networking&quot;&gt;Networking&lt;/h2&gt;
+
+&lt;p&gt;Suppose you have a proxy that operates at the TCP level and another that operates only at the HTTP level. What are the main implications of this configuration? How can these differences affect error handling, security, and network scalability ?&lt;/p&gt;
+
+&lt;h2 id=&quot;kubernetes&quot;&gt;Kubernetes&lt;/h2&gt;
+
+&lt;p&gt;In the context of Kubernetes, you are designing an application that requires different pod management strategies to meet specific requirements. Explain how you would utilize ReplicaSets, Deployments, StatefulSets, and DaemonSets to address these needs. In particular, discuss the ideal use cases for each of these objects and how they behave in relation to scalability, data persistence, and version updates. Additionally, what considerations should you keep in mind when choosing between these types of pod controllers for different components of your application ?&lt;/p&gt;
+
+&lt;h2 id=&quot;prometheus&quot;&gt;Prometheus&lt;/h2&gt;
+
+&lt;p&gt;In the context of monitoring with Prometheus, you encounter a cardinality problem where the number of time series becomes excessive, resulting in performance degradation and excessive resource usage. What are the common causes of cardinality issues in Prometheus, and what strategies can you employ to mitigate these problems ?&lt;/p&gt;
+
+&lt;h2 id=&quot;cicd&quot;&gt;CI/CD&lt;/h2&gt;
+
+&lt;p&gt;In a continuous integration and continuous delivery (CI/CD) environment, the execution time of pipelines can significantly impact the speed of development and software delivery. What techniques and practices would you implement to optimize the execution time of CI/CD pipelines?&lt;/p&gt;
+
+&lt;p&gt;You are managing a project that uses Jenkins for continuous integration and GitLab CI for continuous delivery. Discuss how you would integrate these two tools into a unified CI/CD workflow. What considerations would you have regarding pipeline configuration, credential management, and infrastructure versioning? Additionally, analyze the advantages and disadvantages of using Jenkins alongside GitLab CI, considering aspects such as flexibility, scalability, and maintenance complexity.&lt;/p&gt;
 </content>
  </entry>
  
@@ -490,7 +549,24 @@
    <link href="/2024/10/10/getting-started-x-production-ready.html"/>
    <updated>2024-10-10T00:00:00+00:00</updated>
    <id>/2024/10/10/getting-started-x-production-ready</id>
-   <content type="html">&lt;h1 id=&quot;the-distance-between-getting-started-and-production-ready&quot;&gt;The distance between “getting started” and “production ready”&lt;/h1&gt;
+   <content type="html">&lt;p&gt;When embarking on the journey of implementing a new tool, it is essential to recognize the significant gap between the initial “getting started” phase and achieving a fully functional production-ready system. In the beginning, users often interact with a simplified version of the tool, which showcases its basic functionalities. However, to fully harness the capabilities of the tool and integrate it into the organization’s ecosystem, several critical aspects must be addressed.&lt;/p&gt;
+
+&lt;p&gt;Deployment is one of the first challenges encountered when moving from a basic setup to a production-ready state. In the initial stages, deployment may be as straightforward as running a local instance. However, in a production environment, organizations must consider robust deployment strategies, including automated deployment pipelines, continuous integration/continuous deployment (CI/CD) practices, and the use of containerization technologies such as Docker. These practices ensure that the tool can be deployed seamlessly, with minimal downtime and maximum efficiency.&lt;/p&gt;
+
+&lt;p&gt;Scalability is another crucial factor that differentiates basic usage from a production-ready application. While a basic setup may function adequately for a small number of users or limited workloads, production environments must accommodate growth. This requires careful planning for horizontal and vertical scaling, load balancing, and resource allocation to ensure that the tool can handle increasing demands without compromising performance or user experience.&lt;/p&gt;
+
+&lt;p&gt;The adaptation to company processes is also vital in this transition. A basic implementation might showcase generic use cases, but to be effective in a production environment, the tool must align with the specific workflows and procedures of the organization. This may involve customizing features, integrating with existing systems, and training employees to ensure that the tool complements their daily tasks and contributes to overall productivity.&lt;/p&gt;
+
+&lt;p&gt;Security is a paramount concern when moving towards production readiness. Initial setups may overlook critical security protocols, while a production-ready tool must implement stringent security measures. This includes user authentication and authorization, data encryption, secure APIs, and compliance with industry regulations. Organizations must also conduct regular security audits and vulnerability assessments to protect sensitive data and maintain trust with users.&lt;/p&gt;
+
+&lt;p&gt;Traceability is another important aspect that sets a production-ready tool apart from its basic counterpart. In a production environment, tracking changes, actions, and data flows becomes essential for accountability and compliance. Implementing features like audit logs, change tracking, and comprehensive reporting enables organizations to maintain oversight and transparency in their operations.&lt;/p&gt;
+
+&lt;p&gt;Permissioning is a vital component of ensuring that users have appropriate access levels to various functionalities and data within the tool. In the basic mode, permission settings may be minimal, but in a production environment, fine-grained access control is essential. This allows organizations to enforce the principle of least privilege, ensuring that users can only access the information and functions necessary for their roles.&lt;/p&gt;
+
+&lt;p&gt;Lastly, organizations must consider the Software Development Operations (SDOX) aspect, which encompasses the entire lifecycle of the tool—from development and deployment to maintenance and support. In a production-ready setup, this requires a well-defined process for software updates, user feedback, and incident management to ensure continuous improvement and responsiveness to user needs.&lt;/p&gt;
+
+&lt;p&gt;In conclusion, while the “getting started” phase of a tool provides a valuable introduction to its functionalities, the journey towards a production-ready state is complex and multifaceted. Organizations must invest time and resources to address deployment strategies, scalability, process adaptation, security measures, traceability, permissioning, and SDOX practices. Only then can they fully leverage the tool’s potential and ensure it aligns with their operational goals.&lt;/p&gt;
+
 </content>
  </entry>
  
