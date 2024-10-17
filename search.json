@@ -49,6 +49,14 @@
     } ,
   
     {
+      "title"    : "EndeavourOS i3wm, why ?",
+      "category" : "",
+      "tags"     : "os, i3wm, endeavouros,, linux,, distro",
+      "url"      : "/2024/10/13/endeavourOS-i3wm-why.html",
+      "date"     : "2024-10-13 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "💡 l0calh0t Startup - day 2",
       "category" : "",
       "tags"     : "devops, sre, project, startup",
