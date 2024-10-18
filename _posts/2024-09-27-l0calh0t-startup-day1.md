@@ -52,4 +52,4 @@ So, that’s it. I’ve reached the end of my first article. I hope I’ve been 
 
 See you around !
 
-![working](../assets/gif/working.webp)
+![working](https://github.com/apolzek/apolzek.github.io/blob/main/assets/gif/working.webp)
