@@ -9,7 +9,7 @@ minute: 4
 
 ## DISCLAIMER
 
-- I write for myself
+- I write for myself !!
 - My first language is Brazilian Portuguese, but I'm learning English and will use it here. You will likely see some writing mistakes; it's part of learning
 - I have worked as a Reliability Engineer only in Brazil (*until now*)
 - I plan to discuss reliability topics and other subjects like security, processes, governance, and soft skills

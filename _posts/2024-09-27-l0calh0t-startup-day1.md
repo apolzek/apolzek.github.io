@@ -51,3 +51,5 @@ My computer settings are
 So, that’s it. I’ve reached the end of my first article. I hope I’ve been clear about my idea. In the end, even if everything goes wrong, I will have gained valuable knowledge. These notes may be useful to someone else, and even to my future self. What’s coming next? A series of reflections, articles about random tools, and some not-so-professional code **(**:
 
 See you around !
+
+![working](../assets/gif/working.webp)
