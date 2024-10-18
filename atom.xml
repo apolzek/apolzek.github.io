@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-10-17T21:37:07+00:00</updated>
+ <updated>2024-10-18T18:46:09+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -17,6 +17,15 @@
    <link href="/2025/10/10/special-ops-team.html"/>
    <updated>2025-10-10T00:00:00+00:00</updated>
    <id>/2025/10/10/special-ops-team</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>NixOS</title>
+   <link href="/2025/10/10/nixos.html"/>
+   <updated>2025-10-10T00:00:00+00:00</updated>
+   <id>/2025/10/10/nixos</id>
    <content type="html">
 </content>
  </entry>
@@ -551,7 +560,29 @@
    <link href="/2024/10/13/endeavourOS-i3wm-why.html"/>
    <updated>2024-10-13T00:00:00+00:00</updated>
    <id>/2024/10/13/endeavourOS-i3wm-why</id>
-   <content type="html">&lt;p&gt;because yes !&lt;/p&gt;
+   <content type="html">&lt;p&gt;Recently, I came across a provocative phrase: “Linux is only free if your time has no value.” I know some people around me would get a bit annoyed by this, and honestly, a few years ago, I would’ve been one of them. But today, with a little more experience (and patience), I still disagree, but I get the point. I’ve always been a fan of working with good tools, having a well-configured OS, customized, easy to restore, and that makes me more productive. The truth is, we spend time to save time, right? And that works… to a certain extent.&lt;/p&gt;
+
+&lt;p&gt;The issue is that after a while, I realized something about myself: I get bored of everything, even when it’s “almost perfect.” I think a lot of people can relate to this. We’re always tweaking, adjusting, trying to make things better. But in the end, the time and effort you put in don’t always pay off. When you sit down to do the math, it doesn’t always add up. Sure, we learn and improve with each new experience, the learning curve gets shorter… but then the question hit me: what do we really need to get work done? For me, the answer is simple: running the applications we need.&lt;/p&gt;
+
+&lt;p&gt;At the companies I’ve worked at, I’ve used both MacBooks with macOS and Dell laptops running Ubuntu. And you know what? Both worked just fine! I’m always trying to improve in different areas — physically, gaining new skills, or fixing mistakes. But then come the trade-offs: I need time! And that got me thinking about how much time I’ve spent in the past messing around with Linux distros, customizing tools, switching window managers, tweaking every little detail that only I would notice.&lt;/p&gt;
+
+&lt;p&gt;In the end, I decided to stop and simplify. With the least amount of effort, I found a way to focus on what really matters: solving the problems I’m paid to solve. No need to reinvent the wheel.&lt;/p&gt;
+
+&lt;p&gt;If you make a list of what you use most on a daily basis, you’ll notice it doesn’t end up being very long. For example, here’s mine:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;I need a code editor with LSP/IntelliSense, integrated debugging, and a built-in terminal.&lt;/li&gt;
+  &lt;li&gt;I need simple virtualization software.&lt;/li&gt;
+  &lt;li&gt;I need a container manager.&lt;/li&gt;
+  &lt;li&gt;I need a tool that allows easy snapshots and quick restoration.&lt;/li&gt;
+  &lt;li&gt;A reliable browser.&lt;/li&gt;
+  &lt;li&gt;Tools for video and image editing.&lt;/li&gt;
+  &lt;li&gt;A self-management tool (optional for most people).&lt;/li&gt;
+  &lt;li&gt;My troubleshooting toolkit.&lt;/li&gt;
+  &lt;li&gt;A solid VPN client.&lt;/li&gt;
+  &lt;li&gt;A terminal that saves me time.&lt;/li&gt;
+&lt;/ul&gt;
+
 </content>
  </entry>
  
@@ -1072,6 +1103,8 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
 &lt;p&gt;So, that’s it. I’ve reached the end of my first article. I hope I’ve been clear about my idea. In the end, even if everything goes wrong, I will have gained valuable knowledge. These notes may be useful to someone else, and even to my future self. What’s coming next? A series of reflections, articles about random tools, and some not-so-professional code &lt;strong&gt;(&lt;/strong&gt;:&lt;/p&gt;
 
 &lt;p&gt;See you around !&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../assets/gif/working.webp&quot; alt=&quot;working&quot; /&gt;&lt;/p&gt;
 </content>
  </entry>
  
@@ -1083,7 +1116,7 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
    <content type="html">&lt;h2 id=&quot;disclaimer&quot;&gt;DISCLAIMER&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;I write for myself&lt;/li&gt;
+  &lt;li&gt;I write for myself !!&lt;/li&gt;
   &lt;li&gt;My first language is Brazilian Portuguese, but I’m learning English and will use it here. You will likely see some writing mistakes; it’s part of learning&lt;/li&gt;
   &lt;li&gt;I have worked as a Reliability Engineer only in Brazil (&lt;em&gt;until now&lt;/em&gt;)&lt;/li&gt;
   &lt;li&gt;I plan to discuss reliability topics and other subjects like security, processes, governance, and soft skills&lt;/li&gt;

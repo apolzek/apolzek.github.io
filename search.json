@@ -9,6 +9,14 @@
     } ,
   
     {
+      "title"    : "NixOS",
+      "category" : "",
+      "tags"     : "nix, os, distro, linux",
+      "url"      : "/2025/10/10/nixos.html",
+      "date"     : "2025-10-10 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "Entropy in the Corporate World",
       "category" : "",
       "tags"     : "entropy",
