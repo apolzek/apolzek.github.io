@@ -148,3 +148,35 @@ kafka-topics.sh --delete --topic my-topic --bootstrap-server kafka-svc:9092
 **Kafka KRaft Installation**: KRaft is Kafka's new built-in consensus mechanism that eliminates the need for ZooKeeper. In a KRaft-based installation, Kafka brokers manage metadata and leader election directly, which simplifies the architecture by reducing dependencies. KRaft is becoming the default option in newer Kafka versions because it provides better scalability, faster failover, and an overall more streamlined operation.
 
 **Kafka with ZooKeeper**: In traditional Kafka deployments, ZooKeeper is used to manage the cluster’s metadata, such as broker details and topic configurations. ZooKeeper handles tasks like leader election and tracking which brokers are active. While this setup has been robust for years, it adds complexity by requiring an additional service (ZooKeeper) that must be installed, managed, and maintained alongside Kafka.
+
+## reviewing
+
+| Term                          | Definition                                                                                                        |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **Topic**                     | A category or feed name to which records are published.                                                           |
+| **Partition**                 | A topic is divided into multiple partitions, which are the fundamental unit of parallelism in Kafka.              |
+| **Producer**                  | An application that publishes messages (records) to a Kafka topic.                                                |
+| **Consumer**                  | An application that subscribes to topics and processes the published messages.                                    |
+| **Broker**                    | A Kafka server that stores messages and serves client requests.                                                   |
+| **Cluster**                   | A group of one or more brokers working together to handle data replication and load balancing.                    |
+| **Offset**                    | A unique identifier for each record within a partition, used for tracking the position of messages.               |
+| **Consumer Group**            | A group of consumers that work together to consume messages from a topic, ensuring load balancing.                |
+| **Replication**               | The process of storing copies of partitions across multiple brokers for fault tolerance.                          |
+| **Zookeeper**                 | A centralized service that manages and coordinates the Kafka brokers and maintains cluster metadata.              |
+| **Log**                       | An ordered, append-only sequence of records for each partition that stores the actual messages.                   |
+| **Retention Policy**          | A policy that determines how long Kafka retains messages in a topic before they are deleted.                      |
+| **Throughput**                | A measure of how many messages can be processed per unit of time, often expressed in messages per second.         |
+| **Latency**                   | The time it takes for a message to travel from a producer to a consumer.                                          |
+| **Load Balancing**            | The distribution of partitions across multiple brokers to evenly distribute the workload.                         |
+| **Partitioning Strategy**     | The method used to assign messages to partitions, based on keys or round-robin distribution.                      |
+| **Replication Factor**        | The number of copies of a partition maintained across different brokers, enhancing fault tolerance.               |
+| **Consumer Lag**              | The difference between the last produced message offset and the last consumed message offset in a consumer group. |
+| **Auto-Scaling**              | The ability of a Kafka cluster to dynamically adjust its size based on workload and resource utilization.         |
+| **Compact Topics**            | A feature that retains only the most recent value for each key in a topic, reducing storage requirements.         |
+| **Kafka Streams**             | A client library for building real-time applications and microservices that process data in Kafka.                |
+| **State Store**               | A key-value store used in Kafka Streams for maintaining local state during processing.                            |
+| **Transaction Support**       | Kafka's ability to handle multi-producer and multi-consumer transactions, ensuring data integrity.                |
+| **Cross-Cluster Replication** | The ability to replicate data across different Kafka clusters for disaster recovery and geo-replication.          |
+| **Schema Registry**           | A centralized repository for managing data schemas, allowing producers and consumers to handle data evolution.    |
+| **Backpressure Handling**     | Mechanisms for managing the flow of data between producers and consumers to prevent overwhelming consumers.       |
+| **Topic Compaction**          | The process of removing older records with the same key, retaining only the latest record for each key.           |
