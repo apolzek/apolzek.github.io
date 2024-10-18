@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-10-18T18:50:23+00:00</updated>
+ <updated>2024-10-18T18:58:21+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -1104,7 +1104,7 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
 
 &lt;p&gt;See you around !&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://github.com/apolzek/apolzek.github.io/blob/main/assets/gif/working.webp&quot; alt=&quot;working&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/apolzek/apolzek.github.io/refs/heads/main/assets/gif/working.webp&quot; alt=&quot;working&quot; /&gt;&lt;/p&gt;
 </content>
  </entry>
  
