@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-10-18T18:58:21+00:00</updated>
+ <updated>2024-10-18T19:27:14+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -701,22 +701,6 @@
 &lt;p&gt;At the companies I’ve worked at, I’ve used both MacBooks with macOS and Dell laptops running Ubuntu. And you know what? Both worked just fine! I’m always trying to improve in different areas — physically, gaining new skills, or fixing mistakes. But then come the trade-offs: I need time! And that got me thinking about how much time I’ve spent in the past messing around with Linux distros, customizing tools, switching window managers, tweaking every little detail that only I would notice.&lt;/p&gt;
 
 &lt;p&gt;In the end, I decided to stop and simplify. With the least amount of effort, I found a way to focus on what really matters: solving the problems I’m paid to solve. No need to reinvent the wheel.&lt;/p&gt;
-
-&lt;p&gt;If you make a list of what you use most on a daily basis, you’ll notice it doesn’t end up being very long. For example, here’s mine:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;I need a code editor with LSP/IntelliSense, integrated debugging, and a built-in terminal.&lt;/li&gt;
-  &lt;li&gt;I need simple virtualization software.&lt;/li&gt;
-  &lt;li&gt;I need a container manager.&lt;/li&gt;
-  &lt;li&gt;I need a tool that allows easy snapshots and quick restoration.&lt;/li&gt;
-  &lt;li&gt;A reliable browser.&lt;/li&gt;
-  &lt;li&gt;Tools for video and image editing.&lt;/li&gt;
-  &lt;li&gt;A self-management tool (optional for most people).&lt;/li&gt;
-  &lt;li&gt;My troubleshooting toolkit.&lt;/li&gt;
-  &lt;li&gt;A solid VPN client.&lt;/li&gt;
-  &lt;li&gt;A terminal that saves me time.&lt;/li&gt;
-&lt;/ul&gt;
-
 </content>
  </entry>
  
@@ -1049,6 +1033,127 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
 &lt;p&gt;&lt;strong&gt;Kafka KRaft Installation&lt;/strong&gt;: KRaft is Kafka’s new built-in consensus mechanism that eliminates the need for ZooKeeper. In a KRaft-based installation, Kafka brokers manage metadata and leader election directly, which simplifies the architecture by reducing dependencies. KRaft is becoming the default option in newer Kafka versions because it provides better scalability, faster failover, and an overall more streamlined operation.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Kafka with ZooKeeper&lt;/strong&gt;: In traditional Kafka deployments, ZooKeeper is used to manage the cluster’s metadata, such as broker details and topic configurations. ZooKeeper handles tasks like leader election and tracking which brokers are active. While this setup has been robust for years, it adds complexity by requiring an additional service (ZooKeeper) that must be installed, managed, and maintained alongside Kafka.&lt;/p&gt;
+
+&lt;h2 id=&quot;reviewing&quot;&gt;reviewing&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Term&lt;/th&gt;
+      &lt;th&gt;Definition&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Topic&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;A category or feed name to which records are published.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Partition&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;A topic is divided into multiple partitions, which are the fundamental unit of parallelism in Kafka.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Producer&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;An application that publishes messages (records) to a Kafka topic.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Consumer&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;An application that subscribes to topics and processes the published messages.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Broker&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;A Kafka server that stores messages and serves client requests.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Cluster&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;A group of one or more brokers working together to handle data replication and load balancing.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Offset&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;A unique identifier for each record within a partition, used for tracking the position of messages.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Consumer Group&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;A group of consumers that work together to consume messages from a topic, ensuring load balancing.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Replication&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;The process of storing copies of partitions across multiple brokers for fault tolerance.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Zookeeper&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;A centralized service that manages and coordinates the Kafka brokers and maintains cluster metadata.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Log&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;An ordered, append-only sequence of records for each partition that stores the actual messages.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Retention Policy&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;A policy that determines how long Kafka retains messages in a topic before they are deleted.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Throughput&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;A measure of how many messages can be processed per unit of time, often expressed in messages per second.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Latency&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;The time it takes for a message to travel from a producer to a consumer.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Load Balancing&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;The distribution of partitions across multiple brokers to evenly distribute the workload.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Partitioning Strategy&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;The method used to assign messages to partitions, based on keys or round-robin distribution.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Replication Factor&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;The number of copies of a partition maintained across different brokers, enhancing fault tolerance.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Consumer Lag&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;The difference between the last produced message offset and the last consumed message offset in a consumer group.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Auto-Scaling&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;The ability of a Kafka cluster to dynamically adjust its size based on workload and resource utilization.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Compact Topics&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;A feature that retains only the most recent value for each key in a topic, reducing storage requirements.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Kafka Streams&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;A client library for building real-time applications and microservices that process data in Kafka.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;State Store&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;A key-value store used in Kafka Streams for maintaining local state during processing.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Transaction Support&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Kafka’s ability to handle multi-producer and multi-consumer transactions, ensuring data integrity.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Cross-Cluster Replication&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;The ability to replicate data across different Kafka clusters for disaster recovery and geo-replication.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Schema Registry&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;A centralized repository for managing data schemas, allowing producers and consumers to handle data evolution.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Backpressure Handling&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Mechanisms for managing the flow of data between producers and consumers to prevent overwhelming consumers.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Topic Compaction&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;The process of removing older records with the same key, retaining only the latest record for each key.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 </content>
  </entry>
  
