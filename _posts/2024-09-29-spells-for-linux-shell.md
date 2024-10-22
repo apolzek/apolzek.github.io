@@ -172,6 +172,10 @@ uppercase=${original^^}
 echo "Uppercase: $uppercase"
 # Output: Uppercase: LINUX IS AMAZING!
 
+## another way
+echo "Linux is amazing!" | tr '[:lower:]' '[:upper:]'
+echo "Linux is amazing!" | awk '{ print toupper($0) }'
+
 # Converting to lowercase
 lowercase=${original,,}
 echo "Lowercase: $lowercase"
