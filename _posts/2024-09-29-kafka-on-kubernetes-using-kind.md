@@ -149,7 +149,7 @@ kafka-topics.sh --delete --topic my-topic --bootstrap-server kafka-svc:9092
 
 **Kafka with ZooKeeper**: In traditional Kafka deployments, ZooKeeper is used to manage the cluster’s metadata, such as broker details and topic configurations. ZooKeeper handles tasks like leader election and tracking which brokers are active. While this setup has been robust for years, it adds complexity by requiring an additional service (ZooKeeper) that must be installed, managed, and maintained alongside Kafka.
 
-## reviewing
+## Reviewing
 
 | Term                          | Definition                                                                                                        |
 | ----------------------------- | ----------------------------------------------------------------------------------------------------------------- |

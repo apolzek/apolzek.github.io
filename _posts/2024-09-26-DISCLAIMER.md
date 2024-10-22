@@ -1,6 +1,6 @@
 ---
 layout: post
-title: DISCLAIMER
+title: DISCLAIMER *.*
 description: DISCLAIMER and GOALS
 summary: DISCLAIMER and GOALS
 tags: disclaimer goals

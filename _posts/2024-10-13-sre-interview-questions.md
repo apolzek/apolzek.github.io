@@ -7,6 +7,8 @@ tags: sre interview
 minute: 10
 ---
 
+Although I have a solid foundation in various technology topics and in-depth knowledge in many of them, I still lack the confidence to conduct interviews. You never know what you might encounter on the other side. Regardless, I would like to share my thought process for conducting a technical interview for the position of Site Reliability Engineer or DevOps Engineer.
+
 ## Networking
 
 Suppose you have a proxy that operates at the TCP level and another that operates only at the HTTP level. What are the main implications of this configuration? How can these differences affect error handling, security, and network scalability ?

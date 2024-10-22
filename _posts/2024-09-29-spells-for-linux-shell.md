@@ -158,3 +158,39 @@ set +x  # Disable debugging mode
 echo "now debugging mode is disable"
 echo "did you understand ?"
 ```
+
+### 5. String Manipulation and Substitution
+
+```sh
+#!/bin/bash
+
+# Defining an original string
+original="Linux is amazing!"
+
+# Converting to uppercase
+uppercase=${original^^}
+echo "Uppercase: $uppercase"
+# Output: Uppercase: LINUX IS AMAZING!
+
+# Converting to lowercase
+lowercase=${original,,}
+echo "Lowercase: $lowercase"
+# Output: Lowercase: linux is amazing!
+
+# Replacing part of the string
+modified=${original//amazing/extravagant}
+echo "Substitution: $modified"
+# Output: Substitution: Linux is extravagant!
+
+# Extracting a substring
+substring=${original:7:9}  # Extracts "is amazing"
+echo "Substring: $substring"
+# Output: Substring: is amazing
+
+# Checking the length of the string
+length=${#original}
+echo "Length of the string: $length characters"
+# Output: Length of the string: 20 characters
+
+
+```
