@@ -1,3 +1,4 @@
+# curl -s https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/_grimoire/asdf.txt | bash
 
 # Download .NET
 asdf plugin-add dotnet-core https://github.com/emersonsoares/asdf-dotnet-core.git
