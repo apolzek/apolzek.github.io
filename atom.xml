@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-10-22T21:52:24+00:00</updated>
+ <updated>2024-10-22T22:11:47+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -723,7 +723,9 @@ sbt run&lt;/p&gt;
    <link href="/2024/10/13/sre-interview-questions.html"/>
    <updated>2024-10-13T00:00:00+00:00</updated>
    <id>/2024/10/13/sre-interview-questions</id>
-   <content type="html">&lt;h2 id=&quot;networking&quot;&gt;Networking&lt;/h2&gt;
+   <content type="html">&lt;p&gt;Although I have a solid foundation in various technology topics and in-depth knowledge in many of them, I still lack the confidence to conduct interviews. You never know what you might encounter on the other side. Regardless, I would like to share my thought process for conducting a technical interview for the position of Site Reliability Engineer or DevOps Engineer.&lt;/p&gt;
+
+&lt;h2 id=&quot;networking&quot;&gt;Networking&lt;/h2&gt;
 
 &lt;p&gt;Suppose you have a proxy that operates at the TCP level and another that operates only at the HTTP level. What are the main implications of this configuration? How can these differences affect error handling, security, and network scalability ?&lt;/p&gt;
 
@@ -930,7 +932,9 @@ sbt run&lt;/p&gt;
    <link href="/2024/10/10/l0calh0t-startup-day2.html"/>
    <updated>2024-10-10T00:00:00+00:00</updated>
    <id>/2024/10/10/l0calh0t-startup-day2</id>
-   <content type="html">
+   <content type="html">&lt;h2 id=&quot;rendercom-needs-to-be-said-they-are-good&quot;&gt;render.com needs to be said.. they are good&lt;/h2&gt;
+
+&lt;p&gt;Since my idea has A LOT to do with what &lt;strong&gt;render.com&lt;/strong&gt; offers, it makes total sense for me to learn from them. First off, just know that they’re good. I’ve already liked a lot of what I found on their free tier. I’ll dive into the details here and connect it to some technical concepts just to get the wheels turning on architecture and product thinking.&lt;/p&gt;
 </content>
  </entry>
  
@@ -1111,6 +1115,41 @@ sbt run&lt;/p&gt;
 &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;now debugging mode is disable&quot;&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;did you understand ?&quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;5-string-manipulation-and-substitution&quot;&gt;5. String Manipulation and Substitution&lt;/h3&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Defining an original string&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;original&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Linux is amazing!&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Converting to uppercase&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;uppercase&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;original&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;^^&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Uppercase: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$uppercase&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Output: Uppercase: LINUX IS AMAZING!&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Converting to lowercase&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;lowercase&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;original&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Lowercase: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$lowercase&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Output: Lowercase: linux is amazing!&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Replacing part of the string&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;modified&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;original&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;//amazing/extravagant&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Substitution: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$modified&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Output: Substitution: Linux is extravagant!&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Extracting a substring&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;substring&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;original&lt;/span&gt;:7:9&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# Extracts &quot;is amazing&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Substring: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$substring&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Output: Substring: is amazing&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Checking the length of the string&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${#&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;original&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Length of the string: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$length&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; characters&quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Output: Length of the string: 20 characters&lt;/span&gt;
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
  
@@ -1255,7 +1294,7 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
 
 &lt;p&gt;&lt;strong&gt;Kafka with ZooKeeper&lt;/strong&gt;: In traditional Kafka deployments, ZooKeeper is used to manage the cluster’s metadata, such as broker details and topic configurations. ZooKeeper handles tasks like leader election and tracking which brokers are active. While this setup has been robust for years, it adds complexity by requiring an additional service (ZooKeeper) that must be installed, managed, and maintained alongside Kafka.&lt;/p&gt;
 
-&lt;h2 id=&quot;reviewing&quot;&gt;reviewing&lt;/h2&gt;
+&lt;h2 id=&quot;reviewing&quot;&gt;Reviewing&lt;/h2&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
@@ -1435,7 +1474,7 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  </entry>
  
  <entry>
-   <title>DISCLAIMER</title>
+   <title>DISCLAIMER *.*</title>
    <link href="/2024/09/26/DISCLAIMER.html"/>
    <updated>2024-09-26T00:00:00+00:00</updated>
    <id>/2024/09/26/DISCLAIMER</id>

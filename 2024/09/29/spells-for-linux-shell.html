@@ -98,4 +98,35 @@
 
 <span class="nb">echo</span> <span class="s2">"now debugging mode is disable"</span>
 <span class="nb">echo</span> <span class="s2">"did you understand ?"</span>
+</code></pre></div></div> <h3 id="5-string-manipulation-and-substitution"> 5. String Manipulation and Substitution <a href="#5-string-manipulation-and-substitution">#</a> </h3> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+
+<span class="c"># Defining an original string</span>
+<span class="nv">original</span><span class="o">=</span><span class="s2">"Linux is amazing!"</span>
+
+<span class="c"># Converting to uppercase</span>
+<span class="nv">uppercase</span><span class="o">=</span><span class="k">${</span><span class="nv">original</span><span class="p">^^</span><span class="k">}</span>
+<span class="nb">echo</span> <span class="s2">"Uppercase: </span><span class="nv">$uppercase</span><span class="s2">"</span>
+<span class="c"># Output: Uppercase: LINUX IS AMAZING!</span>
+
+<span class="c"># Converting to lowercase</span>
+<span class="nv">lowercase</span><span class="o">=</span><span class="k">${</span><span class="nv">original</span><span class="p">,,</span><span class="k">}</span>
+<span class="nb">echo</span> <span class="s2">"Lowercase: </span><span class="nv">$lowercase</span><span class="s2">"</span>
+<span class="c"># Output: Lowercase: linux is amazing!</span>
+
+<span class="c"># Replacing part of the string</span>
+<span class="nv">modified</span><span class="o">=</span><span class="k">${</span><span class="nv">original</span><span class="p">//amazing/extravagant</span><span class="k">}</span>
+<span class="nb">echo</span> <span class="s2">"Substitution: </span><span class="nv">$modified</span><span class="s2">"</span>
+<span class="c"># Output: Substitution: Linux is extravagant!</span>
+
+<span class="c"># Extracting a substring</span>
+<span class="nv">substring</span><span class="o">=</span><span class="k">${</span><span class="nv">original</span>:7:9<span class="k">}</span>  <span class="c"># Extracts "is amazing"</span>
+<span class="nb">echo</span> <span class="s2">"Substring: </span><span class="nv">$substring</span><span class="s2">"</span>
+<span class="c"># Output: Substring: is amazing</span>
+
+<span class="c"># Checking the length of the string</span>
+<span class="nv">length</span><span class="o">=</span><span class="k">${#</span><span class="nv">original</span><span class="k">}</span>
+<span class="nb">echo</span> <span class="s2">"Length of the string: </span><span class="nv">$length</span><span class="s2"> characters"</span>
+<span class="c"># Output: Length of the string: 20 characters</span>
+
+
 </code></pre></div></div> </section> <section> <nav class="post-nav"> <a class="post-nav-item post-nav-prev" href="/2024/09/29/kafka-on-kubernetes-using-kind.html"> <div class="nav-arrow">Previous</div> <span class="post-title">Kafka on Kubernetes using Kind</span> </a> <a class="post-nav-item post-nav-next" href="/2024/10/10/getting-started-x-production-ready.html"> <div class="nav-arrow">Next</div> <span class="post-title">The distance between "getting started" and "production ready"</span> </a> </nav> </section> </main> <script> function setTheme(theme) { if (theme === "dark") { document.documentElement.setAttribute('data-theme', 'dark'); window.localStorage.setItem('theme', 'dark'); document.getElementById("theme-toggle").classList.add('sun'); document.getElementById("theme-toggle").classList.remove('moon'); } else { document.documentElement.setAttribute('data-theme', 'light'); window.localStorage.setItem('theme', 'light'); document.getElementById("theme-toggle").classList.add('moon'); document.getElementById("theme-toggle").classList.remove('sun'); } } let theme = localStorage.getItem('theme'); theme = theme || (window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light' : 'light'); setTheme(theme); function modeSwitcher() { let currentMode = document.documentElement.getAttribute('data-theme'); if (currentMode === "dark") { setTheme('light'); } else { setTheme('dark'); } } </script> <script src="https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js"></script> <script>addBackToTop({ diameter: 48, backgroundColor: 'rgb(196, 187, 240)', textColor: 'black' }) </script> </body> <footer class="social-footer"> <div class="social-footer-icons"> <!-- <a href="https://telegram.me/apolzek" title="dm me" target="_blank" rel="noopener noreferrer"><i class="fa fa-telegram" aria-hidden="true"></i></a> --> <!-- <a href="mailto:p0wex@pm.me" title="Email me"><i class="fa fa-envelope" aria-hidden="true"></i></a> <a href="https://github.com/P0WEX" title="Github profile, nothing much there, yet" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" aria-hidden="true"></i></a> <a href="/atom.xml" title="RSS feed" target="_blank" rel="noopener noreferrer"><i class="fa fa-rss" aria-hidden="true"></i></a> <a href="https://github.com/P0WEX/Gesko" title="Browse the code" target="_blank" rel="noopener noreferrer"><i class="fa fa-code" aria-hidden="true"></i></a> --> </div> </footer> <!-- Global site tag (gtag.js) - Google Analytics --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-61LXK24CDY"></script> <script> window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-61LXK24CDY'); </script> </html>
