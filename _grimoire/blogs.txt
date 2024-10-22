@@ -1,3 +1,5 @@
+# cat ~/.config/google-chrome/Default/Bookmarks | jq -r '.roots.bookmark_bar.children[] | select(.name == "tree") | .children[] | select(.name == "blogs") | .children[] | .url'
+
 https://www.certdepot.net/
 https://wisdomtheory.gumroad.com/l/100MM
 https://pontocafe.fernandoike.com/
@@ -34,3 +36,4 @@ https://leandronsp.com/
 https://thiagolopes.cc/
 https://mfbmina.dev/
 https://www.evilsocket.net/
+https://blog.pragmaticengineer.com/

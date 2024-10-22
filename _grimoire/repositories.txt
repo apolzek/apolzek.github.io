@@ -1,8 +1,13 @@
-# by apolzek
++--------------=--------+
+|       by apolzek      |
++-----------------------+
+
 https://github.com/apolzek/shared
 https://github.com/apolzek/manifests
 
-# golang
++------------------------+
+|         golang         |
++------------------------+
 
 # Table-writer and more in golang!
 https://github.com/jedib0t/go-pretty
@@ -10,7 +15,9 @@ https://github.com/jedib0t/go-pretty
 # A Go CRUD API framework so simple a baby could use it.
 https://github.com/calvinmclean/babyapi?tab=readme-ov-file
 
-# others
++------------------------+
+|         others         |
++------------------------+
 
 # 🔐 A CLI tool to extract server certificates
 https://github.com/Hakky54/certificate-ripper
