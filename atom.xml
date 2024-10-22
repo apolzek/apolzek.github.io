@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-10-22T22:11:47+00:00</updated>
+ <updated>2024-10-22T22:19:24+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -1127,6 +1127,10 @@ sbt run&lt;/p&gt;
 &lt;span class=&quot;nv&quot;&gt;uppercase&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;original&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;^^&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Uppercase: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$uppercase&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# Output: Uppercase: LINUX IS AMAZING!&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;## another way&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Linux is amazing!&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;tr&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;[:lower:]&apos;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;[:upper:]&apos;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Linux is amazing!&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;{ print toupper($0) }&apos;&lt;/span&gt;
 
 &lt;span class=&quot;c&quot;&gt;# Converting to lowercase&lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;lowercase&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;original&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;

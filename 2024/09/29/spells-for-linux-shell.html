@@ -108,6 +108,10 @@
 <span class="nb">echo</span> <span class="s2">"Uppercase: </span><span class="nv">$uppercase</span><span class="s2">"</span>
 <span class="c"># Output: Uppercase: LINUX IS AMAZING!</span>
 
+<span class="c">## another way</span>
+<span class="nb">echo</span> <span class="s2">"Linux is amazing!"</span> | <span class="nb">tr</span> <span class="s1">'[:lower:]'</span> <span class="s1">'[:upper:]'</span>
+<span class="nb">echo</span> <span class="s2">"Linux is amazing!"</span> | <span class="nb">awk</span> <span class="s1">'{ print toupper($0) }'</span>
+
 <span class="c"># Converting to lowercase</span>
 <span class="nv">lowercase</span><span class="o">=</span><span class="k">${</span><span class="nv">original</span><span class="p">,,</span><span class="k">}</span>
 <span class="nb">echo</span> <span class="s2">"Lowercase: </span><span class="nv">$lowercase</span><span class="s2">"</span>
