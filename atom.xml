@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-11-08T15:24:05+00:00</updated>
+ <updated>2024-11-08T15:34:59+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -757,124 +757,11 @@ sbt run&lt;/p&gt;
  </entry>
  
  <entry>
-   <title>Let&apos;s talk about Amazon ElastiCache</title>
+   <title>☁️ Let&apos;s talk about Amazon ElastiCache</title>
    <link href="/2024/10/13/lets-talk-about-amazon-elasticache.html"/>
    <updated>2024-10-13T00:00:00+00:00</updated>
    <id>/2024/10/13/lets-talk-about-amazon-elasticache</id>
-   <content type="html">&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt; &lt;/th&gt;
-      &lt;th&gt;&lt;strong&gt;Redis (cluster mode enabled)&lt;/strong&gt;&lt;/th&gt;
-      &lt;th&gt;&lt;strong&gt;Redis (cluster mode disabled)&lt;/strong&gt;&lt;/th&gt;
-      &lt;th&gt;&lt;strong&gt;Memcached&lt;/strong&gt;&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Data Types&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;string, sets, sorted sets, lists, hashes, bitmaps, hyperloglog, geospatial indexes&lt;/td&gt;
-      &lt;td&gt;string, sets, sorted sets, lists, hashes, bitmaps, hyperloglog, geospatial indexes&lt;/td&gt;
-      &lt;td&gt;string, objects (like databases)&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Data Partitioning (distribute your data among multiple nodes)&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;Supported&lt;/td&gt;
-      &lt;td&gt;Unsupported&lt;/td&gt;
-      &lt;td&gt;Supported&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Modifiable cluster&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;Only versions 3.2.10 and later&lt;/td&gt;
-      &lt;td&gt;Yes&lt;/td&gt;
-      &lt;td&gt;Yes&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Online resharding&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;Only versions 3.2.10 and later&lt;/td&gt;
-      &lt;td&gt;No&lt;/td&gt;
-      &lt;td&gt;No&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Encryption&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;3.2.6, 4.0.10 and later&lt;/td&gt;
-      &lt;td&gt;3.2.6, 4.0.10 and later&lt;/td&gt;
-      &lt;td&gt;Unsupported&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Sub-millisecond latency&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;Yes&lt;/td&gt;
-      &lt;td&gt;Yes&lt;/td&gt;
-      &lt;td&gt;Yes&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;FedRAMP, PCI DSS and HIPAA compliant&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;3.2.6, 4.0.10 and later&lt;/td&gt;
-      &lt;td&gt;3.2.6, 4.0.10 and later&lt;/td&gt;
-      &lt;td&gt;No&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Multi-threaded (make use of multiple processing cores)&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;No&lt;/td&gt;
-      &lt;td&gt;No&lt;/td&gt;
-      &lt;td&gt;Yes&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Node type upgrading&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;No&lt;/td&gt;
-      &lt;td&gt;Yes&lt;/td&gt;
-      &lt;td&gt;No&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Engine upgrading&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;Yes&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Cluster replication (create multiple copies of a primary cluster)&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;Supported&lt;/td&gt;
-      &lt;td&gt;Supported&lt;/td&gt;
-      &lt;td&gt;Unsupported&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Multi-AZ for automatic failover&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;Required&lt;/td&gt;
-      &lt;td&gt;Optional&lt;/td&gt;
-      &lt;td&gt;Unsupported&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Transactions (execute a group of commands as an isolated and atomic operation)&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;Supported&lt;/td&gt;
-      &lt;td&gt;Supported&lt;/td&gt;
-      &lt;td&gt;Unsupported&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Pub/Sub capability&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;Yes&lt;/td&gt;
-      &lt;td&gt;Yes&lt;/td&gt;
-      &lt;td&gt;No&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Backup and restore (keep your data on disk with a point in time snapshot)&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;Supported&lt;/td&gt;
-      &lt;td&gt;Supported&lt;/td&gt;
-      &lt;td&gt;Unsupported&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Lua Scripting (execute transactional Lua scripts)&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;Supported&lt;/td&gt;
-      &lt;td&gt;Supported&lt;/td&gt;
-      &lt;td&gt;Unsupported&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Use case&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;- You need to partition your data across two to 250 or 500 nodes if the Redis engine version is 5.0.6 or higher (clustered mode only). &lt;br /&gt; - You need geospatial indexing (clustered mode or non-clustered mode). &lt;br /&gt; - You don’t need to support multiple databases. &lt;br /&gt; - Plus features of non-clustered mode.&lt;/td&gt;
-      &lt;td&gt;- You need complex data types, such as strings, hashes, lists, sets, sorted sets, and bitmaps. &lt;br /&gt; - You need to sort or rank in-memory datasets. &lt;br /&gt; - You need persistence of your key store. &lt;br /&gt; - You need to replicate your data from the primary to one or more read replicas for read intensive applications. &lt;br /&gt; - You need automatic failover if your primary node fails. &lt;br /&gt; - You need pub/sub capabilities. &lt;br /&gt; - You need backup and restore capabilities. &lt;br /&gt; - You need to support multiple databases.&lt;/td&gt;
-      &lt;td&gt;- You need the simplest model possible. &lt;br /&gt; - You need to run large nodes with multiple cores or threads. &lt;br /&gt; - You need the ability to scale out and in, adding and removing nodes as demand on your system increases and decreases. &lt;br /&gt; - You need to cache objects, such as a database. &lt;br /&gt; - Needs Auto Discovery to simplify the way an application connects to a cluster.&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+   <content type="html">
 </content>
  </entry>
  
@@ -1755,7 +1642,7 @@ spec:
   &lt;li&gt;I write for myself !!&lt;/li&gt;
   &lt;li&gt;My first language is Brazilian Portuguese, but I’m learning English and will use it here. You will likely see some writing mistakes; it’s part of learning&lt;/li&gt;
   &lt;li&gt;I have worked as a Reliability Engineer only in Brazil (&lt;em&gt;until now&lt;/em&gt;)&lt;/li&gt;
-  &lt;li&gt;I plan to discuss reliability topics and other subjects like security, processes, governance, and soft skills&lt;/li&gt;
+  &lt;li&gt;I plan to discuss reliability topics and other subjects like security, processes, governance, and soft/hard skills&lt;/li&gt;
   &lt;li&gt;Feedback is always welcome as long as it’s constructive. Feel free to contact me on Telegram or Discord, but please be respectful (&lt;em&gt;@apolzek&lt;/em&gt;)&lt;/li&gt;
   &lt;li&gt;Remember, everything here is open to discussion. You should form your &lt;strong&gt;own opinions&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
