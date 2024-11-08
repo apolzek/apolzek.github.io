@@ -9,6 +9,30 @@
     } ,
   
     {
+      "title"    : "🐧 REVIEW NixOS",
+      "category" : "",
+      "tags"     : "os, review, nixos,, linux,, distro",
+      "url"      : "/2025/10/13/review-nixos.html",
+      "date"     : "2025-10-13 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "Let&#39;s talk about Amazon ElastiCache",
+      "category" : "",
+      "tags"     : "aws, redis, elasticache",
+      "url"      : "/2025/10/13/lets-talk-about-amazon-elasticache.html",
+      "date"     : "2025-10-13 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "CREW",
+      "category" : "",
+      "tags"     : "team, sre",
+      "url"      : "/2025/10/13/CREW.html",
+      "date"     : "2025-10-13 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "Special Ops Team",
       "category" : "",
       "tags"     : "team, ops",
@@ -29,6 +53,22 @@
       "category" : "",
       "tags"     : "nix, os, distro, linux",
       "url"      : "/2025/10/10/nixos.html",
+      "date"     : "2025-10-10 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "💡 l0calh0t Startup - day 2",
+      "category" : "",
+      "tags"     : "devops, sre, project, startup",
+      "url"      : "/2025/10/10/l0calh0t-startup-day2.html",
+      "date"     : "2025-10-10 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "The distance between &quot;getting started&quot; and &quot;production ready&quot;",
+      "category" : "",
+      "tags"     : "tools",
+      "url"      : "/2025/10/10/getting-started-x-production-ready.html",
       "date"     : "2025-10-10 00:00:00 +0000"
     } ,
   
@@ -81,43 +121,11 @@
     } ,
   
     {
-      "title"    : "🐧 REVIEW NixOS",
-      "category" : "",
-      "tags"     : "os, review, nixos,, linux,, distro",
-      "url"      : "/2024/10/13/review-nixos.html",
-      "date"     : "2024-10-13 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "☁️ Let&#39;s talk about Amazon ElastiCache",
-      "category" : "",
-      "tags"     : "aws, redis, elasticache",
-      "url"      : "/2024/10/13/lets-talk-about-amazon-elasticache.html",
-      "date"     : "2024-10-13 00:00:00 +0000"
-    } ,
-  
-    {
       "title"    : "🐧 EndeavourOS with i3wm works for me",
       "category" : "",
       "tags"     : "os, i3wm, endeavouros,, linux,, distro",
       "url"      : "/2024/10/13/endeavouros-with-i3wm-works-for-me.html",
       "date"     : "2024-10-13 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "💡 l0calh0t Startup - day 2",
-      "category" : "",
-      "tags"     : "devops, sre, project, startup",
-      "url"      : "/2024/10/10/l0calh0t-startup-day2.html",
-      "date"     : "2024-10-10 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "The distance between &quot;getting started&quot; and &quot;production ready&quot;",
-      "category" : "",
-      "tags"     : "tools",
-      "url"      : "/2024/10/10/getting-started-x-production-ready.html",
-      "date"     : "2024-10-10 00:00:00 +0000"
     } ,
   
     {

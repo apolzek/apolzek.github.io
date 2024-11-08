@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-11-08T15:34:59+00:00</updated>
+ <updated>2024-11-08T20:32:47+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -38,6 +38,145 @@
 &lt;p&gt;In a continuous integration and continuous delivery (CI/CD) environment, the execution time of pipelines can significantly impact the speed of development and software delivery. What techniques and practices would you implement to optimize the execution time of CI/CD pipelines?&lt;/p&gt;
 
 &lt;p&gt;You are managing a project that uses Jenkins for continuous integration and GitLab CI for continuous delivery. Discuss how you would integrate these two tools into a unified CI/CD workflow. What considerations would you have regarding pipeline configuration, credential management, and infrastructure versioning? Additionally, analyze the advantages and disadvantages of using Jenkins alongside GitLab CI, considering aspects such as flexibility, scalability, and maintenance complexity.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>🐧 REVIEW NixOS</title>
+   <link href="/2025/10/13/review-nixos.html"/>
+   <updated>2025-10-13T00:00:00+00:00</updated>
+   <id>/2025/10/13/review-nixos</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Let&apos;s talk about Amazon ElastiCache</title>
+   <link href="/2025/10/13/lets-talk-about-amazon-elasticache.html"/>
+   <updated>2025-10-13T00:00:00+00:00</updated>
+   <id>/2025/10/13/lets-talk-about-amazon-elasticache</id>
+   <content type="html">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Configuração&lt;/th&gt;
+      &lt;th&gt;Modo&lt;/th&gt;
+      &lt;th&gt;Nodes&lt;/th&gt;
+      &lt;th&gt;Shards&lt;/th&gt;
+      &lt;th&gt;Réplicas por Shard&lt;/th&gt;
+      &lt;th&gt;Total Réplicas&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1 Node, 1 Shard, Sem Réplica&lt;/td&gt;
+      &lt;td&gt;Sem Cluster&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2 Nodes, 1 Shard, 1 Réplica&lt;/td&gt;
+      &lt;td&gt;Sem Cluster&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;3 Nodes, 1 Shard, 2 Réplicas&lt;/td&gt;
+      &lt;td&gt;Sem Cluster&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;4 Nodes, 1 Shard, 3 Réplicas&lt;/td&gt;
+      &lt;td&gt;Sem Cluster&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2 Nodes, 1 Shard, 1 Réplica&lt;/td&gt;
+      &lt;td&gt;Cluster&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;4 Nodes, 2 Shards, 1 Réplica&lt;/td&gt;
+      &lt;td&gt;Cluster&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;6 Nodes, 3 Shards, 1 Réplica&lt;/td&gt;
+      &lt;td&gt;Cluster&lt;/td&gt;
+      &lt;td&gt;6&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;8 Nodes, 4 Shards, 1 Réplica&lt;/td&gt;
+      &lt;td&gt;Cluster&lt;/td&gt;
+      &lt;td&gt;8&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>CREW</title>
+   <link href="/2025/10/13/CREW.html"/>
+   <updated>2025-10-13T00:00:00+00:00</updated>
+   <id>/2025/10/13/CREW</id>
+   <content type="html">&lt;h2 id=&quot;collaborative-reliability-engineering-workforce&quot;&gt;Collaborative Reliability Engineering Workforce&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Subgroup&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;OpenSource Tools&lt;/td&gt;
+      &lt;td&gt;Tools that are freely available and have open source code, allowing customization and contributions from the community.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Kubernetes Ecosystem&lt;/td&gt;
+      &lt;td&gt;A suite of tools and services that work with Kubernetes to enhance container orchestration and manage microservices.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Fundamentals&lt;/td&gt;
+      &lt;td&gt;Basic principles and foundational knowledge required to understand and work effectively with a system or technology.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Internal Solutions&lt;/td&gt;
+      &lt;td&gt;Custom-built tools or software developed within an organization to meet specific internal needs.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;News/Notifications&lt;/td&gt;
+      &lt;td&gt;Updates, announcements, or alerts related to industry trends, technology advancements, or system status.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Cloud&lt;/td&gt;
+      &lt;td&gt;Infrastructure, services, and platforms delivered over the internet, providing scalable computing resources.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 </content>
  </entry>
  
@@ -100,6 +239,43 @@ touch HelloWorld.scala&lt;/nome-do-projeto&gt;&lt;/p&gt;
 
 &lt;p&gt;cd ../../..&lt;br /&gt;
 sbt run&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>💡 l0calh0t Startup - day 2</title>
+   <link href="/2025/10/10/l0calh0t-startup-day2.html"/>
+   <updated>2025-10-10T00:00:00+00:00</updated>
+   <id>/2025/10/10/l0calh0t-startup-day2</id>
+   <content type="html">&lt;h2 id=&quot;rendercom-the-solution-is-amazing-and-the-free-tier-surprised-me&quot;&gt;render.com.. The solution is amazing, and the free tier surprised me&lt;/h2&gt;
+
+&lt;p&gt;Since my idea has A LOT to do with what &lt;strong&gt;render.com&lt;/strong&gt; offers, it makes total sense for me to learn from them. First off, just know that they’re good. I’ve already liked a lot of what I found on their free tier. I’ll dive into the details here and connect it to some technical concepts just to get the wheels turning on architecture and product thinking.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>The distance between &quot;getting started&quot; and &quot;production ready&quot;</title>
+   <link href="/2025/10/10/getting-started-x-production-ready.html"/>
+   <updated>2025-10-10T00:00:00+00:00</updated>
+   <id>/2025/10/10/getting-started-x-production-ready</id>
+   <content type="html">&lt;p&gt;When embarking on the journey of implementing a new tool, it is essential to recognize the significant gap between the initial “getting started” phase and achieving a fully functional production-ready system. In the beginning, users often interact with a simplified version of the tool, which showcases its basic functionalities. However, to fully harness the capabilities of the tool and integrate it into the organization’s ecosystem, several critical aspects must be addressed.&lt;/p&gt;
+
+&lt;p&gt;Deployment is one of the first challenges encountered when moving from a basic setup to a production-ready state. In the initial stages, deployment may be as straightforward as running a local instance. However, in a production environment, organizations must consider robust deployment strategies, including automated deployment pipelines, continuous integration/continuous deployment (CI/CD) practices, and the use of containerization technologies such as Docker. These practices ensure that the tool can be deployed seamlessly, with minimal downtime and maximum efficiency.&lt;/p&gt;
+
+&lt;p&gt;Scalability is another crucial factor that differentiates basic usage from a production-ready application. While a basic setup may function adequately for a small number of users or limited workloads, production environments must accommodate growth. This requires careful planning for horizontal and vertical scaling, load balancing, and resource allocation to ensure that the tool can handle increasing demands without compromising performance or user experience.&lt;/p&gt;
+
+&lt;p&gt;The adaptation to company processes is also vital in this transition. A basic implementation might showcase generic use cases, but to be effective in a production environment, the tool must align with the specific workflows and procedures of the organization. This may involve customizing features, integrating with existing systems, and training employees to ensure that the tool complements their daily tasks and contributes to overall productivity.&lt;/p&gt;
+
+&lt;p&gt;Security is a paramount concern when moving towards production readiness. Initial setups may overlook critical security protocols, while a production-ready tool must implement stringent security measures. This includes user authentication and authorization, data encryption, secure APIs, and compliance with industry regulations. Organizations must also conduct regular security audits and vulnerability assessments to protect sensitive data and maintain trust with users.&lt;/p&gt;
+
+&lt;p&gt;Traceability is another important aspect that sets a production-ready tool apart from its basic counterpart. In a production environment, tracking changes, actions, and data flows becomes essential for accountability and compliance. Implementing features like audit logs, change tracking, and comprehensive reporting enables organizations to maintain oversight and transparency in their operations.&lt;/p&gt;
+
+&lt;p&gt;Permissioning is a vital component of ensuring that users have appropriate access levels to various functionalities and data within the tool. In the basic mode, permission settings may be minimal, but in a production environment, fine-grained access control is essential. This allows organizations to enforce the principle of least privilege, ensuring that users can only access the information and functions necessary for their roles.&lt;/p&gt;
+
+&lt;p&gt;Lastly, organizations must consider the Software Development Operations (SDOX) aspect, which encompasses the entire lifecycle of the tool—from development and deployment to maintenance and support. In a production-ready setup, this requires a well-defined process for software updates, user feedback, and incident management to ensure continuous improvement and responsiveness to user needs.&lt;/p&gt;
+
+&lt;p&gt;In conclusion, while the “getting started” phase of a tool provides a valuable introduction to its functionalities, the journey towards a production-ready state is complex and multifaceted. Organizations must invest time and resources to address deployment strategies, scalability, process adaptation, security measures, traceability, permissioning, and SDOX practices. Only then can they fully leverage the tool’s potential and ensure it aligns with their operational goals.&lt;/p&gt;
 
 </content>
  </entry>
@@ -748,24 +924,6 @@ sbt run&lt;/p&gt;
  </entry>
  
  <entry>
-   <title>🐧 REVIEW NixOS</title>
-   <link href="/2024/10/13/review-nixos.html"/>
-   <updated>2024-10-13T00:00:00+00:00</updated>
-   <id>/2024/10/13/review-nixos</id>
-   <content type="html">
-</content>
- </entry>
- 
- <entry>
-   <title>☁️ Let&apos;s talk about Amazon ElastiCache</title>
-   <link href="/2024/10/13/lets-talk-about-amazon-elasticache.html"/>
-   <updated>2024-10-13T00:00:00+00:00</updated>
-   <id>/2024/10/13/lets-talk-about-amazon-elasticache</id>
-   <content type="html">
-</content>
- </entry>
- 
- <entry>
    <title>🐧 EndeavourOS with i3wm works for me</title>
    <link href="/2024/10/13/endeavouros-with-i3wm-works-for-me.html"/>
    <updated>2024-10-13T00:00:00+00:00</updated>
@@ -954,70 +1112,39 @@ sbt run&lt;/p&gt;
  </entry>
  
  <entry>
-   <title>💡 l0calh0t Startup - day 2</title>
-   <link href="/2024/10/10/l0calh0t-startup-day2.html"/>
-   <updated>2024-10-10T00:00:00+00:00</updated>
-   <id>/2024/10/10/l0calh0t-startup-day2</id>
-   <content type="html">&lt;h2 id=&quot;rendercom-needs-to-be-said-they-are-good&quot;&gt;render.com needs to be said.. they are good&lt;/h2&gt;
-
-&lt;p&gt;Since my idea has A LOT to do with what &lt;strong&gt;render.com&lt;/strong&gt; offers, it makes total sense for me to learn from them. First off, just know that they’re good. I’ve already liked a lot of what I found on their free tier. I’ll dive into the details here and connect it to some technical concepts just to get the wheels turning on architecture and product thinking.&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>The distance between &quot;getting started&quot; and &quot;production ready&quot;</title>
-   <link href="/2024/10/10/getting-started-x-production-ready.html"/>
-   <updated>2024-10-10T00:00:00+00:00</updated>
-   <id>/2024/10/10/getting-started-x-production-ready</id>
-   <content type="html">&lt;p&gt;When embarking on the journey of implementing a new tool, it is essential to recognize the significant gap between the initial “getting started” phase and achieving a fully functional production-ready system. In the beginning, users often interact with a simplified version of the tool, which showcases its basic functionalities. However, to fully harness the capabilities of the tool and integrate it into the organization’s ecosystem, several critical aspects must be addressed.&lt;/p&gt;
-
-&lt;p&gt;Deployment is one of the first challenges encountered when moving from a basic setup to a production-ready state. In the initial stages, deployment may be as straightforward as running a local instance. However, in a production environment, organizations must consider robust deployment strategies, including automated deployment pipelines, continuous integration/continuous deployment (CI/CD) practices, and the use of containerization technologies such as Docker. These practices ensure that the tool can be deployed seamlessly, with minimal downtime and maximum efficiency.&lt;/p&gt;
-
-&lt;p&gt;Scalability is another crucial factor that differentiates basic usage from a production-ready application. While a basic setup may function adequately for a small number of users or limited workloads, production environments must accommodate growth. This requires careful planning for horizontal and vertical scaling, load balancing, and resource allocation to ensure that the tool can handle increasing demands without compromising performance or user experience.&lt;/p&gt;
-
-&lt;p&gt;The adaptation to company processes is also vital in this transition. A basic implementation might showcase generic use cases, but to be effective in a production environment, the tool must align with the specific workflows and procedures of the organization. This may involve customizing features, integrating with existing systems, and training employees to ensure that the tool complements their daily tasks and contributes to overall productivity.&lt;/p&gt;
-
-&lt;p&gt;Security is a paramount concern when moving towards production readiness. Initial setups may overlook critical security protocols, while a production-ready tool must implement stringent security measures. This includes user authentication and authorization, data encryption, secure APIs, and compliance with industry regulations. Organizations must also conduct regular security audits and vulnerability assessments to protect sensitive data and maintain trust with users.&lt;/p&gt;
-
-&lt;p&gt;Traceability is another important aspect that sets a production-ready tool apart from its basic counterpart. In a production environment, tracking changes, actions, and data flows becomes essential for accountability and compliance. Implementing features like audit logs, change tracking, and comprehensive reporting enables organizations to maintain oversight and transparency in their operations.&lt;/p&gt;
-
-&lt;p&gt;Permissioning is a vital component of ensuring that users have appropriate access levels to various functionalities and data within the tool. In the basic mode, permission settings may be minimal, but in a production environment, fine-grained access control is essential. This allows organizations to enforce the principle of least privilege, ensuring that users can only access the information and functions necessary for their roles.&lt;/p&gt;
-
-&lt;p&gt;Lastly, organizations must consider the Software Development Operations (SDOX) aspect, which encompasses the entire lifecycle of the tool—from development and deployment to maintenance and support. In a production-ready setup, this requires a well-defined process for software updates, user feedback, and incident management to ensure continuous improvement and responsiveness to user needs.&lt;/p&gt;
-
-&lt;p&gt;In conclusion, while the “getting started” phase of a tool provides a valuable introduction to its functionalities, the journey towards a production-ready state is complex and multifaceted. Organizations must invest time and resources to address deployment strategies, scalability, process adaptation, security measures, traceability, permissioning, and SDOX practices. Only then can they fully leverage the tool’s potential and ensure it aligns with their operational goals.&lt;/p&gt;
-
-</content>
- </entry>
- 
- <entry>
    <title>🪄 Spells for Linux Shell 🧙</title>
    <link href="/2024/09/29/spells-for-linux-shell.html"/>
    <updated>2024-09-29T00:00:00+00:00</updated>
    <id>/2024/09/29/spells-for-linux-shell</id>
-   <content type="html">&lt;h2 id=&quot;-spells-for-linux-shell&quot;&gt;🪄 Spells for Linux Shell&lt;/h2&gt;
+   <content type="html">&lt;h1 id=&quot;-spells-for-linux-shell&quot;&gt;🪄 Spells for Linux Shell&lt;/h1&gt;
 
-&lt;h1 id=&quot;index&quot;&gt;Index&lt;/h1&gt;
+&lt;h2 id=&quot;index&quot;&gt;Index&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;#index&quot;&gt;Index&lt;/a&gt;
+  &lt;li&gt;&lt;a href=&quot;#-spells-for-linux-shell&quot;&gt;🪄 Spells for Linux Shell&lt;/a&gt;
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#looping-command-x-script&quot;&gt;LOOPING: command x script&lt;/a&gt;
+      &lt;li&gt;&lt;a href=&quot;#index&quot;&gt;Index&lt;/a&gt;
         &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#command&quot;&gt;command&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#script&quot;&gt;script&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#looping-command-x-script&quot;&gt;LOOPING: command x script&lt;/a&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;#command&quot;&gt;command&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#script&quot;&gt;script&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#signals&quot;&gt;Signals&lt;/a&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;#sigint&quot;&gt;SIGINT&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#sigterm&quot;&gt;SIGTERM&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#sighub&quot;&gt;SIGHUB&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#background-processes&quot;&gt;Background processes&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#debugging&quot;&gt;Debugging&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#string-manipulation-and-substitution&quot;&gt;String Manipulation and Substitution&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#shell-associative-arrays&quot;&gt;Shell Associative Arrays)&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#yaml-files&quot;&gt;YAML files&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#signals&quot;&gt;Signals&lt;/a&gt;
-        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#sigint&quot;&gt;SIGINT&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#sigterm&quot;&gt;SIGTERM&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#sighub&quot;&gt;SIGHUB&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#background-processes&quot;&gt;Background processes&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#debugging&quot;&gt;Debugging&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#string-manipulation-and-substitution&quot;&gt;String Manipulation and Substitution&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -1203,7 +1330,106 @@ sbt run&lt;/p&gt;
 &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Length of the string: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$length&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; characters&quot;&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# Output: Length of the string: 20 characters&lt;/span&gt;
 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;h3 id=&quot;shell-associative-arrays&quot;&gt;Shell Associative Arrays)&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Declare an associative array&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;declare&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-A&lt;/span&gt; user_info
+
+&lt;span class=&quot;c&quot;&gt;# Assign key-value pairs&lt;/span&gt;
+user_info[name]&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Alice&quot;&lt;/span&gt;
+user_info[email]&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;alice@example.com&quot;&lt;/span&gt;
+user_info[role]&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Admin&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Access elements by key&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;User Name: &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;user_info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[name]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;User Email: &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;user_info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[email]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;User Role: &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;user_info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[role]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Looping over keys and values&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;key &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;!user_info[@]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do
+    &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$key&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;user_info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;yaml-files&quot;&gt;YAML files&lt;/h3&gt;
+
+&lt;p&gt;Install yq&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;pacman &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; yq
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Create yaml example&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;v1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ComplexConfig&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;example-config&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;production&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;1.0&quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;service1&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;LoadBalancer&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;ports&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;http&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;80&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;targetPort&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;8080&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;https&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;443&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;targetPort&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;8443&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;hosts&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;service1.example.com&quot;&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;ip&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;192.168.1.10&quot;&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;regions&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;us-east-1&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;eu-west-1&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;service2&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ClusterIP&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;ports&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;grpc&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;50051&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;targetPort&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;50051&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;hosts&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;service2.example.com&quot;&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;ip&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;192.168.1.20&quot;&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;regions&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ap-south-1&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;eu-central-1&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;retries&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;timeout&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5000&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;logging&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;level&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;debug&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;json&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;outputs&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;file&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;/var/log/app.log&quot;&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;stdout&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;filtering data&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;yq &lt;span class=&quot;s1&quot;&gt;&apos;.metadata.name&apos;&lt;/span&gt; config.yaml
+yq &lt;span class=&quot;s1&quot;&gt;&apos;.spec.services[].name&apos;&lt;/span&gt; config.yaml
+yq &lt;span class=&quot;s1&quot;&gt;&apos;.spec.services[1].type&apos;&lt;/span&gt; config.yaml
+yq &lt;span class=&quot;s1&quot;&gt;&apos;.spec.services[] | select(.name == &quot;service1&quot;) | .ports[] | {port, targetPort}&apos;&lt;/span&gt; config.yaml
+yq &lt;span class=&quot;s1&quot;&gt;&apos;.spec.services[].hosts[] | {host, ip}&apos;&lt;/span&gt; config.yaml
+yq &lt;span class=&quot;s1&quot;&gt;&apos;.spec.services[] | select(.name == &quot;service2&quot;) | .hosts[].regions&apos;&lt;/span&gt; config.yaml
+yq &lt;span class=&quot;s1&quot;&gt;&apos;.spec.logging.level&apos;&lt;/span&gt; config.yaml
+
+yq &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;.metadata.name&apos;&lt;/span&gt; config.yaml
+yq &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;.spec.services[].name&apos;&lt;/span&gt; config.yaml
+yq &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;.spec.services[1].type&apos;&lt;/span&gt; config.yaml
+yq &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;.spec.services[] | select(.name == &quot;service1&quot;) | .ports[] | &quot;\(.port) \(.targetPort)&quot;&apos;&lt;/span&gt; config.yaml
+yq &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;.spec.services[].hosts[] | &quot;\(.host) \(.ip)&quot;&apos;&lt;/span&gt; config.yaml
+yq &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;.spec.services[] | select(.name == &quot;service2&quot;) | .hosts[].regions[]&apos;&lt;/span&gt; config.yaml
+yq &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;.spec.logging.level&apos;&lt;/span&gt; config.yaml
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
@@ -1218,6 +1444,7 @@ sbt run&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;#index&quot;&gt;Index&lt;/a&gt;
     &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#create-kubernetes-cluster-with-kind&quot;&gt;Create kubernetes cluster with kind&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#kafka&quot;&gt;Kafka&lt;/a&gt;
         &lt;ul&gt;
           &lt;li&gt;&lt;a href=&quot;#kafka-kraft-x-kafka-with-zookeeper&quot;&gt;Kafka KRaft x Kafka with ZooKeeper&lt;/a&gt;&lt;/li&gt;
@@ -1228,12 +1455,12 @@ sbt run&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;kafka&quot;&gt;Kafka&lt;/h2&gt;
+&lt;h2 id=&quot;create-kubernetes-cluster-with-kind&quot;&gt;Create kubernetes cluster with kind&lt;/h2&gt;
 
-&lt;p&gt;1) Create kind configuration&lt;/p&gt;
+&lt;p&gt;1) Create kind configuration(&lt;em&gt;kind-config.yaml&lt;/em&gt;)&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;kind-config.yaml&lt;/em&gt;&lt;/p&gt;
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kind.x-k8s.io/v1alpha4&lt;/span&gt;
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;cat &amp;lt;&amp;lt;EOF &amp;gt; /tmp/kind-config.yml&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kind.x-k8s.io/v1alpha4&lt;/span&gt;
 &lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Cluster&lt;/span&gt;
 &lt;span class=&quot;na&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
 &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;control-plane&lt;/span&gt;
@@ -1245,17 +1472,20 @@ sbt run&lt;/p&gt;
 &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;worker&lt;/span&gt;
 &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;worker&lt;/span&gt;
 &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;worker&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;EOF&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;2) Create a kind cluster&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kind create cluster &lt;span class=&quot;nt&quot;&gt;--config&lt;/span&gt; kind-config.yaml &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; my-cluster
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kind create cluster &lt;span class=&quot;nt&quot;&gt;--config&lt;/span&gt; /tmp/kind-config.yml &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; my-cluster
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;3) Create kafka StatefulSet and Namespace&lt;/p&gt;
+&lt;h2 id=&quot;kafka&quot;&gt;Kafka&lt;/h2&gt;
 
-&lt;p&gt;&lt;em&gt;kafka.yaml&lt;/em&gt;&lt;/p&gt;
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;v1&lt;/span&gt;
+&lt;p&gt;1) Apply yaml&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;cat &amp;lt;&amp;lt;EOF | kubectl apply -f -&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;v1&lt;/span&gt;
 &lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Namespace&lt;/span&gt;
 &lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
   &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kafka&lt;/span&gt;
@@ -1331,23 +1561,32 @@ sbt run&lt;/p&gt;
       &lt;span class=&quot;na&quot;&gt;nodePort&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;30092&lt;/span&gt;
   &lt;span class=&quot;na&quot;&gt;selector&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kafka-app&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;EOF&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;4) Create a topic&lt;/p&gt;
+&lt;p&gt;2) Create a topic&lt;/p&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; kafka-0 &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; kafka &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; bash
 kafka-topics.sh &lt;span class=&quot;nt&quot;&gt;--create&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--topic&lt;/span&gt; my-topic &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt;/span&gt; kafka-svc:9092
 kafka-topics.sh &lt;span class=&quot;nt&quot;&gt;--list&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--topic&lt;/span&gt; my-topic &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt;/span&gt; kafka-svc:9092
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;5) Produce and consume message&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;OBS&lt;/strong&gt;: &lt;em&gt;All pods must be running&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;3) Produce and consume message&lt;/p&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; kafka-1 &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; kafka &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; bash
-kafka-console-producer.sh  &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt;/span&gt; kafka-svc:9092 &lt;span class=&quot;nt&quot;&gt;--topic&lt;/span&gt; my-topic
+&lt;span class=&quot;c&quot;&gt;# producer&lt;/span&gt;
+kafka-console-producer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt;/span&gt; kafka-svc:9092 &lt;span class=&quot;nt&quot;&gt;--topic&lt;/span&gt; my-topic
+
+&lt;span class=&quot;c&quot;&gt;# consumer&lt;/span&gt;
 kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt;/span&gt; kafka-svc:9092 &lt;span class=&quot;nt&quot;&gt;--topic&lt;/span&gt; my-topic
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Run the producer and consumer in different Linux terminals&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;6) Delete topic&lt;/p&gt;
+&lt;p&gt;4) Delete topic&lt;/p&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kafka-topics.sh &lt;span class=&quot;nt&quot;&gt;--delete&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--topic&lt;/span&gt; my-topic &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt;/span&gt; kafka-svc:9092
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -1360,230 +1599,227 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
 
 &lt;h2 id=&quot;rabbitmq&quot;&gt;RabbitMQ&lt;/h2&gt;
 
-&lt;p&gt;1) Create namespace&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apiVersion: v1
-kind: Namespace
-metadata:
-  name: rabbitmq
-spec: {}
-status: {}
+&lt;p&gt;1) Create a YAML file &lt;em&gt;/tmp/rabbitmq.yml&lt;/em&gt; with the content below&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;v1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Namespace&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rabbitmq&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;{}&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;{}&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;v1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ServiceAccount&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rabbitmq&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;namespace&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rabbitmq&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Role&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rbac.authorization.k8s.io/v1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rabbitmq&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;namespace&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rabbitmq&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;rules&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;apiGroups&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;resources&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;endpoints&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;verbs&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;get&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;list&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;watch&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;RoleBinding&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rbac.authorization.k8s.io/v1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rabbitmq&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;namespace&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rabbitmq&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;subjects&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ServiceAccount&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rabbitmq&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;roleRef&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;apiGroup&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rbac.authorization.k8s.io&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Role&lt;/span&gt; 
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rabbitmq&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;v1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Secret&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rabbit-secret&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;namespace&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rabbitmq&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Opaque&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;RABBITMQ_ERLANG_COOKIE&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;V0lXVkhDRFRDSVVBV0FOTE1RQVc=&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;RABBITMQ_DEFAULT_USER&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;c2dtdm5v&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;RABBITMQ_DEFAULT_PASS&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;aTFxdWI5anpsMjBmOWoyNHRqaGRqeQ==&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;v1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ConfigMap&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rabbitmq-config&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;namespace&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rabbitmq&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;enabled_plugins&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;|&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;[rabbitmq_management,rabbitmq_peer_discovery_k8s].&lt;/span&gt;
+
+  &lt;span class=&quot;na&quot;&gt;rabbitmq.conf&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;|&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;## Cluster formation. See http://www.rabbitmq.com/cluster-formation.html to learn more.&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;cluster_formation.peer_discovery_backend  = rabbit_peer_discovery_k8s&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;cluster_formation.k8s.host = kubernetes.default.svc.cluster.local&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;## Should RabbitMQ node name be computed from the pod&apos;s hostname or IP address?&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;## IP addresses are not stable, so using [stable] hostnames is recommended when possible.&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;## Set to &quot;hostname&quot; to use pod hostnames.&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;## When this value is changed, so should the variable used to set the RABBITMQ_NODENAME&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;## environment variable.&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;cluster_formation.k8s.address_type = hostname	  &lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;## Important - this is the suffix of the hostname, as each node gets &quot;rabbitmq-#&quot;, we need to tell what&apos;s the suffix&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;## it will give each new node that enters the way to contact the other peer node and join the cluster (if using hostname)&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;cluster_formation.k8s.hostname_suffix = .rabbitmq.test-rabbitmq.svc.cluster.local&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;## How often should node cleanup checks run?&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;cluster_formation.node_cleanup.interval = 30&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;## Set to false if automatic removal of unknown/absent nodes&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;## is desired. This can be dangerous, see&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;##  * http://www.rabbitmq.com/cluster-formation.html#node-health-checks-and-cleanup&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;##  * https://groups.google.com/forum/#!msg/rabbitmq-users/wuOfzEywHXo/k8z_HWIkBgAJ&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;cluster_formation.node_cleanup.only_log_warning = true&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;cluster_partition_handling = autoheal&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;## See http://www.rabbitmq.com/ha.html#master-migration-data-locality&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;queue_master_locator=min-masters&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;## See http://www.rabbitmq.com/access-control.html#loopback-users&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;loopback_users.guest = false&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;apps/v1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;StatefulSet&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rabbitmq&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;namespace&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rabbitmq&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;serviceName&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rabbitmq&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;replicas&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;selector&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;matchLabels&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rabbitmq&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rabbitmq&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;serviceAccountName&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rabbitmq&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;initContainers&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;config&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;busybox&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;/bin/sh&apos;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;-c&apos;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;cp&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;/tmp/config/rabbitmq.conf&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;/config/rabbitmq.conf&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;ls&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;-l&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;/config/&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;cp&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;/tmp/config/enabled_plugins&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;/etc/rabbitmq/enabled_plugins&apos;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;volumeMounts&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; 
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;config&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;mountPath&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/tmp/config/&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;readOnly&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;false&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;config-file&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;mountPath&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/config/&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;plugins-file&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;mountPath&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/etc/rabbitmq/&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;resources&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# QoS Guaranteed limit e request iguais&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;limits&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;cpu&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;memory&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;2Gi&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;requests&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;cpu&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;memory&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;2Gi&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;containers&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rabbitmq&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rabbitmq:3.13.7-management&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;ports&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;containerPort&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;15672&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;discovery&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;containerPort&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5672&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;amqp&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;RABBIT_POD_NAME&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;valueFrom&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;fieldRef&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;v1&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;fieldPath&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;metadata.name&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;RABBIT_POD_NAMESPACE&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;valueFrom&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;fieldRef&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;fieldPath&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;metadata.namespace&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;RABBITMQ_NODENAME&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rabbit@$(RABBIT_POD_NAME).rabbitmq.$(RABBIT_POD_NAMESPACE).svc.cluster.local&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;RABBITMQ_USE_LONGNAME&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;true&quot;&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;RABBITMQ_CONFIG_FILE&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;/config/rabbitmq&quot;&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;RABBITMQ_DEFAULT_USER&lt;/span&gt;
+          &lt;span class=&quot;c1&quot;&gt;# value: &quot;user&quot;&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;valueFrom&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;secretKeyRef&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rabbit-secret&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;RABBITMQ_DEFAULT_USER&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;RABBITMQ_DEFAULT_PASS&lt;/span&gt;
+          &lt;span class=&quot;c1&quot;&gt;# value: &quot;password&quot;&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;valueFrom&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;secretKeyRef&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rabbit-secret&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;RABBITMQ_DEFAULT_PASS&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;K8S_HOSTNAME_SUFFIX&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;.rabbitmq.$(RABBIT_POD_NAMESPACE).svc.cluster.local&lt;/span&gt;
+
+        &lt;span class=&quot;na&quot;&gt;volumeMounts&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rabbitmq-pvc-data&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;mountPath&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/var/lib/rabbitmq&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;readOnly&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;false&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;config-file&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;mountPath&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/config/&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;plugins-file&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;mountPath&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/etc/rabbitmq/&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;resources&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# QoS Guaranteed limit e request iguais&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;limits&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;cpu&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;memory&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;2Gi&lt;/span&gt;
+          &lt;span class=&quot;c1&quot;&gt;# requests:&lt;/span&gt;
+          &lt;span class=&quot;c1&quot;&gt;#   cpu: 0.2m&lt;/span&gt;
+          &lt;span class=&quot;c1&quot;&gt;#   memory: 128Mi&lt;/span&gt;
+
+      &lt;span class=&quot;na&quot;&gt;volumes&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;config-file&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;emptyDir&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;{}&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;plugins-file&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;emptyDir&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;{}&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;config&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;configMap&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rabbitmq-config&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;defaultMode&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0755&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;volumeClaimTemplates&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rabbitmq-pvc-data&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;accessModes&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;ReadWriteOnce&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+      &lt;span class=&quot;c1&quot;&gt;# storageClassName: huawei-csi&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;storageClassName&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;standard&quot;&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;resources&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;requests&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;storage&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;1Gi&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;v1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Service&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rabbitmq&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;namespace&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rabbitmq&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ClusterIP&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;ports&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;15672&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;targetPort&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;15672&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;discovery&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5672&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;targetPort&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5672&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;amqp&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;selector&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rabbitmq&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;2) Create ServiceAccount&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: rabbitmq
-  namespace: rabbitmq
----
-kind: Role
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: rabbitmq
-  namespace: rabbitmq
-rules:
-- apiGroups:
-    - &quot;&quot;
-  resources:
-    - endpoints
-  verbs:
-    - get
-    - list
-    - watch
----
-kind: RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: rabbitmq
-  namespace: rabbitmq
-subjects:
-- kind: ServiceAccount
-  name: rabbitmq
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: Role 
-  name: rabbitmq
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;2) Apply file &lt;em&gt;/tmp/rabbitmq.yml&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;3) Create secret&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apiVersion: v1
-kind: Secret
-metadata:
-  name: rabbit-secret
-  namespace: rabbitmq
-type: Opaque
-data:
-  RABBITMQ_ERLANG_COOKIE: V0lXVkhDRFRDSVVBV0FOTE1RQVc=
-  RABBITMQ_DEFAULT_USER: c2dtdm5v
-  RABBITMQ_DEFAULT_PASS: aTFxdWI5anpsMjBmOWoyNHRqaGRqeQ==
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;4) Create configmap&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: rabbitmq-config
-  namespace: rabbitmq
-data:
-  enabled_plugins: |
-    [rabbitmq_management,rabbitmq_peer_discovery_k8s].
-
-  rabbitmq.conf: |
-    ## Cluster formation. See http://www.rabbitmq.com/cluster-formation.html to learn more.
-    cluster_formation.peer_discovery_backend  = rabbit_peer_discovery_k8s
-    cluster_formation.k8s.host = kubernetes.default.svc.cluster.local
-    ## Should RabbitMQ node name be computed from the pod&apos;s hostname or IP address?
-    ## IP addresses are not stable, so using [stable] hostnames is recommended when possible.
-    ## Set to &quot;hostname&quot; to use pod hostnames.
-    ## When this value is changed, so should the variable used to set the RABBITMQ_NODENAME
-    ## environment variable.
-    cluster_formation.k8s.address_type = hostname	  
-    ## Important - this is the suffix of the hostname, as each node gets &quot;rabbitmq-#&quot;, we need to tell what&apos;s the suffix
-    ## it will give each new node that enters the way to contact the other peer node and join the cluster (if using hostname)
-    cluster_formation.k8s.hostname_suffix = .rabbitmq.test-rabbitmq.svc.cluster.local
-    ## How often should node cleanup checks run?
-    cluster_formation.node_cleanup.interval = 30
-    ## Set to false if automatic removal of unknown/absent nodes
-    ## is desired. This can be dangerous, see
-    ##  * http://www.rabbitmq.com/cluster-formation.html#node-health-checks-and-cleanup
-    ##  * https://groups.google.com/forum/#!msg/rabbitmq-users/wuOfzEywHXo/k8z_HWIkBgAJ
-    cluster_formation.node_cleanup.only_log_warning = true
-    cluster_partition_handling = autoheal
-    ## See http://www.rabbitmq.com/ha.html#master-migration-data-locality
-    queue_master_locator=min-masters
-    ## See http://www.rabbitmq.com/access-control.html#loopback-users
-    loopback_users.guest = false
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;5) Create StatefulSet&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apiVersion: apps/v1
-kind: StatefulSet
-metadata:
-  name: rabbitmq
-  namespace: rabbitmq
-spec:
-  serviceName: rabbitmq
-  replicas: 1
-  selector:
-    matchLabels:
-      app: rabbitmq
-  template:
-    metadata:
-      labels:
-        app: rabbitmq
-    spec:
-      serviceAccountName: rabbitmq
-      initContainers:
-      - name: config
-        image: busybox
-        command: [&apos;/bin/sh&apos;, &apos;-c&apos;, &apos;cp /tmp/config/rabbitmq.conf /config/rabbitmq.conf &amp;amp;&amp;amp; ls -l /config/ &amp;amp;&amp;amp; cp /tmp/config/enabled_plugins /etc/rabbitmq/enabled_plugins&apos;]
-        volumeMounts: 
-        - name: config
-          mountPath: /tmp/config/
-          readOnly: false
-        - name: config-file
-          mountPath: /config/
-        - name: plugins-file
-          mountPath: /etc/rabbitmq/
-        resources: # QoS Guaranteed limit e request iguais
-          limits:
-            cpu: 1
-            memory: 2Gi
-          requests:
-            cpu: 1
-            memory: 2Gi
-      containers:
-      - name: rabbitmq
-        image: rabbitmq:3.13.7-management
-        ports:
-        - containerPort: 15672
-          name: discovery
-        - containerPort: 5672
-          name: amqp
-        env:
-        - name: RABBIT_POD_NAME
-          valueFrom:
-            fieldRef:
-              apiVersion: v1
-              fieldPath: metadata.name
-        - name: RABBIT_POD_NAMESPACE
-          valueFrom:
-            fieldRef:
-              fieldPath: metadata.namespace
-        - name: RABBITMQ_NODENAME
-          value: rabbit@$(RABBIT_POD_NAME).rabbitmq.$(RABBIT_POD_NAMESPACE).svc.cluster.local
-        - name: RABBITMQ_USE_LONGNAME
-          value: &quot;true&quot;
-        - name: RABBITMQ_CONFIG_FILE
-          value: &quot;/config/rabbitmq&quot;
-        - name: RABBITMQ_DEFAULT_USER
-          # value: &quot;user&quot;
-          valueFrom:
-            secretKeyRef:
-              name: rabbit-secret
-              key: RABBITMQ_DEFAULT_USER
-        - name: RABBITMQ_DEFAULT_PASS
-          # value: &quot;password&quot;
-          valueFrom:
-            secretKeyRef:
-              name: rabbit-secret
-              key: RABBITMQ_DEFAULT_PASS
-        - name: K8S_HOSTNAME_SUFFIX
-          value: .rabbitmq.$(RABBIT_POD_NAMESPACE).svc.cluster.local
-
-        volumeMounts:
-        - name: rabbitmq-pvc-data
-          mountPath: /var/lib/rabbitmq
-          readOnly: false
-        - name: config-file
-          mountPath: /config/
-        - name: plugins-file
-          mountPath: /etc/rabbitmq/
-        resources: # QoS Guaranteed limit e request iguais
-          limits:
-            cpu: 1
-            memory: 2Gi
-          # requests:
-          #   cpu: 0.2m
-          #   memory: 128Mi
-
-      volumes:
-      - name: config-file
-        emptyDir: {}
-      - name: plugins-file
-        emptyDir: {}
-      - name: config
-        configMap:
-          name: rabbitmq-config
-          defaultMode: 0755
-  volumeClaimTemplates:
-  - metadata:
-      name: rabbitmq-pvc-data
-    spec:
-      accessModes: [&quot;ReadWriteOnce&quot;]
-      storageClassName: huawei-csi
-      # storageClassName: &quot;standard&quot;
-      resources:
-        requests:
-          storage: 1Gi
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: rabbitmq
-  namespace: rabbitmq
-spec:
-  type: ClusterIP
-  ports:
-  - port: 15672
-    targetPort: 15672
-    name: discovery
-  - port: 5672
-    targetPort: 5672
-    name: amqp
-  selector:
-    app: rabbitmq
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl apply &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; /tmp/rabbitmq.yml
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
@@ -1603,7 +1839,7 @@ spec:
 
 &lt;p&gt;Let’s get started. What follows is information about the startup. To be quite honest, what I intend to build already exists, something similar to &lt;em&gt;render.com&lt;/em&gt;.. but my ideas go a little further(if I can implement it, of course xD).&lt;/p&gt;
 
-&lt;h2 id=&quot;l0calh0t-&quot;&gt;l0calh0t 🚀🚀🚀&lt;/h2&gt;
+&lt;h3 id=&quot;l0calh0t-&quot;&gt;l0calh0t 🚀🚀🚀&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;l0calh0t&lt;/strong&gt; is not introducing an innovative solution but rather offering &lt;strong&gt;a new way of delivering container-based application hosting&lt;/strong&gt;, designed for developers of all levels, SREs, DevOps, and QAs. By abstracting infrastructure and networking, it enables fast, cost-effective container deployment. Users can make applications publicly accessible or control access as needed. Unlike traditional solutions focused on large enterprises with strict SLAs, &lt;strong&gt;l0calh0t&lt;/strong&gt; prioritizes simplicity and accessibility, creating an agile environment for rapid testing and iteration, without the complexity of managing traditional servers.&lt;/p&gt;
 
