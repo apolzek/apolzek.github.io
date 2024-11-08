@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-11-08T15:14:02+00:00</updated>
+ <updated>2024-11-08T15:17:19+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -1605,34 +1605,19 @@ spec:
 
 &lt;h2 id=&quot;l0calh0t-&quot;&gt;l0calh0t 🚀🚀🚀&lt;/h2&gt;
 
-&lt;h3 id=&quot;about-the-idea&quot;&gt;About the idea&lt;/h3&gt;
-
 &lt;p&gt;&lt;strong&gt;l0calh0t&lt;/strong&gt; is not introducing an innovative solution but rather offering &lt;strong&gt;a new way of delivering container-based application hosting&lt;/strong&gt;, designed for developers of all levels, SREs, DevOps, and QAs. By abstracting infrastructure and networking, it enables fast, cost-effective container deployment. Users can make applications publicly accessible or control access as needed. Unlike traditional solutions focused on large enterprises with strict SLAs, &lt;strong&gt;l0calh0t&lt;/strong&gt; prioritizes simplicity and accessibility, creating an agile environment for rapid testing and iteration, without the complexity of managing traditional servers.&lt;/p&gt;
 
 &lt;p&gt;I’m still thinking about the legal issues..&lt;/p&gt;
 
-&lt;h3 id=&quot;about-the-idea-1&quot;&gt;About the idea&lt;/h3&gt;
+&lt;h3 id=&quot;about-the-idea&quot;&gt;About the idea&lt;/h3&gt;
 
 &lt;p&gt;The idea is basically a &lt;em&gt;render.com&lt;/em&gt; with some differences. I want to do something more “api first”. I want to do it in a way that is similar to the way people work with containers locally and I also want to offer a way for them to have details about their applications by adding components to the infrastructure that abstract away the complexity of doing so.&lt;/p&gt;
 
-&lt;h3 id=&quot;what-do-i-need&quot;&gt;What do I need?&lt;/h3&gt;
+&lt;h3 id=&quot;what-do-i-need-&quot;&gt;What do I need ?&lt;/h3&gt;
 
 &lt;p&gt;Considering that I have no money, no computing resources, and no advanced programming skills (that makes it hard 🤣🤣), I need to focus on something simple that works. I want to create a business abstraction on top of Kubernetes and put all the complexity into it using tools I have experience with. I need a cheap domain like &lt;strong&gt;localhot.io&lt;/strong&gt;. I need a payment method and reasonable bandwidth. I want to physically separate the servers where the startup’s applications are from the servers where the end-user containers will be. I need to think about security and a business model that is viable for Brazilian developers.&lt;/p&gt;
 
 &lt;p&gt;For the first poc’s, the simpler the better. I intend to use python or golang for this. I will use kind as the local kubernetes environment, the local registry of my machine for the images and also my local network (I run a certain risk).The networking part is very important in this project, but first I want a functional MVP.&lt;/p&gt;
-
-&lt;h3 id=&quot;about-my-localhost-workstation&quot;&gt;About my localhost (workstation)&lt;/h3&gt;
-
-&lt;p&gt;My computer settings are&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Intel(R) Core(TM) i5-9400 CPU @ 2.90GHz;&lt;/li&gt;
-  &lt;li&gt;16 RAM;&lt;/li&gt;
-  &lt;li&gt;440G SSD;&lt;/li&gt;
-  &lt;li&gt;EndeavourOS&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;[2024-10-02 15:27:45]&lt;/strong&gt; UPDATE - &lt;em&gt;I’ve decided that a hardware upgrade is unfeasible… It’s time to build a new PC. !!!&lt;/em&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;end&quot;&gt;End(?)&lt;/h3&gt;
 
@@ -1641,6 +1626,8 @@ spec:
 &lt;p&gt;See you around !&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/apolzek/apolzek.github.io/refs/heads/main/assets/gif/working.webp&quot; alt=&quot;working&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;[2024-10-02 15:27:45] UPDATE - I’ve decided that a hardware upgrade is unfeasible… It’s time to build a new PC. !!!&lt;/p&gt;
 </content>
  </entry>
  
