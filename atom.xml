@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-11-08T15:01:10+00:00</updated>
+ <updated>2024-11-08T15:07:43+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -1002,27 +1002,27 @@ sbt run&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;#index&quot;&gt;Index&lt;/a&gt;
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#1-looping-command-x-script&quot;&gt;1. LOOPING: command x script&lt;/a&gt;
+      &lt;li&gt;&lt;a href=&quot;#looping-command-x-script&quot;&gt;LOOPING: command x script&lt;/a&gt;
         &lt;ul&gt;
           &lt;li&gt;&lt;a href=&quot;#command&quot;&gt;command&lt;/a&gt;&lt;/li&gt;
           &lt;li&gt;&lt;a href=&quot;#script&quot;&gt;script&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#2-signals&quot;&gt;2. signals&lt;/a&gt;
+      &lt;li&gt;&lt;a href=&quot;#signals&quot;&gt;Signals&lt;/a&gt;
         &lt;ul&gt;
           &lt;li&gt;&lt;a href=&quot;#sigint&quot;&gt;SIGINT&lt;/a&gt;&lt;/li&gt;
           &lt;li&gt;&lt;a href=&quot;#sigterm&quot;&gt;SIGTERM&lt;/a&gt;&lt;/li&gt;
           &lt;li&gt;&lt;a href=&quot;#sighub&quot;&gt;SIGHUB&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#3-background-processes&quot;&gt;3. background processes&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#4-debugging&quot;&gt;4. debugging&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#5-string-manipulation-and-substitution&quot;&gt;5. String Manipulation and Substitution&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#background-processes&quot;&gt;Background processes&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#debugging&quot;&gt;Debugging&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#string-manipulation-and-substitution&quot;&gt;String Manipulation and Substitution&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;1-looping-command-x-script&quot;&gt;1. LOOPING: command x script&lt;/h3&gt;
+&lt;h3 id=&quot;looping-command-x-script&quot;&gt;LOOPING: command x script&lt;/h3&gt;
 
 &lt;h4 id=&quot;command&quot;&gt;command&lt;/h4&gt;
 
@@ -1048,7 +1048,7 @@ sbt run&lt;/p&gt;
 &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;2-signals&quot;&gt;2. signals&lt;/h3&gt;
+&lt;h3 id=&quot;signals&quot;&gt;Signals&lt;/h3&gt;
 
 &lt;p&gt;Some scenarios that make sense to deal with signals..&lt;/p&gt;
 
@@ -1125,7 +1125,7 @@ sbt run&lt;/p&gt;
 &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;3-background-processes&quot;&gt;3. background processes&lt;/h3&gt;
+&lt;h3 id=&quot;background-processes&quot;&gt;Background processes&lt;/h3&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
 
@@ -1150,7 +1150,7 @@ sbt run&lt;/p&gt;
 &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;All processes have finished.&quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;4-debugging&quot;&gt;4. debugging&lt;/h3&gt;
+&lt;h3 id=&quot;debugging&quot;&gt;Debugging&lt;/h3&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
 
@@ -1167,7 +1167,7 @@ sbt run&lt;/p&gt;
 &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;did you understand ?&quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;5-string-manipulation-and-substitution&quot;&gt;5. String Manipulation and Substitution&lt;/h3&gt;
+&lt;h3 id=&quot;string-manipulation-and-substitution&quot;&gt;String Manipulation and Substitution&lt;/h3&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
 
