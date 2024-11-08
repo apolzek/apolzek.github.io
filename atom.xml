@@ -4,13 +4,42 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-10-22T22:19:24+00:00</updated>
+ <updated>2024-11-08T10:35:47+00:00</updated>
  <id></id>
  <author>
    <name></name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>SRE interview questions</title>
+   <link href="/2025/10/13/sre-interview-questions.html"/>
+   <updated>2025-10-13T00:00:00+00:00</updated>
+   <id>/2025/10/13/sre-interview-questions</id>
+   <content type="html">&lt;p&gt;If you could choose one person to share trenches with, what qualities and skills would you prioritize?&lt;/p&gt;
+
+&lt;p&gt;Although I have a solid foundation in various technology topics and in-depth knowledge in many of them, I still lack the confidence to conduct interviews. You never know what you might encounter on the other side. Regardless, I would like to share my thought process for conducting a technical interview for the position of Site Reliability Engineer or DevOps Engineer.&lt;/p&gt;
+
+&lt;h2 id=&quot;networking&quot;&gt;Networking&lt;/h2&gt;
+
+&lt;p&gt;Suppose you have a proxy that operates at the TCP level and another that operates only at the HTTP level. What are the main implications of this configuration? How can these differences affect error handling, security, and network scalability ?&lt;/p&gt;
+
+&lt;h2 id=&quot;kubernetes&quot;&gt;Kubernetes&lt;/h2&gt;
+
+&lt;p&gt;In the context of Kubernetes, you are designing an application that requires different pod management strategies to meet specific requirements. Explain how you would utilize ReplicaSets, Deployments, StatefulSets, and DaemonSets to address these needs. In particular, discuss the ideal use cases for each of these objects and how they behave in relation to scalability, data persistence, and version updates. Additionally, what considerations should you keep in mind when choosing between these types of pod controllers for different components of your application ?&lt;/p&gt;
+
+&lt;h2 id=&quot;prometheus&quot;&gt;Prometheus&lt;/h2&gt;
+
+&lt;p&gt;In the context of monitoring with Prometheus, you encounter a cardinality problem where the number of time series becomes excessive, resulting in performance degradation and excessive resource usage. What are the common causes of cardinality issues in Prometheus, and what strategies can you employ to mitigate these problems ?&lt;/p&gt;
+
+&lt;h2 id=&quot;cicd&quot;&gt;CI/CD&lt;/h2&gt;
+
+&lt;p&gt;In a continuous integration and continuous delivery (CI/CD) environment, the execution time of pipelines can significantly impact the speed of development and software delivery. What techniques and practices would you implement to optimize the execution time of CI/CD pipelines?&lt;/p&gt;
+
+&lt;p&gt;You are managing a project that uses Jenkins for continuous integration and GitLab CI for continuous delivery. Discuss how you would integrate these two tools into a unified CI/CD workflow. What considerations would you have regarding pipeline configuration, credential management, and infrastructure versioning? Additionally, analyze the advantages and disadvantages of using Jenkins alongside GitLab CI, considering aspects such as flexibility, scalability, and maintenance complexity.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Special Ops Team</title>
@@ -719,37 +748,10 @@ sbt run&lt;/p&gt;
  </entry>
  
  <entry>
-   <title>SRE interview questions</title>
-   <link href="/2024/10/13/sre-interview-questions.html"/>
+   <title>EndeavourOS with i3wm works for me</title>
+   <link href="/2024/10/13/endeavouros-with-i3wm-works-for-me.html"/>
    <updated>2024-10-13T00:00:00+00:00</updated>
-   <id>/2024/10/13/sre-interview-questions</id>
-   <content type="html">&lt;p&gt;Although I have a solid foundation in various technology topics and in-depth knowledge in many of them, I still lack the confidence to conduct interviews. You never know what you might encounter on the other side. Regardless, I would like to share my thought process for conducting a technical interview for the position of Site Reliability Engineer or DevOps Engineer.&lt;/p&gt;
-
-&lt;h2 id=&quot;networking&quot;&gt;Networking&lt;/h2&gt;
-
-&lt;p&gt;Suppose you have a proxy that operates at the TCP level and another that operates only at the HTTP level. What are the main implications of this configuration? How can these differences affect error handling, security, and network scalability ?&lt;/p&gt;
-
-&lt;h2 id=&quot;kubernetes&quot;&gt;Kubernetes&lt;/h2&gt;
-
-&lt;p&gt;In the context of Kubernetes, you are designing an application that requires different pod management strategies to meet specific requirements. Explain how you would utilize ReplicaSets, Deployments, StatefulSets, and DaemonSets to address these needs. In particular, discuss the ideal use cases for each of these objects and how they behave in relation to scalability, data persistence, and version updates. Additionally, what considerations should you keep in mind when choosing between these types of pod controllers for different components of your application ?&lt;/p&gt;
-
-&lt;h2 id=&quot;prometheus&quot;&gt;Prometheus&lt;/h2&gt;
-
-&lt;p&gt;In the context of monitoring with Prometheus, you encounter a cardinality problem where the number of time series becomes excessive, resulting in performance degradation and excessive resource usage. What are the common causes of cardinality issues in Prometheus, and what strategies can you employ to mitigate these problems ?&lt;/p&gt;
-
-&lt;h2 id=&quot;cicd&quot;&gt;CI/CD&lt;/h2&gt;
-
-&lt;p&gt;In a continuous integration and continuous delivery (CI/CD) environment, the execution time of pipelines can significantly impact the speed of development and software delivery. What techniques and practices would you implement to optimize the execution time of CI/CD pipelines?&lt;/p&gt;
-
-&lt;p&gt;You are managing a project that uses Jenkins for continuous integration and GitLab CI for continuous delivery. Discuss how you would integrate these two tools into a unified CI/CD workflow. What considerations would you have regarding pipeline configuration, credential management, and infrastructure versioning? Additionally, analyze the advantages and disadvantages of using Jenkins alongside GitLab CI, considering aspects such as flexibility, scalability, and maintenance complexity.&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>EndeavourOS i3wm, why ?</title>
-   <link href="/2024/10/13/endeavourOS-i3wm-why.html"/>
-   <updated>2024-10-13T00:00:00+00:00</updated>
-   <id>/2024/10/13/endeavourOS-i3wm-why</id>
+   <id>/2024/10/13/endeavouros-with-i3wm-works-for-me</id>
    <content type="html">&lt;p&gt;Recently, I came across a provocative phrase: “Linux is only free if your time has no value.” I know some people around me would get a bit annoyed by this, and honestly, a few years ago, I would’ve been one of them. But today, with a little more experience (and patience), I still disagree, but I get the point. I’ve always been a fan of working with good tools, having a well-configured OS, customized, easy to restore, and that makes me more productive. The truth is, we spend time to save time, right? And that orks… to a certain extent.&lt;/p&gt;
 
 &lt;p&gt;The issue is that after a while, I realized something about myself: I get bored of everything, even when it’s “almost perfect.” I think a lot of people can relate to this. We’re always tweaking, adjusting, trying to make things better. But in the end, the time and effort you put in don’t always pay off. When you sit down to do the math, it doesn’t always add up. Sure, we learn and improve with each new experience, the learning curve gets shorter… but then the question hit me: what do we really need to get work done? For me, the answer is simple: running the applications we need.&lt;/p&gt;
@@ -965,7 +967,7 @@ sbt run&lt;/p&gt;
  </entry>
  
  <entry>
-   <title>🪄 Spells for Linux Shell</title>
+   <title>🪄 Spells for Linux Shell 🧙</title>
    <link href="/2024/09/29/spells-for-linux-shell.html"/>
    <updated>2024-09-29T00:00:00+00:00</updated>
    <id>/2024/09/29/spells-for-linux-shell</id>
@@ -1158,17 +1160,11 @@ sbt run&lt;/p&gt;
  </entry>
  
  <entry>
-   <title>Kafka on Kubernetes using Kind</title>
-   <link href="/2024/09/29/kafka-on-kubernetes-using-kind.html"/>
+   <title>Kafka and RabbitMQ on Kubernetes using Kind</title>
+   <link href="/2024/09/29/kafka-and-rabbitmq-on-kubernetes.html"/>
    <updated>2024-09-29T00:00:00+00:00</updated>
-   <id>/2024/09/29/kafka-on-kubernetes-using-kind</id>
-   <content type="html">&lt;h2 id=&quot;kafka-on-kubernetes-using-kind&quot;&gt;Kafka on Kubernetes using Kind&lt;/h2&gt;
-
-&lt;p&gt;Recently, I came across an article on Medium that explains how to set up a local environment with Kafka in a test folder, using the Kubernetes StatefulSet concept. I decided to bring it to my blog, adding some tips and additional information. Although my knowledge of Kafka is still basic, I already have a few applications in production using this tool — and it’s amazing how well they perform. I was also responsible for creating a solution using Kafka Connect, Kafka, and CDC for the Boleto product.&lt;/p&gt;
-
-&lt;p&gt;What follows is a simple and easy way to set up a local development environment with Kafka. I’ll also provide a brief introduction to Kafka and explain how you can use this solution in your projects. It’s important to note that this article is not a “How to run Kafka in production” guide, so keep that in mind. I may also add a Kafka command cheatsheet to make my life easier in the future.&lt;/p&gt;
-
-&lt;p&gt;If you’re not familiar with Kind, it’s an easy way to run Kubernetes locally. With Kind, you can use specific Kubernetes versions, configure the network to expose the API server or ports to the host, upload images, and do many other things. Simply install Docker or Podman first, and then install Kind. It’s a straightforward and easy process.&lt;/p&gt;
+   <id>/2024/09/29/kafka-and-rabbitmq-on-kubernetes</id>
+   <content type="html">&lt;h2 id=&quot;kafka&quot;&gt;Kafka&lt;/h2&gt;
 
 &lt;p&gt;1) Create kind configuration&lt;/p&gt;
 
@@ -1292,132 +1288,13 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kafka-topics.sh &lt;span class=&quot;nt&quot;&gt;--delete&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--topic&lt;/span&gt; my-topic &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt;/span&gt; kafka-svc:9092
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;kafka-kraft-x-kafka-with-zookeeper&quot;&gt;Kafka KRaft x Kafka with ZooKeeper&lt;/h2&gt;
+&lt;h3 id=&quot;kafka-kraft-x-kafka-with-zookeeper&quot;&gt;Kafka KRaft x Kafka with ZooKeeper&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;Kafka KRaft Installation&lt;/strong&gt;: KRaft is Kafka’s new built-in consensus mechanism that eliminates the need for ZooKeeper. In a KRaft-based installation, Kafka brokers manage metadata and leader election directly, which simplifies the architecture by reducing dependencies. KRaft is becoming the default option in newer Kafka versions because it provides better scalability, faster failover, and an overall more streamlined operation.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Kafka with ZooKeeper&lt;/strong&gt;: In traditional Kafka deployments, ZooKeeper is used to manage the cluster’s metadata, such as broker details and topic configurations. ZooKeeper handles tasks like leader election and tracking which brokers are active. While this setup has been robust for years, it adds complexity by requiring an additional service (ZooKeeper) that must be installed, managed, and maintained alongside Kafka.&lt;/p&gt;
 
-&lt;h2 id=&quot;reviewing&quot;&gt;Reviewing&lt;/h2&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Term&lt;/th&gt;
-      &lt;th&gt;Definition&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Topic&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;A category or feed name to which records are published.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Partition&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;A topic is divided into multiple partitions, which are the fundamental unit of parallelism in Kafka.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Producer&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;An application that publishes messages (records) to a Kafka topic.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Consumer&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;An application that subscribes to topics and processes the published messages.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Broker&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;A Kafka server that stores messages and serves client requests.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Cluster&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;A group of one or more brokers working together to handle data replication and load balancing.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Offset&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;A unique identifier for each record within a partition, used for tracking the position of messages.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Consumer Group&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;A group of consumers that work together to consume messages from a topic, ensuring load balancing.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Replication&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;The process of storing copies of partitions across multiple brokers for fault tolerance.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Zookeeper&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;A centralized service that manages and coordinates the Kafka brokers and maintains cluster metadata.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Log&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;An ordered, append-only sequence of records for each partition that stores the actual messages.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Retention Policy&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;A policy that determines how long Kafka retains messages in a topic before they are deleted.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Throughput&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;A measure of how many messages can be processed per unit of time, often expressed in messages per second.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Latency&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;The time it takes for a message to travel from a producer to a consumer.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Load Balancing&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;The distribution of partitions across multiple brokers to evenly distribute the workload.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Partitioning Strategy&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;The method used to assign messages to partitions, based on keys or round-robin distribution.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Replication Factor&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;The number of copies of a partition maintained across different brokers, enhancing fault tolerance.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Consumer Lag&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;The difference between the last produced message offset and the last consumed message offset in a consumer group.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Auto-Scaling&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;The ability of a Kafka cluster to dynamically adjust its size based on workload and resource utilization.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Compact Topics&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;A feature that retains only the most recent value for each key in a topic, reducing storage requirements.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Kafka Streams&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;A client library for building real-time applications and microservices that process data in Kafka.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;State Store&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;A key-value store used in Kafka Streams for maintaining local state during processing.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Transaction Support&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;Kafka’s ability to handle multi-producer and multi-consumer transactions, ensuring data integrity.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Cross-Cluster Replication&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;The ability to replicate data across different Kafka clusters for disaster recovery and geo-replication.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Schema Registry&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;A centralized repository for managing data schemas, allowing producers and consumers to handle data evolution.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Backpressure Handling&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;Mechanisms for managing the flow of data between producers and consumers to prevent overwhelming consumers.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Topic Compaction&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;The process of removing older records with the same key, retaining only the latest record for each key.&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;h2 id=&quot;rabbitmq&quot;&gt;RabbitMQ&lt;/h2&gt;
 </content>
  </entry>
  
@@ -1478,10 +1355,10 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  </entry>
  
  <entry>
-   <title>DISCLAIMER *.*</title>
-   <link href="/2024/09/26/DISCLAIMER.html"/>
+   <title>Hello World Wide Web</title>
+   <link href="/2024/09/26/hello-world-wide-web.html"/>
    <updated>2024-09-26T00:00:00+00:00</updated>
-   <id>/2024/09/26/DISCLAIMER</id>
+   <id>/2024/09/26/hello-world-wide-web</id>
    <content type="html">&lt;h2 id=&quot;disclaimer&quot;&gt;DISCLAIMER&lt;/h2&gt;
 
 &lt;ul&gt;

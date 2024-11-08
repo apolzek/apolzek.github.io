@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "SRE interview questions",
+      "category" : "",
+      "tags"     : "sre, interview",
+      "url"      : "/2025/10/13/sre-interview-questions.html",
+      "date"     : "2025-10-13 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "Special Ops Team",
       "category" : "",
       "tags"     : "team, ops",
@@ -73,18 +81,10 @@
     } ,
   
     {
-      "title"    : "SRE interview questions",
-      "category" : "",
-      "tags"     : "sre, interview",
-      "url"      : "/2024/10/13/sre-interview-questions.html",
-      "date"     : "2024-10-13 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "EndeavourOS i3wm, why ?",
+      "title"    : "EndeavourOS with i3wm works for me",
       "category" : "",
       "tags"     : "os, i3wm, endeavouros,, linux,, distro",
-      "url"      : "/2024/10/13/endeavourOS-i3wm-why.html",
+      "url"      : "/2024/10/13/endeavouros-with-i3wm-works-for-me.html",
       "date"     : "2024-10-13 00:00:00 +0000"
     } ,
   
@@ -105,7 +105,7 @@
     } ,
   
     {
-      "title"    : "🪄 Spells for Linux Shell",
+      "title"    : "🪄 Spells for Linux Shell 🧙",
       "category" : "",
       "tags"     : "linux, shell, script, bash",
       "url"      : "/2024/09/29/spells-for-linux-shell.html",
@@ -113,10 +113,10 @@
     } ,
   
     {
-      "title"    : "Kafka on Kubernetes using Kind",
+      "title"    : "Kafka and RabbitMQ on Kubernetes using Kind",
       "category" : "",
-      "tags"     : "kafka, kind, kubernetes",
-      "url"      : "/2024/09/29/kafka-on-kubernetes-using-kind.html",
+      "tags"     : "kafka, kind, kubernetes, rabbitmq",
+      "url"      : "/2024/09/29/kafka-and-rabbitmq-on-kubernetes.html",
       "date"     : "2024-09-29 00:00:00 +0000"
     } ,
   
@@ -129,10 +129,10 @@
     } ,
   
     {
-      "title"    : "DISCLAIMER *.*",
+      "title"    : "Hello World Wide Web",
       "category" : "",
       "tags"     : "disclaimer, goals",
-      "url"      : "/2024/09/26/DISCLAIMER.html",
+      "url"      : "/2024/09/26/hello-world-wide-web.html",
       "date"     : "2024-09-26 00:00:00 +0000"
     } 
   
