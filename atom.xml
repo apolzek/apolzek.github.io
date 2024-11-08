@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-11-08T20:32:47+00:00</updated>
+ <updated>2024-11-08T22:18:40+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -1116,35 +1116,29 @@ sbt run&lt;/p&gt;
    <link href="/2024/09/29/spells-for-linux-shell.html"/>
    <updated>2024-09-29T00:00:00+00:00</updated>
    <id>/2024/09/29/spells-for-linux-shell</id>
-   <content type="html">&lt;h1 id=&quot;-spells-for-linux-shell&quot;&gt;🪄 Spells for Linux Shell&lt;/h1&gt;
-
-&lt;h2 id=&quot;index&quot;&gt;Index&lt;/h2&gt;
+   <content type="html">&lt;h2 id=&quot;index&quot;&gt;Index&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;#-spells-for-linux-shell&quot;&gt;🪄 Spells for Linux Shell&lt;/a&gt;
+  &lt;li&gt;&lt;a href=&quot;#index&quot;&gt;Index&lt;/a&gt;
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#index&quot;&gt;Index&lt;/a&gt;
+      &lt;li&gt;&lt;a href=&quot;#looping-command-x-script&quot;&gt;LOOPING: command x script&lt;/a&gt;
         &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#looping-command-x-script&quot;&gt;LOOPING: command x script&lt;/a&gt;
-            &lt;ul&gt;
-              &lt;li&gt;&lt;a href=&quot;#command&quot;&gt;command&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;#script&quot;&gt;script&lt;/a&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-          &lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#signals&quot;&gt;Signals&lt;/a&gt;
-            &lt;ul&gt;
-              &lt;li&gt;&lt;a href=&quot;#sigint&quot;&gt;SIGINT&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;#sigterm&quot;&gt;SIGTERM&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;#sighub&quot;&gt;SIGHUB&lt;/a&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-          &lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#background-processes&quot;&gt;Background processes&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#debugging&quot;&gt;Debugging&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#string-manipulation-and-substitution&quot;&gt;String Manipulation and Substitution&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#shell-associative-arrays&quot;&gt;Shell Associative Arrays)&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#yaml-files&quot;&gt;YAML files&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#command&quot;&gt;command&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#script&quot;&gt;script&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#signals&quot;&gt;Signals&lt;/a&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#sigint&quot;&gt;SIGINT&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#sigterm&quot;&gt;SIGTERM&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#sighub&quot;&gt;SIGHUB&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#background-processes&quot;&gt;Background processes&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#debugging&quot;&gt;Debugging&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#string-manipulation-and-substitution&quot;&gt;String Manipulation and Substitution&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#shell-associative-arrays&quot;&gt;Shell Associative Arrays)&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#yaml-files&quot;&gt;YAML files&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
