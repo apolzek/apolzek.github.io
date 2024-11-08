@@ -1,0 +1,103 @@
+/* Configurações principais */
+.highlight {
+    color: #f8f8f2; /* Texto padrão */
+    background-color: #282a36; /* Fundo */
+  }
+  
+  .highlight table td {
+    padding: 5px;
+  }
+  
+  .highlight table pre {
+    margin: 0;
+  }
+  
+  /* Comentários */
+  .highlight .c, .highlight .c1, .highlight .cs, .highlight .cm {
+    color: #6272a4; /* Comentários */
+  }
+  
+  /* Erros */
+  .highlight .err, .highlight .gr, .highlight .gt {
+    color: #ff5555; /* Erros */
+    font-weight: bold;
+  }
+  
+  /* Palavras-chave */
+  .highlight .k, .highlight .kd, .highlight .kc, .highlight .kr, .highlight .kt, .highlight .kv, .highlight .kp {
+    color: #ff79c6; /* Palavras-chave */
+    font-weight: bold;
+  }
+  
+  /* Strings */
+  .highlight .s, .highlight .sa, .highlight .sb, .highlight .sh, .highlight .si, .highlight .sx, .highlight .s1, .highlight .s2, .highlight .sd {
+    color: #f1fa8c; /* Strings */
+  }
+  
+  /* Números */
+  .highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .mo, .highlight .il, .highlight .mx, .highlight .mb, .highlight .sc {
+    color: #bd93f9; /* Números */
+  }
+  
+  /* Funções e nomes */
+  .highlight .nf, .highlight .fm, .highlight .na, .highlight .nc, .highlight .nd, .highlight .ne, .highlight .nn {
+    color: #50fa7b; /* Funções e identificadores */
+  }
+  
+  /* Variáveis e Identificadores */
+  .highlight .vc, .highlight .nn, .highlight .nl, .highlight .ni, .highlight .bp, .highlight .vg, .highlight .vi, .highlight .nv, .highlight .vm {
+    color: #ffffff;
+    background-color: #272821; /* Variáveis e identificadores */
+  }
+  
+  /* Operadores */
+  .highlight .ow, .highlight .nt, .highlight .k, .highlight .kv, .highlight .kn, .highlight .kp {
+    color: #ff79c6; /* Operadores */
+  }
+  
+  /* Background para blocos de código */
+  .highlight .w {
+    color: #ffffff;
+    background-color: #272821;
+  }
+  
+  /* Outros identificadores e estruturas */
+  .highlight .n, .highlight .py, .highlight .nx {
+    color: #ffffff;
+    background-color: #272821;
+  }
+  
+  .highlight .nb {
+    color: #ff79c6; /* Palavras-chave adicionais */
+  }
+  
+  .highlight .no {
+    color: #50fa7b; /* Nomes de identificadores */
+  }
+  
+  .highlight .nt {
+    color: #ff79c6; /* Tags */
+  }
+  
+  .highlight .b, .highlight .bp {
+    color: #f8f8f2; /* Texto */
+  }
+  
+  .highlight .i, .highlight .bq {
+    color: #6272a4; /* Texto destacado */
+  }
+  
+  .highlight .bp {
+    color: #ffffff;
+    background-color: #272821; /* Identificadores */
+  }
+  
+  .highlight .vm {
+    color: #ffffff;
+    background-color: #272821; /* Identificadores de variável */
+  }
+  
+  .highlight .na {
+    color: #50fa7b;
+  }
+  

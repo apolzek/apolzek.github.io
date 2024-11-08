@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-11-08T10:35:47+00:00</updated>
+ <updated>2024-11-08T14:29:53+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -760,6 +760,8 @@ sbt run&lt;/p&gt;
 
 &lt;p&gt;In the end, I decided to stop and simplify. With the least amount of effort, I found a way to focus on what really matters: solving the problems I’m paid to solve. No need to reinvent the wheel.&lt;/p&gt;
 
+&lt;h2 id=&quot;general-tools&quot;&gt;General tools&lt;/h2&gt;
+
 &lt;table&gt;
   &lt;thead&gt;
     &lt;tr&gt;
@@ -926,6 +928,10 @@ sbt run&lt;/p&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
+
+&lt;h2 id=&quot;cli-tools&quot;&gt;CLI tools&lt;/h2&gt;
+
+&lt;h2 id=&quot;web-tools&quot;&gt;Web tools&lt;/h2&gt;
 </content>
  </entry>
  
@@ -1315,13 +1321,13 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
 
 &lt;h2 id=&quot;l0calh0t-&quot;&gt;l0calh0t 🚀🚀🚀&lt;/h2&gt;
 
-&lt;h3 id=&quot;about-the-startup&quot;&gt;About the startup&lt;/h3&gt;
+&lt;h3 id=&quot;about-the-idea&quot;&gt;About the idea&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;l0calh0t&lt;/strong&gt; is not introducing an innovative solution but rather offering &lt;strong&gt;a new way of delivering container-based application hosting&lt;/strong&gt;, designed for developers of all levels, SREs, DevOps, and QAs. By abstracting infrastructure and networking, it enables fast, cost-effective container deployment. Users can make applications publicly accessible or control access as needed. Unlike traditional solutions focused on large enterprises with strict SLAs, &lt;strong&gt;l0calh0t&lt;/strong&gt; prioritizes simplicity and accessibility, creating an agile environment for rapid testing and iteration, without the complexity of managing traditional servers.&lt;/p&gt;
 
 &lt;p&gt;I’m still thinking about the legal issues..&lt;/p&gt;
 
-&lt;h3 id=&quot;about-the-idea&quot;&gt;About the idea&lt;/h3&gt;
+&lt;h3 id=&quot;about-the-idea-1&quot;&gt;About the idea&lt;/h3&gt;
 
 &lt;p&gt;The idea is basically a &lt;em&gt;render.com&lt;/em&gt; with some differences. I want to do something more “api first”. I want to do it in a way that is similar to the way people work with containers locally and I also want to offer a way for them to have details about their applications by adding components to the infrastructure that abstract away the complexity of doing so.&lt;/p&gt;
 
