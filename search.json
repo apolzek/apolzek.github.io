@@ -81,7 +81,23 @@
     } ,
   
     {
-      "title"    : "EndeavourOS with i3wm works for me",
+      "title"    : "🐧 REVIEW NixOS",
+      "category" : "",
+      "tags"     : "os, review, nixos,, linux,, distro",
+      "url"      : "/2024/10/13/review-nixos.html",
+      "date"     : "2024-10-13 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "Let&#39;s talk about Amazon ElastiCache",
+      "category" : "",
+      "tags"     : "aws, redis, elasticache",
+      "url"      : "/2024/10/13/review-nixos-copy.html",
+      "date"     : "2024-10-13 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "🐧 EndeavourOS with i3wm works for me",
       "category" : "",
       "tags"     : "os, i3wm, endeavouros,, linux,, distro",
       "url"      : "/2024/10/13/endeavouros-with-i3wm-works-for-me.html",
