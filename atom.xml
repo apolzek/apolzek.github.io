@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-11-11T21:05:53+00:00</updated>
+ <updated>2024-11-11T21:33:23+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -1831,11 +1831,11 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
 
 &lt;p&gt;I know there are already similar projects on the internet, but most of them focus on &lt;em&gt;development&lt;/em&gt; and not on &lt;em&gt;operations&lt;/em&gt;. I have two main goals. The first is to test technologies, discuss decisions and show concerns that usually arise when our project goes into production. The second is to perhaps make some money with this. My initial focus is Brazilian software developers. In general, I get along well with developers. I believe it is because every day I help them solve problems. Developers change, but the problems are usually the same.&lt;/p&gt;
 
-&lt;p&gt;Let’s get started. What follows is information about the startup. To be quite honest, what I intend to build already exists, something similar to &lt;em&gt;render.com&lt;/em&gt;.. but my ideas go a little further(if I can implement it, of course xD).&lt;/p&gt;
+&lt;p&gt;Let’s get started. What follows is information about the startup. To be quite honest, what I intend to build already exists, something similar to &lt;em&gt;render.com&lt;/em&gt;.. but with some differences.&lt;/p&gt;
 
 &lt;h3 id=&quot;l0calh0t-&quot;&gt;l0calh0t 🚀🚀🚀&lt;/h3&gt;
 
-&lt;p&gt;&lt;strong&gt;l0calh0t&lt;/strong&gt; is not introducing an innovative solution but rather offering &lt;strong&gt;a new way of delivering container-based application hosting&lt;/strong&gt;, designed for developers of all levels, SREs, DevOps, and QAs. By abstracting infrastructure and networking, it enables fast, cost-effective container deployment. Users can make applications publicly accessible or control access as needed. Unlike traditional solutions focused on large enterprises with strict SLAs, &lt;strong&gt;l0calh0t&lt;/strong&gt; prioritizes simplicity and accessibility, creating an agile environment for rapid testing and iteration, without the complexity of managing traditional servers.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;l0calh0t&lt;/strong&gt; is &lt;strong&gt;not&lt;/strong&gt; introducing an innovative solution but rather offering &lt;strong&gt;a new way of delivering container-based application hosting&lt;/strong&gt;, designed for developers of all levels, SREs, DevOps, and QAs. By abstracting infrastructure and networking, it enables fast, cost-effective container deployment. Users can make applications publicly accessible or control access as needed. Unlike traditional solutions focused on large enterprises with strict SLAs, &lt;strong&gt;l0calh0t&lt;/strong&gt; prioritizes simplicity and accessibility, creating an agile environment for rapid testing and iteration, without the complexity of managing traditional servers.&lt;/p&gt;
 
 &lt;p&gt;I’m still thinking about the legal issues..&lt;/p&gt;
 
@@ -1879,11 +1879,20 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
 &lt;h2 id=&quot;goals&quot;&gt;GOALS&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Talk about tools that are not well-known but have great potential;&lt;/li&gt;
+  &lt;li&gt;Talk about tools that are not well-known but have great potential(maybe this will turn into a new project);&lt;/li&gt;
   &lt;li&gt;Track my studies with short reflective articles;&lt;/li&gt;
   &lt;li&gt;Share my views on technologies, processes, and products;&lt;/li&gt;
   &lt;li&gt;Soon, I will revisit my notes to see how my views on certain topics have changed;&lt;/li&gt;
-  &lt;li&gt;Document the results at the end of the labs/POCs&lt;/li&gt;
+  &lt;li&gt;Share the results of some POCs and labs with friends/colleagues;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;some-rules&quot;&gt;SOME RULES&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;When the 💬 emoji appears, I want to introduce a point for reflection or an idea exchange(yes, I do talk to myself);&lt;/li&gt;
+  &lt;li&gt;When you see the 🗣️ emoji, it means I know I’m saying something completely absurd;&lt;/li&gt;
+  &lt;li&gt;There is hidden content within this blog; you can find it by exploring or inspecting the source code;&lt;/li&gt;
+  &lt;li&gt;Fixing is better than criticizing, but any interaction is valuable;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;remember&quot;&gt;REMEMBER&lt;/h2&gt;
