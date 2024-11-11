@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-11-11T21:33:23+00:00</updated>
+ <updated>2024-11-11T23:05:58+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -1893,6 +1893,13 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
   &lt;li&gt;When you see the 🗣️ emoji, it means I know I’m saying something completely absurd;&lt;/li&gt;
   &lt;li&gt;There is hidden content within this blog; you can find it by exploring or inspecting the source code;&lt;/li&gt;
   &lt;li&gt;Fixing is better than criticizing, but any interaction is valuable;&lt;/li&gt;
+  &lt;li&gt;Some articles will be categorized to make it easier to search. Some categories I thought of are:
+    &lt;ul&gt;
+      &lt;li&gt;Review: for reviewing tools, GitHub repositories, or other articles&lt;/li&gt;
+      &lt;li&gt;Fundamentals: for discussing fundamental topics like networks and operating systems&lt;/li&gt;
+      &lt;li&gt;News: for discussing news&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;remember&quot;&gt;REMEMBER&lt;/h2&gt;
