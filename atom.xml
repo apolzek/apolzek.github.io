@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2024-11-11T23:05:58+00:00</updated>
+ <updated>2024-11-11T23:35:10+00:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -1819,23 +1819,23 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  </entry>
  
  <entry>
-   <title>💡 l0calh0t Startup - day 1</title>
-   <link href="/2024/09/27/l0calh0t-startup-day1.html"/>
+   <title>💡 MVP localhot - day 1</title>
+   <link href="/2024/09/27/mvp-localhot-day1.html"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/l0calh0t-startup-day1</id>
-   <content type="html">&lt;h2 id=&quot;about-the-project&quot;&gt;About the project&lt;/h2&gt;
+   <id>/2024/09/27/mvp-localhot-day1</id>
+   <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
-&lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete technology environment to support a fake product. I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;l0calh0t&lt;/strong&gt; startup. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
+&lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;note&lt;/strong&gt;: &lt;em&gt;don’t take me too seriously&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;🗣️ &lt;em&gt;I intend to run this on-premises&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;I know there are already similar projects on the internet, but most of them focus on &lt;em&gt;development&lt;/em&gt; and not on &lt;em&gt;operations&lt;/em&gt;. I have two main goals. The first is to test technologies, discuss decisions and show concerns that usually arise when our project goes into production. The second is to perhaps make some money with this. My initial focus is Brazilian software developers. In general, I get along well with developers. I believe it is because every day I help them solve problems. Developers change, but the problems are usually the same.&lt;/p&gt;
+&lt;p&gt;I know there are already similar projects on the internet, but most of them focus on &lt;em&gt;development&lt;/em&gt; and not on &lt;em&gt;operations&lt;/em&gt;. I have two main goals. The first is to test technologies, discuss decisions and show concerns that usually arise when our project goes into production. The second is to perhaps make some money with this. My initial focus is Brazilian software developers. In general, I get along well with developers.&lt;/p&gt;
 
-&lt;p&gt;Let’s get started. What follows is information about the startup. To be quite honest, what I intend to build already exists, something similar to &lt;em&gt;render.com&lt;/em&gt;.. but with some differences.&lt;/p&gt;
+&lt;p&gt;Let’s get started. What follows is information about the project. To be quite honest, what I intend to build already exists, something similar to &lt;em&gt;render.com&lt;/em&gt;.. but with some differences.&lt;/p&gt;
 
-&lt;h3 id=&quot;l0calh0t-&quot;&gt;l0calh0t 🚀🚀🚀&lt;/h3&gt;
+&lt;h3 id=&quot;localhot-&quot;&gt;localhot 🚀&lt;/h3&gt;
 
-&lt;p&gt;&lt;strong&gt;l0calh0t&lt;/strong&gt; is &lt;strong&gt;not&lt;/strong&gt; introducing an innovative solution but rather offering &lt;strong&gt;a new way of delivering container-based application hosting&lt;/strong&gt;, designed for developers of all levels, SREs, DevOps, and QAs. By abstracting infrastructure and networking, it enables fast, cost-effective container deployment. Users can make applications publicly accessible or control access as needed. Unlike traditional solutions focused on large enterprises with strict SLAs, &lt;strong&gt;l0calh0t&lt;/strong&gt; prioritizes simplicity and accessibility, creating an agile environment for rapid testing and iteration, without the complexity of managing traditional servers.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;localhot&lt;/strong&gt; is &lt;strong&gt;not&lt;/strong&gt; introducing an innovative solution but rather offering &lt;strong&gt;a new way of delivering container-based application hosting&lt;/strong&gt;, designed for developers of all levels, SREs, DevOps, and QAs. By abstracting infrastructure and networking, it enables fast, cost-effective container deployment. Users can make applications publicly accessible or control access as needed. Unlike traditional solutions focused on large enterprises with strict SLAs, &lt;strong&gt;localhot&lt;/strong&gt; prioritizes simplicity and accessibility, creating an agile environment for rapid testing and iteration, without the complexity of managing traditional servers.&lt;/p&gt;
 
 &lt;p&gt;I’m still thinking about the legal issues..&lt;/p&gt;
 
@@ -1845,19 +1845,17 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
 
 &lt;h3 id=&quot;what-do-i-need-&quot;&gt;What do I need ?&lt;/h3&gt;
 
-&lt;p&gt;Considering that I have no money, no computing resources, and no advanced programming skills (that makes it hard 🤣🤣), I need to focus on something simple that works. I want to create a business abstraction on top of Kubernetes and put all the complexity into it using tools I have experience with. I need a cheap domain like &lt;strong&gt;localhot.io&lt;/strong&gt;. I need a payment method and reasonable bandwidth. I want to physically separate the servers where the startup’s applications are from the servers where the end-user containers will be. I need to think about security and a business model that is viable for Brazilian developers.&lt;/p&gt;
+&lt;p&gt;Considering that I have no money, no computing resources, and no advanced programming skills (that makes it too hard 🤣🤣), I need to focus on something simple that works. I want to create a business abstraction on top of Kubernetes and put all the complexity into it using tools I have experience with. I need a cheap domain like &lt;strong&gt;localhot.io&lt;/strong&gt;. I need a payment method and reasonable bandwidth. I want to physically separate the servers where applications are from the servers where the end-user containers will be. I need to think about security and a business model that is viable for Brazilian developers.&lt;/p&gt;
 
-&lt;p&gt;For the first poc’s, the simpler the better. I intend to use python or golang for this. I will use kind as the local kubernetes environment, the local registry of my machine for the images and also my local network (I run a certain risk).The networking part is very important in this project, but first I want a functional MVP.&lt;/p&gt;
+&lt;p&gt;For the first poc’s, the simpler the better. I intend to use python or golang for this. I will use kind as the local kubernetes environment, the local registry of my machine for the images and also my local network. The networking part is very important in this project, but first I want a functional MVP.&lt;/p&gt;
 
-&lt;h3 id=&quot;end&quot;&gt;End(?)&lt;/h3&gt;
+&lt;h3 id=&quot;to-be-continued&quot;&gt;to be continued..&lt;/h3&gt;
 
 &lt;p&gt;So, that’s it. I’ve reached the end of my first article. I hope I’ve been clear about my idea. In the end, even if everything goes wrong, I will have gained valuable knowledge. These notes may be useful to someone else, and even to my future self. What’s coming next? A series of reflections, articles about random tools, and some not-so-professional code &lt;strong&gt;(&lt;/strong&gt;:&lt;/p&gt;
 
 &lt;p&gt;See you around !&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/apolzek/apolzek.github.io/refs/heads/main/assets/gif/working.webp&quot; alt=&quot;working&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;[2024-10-02 15:27:45] UPDATE - I’ve decided that a hardware upgrade is unfeasible… It’s time to build a new PC. !!!&lt;/p&gt;
 </content>
  </entry>
  
