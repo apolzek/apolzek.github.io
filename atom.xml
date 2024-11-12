@@ -2,21 +2,21 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>apolzek</title>
- <link href="/atom.xml" rel="self"/>
- <link href="/"/>
- <updated>2024-11-12T10:56:35+00:00</updated>
- <id></id>
+ <link href="https://apolzek.github.io/atom.xml" rel="self"/>
+ <link href="https://apolzek.github.io/"/>
+ <updated>2024-11-12T11:01:48+00:00</updated>
+ <id>https://apolzek.github.io</id>
  <author>
-   <name></name>
-   <email></email>
+   <name>apolzek</name>
+   <email>viniciusgomes955@gmail.com</email>
  </author>
 
  
  <entry>
    <title>SRE interview questions</title>
-   <link href="/2025/10/13/sre-interview-questions.html"/>
+   <link href="https://apolzek.github.io/2025/10/13/sre-interview-questions"/>
    <updated>2025-10-13T00:00:00+00:00</updated>
-   <id>/2025/10/13/sre-interview-questions</id>
+   <id>https://apolzek.github.io/2025/10/13/sre-interview-questions</id>
    <content type="html">&lt;p&gt;If you could choose one person to share trenches with, what qualities and skills would you prioritize?&lt;/p&gt;
 
 &lt;p&gt;Although I have a solid foundation in various technology topics and in-depth knowledge in many of them, I still lack the confidence to conduct interviews. You never know what you might encounter on the other side. Regardless, I would like to share my thought process for conducting a technical interview for the position of Site Reliability Engineer or DevOps Engineer.&lt;/p&gt;
@@ -43,18 +43,18 @@
  
  <entry>
    <title>🐧 REVIEW NixOS</title>
-   <link href="/2025/10/13/review-nixos.html"/>
+   <link href="https://apolzek.github.io/2025/10/13/review-nixos"/>
    <updated>2025-10-13T00:00:00+00:00</updated>
-   <id>/2025/10/13/review-nixos</id>
+   <id>https://apolzek.github.io/2025/10/13/review-nixos</id>
    <content type="html">
 </content>
  </entry>
  
  <entry>
    <title>Let&apos;s talk about Amazon ElastiCache</title>
-   <link href="/2025/10/13/lets-talk-about-amazon-elasticache.html"/>
+   <link href="https://apolzek.github.io/2025/10/13/lets-talk-about-amazon-elasticache"/>
    <updated>2025-10-13T00:00:00+00:00</updated>
-   <id>/2025/10/13/lets-talk-about-amazon-elasticache</id>
+   <id>https://apolzek.github.io/2025/10/13/lets-talk-about-amazon-elasticache</id>
    <content type="html">&lt;table&gt;
   &lt;thead&gt;
     &lt;tr&gt;
@@ -138,9 +138,9 @@
  
  <entry>
    <title>CREW</title>
-   <link href="/2025/10/13/CREW.html"/>
+   <link href="https://apolzek.github.io/2025/10/13/crew"/>
    <updated>2025-10-13T00:00:00+00:00</updated>
-   <id>/2025/10/13/CREW</id>
+   <id>https://apolzek.github.io/2025/10/13/CREW</id>
    <content type="html">&lt;h2 id=&quot;collaborative-reliability-engineering-workforce&quot;&gt;Collaborative Reliability Engineering Workforce&lt;/h2&gt;
 
 &lt;table&gt;
@@ -182,27 +182,27 @@
  
  <entry>
    <title>Special Ops Team</title>
-   <link href="/2025/10/10/special-ops-team.html"/>
+   <link href="https://apolzek.github.io/2025/10/10/special-ops-team"/>
    <updated>2025-10-10T00:00:00+00:00</updated>
-   <id>/2025/10/10/special-ops-team</id>
+   <id>https://apolzek.github.io/2025/10/10/special-ops-team</id>
    <content type="html">
 </content>
  </entry>
  
  <entry>
    <title>Review of computer networks</title>
-   <link href="/2025/10/10/review-of-computer-networks.html"/>
+   <link href="https://apolzek.github.io/2025/10/10/review-of-computer-networks"/>
    <updated>2025-10-10T00:00:00+00:00</updated>
-   <id>/2025/10/10/review-of-computer-networks</id>
+   <id>https://apolzek.github.io/2025/10/10/review-of-computer-networks</id>
    <content type="html">
 </content>
  </entry>
  
  <entry>
    <title>NixOS</title>
-   <link href="/2025/10/10/nixos.html"/>
+   <link href="https://apolzek.github.io/2025/10/10/nixos"/>
    <updated>2025-10-10T00:00:00+00:00</updated>
-   <id>/2025/10/10/nixos</id>
+   <id>https://apolzek.github.io/2025/10/10/nixos</id>
    <content type="html">&lt;h2 id=&quot;scala-example&quot;&gt;scala example&lt;/h2&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl -L https://nixos.org/nix/install | sh
@@ -245,9 +245,9 @@ sbt run&lt;/p&gt;
  
  <entry>
    <title>💡 l0calh0t Startup - day 2</title>
-   <link href="/2025/10/10/l0calh0t-startup-day2.html"/>
+   <link href="https://apolzek.github.io/2025/10/10/l0calh0t-startup-day2"/>
    <updated>2025-10-10T00:00:00+00:00</updated>
-   <id>/2025/10/10/l0calh0t-startup-day2</id>
+   <id>https://apolzek.github.io/2025/10/10/l0calh0t-startup-day2</id>
    <content type="html">&lt;h2 id=&quot;rendercom-the-solution-is-amazing-and-the-free-tier-surprised-me&quot;&gt;render.com.. The solution is amazing, and the free tier surprised me&lt;/h2&gt;
 
 &lt;p&gt;Since my idea has A LOT to do with what &lt;strong&gt;render.com&lt;/strong&gt; offers, it makes total sense for me to learn from them. First off, just know that they’re good. I’ve already liked a lot of what I found on their free tier. I’ll dive into the details here and connect it to some technical concepts just to get the wheels turning on architecture and product thinking.&lt;/p&gt;
@@ -256,9 +256,9 @@ sbt run&lt;/p&gt;
  
  <entry>
    <title>The distance between &quot;getting started&quot; and &quot;production ready&quot;</title>
-   <link href="/2025/10/10/getting-started-x-production-ready.html"/>
+   <link href="https://apolzek.github.io/2025/10/10/getting-started-x-production-ready"/>
    <updated>2025-10-10T00:00:00+00:00</updated>
-   <id>/2025/10/10/getting-started-x-production-ready</id>
+   <id>https://apolzek.github.io/2025/10/10/getting-started-x-production-ready</id>
    <content type="html">&lt;p&gt;When embarking on the journey of implementing a new tool, it is essential to recognize the significant gap between the initial “getting started” phase and achieving a fully functional production-ready system. In the beginning, users often interact with a simplified version of the tool, which showcases its basic functionalities. However, to fully harness the capabilities of the tool and integrate it into the organization’s ecosystem, several critical aspects must be addressed.&lt;/p&gt;
 
 &lt;p&gt;Deployment is one of the first challenges encountered when moving from a basic setup to a production-ready state. In the initial stages, deployment may be as straightforward as running a local instance. However, in a production environment, organizations must consider robust deployment strategies, including automated deployment pipelines, continuous integration/continuous deployment (CI/CD) practices, and the use of containerization technologies such as Docker. These practices ensure that the tool can be deployed seamlessly, with minimal downtime and maximum efficiency.&lt;/p&gt;
@@ -282,9 +282,9 @@ sbt run&lt;/p&gt;
  
  <entry>
    <title>Entropy in the Corporate World</title>
-   <link href="/2025/10/10/entropy-in-the-corporate-world.html"/>
+   <link href="https://apolzek.github.io/2025/10/10/entropy-in-the-corporate-world"/>
    <updated>2025-10-10T00:00:00+00:00</updated>
-   <id>/2025/10/10/entropy-in-the-corporate-world</id>
+   <id>https://apolzek.github.io/2025/10/10/entropy-in-the-corporate-world</id>
    <content type="html">&lt;h2 id=&quot;what-results-from-not-cleaning-your-house-regularly-&quot;&gt;What results from not cleaning your house regularly ?&lt;/h2&gt;
 
 &lt;p&gt;The subject discussed here is entropy, obviously… so I’ll start by saying the obvious and then pull out some threads for reflection.&lt;/p&gt;
@@ -327,9 +327,9 @@ sbt run&lt;/p&gt;
  
  <entry>
    <title>AWS IAM</title>
-   <link href="/2025/10/10/aws-iam.html"/>
+   <link href="https://apolzek.github.io/2025/10/10/aws-iam"/>
    <updated>2025-10-10T00:00:00+00:00</updated>
-   <id>/2025/10/10/aws-iam</id>
+   <id>https://apolzek.github.io/2025/10/10/aws-iam</id>
    <content type="html">&lt;h2 id=&quot;iam-overview&quot;&gt;IAM Overview&lt;/h2&gt;
 
 &lt;p&gt;AWS Identity and Access Management (IAM) is a crucial service within Amazon Web Services (AWS) that helps organizations securely manage access to their cloud resources. Effective access management is vital for maintaining security and operational efficiency, especially in production environments where misconfigurations can lead to vulnerabilities.&lt;/p&gt;
@@ -387,9 +387,9 @@ sbt run&lt;/p&gt;
  
  <entry>
    <title>shortcuts</title>
-   <link href="/2025/10/09/shortcuts.html"/>
+   <link href="https://apolzek.github.io/2025/10/09/shortcuts"/>
    <updated>2025-10-09T00:00:00+00:00</updated>
-   <id>/2025/10/09/shortcuts</id>
+   <id>https://apolzek.github.io/2025/10/09/shortcuts</id>
    <content type="html">&lt;h2 id=&quot;vim&quot;&gt;VIM&lt;/h2&gt;
 
 &lt;table&gt;
@@ -595,9 +595,9 @@ sbt run&lt;/p&gt;
  
  <entry>
    <title>🛠️ SRE Kit for the End of the World</title>
-   <link href="/2025/09/29/sre-kit-for-the-end-of-the-world.html"/>
+   <link href="https://apolzek.github.io/2025/09/29/sre-kit-for-the-end-of-the-world"/>
    <updated>2025-09-29T00:00:00+00:00</updated>
-   <id>/2025/09/29/sre-kit-for-the-end-of-the-world</id>
+   <id>https://apolzek.github.io/2025/09/29/sre-kit-for-the-end-of-the-world</id>
    <content type="html">&lt;table&gt;
   &lt;thead&gt;
     &lt;tr&gt;
@@ -782,18 +782,18 @@ sbt run&lt;/p&gt;
  
  <entry>
    <title>RabbitMQ on Kubernetes using Kind</title>
-   <link href="/2025/09/29/rabbitmq-on-kubernetes-using-kind.html"/>
+   <link href="https://apolzek.github.io/2025/09/29/rabbitmq-on-kubernetes-using-kind"/>
    <updated>2025-09-29T00:00:00+00:00</updated>
-   <id>/2025/09/29/rabbitmq-on-kubernetes-using-kind</id>
+   <id>https://apolzek.github.io/2025/09/29/rabbitmq-on-kubernetes-using-kind</id>
    <content type="html">
 </content>
  </entry>
  
  <entry>
    <title>📦 Containers Mastery</title>
-   <link href="/2025/09/28/containers-mastery.html"/>
+   <link href="https://apolzek.github.io/2025/09/28/containers-mastery"/>
    <updated>2025-09-28T00:00:00+00:00</updated>
-   <id>/2025/09/28/containers-mastery</id>
+   <id>https://apolzek.github.io/2025/09/28/containers-mastery</id>
    <content type="html">&lt;h2 id=&quot;what-is-linux-container-&quot;&gt;What is Linux container ?&lt;/h2&gt;
 
 &lt;p&gt;A Linux container is a lightweight and portable unit that encapsulates an application and its dependencies. Containers utilize key Linux kernel features for process isolation and resource management, including namespaces (for isolating resources like PID, network, and filesystem) and control groups (cgroups) (for limiting and prioritizing resource usage). Additionally, union file systems enable efficient layering and storage of container images. Together, these features allow containers to operate efficiently and securely on a shared host. Basically a container image is composed of&lt;/p&gt;
@@ -925,9 +925,9 @@ sbt run&lt;/p&gt;
  
  <entry>
    <title>🐧 EndeavourOS with i3wm works for me</title>
-   <link href="/2024/10/13/endeavouros-with-i3wm-works-for-me.html"/>
+   <link href="https://apolzek.github.io/2024/10/13/endeavouros-with-i3wm-works-for-me"/>
    <updated>2024-10-13T00:00:00+00:00</updated>
-   <id>/2024/10/13/endeavouros-with-i3wm-works-for-me</id>
+   <id>https://apolzek.github.io/2024/10/13/endeavouros-with-i3wm-works-for-me</id>
    <content type="html">&lt;p&gt;Recently, I came across a provocative phrase: “Linux is only free if your time has no value.” I know some people around me would get a bit annoyed by this, and honestly, a few years ago, I would’ve been one of them. But today, with a little more experience (and patience), I still disagree, but I get the point. I’ve always been a fan of working with good tools, having a well-configured OS, customized, easy to restore, and that makes me more productive. The truth is, we spend time to save time, right? And that orks… to a certain extent.&lt;/p&gt;
 
 &lt;p&gt;The issue is that after a while, I realized something about myself: I get bored of everything, even when it’s “almost perfect.” I think a lot of people can relate to this. We’re always tweaking, adjusting, trying to make things better. But in the end, the time and effort you put in don’t always pay off. When you sit down to do the math, it doesn’t always add up. Sure, we learn and improve with each new experience, the learning curve gets shorter… but then the question hit me: what do we really need to get work done? For me, the answer is simple: running the applications we need(&lt;em&gt;which is the basic goal of a complete operating system&lt;/em&gt;).&lt;/p&gt;
@@ -1113,9 +1113,9 @@ sbt run&lt;/p&gt;
  
  <entry>
    <title>🪄 Shell Tips for Linux Wizards 🧙</title>
-   <link href="/2024/09/29/shell-tips-for-linux-wizards.html"/>
+   <link href="https://apolzek.github.io/2024/09/29/shell-tips-for-linux-wizards"/>
    <updated>2024-09-29T00:00:00+00:00</updated>
-   <id>/2024/09/29/shell-tips-for-linux-wizards</id>
+   <id>https://apolzek.github.io/2024/09/29/shell-tips-for-linux-wizards</id>
    <content type="html">&lt;h2 id=&quot;index&quot;&gt;Index&lt;/h2&gt;
 
 &lt;ul&gt;
@@ -1430,9 +1430,9 @@ yq &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; &lt;span class=&quot;s1&quot
  
  <entry>
    <title>Kafka and RabbitMQ on Kubernetes using Kind</title>
-   <link href="/2024/09/29/kafka-and-rabbitmq-on-kubernetes.html"/>
+   <link href="https://apolzek.github.io/2024/09/29/kafka-and-rabbitmq-on-kubernetes"/>
    <updated>2024-09-29T00:00:00+00:00</updated>
-   <id>/2024/09/29/kafka-and-rabbitmq-on-kubernetes</id>
+   <id>https://apolzek.github.io/2024/09/29/kafka-and-rabbitmq-on-kubernetes</id>
    <content type="html">&lt;h1 id=&quot;index&quot;&gt;Index&lt;/h1&gt;
 
 &lt;ul&gt;
@@ -1820,9 +1820,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1.html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -1861,9 +1861,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-9).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-9"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 9)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 9)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -1902,9 +1902,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-8).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-8"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 8)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 8)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -1943,9 +1943,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-7).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-7"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 7)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 7)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -1984,9 +1984,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-6).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-6"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 6)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 6)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -2025,9 +2025,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-5).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-5"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 5)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 5)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -2066,9 +2066,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-4).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-4"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 4)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 4)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -2107,9 +2107,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-34).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-34"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 34)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 34)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -2148,9 +2148,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-33).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-33"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 33)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 33)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -2189,9 +2189,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-32).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-32"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 32)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 32)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -2230,9 +2230,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-31).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-31"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 31)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 31)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -2271,9 +2271,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-30).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-30"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 30)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 30)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -2312,9 +2312,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-3).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-3"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 3)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 3)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -2353,9 +2353,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-29).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-29"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 29)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 29)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -2394,9 +2394,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-28).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-28"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 28)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 28)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -2435,9 +2435,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-27).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-27"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 27)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 27)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -2476,9 +2476,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-26).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-26"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 26)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 26)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -2517,9 +2517,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-25).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-25"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 25)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 25)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -2558,9 +2558,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-24).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-24"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 24)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 24)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -2599,9 +2599,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-23).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-23"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 23)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 23)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -2640,9 +2640,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-22).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-22"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 22)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 22)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -2681,9 +2681,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-21).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-21"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 21)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 21)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -2722,9 +2722,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-20).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-20"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 20)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 20)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -2763,9 +2763,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-2).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-2"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 2)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 2)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -2804,9 +2804,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-19).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-19"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 19)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 19)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -2845,9 +2845,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-18).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-18"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 18)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 18)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -2886,9 +2886,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-17).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-17"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 17)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 17)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -2927,9 +2927,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-16).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-16"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 16)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 16)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -2968,9 +2968,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-15).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-15"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 15)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 15)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -3009,9 +3009,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-14).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-14"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 14)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 14)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -3050,9 +3050,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-13).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-13"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 13)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 13)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -3091,9 +3091,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-12).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-12"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 12)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 12)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -3132,9 +3132,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-11).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-11"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 11)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 11)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -3173,9 +3173,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-10).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-10"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 10)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 10)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -3214,9 +3214,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>💡 MVP localhot - day 1</title>
-   <link href="/2024/09/27/mvp-localhot-day1-(copy-1).html"/>
+   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1-copy-1"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>/2024/09/27/mvp-localhot-day1 (copy 1)</id>
+   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1 (copy 1)</id>
    <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
@@ -3255,9 +3255,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
  
  <entry>
    <title>Hello World =)</title>
-   <link href="/2024/09/26/hello-world.html"/>
+   <link href="https://apolzek.github.io/2024/09/26/hello-world"/>
    <updated>2024-09-26T00:00:00+00:00</updated>
-   <id>/2024/09/26/hello-world</id>
+   <id>https://apolzek.github.io/2024/09/26/hello-world</id>
    <content type="html">&lt;h2 id=&quot;about&quot;&gt;ABOUT&lt;/h2&gt;
 
 &lt;ul&gt;
