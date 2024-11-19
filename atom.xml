@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2024-11-12T11:52:01+00:00</updated>
+ <updated>2024-11-19T12:24:28+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -781,15 +781,6 @@ sbt run&lt;/p&gt;
  </entry>
  
  <entry>
-   <title>RabbitMQ on Kubernetes using Kind</title>
-   <link href="https://apolzek.github.io/2025/09/29/rabbitmq-on-kubernetes-using-kind"/>
-   <updated>2025-09-29T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2025/09/29/rabbitmq-on-kubernetes-using-kind</id>
-   <content type="html">
-</content>
- </entry>
- 
- <entry>
    <title>📦 Containers Mastery</title>
    <link href="https://apolzek.github.io/2025/09/28/containers-mastery"/>
    <updated>2025-09-28T00:00:00+00:00</updated>
@@ -924,195 +915,7 @@ sbt run&lt;/p&gt;
  </entry>
  
  <entry>
-   <title>🐧 EndeavourOS with i3wm works for me</title>
-   <link href="https://apolzek.github.io/2024/10/13/endeavouros-with-i3wm-works-for-me"/>
-   <updated>2024-10-13T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2024/10/13/endeavouros-with-i3wm-works-for-me</id>
-   <content type="html">&lt;p&gt;Recently, I came across a provocative phrase: “Linux is only free if your time has no value.” I know some people around me would get a bit annoyed by this, and honestly, a few years ago, I would’ve been one of them. But today, with a little more experience (and patience), I still disagree, but I get the point. I’ve always been a fan of working with good tools, having a well-configured OS, customized, easy to restore, and that makes me more productive. The truth is, we spend time to save time, right? And that orks… to a certain extent.&lt;/p&gt;
-
-&lt;p&gt;The issue is that after a while, I realized something about myself: I get bored of everything, even when it’s “almost perfect.” I think a lot of people can relate to this. We’re always tweaking, adjusting, trying to make things better. But in the end, the time and effort you put in don’t always pay off. When you sit down to do the math, it doesn’t always add up. Sure, we learn and improve with each new experience, the learning curve gets shorter… but then the question hit me: what do we really need to get work done? For me, the answer is simple: running the applications we need(&lt;em&gt;which is the basic goal of a complete operating system&lt;/em&gt;).&lt;/p&gt;
-
-&lt;p&gt;At the companies I’ve worked at, I’ve used both MacBooks with macOS and Dell laptops running Ubuntu. And you know what? Both worked just fine! I’m always trying to improve in different areas — physically, gaining new skills, or fixing mistakes. But then come the trade-offs: I need time! And that got me thinking about how much time I’ve spent in the past messing around with Linux distros, customizing tools, switching window managers, tweaking every little detail that only I would notice.&lt;/p&gt;
-
-&lt;p&gt;In the end, I decided to stop and simplify. With the least amount of effort, I found a way to focus on what really matters: solving the problems I’m paid to solve. No need to reinvent the wheel.&lt;/p&gt;
-
-&lt;h2 id=&quot;general-tools&quot;&gt;General tools&lt;/h2&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Tool&lt;/th&gt;
-      &lt;th&gt;Description&lt;/th&gt;
-      &lt;th&gt;Category&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;VSCode&lt;/td&gt;
-      &lt;td&gt;A powerful source code editor from Microsoft.&lt;/td&gt;
-      &lt;td&gt;Development&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;LazyVim&lt;/td&gt;
-      &lt;td&gt;A preconfigured Neovim setup for lazy editing.&lt;/td&gt;
-      &lt;td&gt;Development&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Neovim&lt;/td&gt;
-      &lt;td&gt;An extensible Vim-based text editor.&lt;/td&gt;
-      &lt;td&gt;Development&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Git&lt;/td&gt;
-      &lt;td&gt;A version control system for tracking changes.&lt;/td&gt;
-      &lt;td&gt;Version Control&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Discord&lt;/td&gt;
-      &lt;td&gt;A communication platform for communities.&lt;/td&gt;
-      &lt;td&gt;Communication&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Telegram&lt;/td&gt;
-      &lt;td&gt;A cloud-based messaging app with a focus on speed.&lt;/td&gt;
-      &lt;td&gt;Communication&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Tor Browser&lt;/td&gt;
-      &lt;td&gt;A web browser that enables anonymous browsing.&lt;/td&gt;
-      &lt;td&gt;Privacy&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;NordVPN&lt;/td&gt;
-      &lt;td&gt;A VPN service for secure and private browsing.&lt;/td&gt;
-      &lt;td&gt;Privacy&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Chrome&lt;/td&gt;
-      &lt;td&gt;A fast web browser developed by Google.&lt;/td&gt;
-      &lt;td&gt;Web Browsing&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Firefox&lt;/td&gt;
-      &lt;td&gt;An open-source web browser with privacy features.&lt;/td&gt;
-      &lt;td&gt;Web Browsing&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Meld&lt;/td&gt;
-      &lt;td&gt;A visual diff and merge tool.&lt;/td&gt;
-      &lt;td&gt;Development&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Golang&lt;/td&gt;
-      &lt;td&gt;A statically typed, compiled programming language.&lt;/td&gt;
-      &lt;td&gt;Development&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Python&lt;/td&gt;
-      &lt;td&gt;A high-level programming language known for readability.&lt;/td&gt;
-      &lt;td&gt;Development&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Node.js&lt;/td&gt;
-      &lt;td&gt;A JavaScript runtime built on Chrome’s V8 engine.&lt;/td&gt;
-      &lt;td&gt;Development&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Obsidian&lt;/td&gt;
-      &lt;td&gt;A note-taking app that uses Markdown.&lt;/td&gt;
-      &lt;td&gt;Productivity&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;VirtualBox&lt;/td&gt;
-      &lt;td&gt;A powerful x86 and AMD64 virtualization product.&lt;/td&gt;
-      &lt;td&gt;Virtualization&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Timeshift&lt;/td&gt;
-      &lt;td&gt;A backup tool for Linux systems.&lt;/td&gt;
-      &lt;td&gt;Backup&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Arduino IDE&lt;/td&gt;
-      &lt;td&gt;An integrated development environment for Arduino.&lt;/td&gt;
-      &lt;td&gt;Development&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Lens&lt;/td&gt;
-      &lt;td&gt;A Kubernetes IDE for managing clusters.&lt;/td&gt;
-      &lt;td&gt;Development&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Btop&lt;/td&gt;
-      &lt;td&gt;A resource monitor that shows usage stats.&lt;/td&gt;
-      &lt;td&gt;System Monitoring&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;DBeaver&lt;/td&gt;
-      &lt;td&gt;A universal database tool for developers.&lt;/td&gt;
-      &lt;td&gt;Database Management&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Postman&lt;/td&gt;
-      &lt;td&gt;A collaboration platform for API development.&lt;/td&gt;
-      &lt;td&gt;Development&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Insomnia&lt;/td&gt;
-      &lt;td&gt;A REST client for API testing.&lt;/td&gt;
-      &lt;td&gt;Development&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;OBS Studio&lt;/td&gt;
-      &lt;td&gt;Open-source software for video recording and live streaming.&lt;/td&gt;
-      &lt;td&gt;Streaming&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Wireshark&lt;/td&gt;
-      &lt;td&gt;A network protocol analyzer for troubleshooting.&lt;/td&gt;
-      &lt;td&gt;Networking&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Burp Suite Community&lt;/td&gt;
-      &lt;td&gt;A platform for web application security testing.&lt;/td&gt;
-      &lt;td&gt;Security&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Anki&lt;/td&gt;
-      &lt;td&gt;A flashcard app for memorization.&lt;/td&gt;
-      &lt;td&gt;Education&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Slack&lt;/td&gt;
-      &lt;td&gt;A collaboration hub for team communication.&lt;/td&gt;
-      &lt;td&gt;Communication&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Teams&lt;/td&gt;
-      &lt;td&gt;A collaboration tool by Microsoft for workplaces.&lt;/td&gt;
-      &lt;td&gt;Communication&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Spotify&lt;/td&gt;
-      &lt;td&gt;A digital music service for streaming music.&lt;/td&gt;
-      &lt;td&gt;Entertainment&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;VLC&lt;/td&gt;
-      &lt;td&gt;A free and open-source multimedia player.&lt;/td&gt;
-      &lt;td&gt;Media&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;cli-tools&quot;&gt;CLI tools&lt;/h2&gt;
-
-&lt;h2 id=&quot;web-tools&quot;&gt;Web tools&lt;/h2&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>🪄 Shell Tips for Linux Wizards 🧙</title>
+   <title>🧙 Shell Tips for Linux Wizards</title>
    <link href="https://apolzek.github.io/2024/09/29/shell-tips-for-linux-wizards"/>
    <updated>2024-09-29T00:00:00+00:00</updated>
    <id>https://apolzek.github.io/2024/09/29/shell-tips-for-linux-wizards</id>

@@ -105,14 +105,6 @@
     } ,
   
     {
-      "title"    : "RabbitMQ on Kubernetes using Kind",
-      "category" : "",
-      "tags"     : "rabbitmq, kind, kubernetes",
-      "url"      : "/2025/09/29/rabbitmq-on-kubernetes-using-kind",
-      "date"     : "2025-09-29 00:00:00 +0000"
-    } ,
-  
-    {
       "title"    : "📦 Containers Mastery",
       "category" : "",
       "tags"     : "linux, containers, docker",
@@ -121,15 +113,7 @@
     } ,
   
     {
-      "title"    : "🐧 EndeavourOS with i3wm works for me",
-      "category" : "",
-      "tags"     : "os, i3wm, endeavouros, linux, distro",
-      "url"      : "/2024/10/13/endeavouros-with-i3wm-works-for-me",
-      "date"     : "2024-10-13 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "🪄 Shell Tips for Linux Wizards 🧙",
+      "title"    : "🧙 Shell Tips for Linux Wizards",
       "category" : "",
       "tags"     : "linux, shell, script, bash",
       "url"      : "/2024/09/29/shell-tips-for-linux-wizards",
