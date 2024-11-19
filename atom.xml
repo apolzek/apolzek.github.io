@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2024-11-19T12:37:13+00:00</updated>
+ <updated>2024-11-19T12:56:37+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -911,6 +911,15 @@ sbt run&lt;/p&gt;
 &lt;p&gt;Advanced container orchestration is crucial for managing the deployment, scaling, and operation of containerized applications in complex environments. Kubernetes, as a leading orchestration platform, provides robust features for automating the management of containerized applications across clusters. It facilitates load balancing, automated scaling, and self-healing capabilities, allowing organizations to maintain high availability and performance in their applications. Understanding Kubernetes internals, such as the roles of the kubelet, kube-scheduler, and controller manager, empowers developers to optimize their deployment strategies and resource allocation effectively.&lt;/p&gt;
 
 &lt;p&gt;In addition to Kubernetes, modern orchestration frameworks also support advanced deployment strategies, such as blue-green deployments and canary releases. These methods enable teams to introduce new features gradually, minimizing risk and ensuring a smooth user experience. By leveraging ConfigMaps and Secrets, developers can manage application configurations and sensitive data securely within the orchestration platform. Ultimately, mastering advanced orchestration techniques enhances the efficiency and reliability of containerized applications, driving innovation and agility in software development and deployment.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>NEW PROJECT - Achados do Github(YouTube channel)</title>
+   <link href="https://apolzek.github.io/2024/11/19/new-project-achados-do-github"/>
+   <updated>2024-11-19T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2024/11/19/new-project-achados-do-github</id>
+   <content type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/apolzek/apolzek.github.io/refs/heads/main/assets/img/logo-achados-do-github.png&quot; alt=&quot;working&quot; /&gt;&lt;/p&gt;
 </content>
  </entry>
  

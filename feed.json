@@ -353,6 +353,30 @@
         },
     
         {
+            "id": "https://apolzek.github.io/2024/11/19/new-project-achados-do-github",
+            "title": "NEW PROJECT - Achados do Github(YouTube channel)",
+            "summary": null,
+            "content_text": "",
+            "content_html": "<p><img src=\"https://raw.githubusercontent.com/apolzek/apolzek.github.io/refs/heads/main/assets/img/logo-achados-do-github.png\" alt=\"working\" /></p>",
+            "url": "https://apolzek.github.io/2024/11/19/new-project-achados-do-github",
+            
+            
+            
+            "tags": ["git","github"],
+            
+            "date_published": "2024-11-19T00:00:00+00:00",
+            "date_modified": "2024-11-19T00:00:00+00:00",
+            
+                "author":  {
+                "name": "apolzek",
+                "url": null,
+                "avatar": null
+                }
+                
+            
+        },
+    
+        {
             "id": "https://apolzek.github.io/2024/09/29/shell-tips-for-linux-wizards",
             "title": "🧙 Shell Tips for Linux Wizards",
             "summary": null,
