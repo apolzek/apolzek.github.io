@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2024-11-21T15:21:43+00:00</updated>
+ <updated>2024-11-21T17:15:08+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -928,7 +928,9 @@ sbt run&lt;/p&gt;
    <link href="https://apolzek.github.io/2024/09/29/shell-tips-for-linux-wizards"/>
    <updated>2024-09-29T00:00:00+00:00</updated>
    <id>https://apolzek.github.io/2024/09/29/shell-tips-for-linux-wizards</id>
-   <content type="html">&lt;h2 id=&quot;index&quot;&gt;Index&lt;/h2&gt;
+   <content type="html">&lt;p&gt;&lt;strong&gt;saving your time&lt;/strong&gt;: &lt;em&gt;some tips for linux shell&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;index&quot;&gt;Index&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;#index&quot;&gt;Index&lt;/a&gt;
@@ -995,6 +997,7 @@ sbt run&lt;/p&gt;
 &lt;/ul&gt;
 
 &lt;h4 id=&quot;sigint&quot;&gt;SIGINT&lt;/h4&gt;
+
 &lt;p&gt;This script creates a temporary file and displays a goodbye message when it receives a SIGINT signal (e.g., when the user presses Ctrl+C).&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
@@ -1016,6 +1019,7 @@ sbt run&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h4 id=&quot;sigterm&quot;&gt;SIGTERM&lt;/h4&gt;
+
 &lt;p&gt;This script starts a web server that runs indefinitely and shuts down gracefully when it receives a SIGTERM signal. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kill &amp;lt;PID&amp;gt;&lt;/code&gt;&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
@@ -1038,6 +1042,7 @@ sbt run&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h4 id=&quot;sighub&quot;&gt;SIGHUB&lt;/h4&gt;
+
 &lt;p&gt;This script starts a daemon that runs indefinitely and reloads its configuration when it receives a SIGHUP signal. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kill -HUP &amp;lt;PID&amp;gt;&lt;/code&gt;&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
@@ -1100,6 +1105,8 @@ sbt run&lt;/p&gt;
 &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;now debugging mode is disable&quot;&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;did you understand ?&quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;using pipefail..&lt;/p&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-xeuo&lt;/span&gt; pipefail
@@ -1260,6 +1267,8 @@ yq &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; &lt;span class=&quot;s1&quot
 &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;p&gt;validating file path..&lt;/p&gt;
+
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
 
 &lt;span class=&quot;c&quot;&gt;# Check if the user provided a file path as an argument&lt;/span&gt;
@@ -1276,8 +1285,8 @@ yq &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; &lt;span class=&quot;s1&quot
 &lt;span class=&quot;k&quot;&gt;else
     &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;File does not exist. Please check the path and try again.&quot;&lt;/span&gt;
     &lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;1
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;fi&lt;/p&gt;
 </content>
  </entry>
  
@@ -1286,7 +1295,9 @@ yq &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; &lt;span class=&quot;s1&quot
    <link href="https://apolzek.github.io/2024/09/29/kafka-and-rabbitmq-on-kubernetes"/>
    <updated>2024-09-29T00:00:00+00:00</updated>
    <id>https://apolzek.github.io/2024/09/29/kafka-and-rabbitmq-on-kubernetes</id>
-   <content type="html">&lt;h1 id=&quot;index&quot;&gt;Index&lt;/h1&gt;
+   <content type="html">&lt;p&gt;&lt;strong&gt;saving your time&lt;/strong&gt;: &lt;em&gt;manifests to deploy kafka and rabbitmq as stateful set in kind (k8s local)&lt;/em&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;index&quot;&gt;Index&lt;/h1&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;#index&quot;&gt;Index&lt;/a&gt;
@@ -1686,7 +1697,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
    <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1"/>
    <updated>2024-09-27T00:00:00+00:00</updated>
    <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1</id>
-   <content type="html">&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
+   <content type="html">&lt;p&gt;&lt;strong&gt;saving your time&lt;/strong&gt;: &lt;em&gt;about a personal project similar to render.com to exercise the mind&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
 
 &lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
 
@@ -1727,7 +1740,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
    <link href="https://apolzek.github.io/2024/09/26/hello-world"/>
    <updated>2024-09-26T00:00:00+00:00</updated>
    <id>https://apolzek.github.io/2024/09/26/hello-world</id>
-   <content type="html">&lt;h2 id=&quot;about&quot;&gt;ABOUT&lt;/h2&gt;
+   <content type="html">&lt;p&gt;&lt;strong&gt;saving your time&lt;/strong&gt;: &lt;em&gt;just a brief introduction and my intentions&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;about&quot;&gt;ABOUT&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;This blog is a personal project where I share my reflections on reliability engineering, professional growth, and related topics;&lt;/li&gt;
