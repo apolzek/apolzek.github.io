@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "NEW PROJECT - Achados do Github on YouTube",
+      "category" : "",
+      "tags"     : "git, github",
+      "url"      : "/2025/11/19/new-project-achados-do-github",
+      "date"     : "2025-11-19 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "SRE interview questions",
       "category" : "",
       "tags"     : "sre, interview",
@@ -57,14 +65,6 @@
     } ,
   
     {
-      "title"    : "💡 l0calh0t Startup - day 2",
-      "category" : "",
-      "tags"     : "devops, sre, project, startup",
-      "url"      : "/2025/10/10/l0calh0t-startup-day2",
-      "date"     : "2025-10-10 00:00:00 +0000"
-    } ,
-  
-    {
       "title"    : "The distance between &quot;getting started&quot; and &quot;production ready&quot;",
       "category" : "",
       "tags"     : "tools",
@@ -89,14 +89,6 @@
     } ,
   
     {
-      "title"    : "shortcuts",
-      "category" : "",
-      "tags"     : "shortcuts",
-      "url"      : "/2025/10/09/shortcuts",
-      "date"     : "2025-10-09 00:00:00 +0000"
-    } ,
-  
-    {
       "title"    : "🛠️ SRE Kit for the End of the World",
       "category" : "",
       "tags"     : "tools, sre, toolbox, linux",
@@ -105,19 +97,27 @@
     } ,
   
     {
-      "title"    : "📦 Containers Mastery",
+      "title"    : "🧙 Powershell Tips for Windows Wizards",
+      "category" : "",
+      "tags"     : "windows, script, powershell",
+      "url"      : "/2025/09/29/powershell-tips-for-windows-wizards",
+      "date"     : "2025-09-29 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "📦 Introduction to Containers",
       "category" : "",
       "tags"     : "linux, containers, docker",
-      "url"      : "/2025/09/28/containers-mastery",
+      "url"      : "/2025/09/28/introduction-to-containers",
       "date"     : "2025-09-28 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "NEW PROJECT - Achados do Github on YouTube",
+      "title"    : "💡 MVP nanopods - day 1",
       "category" : "",
-      "tags"     : "git, github",
-      "url"      : "/2024/11/19/new-project-achados-do-github",
-      "date"     : "2024-11-19 00:00:00 +0000"
+      "tags"     : "devops, sre, project, startup",
+      "url"      : "/2024/10/21/mvp-nanopods-day1",
+      "date"     : "2024-10-21 00:00:00 +0000"
     } ,
   
     {
@@ -134,14 +134,6 @@
       "tags"     : "kafka, kind, kubernetes, rabbitmq",
       "url"      : "/2024/09/29/kafka-and-rabbitmq-on-kubernetes",
       "date"     : "2024-09-29 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "💡 MVP localhot - day 1",
-      "category" : "",
-      "tags"     : "devops, sre, project, startup",
-      "url"      : "/2024/09/27/mvp-localhot-day1",
-      "date"     : "2024-09-27 00:00:00 +0000"
     } ,
   
     {

@@ -4,13 +4,22 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2024-11-21T21:18:27+00:00</updated>
+ <updated>2024-11-22T20:36:02+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
    <email>viniciusgomes955@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>NEW PROJECT - Achados do Github on YouTube</title>
+   <link href="https://apolzek.github.io/2025/11/19/new-project-achados-do-github"/>
+   <updated>2025-11-19T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2025/11/19/new-project-achados-do-github</id>
+   <content type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/apolzek/apolzek.github.io/refs/heads/main/assets/img/logo-achados-do-github.png&quot; alt=&quot;working&quot; /&gt;&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>SRE interview questions</title>
@@ -244,17 +253,6 @@ sbt run&lt;/p&gt;
  </entry>
  
  <entry>
-   <title>💡 l0calh0t Startup - day 2</title>
-   <link href="https://apolzek.github.io/2025/10/10/l0calh0t-startup-day2"/>
-   <updated>2025-10-10T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2025/10/10/l0calh0t-startup-day2</id>
-   <content type="html">&lt;h2 id=&quot;rendercom-the-solution-is-amazing-and-the-free-tier-surprised-me&quot;&gt;render.com.. The solution is amazing, and the free tier surprised me&lt;/h2&gt;
-
-&lt;p&gt;Since my idea has A LOT to do with what &lt;strong&gt;render.com&lt;/strong&gt; offers, it makes total sense for me to learn from them. First off, just know that they’re good. I’ve already liked a lot of what I found on their free tier. I’ll dive into the details here and connect it to some technical concepts just to get the wheels turning on architecture and product thinking.&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
    <title>The distance between &quot;getting started&quot; and &quot;production ready&quot;</title>
    <link href="https://apolzek.github.io/2025/10/10/getting-started-x-production-ready"/>
    <updated>2025-10-10T00:00:00+00:00</updated>
@@ -382,214 +380,6 @@ sbt run&lt;/p&gt;
 &lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
 
 &lt;p&gt;AWS IAM offers a comprehensive set of tools for managing permissions in cloud environments. As organizations scale, leveraging advanced features like Permission Boundaries and SCPs becomes crucial for maintaining security and compliance. By implementing best practices and advanced techniques, organizations can effectively mitigate risks and ensure a robust security posture in their AWS environments.&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>shortcuts</title>
-   <link href="https://apolzek.github.io/2025/10/09/shortcuts"/>
-   <updated>2025-10-09T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2025/10/09/shortcuts</id>
-   <content type="html">&lt;h2 id=&quot;vim&quot;&gt;VIM&lt;/h2&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;&lt;strong&gt;Shortcut&lt;/strong&gt;&lt;/th&gt;
-      &lt;th&gt;&lt;strong&gt;Description&lt;/strong&gt;&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;i&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Enter insert mode at cursor position.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;I&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Enter insert mode at the beginning of the current line.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Enter insert mode after the cursor position.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;A&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Enter insert mode at the end of the current line.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;o&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Open a new line below and enter insert mode.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;O&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Open a new line above and enter insert mode.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:w&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Save (write) the current file.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:q&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Quit Vim.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:wq&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Save and quit.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:q!&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Quit without saving.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;u&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Undo the last change.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl + r&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Redo the last undone change.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yy&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Yank (copy) the entire current line.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;p&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Paste the yanked text after the cursor.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;P&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Paste the yanked text before the cursor.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dd&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Delete (cut) the entire current line.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dw&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Delete (cut) from the cursor to the end of the current word.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;d$&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Delete (cut) from the cursor to the end of the line.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Delete (cut) the character under the cursor.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;r&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Replace the character under the cursor with a new one.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;v&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Enter visual mode (text selection).&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;V&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Enter visual line mode (select entire lines).&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl + v&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Enter visual block mode (select rectangular blocks of text).&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:s/foo/bar/g&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Replace all occurrences of “foo” with “bar” in the current line.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:%s/foo/bar/g&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Replace all occurrences of “foo” with “bar” in the entire file.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/pattern&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Search for a pattern in the file.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;n&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Jump to the next occurrence of the search pattern.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;N&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Jump to the previous occurrence of the search pattern.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gg&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Go to the beginning of the file.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;G&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Go to the end of the file.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:e filename&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Open a new file named “filename”.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:bd&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Close the current buffer (file).&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl + o&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Go to the last cursor position.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl + i&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Go forward to the next cursor position.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl + z&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Suspend Vim (send to background in terminal).&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;J&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Join the current line with the line below it.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Repeat the last command.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Jump to the matching pair (e.g., parentheses, brackets).&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:!command&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Run a shell command from within Vim.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl + f&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Scroll one page forward.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl + b&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Scroll one page backward.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl + u&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Scroll half a page up.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl + d&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Scroll half a page down.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;H&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Move the cursor to the top of the screen.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;M&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Move the cursor to the middle of the screen.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;L&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Move the cursor to the bottom of the screen.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:help&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Open Vim’s help documentation.&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
 </content>
  </entry>
  
@@ -781,10 +571,21 @@ sbt run&lt;/p&gt;
  </entry>
  
  <entry>
-   <title>📦 Containers Mastery</title>
-   <link href="https://apolzek.github.io/2025/09/28/containers-mastery"/>
+   <title>🧙 Powershell Tips for Windows Wizards</title>
+   <link href="https://apolzek.github.io/2025/09/29/powershell-tips-for-windows-wizards"/>
+   <updated>2025-09-29T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2025/09/29/powershell-tips-for-windows-wizards</id>
+   <content type="html">&lt;p&gt;&lt;strong&gt;saving your time&lt;/strong&gt;: &lt;em&gt;some tips for windows powershell&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;index&quot;&gt;Index&lt;/h2&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>📦 Introduction to Containers</title>
+   <link href="https://apolzek.github.io/2025/09/28/introduction-to-containers"/>
    <updated>2025-09-28T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2025/09/28/containers-mastery</id>
+   <id>https://apolzek.github.io/2025/09/28/introduction-to-containers</id>
    <content type="html">&lt;h2 id=&quot;what-is-linux-container-&quot;&gt;What is Linux container ?&lt;/h2&gt;
 
 &lt;p&gt;A Linux container is a lightweight and portable unit that encapsulates an application and its dependencies. Containers utilize key Linux kernel features for process isolation and resource management, including namespaces (for isolating resources like PID, network, and filesystem) and control groups (cgroups) (for limiting and prioritizing resource usage). Additionally, union file systems enable efficient layering and storage of container images. Together, these features allow containers to operate efficiently and securely on a shared host. Basically a container image is composed of&lt;/p&gt;
@@ -870,56 +671,66 @@ sbt run&lt;/p&gt;
   &lt;li&gt;Document Image Purpose and Usage: Include clear documentation about the image’s purpose, usage, and configuration to facilitate easier maintenance and onboarding.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;deep-dive--not-todaybut-you-need-to-know&quot;&gt;Deep dive ? not today..but you need to know&lt;/h2&gt;
+&lt;h2 id=&quot;a-brief-history-of-containers&quot;&gt;A Brief History of Containers&lt;/h2&gt;
 
-&lt;h4 id=&quot;namespaces-and-cgroups-architecture&quot;&gt;Namespaces and Cgroups Architecture&lt;/h4&gt;
+&lt;p&gt;The history of Linux containers began with the need for process isolation to improve security and resource efficiency. In the early days of Linux, basic tools like chroot (introduced in 1979) allowed for directory isolation, providing a simple way to create limited environments for processes. However, this approach was primitive and lacked strong security measures. As Linux evolved, more advanced techniques were developed. In 2001, FreeBSD Jail introduced a more robust form of process isolation, but it was Linux that would eventually develop more sophisticated solutions.&lt;/p&gt;
 
-&lt;p&gt;Namespaces are a fundamental aspect of containerization, providing isolation for various resources on a Linux system. Each namespace creates a distinct environment for processes, ensuring that they only interact with their own set of resources. For example, the PID namespace allows processes to have their own process IDs, making it appear as though they are the only ones running on the system. Similarly, network namespaces enable containers to have unique network interfaces and IP addresses, preventing interference between containers. Understanding how these namespaces work is essential for developers to effectively manage resource allocation and maintain a secure environment.&lt;/p&gt;
+&lt;p&gt;The real breakthrough for Linux containers came with the introduction of namespaces and cgroups in the Linux kernel. Namespaces, introduced in 2002, allowed the creation of isolated environments for processes by separating their access to system resources such as process IDs, networking, and filesystems. Around the same time, cgroups (Control Groups), introduced in 2006, provided a mechanism to limit and manage the resource usage (like CPU, memory, and I/O) of groups of processes. These two technologies, developed by engineers at Google and later integrated into the Linux kernel, laid the groundwork for modern containerization.&lt;/p&gt;
 
-&lt;p&gt;Control groups (cgroups) complement namespaces by allowing for fine-grained resource management. They enable administrators to limit and prioritize CPU, memory, and I/O usage for groups of processes, ensuring that no single container can monopolize system resources. With cgroups, users can define resource limits, monitor usage, and enforce constraints in a way that is transparent to the applications running within the containers. This architecture not only optimizes resource allocation but also enhances overall system stability by preventing resource contention.&lt;/p&gt;
+&lt;p&gt;While the core technologies were being refined, Google was already using containers internally to manage its vast infrastructure. The company recognized the need for process isolation and resource management, which helped shape the direction of Linux containers. Around 2008, LXC (Linux Containers) emerged as the first practical implementation of Linux containers, utilizing namespaces and cgroups. LXC allowed the creation of isolated environments, but it was still complex to set up and manage, requiring significant manual configuration.&lt;/p&gt;
 
-&lt;h4 id=&quot;overlay-filesystem-and-copy-on-write&quot;&gt;Overlay Filesystem and Copy-on-Write&lt;/h4&gt;
+&lt;p&gt;In 2013, the landscape of containers changed dramatically with the launch of Docker by a startup called dotCloud. Docker revolutionized containerization by making it accessible and easy to use. It introduced a simple command-line interface to create, run, and share containers, allowing developers to package applications and their dependencies into a single, portable container image. Docker’s approach brought significant improvements in usability, enabling developers to focus more on coding rather than infrastructure management. Its impact on the industry was immediate, as it simplified the process of deploying applications across different environments, making containers mainstream.&lt;/p&gt;
 
-&lt;p&gt;The Overlay filesystem is a crucial technology in containerization, facilitating the creation of layered filesystems that optimize storage and performance. By allowing multiple layers to be stacked, OverlayFS enables efficient management of container images, where each layer can be modified without affecting the underlying layers. This Copy-on-Write (CoW) mechanism ensures that changes made to a file in a container do not overwrite the original file in the base image. Instead, the container creates a new layer for modifications, allowing for quick and efficient updates while conserving disk space.&lt;/p&gt;
+&lt;p&gt;Docker also popularized the concept of container images, which allowed applications to be packaged with their dependencies, making them portable and easy to distribute. Docker’s rise brought a shift toward the use of containers not just for process isolation, but as a tool for building scalable, microservice-based architectures. Docker’s success was driven by a growing ecosystem, with developers contributing to a vibrant open-source community.&lt;/p&gt;
 
-&lt;p&gt;Using OverlayFS not only improves storage efficiency but also enhances the speed of container operations. As containers are deployed, they only need to load the layers that have changed, significantly reducing the time required to start a container. Additionally, this layering approach allows for easy version control and rollback capabilities. If a change introduces an issue, reverting to a previous version can be done swiftly by switching back to the corresponding base image, thereby minimizing downtime and potential disruptions.&lt;/p&gt;
+&lt;p&gt;As containers gained traction, however, new challenges emerged, particularly in managing containers at scale. This led to the development of orchestration tools like Kubernetes, a system originally developed by Google. In 2014, Google open-sourced Kubernetes, which quickly became the leading solution for orchestrating containers in production environments. Kubernetes made it possible to manage large numbers of containers across clusters, offering features such as automated deployment, scaling, and monitoring. With its robust features and the backing of major companies like Google, Red Hat, and IBM, Kubernetes became the de facto standard for container orchestration.&lt;/p&gt;
 
-&lt;h4 id=&quot;container-runtimes-comparison&quot;&gt;Container Runtimes Comparison&lt;/h4&gt;
+&lt;p&gt;In addition to Kubernetes, other technologies and tools began to emerge, including container runtimes such as containerd and CRI-O, which were designed to support the growing container ecosystem while adhering to standards set by the Open Container Initiative (OCI). Founded in 2015, OCI aimed to create and maintain common standards for container formats and runtimes, ensuring compatibility across different platforms and container engines. Today, Docker’s containerd runtime and the OCI standards are widely adopted, further cementing the foundation for containerization in the cloud-native era.&lt;/p&gt;
 
-&lt;p&gt;Container runtimes are essential components that facilitate the execution and management of containers, each with unique features and capabilities. Docker, for instance, is a widely recognized runtime that simplifies the process of building, running, and sharing containers. On the other hand, containerd serves as a high-level container runtime, providing a robust platform for managing the complete lifecycle of containers. CRI-O, specifically designed for Kubernetes, focuses on optimizing the performance and resource utilization of containerized applications within orchestration environments. Each runtime caters to different needs, making it important for developers to choose the right one based on their specific use cases and operational requirements.&lt;/p&gt;
-
-&lt;p&gt;When comparing these runtimes, one must consider factors such as performance, compatibility, and community support. While Docker provides an all-in-one solution for container management, it may introduce overhead that isn’t present in lighter runtimes like runc, which focuses solely on running containers. Additionally, Podman offers a daemonless experience that enables users to run containers without needing a central service, appealing to those who prioritize security and simplicity. Ultimately, understanding the distinctions between these runtimes helps developers select the most appropriate tools for their containerization strategies.&lt;/p&gt;
-
-&lt;h4 id=&quot;network-namespaces-and-networking-models&quot;&gt;Network Namespaces and Networking Models&lt;/h4&gt;
-
-&lt;p&gt;Network namespaces are critical for ensuring that containers can communicate while remaining isolated from one another. Each network namespace has its own network stack, including interfaces, routing tables, and firewall rules, allowing containers to function as if they are on separate hosts. This isolation is essential for security, as it prevents unauthorized access between containers and enhances overall system integrity. Additionally, networking models such as bridge networking, overlay networking, and macvlan provide different levels of connectivity and isolation, enabling users to tailor their networking setup based on application needs and deployment scenarios.&lt;/p&gt;
-
-&lt;p&gt;Understanding these networking models is crucial for optimizing communication between containers. For instance, bridge networking is often used for simpler applications that require direct communication with the host, while overlay networking is ideal for applications deployed across multiple hosts in a cluster, such as those orchestrated by Kubernetes. By leveraging tools like Flannel, Calico, or Cilium, developers can create robust networking solutions that enhance container security and performance. The choice of networking model significantly impacts the architecture of containerized applications and their ability to scale effectively.&lt;/p&gt;
-
-&lt;h4 id=&quot;advanced-container-security&quot;&gt;Advanced Container Security&lt;/h4&gt;
-
-&lt;p&gt;Advanced security measures extend beyond just using secure images; they also encompass implementing Linux capabilities to limit permissions, using Seccomp to filter system calls, and configuring AppArmor profiles for enhanced security. Rootless containers further elevate security by allowing users to run containers without root privileges, significantly reducing the risk of privilege escalation attacks. By integrating these practices, organizations can create a layered security approach that effectively mitigates potential risks while ensuring that containerized applications remain robust and resilient against emerging threats.&lt;/p&gt;
-
-&lt;h4 id=&quot;volume-management-and-data-persistence&quot;&gt;Volume Management and Data Persistence&lt;/h4&gt;
-
-&lt;p&gt;Effective volume management is essential for ensuring data persistence in containerized applications. Unlike traditional virtual machines, containers are ephemeral, meaning any data stored within a container is lost once it is stopped or removed. To address this challenge, Docker and other container orchestration platforms provide mechanisms for managing volumes, which allow data to persist independently of the container lifecycle. Volumes can be created and managed easily, enabling developers to store important data, such as databases or user uploads, securely.&lt;/p&gt;
-
-&lt;p&gt;There are two primary types of storage options for containers: bind mounts and named volumes. Bind mounts allow specific directories on the host to be mounted into a container, providing direct access to host files. However, they can introduce complexity and potential security risks if not managed properly. In contrast, named volumes are managed by the container runtime, offering a more abstracted approach that simplifies data management. By adopting best practices for volume management, such as isolating data from application logic and regularly backing up volumes, developers can ensure that their applications maintain data integrity and resilience in production environments.&lt;/p&gt;
-
-&lt;h4 id=&quot;advanced-container-orchestration&quot;&gt;Advanced Container Orchestration&lt;/h4&gt;
-
-&lt;p&gt;Advanced container orchestration is crucial for managing the deployment, scaling, and operation of containerized applications in complex environments. Kubernetes, as a leading orchestration platform, provides robust features for automating the management of containerized applications across clusters. It facilitates load balancing, automated scaling, and self-healing capabilities, allowing organizations to maintain high availability and performance in their applications. Understanding Kubernetes internals, such as the roles of the kubelet, kube-scheduler, and controller manager, empowers developers to optimize their deployment strategies and resource allocation effectively.&lt;/p&gt;
-
-&lt;p&gt;In addition to Kubernetes, modern orchestration frameworks also support advanced deployment strategies, such as blue-green deployments and canary releases. These methods enable teams to introduce new features gradually, minimizing risk and ensuring a smooth user experience. By leveraging ConfigMaps and Secrets, developers can manage application configurations and sensitive data securely within the orchestration platform. Ultimately, mastering advanced orchestration techniques enhances the efficiency and reliability of containerized applications, driving innovation and agility in software development and deployment.&lt;/p&gt;
+&lt;p&gt;The container landscape continues to evolve with contributions from major cloud providers like Amazon Web Services (AWS), Microsoft Azure, and Google Cloud, each offering native support for containers and Kubernetes in their cloud environments. These developments have made containers an essential technology for modern DevOps practices, continuous delivery, and scalable application deployment. The container ecosystem has come a long way, from its humble beginnings with process isolation to the highly efficient and scalable solutions we use today.&lt;/p&gt;
 </content>
  </entry>
  
  <entry>
-   <title>NEW PROJECT - Achados do Github on YouTube</title>
-   <link href="https://apolzek.github.io/2024/11/19/new-project-achados-do-github"/>
-   <updated>2024-11-19T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2024/11/19/new-project-achados-do-github</id>
-   <content type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/apolzek/apolzek.github.io/refs/heads/main/assets/img/logo-achados-do-github.png&quot; alt=&quot;working&quot; /&gt;&lt;/p&gt;
+   <title>💡 MVP nanopods - day 1</title>
+   <link href="https://apolzek.github.io/2024/10/21/mvp-nanopods-day1"/>
+   <updated>2024-10-21T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2024/10/21/mvp-nanopods-day1</id>
+   <content type="html">&lt;p&gt;&lt;strong&gt;saving your time&lt;/strong&gt;: &lt;em&gt;about a personal project similar to render.com to exercise the mind&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
+
+&lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;nanopods&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
+
+&lt;p&gt;🗣️ &lt;em&gt;I intend to run this on-premises&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I know there are already similar projects on the internet, but most of them focus on &lt;em&gt;development&lt;/em&gt; and not on &lt;em&gt;operations&lt;/em&gt;. I have two main goals. The first is to test technologies, discuss decisions and show concerns that usually arise when our project goes into production. The second is to perhaps make some money with this. My initial focus is Brazilian software developers. In general, I get along well with developers.&lt;/p&gt;
+
+&lt;p&gt;Let’s get started. What follows is information about the project. To be quite honest, what I intend to build already exists, something similar to &lt;em&gt;render.com&lt;/em&gt;.. but with some differences.&lt;/p&gt;
+
+&lt;h3 id=&quot;nanopods-&quot;&gt;nanopods 🚀&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;nanopods&lt;/strong&gt; is &lt;strong&gt;not&lt;/strong&gt; introducing an innovative solution but rather offering &lt;strong&gt;a new way of delivering container-based application hosting&lt;/strong&gt;, designed for developers of all levels, SREs, DevOps, and QAs. By abstracting infrastructure and networking, it enables fast, cost-effective container deployment. Users can make applications publicly accessible or control access as needed. Unlike traditional solutions focused on large enterprises with strict SLAs, &lt;strong&gt;nanopods&lt;/strong&gt; prioritizes simplicity and accessibility, creating an agile environment for rapid testing and iteration, without the complexity of managing traditional servers.&lt;/p&gt;
+
+&lt;p&gt;I’m still thinking about the legal issues..&lt;/p&gt;
+
+&lt;h3 id=&quot;about-the-idea&quot;&gt;About the idea&lt;/h3&gt;
+
+&lt;p&gt;The idea is basically a &lt;em&gt;render.com&lt;/em&gt; with some differences. I want to do something more “api first”. I want to do it in a way that is similar to the way people work with containers locally and I also want to offer a way for them to have details about their applications by adding components to the infrastructure that abstract away the complexity of doing so.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-do-i-need-&quot;&gt;What do I need ?&lt;/h3&gt;
+
+&lt;p&gt;Considering that I have no money, no computing resources, and no advanced programming skills (that makes it too hard 🤣🤣), I need to focus on something simple that works. I want to create a business abstraction on top of Kubernetes and put all the complexity into it using tools I have experience with. I need a cheap domain like &lt;strong&gt;nanopods.io&lt;/strong&gt;. I need a payment method and reasonable bandwidth. I want to physically separate the servers where applications are from the servers where the end-user containers will be. I need to think about security and a business model that is viable for Brazilian developers.&lt;/p&gt;
+
+&lt;p&gt;For the first poc’s, the simpler the better. I intend to use python or golang for this. I will use kind as the local kubernetes environment, the local registry of my machine for the images and also my local network. The networking part is very important in this project, but first I want a functional MVP.&lt;/p&gt;
+
+&lt;h3 id=&quot;to-be-continued&quot;&gt;to be continued..&lt;/h3&gt;
+
+&lt;p&gt;So, that’s it. I’ve reached the end of my first article. I hope I’ve been clear about my idea. In the end, even if everything goes wrong, I will have gained valuable knowledge. These notes may be useful to someone else, and even to my future self. What’s coming next? A series of reflections, articles about random tools, and some not-so-professional code &lt;strong&gt;(&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p&gt;See you around !&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/apolzek/apolzek.github.io/refs/heads/main/assets/gif/working.webp&quot; alt=&quot;working&quot; /&gt;&lt;/p&gt;
 </content>
  </entry>
  
@@ -995,6 +806,43 @@ sbt run&lt;/p&gt;
   &lt;li&gt;Releasing Network or Hardware Resources&lt;/li&gt;
   &lt;li&gt;Maintaining Consistent Variable State-&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Signal&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+      &lt;th&gt;How to Invoke&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;#sigint&quot;&gt;SIGINT&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Interrupts the process. Typically generated by pressing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl+C&lt;/code&gt; in the terminal.&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl + C&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kill -2 &amp;lt;pid&amp;gt;&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;#sigterm&quot;&gt;SIGTERM&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Requests the graceful termination of the process. Used to terminate processes without forcing them.&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kill -15 &amp;lt;pid&amp;gt;&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;#sighup&quot;&gt;SIGHUP&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Indicates that the terminal connection was lost or that the process needs to reload configurations.&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kill -1 &amp;lt;pid&amp;gt;&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;#sigkill&quot;&gt;SIGKILL&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Forces the immediate termination of a process. Cannot be ignored by the process.&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kill -9 &amp;lt;pid&amp;gt;&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;#sigstop&quot;&gt;SIGSTOP&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Pauses the execution of a process (can be resumed later).&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kill -19 &amp;lt;pid&amp;gt;&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
 &lt;h4 id=&quot;sigint&quot;&gt;SIGINT&lt;/h4&gt;
 
@@ -1451,7 +1299,7 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kafka-topics.sh &lt;span class=&quot;nt&quot;&gt;--delete&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--topic&lt;/span&gt; my-topic &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt;/span&gt; kafka-svc:9092
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h4 id=&quot;kafka-kraft-x-kafka-with-zookeeper&quot;&gt;Kafka KRaft x Kafka with ZooKeeper&lt;/h4&gt;
+&lt;h3 id=&quot;kafka-kraft-x-kafka-with-zookeeper&quot;&gt;Kafka KRaft x Kafka with ZooKeeper&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;Kafka KRaft Installation&lt;/strong&gt;: KRaft is Kafka’s new built-in consensus mechanism that eliminates the need for ZooKeeper. In a KRaft-based installation, Kafka brokers manage metadata and leader election directly, which simplifies the architecture by reducing dependencies. KRaft is becoming the default option in newer Kafka versions because it provides better scalability, faster failover, and an overall more streamlined operation.&lt;/p&gt;
 
@@ -1689,49 +1537,6 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
 &lt;blockquote&gt;
   &lt;p&gt;Access http://localhost:15672/ User: coelho Password: coelho@Pass&lt;/p&gt;
 &lt;/blockquote&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>💡 MVP localhot - day 1</title>
-   <link href="https://apolzek.github.io/2024/09/27/mvp-localhot-day1"/>
-   <updated>2024-09-27T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2024/09/27/mvp-localhot-day1</id>
-   <content type="html">&lt;p&gt;&lt;strong&gt;saving your time&lt;/strong&gt;: &lt;em&gt;about a personal project similar to render.com to exercise the mind&lt;/em&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
-
-&lt;p&gt;I recently saw a project on YouTube where the YouTuber created a complete product and put it into production (online). I liked the idea and thought about creating a real project… starting from localhost to production. I don’t consider myself a good programmer, but I’m looking for a well-made bean and rice. My main focus is to launch a stable product with acceptable security standards and that simply implements the idea as it is now in my mind. I present to you the &lt;strong&gt;localhot&lt;/strong&gt; project. You can follow the progress of this through a series of articles on this blog!&lt;/p&gt;
-
-&lt;p&gt;🗣️ &lt;em&gt;I intend to run this on-premises&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;I know there are already similar projects on the internet, but most of them focus on &lt;em&gt;development&lt;/em&gt; and not on &lt;em&gt;operations&lt;/em&gt;. I have two main goals. The first is to test technologies, discuss decisions and show concerns that usually arise when our project goes into production. The second is to perhaps make some money with this. My initial focus is Brazilian software developers. In general, I get along well with developers.&lt;/p&gt;
-
-&lt;p&gt;Let’s get started. What follows is information about the project. To be quite honest, what I intend to build already exists, something similar to &lt;em&gt;render.com&lt;/em&gt;.. but with some differences.&lt;/p&gt;
-
-&lt;h3 id=&quot;localhot-&quot;&gt;localhot 🚀&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;localhot&lt;/strong&gt; is &lt;strong&gt;not&lt;/strong&gt; introducing an innovative solution but rather offering &lt;strong&gt;a new way of delivering container-based application hosting&lt;/strong&gt;, designed for developers of all levels, SREs, DevOps, and QAs. By abstracting infrastructure and networking, it enables fast, cost-effective container deployment. Users can make applications publicly accessible or control access as needed. Unlike traditional solutions focused on large enterprises with strict SLAs, &lt;strong&gt;localhot&lt;/strong&gt; prioritizes simplicity and accessibility, creating an agile environment for rapid testing and iteration, without the complexity of managing traditional servers.&lt;/p&gt;
-
-&lt;p&gt;I’m still thinking about the legal issues..&lt;/p&gt;
-
-&lt;h3 id=&quot;about-the-idea&quot;&gt;About the idea&lt;/h3&gt;
-
-&lt;p&gt;The idea is basically a &lt;em&gt;render.com&lt;/em&gt; with some differences. I want to do something more “api first”. I want to do it in a way that is similar to the way people work with containers locally and I also want to offer a way for them to have details about their applications by adding components to the infrastructure that abstract away the complexity of doing so.&lt;/p&gt;
-
-&lt;h3 id=&quot;what-do-i-need-&quot;&gt;What do I need ?&lt;/h3&gt;
-
-&lt;p&gt;Considering that I have no money, no computing resources, and no advanced programming skills (that makes it too hard 🤣🤣), I need to focus on something simple that works. I want to create a business abstraction on top of Kubernetes and put all the complexity into it using tools I have experience with. I need a cheap domain like &lt;strong&gt;localhot.io&lt;/strong&gt;. I need a payment method and reasonable bandwidth. I want to physically separate the servers where applications are from the servers where the end-user containers will be. I need to think about security and a business model that is viable for Brazilian developers.&lt;/p&gt;
-
-&lt;p&gt;For the first poc’s, the simpler the better. I intend to use python or golang for this. I will use kind as the local kubernetes environment, the local registry of my machine for the images and also my local network. The networking part is very important in this project, but first I want a functional MVP.&lt;/p&gt;
-
-&lt;h3 id=&quot;to-be-continued&quot;&gt;to be continued..&lt;/h3&gt;
-
-&lt;p&gt;So, that’s it. I’ve reached the end of my first article. I hope I’ve been clear about my idea. In the end, even if everything goes wrong, I will have gained valuable knowledge. These notes may be useful to someone else, and even to my future self. What’s coming next? A series of reflections, articles about random tools, and some not-so-professional code &lt;strong&gt;(&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;p&gt;See you around !&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/apolzek/apolzek.github.io/refs/heads/main/assets/gif/working.webp&quot; alt=&quot;working&quot; /&gt;&lt;/p&gt;
 </content>
  </entry>
  
