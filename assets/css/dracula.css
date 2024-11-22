@@ -6,12 +6,18 @@
   
   .highlight table td {
     padding: 5px;
+    
   }
   
   .highlight table pre {
     margin: 0;
   }
   
+  td, th {
+    border: 1px solid black; /* Borda preta em todas as células */
+    padding: 8px; /* Espaçamento dentro das células */
+    text-align: center; /* Alinha o texto no centro das células */
+  }
   /* Comentários */
   .highlight .c, .highlight .c1, .highlight .cs, .highlight .cm {
     color: #6272a4; /* Comentários */
