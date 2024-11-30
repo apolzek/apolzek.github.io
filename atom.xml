@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2024-11-26T15:46:56+00:00</updated>
+ <updated>2024-11-30T16:42:31+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -857,6 +857,7 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
 &lt;blockquote&gt;
   &lt;p&gt;Access http://localhost:15672/ User: coelho Password: coelho@Pass&lt;/p&gt;
 &lt;/blockquote&gt;
+
 </content>
  </entry>
  
@@ -880,11 +881,11 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
 &lt;h2 id=&quot;goals&quot;&gt;GOALS&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Talk about tools that are not well-known but have great potential(maybe this will turn into a new project);&lt;/li&gt;
+  &lt;li&gt;Talk about tools that are not well-known but have great potential(&lt;em&gt;maybe this will turn into a new project&lt;/em&gt;);&lt;/li&gt;
   &lt;li&gt;Track my studies with short reflective articles;&lt;/li&gt;
   &lt;li&gt;Share my views on technologies, processes, and products;&lt;/li&gt;
   &lt;li&gt;Soon, I will revisit my notes to see how my views on certain topics have changed;&lt;/li&gt;
-  &lt;li&gt;Share the results of some POCs and labs with friends/colleagues;&lt;/li&gt;
+  &lt;li&gt;Share the results of some POCs and labs with friends/colleagues(&lt;em&gt;maybe this will turn into a new project&lt;/em&gt;);;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;some-rules&quot;&gt;SOME RULES&lt;/h2&gt;
@@ -894,13 +895,6 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
   &lt;li&gt;When you see the 🗣️ emoji, it means I know I’m saying something completely absurd;&lt;/li&gt;
   &lt;li&gt;There is 🕵️ hidden content within this blog; you can find it by exploring or inspecting the source code;&lt;/li&gt;
   &lt;li&gt;Fixing is better than criticizing, but any interaction is valuable;&lt;/li&gt;
-  &lt;li&gt;Some articles will be categorized to make it easier to search. Some categories I thought of are:
-    &lt;ul&gt;
-      &lt;li&gt;Review: for reviewing tools, GitHub repositories, or other articles&lt;/li&gt;
-      &lt;li&gt;Fundamentals: for discussing fundamental topics like networks and operating systems&lt;/li&gt;
-      &lt;li&gt;News: for discussing news&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;remember&quot;&gt;REMEMBER&lt;/h2&gt;
