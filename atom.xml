@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2024-11-30T16:42:31+00:00</updated>
+ <updated>2024-12-22T19:11:33+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>💡 MVP nanopods - day 1</title>
-   <link href="https://apolzek.github.io/2024/10/21/mvp-nanopods-day1"/>
-   <updated>2024-10-21T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2024/10/21/mvp-nanopods-day1</id>
+   <link href="https://apolzek.github.io/2024/12/22/mvp-nanopods-day1"/>
+   <updated>2024-12-22T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2024/12/22/mvp-nanopods-day1</id>
    <content type="html">&lt;p&gt;&lt;strong&gt;saving your time&lt;/strong&gt;: &lt;em&gt;about a personal project similar to render.com to exercise the mind&lt;/em&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;about-this-initiative&quot;&gt;About this initiative&lt;/h2&gt;
@@ -885,16 +885,16 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
   &lt;li&gt;Track my studies with short reflective articles;&lt;/li&gt;
   &lt;li&gt;Share my views on technologies, processes, and products;&lt;/li&gt;
   &lt;li&gt;Soon, I will revisit my notes to see how my views on certain topics have changed;&lt;/li&gt;
-  &lt;li&gt;Share the results of some POCs and labs with friends/colleagues(&lt;em&gt;maybe this will turn into a new project&lt;/em&gt;);;&lt;/li&gt;
+  &lt;li&gt;Share the results of some POCs and labs with friends/colleagues(&lt;em&gt;maybe this will turn into a new project&lt;/em&gt;);&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;some-rules&quot;&gt;SOME RULES&lt;/h2&gt;
+&lt;h2 id=&quot;remarks&quot;&gt;REMARKS&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;When the 💬 emoji appears, I want to introduce a point for reflection or an idea exchange(yes, I do talk to myself);&lt;/li&gt;
+  &lt;li&gt;When the 💬 emoji appears, I want to introduce a point for reflection or an idea exchange;&lt;/li&gt;
   &lt;li&gt;When you see the 🗣️ emoji, it means I know I’m saying something completely absurd;&lt;/li&gt;
   &lt;li&gt;There is 🕵️ hidden content within this blog; you can find it by exploring or inspecting the source code;&lt;/li&gt;
-  &lt;li&gt;Fixing is better than criticizing, but any interaction is valuable;&lt;/li&gt;
+  &lt;li&gt;Fixing is better than criticizing, but any interaction is valuable &lt;b&gt;(&lt;/b&gt;: ;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;remember&quot;&gt;REMEMBER&lt;/h2&gt;
