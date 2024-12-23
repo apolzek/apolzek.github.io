@@ -91,14 +91,13 @@
   <span class="na">selector</span><span class="pi">:</span>
     <span class="na">app</span><span class="pi">:</span> <span class="s">kafka-app</span>
 <span class="s">EOF</span>
-</code></pre></div></div><p>2) Create a topic</p><div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl <span class="nb">exec</span> <span class="nt">-it</span> kafka-0 <span class="nt">-n</span> kafka <span class="nt">--</span> bash
+</code></pre></div></div><blockquote><p>🕗 Wait until all 3 Kafka pods are in the “Running” state.</p></blockquote><p>2) Create a topic</p><div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl <span class="nb">exec</span> <span class="nt">-it</span> kafka-0 <span class="nt">-n</span> kafka <span class="nt">--</span> bash
 kafka-topics.sh <span class="nt">--create</span> <span class="nt">--topic</span> my-topic <span class="nt">--bootstrap-server</span> kafka-svc:9092
 kafka-topics.sh <span class="nt">--list</span> <span class="nt">--topic</span> my-topic <span class="nt">--bootstrap-server</span> kafka-svc:9092
 
 <span class="c"># Produce message</span>
-kubectl <span class="nb">exec</span> <span class="nt">-it</span> kafka-1 <span class="nt">-n</span> kafka <span class="nt">--</span> bash
 kafka-console-producer.sh <span class="nt">--bootstrap-server</span> kafka-svc:9092 <span class="nt">--topic</span> my-topic
-</code></pre></div></div><blockquote><p>All pods must be running</p></blockquote><p>3) Consume message</p><div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># consumer</span>
+</code></pre></div></div><p>3) Consume message</p><div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># consumer</span>
 kubectl <span class="nb">exec</span> <span class="nt">-it</span> kafka-1 <span class="nt">-n</span> kafka <span class="nt">--</span> bash
 kafka-console-consumer.sh <span class="nt">--bootstrap-server</span> kafka-svc:9092 <span class="nt">--topic</span> my-topic
 </code></pre></div></div><blockquote><p>Run the producer and consumer in different Linux terminals</p></blockquote><p>4) Delete topic</p><div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kafka-topics.sh <span class="nt">--delete</span> <span class="nt">--topic</span> my-topic <span class="nt">--bootstrap-server</span> kafka-svc:9092

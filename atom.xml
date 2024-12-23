@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2024-12-23T17:19:43+00:00</updated>
+ <updated>2024-12-23T17:58:18+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -604,6 +604,9 @@ example.sh:10:7: error: Missing &apos;fi&apos; to end &apos;if&apos; statement. 
     &lt;span class=&quot;na&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kafka-app&lt;/span&gt;
 &lt;span class=&quot;s&quot;&gt;EOF&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;🕗 Wait until all 3 Kafka pods are in the “Running” state.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;2) Create a topic&lt;/p&gt;
 
@@ -612,12 +615,8 @@ kafka-topics.sh &lt;span class=&quot;nt&quot;&gt;--create&lt;/span&gt; &lt;span 
 kafka-topics.sh &lt;span class=&quot;nt&quot;&gt;--list&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--topic&lt;/span&gt; my-topic &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt;/span&gt; kafka-svc:9092
 
 &lt;span class=&quot;c&quot;&gt;# Produce message&lt;/span&gt;
-kubectl &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; kafka-1 &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; kafka &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; bash
 kafka-console-producer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt;/span&gt; kafka-svc:9092 &lt;span class=&quot;nt&quot;&gt;--topic&lt;/span&gt; my-topic
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;All pods must be running&lt;/p&gt;
-&lt;/blockquote&gt;
 
 &lt;p&gt;3) Consume message&lt;/p&gt;
 
