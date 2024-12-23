@@ -1,0 +1,7 @@
+https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/_grimoire/asdf.txt
+https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/_grimoire/blogs.txt
+https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/_grimoire/books.txt
+https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/_grimoire/mise.txt
+https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/_grimoire/repositories.txt
+https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/_grimoire/setup.txt
+https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/_grimoire/tricks.txt

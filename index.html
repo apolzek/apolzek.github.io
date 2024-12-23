@@ -1,0 +1,102 @@
+---
+layout: default
+---
+<section id="intro" class="hidden-content">
+    <div class="flex-row-between">
+
+        <h2>
+            <a href="https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/_grimoire/robots.txt" target="_"
+                style="color: inherit; text-decoration: none;">🔥 Notes</a> from a Reliability Engineer <span
+                id="craziness" style="font-style: italic; opacity: 0.6;">and other
+                craziness</span>
+        </h2>
+        <button title="Change theme" id="theme-toggle" onclick="modeSwitcher()">
+            <div></div>
+        </button>
+    </div>
+    <div>
+        <i>by</i> <b>Vinícius Batista</b> 🇧🇷; <i>last updated on</i> <b>2024.12</b>
+    </div>
+    <br>
+    <br>
+    <div>
+        <i>The content below is highly questionable</i>
+    </div>
+    <br>
+
+    <div class="search-article">
+        <label for="search-input" aria-hidden="true">
+            <!-- Magnifier -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="rgba(128,128,128,0.8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-search">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+        </label>
+
+        <input type="search" id="search-input" placeholder="Busca" aria-label="Search">
+        <ul id="search-results"></ul>
+    </div>
+
+    <section class="posts" id="Blog">
+        <h2>Posts</h2>
+        <ul>
+            {% for post in paginator.posts %}
+            <li>
+                <a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
+                <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d, %Y" }}</time>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <!-- Navegação de Paginação -->
+        <nav class="pagination">
+            {% if paginator.previous_page %}
+            <a href="{{ paginator.previous_page_path }}" class="prev">Previous</a>
+            {% endif %}
+
+            {% if paginator.next_page %}
+            <a href="{{ paginator.next_page_path }}" class="next">Next</a>
+            {% endif %}
+        </nav>
+    </section>
+
+</section>
+
+<style>
+    .hidden-content {
+        display: none;
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .pagination a {
+        text-decoration: none;
+        color: inherit;
+        /* Mantém a cor original do texto */
+        margin: 0 15px;
+        /* Define o espaçamento entre os links */
+        font-weight: normal;
+        /* Define o peso do texto normal */
+        transition: font-weight 0.2s ease, text-shadow 0.2s ease;
+        /* Transição suave para o efeito de hover */
+    }
+
+    .pagination a:hover {
+        font-weight: bold;
+        /* Deixa o texto em negrito no hover */
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+        /* Efeito de brilho suave */
+    }
+</style>
+
+<script>
+    document.addEventListener('dblclick', function () {
+        document.getElementById('intro').classList.remove('hidden-content');
+    });
+</script>

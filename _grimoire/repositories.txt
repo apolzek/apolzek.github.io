@@ -1,0 +1,128 @@
+# Medium blog projects. gRPC, Distributed Http Tracing, Redis Cluster.
+https://github.com/mertcakmak2/Medium-Stories-Projects
+
+# This repo contains Kubernetes manifests for the below mentioned topics
+https://github.com/pavan-kumar-99/medium-manifests
+
+# Table-writer and more in golang!
+https://github.com/jedib0t/go-pretty
+
+# A Go CRUD API framework so simple a baby could use it.
+https://github.com/calvinmclean/babyapi?tab=readme-ov-file
+
+# 🔐 A CLI tool to extract server certificates
+https://github.com/Hakky54/certificate-ripper
+
+# git clone all repositories and gists from a given GitHub username
+https://github.com/merces/repoget
+
+# A collection of docker-compose files
+https://github.com/jonatan-ivanov/local-services/
+
+# Code examples of Design Patterns in various languages: C#, C++, Go, Java, JavaScript, Python, and Swift.
+https://github.com/MilovanTomasevic/Design-Patterns
+
+# WebDriver for Firefox
+https://github.com/mozilla/geckodriver
+
+# Scalable and flexible workflow orchestration platform that seamlessly unifies data, ML and analytics stacks.
+https://github.com/flyteorg/flyte
+
+# A Grub Theme in the style of Minecraft!
+https://github.com/Lxtharia/minegrub-theme
+
+# Nextcloud
+https://github.com/nextcloud
+
+# Deploy a Production Ready Kubernetes Cluster
+https://github.com/kubernetes-sigs/kubespray
+
+# GPT4All: Run Local LLMs on Any Device. Open-source and available for commercial use.
+https://github.com/nomic-ai/gpt4all
+
+# A cli that exposes your local resources to kubernetes
+https://github.com/omrikiei/ktunnel
+
+# CasaOS
+https://github.com/IceWhaleTech/CasaOS
+
+# Helm chart for Vaultwarden, the (unofficial) Bitwarden-compatible server written in Rust, formerly known as bitwarden_rs
+https://github.com/guerzon/vaultwarden
+
+# ⏰ 🔥 A TCP proxy to simulate network and system conditions for chaos and resiliency testing
+https://github.com/Shopify/toxiproxy
+
+# Lightweight network IP scanner. Can be used to notify about new hosts and monitor host online/offline history
+https://github.com/aceberg/WatchYourLAN
+
+# Open Source realtime backend in 1 file
+https://github.com/pocketbase/pocketbase
+
+# Ultimate camera streaming application with support RTSP, RTMP, HTTP-FLV, WebRTC, MSE, HLS, MP4, MJPEG, HomeKit, FFmpeg, etc.
+https://github.com/AlexxIT/go2rtc
+
+# The modern API client that lives in your terminal.
+https://github.com/darrenburns/posting
+
+# Pretty fancy and modern terminal file manager
+https://github.com/yorukot/superfile
+
+# A open contribute bootcamp to develop DevSecOps skills...
+https://github.com/devsecops/bootcamp
+
+# Open Source Continuous File Synchronization
+https://github.com/syncthing/syncthing
+
+# Windows inside a Docker container.
+https://github.com/dockur/windows
+
+# The free, Open Source alternative to OpenAI, Claude and others. Self-hosted and local-first. Drop-in replacement for OpenAI, running on consumer-grade hardware. No GPU required. 
+https://github.com/mudler/LocalAI
+
+# For automated installation of Hyprland on Arch or any arch based distros
+https://github.com/JaKooLit/Arch-Hyprland
+
+# Aesthetic, dynamic and minimal dots for Arch hyprland
+https://github.com/prasanthrangan/hyprdots
+
+# Open Source Feature Flagging and Remote Config Service. Host on-prem or use our hosted version at
+https://github.com/Flagsmith/flagsmith
+
+# Dockerized cluster architecture for OpenSearch with compose.
+https://github.com/flavienbwk/opensearch-docker-compose
+
+# A set of modern Grafana dashboards for Kubernetes.
+https://github.com/dotdc/grafana-dashboards-kubernetes
+
+# A fancy self-hosted monitoring tool
+https://github.com/louislam/uptime-kuma
+
+# Send push notifications to your phone or desktop using PUT/POST
+https://github.com/binwiederhier/notify
+
+# Cluster capacity analysis
+https://github.com/kubernetes-sigs/cluster-capacity
+
+# Free and Open Source PaaS-platform for seamless management of virtual machines, managed Kubernetes, and Databases-as-a-Service
+https://github.com/aenix-io/cozystack
+
+# This is the stress-ng upstream project git repository. stress-ng will stress test a computer system in various selectable ways. It was designed to exercise various physical subsystems of a computer as well as the various operating system kernel interfaces.
+https://github.com/ColinIanKing/stress-ng
+
+# web ui for GOST API management
+https://github.com/go-gost/gost-ui
+
+# A Golang Tool to discover unused Kubernetes Resources
+https://github.com/yonahd/kor
+
+# A docker-powered PaaS that helps you build and manage the lifecycle of applications
+https://github.com/dokku/dokku
+
+# Coroot is an open-source APM & Observability tool, a DataDog and NewRelic alternative
+https://github.com/coroot/coroot
+
+# 🔭 Powerful tool for testing WebHooks and more
+https://github.com/tarampampam/webhook-tester
+
+# Go security checker
+https://github.com/securego/gosec

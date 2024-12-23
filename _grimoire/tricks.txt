@@ -1,0 +1,83 @@
++------------------------------------------+
+|     Delete All Commit History on GitHub  |
++------------------------------------------+
+
+git checkout --orphan latest_branch
+git add -A
+git commit -am "reset configs"
+git branch -D main
+git branch -m main
+git push -f origin main
+
++---------------------------+
+|     Send text using ICMP  |
++---------------------------+
+
+# Envio
+payload=$(echo -n "Hello" | xxd -p)
+echo $payload
+len=$(($(echo $payload | wc -c | tr -s " ") + 2))
+echo $len
+ping -s$len -c4 -p$payload 127.0.0.1
+# Recebimento
+tshark -l -i lo0 -Y "icmp" -T fields -e data | xxd -r
+
++----------------------+
+|  Chrome Bookmarks    |
++----------------------+
+
+cat ~/.config/google-chrome/Default/Bookmarks | jq -r '.roots.bookmark_bar.children[] | select(.name == "tree") | .children[] | select(.name == "blogs") | .children[] | .url'
+
++--------------------+
+|  Post-inst docker  |
++--------------------+
+
+sudo usermod -aG docker $USER
+exec su -l $USER
+groups $USER
+docker ps
+
++-------------------+
+|  k6 Load testing  |
++-------------------+
+
+```
+import http from 'k6/http';
+import { sleep } from 'k6';
+
+export const options = {
+    stages: [
+        {
+            duration: '10s',
+            target: 100
+        },
+        {
+            duration: '30s',
+            target: 100
+        },
+        {
+            duration: '10s',
+            target: 0
+        }
+    ]
+}
+
+export default function () {
+    http.get('http://192.168.68.108:3000');
+    sleep(1);
+}
+```
+
++--------------------------+
+|  ntfy send notification  |
++--------------------------+
+
+curl \
+  -d "Backup successful 😀" \
+ ffmpeg -i 2024-11-22\ 12-19-09.mp4 -c:v prores -profile:v 3 -c:a pcm_s16le output.mov ntfy.sh/mytopic
+
++-------------------------+
+|  convert video Davinci  |
++-------------------------+
+
+ffmpeg -i input.mp4 -c:v prores -profile:v 3 -c:a pcm_s16le output.mov

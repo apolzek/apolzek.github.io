@@ -1,0 +1,7 @@
+---
+layout: none
+---
+
+User-agent: *
+Disallow: /_grimoire/
+Sitemap: {{ site.url }}/sitemap.xml
