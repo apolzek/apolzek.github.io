@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2024-12-23T02:11:20+00:00</updated>
+ <updated>2024-12-23T16:44:21+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -896,11 +896,13 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
   &lt;li&gt;Fixing is better than criticizing, but any interaction is valuable;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;remember&quot;&gt;REMEMBER&lt;/h2&gt;
+&lt;h2 id=&quot;other-projects&quot;&gt;OTHER PROJECTS&lt;/h2&gt;
 
-&lt;p&gt;🇺🇸 “The only way to make things work well is by understanding why they break.”&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;@ENV666&lt;/strong&gt; is a channel where I will share the results of some proof of concepts (POCs) focused on reliability engineering. The idea is to take down environments and make things break 🔗 https://www.youtube.com/@ENV666&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;@achadosdogithub&lt;/strong&gt; is a channel where I aim to give visibility to projects that are highly useful, whether for learning code or discovering cool tools 🔗 https://www.youtube.com/@achadosdogithub&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;🇧🇷 “A única maneira de fazer as coisas funcionarem bem é entendendo o motivo pelo qual elas quebram.”&lt;/p&gt;
 </content>
  </entry>
  
