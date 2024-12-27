@@ -86,3 +86,6 @@ The caching system (not the application) manages reading data from the cache or 
 | 4 Nodes, 2 Shards, 1 Réplica | Cluster     | 4     | 2      | 1                  | 2              |
 | 6 Nodes, 3 Shards, 1 Réplica | Cluster     | 6     | 3      | 1                  | 3              |
 | 8 Nodes, 4 Shards, 1 Réplica | Cluster     | 8     | 4      | 1                  | 4              |
+
+
+<!-- https://levelup.gitconnected.com/mastering-caching-in-distributed-applications-e7449f4db399 -->

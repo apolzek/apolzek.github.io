@@ -126,3 +126,6 @@ https://github.com/tarampampam/webhook-tester
 
 # Go security checker
 https://github.com/securego/gosec
+
+# goexpert
+https://github.com/devfullcycle/goexpert
