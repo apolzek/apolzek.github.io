@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2025-01-03T04:24:13+00:00</updated>
+ <updated>2025-01-04T20:31:29+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>Tech challenges in Brazil 2025</title>
-   <link href="https://apolzek.github.io/2025/01/25/tech-challenges-in-brazil-2025"/>
-   <updated>2025-01-25T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2025/01/25/tech-challenges-in-brazil-2025</id>
+   <link href="https://apolzek.github.io/2024/12/29/tech-challenges-in-brazil-2025"/>
+   <updated>2024-12-29T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2024/12/29/tech-challenges-in-brazil-2025</id>
    <content type="html">&lt;p&gt;&lt;strong&gt;saving your time&lt;/strong&gt;: &lt;em&gt;I need to provide some context so you can decide whether to keep reading or not. First, I work in the banking sector in Brazil as a reliability engineer. I have some experience in telecommunications and internal platforms. What follows is my personal opinion, and you’re welcome to offer counterpoints.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;The year is coming to an end, and this article reflects a personal opinion on the challenges in the technology sector. I would greatly appreciate receiving counterpoints or comments from others on the subject.&lt;/p&gt;
@@ -29,6 +29,8 @@
 
 &lt;p&gt;The topic of security has significantly complicated my daily work routine, while also generating a growing backlog for reliability and software engineering teams. Everyone knows that security must be embedded in every level of an organization, as well as within individuals. It plays a vital role in the business and goes beyond the technological sphere. Having worked with banks and fintechs, I understand that security is even more critical in these environments, where organizations face numerous regulatory requirements and compliance obligations. I see this topic as a significant challenge because it directly affects employees’ lives, who often feel unproductive or pressured by the bureaucracy applied to technology and processes. A simple analogy: imagine you’re teaching your child to ride a bike but want to ensure they don’t get hurt if they fall. You equip them with every possible safety device so that even if they fall, they won’t be injured. However, the excess of equipment makes it impossible for them to ride the bike. This isn’t about debating whether we need security, that’s already clear. Instead, we should reflect on how we want to approach security and strike the right balance to ensure both safety and efficiency.&lt;/p&gt;
 
+&lt;p&gt;Note: &lt;em&gt;I believe this topic is directly linked to burnouts&lt;/em&gt;&lt;/p&gt;
+
 &lt;h2 id=&quot;building-economically&quot;&gt;Building economically&lt;/h2&gt;
 
 &lt;p&gt;In the market where I operate, FinOps-related matters are often unclear, especially regarding how organizations are willing to spend heavily to ensure a good end-user experience. This frequently happens even in business areas that do not generate significant financial returns. The challenge here is that this mindset often leads to extremely expensive technical decisions. Companies consistently aim for extraordinarily high SLAs, relying on costly cloud provider components. Have you ever considered how much a large company spends just to achieve observability for its applications ? Observability rarely offers a direct financial return for most companies, yet the associated costs are typically very high. This happens because the same solution used to monitor core business components is also employed to observe non-critical internal systems. The key point is that the cost-saving perspective often comes only after implementation. It is rare for debates to focus on high costs upfront. Discussions usually center around whether a solution can handle the required load or if it is highly available, with little attention to how much it will cost over time. This approach comes at a high price—literally.&lt;/p&gt;
@@ -36,6 +38,12 @@
 &lt;h2 id=&quot;scaling-with-resilience&quot;&gt;Scaling with resilience&lt;/h2&gt;
 
 &lt;p&gt;The use of complex architectures with microservices, non-relational databases, and messaging services is common in organizations that need to scale to serve a large number of users. While complexity is relative, dealing with systems composed of various subsystems and different levels of abstraction often makes decision-making challenging, especially during critical situations. I have witnessed scenarios where the feature toggle system of an application failed, directly impacting the application’s functionality. I have also seen cases where a cache system failure brought an entire product down. These fragilities have cost me many sleepless nights. For 2025, the challenge I propose is to develop solutions that can scale without being overly sensitive to dependencies, operate with alternative paths, and recover from potential failures autonomously and efficiently.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/apolzek/apolzek.github.io/refs/heads/main/assets/gif/done.webp&quot; alt=&quot;working&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Honestly, I think these are the main challenges for 2025 in my line of work. So, what’s the plan ?? We tackle them head-on. The idea is to deliver value, get stuff done, and have some fun along the way, working with Delphi or whipping up a new CI/CD pipeline. The best way to not let these challenges get to you ? Just do a solid job and keep it chill.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Happy New Year&lt;/strong&gt; 🎉🎉🎉🎉&lt;/p&gt;
 </content>
  </entry>
  
