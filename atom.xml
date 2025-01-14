@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2025-01-04T20:31:29+00:00</updated>
+ <updated>2025-01-14T15:24:43+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -13,13 +13,11 @@
 
  
  <entry>
-   <title>Tech challenges in Brazil 2025</title>
+   <title>Tech challenges in Brazil 2025(my opinion)</title>
    <link href="https://apolzek.github.io/2024/12/29/tech-challenges-in-brazil-2025"/>
    <updated>2024-12-29T00:00:00+00:00</updated>
    <id>https://apolzek.github.io/2024/12/29/tech-challenges-in-brazil-2025</id>
-   <content type="html">&lt;p&gt;&lt;strong&gt;saving your time&lt;/strong&gt;: &lt;em&gt;I need to provide some context so you can decide whether to keep reading or not. First, I work in the banking sector in Brazil as a reliability engineer. I have some experience in telecommunications and internal platforms. What follows is my personal opinion, and you’re welcome to offer counterpoints.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;The year is coming to an end, and this article reflects a personal opinion on the challenges in the technology sector. I would greatly appreciate receiving counterpoints or comments from others on the subject.&lt;/p&gt;
+   <content type="html">&lt;p&gt;&lt;strong&gt;saving your time&lt;/strong&gt;: &lt;em&gt;This is just my opinion on challenges in tech field, based on my work in the banking sector in Brazil as a reliability engineer. I’m open to counterpoints.&lt;/em&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;managing-software-with-more-software&quot;&gt;Managing software with more software&lt;/h2&gt;
 
@@ -951,7 +949,6 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
   &lt;li&gt;&lt;strong&gt;@ENV666&lt;/strong&gt; is a channel where I will share the results of some proof of concepts (POCs) focused on reliability engineering. The idea is to take down environments and make things break 🔗 &lt;a href=&quot;https://www.youtube.com/@ENV666&quot;&gt;https://www.youtube.com/@ENV666&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;@achadosdogithub&lt;/strong&gt; is a channel where I aim to give visibility to projects that are highly useful, whether for learning code or discovering cool tools 🔗 &lt;a href=&quot;https://www.youtube.com/@achadosdogithub&quot;&gt;https://www.youtube.com/@achadosdogithub&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
 </content>
  </entry>
  
