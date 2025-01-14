@@ -1,15 +1,13 @@
 ---
 layout: post
-title: Tech challenges in Brazil 2025
+title: Tech challenges in Brazil 2025(my opinion)
 description:
 summary:
 tags: challenges tech
 minute: 4
 ---
 
-**saving your time**: *I need to provide some context so you can decide whether to keep reading or not. First, I work in the banking sector in Brazil as a reliability engineer. I have some experience in telecommunications and internal platforms. What follows is my personal opinion, and you're welcome to offer counterpoints.*
-
-The year is coming to an end, and this article reflects a personal opinion on the challenges in the technology sector. I would greatly appreciate receiving counterpoints or comments from others on the subject.
+**saving your time**: *This is just my opinion on challenges in tech field, based on my work in the banking sector in Brazil as a reliability engineer. I'm open to counterpoints.*
 
 ## Managing software with more software
 

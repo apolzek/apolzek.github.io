@@ -35,4 +35,3 @@ minute: 2
 
 - **@ENV666** is a channel where I will share the results of some proof of concepts (POCs) focused on reliability engineering. The idea is to take down environments and make things break 🔗 [https://www.youtube.com/@ENV666](https://www.youtube.com/@ENV666)
 - **@achadosdogithub** is a channel where I aim to give visibility to projects that are highly useful, whether for learning code or discovering cool tools 🔗 [https://www.youtube.com/@achadosdogithub](https://www.youtube.com/@achadosdogithub)
-

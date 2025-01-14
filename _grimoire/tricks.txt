@@ -81,3 +81,9 @@ curl \
 +-------------------------+
 
 ffmpeg -i input.mp4 -c:v prores -profile:v 3 -c:a pcm_s16le output.mov
+
++--------------------------------+
+| Generate traces open-telemetry |
++--------------------------------+
+
+for i in $(seq 1 200); do echo $i;  telemetrygen traces --otlp-insecure --traces 1 --service telemetrygen; sleep 0.5; done
