@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2025-01-14T15:24:43+00:00</updated>
+ <updated>2025-01-22T15:44:48+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -17,7 +17,7 @@
    <link href="https://apolzek.github.io/2024/12/29/tech-challenges-in-brazil-2025"/>
    <updated>2024-12-29T00:00:00+00:00</updated>
    <id>https://apolzek.github.io/2024/12/29/tech-challenges-in-brazil-2025</id>
-   <content type="html">&lt;p&gt;&lt;strong&gt;saving your time&lt;/strong&gt;: &lt;em&gt;This is just my opinion on challenges in tech field, based on my work in the banking sector in Brazil as a reliability engineer. I’m open to counterpoints.&lt;/em&gt;&lt;/p&gt;
+   <content type="html">&lt;p&gt;&lt;strong&gt;saving your time&lt;/strong&gt;: *This is just my opinion on challenges in tech field, based on my work in the banking sector in Brazil as a reliability engineer(100% biased).&lt;/p&gt;
 
 &lt;h2 id=&quot;managing-software-with-more-software&quot;&gt;Managing software with more software&lt;/h2&gt;
 
@@ -27,7 +27,7 @@
 
 &lt;p&gt;The topic of security has significantly complicated my daily work routine, while also generating a growing backlog for reliability and software engineering teams. Everyone knows that security must be embedded in every level of an organization, as well as within individuals. It plays a vital role in the business and goes beyond the technological sphere. Having worked with banks and fintechs, I understand that security is even more critical in these environments, where organizations face numerous regulatory requirements and compliance obligations. I see this topic as a significant challenge because it directly affects employees’ lives, who often feel unproductive or pressured by the bureaucracy applied to technology and processes. A simple analogy: imagine you’re teaching your child to ride a bike but want to ensure they don’t get hurt if they fall. You equip them with every possible safety device so that even if they fall, they won’t be injured. However, the excess of equipment makes it impossible for them to ride the bike. This isn’t about debating whether we need security, that’s already clear. Instead, we should reflect on how we want to approach security and strike the right balance to ensure both safety and efficiency.&lt;/p&gt;
 
-&lt;p&gt;Note: &lt;em&gt;I believe this topic is directly linked to burnouts&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;🗣️ &lt;em&gt;I believe this topic is directly linked to burnouts&lt;/em&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;building-economically&quot;&gt;Building economically&lt;/h2&gt;
 
@@ -519,12 +519,12 @@ example.sh:10:7: error: Missing &apos;fi&apos; to end &apos;if&apos; statement. 
   &lt;li&gt;&lt;a href=&quot;#index&quot;&gt;Index&lt;/a&gt;
     &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#create-kubernetes-cluster-with-kind&quot;&gt;Create kubernetes cluster with kind&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#kafka&quot;&gt;Kafka&lt;/a&gt;
+      &lt;li&gt;&lt;a href=&quot;#install-kafka&quot;&gt;Install Kafka&lt;/a&gt;
         &lt;ul&gt;
           &lt;li&gt;&lt;a href=&quot;#kafka-kraft-x-kafka-with-zookeeper&quot;&gt;Kafka KRaft x Kafka with ZooKeeper&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#rabbitmq&quot;&gt;RabbitMQ&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#install-rabbitmq&quot;&gt;Install RabbitMQ&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -554,7 +554,7 @@ example.sh:10:7: error: Missing &apos;fi&apos; to end &apos;if&apos; statement. 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kind create cluster &lt;span class=&quot;nt&quot;&gt;--config&lt;/span&gt; /tmp/kind-config.yaml &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; my-cluster
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;kafka&quot;&gt;Kafka&lt;/h2&gt;
+&lt;h2 id=&quot;install-kafka&quot;&gt;Install Kafka&lt;/h2&gt;
 
 &lt;p&gt;1) Apply yaml&lt;/p&gt;
 
@@ -672,7 +672,7 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
 
 &lt;p&gt;&lt;strong&gt;Kafka with ZooKeeper&lt;/strong&gt;: In traditional Kafka deployments, ZooKeeper is used to manage the cluster’s metadata, such as broker details and topic configurations. ZooKeeper handles tasks like leader election and tracking which brokers are active. While this setup has been robust for years, it adds complexity by requiring an additional service (ZooKeeper) that must be installed, managed, and maintained alongside Kafka.&lt;/p&gt;
 
-&lt;h2 id=&quot;rabbitmq&quot;&gt;RabbitMQ&lt;/h2&gt;
+&lt;h2 id=&quot;install-rabbitmq&quot;&gt;Install RabbitMQ&lt;/h2&gt;
 
 &lt;p&gt;1) Create a YAML file &lt;em&gt;/tmp/rabbitmq.yml&lt;/em&gt; with the content below&lt;/p&gt;
 
@@ -943,12 +943,11 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
   &lt;li&gt;Fixing is better than criticizing, but any interaction is valuable.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;other-projects&quot;&gt;OTHER PROJECTS&lt;/h2&gt;
+&lt;!-- 
+## OTHER PROJECTS
 
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;@ENV666&lt;/strong&gt; is a channel where I will share the results of some proof of concepts (POCs) focused on reliability engineering. The idea is to take down environments and make things break 🔗 &lt;a href=&quot;https://www.youtube.com/@ENV666&quot;&gt;https://www.youtube.com/@ENV666&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;@achadosdogithub&lt;/strong&gt; is a channel where I aim to give visibility to projects that are highly useful, whether for learning code or discovering cool tools 🔗 &lt;a href=&quot;https://www.youtube.com/@achadosdogithub&quot;&gt;https://www.youtube.com/@achadosdogithub&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+- **@ENV666** is a channel where I will share the results of some proof of concepts (POCs) focused on reliability engineering. The idea is to take down environments and make things break 🔗 [https://www.youtube.com/@ENV666](https://www.youtube.com/@ENV666)
+- **@achadosdogithub** is a channel where I aim to give visibility to projects that are highly useful, whether for learning code or discovering cool tools 🔗 [https://www.youtube.com/@achadosdogithub](https://www.youtube.com/@achadosdogithub) --&gt;
 </content>
  </entry>
  
