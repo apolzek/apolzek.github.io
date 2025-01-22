@@ -13,9 +13,9 @@ minute: 10
 
 - [Index](#index)
   - [Create kubernetes cluster with kind](#create-kubernetes-cluster-with-kind)
-  - [Kafka](#kafka)
+  - [Install Kafka](#install-kafka)
     - [Kafka KRaft x Kafka with ZooKeeper](#kafka-kraft-x-kafka-with-zookeeper)
-  - [RabbitMQ](#rabbitmq)
+  - [Install RabbitMQ](#install-rabbitmq)
 
 ## Create kubernetes cluster with kind
 
@@ -44,7 +44,7 @@ EOF
 kind create cluster --config /tmp/kind-config.yaml --name my-cluster
 ```
 
-## Kafka
+## Install Kafka
 
 1) Apply yaml
 
@@ -162,7 +162,7 @@ kafka-topics.sh --delete --topic my-topic --bootstrap-server kafka-svc:9092
 
 **Kafka with ZooKeeper**: In traditional Kafka deployments, ZooKeeper is used to manage the cluster’s metadata, such as broker details and topic configurations. ZooKeeper handles tasks like leader election and tracking which brokers are active. While this setup has been robust for years, it adds complexity by requiring an additional service (ZooKeeper) that must be installed, managed, and maintained alongside Kafka.
 
-## RabbitMQ
+## Install RabbitMQ
 
 1) Create a YAML file */tmp/rabbitmq.yml* with the content below
 

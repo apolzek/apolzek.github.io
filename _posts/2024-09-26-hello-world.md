@@ -31,7 +31,8 @@ minute: 2
 - There is 🕵️ hidden content within this blog; you can find it by exploring or inspecting the source code;
 - Fixing is better than criticizing, but any interaction is valuable.
 
+<!-- 
 ## OTHER PROJECTS
 
 - **@ENV666** is a channel where I will share the results of some proof of concepts (POCs) focused on reliability engineering. The idea is to take down environments and make things break 🔗 [https://www.youtube.com/@ENV666](https://www.youtube.com/@ENV666)
-- **@achadosdogithub** is a channel where I aim to give visibility to projects that are highly useful, whether for learning code or discovering cool tools 🔗 [https://www.youtube.com/@achadosdogithub](https://www.youtube.com/@achadosdogithub)
+- **@achadosdogithub** is a channel where I aim to give visibility to projects that are highly useful, whether for learning code or discovering cool tools 🔗 [https://www.youtube.com/@achadosdogithub](https://www.youtube.com/@achadosdogithub) -->
