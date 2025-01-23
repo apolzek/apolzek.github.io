@@ -87,3 +87,14 @@ ffmpeg -i input.mp4 -c:v prores -profile:v 3 -c:a pcm_s16le output.mov
 +--------------------------------+
 
 for i in $(seq 1 200); do echo $i;  telemetrygen traces --otlp-insecure --traces 1 --service telemetrygen; sleep 0.5; done
+
++---------------------+
+| curl with --resolve |
++---------------------+
+
+Force curl to resolve meuservidor.com on port 8080 to the IP 192.168.0.100
+
+```
+curl --resolve meuservidor.com:8080:192.168.0.100 http://meuservidor.com:8080
+curl --resolve google.com:8888:127.0.0.1 https://google.com:8888
+```
