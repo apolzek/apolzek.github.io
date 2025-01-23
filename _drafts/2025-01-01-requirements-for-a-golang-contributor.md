@@ -3,7 +3,7 @@ layout: post
 title: Requirements for a Golang contributor
 description:
 summary:
-tags: golang openseource
+tags: golang opensource
 minute: 6
 ---
 
