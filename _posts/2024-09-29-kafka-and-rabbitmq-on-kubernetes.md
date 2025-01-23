@@ -9,17 +9,17 @@ minute: 10
 
 **saving your time**: *manifests to deploy kafka and rabbitmq as stateful set in kind (k8s local)*
 
-# Index
+## Index
 
 - [Index](#index)
-  - [Create kubernetes cluster with kind](#create-kubernetes-cluster-with-kind)
-  - [Install Kafka](#install-kafka)
-    - [Kafka KRaft x Kafka with ZooKeeper](#kafka-kraft-x-kafka-with-zookeeper)
-  - [Install RabbitMQ](#install-rabbitmq)
+- [Create kubernetes cluster with kind](#create-kubernetes-cluster-with-kind)
+- [Install Kafka](#install-kafka)
+  - [Kafka KRaft x Kafka with ZooKeeper](#kafka-kraft-x-kafka-with-zookeeper)
+- [Install RabbitMQ](#install-rabbitmq)
 
 ## Create kubernetes cluster with kind
 
-1) Create kind configuration(*kind-config.yaml*)
+1. Create kind configuration(*kind-config.yaml*)
 
 ```yaml
 cat <<EOF > /tmp/kind-config.yaml
@@ -38,7 +38,7 @@ nodes:
 EOF
 ```
 
-2) Create a kind cluster
+2. Create a kind cluster
 
 ```bash
 kind create cluster --config /tmp/kind-config.yaml --name my-cluster
@@ -46,7 +46,7 @@ kind create cluster --config /tmp/kind-config.yaml --name my-cluster
 
 ## Install Kafka
 
-1) Apply yaml
+1. Apply yaml
 
 ```yaml
 cat <<EOF | kubectl apply -f -
@@ -128,9 +128,10 @@ spec:
     app: kafka-app
 EOF
 ```
+
 > 🕗 Wait until all 3 Kafka pods are in the "Running" state.
 
-2) Create a topic
+2. Create a topic
 
 ```sh
 kubectl exec -it kafka-0 -n kafka -- bash
@@ -141,17 +142,18 @@ kafka-topics.sh --list --topic my-topic --bootstrap-server kafka-svc:9092
 kafka-console-producer.sh --bootstrap-server kafka-svc:9092 --topic my-topic
 ```
 
-3) Consume message
+3. Consume message
 
 ```sh
 # consumer
 kubectl exec -it kafka-1 -n kafka -- bash
 kafka-console-consumer.sh --bootstrap-server kafka-svc:9092 --topic my-topic
 ```
+
 > Run the producer and consumer in different Linux terminals
 
-4) Delete topic
-   
+4. Delete topic
+
 ```sh
 kafka-topics.sh --delete --topic my-topic --bootstrap-server kafka-svc:9092
 ```
@@ -164,7 +166,7 @@ kafka-topics.sh --delete --topic my-topic --bootstrap-server kafka-svc:9092
 
 ## Install RabbitMQ
 
-1) Create a YAML file */tmp/rabbitmq.yml* with the content below
+1. Create a YAML file */tmp/rabbitmq.yml* with the content below
 
 ```yaml
 apiVersion: v1
@@ -237,7 +239,7 @@ data:
     ## Set to "hostname" to use pod hostnames.
     ## When this value is changed, so should the variable used to set the RABBITMQ_NODENAME
     ## environment variable.
-    cluster_formation.k8s.address_type = hostname	  
+    cluster_formation.k8s.address_type = hostname   
     ## Important - this is the suffix of the hostname, as each node gets "rabbitmq-#", we need to tell what's the suffix
     ## it will give each new node that enters the way to contact the other peer node and join the cluster (if using hostname)
     cluster_formation.k8s.hostname_suffix = .rabbitmq.test-rabbitmq.svc.cluster.local
@@ -383,16 +385,16 @@ spec:
     app: rabbitmq
 ```
 
-2) Apply file */tmp/rabbitmq.yml* 
+2. Apply file */tmp/rabbitmq.yml*
 
 ```sh
 kubectl apply -f /tmp/rabbitmq.yml
 ```
 
-3) Port-forward
+3. Port-forward
 
 ```sh
 kubectl port-forward svc/rabbitmq 15672:15672 -n rabbitmq
 ```
-> Access http://localhost:15672/ User: coelho Password: coelho@Pass
 
+> Access <http://localhost:15672/> User: coelho Password: coelho@Pass

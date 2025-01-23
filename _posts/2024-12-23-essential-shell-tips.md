@@ -387,7 +387,7 @@ shellcheck example.sh
 
 *Output from shellcheck*
 
-```
+```text
 example.sh:5:7: note: Double quote to prevent globbing and word splitting. [SC2086]
 example.sh:7:7: warning: Undefined variable: UNDEFINED_VAR. [SC2154]
 example.sh:10:7: error: Missing 'fi' to end 'if' statement. [SC1073]
