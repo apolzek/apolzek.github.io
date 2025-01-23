@@ -19,7 +19,7 @@ minute: 10
 
 ## Create kubernetes cluster with kind
 
-1. Create kind configuration(*kind-config.yaml*)
+1 Create kind configuration(*kind-config.yaml*)
 
 ```yaml
 cat <<EOF > /tmp/kind-config.yaml
@@ -38,7 +38,7 @@ nodes:
 EOF
 ```
 
-2. Create a kind cluster
+2 Create a kind cluster
 
 ```bash
 kind create cluster --config /tmp/kind-config.yaml --name my-cluster
@@ -46,7 +46,7 @@ kind create cluster --config /tmp/kind-config.yaml --name my-cluster
 
 ## Install Kafka
 
-1. Apply yaml
+1 Apply yaml
 
 ```yaml
 cat <<EOF | kubectl apply -f -
@@ -131,7 +131,7 @@ EOF
 
 > 🕗 Wait until all 3 Kafka pods are in the "Running" state.
 
-2. Create a topic
+2 Create a topic
 
 ```sh
 kubectl exec -it kafka-0 -n kafka -- bash
@@ -142,7 +142,7 @@ kafka-topics.sh --list --topic my-topic --bootstrap-server kafka-svc:9092
 kafka-console-producer.sh --bootstrap-server kafka-svc:9092 --topic my-topic
 ```
 
-3. Consume message
+3 Consume message
 
 ```sh
 # consumer
@@ -152,7 +152,7 @@ kafka-console-consumer.sh --bootstrap-server kafka-svc:9092 --topic my-topic
 
 > Run the producer and consumer in different Linux terminals
 
-4. Delete topic
+4 Delete topic
 
 ```sh
 kafka-topics.sh --delete --topic my-topic --bootstrap-server kafka-svc:9092
@@ -166,7 +166,7 @@ kafka-topics.sh --delete --topic my-topic --bootstrap-server kafka-svc:9092
 
 ## Install RabbitMQ
 
-1. Create a YAML file */tmp/rabbitmq.yml* with the content below
+1 Create a YAML file */tmp/rabbitmq.yml* with the content below
 
 ```yaml
 apiVersion: v1
@@ -385,13 +385,13 @@ spec:
     app: rabbitmq
 ```
 
-2. Apply file */tmp/rabbitmq.yml*
+2 Apply file */tmp/rabbitmq.yml*
 
 ```sh
 kubectl apply -f /tmp/rabbitmq.yml
 ```
 
-3. Port-forward
+3 Port-forward
 
 ```sh
 kubectl port-forward svc/rabbitmq 15672:15672 -n rabbitmq
