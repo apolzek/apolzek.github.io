@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2025-01-23T01:56:26+00:00</updated>
+ <updated>2025-01-23T21:20:08+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -33,7 +33,7 @@
 
 &lt;p&gt;In the market where I operate, FinOps-related matters are often unclear, especially regarding how organizations are willing to spend heavily to ensure a good end-user experience. This frequently happens even in business areas that do not generate significant financial returns. The challenge here is that this mindset often leads to extremely expensive technical decisions. Companies consistently aim for extraordinarily high SLAs, relying on costly cloud provider components. Have you ever considered how much a large company spends just to achieve observability for its applications ? Observability rarely offers a direct financial return for most companies, yet the associated costs are typically very high. This happens because the same solution used to monitor core business components is also employed to observe non-critical internal systems. The key point is that the cost-saving perspective often comes only after implementation. It is rare for debates to focus on high costs upfront. Discussions usually center around whether a solution can handle the required load or if it is highly available, with little attention to how much it will cost over time. This approach comes at a high price—literally.&lt;/p&gt;
 
-&lt;h2 id=&quot;scaling-with-resilience&quot;&gt;Scaling with resilience&lt;/h2&gt;
+&lt;h2 id=&quot;fragile-points-in-complex-systemsarchitectures&quot;&gt;Fragile points in complex systems/architectures&lt;/h2&gt;
 
 &lt;p&gt;The use of complex architectures with microservices, non-relational databases, and messaging services is common in organizations that need to scale to serve a large number of users. While complexity is relative, dealing with systems composed of various subsystems and different levels of abstraction often makes decision-making challenging, especially during critical situations. I have witnessed scenarios where the feature toggle system of an application failed, directly impacting the application’s functionality. I have also seen cases where a cache system failure brought an entire product down. These fragilities have cost me many sleepless nights. For 2025, the challenge I propose is to develop solutions that can scale without being overly sensitive to dependencies, operate with alternative paths, and recover from potential failures autonomously and efficiently.&lt;/p&gt;
 
