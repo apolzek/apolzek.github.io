@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Tech challenges in Brazil 2025(my opinion)
+title: The biggest reliability engineering challenges in 2025(From my perspective)
 description:
 summary:
 tags: challenges tech
