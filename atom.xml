@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2025-01-23T21:27:37+00:00</updated>
+ <updated>2025-02-10T22:38:04+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -13,10 +13,10 @@
 
  
  <entry>
-   <title>Tech challenges in Brazil 2025(my opinion)</title>
-   <link href="https://apolzek.github.io/2024/12/29/tech-challenges-in-brazil-2025"/>
+   <title>The biggest reliability engineering challenges in 2025(From my perspective)</title>
+   <link href="https://apolzek.github.io/2024/12/29/the-biggest-reliability-engineering-challenges-in-2025"/>
    <updated>2024-12-29T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2024/12/29/tech-challenges-in-brazil-2025</id>
+   <id>https://apolzek.github.io/2024/12/29/the-biggest-reliability-engineering-challenges-in-2025</id>
    <content type="html">&lt;p&gt;&lt;strong&gt;saving your time&lt;/strong&gt;: *This is just my opinion on challenges in tech field, based on my work in the banking sector in Brazil as a reliability engineer(100% biased).&lt;/p&gt;
 
 &lt;h2 id=&quot;managing-software-with-more-software&quot;&gt;Managing software with more software&lt;/h2&gt;
