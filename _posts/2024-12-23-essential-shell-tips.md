@@ -4,7 +4,7 @@ title: Essential shell tips for Linux enthusiasts
 description: Boost your Linux shell scripting skills with these advanced tips and examples
 summary:
 tags: linux shell script bash
-minute: 10
+minute: 8
 ---
 
 **saving your time**: *some tips for linux shell*

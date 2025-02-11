@@ -22,7 +22,7 @@ minute: 2
 - Track my studies with short reflective articles;
 - Share my views on technologies, processes, and products;
 - Soon, I will revisit my notes to see how my views on certain topics have changed;
-- Share the results of some POCs and labs with friends/colleagues(*maybe this will turn into a new project*).
+- Share the results of some POCs and labs with friends/colleagues.
 
 ## REMARKS
 
