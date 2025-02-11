@@ -4,13 +4,52 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2025-02-10T22:38:04+00:00</updated>
+ <updated>2025-02-11T10:55:35+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
    <email>viniciusgomes955@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Extracting Metrics from IIS Logs(iis_log_exporter)</title>
+   <link href="https://apolzek.github.io/2025/02/10/extracting-metrics-from-iis-logs"/>
+   <updated>2025-02-10T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2025/02/10/extracting-metrics-from-iis-logs</id>
+   <content type="html">&lt;p&gt;&lt;strong&gt;saving your time&lt;/strong&gt;: &lt;em&gt;How I built an IIS metrics exporter for a RED metrics dashboard&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;If you’re from the new generation and have never worked with IIS, let me introduce you to this legendary web server. It’s a secure, easy-to-manage, modular, and extensible platform for hosting websites, services, and applications (by Microsoft). That said… IIS isn’t exactly the hottest thing around these days and there are reasons for that. But, as the old saying goes: &lt;strong&gt;you don’t have to like it, but you should at least learn to live with it&lt;/strong&gt;!! 😆&lt;/p&gt;
+
+&lt;p&gt;My journey began when I was tasked with understanding the behavior of an IIS server, making it observable, and setting up alarms for potential issues. The first step was to install windows_exporter, which includes the IIS collector. While it provided many valuable metrics about IIS, it wasn’t exactly what I needed. What I was really looking for were RED metrics, more focused on HTTP responses from IIS. I researched some repositories but couldn’t find anything satisfactory. So, I decided to build my own exporter to gather these metrics.&lt;/p&gt;
+
+&lt;p&gt;I spent some time exploring IIS and realized that the only data source that truly met my needs was the logs. Although it wasn’t the most elegant solution, using them as a data source solved my problem and, of course, created other challenges. With that in mind, I developed a Python exporter that reads IIS log files from the corresponding folder, always pointing to and processing the logs of the day. The result is still in validation, but I’d like to share what I have so far.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/iis-dashboard-v2.png&quot; alt=&quot;iis&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The log files contained the request path, the method used, the status code, and the response time. These were exactly the pieces of information I needed. Using this data, I identified key metrics.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;iis_requests_duration_seconds = Histogram(
+    &quot;iis_requests_duration_seconds&quot;, &quot;Duration of HTTP requests in IIS&quot;,
+    [&quot;method&quot;, &quot;path&quot;]
+)
+
+iis_exceptions_total = Counter(
+    &quot;iis_exceptions_total&quot;, &quot;Total number of HTTP requests with 5xx status codes&quot;,
+    [&quot;method&quot;, &quot;path&quot;, &quot;status_code&quot;]
+)
+
+iis_requests_total = Counter(
+    &quot;iis_requests_total&quot;, &quot;Total number of HTTP responses from IIS&quot;,
+    [&quot;method&quot;, &quot;path&quot;, &quot;status_code&quot;]
+)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;From the beginning, my goal was never to replace the IIS module of windows_exporter, but rather to complement it with more detailed HTTP metrics for hosted applications. With this in mind, the final outcome I aim for is a dashboard that integrates the metrics from windows_exporter with those from iis_log_exporter. The main challenges I faced while building this exporter were, first, that I couldn’t keep re-reading the log file, as it could grow indefinitely and cause metric inconsistencies. Second, I always needed to read only the log files for the current day. To solve the first issue, I implemented an offset system where I store the last scraped line in a file. For the second, I used the file’s creation date from the OS while relying on its filename within the folder.&lt;/p&gt;
+
+&lt;p&gt;I know these approaches have potential failure points someone could manually add logs to the file, IIS configurations might generate logs missing key data that break the regex logic, and so on. That said, I recognize that this solution is still very tailored to my specific use case, but I hope it can evolve to support other legacy IIS systems out there.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>The biggest reliability engineering challenges in 2025(From my perspective)</title>
@@ -930,7 +969,7 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
   &lt;li&gt;Track my studies with short reflective articles;&lt;/li&gt;
   &lt;li&gt;Share my views on technologies, processes, and products;&lt;/li&gt;
   &lt;li&gt;Soon, I will revisit my notes to see how my views on certain topics have changed;&lt;/li&gt;
-  &lt;li&gt;Share the results of some POCs and labs with friends/colleagues(&lt;em&gt;maybe this will turn into a new project&lt;/em&gt;).&lt;/li&gt;
+  &lt;li&gt;Share the results of some POCs and labs with friends/colleagues.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;remarks&quot;&gt;REMARKS&lt;/h2&gt;
