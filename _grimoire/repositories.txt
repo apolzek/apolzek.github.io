@@ -132,3 +132,9 @@ https://github.com/devfullcycle/goexpert
 
 # A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet.
 https://github.com/fatedier/frp
+
+# Container introspection tool. Find out what container runtime is being used as well as features available.
+https://github.com/genuinetools/amicontained
+
+# Open source API development ecosystem - https://hoppscotch.io (open-source alternative to Postman, Insomnia)
+https://github.com/hoppscotch/hoppscotch

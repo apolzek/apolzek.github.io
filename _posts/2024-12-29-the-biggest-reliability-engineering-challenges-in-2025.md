@@ -7,7 +7,7 @@ tags: challenges tech
 minute: 3
 ---
 
-**saving your time**: *This is just my opinion on challenges in tech field, based on my work in the banking sector in Brazil as a reliability engineer(100% biased).
+**saving your time**: *This is just my opinion on challenges in tech field, based on my work in the banking sector in Brazil as a reliability engineer(100% biased)*
 
 ## Managing software with more software
 
