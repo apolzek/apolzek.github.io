@@ -1,9 +1,9 @@
 [
   
     {
-      "title"    : "Extracting Metrics from IIS Logs(iis_log_exporter)",
+      "title"    : "Extracting metrics from IIS logs(iis_log_exporter)",
       "category" : "",
-      "tags"     : "windows, metrics, exporter",
+      "tags"     : "windows, metrics, exporter, observability, prometheus",
       "url"      : "/2025/02/10/extracting-metrics-from-iis-logs",
       "date"     : "2025-02-10 00:00:00 +0000"
     } ,
