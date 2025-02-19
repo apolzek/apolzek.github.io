@@ -9,6 +9,8 @@ minute: 8
 
 **saving your time**: *some tips for linux shell*
 
+![typing](/assets/gif/typing.webp) 
+
 ## Index
 
 - [Index](#index)

@@ -40,7 +40,7 @@ iis_requests_total = Counter(
 )
 ```
 
-💬 From the beginning, my goal was never to **replace** the IIS module of **windows_exporter**, but rather to complement it with more detailed HTTP metrics for hosted applications. With this in mind, the final outcome I aim for is a 📊 dashboard that integrates the metrics from windows_exporter with those from iis_log_exporter. The main challenges I faced while building this exporter were, first, that I couldn’t keep re-reading the log file, as it could grow indefinitely and cause metric inconsistencies. Second, I always needed to read only the log files for the current day. To solve the first issue, I implemented an **offset** system where I store the last scraped line in a file. For the second, I used the file’s creation date from the OS while relying on its filename within the folder.
+💬 From the beginning, my goal was never to **replace** the IIS module of **windows_exporter**, but rather to complement it with more detailed HTTP metrics for hosted applications. With this in mind, the final outcome I aim for is a dashboard that integrates the metrics from windows_exporter with those from iis_log_exporter. The main challenges I faced while building this exporter were, first, that I couldn’t keep re-reading the log file, as it could grow indefinitely and cause metric inconsistencies. Second, I always needed to read only the log files for the current day. To solve the first issue, I implemented an **offset** system where I store the last scraped line in a file. For the second, I used the file’s creation date from the OS while relying on its filename within the folder.
 
 I know these approaches have potential failure points someone could manually add logs to the file, IIS configurations might generate logs missing key data that break the regex logic, and so on. That said, I recognize that this solution is still very tailored to my specific use case, but I hope it can evolve to support other legacy IIS systems out there.
 
@@ -49,7 +49,7 @@ I hope that by using it together with the IIS collector, you’ll achieve great 
 ![iis_collector](/assets/img/iis_collector.png) 
 [collector.iis](https://github.com/prometheus-community/windows_exporter/blob/master/docs/collector.iis.md)
 
-Pull requests are welcome in the exporter's repository !!! bye-bye
+Pull requests are welcome in the exporter's repository !! 🫶🏻 bye-bye
 
 <!-- 
 https://www.sysgauge.com/ 

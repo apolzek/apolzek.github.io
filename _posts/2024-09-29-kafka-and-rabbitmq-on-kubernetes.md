@@ -9,18 +9,23 @@ minute: 10
 
 **saving your time**: *manifests to deploy kafka and rabbitmq as stateful set in kind (k8s local)*
 
-| Item     | Version                                      |
-| -------- | -------------------------------------------- |
-| kafka    | docker.io/doughgle/kafka-kraft:latest        |
-| rabbitmq | docker.io/library/rabbitmq:3.13.7-management |
-
 ## Index
 
 - [Index](#index)
+- [prerequisites](#prerequisites)
 - [Create kubernetes cluster with kind](#create-kubernetes-cluster-with-kind)
 - [Install Kafka](#install-kafka)
   - [Kafka KRaft x Kafka with ZooKeeper](#kafka-kraft-x-kafka-with-zookeeper)
 - [Install RabbitMQ](#install-rabbitmq)
+
+## prerequisites
+
+| Item     | Version                                                                   |
+| -------- | ------------------------------------------------------------------------- |
+| kind     | kind version 0.26.0                                                       |
+| kubectl  | Client Version: v1.32.1 Kustomize Version: v5.5.0 Server Version: v1.32.0 |
+| kafka    | docker.io/doughgle/kafka-kraft:latest                                     |
+| rabbitmq | docker.io/library/rabbitmq:3.13.7-management                              |
 
 ## Create kubernetes cluster with kind
 
