@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2025-02-19T22:31:25+00:00</updated>
+ <updated>2025-02-19T22:39:05+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -66,6 +66,8 @@ ns      3600 IN A    192.168.100.172
    <updated>2025-02-19T00:00:00+00:00</updated>
    <id>https://apolzek.github.io/2025/02/19/adding-to-my-shell-arsenal</id>
    <content type="html">&lt;p&gt;&lt;strong&gt;saving your time&lt;/strong&gt;: &lt;em&gt;some tips for linux shell&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/gif/typing.webp&quot; alt=&quot;typing&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;index&quot;&gt;Index&lt;/h2&gt;
 
@@ -515,7 +517,7 @@ iis_requests_total = Counter(
 )
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;💬 From the beginning, my goal was never to &lt;strong&gt;replace&lt;/strong&gt; the IIS module of &lt;strong&gt;windows_exporter&lt;/strong&gt;, but rather to complement it with more detailed HTTP metrics for hosted applications. With this in mind, the final outcome I aim for is a 📊 dashboard that integrates the metrics from windows_exporter with those from iis_log_exporter. The main challenges I faced while building this exporter were, first, that I couldn’t keep re-reading the log file, as it could grow indefinitely and cause metric inconsistencies. Second, I always needed to read only the log files for the current day. To solve the first issue, I implemented an &lt;strong&gt;offset&lt;/strong&gt; system where I store the last scraped line in a file. For the second, I used the file’s creation date from the OS while relying on its filename within the folder.&lt;/p&gt;
+&lt;p&gt;💬 From the beginning, my goal was never to &lt;strong&gt;replace&lt;/strong&gt; the IIS module of &lt;strong&gt;windows_exporter&lt;/strong&gt;, but rather to complement it with more detailed HTTP metrics for hosted applications. With this in mind, the final outcome I aim for is a dashboard that integrates the metrics from windows_exporter with those from iis_log_exporter. The main challenges I faced while building this exporter were, first, that I couldn’t keep re-reading the log file, as it could grow indefinitely and cause metric inconsistencies. Second, I always needed to read only the log files for the current day. To solve the first issue, I implemented an &lt;strong&gt;offset&lt;/strong&gt; system where I store the last scraped line in a file. For the second, I used the file’s creation date from the OS while relying on its filename within the folder.&lt;/p&gt;
 
 &lt;p&gt;I know these approaches have potential failure points someone could manually add logs to the file, IIS configurations might generate logs missing key data that break the regex logic, and so on. That said, I recognize that this solution is still very tailored to my specific use case, but I hope it can evolve to support other legacy IIS systems out there.&lt;/p&gt;
 
@@ -524,7 +526,7 @@ iis_requests_total = Counter(
 &lt;p&gt;&lt;img src=&quot;/assets/img/iis_collector.png&quot; alt=&quot;iis_collector&quot; /&gt; 
 &lt;a href=&quot;https://github.com/prometheus-community/windows_exporter/blob/master/docs/collector.iis.md&quot;&gt;collector.iis&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Pull requests are welcome in the exporter’s repository !!! bye-bye&lt;/p&gt;
+&lt;p&gt;Pull requests are welcome in the exporter’s repository !! 🫶🏻 bye-bye&lt;/p&gt;
 
 &lt;!-- 
 https://www.sysgauge.com/ 
@@ -616,6 +618,22 @@ https://www.sysgauge.com/
    <id>https://apolzek.github.io/2024/09/29/kafka-and-rabbitmq-on-kubernetes</id>
    <content type="html">&lt;p&gt;&lt;strong&gt;saving your time&lt;/strong&gt;: &lt;em&gt;manifests to deploy kafka and rabbitmq as stateful set in kind (k8s local)&lt;/em&gt;&lt;/p&gt;
 
+&lt;h2 id=&quot;index&quot;&gt;Index&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#index&quot;&gt;Index&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#prerequisites&quot;&gt;prerequisites&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#create-kubernetes-cluster-with-kind&quot;&gt;Create kubernetes cluster with kind&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#install-kafka&quot;&gt;Install Kafka&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#kafka-kraft-x-kafka-with-zookeeper&quot;&gt;Kafka KRaft x Kafka with ZooKeeper&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#install-rabbitmq&quot;&gt;Install RabbitMQ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;prerequisites&quot;&gt;prerequisites&lt;/h2&gt;
+
 &lt;table&gt;
   &lt;thead&gt;
     &lt;tr&gt;
@@ -624,6 +642,14 @@ https://www.sysgauge.com/
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;kind&lt;/td&gt;
+      &lt;td&gt;kind version 0.26.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;kubectl&lt;/td&gt;
+      &lt;td&gt;Client Version: v1.32.1 Kustomize Version: v5.5.0 Server Version: v1.32.0&lt;/td&gt;
+    &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;kafka&lt;/td&gt;
       &lt;td&gt;docker.io/doughgle/kafka-kraft:latest&lt;/td&gt;
@@ -634,19 +660,6 @@ https://www.sysgauge.com/
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-
-&lt;h2 id=&quot;index&quot;&gt;Index&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;#index&quot;&gt;Index&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#create-kubernetes-cluster-with-kind&quot;&gt;Create kubernetes cluster with kind&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#install-kafka&quot;&gt;Install Kafka&lt;/a&gt;
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#kafka-kraft-x-kafka-with-zookeeper&quot;&gt;Kafka KRaft x Kafka with ZooKeeper&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#install-rabbitmq&quot;&gt;Install RabbitMQ&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
 
 &lt;h2 id=&quot;create-kubernetes-cluster-with-kind&quot;&gt;Create kubernetes cluster with kind&lt;/h2&gt;
 
