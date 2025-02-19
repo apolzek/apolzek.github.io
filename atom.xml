@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2025-02-19T22:23:55+00:00</updated>
+ <updated>2025-02-19T22:25:18+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -519,7 +519,7 @@ iis_requests_total = Counter(
 
 &lt;p&gt;I hope that by using it together with the IIS collector, you’ll achieve great results and gain good observability for your IIS. **Good luck to us **! Below is the conventional solution I was already using 👇&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;/assets/img/iis_collector.png&quot;&gt;iis_collector&lt;/a&gt; 
+&lt;p&gt;&lt;img src=&quot;/assets/img/iis_collector.png&quot; alt=&quot;iis_collector&quot; /&gt; 
 https://github.com/prometheus-community/windows_exporter/blob/master/docs/collector.iis.md&lt;/p&gt;
 
 &lt;!-- 
