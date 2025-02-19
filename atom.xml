@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2025-02-19T22:25:18+00:00</updated>
+ <updated>2025-02-19T22:31:25+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -487,13 +487,15 @@ example.sh:10:7: error: Missing &apos;fi&apos; to end &apos;if&apos; statement. 
 
 &lt;p&gt;If you’re from the new generation and have never worked with IIS, let me introduce you to this &lt;strong&gt;legendary web server&lt;/strong&gt;. It’s a secure, easy-to-manage, modular, and extensible platform for hosting websites, services, and applications (by Microsoft). That said… IIS isn’t exactly the hottest thing around these days and there are reasons for that 💥. But, as the old saying goes: &lt;strong&gt;you don’t have to like it, but you should at least learn to live with it&lt;/strong&gt;!! 😆&lt;/p&gt;
 
+&lt;p&gt;&lt;img src=&quot;/assets/gif/indicators.webp&quot; alt=&quot;indicators&quot; /&gt;&lt;/p&gt;
+
 &lt;p&gt;My journey began when I was tasked with understanding the behavior of an IIS server, making it observable, and setting up alarms for potential issues. The first step was to install &lt;a href=&quot;https://github.com/prometheus-community/windows_exporter&quot;&gt;windows_exporter&lt;/a&gt;, which includes the &lt;a href=&quot;https://github.com/prometheus-community/windows_exporter/blob/master/docs/collector.iis.md&quot;&gt;IIS collector&lt;/a&gt;. While it provided many valuable metrics about IIS, it wasn’t exactly what I needed. What I was really looking for were RED metrics, more focused on HTTP responses from IIS. I researched some repositories but couldn’t find anything satisfactory. So, I decided to build my own exporter to gather these metrics.&lt;/p&gt;
 
 &lt;p&gt;I spent some time exploring IIS and realized that the only data source that truly met my needs was the &lt;strong&gt;logs&lt;/strong&gt;. Although it wasn’t the most elegant solution, using them as a data source solved my problem and, of course, created other challenges. With that in mind, I developed a Python exporter that reads IIS log files from the corresponding folder, always pointing to and processing the logs of the day. The result is still in validation, but I’d like to share what I have so far.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/iis-dashboard-v2.png&quot; alt=&quot;iis&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;repository&lt;/strong&gt;: https://github.com/apolzek/iis_log_exporter&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;repository&lt;/strong&gt;: &lt;a href=&quot;https://github.com/apolzek/iis_log_exporter&quot;&gt;https://github.com/apolzek/iis_log_exporter&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;The log files contained the request path, the method used, the status code, and the response time. These were exactly the pieces of information I needed. Using this data, I identified key metrics.&lt;/p&gt;
 
@@ -520,7 +522,9 @@ iis_requests_total = Counter(
 &lt;p&gt;I hope that by using it together with the IIS collector, you’ll achieve great results and gain good observability for your IIS. **Good luck to us **! Below is the conventional solution I was already using 👇&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/iis_collector.png&quot; alt=&quot;iis_collector&quot; /&gt; 
-https://github.com/prometheus-community/windows_exporter/blob/master/docs/collector.iis.md&lt;/p&gt;
+&lt;a href=&quot;https://github.com/prometheus-community/windows_exporter/blob/master/docs/collector.iis.md&quot;&gt;collector.iis&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Pull requests are welcome in the exporter’s repository !!! bye-bye&lt;/p&gt;
 
 &lt;!-- 
 https://www.sysgauge.com/ 
@@ -1058,6 +1062,8 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
   &lt;li&gt;There is 🕵️ hidden content within this blog; you can find it by exploring or inspecting the source code;&lt;/li&gt;
   &lt;li&gt;Fixing is better than criticizing, but any interaction is valuable.&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/gif/study.webp&quot; alt=&quot;study&quot; /&gt;&lt;/p&gt;
 
 &lt;!-- 
 ## OTHER PROJECTS
