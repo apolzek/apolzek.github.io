@@ -1,6 +1,22 @@
 [
   
     {
+      "title"    : "Playing around with CoreDNS",
+      "category" : "",
+      "tags"     : "dns, coredns",
+      "url"      : "/2025/02/19/playing-around-with-coredns",
+      "date"     : "2025-02-19 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "Adding to my shell arsenal",
+      "category" : "",
+      "tags"     : "linux, shell, script, bash, sh",
+      "url"      : "/2025/02/19/adding-to-my-shell-arsenal",
+      "date"     : "2025-02-19 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "Extracting metrics from IIS logs(iis_log_exporter)",
       "category" : "",
       "tags"     : "windows, metrics, exporter, observability, prometheus",
@@ -11,7 +27,7 @@
     {
       "title"    : "The biggest reliability engineering challenges in 2025(From my perspective)",
       "category" : "",
-      "tags"     : "challenges, tech",
+      "tags"     : "challenges, tech, banking, security",
       "url"      : "/2024/12/29/the-biggest-reliability-engineering-challenges-in-2025",
       "date"     : "2024-12-29 00:00:00 +0000"
     } ,
@@ -21,14 +37,6 @@
       "category" : "",
       "tags"     : "devops, sre, project, startup",
       "url"      : "/2024/12/23/mvp-nanopods-day1",
-      "date"     : "2024-12-23 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "Essential shell tips for Linux enthusiasts",
-      "category" : "",
-      "tags"     : "linux, shell, script, bash",
-      "url"      : "/2024/12/23/essential-shell-tips",
       "date"     : "2024-12-23 00:00:00 +0000"
     } ,
   
