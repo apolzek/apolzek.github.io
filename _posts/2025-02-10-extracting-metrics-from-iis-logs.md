@@ -44,7 +44,7 @@ I know these approaches have potential failure points someone could manually add
 
 I hope that by using it together with the IIS collector, you’ll achieve great results and gain good observability for your IIS. **Good luck to us **! Below is the conventional solution I was already using 👇
 
-[iis_collector](/assets/img/iis_collector.png) 
+![iis_collector](/assets/img/iis_collector.png) 
 https://github.com/prometheus-community/windows_exporter/blob/master/docs/collector.iis.md
 
 <!-- 
