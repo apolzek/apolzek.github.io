@@ -9,6 +9,11 @@ minute: 10
 
 **saving your time**: *manifests to deploy kafka and rabbitmq as stateful set in kind (k8s local)*
 
+| Item     | Version                                      |
+| -------- | -------------------------------------------- |
+| kafka    | docker.io/doughgle/kafka-kraft:latest        |
+| rabbitmq | docker.io/library/rabbitmq:3.13.7-management |
+
 ## Index
 
 - [Index](#index)
@@ -30,8 +35,8 @@ nodes:
   extraPortMappings:
   - containerPort: 30092
     hostPort: 30092
-    listenAddress: "0.0.0.0" # Optional, defaults to "0.0.0.0"
-    protocol: tcp # Optional, defaults to tcp
+    listenAddress: "0.0.0.0"
+    protocol: tcp
 - role: worker
 - role: worker
 - role: worker
@@ -137,7 +142,6 @@ EOF
 kubectl exec -it kafka-0 -n kafka -- bash
 kafka-topics.sh --create --topic my-topic --bootstrap-server kafka-svc:9092
 kafka-topics.sh --list --topic my-topic --bootstrap-server kafka-svc:9092
-
 # Produce message
 kafka-console-producer.sh --bootstrap-server kafka-svc:9092 --topic my-topic
 ```

@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Essential shell tips for Linux enthusiasts
-description: Boost your Linux shell scripting skills with these advanced tips and examples
+title: Adding to my shell arsenal
+description:  A growing collection of linux hacks
 summary:
-tags: linux shell script bash
+tags: linux shell script bash sh
 minute: 8
 ---
 
