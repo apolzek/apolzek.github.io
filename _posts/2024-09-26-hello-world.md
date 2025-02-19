@@ -31,6 +31,8 @@ minute: 2
 - There is 🕵️ hidden content within this blog; you can find it by exploring or inspecting the source code;
 - Fixing is better than criticizing, but any interaction is valuable.
 
+![study](/assets/gif/study.webp) 
+
 <!-- 
 ## OTHER PROJECTS
 
