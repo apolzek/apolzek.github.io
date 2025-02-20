@@ -49,7 +49,7 @@ Below is the conventional solution I was already using 👇
 ![iis_collector](/assets/img/iis_collector.png) 
 [collector.iis](https://github.com/prometheus-community/windows_exporter/blob/master/docs/collector.iis.md)
 
-**TIP**: I hope that by using it together with the IIS collector, you’ll achieve great results and gain good observability for your IIS. Good luck to us!
+**TIP**: Integrating the windows_exporter, which already includes the IIS modules, with this exporter (named iis_log_exporter) can yield excellent results.. Good luck to us !!
 
 ![together](/assets/gif/together.webp) 
 
