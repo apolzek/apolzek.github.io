@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2025-02-20T00:18:34+00:00</updated>
+ <updated>2025-02-20T00:21:07+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -570,7 +570,7 @@ iis_requests_total = Counter(
 &lt;p&gt;&lt;img src=&quot;/assets/img/iis_collector.png&quot; alt=&quot;iis_collector&quot; /&gt; 
 &lt;a href=&quot;https://github.com/prometheus-community/windows_exporter/blob/master/docs/collector.iis.md&quot;&gt;collector.iis&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;TIP&lt;/strong&gt;: I hope that by using it together with the IIS collector, you’ll achieve great results and gain good observability for your IIS. Good luck to us!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;TIP&lt;/strong&gt;: Integrating the windows_exporter, which already includes the IIS modules, with this exporter (named iis_log_exporter) can yield excellent results.. Good luck to us !!&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/gif/together.webp&quot; alt=&quot;together&quot; /&gt;&lt;/p&gt;
 
