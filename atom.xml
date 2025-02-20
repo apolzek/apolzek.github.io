@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2025-02-19T22:39:05+00:00</updated>
+ <updated>2025-02-20T00:03:23+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -17,18 +17,40 @@
    <link href="https://apolzek.github.io/2025/02/19/playing-around-with-coredns"/>
    <updated>2025-02-19T00:00:00+00:00</updated>
    <id>https://apolzek.github.io/2025/02/19/playing-around-with-coredns</id>
-   <content type="html">&lt;p&gt;&lt;strong&gt;saving your time&lt;/strong&gt;: *In this post, we will explore how to set up a basic DNS server using CoreDNS and configure it to serve local domain names while forwarding other DNS queries to external resolvers**&lt;/p&gt;
+   <content type="html">&lt;p&gt;&lt;strong&gt;saving your time&lt;/strong&gt;: &lt;em&gt;In this post, we will explore how to set up a basic DNS server using CoreDNS and configure it to serve local domain names while forwarding other DNS queries to external resolvers&lt;/em&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;step-1-stop-systemd-resolved&quot;&gt;Step 1: Stop systemd-resolved&lt;/h3&gt;
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Download Ubuntu Server ISO https://ubuntu.com/download/alternative-downloads&lt;/li&gt;
+  &lt;li&gt;Install the Ubuntu Server on VirtualBox&lt;/li&gt;
+  &lt;li&gt;Set the virtual machine network mode to bridge&lt;/li&gt;
+  &lt;li&gt;Disable systemd-resolved on the newly installed Ubuntu&lt;/li&gt;
+  &lt;li&gt;Download CoreDNS on the Ubuntu virtual machine&lt;/li&gt;
+  &lt;li&gt;Create a Corefile with bellow configurations on the Ubuntu VM&lt;/li&gt;
+  &lt;li&gt;Create a sample DNS zone file for CoreDNS&lt;/li&gt;
+  &lt;li&gt;On the host machine, add an entry in /etc/hosts set IP of the Ubuntu VM to include it as an option for DNS resolution&lt;/li&gt;
+  &lt;li&gt;Test name resolution to ensure the DNS is working correctly (browser and dig)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/ubuntu-vm-lab.png&quot; alt=&quot;ubuntu-vm&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After installing the virtual machine (VM) and assigning an IP address via DHCP, follow the steps below (:&lt;/p&gt;
+
+&lt;h3 id=&quot;configure-ubuntu-server&quot;&gt;Configure Ubuntu Server&lt;/h3&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo systemctl stop systemd-resolved
-sudo coredns -conf ./Corefile
+wget https://github.com/coredns/coredns/releases/download/v1.10.1/coredns_1.10.1_linux_amd64.tgz
+tar -xvzf coredns_1.10.1_linux_amd64.tgz
+touch admin.meudominio.local
+touch Corefile
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Corefile&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/img/ubuntu-vm-lab.png&quot; alt=&quot;ubuntu-vm&quot; /&gt;&lt;/p&gt;
 
+&lt;p&gt;Create file &lt;strong&gt;Corefile&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;admin.meudominio.local {
-    file ./db.admin.meudominio.local
+    file ./admin.meudominio.local
     log
     errors
 }
@@ -40,23 +62,55 @@ sudo coredns -conf ./Corefile
     errors
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Corefile&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;db.admin.meudominio.local&lt;/p&gt;
+&lt;p&gt;Create file &lt;strong&gt;admin.meudominio.local&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ORIGIN admin.meudominio.local.
-@       3600 IN SOA  ns.admin.meudominio.local. admin.meudominio.local. (
-                        2023101001 ; serial
-                        3600       ; refresh
-                        1800       ; retry
-                        1209600    ; expire
-                        3600 )     ; minimum
-@       3600 IN NS   ns.admin.meudominio.local.
-ns      3600 IN A    192.168.100.172
-@       3600 IN A    192.168.100.1
+$TTL 3600
+
+@       IN  SOA  ns.admin.meudominio.local. admin.admin.meudominio.local. (
+            2025021901 ; serial
+            3600       ; refresh
+            1800       ; retry
+            1209600    ; expire
+            3600 )     ; minimum TTL
+
+@       IN  NS  ns.admin.meudominio.local.
+
+ns      IN  A   192.168.100.218
+@       IN  A   192.168.100.1   ; admin.meudominio.local
+db      IN  A   192.168.100.1   ; add db.admin.meudominio.local
+apolzek IN  CNAME github.com.   ; add CNAME
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;admin.meudominio.local&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;start CoreDNS&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo coredns -conf ./Corefile
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;/etc/resolv.conf&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nameserver 192.168.100.70
+&lt;p&gt;&lt;img src=&quot;/assets/img/lab-coredns.png&quot; alt=&quot;ubuntu-vm&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;configure-linux-host-im-using-ubuntu&quot;&gt;Configure linux host (i’m using ubuntu)&lt;/h3&gt;
+
+&lt;p&gt;Add the VM’s IP to resolv.conf&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nameserver 192.168.100.218 # VM with Ubuntu Server and CoreDNS
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;/etc/resolv.conf&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;testing&quot;&gt;Testing&lt;/h3&gt;
+
+&lt;p&gt;Run in the host terminal&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dig @192.168.100.218 apolzek.admin.meudominio.local
+dig @192.168.100.218 admin.meudominio.local
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/gif/dig-corednslab.gif&quot;&gt;gif-dig&lt;/a&gt;&lt;/p&gt;
 </content>
  </entry>
  
