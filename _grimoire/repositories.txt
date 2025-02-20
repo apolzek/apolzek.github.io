@@ -64,8 +64,11 @@ https://github.com/AlexxIT/go2rtc
 # The modern API client that lives in your terminal.
 https://github.com/darrenburns/posting
 
-# Pretty fancy and modern terminal file manager
+# Pretty fancy and modern terminal file manager (spf)
 https://github.com/yorukot/superfile
+
+# The modern API client that lives in your terminal.
+https://github.com/darrenburns/posting
 
 # A open contribute bootcamp to develop DevSecOps skills...
 https://github.com/devsecops/bootcamp
@@ -138,3 +141,6 @@ https://github.com/genuinetools/amicontained
 
 # Open source API development ecosystem - https://hoppscotch.io (open-source alternative to Postman, Insomnia)
 https://github.com/hoppscotch/hoppscotch
+
+# Fast Real-time Object Detection with High-Res Output
+https://github.com/SanshruthR/CCTV_YOLO

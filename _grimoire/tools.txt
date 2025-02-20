@@ -1,2 +1,5 @@
 kafkacat
 fzf
+superfile
+eza
+bat

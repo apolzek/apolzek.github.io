@@ -98,3 +98,11 @@ Force curl to resolve meuservidor.com on port 8080 to the IP 192.168.0.100
 curl --resolve meuservidor.com:8080:192.168.0.100 http://meuservidor.com:8080
 curl --resolve google.com:8888:127.0.0.1 https://google.com:8888
 ```
+
++------------------+
+| chrome internals |
++------------------+
+
+chrome://net-internals/#dns
+chrome://net-internals/#events
+chrome://net-internals/#proxy
