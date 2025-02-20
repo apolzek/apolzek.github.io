@@ -7,7 +7,7 @@ tags: windows metrics exporter observability prometheus
 minute: 6
 ---
 
-**saving your time**: *How I built an IIS metrics exporter for a RED metrics dashboard*
+**saving your time**: *How I built an IIS prometheus exporter for a RED metrics dashboard*
 
 If you're from the new generation and have never worked with IIS, let me introduce you to this **legendary web server**. It’s a secure, easy-to-manage, modular, and extensible platform for hosting websites, services, and applications (by Microsoft). That said… IIS isn’t exactly the hottest thing around these days and there are reasons for that 💥. But, as the old saying goes: **you don’t have to like it, but you should at least learn to live with it**!! 😆
 
@@ -15,7 +15,7 @@ If you're from the new generation and have never worked with IIS, let me introdu
 
 My journey began when I was tasked with understanding the behavior of an IIS server, making it observable, and setting up alarms for potential issues. The first step was to install [windows_exporter](https://github.com/prometheus-community/windows_exporter), which includes the [IIS collector](https://github.com/prometheus-community/windows_exporter/blob/master/docs/collector.iis.md). While it provided many valuable metrics about IIS, it wasn’t exactly what I needed. What I was really looking for were RED metrics, more focused on HTTP responses from IIS. I researched some repositories but couldn’t find anything satisfactory. So, I decided to build my own exporter to gather these metrics.
 
-I spent some time exploring IIS and realized that the only data source that truly met my needs was the **logs**. Although it wasn’t the most elegant solution, using them as a data source solved my problem and, of course, created other challenges. With that in mind, I developed a Python exporter that reads IIS log files from the corresponding folder, always pointing to and processing the logs of the day. The result is still in validation, but I’d like to share what I have so far.
+I spent some time exploring IIS and realized that the only data source that truly met my needs was the **logs**. Although it wasn’t the most elegant solution, using them as a data source solved my problem and, of course, created other challenges. With that in mind, I developed a Python exporter that reads IIS log files from the corresponding folder, always pointing to and processing the logs of the day. The result is still in validation, but I’d like to share what I have so far. Take a look below
 
 ![iis](/assets/img/iis-dashboard-v2.png)
 
@@ -44,10 +44,14 @@ iis_requests_total = Counter(
 
 I know these approaches have potential failure points someone could manually add logs to the file, IIS configurations might generate logs missing key data that break the regex logic, and so on. That said, I recognize that this solution is still very tailored to my specific use case, but I hope it can evolve to support other legacy IIS systems out there.
 
-I hope that by using it together with the IIS collector, you’ll achieve great results and gain good observability for your IIS. **Good luck to us **! Below is the conventional solution I was already using 👇
+Below is the conventional solution I was already using 👇
 
 ![iis_collector](/assets/img/iis_collector.png) 
 [collector.iis](https://github.com/prometheus-community/windows_exporter/blob/master/docs/collector.iis.md)
+
+**TIP**: I hope that by using it together with the IIS collector, you’ll achieve great results and gain good observability for your IIS. Good luck to us!
+
+![together](/assets/gif/together.webp) 
 
 Pull requests are welcome in the exporter's repository !! 🫶🏻 bye-bye
 
