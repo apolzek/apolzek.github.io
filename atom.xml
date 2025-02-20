@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2025-02-20T00:36:39+00:00</updated>
+ <updated>2025-02-20T00:38:12+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -533,7 +533,7 @@ example.sh:10:7: error: Missing &apos;fi&apos; to end &apos;if&apos; statement. 
 
 &lt;p&gt;If you’re from the new generation and have never worked with IIS, let me introduce you to this &lt;strong&gt;legendary web server&lt;/strong&gt;. It’s a secure, easy-to-manage, modular, and extensible platform for hosting websites, services, and applications (by Microsoft). That said… IIS isn’t exactly the hottest thing around these days and there are reasons for that 💥. But, as the old saying goes: &lt;strong&gt;you don’t have to like it, but you should at least learn to live with it&lt;/strong&gt;!! 😆&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/gif/iis.jpg&quot; alt=&quot;iis&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/img/iis.jpg&quot; alt=&quot;iis&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;My journey began when I was tasked with understanding the behavior of an IIS server, making it observable, and setting up alarms for potential issues. The first step was to install &lt;a href=&quot;https://github.com/prometheus-community/windows_exporter&quot;&gt;windows_exporter&lt;/a&gt;, which includes the &lt;a href=&quot;https://github.com/prometheus-community/windows_exporter/blob/master/docs/collector.iis.md&quot;&gt;IIS collector&lt;/a&gt;. While it provided many valuable metrics about IIS, it wasn’t exactly what I needed. What I was really looking for were RED metrics, more focused on HTTP responses from IIS. I researched some repositories but couldn’t find anything satisfactory. So, I decided to build my own exporter to gather these metrics.&lt;/p&gt;
 
