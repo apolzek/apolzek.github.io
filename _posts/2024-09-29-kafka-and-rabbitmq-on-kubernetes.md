@@ -407,3 +407,5 @@ kubectl port-forward svc/rabbitmq 15672:15672 -n rabbitmq
 ```
 
 > Access <http://localhost:15672/> User: coelho Password: coelho@Pass
+
+![lab-kafka-and-rabbitmq](/assets/img/lab-kafka-and-rabbitmq.png)

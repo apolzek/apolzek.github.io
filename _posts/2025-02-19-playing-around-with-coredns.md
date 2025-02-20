@@ -27,6 +27,7 @@ After installing the virtual machine (VM) and assigning an IP address via DHCP, 
 
 ### Configure Ubuntu Server
 
+Login using SSH and download CoreDNS
 ```
 sudo systemctl stop systemd-resolved
 wget https://github.com/coredns/coredns/releases/download/v1.10.1/coredns_1.10.1_linux_amd64.tgz
@@ -34,8 +35,6 @@ tar -xvzf coredns_1.10.1_linux_amd64.tgz
 touch admin.meudominio.local
 touch Corefile
 ```
-
-![ubuntu-vm](/assets/img/ubuntu-vm-lab.png)
 
 Create file **Corefile**
 ```
@@ -52,7 +51,6 @@ admin.meudominio.local {
     errors
 }
 ```
-> Corefile
 
 Create file **admin.meudominio.local**
 ```
@@ -73,14 +71,11 @@ ns      IN  A   192.168.100.218
 db      IN  A   192.168.100.1   ; add db.admin.meudominio.local
 apolzek IN  CNAME github.com.   ; add CNAME
 ```
-> admin.meudominio.local
 
 start CoreDNS
 ```
 sudo coredns -conf ./Corefile
 ```
-
-![ubuntu-vm](/assets/img/lab-coredns.png)
 
 ### Configure linux host (i'm using ubuntu)
 
@@ -88,7 +83,8 @@ Add the VM's IP to resolv.conf
 ```
 nameserver 192.168.100.218 # VM with Ubuntu Server and CoreDNS
 ```
-> /etc/resolv.conf
+
+![ubuntu-vm](/assets/img/lab-coredns.png)
 
 ### Testing
 
@@ -98,4 +94,4 @@ dig @192.168.100.218 apolzek.admin.meudominio.local
 dig @192.168.100.218 admin.meudominio.local
 ```
 
-[gif-dig](/assets/gif/dig-corednslab.gif)
+![gif-dig](/assets/gif/dig-corednslab.gif)
