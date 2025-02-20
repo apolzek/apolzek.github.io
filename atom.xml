@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2025-02-20T00:03:23+00:00</updated>
+ <updated>2025-02-20T00:09:41+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -39,14 +39,13 @@
 
 &lt;h3 id=&quot;configure-ubuntu-server&quot;&gt;Configure Ubuntu Server&lt;/h3&gt;
 
+&lt;p&gt;Login using SSH and download CoreDNS&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo systemctl stop systemd-resolved
 wget https://github.com/coredns/coredns/releases/download/v1.10.1/coredns_1.10.1_linux_amd64.tgz
 tar -xvzf coredns_1.10.1_linux_amd64.tgz
 touch admin.meudominio.local
 touch Corefile
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/img/ubuntu-vm-lab.png&quot; alt=&quot;ubuntu-vm&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Create file &lt;strong&gt;Corefile&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;admin.meudominio.local {
@@ -62,9 +61,6 @@ touch Corefile
     errors
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;Corefile&lt;/p&gt;
-&lt;/blockquote&gt;
 
 &lt;p&gt;Create file &lt;strong&gt;admin.meudominio.local&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ORIGIN admin.meudominio.local.
@@ -84,24 +80,18 @@ ns      IN  A   192.168.100.218
 db      IN  A   192.168.100.1   ; add db.admin.meudominio.local
 apolzek IN  CNAME github.com.   ; add CNAME
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;admin.meudominio.local&lt;/p&gt;
-&lt;/blockquote&gt;
 
 &lt;p&gt;start CoreDNS&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo coredns -conf ./Corefile
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/img/lab-coredns.png&quot; alt=&quot;ubuntu-vm&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;configure-linux-host-im-using-ubuntu&quot;&gt;Configure linux host (i’m using ubuntu)&lt;/h3&gt;
 
 &lt;p&gt;Add the VM’s IP to resolv.conf&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nameserver 192.168.100.218 # VM with Ubuntu Server and CoreDNS
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;/etc/resolv.conf&lt;/p&gt;
-&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/lab-coredns.png&quot; alt=&quot;ubuntu-vm&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;testing&quot;&gt;Testing&lt;/h3&gt;
 
@@ -110,7 +100,7 @@ apolzek IN  CNAME github.com.   ; add CNAME
 dig @192.168.100.218 admin.meudominio.local
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;a href=&quot;/assets/gif/dig-corednslab.gif&quot;&gt;gif-dig&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/gif/dig-corednslab.gif&quot; alt=&quot;gif-dig&quot; /&gt;&lt;/p&gt;
 </content>
  </entry>
  
@@ -1092,6 +1082,8 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
 &lt;blockquote&gt;
   &lt;p&gt;Access &lt;a href=&quot;http://localhost:15672/&quot;&gt;http://localhost:15672/&lt;/a&gt; User: coelho Password: coelho@Pass&lt;/p&gt;
 &lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/lab-kafka-and-rabbitmq.png&quot; alt=&quot;lab-kafka-and-rabbitmq&quot; /&gt;&lt;/p&gt;
 </content>
  </entry>
  
