@@ -11,15 +11,15 @@ minute: 8
 
 ### Summary
 
-1. Download Ubuntu Server ISO https://ubuntu.com/download/alternative-downloads
-2. Install the Ubuntu Server on VirtualBox
-3. Set the virtual machine network mode to bridge
-4. Disable systemd-resolved on the newly installed Ubuntu
-5. Download CoreDNS on the Ubuntu virtual machine
-6. Create a Corefile with bellow configurations on the Ubuntu VM
-7. Create a sample DNS zone file for CoreDNS
-8. On the host machine, add an entry in /etc/hosts set IP of the Ubuntu VM to include it as an option for DNS resolution
-9. Test name resolution to ensure the DNS is working correctly (browser and dig)
+1. Download the Ubuntu Server ISO: [Ubuntu Downloads](https://ubuntu.com/download/alternative-downloads)  
+2. Install Ubuntu Server on VirtualBox  
+3. Set the virtual machine's network mode to bridge  
+4. Disable *systemd-resolved*  
+5. Download CoreDNS  
+6. Create a *Corefile* with the desired configurations  
+7. Create a DNS zone file for CoreDNS  
+8. On the host machine, add an entry in `/etc/hosts` mapping the VM's IP for DNS resolution  
+9. Test name resolution using a browser and `dig`  
 
 ![ubuntu-vm](/assets/img/ubuntu-vm-lab.png)
 

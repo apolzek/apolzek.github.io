@@ -9,6 +9,4 @@ minute: 6
 
 https://github.com/syepes/network_exporter
 https://github.com/prometheus/blackbox_exporter
-
-
 https://grafana.com/grafana/dashboards/15297-prometheus-network-exporter/

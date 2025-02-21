@@ -20,12 +20,12 @@ minute: 10
 
 ## prerequisites
 
-| Item     | Version                                                                   |
-| -------- | ------------------------------------------------------------------------- |
-| kind     | kind version 0.26.0                                                       |
-| kubectl  | Client Version: v1.32.1 Kustomize Version: v5.5.0 Server Version: v1.32.0 |
-| kafka    | docker.io/doughgle/kafka-kraft:latest                                     |
-| rabbitmq | docker.io/library/rabbitmq:3.13.7-management                              |
+| Item     | Version                                      |
+| -------- | -------------------------------------------- |
+| kind     | kind version 0.26.0                          |
+| kubectl  | Client Version: v1.32.1                      |
+| kafka    | docker.io/doughgle/kafka-kraft:latest        |
+| rabbitmq | docker.io/library/rabbitmq:3.13.7-management |
 
 ## Create kubernetes cluster with kind
 
