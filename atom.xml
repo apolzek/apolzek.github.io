@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2025-02-20T08:47:13+00:00</updated>
+ <updated>2025-02-21T23:00:36+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -22,15 +22,15 @@
 &lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;Download Ubuntu Server ISO https://ubuntu.com/download/alternative-downloads&lt;/li&gt;
-  &lt;li&gt;Install the Ubuntu Server on VirtualBox&lt;/li&gt;
-  &lt;li&gt;Set the virtual machine network mode to bridge&lt;/li&gt;
-  &lt;li&gt;Disable systemd-resolved on the newly installed Ubuntu&lt;/li&gt;
-  &lt;li&gt;Download CoreDNS on the Ubuntu virtual machine&lt;/li&gt;
-  &lt;li&gt;Create a Corefile with bellow configurations on the Ubuntu VM&lt;/li&gt;
-  &lt;li&gt;Create a sample DNS zone file for CoreDNS&lt;/li&gt;
-  &lt;li&gt;On the host machine, add an entry in /etc/hosts set IP of the Ubuntu VM to include it as an option for DNS resolution&lt;/li&gt;
-  &lt;li&gt;Test name resolution to ensure the DNS is working correctly (browser and dig)&lt;/li&gt;
+  &lt;li&gt;Download the Ubuntu Server ISO: &lt;a href=&quot;https://ubuntu.com/download/alternative-downloads&quot;&gt;Ubuntu Downloads&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Install Ubuntu Server on VirtualBox&lt;/li&gt;
+  &lt;li&gt;Set the virtual machine’s network mode to bridge&lt;/li&gt;
+  &lt;li&gt;Disable &lt;em&gt;systemd-resolved&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Download CoreDNS&lt;/li&gt;
+  &lt;li&gt;Create a &lt;em&gt;Corefile&lt;/em&gt; with the desired configurations&lt;/li&gt;
+  &lt;li&gt;Create a DNS zone file for CoreDNS&lt;/li&gt;
+  &lt;li&gt;On the host machine, add an entry in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/hosts&lt;/code&gt; mapping the VM’s IP for DNS resolution&lt;/li&gt;
+  &lt;li&gt;Test name resolution using a browser and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dig&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/ubuntu-vm-lab.png&quot; alt=&quot;ubuntu-vm&quot; /&gt;&lt;/p&gt;
@@ -698,7 +698,7 @@ https://www.sysgauge.com/
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;kubectl&lt;/td&gt;
-      &lt;td&gt;Client Version: v1.32.1 Kustomize Version: v5.5.0 Server Version: v1.32.0&lt;/td&gt;
+      &lt;td&gt;Client Version: v1.32.1&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;kafka&lt;/td&gt;
