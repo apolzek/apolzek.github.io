@@ -1,7 +1,7 @@
 [
   
     {
-      "title"    : "blackbox_exporter or network_exporter",
+      "title"    : "blackbox_exporter or network_exporter ?",
       "category" : "",
       "tags"     : "prometheus, exporters, network",
       "url"      : "/2025/02/24/blackbox-exporter-or-network-exporter",
