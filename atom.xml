@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2025-02-24T22:40:58+00:00</updated>
+ <updated>2025-02-24T22:43:04+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>blackbox_exporter or network_exporter</title>
-   <link href="https://apolzek.github.io/2025/02/25/blackbox-exporter-or-network-exporter"/>
-   <updated>2025-02-25T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2025/02/25/blackbox_exporter-or-network_exporter</id>
+   <link href="https://apolzek.github.io/2025/02/24/blackbox-exporter-or-network-exporter"/>
+   <updated>2025-02-24T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2025/02/24/blackbox_exporter-or-network_exporter</id>
    <content type="html">&lt;p&gt;&lt;strong&gt;saving your time&lt;/strong&gt;: &lt;em&gt;Prometheus exporters are applications that extract data from services or processes and expose it in Prometheus format. This article provides a brief analysis of blackbox_exporter and network_exporter, highlighting their use cases and the key differences between them&lt;/em&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
