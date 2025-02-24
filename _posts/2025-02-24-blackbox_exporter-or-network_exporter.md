@@ -19,6 +19,8 @@ First, it's important to clarify that we're dealing with **network exporters**. 
 
 So, which one should you use? My answer is simple and direct: **both** !!
 
+![image.png](/assets/img/bobsponja-patrick.webp)
+
 ## blackbox_exporter
 
 As the name suggests, **blackbox_exporter** is designed to simulate an external user calling an endpoint within your environment. It mimics a simple user request, monitoring the availability and performance of external endpoints such as websites, APIs, or network services. Two key pieces of information it provides are SSL certificate verification and latency measurement. In short, I consider it an **external probe** that makes requests to something inside your environment.
