@@ -4,13 +4,57 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2025-02-21T23:00:36+00:00</updated>
+ <updated>2025-02-24T22:40:58+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
    <email>viniciusgomes955@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>blackbox_exporter or network_exporter</title>
+   <link href="https://apolzek.github.io/2025/02/25/blackbox-exporter-or-network-exporter"/>
+   <updated>2025-02-25T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2025/02/25/blackbox_exporter-or-network_exporter</id>
+   <content type="html">&lt;p&gt;&lt;strong&gt;saving your time&lt;/strong&gt;: &lt;em&gt;Prometheus exporters are applications that extract data from services or processes and expose it in Prometheus format. This article provides a brief analysis of blackbox_exporter and network_exporter, highlighting their use cases and the key differences between them&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;This type of article can be somewhat controversial because there are multiple approaches to working with these exporters. My goal is to share my perspective on where each should be used and the results you can expect.&lt;/p&gt;
+
+&lt;p&gt;First, it’s important to clarify that we’re dealing with &lt;strong&gt;network exporters&lt;/strong&gt;. While they greatly enhance observability, I believe there are more professional ways to analyze a network. That said, the insights provided by both can help reliability engineers and software engineers quickly and easily understand their environments.&lt;/p&gt;
+
+&lt;p&gt;So, which one should you use? My answer is simple and direct: &lt;strong&gt;both&lt;/strong&gt; !!&lt;/p&gt;
+
+&lt;h2 id=&quot;blackbox_exporter&quot;&gt;blackbox_exporter&lt;/h2&gt;
+
+&lt;p&gt;As the name suggests, &lt;strong&gt;blackbox_exporter&lt;/strong&gt; is designed to simulate an external user calling an endpoint within your environment. It mimics a simple user request, monitoring the availability and performance of external endpoints such as websites, APIs, or network services. Two key pieces of information it provides are SSL certificate verification and latency measurement. In short, I consider it an &lt;strong&gt;external probe&lt;/strong&gt; that makes requests to something inside your environment.&lt;/p&gt;
+
+&lt;h2 id=&quot;network_exporter&quot;&gt;network_exporter&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;network_exporter&lt;/strong&gt;, on the other hand, can be used in a more general way, but I primarily use it for the opposite approach—monitoring from the &lt;strong&gt;inside out&lt;/strong&gt;. In other words, I use it to track all the external dependencies of my application or any workload I’m running, whether it’s an external API, a database, an endpoint accessed via VPN or proxy, and so on. It’s particularly useful when an external dependency goes down or when there’s a network issue along the way, such as an ACL loss or hardware failure. Since it performs both HTTP and ICMP checks, you can use it as a replacement for blackbox_exporter, though it does not support SSL checks 😊&lt;/p&gt;
+
+&lt;h2 id=&quot;poc&quot;&gt;PoC&lt;/h2&gt;
+
+&lt;p&gt;This PoC showcases monitoring in a Kubernetes environment using network_exporter to analyze connectivity from inside out and blackbox_exporter to simulate external access and assess service availability from outside in.&lt;/p&gt;
+
+&lt;p&gt;The dependencies of my application, which is behind a service, are a database and an external API. I want information about both&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;network_exporter  --&amp;gt; Database
+                  --&amp;gt; external_api
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To check if my API is working as expected, I will make a request using blackbox_exporter, simulating an HTTP call&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;blackbox_exporter  --&amp;gt; Ingress
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;blackbox-x-network.png&quot; alt=&quot;image.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;https://github.com/syepes/network_exporter
+https://github.com/prometheus/blackbox_exporter
+https://grafana.com/grafana/dashboards/15297-prometheus-network-exporter/&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Playing around with CoreDNS</title>
