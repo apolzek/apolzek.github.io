@@ -1,6 +1,6 @@
 ---
 layout: post
-title: blackbox_exporter or network_exporter
+title: blackbox_exporter or network_exporter ?
 description: Outside in with blackbox_exporter, Inside out with network_exporter
 summary:
 tags: prometheus exporters network
@@ -8,6 +8,8 @@ minute: 6
 ---
 
 **saving your time**: *Prometheus exporters are applications that extract data from services or processes and expose it in Prometheus format. This article provides a brief analysis of blackbox_exporter and network_exporter, highlighting their use cases and the key differences between them*
+
+![image.png](/assets/img/prometheus-multi-service-exporter.svg)
 
 ## Introduction
 
@@ -40,7 +42,7 @@ To check if my API is working as expected, I will make a request using blackbox_
 blackbox_exporter  --> Ingress
 ```
 
-![image.png](blackbox-x-network.png)
+![image.png](/assets/img/blackbox-x-network.png)
 
 https://github.com/syepes/network_exporter
 https://github.com/prometheus/blackbox_exporter
