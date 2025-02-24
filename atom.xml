@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2025-02-24T22:46:18+00:00</updated>
+ <updated>2025-02-24T22:54:43+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -28,6 +28,8 @@
 &lt;p&gt;First, it’s important to clarify that we’re dealing with &lt;strong&gt;network exporters&lt;/strong&gt;. While they greatly enhance observability, I believe there are more professional ways to analyze a network. That said, the insights provided by both can help reliability engineers and software engineers quickly and easily understand their environments.&lt;/p&gt;
 
 &lt;p&gt;So, which one should you use? My answer is simple and direct: &lt;strong&gt;both&lt;/strong&gt; !!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/bobsponja-patrick.webp&quot; alt=&quot;image.png&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;blackbox_exporter&quot;&gt;blackbox_exporter&lt;/h2&gt;
 
