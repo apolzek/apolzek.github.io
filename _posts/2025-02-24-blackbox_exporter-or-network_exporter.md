@@ -44,8 +44,21 @@ To check if my API is working as expected, I will make a request using blackbox_
 blackbox_exporter  --> Ingress
 ```
 
+### what are we going to build
+
 ![image.png](/assets/img/blackbox-x-network.png)
+
+### Creating a local Kubernetes environment
+
+### Deploy an application
+
+### Installation of exporters
+
+### Creating a basic view in grafana
 
 https://github.com/syepes/network_exporter
 https://github.com/prometheus/blackbox_exporter
 https://grafana.com/grafana/dashboards/15297-prometheus-network-exporter/
+https://www.mermaidchart.com/raw/00be2e0c-174b-4a07-8163-659f7f9a2be5?theme=light&version=v0.1&format=svg
+
+<!-- https://www.mermaidchart.com/app/projects/9763d075-f3a7-4f83-b567-d2373878b316/diagrams/00be2e0c-174b-4a07-8163-659f7f9a2be5/version/v0.1/edit -->

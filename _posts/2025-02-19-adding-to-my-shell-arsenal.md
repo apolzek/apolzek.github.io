@@ -28,6 +28,7 @@ minute: 8
   - [YAML files](#yaml-files)
   - [Check input](#check-input)
   - [shellcheck](#shellcheck)
+  - [journalctl](#journalctl)
 
 ### Looping: command vs script
 
@@ -393,4 +394,42 @@ shellcheck example.sh
 example.sh:5:7: note: Double quote to prevent globbing and word splitting. [SC2086]
 example.sh:7:7: warning: Undefined variable: UNDEFINED_VAR. [SC2154]
 example.sh:10:7: error: Missing 'fi' to end 'if' statement. [SC1073]
+```
+
+### journalctl
+
+```sh
+# Show only recent logs
+journalctl -u nginx --since "1 hour ago"
+
+# View logs from the current boot session
+journalctl -b
+
+# View logs from the previous boot
+journalctl -b -1
+
+# Follow logs in real time
+journalctl -f
+
+# Filtering logs by service
+journalctl -u mysql -p err --since "30 minutes ago"
+
+# Filter by Priority
+journalctl -p err
+
+# Logs from a specific date range
+journalctl --since "2023-01-01" --until "2023-01-02"
+
+# Only show failed services on startup
+journalctl -b --priority=3
+
+# Check kernel messages on boot
+journalctl -k -b
+
+# Output logs in JSON format
+journalctl -o json-pretty
+
+# Free up disk space by clearing old logs
+sudo journalctl --vacuum-time=2weeks
+
 ```
