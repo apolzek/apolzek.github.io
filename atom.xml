@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2025-02-24T22:54:43+00:00</updated>
+ <updated>2025-02-25T00:25:15+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -52,11 +52,24 @@
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;blackbox_exporter  --&amp;gt; Ingress
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;h3 id=&quot;what-are-we-going-to-build&quot;&gt;what are we going to build&lt;/h3&gt;
+
 &lt;p&gt;&lt;img src=&quot;/assets/img/blackbox-x-network.png&quot; alt=&quot;image.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;creating-a-local-kubernetes-environment&quot;&gt;Creating a local Kubernetes environment&lt;/h3&gt;
+
+&lt;h3 id=&quot;deploy-an-application&quot;&gt;Deploy an application&lt;/h3&gt;
+
+&lt;h3 id=&quot;installation-of-exporters&quot;&gt;Installation of exporters&lt;/h3&gt;
+
+&lt;h3 id=&quot;creating-a-basic-view-in-grafana&quot;&gt;Creating a basic view in grafana&lt;/h3&gt;
 
 &lt;p&gt;https://github.com/syepes/network_exporter
 https://github.com/prometheus/blackbox_exporter
-https://grafana.com/grafana/dashboards/15297-prometheus-network-exporter/&lt;/p&gt;
+https://grafana.com/grafana/dashboards/15297-prometheus-network-exporter/
+https://www.mermaidchart.com/raw/00be2e0c-174b-4a07-8163-659f7f9a2be5?theme=light&amp;amp;version=v0.1&amp;amp;format=svg&lt;/p&gt;
+
+&lt;!-- https://www.mermaidchart.com/app/projects/9763d075-f3a7-4f83-b567-d2373878b316/diagrams/00be2e0c-174b-4a07-8163-659f7f9a2be5/version/v0.1/edit --&gt;
 </content>
  </entry>
  
@@ -186,6 +199,7 @@ dig @192.168.100.218 admin.meudominio.local
       &lt;li&gt;&lt;a href=&quot;#yaml-files&quot;&gt;YAML files&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#check-input&quot;&gt;Check input&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#shellcheck&quot;&gt;shellcheck&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#journalctl&quot;&gt;journalctl&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -568,6 +582,43 @@ yq &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; &lt;span class=&quot;s1&quot
 &lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;example.sh:5:7: note: Double quote to prevent globbing and word splitting. [SC2086]
 example.sh:7:7: warning: Undefined variable: UNDEFINED_VAR. [SC2154]
 example.sh:10:7: error: Missing &apos;fi&apos; to end &apos;if&apos; statement. [SC1073]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;journalctl&quot;&gt;journalctl&lt;/h3&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Show only recent logs&lt;/span&gt;
+journalctl &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; nginx &lt;span class=&quot;nt&quot;&gt;--since&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;1 hour ago&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# View logs from the current boot session&lt;/span&gt;
+journalctl &lt;span class=&quot;nt&quot;&gt;-b&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# View logs from the previous boot&lt;/span&gt;
+journalctl &lt;span class=&quot;nt&quot;&gt;-b&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-1&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Follow logs in real time&lt;/span&gt;
+journalctl &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Filtering logs by service&lt;/span&gt;
+journalctl &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; mysql &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; err &lt;span class=&quot;nt&quot;&gt;--since&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;30 minutes ago&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Filter by Priority&lt;/span&gt;
+journalctl &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; err
+
+&lt;span class=&quot;c&quot;&gt;# Logs from a specific date range&lt;/span&gt;
+journalctl &lt;span class=&quot;nt&quot;&gt;--since&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;2023-01-01&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--until&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;2023-01-02&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Only show failed services on startup&lt;/span&gt;
+journalctl &lt;span class=&quot;nt&quot;&gt;-b&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--priority&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;3
+
+&lt;span class=&quot;c&quot;&gt;# Check kernel messages on boot&lt;/span&gt;
+journalctl &lt;span class=&quot;nt&quot;&gt;-k&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-b&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Output logs in JSON format&lt;/span&gt;
+journalctl &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; json-pretty
+
+&lt;span class=&quot;c&quot;&gt;# Free up disk space by clearing old logs&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;journalctl &lt;span class=&quot;nt&quot;&gt;--vacuum-time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2weeks
+
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
