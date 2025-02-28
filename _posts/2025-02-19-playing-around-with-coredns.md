@@ -84,8 +84,6 @@ Add the VM's IP to resolv.conf
 nameserver 192.168.100.218 # VM with Ubuntu Server and CoreDNS
 ```
 
-![ubuntu-vm](/assets/img/lab-coredns.png)
-
 ### Testing
 
 Run in the host terminal
@@ -93,5 +91,7 @@ Run in the host terminal
 dig @192.168.100.218 apolzek.admin.meudominio.local
 dig @192.168.100.218 admin.meudominio.local
 ```
+
+![ubuntu-vm](/assets/img/lab-coredns.png)
 
 ![gif-dig](/assets/gif/dig-corednslab.gif)

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: [Linux] Adding to my shell arsenal
+title: some tips for linux shell
 description:  A growing collection of linux hacks
 summary:
 tags: linux shell script bash sh
