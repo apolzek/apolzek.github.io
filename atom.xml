@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2025-02-28T06:28:17+00:00</updated>
+ <updated>2025-02-28T06:35:55+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -220,24 +220,19 @@ nodes:
     protocol: TCP
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;deploy-an-application&quot;&gt;Deploy an application&lt;/h3&gt;
+&lt;h3 id=&quot;instructions&quot;&gt;Instructions&lt;/h3&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;installation-of-exporters&quot;&gt;Installation of exporters&lt;/h3&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;All details can be found in this &lt;a href=&quot;https://github.com/apolzek/shared/tree/main/content/003&quot;&gt;repository&lt;/a&gt;.Follow the step by step instructions in the README&lt;/p&gt;
 
 &lt;h3 id=&quot;creating-a-basic-view-in-grafana&quot;&gt;Creating a basic view in grafana&lt;/h3&gt;
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 
-&lt;p&gt;https://github.com/syepes/network_exporter
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://github.com/syepes/network_exporter
 https://github.com/prometheus/blackbox_exporter
 https://grafana.com/grafana/dashboards/15297-prometheus-network-exporter/
-https://www.mermaidchart.com/raw/00be2e0c-174b-4a07-8163-659f7f9a2be5?theme=light&amp;amp;version=v0.1&amp;amp;format=svg&lt;/p&gt;
+https://www.mermaidchart.com/raw/00be2e0c-174b-4a07-8163-659f7f9a2be5?theme=light&amp;amp;version=v0.1&amp;amp;format=svg
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;!-- https://www.mermaidchart.com/app/projects/9763d075-f3a7-4f83-b567-d2373878b316/diagrams/00be2e0c-174b-4a07-8163-659f7f9a2be5/version/v0.1/edit --&gt;
 </content>
