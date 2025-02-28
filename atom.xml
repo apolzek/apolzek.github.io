@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2025-02-25T00:25:15+00:00</updated>
+ <updated>2025-02-28T05:32:55+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -13,163 +13,10 @@
 
  
  <entry>
-   <title>blackbox_exporter or network_exporter ?</title>
-   <link href="https://apolzek.github.io/2025/02/24/blackbox-exporter-or-network-exporter"/>
-   <updated>2025-02-24T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2025/02/24/blackbox_exporter-or-network_exporter</id>
-   <content type="html">&lt;p&gt;&lt;strong&gt;saving your time&lt;/strong&gt;: &lt;em&gt;Prometheus exporters are applications that extract data from services or processes and expose it in Prometheus format. This article provides a brief analysis of blackbox_exporter and network_exporter, highlighting their use cases and the key differences between them&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/img/prometheus-multi-service-exporter.svg&quot; alt=&quot;image.png&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;This type of article can be somewhat controversial because there are multiple approaches to working with these exporters. My goal is to share my perspective on where each should be used and the results you can expect.&lt;/p&gt;
-
-&lt;p&gt;First, it’s important to clarify that we’re dealing with &lt;strong&gt;network exporters&lt;/strong&gt;. While they greatly enhance observability, I believe there are more professional ways to analyze a network. That said, the insights provided by both can help reliability engineers and software engineers quickly and easily understand their environments.&lt;/p&gt;
-
-&lt;p&gt;So, which one should you use? My answer is simple and direct: &lt;strong&gt;both&lt;/strong&gt; !!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/img/bobsponja-patrick.webp&quot; alt=&quot;image.png&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;blackbox_exporter&quot;&gt;blackbox_exporter&lt;/h2&gt;
-
-&lt;p&gt;As the name suggests, &lt;strong&gt;blackbox_exporter&lt;/strong&gt; is designed to simulate an external user calling an endpoint within your environment. It mimics a simple user request, monitoring the availability and performance of external endpoints such as websites, APIs, or network services. Two key pieces of information it provides are SSL certificate verification and latency measurement. In short, I consider it an &lt;strong&gt;external probe&lt;/strong&gt; that makes requests to something inside your environment.&lt;/p&gt;
-
-&lt;h2 id=&quot;network_exporter&quot;&gt;network_exporter&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;network_exporter&lt;/strong&gt;, on the other hand, can be used in a more general way, but I primarily use it for the opposite approach—monitoring from the &lt;strong&gt;inside out&lt;/strong&gt;. In other words, I use it to track all the external dependencies of my application or any workload I’m running, whether it’s an external API, a database, an endpoint accessed via VPN or proxy, and so on. It’s particularly useful when an external dependency goes down or when there’s a network issue along the way, such as an ACL loss or hardware failure. Since it performs both HTTP and ICMP checks, you can use it as a replacement for blackbox_exporter, though it does not support SSL checks 😊&lt;/p&gt;
-
-&lt;h2 id=&quot;poc&quot;&gt;PoC&lt;/h2&gt;
-
-&lt;p&gt;This PoC showcases monitoring in a Kubernetes environment using network_exporter to analyze connectivity from inside out and blackbox_exporter to simulate external access and assess service availability from outside in.&lt;/p&gt;
-
-&lt;p&gt;The dependencies of my application, which is behind a service, are a database and an external API. I want information about both&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;network_exporter  --&amp;gt; Database
-                  --&amp;gt; external_api
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;To check if my API is working as expected, I will make a request using blackbox_exporter, simulating an HTTP call&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;blackbox_exporter  --&amp;gt; Ingress
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;what-are-we-going-to-build&quot;&gt;what are we going to build&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/img/blackbox-x-network.png&quot; alt=&quot;image.png&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;creating-a-local-kubernetes-environment&quot;&gt;Creating a local Kubernetes environment&lt;/h3&gt;
-
-&lt;h3 id=&quot;deploy-an-application&quot;&gt;Deploy an application&lt;/h3&gt;
-
-&lt;h3 id=&quot;installation-of-exporters&quot;&gt;Installation of exporters&lt;/h3&gt;
-
-&lt;h3 id=&quot;creating-a-basic-view-in-grafana&quot;&gt;Creating a basic view in grafana&lt;/h3&gt;
-
-&lt;p&gt;https://github.com/syepes/network_exporter
-https://github.com/prometheus/blackbox_exporter
-https://grafana.com/grafana/dashboards/15297-prometheus-network-exporter/
-https://www.mermaidchart.com/raw/00be2e0c-174b-4a07-8163-659f7f9a2be5?theme=light&amp;amp;version=v0.1&amp;amp;format=svg&lt;/p&gt;
-
-&lt;!-- https://www.mermaidchart.com/app/projects/9763d075-f3a7-4f83-b567-d2373878b316/diagrams/00be2e0c-174b-4a07-8163-659f7f9a2be5/version/v0.1/edit --&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>Playing around with CoreDNS</title>
-   <link href="https://apolzek.github.io/2025/02/19/playing-around-with-coredns"/>
-   <updated>2025-02-19T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2025/02/19/playing-around-with-coredns</id>
-   <content type="html">&lt;p&gt;&lt;strong&gt;saving your time&lt;/strong&gt;: &lt;em&gt;In this post, we will explore how to set up a basic DNS server using CoreDNS and configure it to serve local domain names while forwarding other DNS queries to external resolvers&lt;/em&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Download the Ubuntu Server ISO: &lt;a href=&quot;https://ubuntu.com/download/alternative-downloads&quot;&gt;Ubuntu Downloads&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Install Ubuntu Server on VirtualBox&lt;/li&gt;
-  &lt;li&gt;Set the virtual machine’s network mode to bridge&lt;/li&gt;
-  &lt;li&gt;Disable &lt;em&gt;systemd-resolved&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;Download CoreDNS&lt;/li&gt;
-  &lt;li&gt;Create a &lt;em&gt;Corefile&lt;/em&gt; with the desired configurations&lt;/li&gt;
-  &lt;li&gt;Create a DNS zone file for CoreDNS&lt;/li&gt;
-  &lt;li&gt;On the host machine, add an entry in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/hosts&lt;/code&gt; mapping the VM’s IP for DNS resolution&lt;/li&gt;
-  &lt;li&gt;Test name resolution using a browser and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dig&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/img/ubuntu-vm-lab.png&quot; alt=&quot;ubuntu-vm&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;After installing the virtual machine (VM) and assigning an IP address via DHCP, follow the steps below (:&lt;/p&gt;
-
-&lt;h3 id=&quot;configure-ubuntu-server&quot;&gt;Configure Ubuntu Server&lt;/h3&gt;
-
-&lt;p&gt;Login using SSH and download CoreDNS&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo systemctl stop systemd-resolved
-wget https://github.com/coredns/coredns/releases/download/v1.10.1/coredns_1.10.1_linux_amd64.tgz
-tar -xvzf coredns_1.10.1_linux_amd64.tgz
-touch admin.meudominio.local
-touch Corefile
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Create file &lt;strong&gt;Corefile&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;admin.meudominio.local {
-    file ./admin.meudominio.local
-    log
-    errors
-}
-
-.:53 {
-    forward . 8.8.8.8 1.1.1.1
-    cache
-    log
-    errors
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Create file &lt;strong&gt;admin.meudominio.local&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ORIGIN admin.meudominio.local.
-$TTL 3600
-
-@       IN  SOA  ns.admin.meudominio.local. admin.admin.meudominio.local. (
-            2025021901 ; serial
-            3600       ; refresh
-            1800       ; retry
-            1209600    ; expire
-            3600 )     ; minimum TTL
-
-@       IN  NS  ns.admin.meudominio.local.
-
-ns      IN  A   192.168.100.218
-@       IN  A   192.168.100.1   ; admin.meudominio.local
-db      IN  A   192.168.100.1   ; add db.admin.meudominio.local
-apolzek IN  CNAME github.com.   ; add CNAME
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;start CoreDNS&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo coredns -conf ./Corefile
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;configure-linux-host-im-using-ubuntu&quot;&gt;Configure linux host (i’m using ubuntu)&lt;/h3&gt;
-
-&lt;p&gt;Add the VM’s IP to resolv.conf&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nameserver 192.168.100.218 # VM with Ubuntu Server and CoreDNS
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/img/lab-coredns.png&quot; alt=&quot;ubuntu-vm&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;testing&quot;&gt;Testing&lt;/h3&gt;
-
-&lt;p&gt;Run in the host terminal&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dig @192.168.100.218 apolzek.admin.meudominio.local
-dig @192.168.100.218 admin.meudominio.local
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/gif/dig-corednslab.gif&quot; alt=&quot;gif-dig&quot; /&gt;&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>Adding to my shell arsenal</title>
-   <link href="https://apolzek.github.io/2025/02/19/adding-to-my-shell-arsenal"/>
-   <updated>2025-02-19T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2025/02/19/adding-to-my-shell-arsenal</id>
+   <title></title>
+   <link href="https://apolzek.github.io/2025/02/28/2025-02-19-adding-to-my-shell-arsenal"/>
+   <updated>2025-02-28T05:32:55+00:00</updated>
+   <id>https://apolzek.github.io/2025/02/28/2025-02-19-adding-to-my-shell-arsenal</id>
    <content type="html">&lt;p&gt;&lt;strong&gt;saving your time&lt;/strong&gt;: &lt;em&gt;some tips for linux shell&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/gif/typing.webp&quot; alt=&quot;typing&quot; /&gt;&lt;/p&gt;
@@ -624,6 +471,159 @@ journalctl &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; json-pretty
  </entry>
  
  <entry>
+   <title>blackbox_exporter or network_exporter ?</title>
+   <link href="https://apolzek.github.io/2025/02/24/blackbox-exporter-or-network-exporter"/>
+   <updated>2025-02-24T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2025/02/24/blackbox_exporter-or-network_exporter</id>
+   <content type="html">&lt;p&gt;&lt;strong&gt;saving your time&lt;/strong&gt;: &lt;em&gt;Prometheus exporters are applications that extract data from services or processes and expose it in Prometheus format. This article provides a brief analysis of blackbox_exporter and network_exporter, highlighting their use cases and the key differences between them&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/prometheus-multi-service-exporter.svg&quot; alt=&quot;image.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;This type of article can be somewhat controversial because there are multiple approaches to working with these exporters. My goal is to share my perspective on where each should be used and the results you can expect.&lt;/p&gt;
+
+&lt;p&gt;First, it’s important to clarify that we’re dealing with &lt;strong&gt;network exporters&lt;/strong&gt;. While they greatly enhance observability, I believe there are more professional ways to analyze a network. That said, the insights provided by both can help reliability engineers and software engineers quickly and easily understand their environments.&lt;/p&gt;
+
+&lt;p&gt;So, which one should you use? My answer is simple and direct: &lt;strong&gt;both&lt;/strong&gt; !!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/bobsponja-patrick.webp&quot; alt=&quot;image.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;blackbox_exporter&quot;&gt;blackbox_exporter&lt;/h2&gt;
+
+&lt;p&gt;As the name suggests, &lt;strong&gt;blackbox_exporter&lt;/strong&gt; is designed to simulate an external user calling an endpoint within your environment. It mimics a simple user request, monitoring the availability and performance of external endpoints such as websites, APIs, or network services. Two key pieces of information it provides are SSL certificate verification and latency measurement. In short, I consider it an &lt;strong&gt;external probe&lt;/strong&gt; that makes requests to something inside your environment.&lt;/p&gt;
+
+&lt;h2 id=&quot;network_exporter&quot;&gt;network_exporter&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;network_exporter&lt;/strong&gt;, on the other hand, can be used in a more general way, but I primarily use it for the opposite approach—monitoring from the &lt;strong&gt;inside out&lt;/strong&gt;. In other words, I use it to track all the external dependencies of my application or any workload I’m running, whether it’s an external API, a database, an endpoint accessed via VPN or proxy, and so on. It’s particularly useful when an external dependency goes down or when there’s a network issue along the way, such as an ACL loss or hardware failure. Since it performs both HTTP and ICMP checks, you can use it as a replacement for blackbox_exporter, though it does not support SSL checks 😊&lt;/p&gt;
+
+&lt;h2 id=&quot;poc&quot;&gt;PoC&lt;/h2&gt;
+
+&lt;p&gt;This PoC showcases monitoring in a Kubernetes environment using network_exporter to analyze connectivity from inside out and blackbox_exporter to simulate external access and assess service availability from outside in.&lt;/p&gt;
+
+&lt;p&gt;The dependencies of my application, which is behind a service, are a database and an external API. I want information about both&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;network_exporter  --&amp;gt; Database
+                  --&amp;gt; external_api
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To check if my API is working as expected, I will make a request using blackbox_exporter, simulating an HTTP call&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;blackbox_exporter  --&amp;gt; Ingress
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;what-are-we-going-to-build&quot;&gt;what are we going to build&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blackbox-x-network.png&quot; alt=&quot;image.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;creating-a-local-kubernetes-environment&quot;&gt;Creating a local Kubernetes environment&lt;/h3&gt;
+
+&lt;h3 id=&quot;deploy-an-application&quot;&gt;Deploy an application&lt;/h3&gt;
+
+&lt;h3 id=&quot;installation-of-exporters&quot;&gt;Installation of exporters&lt;/h3&gt;
+
+&lt;h3 id=&quot;creating-a-basic-view-in-grafana&quot;&gt;Creating a basic view in grafana&lt;/h3&gt;
+
+&lt;p&gt;https://github.com/syepes/network_exporter
+https://github.com/prometheus/blackbox_exporter
+https://grafana.com/grafana/dashboards/15297-prometheus-network-exporter/
+https://www.mermaidchart.com/raw/00be2e0c-174b-4a07-8163-659f7f9a2be5?theme=light&amp;amp;version=v0.1&amp;amp;format=svg&lt;/p&gt;
+
+&lt;!-- https://www.mermaidchart.com/app/projects/9763d075-f3a7-4f83-b567-d2373878b316/diagrams/00be2e0c-174b-4a07-8163-659f7f9a2be5/version/v0.1/edit --&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Playing around with CoreDNS</title>
+   <link href="https://apolzek.github.io/2025/02/19/playing-around-with-coredns"/>
+   <updated>2025-02-19T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2025/02/19/playing-around-with-coredns</id>
+   <content type="html">&lt;p&gt;&lt;strong&gt;saving your time&lt;/strong&gt;: &lt;em&gt;In this post, we will explore how to set up a basic DNS server using CoreDNS and configure it to serve local domain names while forwarding other DNS queries to external resolvers&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Download the Ubuntu Server ISO: &lt;a href=&quot;https://ubuntu.com/download/alternative-downloads&quot;&gt;Ubuntu Downloads&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Install Ubuntu Server on VirtualBox&lt;/li&gt;
+  &lt;li&gt;Set the virtual machine’s network mode to bridge&lt;/li&gt;
+  &lt;li&gt;Disable &lt;em&gt;systemd-resolved&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Download CoreDNS&lt;/li&gt;
+  &lt;li&gt;Create a &lt;em&gt;Corefile&lt;/em&gt; with the desired configurations&lt;/li&gt;
+  &lt;li&gt;Create a DNS zone file for CoreDNS&lt;/li&gt;
+  &lt;li&gt;On the host machine, add an entry in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/hosts&lt;/code&gt; mapping the VM’s IP for DNS resolution&lt;/li&gt;
+  &lt;li&gt;Test name resolution using a browser and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dig&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/ubuntu-vm-lab.png&quot; alt=&quot;ubuntu-vm&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After installing the virtual machine (VM) and assigning an IP address via DHCP, follow the steps below (:&lt;/p&gt;
+
+&lt;h3 id=&quot;configure-ubuntu-server&quot;&gt;Configure Ubuntu Server&lt;/h3&gt;
+
+&lt;p&gt;Login using SSH and download CoreDNS&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo systemctl stop systemd-resolved
+wget https://github.com/coredns/coredns/releases/download/v1.10.1/coredns_1.10.1_linux_amd64.tgz
+tar -xvzf coredns_1.10.1_linux_amd64.tgz
+touch admin.meudominio.local
+touch Corefile
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Create file &lt;strong&gt;Corefile&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;admin.meudominio.local {
+    file ./admin.meudominio.local
+    log
+    errors
+}
+
+.:53 {
+    forward . 8.8.8.8 1.1.1.1
+    cache
+    log
+    errors
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Create file &lt;strong&gt;admin.meudominio.local&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ORIGIN admin.meudominio.local.
+$TTL 3600
+
+@       IN  SOA  ns.admin.meudominio.local. admin.admin.meudominio.local. (
+            2025021901 ; serial
+            3600       ; refresh
+            1800       ; retry
+            1209600    ; expire
+            3600 )     ; minimum TTL
+
+@       IN  NS  ns.admin.meudominio.local.
+
+ns      IN  A   192.168.100.218
+@       IN  A   192.168.100.1   ; admin.meudominio.local
+db      IN  A   192.168.100.1   ; add db.admin.meudominio.local
+apolzek IN  CNAME github.com.   ; add CNAME
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;start CoreDNS&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo coredns -conf ./Corefile
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;configure-linux-host-im-using-ubuntu&quot;&gt;Configure linux host (i’m using ubuntu)&lt;/h3&gt;
+
+&lt;p&gt;Add the VM’s IP to resolv.conf&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nameserver 192.168.100.218 # VM with Ubuntu Server and CoreDNS
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/lab-coredns.png&quot; alt=&quot;ubuntu-vm&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;testing&quot;&gt;Testing&lt;/h3&gt;
+
+&lt;p&gt;Run in the host terminal&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dig @192.168.100.218 apolzek.admin.meudominio.local
+dig @192.168.100.218 admin.meudominio.local
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/gif/dig-corednslab.gif&quot; alt=&quot;gif-dig&quot; /&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>Extracting metrics from IIS logs(iis_log_exporter)</title>
    <link href="https://apolzek.github.io/2025/02/10/extracting-metrics-from-iis-logs"/>
    <updated>2025-02-10T00:00:00+00:00</updated>
@@ -698,18 +698,18 @@ https://www.sysgauge.com/
 
 &lt;p&gt;The topic of security has significantly complicated my daily work routine, while also generating a growing backlog for reliability and software engineering teams. Everyone knows that security must be embedded in every level of an organization, as well as within individuals. It plays a vital role in the business and goes beyond the technological sphere. Having worked with banks and fintechs, I understand that security is even more critical in these environments, where organizations face numerous regulatory requirements and compliance obligations. I see this topic as a significant challenge because it directly affects employees’ lives, who often feel unproductive or pressured by the bureaucracy applied to technology and processes. A simple analogy: imagine you’re teaching your child to ride a bike but want to ensure they don’t get hurt if they fall. You equip them with every possible safety device so that even if they fall, they won’t be injured. However, the excess of equipment makes it impossible for them to ride the bike. This isn’t about debating whether we need security, that’s already clear. Instead, we should reflect on how we want to approach security and strike the right balance to ensure both safety and efficiency.&lt;/p&gt;
 
-&lt;p&gt;🗣️ &lt;em&gt;I believe this topic is directly linked to burnouts&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;💬 &lt;em&gt;II believe this topic may have some relation to employee burnouts&lt;/em&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;building-economically&quot;&gt;Building economically&lt;/h2&gt;
 
-&lt;p&gt;In the market where I operate, FinOps-related matters are often unclear, especially regarding how organizations are willing to spend heavily to ensure a good end-user experience. This frequently happens even in business areas that do not generate significant financial returns. The challenge here is that this mindset often leads to extremely expensive technical decisions. Companies consistently aim for extraordinarily high SLAs, relying on costly cloud provider components. Have you ever considered how much a large company spends just to achieve observability for its applications ? Observability rarely offers a direct financial return for most companies, yet the associated costs are typically very high. This happens because the same solution used to monitor core business components is also employed to observe non-critical internal systems. The key point is that the cost-saving perspective often comes only after implementation. It is rare for debates to focus on high costs upfront. Discussions usually center around whether a solution can handle the required load or if it is highly available, with little attention to how much it will cost over time. This approach comes at a high price—literally.&lt;/p&gt;
+&lt;p&gt;It is very common to see companies being overwhelmed by costs in cloud providers like AWS, Azure, and GCP, as well as by extremely expensive bills from observability vendors like Dynatrace, New Relic, and Datadog. The key point here is that we usually build first and only think about cost optimization later, instead of bringing this discussion to the beginning of projects. Once everything is built and running well, with the SLO achieved, reducing costs becomes much more complex. I see it as a major challenge to shift our mindset toward understanding and calculating costs based on technical decisions from the start of any project. I notice that few people truly appreciate efficiency those who deliver faster usually get more recognition. We should aim for sustainable solutions, considering cost progression over time and avoiding vendor lock-in.&lt;/p&gt;
 
 &lt;h2 id=&quot;fragile-points-in-complex-systemsarchitectures&quot;&gt;Fragile points in complex systems/architectures&lt;/h2&gt;
 
 &lt;p&gt;The use of complex architectures with microservices, non-relational databases, and messaging services is common in organizations that need to scale to serve a large number of users. While complexity is relative, dealing with systems composed of various subsystems and different levels of abstraction often makes decision-making challenging, especially during critical situations. I have witnessed scenarios where the feature toggle system of an application failed, directly impacting the application’s functionality. I have also seen cases where a cache system failure brought an entire product down. These fragilities have cost me many sleepless nights. For 2025, the challenge I propose is to develop solutions that can scale without being overly sensitive to dependencies, operate with alternative paths, and recover from potential failures autonomously and efficiently.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/apolzek/apolzek.github.io/refs/heads/main/assets/gif/done.webp&quot; alt=&quot;working&quot; /&gt;
-&lt;strong&gt;Solution&lt;/strong&gt; = Shift left Costs + Security + Observability&lt;/p&gt;
+&lt;strong&gt;Solution&lt;/strong&gt; = Shift left &lt;strong&gt;Costs&lt;/strong&gt; + &lt;strong&gt;Security&lt;/strong&gt; + &lt;strong&gt;Observability&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Honestly, I think these are the main challenges for 2025 in my line of work. So, what’s the plan ?? We tackle them head-on. The idea is to deliver value, get stuff done, and have some fun along the way, working with Delphi or whipping up a new CI/CD pipeline. The best way to not let these challenges get to you ? Just do a solid job and keep it chill.&lt;/p&gt;
 
@@ -1226,6 +1226,8 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
   &lt;li&gt;There is 🕵️ hidden content within this blog; you can find it by exploring or inspecting the source code;&lt;/li&gt;
   &lt;li&gt;Fixing is better than criticizing, but any interaction is valuable.&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Welcome aboard !!&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/gif/study.webp&quot; alt=&quot;study&quot; /&gt;&lt;/p&gt;
 
