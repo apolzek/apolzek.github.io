@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2025-02-28T06:35:55+00:00</updated>
+ <updated>2025-02-28T06:55:03+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -230,8 +230,8 @@ nodes:
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://github.com/syepes/network_exporter
 https://github.com/prometheus/blackbox_exporter
+https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md
 https://grafana.com/grafana/dashboards/15297-prometheus-network-exporter/
-https://www.mermaidchart.com/raw/00be2e0c-174b-4a07-8163-659f7f9a2be5?theme=light&amp;amp;version=v0.1&amp;amp;format=svg
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;!-- https://www.mermaidchart.com/app/projects/9763d075-f3a7-4f83-b567-d2373878b316/diagrams/00be2e0c-174b-4a07-8163-659f7f9a2be5/version/v0.1/edit --&gt;
