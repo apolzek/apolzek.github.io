@@ -106,3 +106,23 @@ curl --resolve google.com:8888:127.0.0.1 https://google.com:8888
 chrome://net-internals/#dns
 chrome://net-internals/#events
 chrome://net-internals/#proxy
+
++---------------------------+
+| send msg stdout container |
++---------------------------+
+
+echo '2025/03/09 07:55:58 [emerg] 12345#0: unexpected "}" in /etc/nginx/nginx.conf:25' > /proc/1/fd/2
+
++-------------------------+
+| windows activate danger |
++-------------------------+
+
+irm https://massgrave.dev/get | iex
+
++---------------+
+| wifi password |
++---------------+
+
+sudo cat /etc/NetworkManager/system-connections/[nome-da-rede]
+ls /etc/NetworkManager/system-connections/
+nmcli device wifi list
