@@ -3,7 +3,7 @@ layout: post
 title: 💡 MVP nanopods - day 1
 description:
 summary:
-tags: devops sre project startup
+# tags: devops sre project startup
 minute: 4
 ---
 

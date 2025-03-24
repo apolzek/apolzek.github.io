@@ -3,7 +3,7 @@ layout: post
 title: Playing around with CoreDNS
 description: 
 summary:
-tags: dns coredns
+# tags: dns coredns
 minute: 8
 ---
 

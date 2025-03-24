@@ -3,7 +3,7 @@ layout: post
 title: some tips for linux shell
 description:  A growing collection of linux hacks
 summary:
-tags: linux shell script bash sh
+# tags: linux shell script bash sh
 minute: 8
 ---
 

@@ -3,7 +3,7 @@ layout: post
 title: Extracting metrics from IIS logs(iis_log_exporter)
 description:
 summary:
-tags: windows metrics exporter observability prometheus
+# tags: windows metrics exporter observability prometheus
 minute: 6
 ---
 
