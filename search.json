@@ -3,7 +3,7 @@
     {
       "title"    : "blackbox_exporter or network_exporter ?",
       "category" : "",
-      "tags"     : "prometheus, exporters, network, monitoring",
+      "tags"     : "",
       "url"      : "/2025/02/24/blackbox-exporter-or-network-exporter",
       "date"     : "2025-02-24 00:00:00 +0000"
     } ,
@@ -11,7 +11,7 @@
     {
       "title"    : "some tips for linux shell",
       "category" : "",
-      "tags"     : "linux, shell, script, bash, sh",
+      "tags"     : "",
       "url"      : "/2025/02/19/some-tips-for-linux-shell",
       "date"     : "2025-02-19 00:00:00 +0000"
     } ,
@@ -19,7 +19,7 @@
     {
       "title"    : "Playing around with CoreDNS",
       "category" : "",
-      "tags"     : "dns, coredns",
+      "tags"     : "",
       "url"      : "/2025/02/19/playing-around-with-coredns",
       "date"     : "2025-02-19 00:00:00 +0000"
     } ,
@@ -27,7 +27,7 @@
     {
       "title"    : "Extracting metrics from IIS logs(iis_log_exporter)",
       "category" : "",
-      "tags"     : "windows, metrics, exporter, observability, prometheus",
+      "tags"     : "",
       "url"      : "/2025/02/10/extracting-metrics-from-iis-logs",
       "date"     : "2025-02-10 00:00:00 +0000"
     } ,
@@ -35,7 +35,7 @@
     {
       "title"    : "The biggest reliability engineering challenges in 2025(From my perspective)",
       "category" : "",
-      "tags"     : "challenges, tech, banking, security",
+      "tags"     : "",
       "url"      : "/2024/12/29/the-biggest-reliability-engineering-challenges-in-2025",
       "date"     : "2024-12-29 00:00:00 +0000"
     } ,
@@ -43,7 +43,7 @@
     {
       "title"    : "💡 MVP nanopods - day 1",
       "category" : "",
-      "tags"     : "devops, sre, project, startup",
+      "tags"     : "",
       "url"      : "/2024/12/23/mvp-nanopods-day1",
       "date"     : "2024-12-23 00:00:00 +0000"
     } ,
@@ -51,7 +51,7 @@
     {
       "title"    : "Kafka and RabbitMQ on Kubernetes using Kind",
       "category" : "",
-      "tags"     : "kafka, kind, kubernetes, rabbitmq",
+      "tags"     : "",
       "url"      : "/2024/09/29/kafka-and-rabbitmq-on-kubernetes",
       "date"     : "2024-09-29 00:00:00 +0000"
     } ,
