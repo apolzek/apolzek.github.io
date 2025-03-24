@@ -17,7 +17,7 @@ Using software to support and evolve software comes at a cost. If you work in De
 
 The topic of security has significantly complicated my daily work routine, while also generating a growing backlog for reliability and software engineering teams. Everyone knows that security must be embedded in every level of an organization, as well as within individuals. It plays a vital role in the business and goes beyond the technological sphere. Having worked with banks and fintechs, I understand that security is even more critical in these environments, where organizations face numerous regulatory requirements and compliance obligations. I see this topic as a significant challenge because it directly affects employees' lives, who often feel unproductive or pressured by the bureaucracy applied to technology and processes. A simple analogy: imagine you're teaching your child to ride a bike but want to ensure they don’t get hurt if they fall. You equip them with every possible safety device so that even if they fall, they won’t be injured. However, the excess of equipment makes it impossible for them to ride the bike. This isn’t about debating whether we need security, that’s already clear. Instead, we should reflect on how we want to approach security and strike the right balance to ensure both safety and efficiency.
 
-💬 *II believe this topic may have some relation to employee burnouts*
+💬 *I believe this topic may have some relation to employee burnouts*
 
 ## Building economically
 

@@ -3,7 +3,7 @@ layout: post
 title: Hello World =)
 description:
 summary:
-tags: blog about
+# tags: blog about
 minute: 2
 ---
 
