@@ -25,7 +25,7 @@ The log files contained the **request path, the method used, the status code, an
 
 First, I developed a Python script that parsed log files and transformed them into metrics exposed in HTTP server format, following the traditional model. When I tried to adapt the solution for Windows, I didn't necessarily want to have Python installed on the machine, and when using PyInstaller, I faced many frustrations.
 
-I then decided to rewrite the code in Golang(❤️GOOS=windows GOARCH=amd64 go build -o ..), following the same logic. Upon completion, I decided to deliver the solution in two ways: one approach using Golang exposing as a server, but I would also make use of the textfile collector from Windows Exporter. In this solution, I basically extend the metrics I'm already capturing and can append metrics in Prometheus format to a text file. And who would generate this file ?? The Golang solution? No, I decided to create a native Windows solution using PowerShell. It follows the same logic and executes via Task Scheduler, keeping the file always updated. The metrics appear in the Windows Exporter that I was already using, and everything else continues as it was. 
+I then decided to rewrite the code in Golang(❤️GOOS=windows GOARCH=amd64 go build -o ..), following the same logic. Upon completion, I decided to deliver the solution in two ways: one approach using Golang exposing as a server, but I would also make use of the textfile collector from windows_exporter. In this solution, I basically extend the metrics I'm already capturing and can append metrics in Prometheus format to a text file. And who would generate this file ?? The Golang solution? No, I decided to create a native Windows solution using PowerShell. It follows the same logic and executes via Task Scheduler, keeping the file always updated. The metrics appear in the Windows Exporter that I was already using, and everything else continues as it was. 
 
 ![iis](/assets/img/iis-dashboard-v2.png)
 
@@ -39,6 +39,16 @@ Prometheus--> iis_log_exporter.exe --> C:\inetpub\logs\LogFiles\W3SVC2
 
 ```
 Prometheus--> windows_exporter--> metrics.prom <-- iis_log_exporter.ps1 (task scheduler)
+```
+
+In my case, as I have time for the prometheus scrape and time for the job to run to get metrics, my time configuration looks like this
+
+```
+Tempo (s) |0    |5    |10   |15   |20   |25   |30   |35   |40   |45   |50   |55   |60   |
+----------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+Prometheus|  X  |     |     |  X  |     |     |  X  |     |     |  X  |     |     |  X  |
+          |     |     |     |     |     |     |     |     |     |     |     |     |     |
+TaskSched |  X  |     |  X  |     |  X  |     |  X  |     |  X  |     |  X  |     |  X  |
 ```
 
 ![indicators](/assets/gif/indicators.webp) 
@@ -57,12 +67,6 @@ Another thing was that I implemented the logic to monitor by **Site** folder. Th
 
 **TIP**: If you want to continue using the windows_exporter, simply enable the textfile collector and specify the location where the metrics file will be, based on the PowerShell configuration below. If you want a new exporter, you can use the Golang version with a binary compiled for Windows. Using the windows_exporter metrics with the iis_log_exporter can provide a better understanding of IIS behavior and its transactions.
 
-![together](/assets/gif/together.webp) 
-
 Pull requests are welcome in the exporter's repository !! 🫶🏻 bye-bye
-
-<!-- 
-https://www.sysgauge.com/ 
--->
 
 **repository**: [https://github.com/apolzek/iis_log_exporter](https://github.com/apolzek/iis_log_exporter)
