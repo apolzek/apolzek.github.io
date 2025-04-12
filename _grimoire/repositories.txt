@@ -144,3 +144,6 @@ https://github.com/hoppscotch/hoppscotch
 
 # Fast Real-time Object Detection with High-Res Output
 https://github.com/SanshruthR/CCTV_YOLO
+
+# Limiter, compressor, convolver, equalizer and auto volume and many other plugins for PipeWire applications
+https://github.com/wwmm/easyeffects
