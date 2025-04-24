@@ -144,3 +144,15 @@ https://github.com/hoppscotch/hoppscotch
 
 # Fast Real-time Object Detection with High-Res Output
 https://github.com/SanshruthR/CCTV_YOLO
+
+# Linux, Jenkins, AWS, SRE, Prometheus, Docker, Python, Ansible, Git, Kubernetes, Terraform, OpenStack, SQL, NoSQL, Azure, GCP, DNS, Elastic, Network, Virtualization. DevOps Interview Questions
+https://github.com/bregman-arie/devops-exercises
+
+# A Discord bot that sends chat messages to a web server and displays them on an OBS/browser screen.
+https://github.com/joao-gugel/dstream-bot
+
+# JavaScript API for Chrome and Firefox
+https://github.com/puppeteer/puppeteer
+
+# Build terminal-themed web applications with Rust and WebAssembly. Powered by Ratatui.
+https://github.com/orhun/ratzilla?tab=readme-ov-file#serve

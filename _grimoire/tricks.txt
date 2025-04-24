@@ -126,3 +126,9 @@ irm https://massgrave.dev/get | iex
 sudo cat /etc/NetworkManager/system-connections/[nome-da-rede]
 ls /etc/NetworkManager/system-connections/
 nmcli device wifi list
+
++----------+
+| wordlist |
++----------+
+
+https://www.weakpass.com/wordlists?order=desc&sort=size
