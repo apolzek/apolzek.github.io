@@ -126,3 +126,10 @@ irm https://massgrave.dev/get | iex
 sudo cat /etc/NetworkManager/system-connections/[nome-da-rede]
 ls /etc/NetworkManager/system-connections/
 nmcli device wifi list
+
++---------------------------------+
+| encrypt/decrypt file using pass |
++---------------------------------+
+
+ openssl enc -aes-256-cbc -salt -pbkdf2 -in data.txt -out data.enc
+ curl -s https://github.com/apolzek/apolzek.github.io/blob/main/_secret/data.enc | openssl enc -aes-256-cbc -d -salt -pbkdf2
