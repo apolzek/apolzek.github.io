@@ -131,8 +131,11 @@ nmcli device wifi list
 | encrypt/decrypt file using pass |
 +---------------------------------+
 
- openssl enc -aes-256-cbc -salt -pbkdf2 -in data.txt -out data.enc
- curl -s https://github.com/apolzek/apolzek.github.io/blob/main/_secret/data.enc | openssl enc -aes-256-cbc -d -salt -pbkdf2
+echo "Este é um arquivo de teste" > original.txt
+openssl enc -aes-256-cbc -salt -pbkdf2 -in original.txt -out secreto.enc
+openssl enc -aes-256-cbc -d -salt -pbkdf2 -in secreto.enc
+curl -s https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/secreto.enc | openssl enc -aes-256-cbc -d -salt -pbkdf2
+
 +----------+
 | wordlist |
 +----------+
