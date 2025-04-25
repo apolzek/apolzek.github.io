@@ -133,3 +133,8 @@ nmcli device wifi list
 
  openssl enc -aes-256-cbc -salt -pbkdf2 -in data.txt -out data.enc
  curl -s https://github.com/apolzek/apolzek.github.io/blob/main/_secret/data.enc | openssl enc -aes-256-cbc -d -salt -pbkdf2
++----------+
+| wordlist |
++----------+
+
+https://www.weakpass.com/wordlists?order=desc&sort=size
