@@ -3,3 +3,5 @@ fzf
 superfile
 eza
 bat
+anki
+obsidian

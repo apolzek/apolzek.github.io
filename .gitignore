@@ -8,3 +8,4 @@ tmp
 _site
 .vscode
 .obsidian
+.aider*

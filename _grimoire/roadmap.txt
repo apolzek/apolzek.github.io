@@ -1,0 +1,22 @@
+https://roadmap.sh/
+https://github.com/apolzek/professional-programming
+https://github.com/bregman-arie/devops-exercises
+
+# Prometheus
+
+- TSDB
+
+# Kubernetes
+
+- Pods
+- Deployments
+
+# Golang
+
+- Structs
+
+# Kafka
+
+# RabbitMQ
+
+# SRE

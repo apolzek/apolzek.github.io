@@ -159,3 +159,15 @@ https://github.com/puppeteer/puppeteer
 
 # Build terminal-themed web applications with Rust and WebAssembly. Powered by Ratatui.
 https://github.com/orhun/ratzilla?tab=readme-ov-file#serve
+
+# A boilerplate for building RESTful APIs using Golang, Fiber, and GORM PostgreSQL
+https://github.com/indrayyana/go-fiber-boilerplate
+
+# Awesome list of status page open source software, services and public status pages of major internet companies
+https://github.com/ivbeg/awesome-status-pages
+
+# Admin Dashboard UI built with Shadcn and Vite.
+https://github.com/satnaing/shadcn-admin
+
+# A collective list of free APIs
+https://github.com/public-apis/public-apis
