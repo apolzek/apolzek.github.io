@@ -41,14 +41,6 @@
     } ,
   
     {
-      "title"    : "💡 MVP nanopods - day 1",
-      "category" : "",
-      "tags"     : "",
-      "url"      : "/2024/12/23/mvp-nanopods-day1",
-      "date"     : "2024-12-23 00:00:00 +0000"
-    } ,
-  
-    {
       "title"    : "Kafka and RabbitMQ on Kubernetes using Kind",
       "category" : "",
       "tags"     : "",
