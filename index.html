@@ -13,7 +13,7 @@ layout: default
         </button>
     </div>
     <div>
-        <i>by</i> <b>Vinícius Gomes Batista</b> 🇧🇷; <i>last updated on</i> <b>2025.5.9</b>
+        <i>by</i> <b>Vinícius Gomes Batista</b> 🇧🇷; <i>last updated on</i> <b>2025.6.10</b>
     </div>
     <div class="fixed-links">
         <!-- <a href="/about" class="fixed-link">About</a> -->
@@ -53,7 +53,6 @@ layout: default
             {% endfor %}
         </ul>
 
-        <!-- Navegação de Paginação -->
         <nav class="pagination">
             {% if paginator.previous_page %}
             <a href="{{ paginator.previous_page_path }}" class="prev">Previous</a>
@@ -81,20 +80,14 @@ layout: default
     .pagination a {
         text-decoration: none;
         color: inherit;
-        /* Mantém a cor original do texto */
         margin: 0 15px;
-        /* Define o espaçamento entre os links */
         font-weight: normal;
-        /* Define o peso do texto normal */
         transition: font-weight 0.2s ease, text-shadow 0.2s ease;
-        /* Transição suave para o efeito de hover */
     }
 
     .pagination a:hover {
         font-weight: bold;
-        /* Deixa o texto em negrito no hover */
         text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
-        /* Efeito de brilho suave */
     }
 
     .fixed-links {

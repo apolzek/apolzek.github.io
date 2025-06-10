@@ -1,22 +1,125 @@
 https://roadmap.sh/
 https://github.com/apolzek/professional-programming
 https://github.com/bregman-arie/devops-exercises
+https://interview.devopscommunity.in/
 
 # Prometheus
 
-- TSDB
+TSDB
 
 # Kubernetes
 
-- Pods
-- Deployments
+Pods
+Deployments
 
 # Golang
 
-- Structs
+Built for cloud-native applications
+Excellent concurrent programming support
+Static typing and compilation for reliability
+Powers tools like Docker and Kubernetes
+Strong performance for system-level programming
+Built-in testing capabilities
+Structs
 
 # Kafka
 
 # RabbitMQ
 
 # SRE
+
+# Linux and scripting
+
+Basic command-line operations
+Shell scripting (Bash/Shell)
+System administration
+File system management
+Process management
+Text processing with tools like sed, awk, and grep
+
+# Programming
+
+Data structures and algorithms
+Object-oriented programming
+Functional programming concepts
+Error handling and debugging
+Testing methodologies
+API design and implementation
+Version control integration
+Documentation best practices
+
+# Networking
+
+TCP/IP protocol suite
+DNS and DHCP
+Load balancing concepts
+Firewalls and security
+VPNs and networking protocols
+Subnetting and routing
+
+# Yaml
+
+Basic YAML syntax
+Data structures and formatting
+Working with arrays and dictionaries
+Understanding indentation rules
+Configuration file management
+Integration with various tools like Kubernetes and Ansible
+
+# CICD
+
+GitHub Actions workflow
+ArgoCD for GitOps
+GitLab CI/CD
+Pipeline design patterns
+Testing strategies
+Deployment strategies
+
+# Observability
+
+Monitoring tools and practices
+Log aggregation and analysis
+Distributed tracing
+Metrics collection
+Alert management
+Performance optimization
+
+# Chaos Engineering
+
+Chaos testing principles
+Litmus framework
+Chaos Mesh for Kubernetes
+Failure injection
+System resilience
+Recovery strategies
+
+# Service Mesh
+
+Istio architecture
+Linkerd implementation
+Traffic management
+Security policies
+Observability features
+Service mesh patterns
+
+# Platform Engineering
+
+Backstage for developer portals
+Internal Developer Platforms
+Self-service capabilities
+Platform design principles
+API management
+Developer experience optimization
+
+# eBPF
+
+# Software Architecture Patterns
+
+Bounded Contexts
+Sidecar
+Publisher-Subscriber(Asynchronous communication)
+Application Gateway
+Microservices
+Microfrontends
+Command Segregation Responsibility Segregation (CQRS)
+Polyglot Architecture

@@ -171,3 +171,6 @@ https://github.com/satnaing/shadcn-admin
 
 # A collective list of free APIs
 https://github.com/public-apis/public-apis
+
+# Swiss-army tool for scraping and extracting data from online assets, made for hackers
+https://github.com/bjesus/pipet?tab=readme-ov-file

@@ -18,7 +18,7 @@ minute: 2
 
 ## GOALS
 
-- Talk about tools that are not well-known but have great potential(*maybe this will turn into a new project*);
+- Talk about tools that are not well-known but have great potential;
 - Track my studies with short reflective articles;
 - Share my views on technologies, processes, and products;
 - Soon, I will revisit my notes to see how my views on certain topics have changed;

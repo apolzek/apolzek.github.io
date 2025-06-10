@@ -28,8 +28,9 @@ It is very common to see companies being overwhelmed by costs in cloud providers
 The use of complex architectures with microservices, non-relational databases, and messaging services is common in organizations that need to scale to serve a large number of users. While complexity is relative, dealing with systems composed of various subsystems and different levels of abstraction often makes decision-making challenging, especially during critical situations. I have witnessed scenarios where the feature toggle system of an application failed, directly impacting the application's functionality. I have also seen cases where a cache system failure brought an entire product down. These fragilities have cost me many sleepless nights. For 2025, the challenge I propose is to develop solutions that can scale without being overly sensitive to dependencies, operate with alternative paths, and recover from potential failures autonomously and efficiently.
 
 ![working](https://raw.githubusercontent.com/apolzek/apolzek.github.io/refs/heads/main/assets/gif/done.webp)
+
 **Solution** = Shift left **Costs** + **Security** + **Observability**
 
-Honestly, I think these are the main challenges for 2025 in my line of work. So, what’s the plan ?? We tackle them head-on. The idea is to deliver value, get stuff done, and have some fun along the way, working with Delphi or whipping up a new CI/CD pipeline. The best way to not let these challenges get to you ? Just do a solid job and keep it chill.
+I chose not to bring up artificial intelligence, even though it's clear that it has a big impact on our daily lives. These are the challenges I see right now. The idea is to do good work, enjoy the process, and grow while staying grounded and focused on real problems.
 
 **Happy New Year** 🎉🎉🎉🎉
