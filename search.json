@@ -25,7 +25,7 @@
     } ,
   
     {
-      "title"    : "Extracting metrics from IIS logs(iis_log_exporter)",
+      "title"    : "Extracting metrics from IIS logs",
       "category" : "",
       "tags"     : "",
       "url"      : "/2025/02/10/extracting-metrics-from-iis-logs",
