@@ -1,6 +1,6 @@
 ---
 layout: post
-title: blackbox_exporter or network_exporter ?
+title: blackbox_exporter x network_exporter ?
 description: Outside in with blackbox_exporter, Inside out with network_exporter
 summary:
 # tags: prometheus exporters network monitoring
