@@ -174,3 +174,40 @@ https://github.com/public-apis/public-apis
 
 # Swiss-army tool for scraping and extracting data from online assets, made for hackers
 https://github.com/bjesus/pipet?tab=readme-ov-file
+
+# Comfortably monitor your Internet traffic 🕵️‍♂️
+https://github.com/GyulyVGC/sniffnet
+
+# A lightweight next-gen data explorer - Postgres, MySQL, SQLite, MongoDB, Redis, MariaDB, Elastic Search, and Clickhouse with Chat interface
+https://github.com/clidey/whodb
+
+# Database diagrams editor that allows you to visualize and design your DB with a single query.
+https://github.com/chartdb/chartdb
+
+# ✨ Innovative and open-source visualization application that transforms various data formats, such as JSON, YAML, XML, CSV and more, into interactive graphs.
+https://github.com/AykutSarac/jsoncrack.com
+
+# distributed, durable, and highly available log built on top of S3
+https://github.com/avinassh/s3-log
+
+
+# Checkmate is an open-source, self-hosted tool designed to track and monitor server hardware, uptime, response times, and incidents in real-time with beautiful visualizations. Don't be shy, join here: https://discord.com/invite/NAb6H3UTjK :)
+https://github.com/bluewave-labs/checkmate
+
+# Techniques and numbers for estimating system's performance from first-principles
+https://github.com/sirupsen/napkin-math?tab=readme-ov-file
+
+# Share your terminal over the web
+https://github.com/tsl0922/ttyd
+
+# Share your terminal as a web application
+https://github.com/yudai/gotty
+
+# A terminal for Web SSH connection
+https://github.com/zyyzyykk/kkTerminal
+
+# a simple oscilloscope/vectorscope/spectroscope for your terminal
+https://github.com/alemidev/scope-tui
+
+# A network diagnostic tool
+https://github.com/fujiapple852/trippy

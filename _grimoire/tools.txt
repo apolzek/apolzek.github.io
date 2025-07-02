@@ -5,3 +5,9 @@ eza
 bat
 anki
 obsidian
+N8N
+FileBrowser
+Nginx Proxy Manage
+Portainer
+NocoDB
+Thanos
