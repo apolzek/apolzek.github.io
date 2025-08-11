@@ -211,3 +211,18 @@ https://github.com/alemidev/scope-tui
 
 # A network diagnostic tool
 https://github.com/fujiapple852/trippy
+
+# Yet another WebUI for Nginx
+https://github.com/0xJacky/nginx-ui
+
+# Modelo básico de API com FastAPI
+https://github.com/lspraciano/fastapiAPITemplate
+
+# A high-performance observability data pipeline.
+https://github.com/vectordotdev/vector
+
+# Run your own AI cluster at home with everyday devices 📱💻 🖥️⌚
+https://github.com/exo-explore/exo
+
+# Prometheus/OpenMetrics endpoint series generator for load testing.
+https://github.com/prometheus-community/avalanche
