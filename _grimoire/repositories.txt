@@ -1,3 +1,6 @@
+# List of projects that provide terminal user interfaces
+https://github.com/rothgar/awesome-tuis?tab=readme-ov-file
+
 # Medium blog projects. gRPC, Distributed Http Tracing, Redis Cluster.
 https://github.com/mertcakmak2/Medium-Stories-Projects
 
