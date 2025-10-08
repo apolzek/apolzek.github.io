@@ -229,3 +229,33 @@ https://github.com/exo-explore/exo
 
 # Prometheus/OpenMetrics endpoint series generator for load testing.
 https://github.com/prometheus-community/avalanche
+
+# TUI Application to manage Obsidian notes directly from the terminal
+https://github.com/erikjuhani/basalt
+
+# A modern, fast and productivity driven SQL client with a focus in UX
+https://github.com/antares-sql/antares?tab=readme-ov-file
+
+# SSH tunnels made simple: Launch and monitor SSH tunnels from a single YAML config and your existing OpenSSH setup.
+https://github.com/strandnerd/tunn
+
+# Embedded property graph database built for speed. Vector search and full-text search built in. Implements Cypher.
+https://github.com/kuzudb/kuzu
+
+# Clone a voice in 5 seconds to generate arbitrary speech in real-time
+https://github.com/CorentinJ/Real-Time-Voice-Cloning
+
+# A linux utility to get information on filesystems, like df but better
+https://github.com/Canop/dysk
+
+# Virtual Machine for the Web
+https://github.com/leaningtech/webvm
+
+# An user interface for the nginx web server, aimed at developers and enthusiasts that don't want to manage configuration files manually
+https://github.com/lucasdillmann/nginx-ignition
+
+# Kafka exporter for Prometheus
+https://github.com/danielqsj/kafka_exporter
+
+# ☁️ OxiCloud server, efficient and secure way to save all your data
+https://github.com/DioCrafts/OxiCloud
