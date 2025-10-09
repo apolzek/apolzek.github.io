@@ -259,3 +259,21 @@ https://github.com/danielqsj/kafka_exporter
 
 # ☁️ OxiCloud server, efficient and secure way to save all your data
 https://github.com/DioCrafts/OxiCloud
+
+# Alert dashboard for Prometheus Alertmanager
+https://github.com/prymitive/karma
+
+# Reitti is a comprehensive personal location tracking and analysis application that helps you understand your movement patterns and significant places. The name "Reitti" comes from Finnish, meaning "route" or "path".
+https://github.com/dedicatedcode/reitti
+
+# Caddy WAF (Regex Rules, IP and DNS filtering, Rate Limiting, GeoIP, Tor, Anomaly Detection)
+Reitti is a comprehensive personal location tracking and analysis application that helps you understand your movement patterns and significant places. The name "Reitti" comes from Finnish, meaning "route" or "path".
+
+# GUI for apktool, signapk, zipalign and baksmali utilities.
+https://github.com/AndnixSH/APKToolGUI
+
+# Run Windows apps on 🐧 Linux with ✨ seamless integration
+https://github.com/TibixDev/winboat
+
+# A Qt GUI app that makes it easy to download multiple videos at once from Youtube channels.
+https://github.com/hyperfield/yt-channel-downloader
