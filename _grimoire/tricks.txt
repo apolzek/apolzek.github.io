@@ -141,3 +141,16 @@ curl -s https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/secreto
 +----------+
 
 https://www.weakpass.com/wordlists?order=desc&sort=size
+
++------------------+
+| Chrome Bookmarks |
++------------------+
+
+```
+cat ~/.config/google-chrome/Default/Bookmarks | jq '.roots.bookmark_bar.children[] | {name: .name, url: .url}'
+```
+
++-------------------+
+| Linux connections |
++-------------------+
+sudo cat  /etc/NetworkManager/system-connections/*
