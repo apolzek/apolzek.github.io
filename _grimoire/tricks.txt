@@ -126,6 +126,8 @@ irm https://massgrave.dev/get | iex
 sudo cat /etc/NetworkManager/system-connections/[nome-da-rede]
 ls /etc/NetworkManager/system-connections/
 nmcli device wifi list
+sudo nmcli connection show "<wifi_name>" --show-secrets
+
 
 +---------------------------------+
 | encrypt/decrypt file using pass |
