@@ -344,3 +344,63 @@ https://github.com/spr-networks/super/
 
 # A lightweight text editor written in Lua
 https://github.com/rxi/lite
+
+# A golang framework helps gopher to build a data visualization and admin panel in ten minutes
+https://github.com/GoAdminGroup/go-admin/
+
+# tun2socks - powered by gVisor TCP/IP stack
+https://github.com/xjasonlyu/tun2socks/
+
+# An Arduino library that allows you to use a cheap Arduino (Leonardo) as a Rubber Ducky
+https://github.com/luisbraganca/rubber-ducky-library-for-arduino
+
+# A Claude Code plugin that automatically captures everything Claude does during your coding sessions, compresses it with AI (using Claude's agent-sdk), and injects relevant context back into future sessions.
+https://github.com/thedotmack/claude-mem/
+
+# Next generation distributed, event-driven, parallel config management!
+https://github.com/purpleidea/mgmt/
+
+# ✨ Magical shell history
+https://github.com/atuinsh/atuin
+
+# Fast and easy to use database for logs, which can efficiently handle terabytes of logs
+https://github.com/VictoriaMetrics/VictoriaLogs/
+
+# The Kubefirst Open Source Platform
+https://github.com/konstructio/kubefirst
+
+# Open Source Local Data Analysis Assistant.
+https://github.com/quelmap-inc/quelmap/
+
+# Open Source Alternative to vercel, heroku, netlify with simplified workflows
+https://github.com/raghavyuva/nixopus
+
+# Lightweight multi-platform code editor designed for modern hardware with a focus on responsiveness and performance.
+https://github.com/SpartanJ/ecode
+
+# 🐘 tsql — A modern PostgreSQL manager TUI
+https://github.com/fcoury/tsql
+
+# A tool to create visual HTML reports from collections of CSV/TSV tables
+https://github.com/datavzrd/datavzrd/?tab=readme-ov-file
+
+# Digler is a tool for forensic disk analysis and file recovery. It's designed to help you unearth lost or deleted data from various disk images and raw devices.
+https://github.com/ostafen/digler
+
+# Open-source service map visualization tool that generates service dependency maps from OpenTelemetry trace data.
+https://github.com/jack5341/otelmap
+
+# Network reconnaissance and asset discovery tool
+https://github.com/Dyneteq/reconya/
+
+# NanoCluster: Compact & Affordable Cluster for Everyone
+https://github.com/sipeed/NanoCluster/
+
+# The CNCF sandbox for observability visualisation. Already supports Prometheus, Tempo, Loki and Pyroscope - more data sources to come!
+https://github.com/perses/perses?tab=readme-ov-file
+
+# Open Source Local Data Analysis Assistant.
+https://github.com/quelmap-inc/quelmap/
+
+# Open-source service map visualization tool that generates service dependency maps from OpenTelemetry trace data.
+https://github.com/jack5341/otelmap
