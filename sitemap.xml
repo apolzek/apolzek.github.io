@@ -1,32 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://apolzek.github.io/2024/09/26/hello-world</loc>
-<lastmod>2024-09-26T00:00:00+00:00</lastmod>
-</url>
-<url>
-<loc>https://apolzek.github.io/2024/09/29/kafka-and-rabbitmq-on-kubernetes</loc>
-<lastmod>2024-09-29T00:00:00+00:00</lastmod>
-</url>
-<url>
-<loc>https://apolzek.github.io/2024/12/29/the-biggest-reliability-engineering-challenges-in-2025</loc>
-<lastmod>2024-12-29T00:00:00+00:00</lastmod>
-</url>
-<url>
-<loc>https://apolzek.github.io/2025/02/10/extracting-metrics-from-iis-logs</loc>
-<lastmod>2025-02-10T00:00:00+00:00</lastmod>
-</url>
-<url>
-<loc>https://apolzek.github.io/2025/02/19/playing-around-with-coredns</loc>
-<lastmod>2025-02-19T00:00:00+00:00</lastmod>
-</url>
-<url>
-<loc>https://apolzek.github.io/2025/02/19/some-tips-for-linux-shell</loc>
-<lastmod>2025-02-19T00:00:00+00:00</lastmod>
-</url>
-<url>
-<loc>https://apolzek.github.io/2025/02/24/blackbox-exporter-x-network-exporter</loc>
-<lastmod>2025-02-24T00:00:00+00:00</lastmod>
+<loc>https://apolzek.github.io/2026/01/12/hello-world</loc>
+<lastmod>2026-01-12T00:00:00+00:00</lastmod>
 </url>
 <url>
 <loc>https://apolzek.github.io/</loc>

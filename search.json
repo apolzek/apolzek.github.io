@@ -1,59 +1,11 @@
 [
   
     {
-      "title"    : "blackbox_exporter x network_exporter ?",
-      "category" : "",
-      "tags"     : "",
-      "url"      : "/2025/02/24/blackbox-exporter-x-network-exporter",
-      "date"     : "2025-02-24 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "some tips for linux shell",
-      "category" : "",
-      "tags"     : "",
-      "url"      : "/2025/02/19/some-tips-for-linux-shell",
-      "date"     : "2025-02-19 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "Playing around with CoreDNS",
-      "category" : "",
-      "tags"     : "",
-      "url"      : "/2025/02/19/playing-around-with-coredns",
-      "date"     : "2025-02-19 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "Extracting metrics from IIS logs",
-      "category" : "",
-      "tags"     : "",
-      "url"      : "/2025/02/10/extracting-metrics-from-iis-logs",
-      "date"     : "2025-02-10 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "The biggest reliability engineering challenges in 2025(From my perspective)",
-      "category" : "",
-      "tags"     : "",
-      "url"      : "/2024/12/29/the-biggest-reliability-engineering-challenges-in-2025",
-      "date"     : "2024-12-29 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "Kafka and RabbitMQ on Kubernetes using Kind",
-      "category" : "",
-      "tags"     : "",
-      "url"      : "/2024/09/29/kafka-and-rabbitmq-on-kubernetes",
-      "date"     : "2024-09-29 00:00:00 +0000"
-    } ,
-  
-    {
       "title"    : "Hello World =)",
       "category" : "",
       "tags"     : "",
-      "url"      : "/2024/09/26/hello-world",
-      "date"     : "2024-09-26 00:00:00 +0000"
+      "url"      : "/2026/01/12/hello-world",
+      "date"     : "2026-01-12 00:00:00 +0000"
     } 
   
 ]
