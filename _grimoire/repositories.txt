@@ -404,3 +404,42 @@ https://github.com/quelmap-inc/quelmap/
 
 # Open-source service map visualization tool that generates service dependency maps from OpenTelemetry trace data.
 https://github.com/jack5341/otelmap
+
+# A comprehensive observability solution for monitoring Claude Code usage, performance, and costs.
+https://github.com/ColeMurray/claude-code-otel
+
+# A Claude Code plugin that shows what's happening - context usage, active tools, running agents, and todo progress
+https://github.com/jarrodwatts/claude-hud
+
+# We write your reusable computer vision tools. 💜
+https://github.com/roboflow/supervision
+
+# 🔥 Real-time NVIDIA GPU dashboard
+https://github.com/psalias2006/gpu-hot
+
+# A terminal OpenTelemetry viewer inspired by otel-desktop-viewer
+https://github.com/ymtdzzz/otel-tui
+
+# cq - High-Performance SQL Query Engine for CSV Files
+https://github.com/baldimario/cq/
+
+# List of ngrok/Cloudflare Tunnel alternatives and other tunneling software and services. Focus on self-hosting.
+https://github.com/anderspitman/awesome-tunneling
+
+# Open-source service map visualization tool that generates service dependency maps from OpenTelemetry trace data.
+https://github.com/jack5341/otelmap
+
+# A curated list of Site Reliability and Production Engineering resources.
+https://github.com/dastergon/awesome-sre
+
+# Expose your local web server to the internet with a public URL.
+https://github.com/agrinman/tunnelto/
+
+# CLI for internet speed test via cloudflare
+https://github.com/kavehtehrani/cloudflare-speed-cli
+
+# Self-hosted solution which can help you to detect any unwanted changes in the (images) sitemap(s) of your websites
+https://github.com/M1CK431/url-checker
+
+# Effortless database administration tool
+https://github.com/liweiyi88/onedump

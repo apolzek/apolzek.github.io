@@ -11,3 +11,4 @@ Nginx Proxy Manage
 Portainer
 NocoDB
 Thanos
+marpit
