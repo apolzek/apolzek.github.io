@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-01-14T18:09:25+00:00</updated>
+ <updated>2026-01-16T00:31:33+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -13,13 +13,15 @@
 
  
  <entry>
-   <title>Hello World =)</title>
-   <link href="https://apolzek.github.io/2026/01/12/hello-world"/>
+   <title>Who is apolzek ?!</title>
+   <link href="https://apolzek.github.io/2026/01/12/who-is-apolzek"/>
    <updated>2026-01-12T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2026/01/12/hello-world</id>
-   <content type="html">&lt;p&gt;Hey world, here’s a proposal: &lt;strong&gt;let’s study together from now on, no beating around the bush, just leveling up our technical skills and growing as people too…&lt;/strong&gt; &lt;em&gt;“γνῶθι σεαυτόν, gnōthi seauton”&lt;/em&gt;&lt;/p&gt;
+   <id>https://apolzek.github.io/2026/01/12/who-is-apolzek</id>
+   <content type="html">&lt;p&gt;About the profile image: &lt;strong&gt;Júlio&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/gif/study.webp&quot; alt=&quot;study&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Júlio&lt;/strong&gt;, from &lt;em&gt;Cocoricó&lt;/em&gt;, is the pure embodiment of a curious boy. He lives on a farm, but his mind is always wandering: he asks questions, imagines possibilities, tests slightly crazy hypotheses, and learns along the way. His curiosity isn’t just about knowing “what something is,” but “why it is that way” and “what if it were different.” This often puts him in confusing situations, but it is also the driving force behind all his discoveries.&lt;/p&gt;
+
+&lt;!--Daughter, today you were extubated at Vila da Serra Hospital. I am so happy that it creates indescribable reactions in me. I love you, I love our family, I love life, I love God.--&gt;
 </content>
  </entry>
  
