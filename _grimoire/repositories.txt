@@ -443,3 +443,54 @@ https://github.com/M1CK431/url-checker
 
 # Effortless database administration tool
 https://github.com/liweiyi88/onedump
+
+# Notes to prepare for the AWS Certified Solutions Architect Professional exam
+https://github.com/Rmarieta/AWS-SAP-Notes
+
+# a prettier way to inspect network connections
+https://github.com/karol-broda/snitch
+
+# JumpServer is an open-source Privileged Access Management (PAM) platform that provides DevOps and IT teams with on-demand and secure access to SSH, RDP, Kubernetes, Database and RemoteApp endpoints through a web browser.
+https://github.com/jumpserver/jumpserver
+
+# CKA Questions, lab setups for killacoda and solutions
+https://github.com/jonataaraujo/CKA-2026
+
+# A lightweight, fast, terminal-based markdown research tool inspired by Obsidian
+https://github.com/hanebox/ekphos
+
+# Fuzzy find and kill processes from your terminal
+https://github.com/cesarferreira/rip
+
+# A user friendly TUI for SQL databases. Written in python. Supports SQL server, Mysql, PostreSQL, SQLite, Turso and more.
+https://github.com/Maxteabag/sqlit
+
+# Otel examples #opentelemetry #collector
+https://github.com/dosedetelemetria/projeto-otel-na-pratica
+
+# 30DaysOtel
+https://github.com/juliafmorgado/30DaysOtel
+
+# An autonomous agent for deep financial research
+https://github.com/virattt/dexter
+
+# A lightweight, secure, and feature-rich Discord terminal (TUI) client.
+https://github.com/ayn2op/discordo
+
+# SigNoz is an open-source observability platform native to OpenTelemetry with logs, traces and metrics in a single application.
+https://github.com/SigNoz/signoz
+
+# Web-based tool to facilitate OpenTelemetry collector configuration editing and verification
+https://github.com/dash0hq/otelbin/
+
+# A comprehensive observability solution for monitoring Claude Code usage, performance, and costs.
+https://github.com/ColeMurray/claude-code-otel
+
+# 🏔 Love Freedom - ❌ Block Mass Surveillance
+https://github.com/safing/portmaster
+
+# Modern observability platform: 10x easier, 140x lower storage cost, petabyte scale. Open-source alternative to Elasticsearch/Splunk/Datadog for logs, metrics, traces, RUM, and more.
+https://github.com/openobserve/openobserve
+
+A complete workflow automation and server monitoring system.
+https://github.com/pixlcore/xyops
