@@ -494,3 +494,6 @@ https://github.com/openobserve/openobserve
 
 A complete workflow automation and server monitoring system.
 https://github.com/pixlcore/xyops
+
+# ⚡️A terminal-based battery and energy monitor for macOS and Linux.
+https://github.com/jordond/jolt
