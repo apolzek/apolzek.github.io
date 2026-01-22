@@ -1,9 +1,9 @@
 ---
 description: null
 layout: post
-minute: 2
+minute: 7
 summary: null
-title: Proposing a Workflow for Complex Architectures
+title: Proposing a workflow for tracking and maintaining complex architectures
 ---
 
 You are an SRE and you like having a holistic view of the product. Or maybe you are a platform engineer and want to understand every part of the system and how data flows through it. The problem is that the team does not have this view. Most of the knowledge lives in the heads of the most senior people. The decision-making context stayed with them. What you are left with is an outdated inventory and, if you are lucky, a few partially documented flows.
