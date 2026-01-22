@@ -42,7 +42,7 @@ The idea is simple: once you finish the architecture drawing, translate it into 
 
 After all that, make some coffee and go listen to good music. You earned it.
 
-```html
+```mermaid
 flowchart LR
     A --> B
     B --> C
@@ -55,5 +55,4 @@ flowchart LR
     %% Só links específicos (começa do 0 na ordem que aparecem)
     linkStyle 0 stroke:#00cc00,stroke-width:5px
     linkStyle 2 stroke:blue,stroke-dasharray: 5 5
-```
 ```
