@@ -1,7 +1,23 @@
 [
   
     {
-      "title"    : "Proposing a Workflow for Complex Architectures",
+      "title"    : "How I run technical interviews",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/2026/01/25/interview",
+      "date"     : "2026-01-25 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "OTLP (OpenTelemetry Protocol)",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/2026/01/21/otlp",
+      "date"     : "2026-01-21 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "Proposing a workflow for tracking and maintaining complex architectures",
       "category" : "",
       "tags"     : "",
       "url"      : "/2026/01/20/proposing-a-workflow",
@@ -14,14 +30,6 @@
       "tags"     : "",
       "url"      : "/2026/01/16/apolzek",
       "date"     : "2026-01-16 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "Proto",
-      "category" : "",
-      "tags"     : "",
-      "url"      : "/2024/09/29/proto",
-      "date"     : "2024-09-29 00:00:00 +0000"
     } 
   
 ]
