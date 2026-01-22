@@ -4,13 +4,82 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-01-21T16:24:44+00:00</updated>
+ <updated>2026-01-22T03:32:13+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Proposing a Workflow for Complex Architectures</title>
+   <link href="https://apolzek.github.io/2026/01/20/proposing-a-workflow"/>
+   <updated>2026-01-20T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2026/01/20/proposing-a-workflow</id>
+   <content type="html">&lt;p&gt;You are an SRE and you like having a holistic view of the product. Or maybe you are a platform engineer and want to understand every part of the system and how data flows through it. The problem is that the team does not have this view. Most of the knowledge lives in the heads of the most senior people. The decision-making context stayed with them. What you are left with is an outdated inventory and, if you are lucky, a few partially documented flows.&lt;/p&gt;
+
+&lt;p&gt;That is when you roll up your sleeves and start doing reverse engineering of the product or platform.&lt;/p&gt;
+
+&lt;p&gt;In practice, you start somewhere. You map connections, figure out which server talks to which one, where the databases are, how read and write flows work. What runs on Kubernetes, what is still on VMware. A hybrid environment, with cloud mixed in. Even with sophisticated tools, the environment is complex. At some point, you have to go all the way down to the network packet level and run tcpdump without mercy.&lt;/p&gt;
+
+&lt;p&gt;After a long journey, you finally get an updated architecture diagram. Servers, services, ports, external components, everything in one place. A map that actually makes sense.&lt;/p&gt;
+
+&lt;p&gt;So, what do you do after that?&lt;/p&gt;
+
+&lt;p&gt;At this point, you understand the end-to-end flows. Just like a doctor blinks and “sees” human anatomy, you blink and see the entire system. As Uncle Ben said, with great power comes great responsibility. Your role now is to help less senior people reach the same level of understanding. The people who support the system also need this view, so they can break out of the endless loop of repetitive on-call actions.&lt;/p&gt;
+
+&lt;p&gt;This is where you start thinking about how to make this knowledge fluid, accessible, and evolvable. And this is exactly where the workflow I have been enjoying comes in.&lt;/p&gt;
+
+&lt;p&gt;Nothing I am proposing here is new. All of this already exists and works well. If there is any merit here, it is probably just about connecting the dots. “Connect the dots,” as Steve Jobs once said.&lt;/p&gt;
+
+&lt;p&gt;The idea is simple: once you finish the architecture drawing, translate it into Mermaid, following some standards. You can define your own, but here are the steps I usually follow. From a napkin sketch to Mermaid.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add all components, organized into groups and subgroups. VMs are not Kubernetes, so they should be separate groups. Each has its own characteristics, and that should be explicit.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add the arrows connecting components, but always think in terms of flows. Read vs write flows, primary vs secondary, user vs system. Mermaid supports styling, so take advantage of that. Use different arrow styles, annotations on components, or notes directly on the arrows. Something like a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#cash-in&lt;/code&gt; tag already adds useful context.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Once you define a visual standard, document it. Create a separate Mermaid diagram that acts as a legend. This is the “how to work with this diagram” guide. Everyone on the team should follow it. You do not want to be the owner of this diagram. Trust me.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;With the flow documented, it is time to work on top of it. Create a page for ADRs (Architecture Decision Records). For each proposed change, document the change itself, the context, the options (P1, P2, P3), what is expected from each, and whether it was accepted or not. If it was accepted, state which one. Depending on the company, this will turn into a GMUD or an RFC, the formal change document.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;When you schedule a meeting to discuss the change, if it makes sense, open the Mermaid diagram in Excalidraw. It supports Mermaid natively. Import the diagram without worrying about styles. This is where the team discusses solutions, scribbles, connects and disconnects arrows, and explores possibilities freely.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;If the change is approved, execute the GMUD or RFC. Do it with a clear plan: post-execution tests, a rollback plan, documented monitoring, and properly tuned alerts. No production heroics.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;If everything goes well, update the status of the GMUD, RFC, and the ADR to “accepted,” clearly stating which solution was chosen, especially if there were multiple options.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Update the official Mermaid diagram with all the changes that came out of the Excalidraw session. Add context and notify the team and stakeholders about the change.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;After all that, make some coffee and go listen to good music. You earned it.&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;flowchart LR
+    A --&amp;gt; B
+    B --&amp;gt; C
+    C --&amp;gt; D
+    D --&amp;gt; E
+
+    %% Todos os links da mesma cor/espessura
+    linkStyle default stroke:#ff4444,stroke-width:3px
+
+    %% Só links específicos (começa do 0 na ordem que aparecem)
+    linkStyle 0 stroke:#00cc00,stroke-width:5px
+    linkStyle 2 stroke:blue,stroke-dasharray: 5 5
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;```&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>apolzek</title>
