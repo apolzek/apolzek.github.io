@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-01-23T13:23:43+00:00</updated>
+ <updated>2026-01-23T13:35:55+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -558,7 +558,11 @@ spec:
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;After all that, make some coffee and go listen to good music. You earned it.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;To wrap up&lt;/em&gt;..&lt;/p&gt;
+
+&lt;p&gt;Now that you’ve put in all the work to &lt;strong&gt;standardize things&lt;/strong&gt;, it’s time to reap the benefits. Your arrows have styles or tags, so you can probably already see where this is going. From here on, this becomes a perfect playground for using &lt;strong&gt;LLMs&lt;/strong&gt;. You can use them not just to sketch things out for you, but also to help you understand your architecture and even give feedback on it. You can ask them to isolate flows, like “&lt;em&gt;isolate the flow with red arrows,&lt;/em&gt;” or “&lt;em&gt;isolate components with a specific tag, like #cash-in”. You can also ask questions such as “&lt;/em&gt;what are the weak points in my architecture* ?? “.&lt;/p&gt;
+
+&lt;p&gt;These are just a few ideas, but once your diagrams are structured, the kinds of questions you can ask and the insights you can get grow really fast. **After all that, make some coffee and go listen to good music. =DD&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;flowchart LR
     A --&amp;gt; B
