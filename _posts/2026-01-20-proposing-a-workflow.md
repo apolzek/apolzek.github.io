@@ -40,7 +40,11 @@ The idea is simple: once you finish the architecture drawing, translate it into 
 
 8. **Update the official Mermaid diagram** with all the changes that came out of the Excalidraw session. Add context and notify the team and stakeholders about the change(post change).
 
-After all that, make some coffee and go listen to good music. You earned it.
+*To wrap up*..
+
+Now that you’ve put in all the work to **standardize things**, it’s time to reap the benefits. Your arrows have styles or tags, so you can probably already see where this is going. From here on, this becomes a perfect playground for using **LLMs**. You can use them not just to sketch things out for you, but also to help you understand your architecture and even give feedback on it. You can ask them to isolate flows, like "*isolate the flow with red arrows,*" or "*isolate components with a specific tag, like #cash-in". You can also ask questions such as "*what are the weak points in my architecture* ?? ".
+
+These are just a few ideas, but once your diagrams are structured, the kinds of questions you can ask and the insights you can get grow really fast. **After all that, make some coffee and go listen to good music. =DD 
 
 ```mermaid
 flowchart LR
