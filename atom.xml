@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-01-23T13:35:55+00:00</updated>
+ <updated>2026-01-27T02:41:42+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -18,493 +18,26 @@
    <updated>2026-01-25T00:00:00+00:00</updated>
    <id>https://apolzek.github.io/2026/01/25/interview</id>
    <content type="html">&lt;p&gt;cloud, sre, platform.. especifc context ?&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>OTLP (OpenTelemetry Protocol)</title>
-   <link href="https://apolzek.github.io/2026/01/21/otlp"/>
-   <updated>2026-01-21T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2026/01/21/otlp</id>
-   <content type="html">&lt;h1 id=&quot;exploring-the-otlp-data-format-opentelemetry-protocol&quot;&gt;Exploring the OTLP Data Format (OpenTelemetry Protocol)&lt;/h1&gt;
 
-&lt;h2 id=&quot;introduction-to-otlp&quot;&gt;Introduction to OTLP&lt;/h2&gt;
+&lt;p&gt;grpc, http https&lt;/p&gt;
 
-&lt;p&gt;The &lt;strong&gt;OpenTelemetry Protocol (OTLP)&lt;/strong&gt; is the native and standardized protocol for transmitting telemetry data within the OpenTelemetry ecosystem. It defines how traces, metrics, logs, and profiles (experimental) are serialized, transported, and delivered between instrumented applications and observability backends.&lt;/p&gt;
+&lt;p&gt;Aqui vai a resposta direta e estruturada para a pergunta que você pediu (como se fosse o candidato respondendo em uma entrevista técnica):a) Três diferenças fundamentais entre HTTP/1.1 e HTTP/2 que justificam a escolha obrigatória do HTTP/2 pelo gRPC:Multiplexing (fluxos múltiplos em uma única conexão TCP)
+HTTP/1.1: Uma conexão TCP só permite uma requisição/resposta por vez (head-of-line blocking se houver atraso).
+HTTP/2: Permite múltiplos streams independentes na mesma conexão TCP, sem bloqueio entre eles.
+Binary framing + compactação de headers (HPACK)
+HTTP/1.1: Protocolo textual (headers em texto plano, repetitivos).
+HTTP/2: Usa frames binários + compressão de headers (HPACK), reduzindo overhead de banda e CPU.
+Suporte nativo a streaming bidirecional e unidirecional
+HTTP/1.1: Limitado a request-response; streaming é forçado via hacks (chunked encoding).
+HTTP/2: Streams full-duplex, permitindo envio contínuo de dados em ambas as direções sem abrir novas conexões.&lt;/p&gt;
 
-&lt;h2 id=&quot;supported-data-types-signals&quot;&gt;Supported Data Types (Signals)&lt;/h2&gt;
+&lt;p&gt;b) Impacto prático no gRPC em cenários reais de microsserviços:Multiplexing → Permite milhares de RPCs simultâneas (unary, client streaming, server streaming, bidirectional) em uma única conexão TCP → reduz latência de setup de conexões, evita explosão de sockets e melhora throughput em alta taxa de chamadas (ex.: 10k+ RPS entre serviços).
+Binary framing + HPACK → Menor payload na rede (especialmente útil com Protobuf, que já é binário e compacto) → menor latência em redes com alta latência ou baixa largura de banda; menos CPU no parsing/serialização em comparação com JSON + texto.
+Streaming bidirecional → Habilita casos reais como chat em tempo real, streaming de logs/telemetria, atualizações contínuas (ex.: bidirectional streaming para ML inference ou observability push) → sem polling ou WebSocket hacks, com baixa latência e alta eficiência.&lt;/p&gt;
 
-&lt;p&gt;OTLP works with &lt;strong&gt;4 main types of telemetry signals&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;c) Por que o gRPC não pode simplesmente cair para HTTP/1.1 sem perder funcionalidades críticas? Dois motivos específicos:Multiplexing e streaming bidirecional são impossíveis no HTTP/1.1 → Sem múltiplos streams na mesma conexão, bidirectional streaming (ex.: chat ou streaming de dados contínuos) quebra completamente; unary calls ficariam serializadas, causando alto tail latency e baixa throughput.
+gRPC depende de trailers HTTP/2 para metadados de status e erro → O status final do RPC (OK, DEADLINE_EXCEEDED, etc.) é enviado via HTTP/2 trailers (após o body). HTTP/1.1 não tem trailers equivalentes de forma nativa e confiável → perda de informações críticas de erro/status, quebrando a semântica do RPC.&lt;/p&gt;
 
-&lt;h3 id=&quot;1-traces-stable&quot;&gt;1. &lt;strong&gt;Traces&lt;/strong&gt; (Stable)&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Endpoint&lt;/strong&gt;: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/v1/traces&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Main Components&lt;/strong&gt;:
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Span&lt;/code&gt;: Unit of work in a distributed trace&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SpanEvent&lt;/code&gt;: Point-in-time event during span execution&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SpanLink&lt;/code&gt;: Connections between related spans&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Use Cases&lt;/strong&gt;: Distributed tracing, latency analysis, bottleneck detection&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;2-metrics-stable&quot;&gt;2. &lt;strong&gt;Metrics&lt;/strong&gt; (Stable)&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Endpoint&lt;/strong&gt;: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/v1/metrics&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Main Components&lt;/strong&gt;:
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Metric&lt;/code&gt;: Aggregated measurement (Gauge, Sum, Histogram, ExponentialHistogram, Summary)&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DataPoint&lt;/code&gt;: Individual value at a specific timestamp&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Use Cases&lt;/strong&gt;: Performance monitoring, alerting, dashboards&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;3-logs-stable&quot;&gt;3. &lt;strong&gt;Logs&lt;/strong&gt; (Stable)&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Endpoint&lt;/strong&gt;: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/v1/logs&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Main Components&lt;/strong&gt;:
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LogRecord&lt;/code&gt;: Structured log entry&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Use Cases&lt;/strong&gt;: Debugging, auditing, correlation with traces&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;4-profiles-development&quot;&gt;4. &lt;strong&gt;Profiles&lt;/strong&gt; (Development)&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Endpoint&lt;/strong&gt;: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/v1development/profiles&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Main Components&lt;/strong&gt;:
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Profile&lt;/code&gt;: CPU and memory profiling data&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Status&lt;/strong&gt;: Experimental (OTLP 1.9.0)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Use Cases&lt;/strong&gt;: Code-level performance analysis&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;transport-protocols&quot;&gt;Transport Protocols&lt;/h2&gt;
-
-&lt;p&gt;OTLP supports two protocols:&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Protocol&lt;/th&gt;
-      &lt;th&gt;Default Port&lt;/th&gt;
-      &lt;th&gt;Encoding&lt;/th&gt;
-      &lt;th&gt;Recommended Use&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;gRPC&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;4317&lt;/td&gt;
-      &lt;td&gt;Binary Protobuf&lt;/td&gt;
-      &lt;td&gt;High performance, internal communication&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;HTTP&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;4318&lt;/td&gt;
-      &lt;td&gt;Binary Protobuf / JSON&lt;/td&gt;
-      &lt;td&gt;Wide compatibility, web applications&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;exploring-the-otlp-schema&quot;&gt;Exploring the OTLP Schema&lt;/h2&gt;
-
-&lt;h3 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Install required tools&lt;/span&gt;
-brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;bufbuild/buf/buf
-brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;protobuf
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;cloning-the-official-repository&quot;&gt;Cloning the Official Repository&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/open-telemetry/opentelemetry-proto.git
-&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;opentelemetry-proto
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;viewing-protobuf-definitions&quot;&gt;Viewing Protobuf Definitions&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Inspect individual schemas&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;opentelemetry/proto/trace/v1/trace.proto
-&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;opentelemetry/proto/metrics/v1/metrics.proto
-&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;opentelemetry/proto/logs/v1/logs.proto
-&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;opentelemetry/proto/profiles/v1development/profiles.proto
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;generating-complete-schema&quot;&gt;Generating Complete Schema&lt;/h3&gt;
-
-&lt;h4 id=&quot;option-1-json-format-readable&quot;&gt;Option 1: JSON Format (readable)&lt;/h4&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Generate complete schema in JSON&lt;/span&gt;
-buf build &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; -#format&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;json | jq &lt;span class=&quot;s1&quot;&gt;&apos;.&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; otlp-schema.json
-
-&lt;span class=&quot;c&quot;&gt;# Extract only specific data types&lt;/span&gt;
-buf build &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; -#format&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;json | &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  jq &lt;span class=&quot;s1&quot;&gt;&apos;.file[] | select(.name | contains(&quot;trace&quot;)) | .messageType&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; traces-schema.json
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;option-2-file-descriptor-set-binary&quot;&gt;Option 2: File Descriptor Set (binary)&lt;/h4&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Generate binary descriptor with all dependencies&lt;/span&gt;
-protoc &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;--descriptor_set_out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;otlp-complete.desc &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;--include_imports&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  opentelemetry/proto/trace/v1/trace.proto &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  opentelemetry/proto/metrics/v1/metrics.proto &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  opentelemetry/proto/logs/v1/logs.proto &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  opentelemetry/proto/profiles/v1development/profiles.proto
-
-&lt;span class=&quot;c&quot;&gt;# Inspect content (raw format)&lt;/span&gt;
-protoc &lt;span class=&quot;nt&quot;&gt;--decode_raw&lt;/span&gt; &amp;lt; otlp-complete.desc | &lt;span class=&quot;nb&quot;&gt;head&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; 50
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;validating-structure-with-buf&quot;&gt;Validating Structure with Buf&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Lint protobuf definitions&lt;/span&gt;
-buf lint
-
-&lt;span class=&quot;c&quot;&gt;# Check for breaking changes (comparing with previous version)&lt;/span&gt;
-buf breaking &lt;span class=&quot;nt&quot;&gt;--against&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;.git#branch=main&apos;&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# Generate HTML documentation&lt;/span&gt;
-buf build &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; -#format&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;json | &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  jq &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;.file[].messageType[] | &quot;## \(.name)\n\(.field[])&quot;&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; docs.md
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;hierarchical-data-structure&quot;&gt;Hierarchical Data Structure&lt;/h2&gt;
-
-&lt;p&gt;All OTLP signals follow this hierarchy:&lt;/p&gt;
-
-&lt;div class=&quot;language-ini highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;ResourceSpans/ResourceMetrics/ResourceLogs/ResourceProfiles&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;Resource&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;(entity&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;attributes:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;service.name,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;host,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;etc)&lt;/span&gt;
-    &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;ScopeSpans/ScopeMetrics/ScopeLogs/ScopeProfiles&lt;/span&gt;
-        &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;InstrumentationScope&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;(library&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;that&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;generated&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;data)&lt;/span&gt;
-            &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;Spans&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;Metrics&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;LogRecords&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;Profiles&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;practical-example-analyzing-a-trace&quot;&gt;Practical Example: Analyzing a Trace&lt;/h2&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Export example trace to JSON&lt;/span&gt;
-buf build &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; -#format&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;json | &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  jq &lt;span class=&quot;s1&quot;&gt;&apos;.file[] | select(.name == &quot;opentelemetry/proto/trace/v1/trace.proto&quot;) | 
-      .messageType[] | select(.name == &quot;Span&quot;)&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; span-structure.json
-
-&lt;span class=&quot;c&quot;&gt;# Main fields of a Span&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;span-structure.json | jq &lt;span class=&quot;s1&quot;&gt;&apos;.field[] | {name, type, number}&apos;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;otlp-data-types-reference&quot;&gt;OTLP Data Types Reference&lt;/h2&gt;
-
-&lt;h3 id=&quot;complete-json-schema&quot;&gt;Complete JSON Schema&lt;/h3&gt;
-
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;otlp_data_types&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;traces&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;status&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;stable&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;endpoint&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/v1/traces&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;service&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ExportTraceServiceRequest&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;main_types&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;span&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-          &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Represents a unit of work or operation in a distributed trace&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-          &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;proto&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;opentelemetry/proto/trace/v1/trace.proto&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;span_event&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-          &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Point-in-time event that occurs during span execution&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-          &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;proto&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;opentelemetry/proto/trace/v1/trace.proto&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;metrics&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;status&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;stable&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;endpoint&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/v1/metrics&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;service&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ExportMetricsServiceRequest&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;main_types&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;metric&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-          &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Numerical measurement aggregated over time&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-          &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;proto&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;opentelemetry/proto/metrics/v1/metrics.proto&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-          &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;metric_types&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Gauge&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Sum&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Histogram&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ExponentialHistogram&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Summary&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-          &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;datapoint&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-          &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Individual value of a metric at a specific point in time&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-          &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;proto&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;opentelemetry/proto/metrics/v1/metrics.proto&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;logs&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;status&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;stable&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;endpoint&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/v1/logs&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;service&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ExportLogsServiceRequest&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;main_types&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;log_record&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-          &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Individual structured log record&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-          &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;proto&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;opentelemetry/proto/logs/v1/logs.proto&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;profiles&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;status&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;development&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;endpoint&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/v1development/profiles&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;service&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ExportProfilesServiceRequest&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;main_types&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;profile&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-          &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;CPU and memory profiling data (experimental)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-          &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;proto&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;opentelemetry/proto/profiles/v1development/profiles.proto&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-          &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;note&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Signal still in active development, subject to changes&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;transport_protocols&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;grpc&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;default_port&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4317&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;encoding&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;binary protobuf&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;http&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;default_port&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4318&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;encoding&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;binary protobuf&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;JSON protobuf&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;common_structures&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;resource&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Attributes that identify the entity producing telemetry (e.g., service.name, host.name)&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;instrumentation_scope&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Library or module that generated the telemetry&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;attributes&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Key-value pairs describing the context&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;supported_types&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;string&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;int64&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;double&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;bool&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;bytes&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;array&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;map (since OTLP 1.9.0)&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;whats-new-in-otlp-190&quot;&gt;What’s New in OTLP 1.9.0&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Complex Attributes&lt;/strong&gt;: Support for Maps and heterogeneous Arrays&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Profiles Signal&lt;/strong&gt;: Experimental addition for continuous profiling&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;ExponentialHistogram Improvements&lt;/strong&gt;: Native conversion to Prometheus&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Enhanced Attribute Types&lt;/strong&gt;: All signals now support complex data types (maps, heterogeneous arrays)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;common-otlp-use-cases&quot;&gt;Common OTLP Use Cases&lt;/h2&gt;
-
-&lt;h3 id=&quot;1-application-performance-monitoring-apm&quot;&gt;1. Application Performance Monitoring (APM)&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Configure OTLP exporter for traces&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OTEL_EXPORTER_OTLP_ENDPOINT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://localhost:4318&quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OTEL_EXPORTER_OTLP_PROTOCOL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http/protobuf&quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OTEL_SERVICE_NAME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;my-service&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;2-metrics-collection&quot;&gt;2. Metrics Collection&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Configure metrics export&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OTEL_EXPORTER_OTLP_METRICS_ENDPOINT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://localhost:4318/v1/metrics&quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OTEL_METRICS_EXPORTER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;otlp&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;3-log-aggregation&quot;&gt;3. Log Aggregation&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Configure logs export&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OTEL_EXPORTER_OTLP_LOGS_ENDPOINT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://localhost:4318/v1/logs&quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OTEL_LOGS_EXPORTER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;otlp&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;otlp-collector-configuration&quot;&gt;OTLP Collector Configuration&lt;/h2&gt;
-
-&lt;h3 id=&quot;basic-collector-setup&quot;&gt;Basic Collector Setup&lt;/h3&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;receivers&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;otlp&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;protocols&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;grpc&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;endpoint&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;0.0.0.0:4317&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;endpoint&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;0.0.0.0:4318&lt;/span&gt;
-
-&lt;span class=&quot;na&quot;&gt;processors&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;batch&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;timeout&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;1s&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;send_batch_size&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1024&lt;/span&gt;
-
-&lt;span class=&quot;na&quot;&gt;exporters&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;logging&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;loglevel&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;debug&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;otlp&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;endpoint&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;backend:4317&lt;/span&gt;
-
-&lt;span class=&quot;na&quot;&gt;service&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;pipelines&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;traces&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;receivers&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;otlp&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;processors&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;batch&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;exporters&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;logging&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;otlp&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;metrics&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;receivers&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;otlp&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;processors&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;batch&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;exporters&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;logging&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;otlp&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;logs&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;receivers&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;otlp&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;processors&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;batch&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;exporters&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;logging&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;otlp&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;debugging-otlp-data&quot;&gt;Debugging OTLP Data&lt;/h2&gt;
-
-&lt;h3 id=&quot;inspecting-protobuf-messages&quot;&gt;Inspecting Protobuf Messages&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Decode a binary OTLP message&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;trace.bin | protoc &lt;span class=&quot;nt&quot;&gt;--decode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;opentelemetry.proto.trace.v1.TracesData &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  opentelemetry/proto/trace/v1/trace.proto
-
-&lt;span class=&quot;c&quot;&gt;# Validate JSON payload&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;trace.json | jq &lt;span class=&quot;s1&quot;&gt;&apos;.resourceSpans[0].scopeSpans[0].spans[0]&apos;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;testing-otlp-endpoints&quot;&gt;Testing OTLP Endpoints&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Test gRPC endpoint&lt;/span&gt;
-grpcurl &lt;span class=&quot;nt&quot;&gt;-plaintext&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; @ localhost:4317 &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  opentelemetry.proto.collector.trace.v1.TraceService/Export &amp;lt; trace.json
-
-&lt;span class=&quot;c&quot;&gt;# Test HTTP endpoint&lt;/span&gt;
-curl &lt;span class=&quot;nt&quot;&gt;-X&lt;/span&gt; POST http://localhost:4318/v1/traces &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;-H&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Content-Type: application/json&quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; @trace.json
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;additional-resources&quot;&gt;Additional Resources&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Official Specification&lt;/strong&gt;: https://opentelemetry.io/docs/specs/otlp/&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Proto Repository&lt;/strong&gt;: https://github.com/open-telemetry/opentelemetry-proto&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Semantic Conventions&lt;/strong&gt;: https://opentelemetry.io/docs/specs/semconv/&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;OTLP Exporter Configuration&lt;/strong&gt;: https://opentelemetry.io/docs/languages/sdk-configuration/otlp-exporter/&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;local-testing-environment&quot;&gt;Local Testing Environment&lt;/h2&gt;
-
-&lt;h3 id=&quot;using-docker-compose&quot;&gt;Using Docker Compose&lt;/h3&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;3.8&apos;&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;otel-collector&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;otel/opentelemetry-collector:latest&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;ports&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;4317:4317&quot;&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;# OTLP gRPC&lt;/span&gt;
-      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;4318:4318&quot;&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;# OTLP HTTP&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;volumes&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;./otel-config.yaml:/etc/otel-collector-config.yaml&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;--config=/etc/otel-collector-config.yaml&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;using-kubernetes-kind&quot;&gt;Using Kubernetes (Kind)&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Deploy OTLP Collector to Kind cluster&lt;/span&gt;
-kubectl apply &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; https://raw.githubusercontent.com/open-telemetry/opentelemetry-operator/main/bundle.yaml
-
-&lt;span class=&quot;c&quot;&gt;# Create Collector instance&lt;/span&gt;
-kubectl apply &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; - &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;
-apiVersion: opentelemetry.io/v1alpha1
-kind: OpenTelemetryCollector
-metadata:
-  name: otlp-collector
-spec:
-  mode: deployment
-  config: |
-    receivers:
-      otlp:
-        protocols:
-          grpc:
-          http:
-    exporters:
-      logging:
-    service:
-      pipelines:
-        traces:
-          receivers: [otlp]
-          exporters: [logging]
-&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;best-practices&quot;&gt;Best Practices&lt;/h2&gt;
-
-&lt;h3 id=&quot;1-choose-the-right-transport&quot;&gt;1. Choose the Right Transport&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;gRPC&lt;/strong&gt;: Use for internal services, high throughput scenarios&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;HTTP&lt;/strong&gt;: Use for browser-based apps, firewall-friendly environments&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;2-implement-batching&quot;&gt;2. Implement Batching&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Configure batch processor&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OTEL_BSP_SCHEDULE_DELAY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;5000  &lt;span class=&quot;c&quot;&gt;# 5 seconds&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OTEL_BSP_MAX_QUEUE_SIZE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2048
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OTEL_BSP_MAX_EXPORT_BATCH_SIZE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;512
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;3-use-compression&quot;&gt;3. Use Compression&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Enable gzip compression&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OTEL_EXPORTER_OTLP_COMPRESSION&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;gzip&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;4-set-appropriate-timeouts&quot;&gt;4. Set Appropriate Timeouts&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Configure timeout (in milliseconds)&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OTEL_EXPORTER_OTLP_TIMEOUT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;10000  &lt;span class=&quot;c&quot;&gt;# 10 seconds&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;5-secure-your-endpoints&quot;&gt;5. Secure Your Endpoints&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Use TLS for production&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OTEL_EXPORTER_OTLP_ENDPOINT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://collector.example.com:4317&quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OTEL_EXPORTER_OTLP_CERTIFICATE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/path/to/cert.pem
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;signal-status-january-2025&quot;&gt;Signal Status (January 2025)&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;✅ &lt;strong&gt;Traces, Metrics, Logs&lt;/strong&gt;: Stable (production-ready)&lt;/li&gt;
-  &lt;li&gt;⚠️ &lt;strong&gt;Profiles&lt;/strong&gt;: Development (subject to changes)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;OTLP provides a vendor-neutral, efficient, and extensible protocol for telemetry data transmission. Understanding its data types and structure is essential for building robust observability pipelines. As the protocol continues to evolve with new signals like Profiles, it remains the foundation of modern observability practices.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;Last Updated&lt;/strong&gt;: January 2025&lt;br /&gt;
-&lt;strong&gt;OTLP Version&lt;/strong&gt;: 1.9.0&lt;br /&gt;
-&lt;strong&gt;Protocol Specification&lt;/strong&gt;: https://opentelemetry.io/docs/specs/otlp/&lt;/p&gt;
 </content>
  </entry>
  
@@ -513,7 +46,7 @@ spec:
    <link href="https://apolzek.github.io/2026/01/20/proposing-a-workflow"/>
    <updated>2026-01-20T00:00:00+00:00</updated>
    <id>https://apolzek.github.io/2026/01/20/proposing-a-workflow</id>
-   <content type="html">&lt;p&gt;You are an &lt;strong&gt;SRE&lt;/strong&gt; and you like having a holistic view of the product. Or maybe you are a &lt;strong&gt;Platform Engineer&lt;/strong&gt; and want to understand every part of the system and how data flows through it. The problem is that the team does not have this view. Most of the knowledge lives in the heads of the most senior people. The decision-making context stayed with them. What you are left with is an outdated inventory and, if you are lucky, a few partially documented flows :&lt;strong&gt;(&lt;/strong&gt;&lt;/p&gt;
+   <content type="html">&lt;p&gt;You are an &lt;strong&gt;SRE&lt;/strong&gt; and you like having a holistic view of the product. Or maybe you are a &lt;strong&gt;Platform Engineer&lt;/strong&gt; and want to understand every part of the platform and how data flows through it. The problem is that the team does not have this view. Most of the knowledge lives in the heads of the most senior people. The decision-making context stayed with them. What you are left with is an outdated inventory and, if you are lucky, a few partially documented flows :&lt;strong&gt;(&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;That is when you roll up your sleeves and start doing reverse engineering of the product or platform. Time to “&lt;strong&gt;Give it everything you’ve got&lt;/strong&gt;”&lt;/p&gt;
 
@@ -523,7 +56,7 @@ spec:
 
 &lt;p&gt;So, what do you do after that?&lt;/p&gt;
 
-&lt;p&gt;At this point, you understand the end-to-end flows. Just like a doctor blinks and “sees” human anatomy, you blink and see the &lt;strong&gt;entire system&lt;/strong&gt;. As Uncle Ben said, &lt;em&gt;“ßwith great power comes great responsibility”&lt;/em&gt;. Your role now is to help less senior people reach the same level of understanding. The people who support the system also need this view, so they can break out of the endless loop of repetitive on-call actions.&lt;/p&gt;
+&lt;p&gt;At this point, you understand the end-to-end flows. Just like a doctor blinks and “sees” human anatomy, you blink and see the &lt;strong&gt;entire system/platform&lt;/strong&gt;. As Uncle Ben said, &lt;em&gt;“ßwith great power comes great responsibility”&lt;/em&gt;. Your role now is to help less senior people reach the same level of understanding. The people who support the system also need this view, so they can break out of the endless loop of repetitive on-call actions.&lt;/p&gt;
 
 &lt;p&gt;This is where you start thinking about how to make this knowledge fluid, accessible, and evolvable. And this is exactly where the workflow I have been enjoying comes in.&lt;/p&gt;
 
@@ -562,8 +95,9 @@ spec:
 
 &lt;p&gt;Now that you’ve put in all the work to &lt;strong&gt;standardize things&lt;/strong&gt;, it’s time to reap the benefits. Your arrows have styles or tags, so you can probably already see where this is going. From here on, this becomes a perfect playground for using &lt;strong&gt;LLMs&lt;/strong&gt;. You can use them not just to sketch things out for you, but also to help you understand your architecture and even give feedback on it. You can ask them to isolate flows, like “&lt;em&gt;isolate the flow with red arrows,&lt;/em&gt;” or “&lt;em&gt;isolate components with a specific tag, like #cash-in”. You can also ask questions such as “&lt;/em&gt;what are the weak points in my architecture* ?? “.&lt;/p&gt;
 
-&lt;p&gt;These are just a few ideas, but once your diagrams are structured, the kinds of questions you can ask and the insights you can get grow really fast. **After all that, make some coffee and go listen to good music. =DD&lt;/p&gt;
+&lt;p&gt;These are just a few ideas, but once your diagrams are structured, the kinds of questions you can ask and the insights you can get grow really fast. **After all that, make some coffee and go listen to good music. 🤠&lt;/p&gt;
 
+&lt;p&gt;Mermaid legend&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;flowchart LR
     A --&amp;gt; B
     B --&amp;gt; C

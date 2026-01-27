@@ -9,14 +9,6 @@
     } ,
   
     {
-      "title"    : "OTLP (OpenTelemetry Protocol)",
-      "category" : "",
-      "tags"     : "",
-      "url"      : "/2026/01/21/otlp",
-      "date"     : "2026-01-21 00:00:00 +0000"
-    } ,
-  
-    {
       "title"    : "Proposing a workflow for tracking and maintaining complex architectures",
       "category" : "",
       "tags"     : "",
