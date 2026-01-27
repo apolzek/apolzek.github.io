@@ -6,7 +6,7 @@ summary: null
 title: Proposing a workflow for tracking and maintaining complex architectures
 ---
 
-You are an **SRE** and you like having a holistic view of the product. Or maybe you are a **Platform Engineer** and want to understand every part of the system and how data flows through it. The problem is that the team does not have this view. Most of the knowledge lives in the heads of the most senior people. The decision-making context stayed with them. What you are left with is an outdated inventory and, if you are lucky, a few partially documented flows :**(**
+You are an **SRE** and you like having a holistic view of the product. Or maybe you are a **Platform Engineer** and want to understand every part of the platform and how data flows through it. The problem is that the team does not have this view. Most of the knowledge lives in the heads of the most senior people. The decision-making context stayed with them. What you are left with is an outdated inventory and, if you are lucky, a few partially documented flows :**(**
 
 That is when you roll up your sleeves and start doing reverse engineering of the product or platform. Time to "**Give it everything you’ve got**"
 
@@ -16,7 +16,7 @@ After a long journey, you finally get an updated architecture diagram. *Servers,
 
 So, what do you do after that?
 
-At this point, you understand the end-to-end flows. Just like a doctor blinks and "sees" human anatomy, you blink and see the **entire system**. As Uncle Ben said, *"ßwith great power comes great responsibility"*. Your role now is to help less senior people reach the same level of understanding. The people who support the system also need this view, so they can break out of the endless loop of repetitive on-call actions.
+At this point, you understand the end-to-end flows. Just like a doctor blinks and "sees" human anatomy, you blink and see the **entire system/platform**. As Uncle Ben said, *"ßwith great power comes great responsibility"*. Your role now is to help less senior people reach the same level of understanding. The people who support the system also need this view, so they can break out of the endless loop of repetitive on-call actions.
 
 This is where you start thinking about how to make this knowledge fluid, accessible, and evolvable. And this is exactly where the workflow I have been enjoying comes in.
 
@@ -44,8 +44,9 @@ The idea is simple: once you finish the architecture drawing, translate it into 
 
 Now that you’ve put in all the work to **standardize things**, it’s time to reap the benefits. Your arrows have styles or tags, so you can probably already see where this is going. From here on, this becomes a perfect playground for using **LLMs**. You can use them not just to sketch things out for you, but also to help you understand your architecture and even give feedback on it. You can ask them to isolate flows, like "*isolate the flow with red arrows,*" or "*isolate components with a specific tag, like #cash-in". You can also ask questions such as "*what are the weak points in my architecture* ?? ".
 
-These are just a few ideas, but once your diagrams are structured, the kinds of questions you can ask and the insights you can get grow really fast. **After all that, make some coffee and go listen to good music. =DD 
+These are just a few ideas, but once your diagrams are structured, the kinds of questions you can ask and the insights you can get grow really fast. **After all that, make some coffee and go listen to good music. 🤠 
 
+Mermaid legend
 ```mermaid
 flowchart LR
     A --> B
