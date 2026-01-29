@@ -497,3 +497,39 @@ https://github.com/pixlcore/xyops
 
 # ⚡️A terminal-based battery and energy monitor for macOS and Linux.
 https://github.com/jordond/jolt
+
+# Fullstack app framework for web, desktop, and mobile.
+https://github.com/dioxuslabs/dioxus
+
+# OpenTelemetry By Example
+https://github.com/emdneto/opentelemetry-by-example
+
+# Lab for Observability guide and 30 Days of Observability in CNCF
+https://github.com/blueswen/observability-ironman30-lab
+
+# Complete Claude Code configuration collection - agents, skills, hooks, commands, rules, MCPs. Battle-tested configs from an Anthropic hackathon winner.
+https://github.com/affaan-m/everything-claude-code
+
+# Why is this running?
+https://github.com/pranshuparmar/witr
+
+# Git genealogy, untangled. A TUI for navigating commit graphs with color and clarity.
+https://github.com/trasta298/keifu
+
+# A complete workflow automation and server monitoring system.
+https://github.com/pixlcore/xyops
+
+# Complete Claude Code configuration collection - agents, skills, hooks, commands, rules, MCPs. Battle-tested configs from an Anthropic hackathon winner.
+https://github.com/affaan-m/everything-claude-code
+
+# Turn natural language to terminal commands
+https://github.com/junaid-mahmood/nlsh
+
+# Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞
+https://github.com/moltbot/moltbot
+
+# Portable file server with accelerated resumable uploads, dedup, WebDAV, SFTP, FTP, TFTP, zeroconf, media indexer, thumbnails++ all in one file
+https://github.com/9001/copyparty
+
+# AirLLM 70B inference with single 4GB GPU
+https://github.com/0xSojalSec/airllm
