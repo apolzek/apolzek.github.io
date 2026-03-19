@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-01-29T23:59:18+00:00</updated>
+ <updated>2026-03-19T05:31:40+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -13,7 +13,7 @@
 
  
  <entry>
-   <title>How I run technical interviews</title>
+   <title>how I run technical interviews</title>
    <link href="https://apolzek.github.io/2026/01/25/interview"/>
    <updated>2026-01-25T00:00:00+00:00</updated>
    <id>https://apolzek.github.io/2026/01/25/interview</id>
@@ -42,7 +42,7 @@ gRPC depende de trailers HTTP/2 para metadados de status e erro → O status fin
  </entry>
  
  <entry>
-   <title>Proposing a workflow for tracking and maintaining complex architectures</title>
+   <title>tracking changes in complex architectures</title>
    <link href="https://apolzek.github.io/2026/01/20/proposing-a-workflow"/>
    <updated>2026-01-20T00:00:00+00:00</updated>
    <id>https://apolzek.github.io/2026/01/20/proposing-a-workflow</id>
@@ -115,7 +115,7 @@ gRPC depende de trailers HTTP/2 para metadados de status e erro → O status fin
  </entry>
  
  <entry>
-   <title>apolzek</title>
+   <title>starting here</title>
    <link href="https://apolzek.github.io/2026/01/16/apolzek"/>
    <updated>2026-01-16T00:00:00+00:00</updated>
    <id>https://apolzek.github.io/2026/01/16/apolzek</id>
@@ -126,10 +126,6 @@ gRPC depende de trailers HTTP/2 para metadados de status e erro → O status fin
 &lt;p&gt;Some people use a nickname to hide behind a character. To me, our given name is already a projection of the person we pretend to be. We naturally create a social mask to navigate the world and interact with others. That’s why &lt;strong&gt;apolzek&lt;/strong&gt; is where I place my essence and express my true identity.&lt;/p&gt;
 
 &lt;p&gt;If you’ve stumbled upon this, welcome aboard! When you read any post here, know that you’ll be behind the scenes of my mind. Let’s go together, let’s go with &lt;strong&gt;God&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;!--
-Daughter, 2025 Jan 15 you were extubated at Vila da Serra Hospital. I am so happy that it creates indescribable reactions in me. I love you, I love our family, I love life, I love God.
---&gt;
 
 &lt;!-- 
 My birth name, Vinícius Gomes Batista, is the name I was given when I was presented to God and welcomed into this life. It holds my story, my family roots, and a sense of purpose. Over the years, though, that name has picked up so many layers. Social expectations, roles I learned to play, ways I adapted to fit in. Most of the time those things don’t feel like the real me at my deepest level. That’s why I created apolzek. It’s not about replacing Vinícius or turning my back on him. It’s more like a deliberate practice, almost a quiet sacred space, where I try to bring the real Vinícius closer to who he truly is underneath everything. When I’m in apolzek mode, I focus on stripping away those extra layers. I try to speak and act with complete honesty toward myself, and I refuse to let the outside world tell me who I’m supposed to be. In those moments it’s just me, no masks, standing in front of God.
