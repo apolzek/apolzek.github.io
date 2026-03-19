@@ -533,3 +533,24 @@ https://github.com/9001/copyparty
 
 # AirLLM 70B inference with single 4GB GPU
 https://github.com/0xSojalSec/airllm
+
+# Interactive JSON filter using jq
+https://github.com/ynqa/jnv
+
+# Pretty fancy and modern terminal file manager
+https://github.com/yorukot/superfile
+
+# A YARA rule generator
+https://github.com/Neo23x0/yarGen-Go
+
+# Crawlee—A web scraping and browser automation library for Node.js to build reliable crawlers. In JavaScript and TypeScript. Extract data for AI, LLMs, RAG, or GPTs. Download HTML, PDF, JPG, PNG, and other files from websites. Works with Puppeteer, Playwright, Cheerio, JSDOM, and raw HTTP. Both headful and headless mode. With proxy rotation.
+https://github.com/apify/crawlee
+
+The Mobile App Pentest cheat sheet
+https://github.com/tanprathan/MobileApp-Pentest-Cheatsheet
+
+# 802.11 Attack Tool
+https://github.com/Ragnt/AngryOxide
+
+# Web Application Penetration testing Study Plan
+https://github.com/jassics/security-study-plan/blob/main/web-pentest-study-plan.md

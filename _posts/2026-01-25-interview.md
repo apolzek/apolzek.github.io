@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How I run technical interviews
+title: how I run technical interviews
 description:
 summary:
 minute: 10

@@ -1,0 +1,147 @@
+---
+layout: default
+title: thoughts
+permalink: /thoughts/
+---
+<section class="thoughts-page">
+  <div class="flex-row-between">
+    <a href="{{ site.url }}{{ site.baseurl }}/"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> home</a>
+    <button title="Change theme" id="theme-toggle" onclick="modeSwitcher()">
+      <div></div>
+    </button>
+  </div>
+
+  <h2>Thoughts</h2>
+  <p class="thoughts-subtitle">phrases and thoughts from day to day</p>
+
+  <ul class="thoughts-list" id="thoughts-list">
+    {% assign sorted_thoughts = site.data.thoughts | sort: "date" | reverse %}
+    {% for thought in sorted_thoughts %}
+    <li class="thought-item">
+      <p class="thought-text">{{ thought.text }} <time class="thought-date" datetime="{{ thought.date }}">— {{ thought.date | date: "%b %d, %Y" }}</time></p>
+    </li>
+    {% endfor %}
+  </ul>
+
+  <nav class="thoughts-pagination" id="thoughts-pagination"></nav>
+</section>
+
+<style>
+  .thoughts-page h2 {
+    margin-top: 2rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .thoughts-subtitle {
+    color: var(--link-color);
+    font-size: 0.85em;
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  .thoughts-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .thought-item {
+    padding: 0.7rem 0;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.15);
+  }
+
+  .thought-item:last-child {
+    border-bottom: none;
+  }
+
+  .thought-text {
+    margin: 0;
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  .thought-text::before {
+    content: "> ";
+    color: var(--link-color);
+    font-weight: bold;
+  }
+
+  .thought-date {
+    font-size: 0.78em;
+    color: var(--link-color);
+    opacity: 0.6;
+    white-space: nowrap;
+  }
+
+  .thoughts-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 1.5rem;
+  }
+
+  .thoughts-pagination a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: normal;
+    transition: font-weight 0.2s ease, text-shadow 0.2s ease;
+  }
+
+  .thoughts-pagination a:hover {
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+  }
+</style>
+
+<script>
+  (function () {
+    const PER_PAGE = 20;
+    const items = Array.from(document.querySelectorAll('#thoughts-list .thought-item'));
+    const total = items.length;
+    const totalPages = Math.ceil(total / PER_PAGE);
+    let currentPage = 1;
+
+    function render(page) {
+      const start = (page - 1) * PER_PAGE;
+      const end = start + PER_PAGE;
+      items.forEach(function (item, i) {
+        item.style.display = (i >= start && i < end) ? '' : 'none';
+      });
+      renderPagination(page);
+    }
+
+    function renderPagination(page) {
+      const nav = document.getElementById('thoughts-pagination');
+      nav.innerHTML = '';
+      if (totalPages <= 1) return;
+
+      if (page > 1) {
+        const prev = document.createElement('a');
+        prev.href = '#';
+        prev.textContent = 'Previous';
+        prev.addEventListener('click', function (e) {
+          e.preventDefault();
+          render(page - 1);
+          currentPage = page - 1;
+          window.scrollTo(0, 0);
+        });
+        nav.appendChild(prev);
+      }
+
+      if (page < totalPages) {
+        const next = document.createElement('a');
+        next.href = '#';
+        next.textContent = 'Next';
+        next.addEventListener('click', function (e) {
+          e.preventDefault();
+          render(page + 1);
+          currentPage = page + 1;
+          window.scrollTo(0, 0);
+        });
+        nav.appendChild(next);
+      }
+    }
+
+    render(currentPage);
+  })();
+</script>

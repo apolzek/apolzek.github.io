@@ -42,6 +42,7 @@ html[data-theme="light"] {
 	--link-color: rgb(94, 6, 105);
 	--code-bg-color: rgb(240, 240, 240);
 
+	--page-bg: rgb(255, 255, 255);
 	background-color: rgb(255, 255, 255);
 
 	
@@ -94,6 +95,10 @@ html[data-theme="light"] {
 	}
 }
 
+html[data-theme="dark"] .site-quote {
+  color: #fff;
+}
+
 html[data-theme="dark"] {
 	--very-light-text-color: rgb(200,200,200);
 	--light-text-color: #c4bbf0;
@@ -102,6 +107,7 @@ html[data-theme="dark"] {
 	--dark-text-color: rgb(36, 38, 42);
 	--link-color: rgb(238, 102, 128);
 	--code-bg-color: rgb(60, 60, 60);
+	--page-bg: rgb(19, 20, 24);
 	background-color: rgb(19, 20, 24);
 
 	#theme-toggle div {
@@ -157,6 +163,17 @@ body {
 	text-rendering: optimizeLegibility;
 	line-height: 1.75;
 	color: var(--main-text-color);
+	background-color: transparent;
+}
+
+#cosmos {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	z-index: 0;
 }
 
 a {
@@ -341,6 +358,8 @@ time {
 
 
 main {
+	position: relative;
+	z-index: 1;
 	display: flex;
 	max-width: 47rem;
 	margin: -5rem auto 0;
@@ -353,6 +372,31 @@ main {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+}
+
+.site-quote {
+  position: fixed;
+  bottom: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 0.72em;
+  font-style: italic;
+  color: #000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1.2s ease;
+  white-space: nowrap;
+  user-select: none;
+  z-index: 0;
+
+  &.visible {
+    opacity: 0.5;
+  }
+
+  span {
+    opacity: 1;
+  }
 }
 
 .social-footer {
@@ -423,6 +467,8 @@ color: #333;
 
 .search-article {
   position: relative;
+  background-color: var(--page-bg);
+  border-radius: 5px;
  
 
   label[for="search-input"] {
@@ -462,6 +508,16 @@ color: #333;
     text-align: center;
     list-style-type: none;
   }
+}
+
+
+pre:has(code.language-mermaid) {
+	background: #282a36;
+	color: #f8f8f2;
+}
+
+html[data-theme="dark"] pre:has(code.language-mermaid) {
+	background: rgb(19, 20, 24);
 }
 
 .post-nav {

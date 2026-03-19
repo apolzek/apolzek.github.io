@@ -7,6 +7,7 @@ layout: compress
 {% include head.html %}
 
 <body>
+  <canvas id="cosmos" aria-hidden="true"></canvas>
   <main>
     {% include anchor_headings.html html=content anchorBody="#" %}
   </main>
@@ -54,6 +55,10 @@ layout: compress
 
 </body>
 
+<div class="site-quote" id="site-quote">
+  <p>"só o conhecimento liberta o homem" <span>— Eneas Carneiro</span></p>
+</div>
+
 <footer class="social-footer">
   <div class="social-footer-icons">
     <!-- <a href="https://telegram.me/apolzek" title="dm me" target="_blank" rel="noopener noreferrer"><i
@@ -71,6 +76,18 @@ layout: compress
 
 
 
+<script>
+  document.addEventListener('dblclick', function () {
+    var quote = document.getElementById('site-quote');
+    if (quote) {
+      quote.classList.add('visible');
+      setTimeout(function () {
+        quote.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      }, 100);
+    }
+  });
+</script>
+<script src="{{ site.url }}/assets/js/cosmos.js"></script>
 <script src="{{ site.url }}/assets/js/simple-jekyll-search.js"></script>
 <script>
   var sjs = SimpleJekyllSearch({
