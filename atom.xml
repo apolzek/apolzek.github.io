@@ -4,13 +4,34 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-03-19T05:31:40+00:00</updated>
+ <updated>2026-03-19T23:55:17+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>golang ref</title>
+   <link href="https://apolzek.github.io/2026/03/19/golang"/>
+   <updated>2026-03-19T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2026/03/19/golang</id>
+   <content type="html">&lt;p&gt;https://github.com/OtavioGallego/DevBook
+https://github.com/ChetanThapliyal/get-started-with-Go
+https://github.com/atharv-bhadange/go-api-template
+https://github.com/thangchung/go-coffeeshop
+https://github.com/lotusirous/go-concurrency-patterns
+https://github.com/indravscode/go-fiber-boilerplate
+https://github.com/devfullcycle/goexpert2
+https://github.com/heyOnuoha/golang-boilerplate-beginner
+https://github.com/LordMoMA/Intelli-Mall
+https://github.com/marco-rosner/lightweight-go-server
+https://github.com/pureiboi/MonitorGoroutine
+https://github.com/HasanBingolbali/OpenTelemetry-GRPC
+https://github.com/krzko/otelgen&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>how I run technical interviews</title>

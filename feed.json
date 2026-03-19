@@ -17,6 +17,30 @@
 "items": [
     
         {
+            "id": "https://apolzek.github.io/2026/03/19/golang",
+            "title": "golang ref",
+            "summary": null,
+            "content_text": "https://github.com/OtavioGallego/DevBookhttps://github.com/ChetanThapliyal/get-started-with-Gohttps://github.com/atharv-bhadange/go-api-templatehttps://github.com/thangchung/go-coffeeshophttps://github.com/lotusirous/go-concurrency-patternshttps://github.com/indravscode/go-fiber-boilerplatehttps://github.com/devfullcycle/goexpert2https://github.com/heyOnuoha/golang-boilerplate-beginnerhttps://github.com/LordMoMA/Intelli-Mallhttps://github.com/marco-rosner/lightweight-go-serverhttps://github.com/pureiboi/MonitorGoroutinehttps://github.com/HasanBingolbali/OpenTelemetry-GRPChttps://github.com/krzko/otelgen",
+            "content_html": "<p>https://github.com/OtavioGallego/DevBookhttps://github.com/ChetanThapliyal/get-started-with-Gohttps://github.com/atharv-bhadange/go-api-templatehttps://github.com/thangchung/go-coffeeshophttps://github.com/lotusirous/go-concurrency-patternshttps://github.com/indravscode/go-fiber-boilerplatehttps://github.com/devfullcycle/goexpert2https://github.com/heyOnuoha/golang-boilerplate-beginnerhttps://github.com/LordMoMA/Intelli-Mallhttps://github.com/marco-rosner/lightweight-go-serverhttps://github.com/pureiboi/MonitorGoroutinehttps://github.com/HasanBingolbali/OpenTelemetry-GRPChttps://github.com/krzko/otelgen</p>",
+            "url": "https://apolzek.github.io/2026/03/19/golang",
+            
+            
+            
+            
+            
+            "date_published": "2026-03-19T00:00:00+00:00",
+            "date_modified": "2026-03-19T00:00:00+00:00",
+            
+                "author":  {
+                "name": "apolzek",
+                "url": null,
+                "avatar": null
+                }
+                
+            
+        },
+    
+        {
             "id": "https://apolzek.github.io/2026/01/25/interview",
             "title": "how I run technical interviews",
             "summary": null,
