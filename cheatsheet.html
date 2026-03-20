@@ -49,6 +49,10 @@ permalink: /cheatsheet/
 </section>
 
 <style>
+  main {
+    max-width: 72rem;
+  }
+
   .cheatsheet-page h2 {
     margin-top: 2rem;
     margin-bottom: 0.2rem;
@@ -95,24 +99,22 @@ permalink: /cheatsheet/
     list-style: none;
     padding: 0;
     margin: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 2rem;
-    align-items: start;
+    columns: 2;
+    column-gap: 3rem;
     width: 100%;
     box-sizing: border-box;
   }
 
   @media (max-width: 700px) {
     .cs-list {
-      grid-template-columns: 1fr;
+      columns: 1;
     }
   }
 
   .cs-item {
     padding: 1rem 0;
     border-bottom: 1px solid rgba(128,128,128,0.15);
-    min-width: 0;
+    break-inside: avoid;
     overflow: hidden;
   }
 
