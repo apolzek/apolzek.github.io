@@ -14,10 +14,6 @@ permalink: /cheatsheet/
   <h2>Cheatsheet</h2>
   <p class="cheatsheet-subtitle">commands and tricks for day to day</p>
 
-  <div class="cs-search-wrap">
-    <input type="text" id="cs-search" class="cs-search" placeholder="search by title or command..." autocomplete="off" />
-  </div>
-
   <div class="cs-tag-filter" id="cs-tag-filter"></div>
 
   <ul class="cs-list" id="cs-list">
@@ -103,6 +99,8 @@ permalink: /cheatsheet/
     grid-template-columns: 1fr 1fr;
     gap: 0 2rem;
     align-items: start;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   @media (max-width: 700px) {
@@ -114,6 +112,8 @@ permalink: /cheatsheet/
   .cs-item {
     padding: 1rem 0;
     border-bottom: 1px solid rgba(128,128,128,0.15);
+    min-width: 0;
+    overflow: hidden;
   }
 
   .cs-header {
@@ -180,6 +180,8 @@ permalink: /cheatsheet/
     font-size: 0.82rem;
     line-height: 1.55;
     white-space: pre;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .cs-code code {
@@ -257,23 +259,14 @@ permalink: /cheatsheet/
     let currentPage = 1;
     let activeTag = null;
 
-    const searchInput = document.getElementById('cs-search');
-
     function applyFilters() {
-      const q = searchInput.value.trim().toLowerCase();
       filtered = allItems.filter(function (item) {
-        var matchesTag = !activeTag ||
+        return !activeTag ||
           (item.dataset.tags || '').split(',').map(function (t) { return t.trim(); }).includes(activeTag);
-        if (!q) return matchesTag;
-        var title = item.querySelector('.cs-title') ? item.querySelector('.cs-title').textContent.toLowerCase() : '';
-        var code = item.querySelector('code') ? item.querySelector('code').textContent.toLowerCase() : '';
-        return matchesTag && (title.includes(q) || code.includes(q));
       });
       currentPage = 1;
       render(currentPage);
     }
-
-    searchInput.addEventListener('input', applyFilters);
 
     // Build tag filter buttons
     const tagSet = new Set();
