@@ -1,0 +1,151 @@
+- title: "Delete All Commit History on GitHub"
+  description: "Reset a repository's commit history by creating an orphan branch"
+  tags: [git, github]
+  commands: |
+    git checkout --orphan latest_branch
+    git add -A
+    git commit -am "reset configs"
+    git branch -D main
+    git branch -m main
+    git push -f origin main
+
+- title: "Send Text using ICMP"
+  description: "Encode and send text payload via ping, receive and decode with tshark"
+  tags: [network, icmp]
+  commands: |
+    # Send
+    payload=$(echo -n "Hello" | xxd -p)
+    echo $payload
+    len=$(($(echo $payload | wc -c | tr -s " ") + 2))
+    echo $len
+    ping -s$len -c4 -p$payload 127.0.0.1
+    # Receive
+    tshark -l -i lo0 -Y "icmp" -T fields -e data | xxd -r
+
+- title: "Chrome Bookmarks (filter by folder)"
+  description: "Extract URLs from a specific Chrome bookmark folder using jq"
+  tags: [chrome, jq, linux]
+  commands: |
+    cat ~/.config/google-chrome/Default/Bookmarks \
+      | jq -r '.roots.bookmark_bar.children[]
+          | select(.name == "tree")
+          | .children[]
+          | select(.name == "blogs")
+          | .children[]
+          | .url'
+
+- title: "Post-install Docker"
+  description: "Add current user to docker group after installation"
+  tags: [docker, linux]
+  commands: |
+    sudo usermod -aG docker $USER
+    exec su -l $USER
+    groups $USER
+    docker ps
+
+- title: "k6 Load Testing"
+  description: "Basic k6 script with ramp-up, sustained load, and ramp-down stages"
+  tags: [k6, testing, performance]
+  commands: |
+    import http from 'k6/http';
+    import { sleep } from 'k6';
+
+    export const options = {
+        stages: [
+            { duration: '10s', target: 100 },
+            { duration: '30s', target: 100 },
+            { duration: '10s', target: 0 }
+        ]
+    }
+
+    export default function () {
+        http.get('http://192.168.68.108:3000');
+        sleep(1);
+    }
+
+- title: "ntfy Send Notification"
+  description: "Send a push notification via ntfy.sh using curl"
+  tags: [curl, notification]
+  commands: |
+    curl -d "Backup successful" ntfy.sh/mytopic
+
+- title: "Convert Video for DaVinci Resolve"
+  description: "Convert MP4 to ProRes format compatible with DaVinci Resolve"
+  tags: [ffmpeg, video]
+  commands: |
+    ffmpeg -i input.mp4 -c:v prores -profile:v 3 -c:a pcm_s16le output.mov
+
+- title: "Generate OpenTelemetry Traces"
+  description: "Generate 200 traces in a loop using telemetrygen"
+  tags: [opentelemetry, observability]
+  commands: |
+    for i in $(seq 1 200); do
+      echo $i
+      telemetrygen traces --otlp-insecure --traces 1 --service telemetrygen
+      sleep 0.5
+    done
+
+- title: "curl with --resolve"
+  description: "Force curl to resolve a hostname to a specific IP address, bypassing DNS"
+  tags: [curl, network]
+  commands: |
+    curl --resolve meuservidor.com:8080:192.168.0.100 http://meuservidor.com:8080
+    curl --resolve google.com:8888:127.0.0.1 https://google.com:8888
+
+- title: "Chrome Internals Pages"
+  description: "Useful chrome:// internal pages for debugging DNS, events, and proxy settings"
+  tags: [chrome, debug]
+  commands: |
+    chrome://net-internals/#dns
+    chrome://net-internals/#events
+    chrome://net-internals/#proxy
+
+- title: "Write to Container stdout/stderr"
+  description: "Send a message directly to a container's stdout or stderr via /proc"
+  tags: [docker, linux, debug]
+  commands: |
+    # stderr (fd/2) or stdout (fd/1)
+    echo '2025/03/09 07:55:58 [emerg] 12345#0: unexpected "}" in /etc/nginx/nginx.conf:25' > /proc/1/fd/2
+
+- title: "Windows Activation (massgrave)"
+  description: "Activate Windows using the massgrave open-source script"
+  tags: [windows, powershell]
+  commands: |
+    irm https://massgrave.dev/get | iex
+
+- title: "View WiFi Passwords"
+  description: "Retrieve saved WiFi passwords on Linux using NetworkManager"
+  tags: [linux, wifi, network]
+  commands: |
+    ls /etc/NetworkManager/system-connections/
+    sudo cat /etc/NetworkManager/system-connections/[network-name]
+    nmcli device wifi list
+    sudo nmcli connection show "<wifi_name>" --show-secrets
+
+- title: "Encrypt / Decrypt File with Password"
+  description: "Use OpenSSL AES-256-CBC with PBKDF2 to encrypt and decrypt files"
+  tags: [openssl, security, linux]
+  commands: |
+    # Encrypt
+    echo "Este é um arquivo de teste" > original.txt
+    openssl enc -aes-256-cbc -salt -pbkdf2 -in original.txt -out secreto.enc
+
+    # Decrypt
+    openssl enc -aes-256-cbc -d -salt -pbkdf2 -in secreto.enc
+
+    # Decrypt from remote URL
+    curl -s https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/secreto.enc \
+      | openssl enc -aes-256-cbc -d -salt -pbkdf2
+
+- title: "Chrome Bookmarks (list all)"
+  description: "List all bookmarks from Chrome's JSON file showing name and URL"
+  tags: [chrome, jq, linux]
+  commands: |
+    cat ~/.config/google-chrome/Default/Bookmarks \
+      | jq '.roots.bookmark_bar.children[] | {name: .name, url: .url}'
+
+- title: "Linux Network Connections"
+  description: "View all saved NetworkManager connection configs"
+  tags: [linux, network]
+  commands: |
+    sudo cat /etc/NetworkManager/system-connections/*
