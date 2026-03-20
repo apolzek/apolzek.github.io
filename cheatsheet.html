@@ -99,15 +99,21 @@ permalink: /cheatsheet/
     list-style: none;
     padding: 0;
     margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2rem;
+    align-items: start;
+  }
+
+  @media (max-width: 700px) {
+    .cs-list {
+      grid-template-columns: 1fr;
+    }
   }
 
   .cs-item {
     padding: 1rem 0;
     border-bottom: 1px solid rgba(128,128,128,0.15);
-  }
-
-  .cs-item:last-child {
-    border-bottom: none;
   }
 
   .cs-header {
@@ -251,6 +257,24 @@ permalink: /cheatsheet/
     let currentPage = 1;
     let activeTag = null;
 
+    const searchInput = document.getElementById('cs-search');
+
+    function applyFilters() {
+      const q = searchInput.value.trim().toLowerCase();
+      filtered = allItems.filter(function (item) {
+        var matchesTag = !activeTag ||
+          (item.dataset.tags || '').split(',').map(function (t) { return t.trim(); }).includes(activeTag);
+        if (!q) return matchesTag;
+        var title = item.querySelector('.cs-title') ? item.querySelector('.cs-title').textContent.toLowerCase() : '';
+        var code = item.querySelector('code') ? item.querySelector('code').textContent.toLowerCase() : '';
+        return matchesTag && (title.includes(q) || code.includes(q));
+      });
+      currentPage = 1;
+      render(currentPage);
+    }
+
+    searchInput.addEventListener('input', applyFilters);
+
     // Build tag filter buttons
     const tagSet = new Set();
     allItems.forEach(function (item) {
@@ -262,16 +286,10 @@ permalink: /cheatsheet/
 
     function setFilter(tag) {
       activeTag = tag;
-      currentPage = 1;
-      filtered = tag
-        ? allItems.filter(function (item) {
-            return (item.dataset.tags || '').split(',').map(function(t){ return t.trim(); }).includes(tag);
-          })
-        : allItems.slice();
       document.querySelectorAll('.cs-filter-btn').forEach(function (btn) {
         btn.classList.toggle('active', btn.dataset.tag === (tag || ''));
       });
-      render(currentPage);
+      applyFilters();
     }
 
     // "All" button
