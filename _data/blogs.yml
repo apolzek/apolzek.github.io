@@ -1,0 +1,8 @@
+- name: "Brendan Gregg"
+  url: "https://www.brendangregg.com/blog/"
+
+- name: "Julia Evans"
+  url: "https://jvns.ca/"
+
+- name: "Dan Luu"
+  url: "https://danluu.com/"

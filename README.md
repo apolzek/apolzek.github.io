@@ -8,8 +8,8 @@
 ```
 mise install ruby@3.2.2
 mise use -g ruby@3.2.2
-gem install bundler
-gem install jekyll
+export PATH="$HOME/.local/share/mise/installs/ruby/3.2.2/bin:$PATH"
+gem install bundler jekyll
 bundle install
 bundle update liquid
 bundle exec jekyll serve

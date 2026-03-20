@@ -169,20 +169,23 @@ permalink: /cheatsheet/
 
   /* Code block */
   .cs-code-wrap {
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
   }
 
   .cs-code {
+    width: 100%;
     background: var(--code-bg-color, rgba(128,128,128,0.08));
     border: 1px solid rgba(128,128,128,0.15);
     border-radius: 5px;
-    padding: 0.75rem 2.5rem 0.75rem 0.85rem;
+    padding: 0.75rem 0.85rem;
     margin: 0;
     overflow-x: auto;
     font-size: 0.82rem;
     line-height: 1.55;
     white-space: pre;
-    max-width: 100%;
     box-sizing: border-box;
   }
 
@@ -193,9 +196,6 @@ permalink: /cheatsheet/
   }
 
   .cs-copy-btn {
-    position: absolute;
-    top: 0.45rem;
-    right: 0.5rem;
     background: none;
     border: none;
     cursor: pointer;
@@ -240,18 +240,42 @@ permalink: /cheatsheet/
 </style>
 
 <script>
-  // Copy button
+  function showCopied(btn) {
+    btn.classList.add('copied');
+    var orig = btn.innerHTML;
+    btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+    setTimeout(function () {
+      btn.classList.remove('copied');
+      btn.innerHTML = orig;
+    }, 1500);
+  }
+
+  function fallbackCopy(text, btn) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); showCopied(btn); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+
   function copyCode(btn) {
-    const code = btn.nextElementSibling.querySelector('code').textContent;
-    navigator.clipboard.writeText(code).then(function () {
-      btn.classList.add('copied');
-      const orig = btn.innerHTML;
-      btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
-      setTimeout(function () {
-        btn.classList.remove('copied');
-        btn.innerHTML = orig;
-      }, 1500);
-    });
+    var wrap = btn.closest('.cs-code-wrap');
+    var codeEl = wrap && wrap.querySelector('code');
+    if (!codeEl) { console.error('copyCode: code element not found'); return; }
+    var code = codeEl.textContent;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(code).then(function () {
+        showCopied(btn);
+      }).catch(function (err) {
+        console.warn('clipboard failed, trying fallback', err);
+        fallbackCopy(code, btn);
+      });
+    } else {
+      fallbackCopy(code, btn);
+    }
   }
 
   (function () {
@@ -270,7 +294,6 @@ permalink: /cheatsheet/
       render(currentPage);
     }
 
-    // Build tag filter buttons
     const tagSet = new Set();
     allItems.forEach(function (item) {
       const tags = item.dataset.tags ? item.dataset.tags.split(',') : [];
@@ -287,7 +310,6 @@ permalink: /cheatsheet/
       applyFilters();
     }
 
-    // "All" button
     const allBtn = document.createElement('button');
     allBtn.className = 'cs-filter-btn active';
     allBtn.textContent = 'all';
@@ -304,7 +326,6 @@ permalink: /cheatsheet/
       filterBar.appendChild(btn);
     });
 
-    // Tag spans inside items also act as filters
     document.querySelectorAll('.cs-tag').forEach(function (span) {
       span.addEventListener('click', function () {
         setFilter(span.textContent.trim());
