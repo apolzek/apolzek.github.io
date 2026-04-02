@@ -1,0 +1,136 @@
+/* Copy button */
+pre.highlight {
+  position: relative;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  padding: 2px 8px;
+  font-size: 0.72rem;
+  background: #313244;
+  color: #cdd6f4;
+  border: 1px solid #45475a;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+pre.highlight:hover .copy-btn {
+  opacity: 1;
+}
+
+.copy-btn:hover {
+  background: #45475a;
+}
+
+/* Catppuccin Mocha */
+.highlight {
+    color: #cdd6f4; /* text */
+    background-color: #1c1e24; /* base */
+  }
+
+  .highlight table td {
+    padding: 5px;
+  }
+
+  .highlight table pre {
+    margin: 0;
+  }
+
+  td, th {
+    border: 1px solid #cba6f7;
+    padding: 8px;
+    text-align: center;
+  }
+
+  /* Comentários */
+  .highlight .c, .highlight .c1, .highlight .cs, .highlight .cm {
+    color: #585b70; /* surface2 */
+  }
+
+  /* Erros */
+  .highlight .err, .highlight .gr, .highlight .gt {
+    color: #f38ba8; /* red */
+    font-weight: bold;
+  }
+
+  /* Palavras-chave */
+  .highlight .k, .highlight .kd, .highlight .kc, .highlight .kr, .highlight .kt, .highlight .kv, .highlight .kp {
+    color: #cba6f7; /* mauve */
+    font-weight: bold;
+  }
+
+  /* Strings */
+  .highlight .s, .highlight .sa, .highlight .sb, .highlight .sh, .highlight .si, .highlight .sx, .highlight .s1, .highlight .s2, .highlight .sd {
+    color: #a6e3a1; /* green */
+  }
+
+  /* Números */
+  .highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .mo, .highlight .il, .highlight .mx, .highlight .mb, .highlight .sc {
+    color: #fab387; /* peach */
+  }
+
+  /* Funções e nomes */
+  .highlight .nf, .highlight .fm, .highlight .na, .highlight .nc, .highlight .nd, .highlight .ne, .highlight .nn {
+    color: #89b4fa; /* blue */
+  }
+
+  /* Variáveis e Identificadores */
+  .highlight .vc, .highlight .nl, .highlight .ni, .highlight .bp, .highlight .vg, .highlight .vi, .highlight .nv, .highlight .vm {
+    color: #cdd6f4; /* text */
+    background-color: #1c1e24;
+  }
+
+  /* Operadores */
+  .highlight .ow, .highlight .nt, .highlight .kn {
+    color: #cba6f7; /* mauve */
+  }
+
+  /* Background para blocos de código */
+  .highlight .w {
+    color: #cdd6f4;
+    background-color: #1c1e24;
+  }
+
+  /* Outros identificadores e estruturas */
+  .highlight .n, .highlight .py, .highlight .nx {
+    color: #cdd6f4;
+    background-color: #1c1e24;
+  }
+
+  .highlight .nb {
+    color: #cba6f7; /* mauve */
+  }
+
+  .highlight .no {
+    color: #89dceb; /* sky */
+  }
+
+  .highlight .nt {
+    color: #f38ba8; /* red */
+  }
+
+  .highlight .b, .highlight .bp {
+    color: #cdd6f4; /* text */
+  }
+
+  .highlight .i, .highlight .bq {
+    color: #585b70; /* surface2 */
+  }
+
+  .highlight .bp {
+    color: #cdd6f4;
+    background-color: #1c1e24;
+  }
+
+  .highlight .vm {
+    color: #cdd6f4;
+    background-color: #1c1e24;
+  }
+
+  .highlight .na {
+    color: #89b4fa; /* blue */
+  }
