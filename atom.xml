@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-03-20T21:16:20+00:00</updated>
+ <updated>2026-04-02T14:04:56+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -13,73 +13,10 @@
 
  
  <entry>
-   <title>golang ref</title>
-   <link href="https://apolzek.github.io/2026/03/19/golang"/>
-   <updated>2026-03-19T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2026/03/19/golang</id>
-   <content type="html">&lt;p&gt;https://github.com/OtavioGallego/DevBook
-https://github.com/ChetanThapliyal/get-started-with-Go
-https://github.com/atharv-bhadange/go-api-template
-https://github.com/thangchung/go-coffeeshop
-https://github.com/lotusirous/go-concurrency-patterns
-https://github.com/indravscode/go-fiber-boilerplate
-https://github.com/devfullcycle/goexpert2
-https://github.com/heyOnuoha/golang-boilerplate-beginner
-https://github.com/LordMoMA/Intelli-Mall
-https://github.com/marco-rosner/lightweight-go-server
-https://github.com/pureiboi/MonitorGoroutine
-https://github.com/HasanBingolbali/OpenTelemetry-GRPC
-https://github.com/krzko/otelgen
-https://github.com/luannt2909/go-admin-example&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Context&lt;/li&gt;
-  &lt;li&gt;Dependency Injection&lt;/li&gt;
-  &lt;li&gt;Factory Design Pattern&lt;/li&gt;
-  &lt;li&gt;Unit tests&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;!-- 
-https://medium.com/hprog99/understanding-dependency-injection-in-go-a-comprehensive-guide-6edeea4be167&gt;
-https://medium.com/@swabhavtechlabs/implementing-the-factory-design-pattern-in-golang-a-comprehensive-guide-36d351b53e3a
---&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>how I run technical interviews</title>
-   <link href="https://apolzek.github.io/2026/01/25/interview"/>
-   <updated>2026-01-25T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2026/01/25/interview</id>
-   <content type="html">&lt;p&gt;cloud, sre, platform.. especifc context ?&lt;/p&gt;
-
-&lt;p&gt;grpc, http https&lt;/p&gt;
-
-&lt;p&gt;Aqui vai a resposta direta e estruturada para a pergunta que você pediu (como se fosse o candidato respondendo em uma entrevista técnica):a) Três diferenças fundamentais entre HTTP/1.1 e HTTP/2 que justificam a escolha obrigatória do HTTP/2 pelo gRPC:Multiplexing (fluxos múltiplos em uma única conexão TCP)
-HTTP/1.1: Uma conexão TCP só permite uma requisição/resposta por vez (head-of-line blocking se houver atraso).
-HTTP/2: Permite múltiplos streams independentes na mesma conexão TCP, sem bloqueio entre eles.
-Binary framing + compactação de headers (HPACK)
-HTTP/1.1: Protocolo textual (headers em texto plano, repetitivos).
-HTTP/2: Usa frames binários + compressão de headers (HPACK), reduzindo overhead de banda e CPU.
-Suporte nativo a streaming bidirecional e unidirecional
-HTTP/1.1: Limitado a request-response; streaming é forçado via hacks (chunked encoding).
-HTTP/2: Streams full-duplex, permitindo envio contínuo de dados em ambas as direções sem abrir novas conexões.&lt;/p&gt;
-
-&lt;p&gt;b) Impacto prático no gRPC em cenários reais de microsserviços:Multiplexing → Permite milhares de RPCs simultâneas (unary, client streaming, server streaming, bidirectional) em uma única conexão TCP → reduz latência de setup de conexões, evita explosão de sockets e melhora throughput em alta taxa de chamadas (ex.: 10k+ RPS entre serviços).
-Binary framing + HPACK → Menor payload na rede (especialmente útil com Protobuf, que já é binário e compacto) → menor latência em redes com alta latência ou baixa largura de banda; menos CPU no parsing/serialização em comparação com JSON + texto.
-Streaming bidirecional → Habilita casos reais como chat em tempo real, streaming de logs/telemetria, atualizações contínuas (ex.: bidirectional streaming para ML inference ou observability push) → sem polling ou WebSocket hacks, com baixa latência e alta eficiência.&lt;/p&gt;
-
-&lt;p&gt;c) Por que o gRPC não pode simplesmente cair para HTTP/1.1 sem perder funcionalidades críticas? Dois motivos específicos:Multiplexing e streaming bidirecional são impossíveis no HTTP/1.1 → Sem múltiplos streams na mesma conexão, bidirectional streaming (ex.: chat ou streaming de dados contínuos) quebra completamente; unary calls ficariam serializadas, causando alto tail latency e baixa throughput.
-gRPC depende de trailers HTTP/2 para metadados de status e erro → O status final do RPC (OK, DEADLINE_EXCEEDED, etc.) é enviado via HTTP/2 trailers (após o body). HTTP/1.1 não tem trailers equivalentes de forma nativa e confiável → perda de informações críticas de erro/status, quebrando a semântica do RPC.&lt;/p&gt;
-
-</content>
- </entry>
- 
- <entry>
    <title>tracking changes in complex architectures</title>
-   <link href="https://apolzek.github.io/2026/01/20/proposing-a-workflow"/>
-   <updated>2026-01-20T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2026/01/20/proposing-a-workflow</id>
+   <link href="https://apolzek.github.io/2026/02/08/proposing-a-workflow"/>
+   <updated>2026-02-08T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2026/02/08/proposing-a-workflow</id>
    <content type="html">&lt;p&gt;You are an &lt;strong&gt;SRE&lt;/strong&gt; and you like having a holistic view of the product. Or maybe you are a &lt;strong&gt;Platform Engineer&lt;/strong&gt; and want to understand every part of the platform and how data flows through it. The problem is that the team does not have this view. Most of the knowledge lives in the heads of the most senior people. The decision-making context stayed with them. What you are left with is an outdated inventory and, if you are lucky, a few partially documented flows :&lt;strong&gt;(&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;That is when you roll up your sleeves and start doing reverse engineering of the product or platform. Time to “&lt;strong&gt;Give it everything you’ve got&lt;/strong&gt;”&lt;/p&gt;
@@ -149,29 +86,10 @@ gRPC depende de trailers HTTP/2 para metadados de status e erro → O status fin
  </entry>
  
  <entry>
-   <title>starting here</title>
-   <link href="https://apolzek.github.io/2026/01/16/apolzek"/>
-   <updated>2026-01-16T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2026/01/16/apolzek</id>
-   <content type="html">&lt;p&gt;&lt;strong&gt;Júlio&lt;/strong&gt;, from &lt;em&gt;Cocoricó&lt;/em&gt;, is the pure embodiment of a curious boy. He lives on a farm, but his mind is always wandering: he asks questions, imagines possibilities, tests slightly crazy hypotheses, and learns along the way. His curiosity isn’t just about knowing “what something is,” but “why it is that way” and “what if it were different.” This often puts him in confusing situations, but it is also the driving force behind all his discoveries.&lt;/p&gt;
-
-&lt;p&gt;Like Júlio, I am trying to return to the purity of my being and relearn how to learn. This blog is a mixture of technical topics, philosophical reflections, personal confessions, and worldviews. Here, I write primarily for myself, with the intention of being honest rather than performing for the world.&lt;/p&gt;
-
-&lt;p&gt;Some people use a nickname to hide behind a character. To me, our given name is already a projection of the person we pretend to be. We naturally create a social mask to navigate the world and interact with others. That’s why &lt;strong&gt;apolzek&lt;/strong&gt; is where I place my essence and express my true identity.&lt;/p&gt;
-
-&lt;p&gt;If you’ve stumbled upon this, welcome aboard! When you read any post here, know that you’ll be behind the scenes of my mind. Let’s go together, let’s go with &lt;strong&gt;God&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;!-- 
-My birth name, Vinícius Gomes Batista, is the name I was given when I was presented to God and welcomed into this life. It holds my story, my family roots, and a sense of purpose. Over the years, though, that name has picked up so many layers. Social expectations, roles I learned to play, ways I adapted to fit in. Most of the time those things don’t feel like the real me at my deepest level. That’s why I created apolzek. It’s not about replacing Vinícius or turning my back on him. It’s more like a deliberate practice, almost a quiet sacred space, where I try to bring the real Vinícius closer to who he truly is underneath everything. When I’m in apolzek mode, I focus on stripping away those extra layers. I try to speak and act with complete honesty toward myself, and I refuse to let the outside world tell me who I’m supposed to be. In those moments it’s just me, no masks, standing in front of God.
---&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>blackbox_exporter x network_exporter ?</title>
-   <link href="https://apolzek.github.io/2025/02/24/blackbox-exporter-x-network-exporter"/>
-   <updated>2025-02-24T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2025/02/24/blackbox_exporter-x-network_exporter</id>
+   <title>blackbox_exporter x network_exporter</title>
+   <link href="https://apolzek.github.io/2026/02/07/blackbox-exporter-x-network-exporter"/>
+   <updated>2026-02-07T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2026/02/07/blackbox_exporter-x-network_exporter</id>
    <content type="html">&lt;p&gt;&lt;strong&gt;saving your time&lt;/strong&gt;: &lt;em&gt;Prometheus exporters are applications that extract data from services or processes and expose it in Prometheus format. This article provides a brief analysis of blackbox_exporter and network_exporter, highlighting their use cases and the key differences between them&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/prometheus-multi-service-exporter.svg&quot; alt=&quot;image.png&quot; /&gt;&lt;/p&gt;
@@ -394,10 +312,10 @@ https://grafana.com/grafana/dashboards/15297-prometheus-network-exporter/
  </entry>
  
  <entry>
-   <title>some tips for windows powershell</title>
-   <link href="https://apolzek.github.io/2025/02/19/some-tips-for-windows-powershell"/>
-   <updated>2025-02-19T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2025/02/19/some-tips-for-windows-powershell</id>
+   <title>cheatsheet powershell</title>
+   <link href="https://apolzek.github.io/2026/02/06/cheatsheet-powershell"/>
+   <updated>2026-02-06T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2026/02/06/cheatsheet-powershell</id>
    <content type="html">&lt;h3 id=&quot;transfer-installed-roles-and-features-from-one-windows-server-to-another-using-powershell&quot;&gt;Transfer Installed Roles and Features from One Windows Server to Another Using PowerShell&lt;/h3&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(Get-WindowsFeature | Where-Object {$_.Installed -eq $true}).Name -join &quot;,&quot; | Out-File C:\features-to-install.txt
@@ -421,10 +339,44 @@ winrm enumerate winrm/config/listener&lt;/p&gt;
  </entry>
  
  <entry>
-   <title>some tips for linux shell</title>
-   <link href="https://apolzek.github.io/2025/02/19/some-tips-for-linux-shell"/>
-   <updated>2025-02-19T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2025/02/19/some-tips-for-linux-shell</id>
+   <title>cheatsheet golang</title>
+   <link href="https://apolzek.github.io/2026/02/05/golang"/>
+   <updated>2026-02-05T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2026/02/05/golang</id>
+   <content type="html">&lt;p&gt;https://github.com/OtavioGallego/DevBook
+https://github.com/ChetanThapliyal/get-started-with-Go
+https://github.com/atharv-bhadange/go-api-template
+https://github.com/thangchung/go-coffeeshop
+https://github.com/lotusirous/go-concurrency-patterns
+https://github.com/indravscode/go-fiber-boilerplate
+https://github.com/devfullcycle/goexpert2
+https://github.com/heyOnuoha/golang-boilerplate-beginner
+https://github.com/LordMoMA/Intelli-Mall
+https://github.com/marco-rosner/lightweight-go-server
+https://github.com/pureiboi/MonitorGoroutine
+https://github.com/HasanBingolbali/OpenTelemetry-GRPC
+https://github.com/krzko/otelgen
+https://github.com/luannt2909/go-admin-example&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Context&lt;/li&gt;
+  &lt;li&gt;Dependency Injection&lt;/li&gt;
+  &lt;li&gt;Factory Design Pattern&lt;/li&gt;
+  &lt;li&gt;Unit tests&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!-- 
+https://medium.com/hprog99/understanding-dependency-injection-in-go-a-comprehensive-guide-6edeea4be167&gt;
+https://medium.com/@swabhavtechlabs/implementing-the-factory-design-pattern-in-golang-a-comprehensive-guide-36d351b53e3a
+--&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>cheatsheet shell</title>
+   <link href="https://apolzek.github.io/2026/02/04/cheatsheet-shell"/>
+   <updated>2026-02-04T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2026/02/04/cheatsheet-shell</id>
    <content type="html">&lt;p&gt;&lt;strong&gt;saving your time&lt;/strong&gt;: &lt;em&gt;some tips for linux shell&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/gif/typing.webp&quot; alt=&quot;typing&quot; /&gt;&lt;/p&gt;
@@ -880,9 +832,9 @@ journalctl &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; json-pretty
  
  <entry>
    <title>Playing around with CoreDNS</title>
-   <link href="https://apolzek.github.io/2025/02/19/playing-around-with-coredns"/>
-   <updated>2025-02-19T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2025/02/19/playing-around-with-coredns</id>
+   <link href="https://apolzek.github.io/2026/02/03/playing-around-with-coredns"/>
+   <updated>2026-02-03T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2026/02/03/playing-around-with-coredns</id>
    <content type="html">&lt;p&gt;&lt;strong&gt;saving your time&lt;/strong&gt;: &lt;em&gt;In this post, we will explore how to set up a basic DNS server using CoreDNS and configure it to serve local domain names while forwarding other DNS queries to external resolvers&lt;/em&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
@@ -972,9 +924,9 @@ dig @192.168.100.218 admin.meudominio.local
  
  <entry>
    <title>Kafka and RabbitMQ on Kubernetes using Kind</title>
-   <link href="https://apolzek.github.io/2024/09/29/kafka-and-rabbitmq-on-kubernetes"/>
-   <updated>2024-09-29T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2024/09/29/kafka-and-rabbitmq-on-kubernetes</id>
+   <link href="https://apolzek.github.io/2026/02/02/kafka-and-rabbitmq-on-kubernetes"/>
+   <updated>2026-02-02T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2026/02/02/kafka-and-rabbitmq-on-kubernetes</id>
    <content type="html">&lt;p&gt;&lt;strong&gt;saving your time&lt;/strong&gt;: &lt;em&gt;manifests to deploy kafka and rabbitmq as stateful set in kind (k8s local)&lt;/em&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;index&quot;&gt;Index&lt;/h2&gt;
@@ -1399,6 +1351,25 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
 &lt;/blockquote&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/lab-kafka-and-rabbitmq.png&quot; alt=&quot;lab-kafka-and-rabbitmq&quot; /&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>starting here</title>
+   <link href="https://apolzek.github.io/2026/01/01/apolzek"/>
+   <updated>2026-01-01T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2026/01/01/apolzek</id>
+   <content type="html">&lt;p&gt;&lt;strong&gt;Júlio&lt;/strong&gt;, from &lt;em&gt;Cocoricó&lt;/em&gt;, is the pure embodiment of a curious boy. He lives on a farm, but his mind is always wandering: he asks questions, imagines possibilities, tests slightly crazy hypotheses, and learns along the way. His curiosity isn’t just about knowing “what something is,” but “why it is that way” and “what if it were different.” This often puts him in confusing situations, but it is also the driving force behind all his discoveries.&lt;/p&gt;
+
+&lt;p&gt;Like Júlio, I am trying to return to the purity of my being and relearn how to learn. This blog is a mixture of technical topics, philosophical reflections, personal confessions, and worldviews. Here, I write primarily for myself, with the intention of being honest rather than performing for the world.&lt;/p&gt;
+
+&lt;p&gt;Some people use a nickname to hide behind a character. To me, our given name is already a projection of the person we pretend to be. We naturally create a social mask to navigate the world and interact with others. That’s why &lt;strong&gt;apolzek&lt;/strong&gt; is where I place my essence and express my true identity.&lt;/p&gt;
+
+&lt;p&gt;If you’ve stumbled upon this, welcome aboard! When you read any post here, know that you’ll be behind the scenes of my mind. Let’s go together, let’s go with &lt;strong&gt;God&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;!-- 
+My birth name, Vinícius Gomes Batista, is the name I was given when I was presented to God and welcomed into this life. It holds my story, my family roots, and a sense of purpose. Over the years, though, that name has picked up so many layers. Social expectations, roles I learned to play, ways I adapted to fit in. Most of the time those things don’t feel like the real me at my deepest level. That’s why I created apolzek. It’s not about replacing Vinícius or turning my back on him. It’s more like a deliberate practice, almost a quiet sacred space, where I try to bring the real Vinícius closer to who he truly is underneath everything. When I’m in apolzek mode, I focus on stripping away those extra layers. I try to speak and act with complete honesty toward myself, and I refuse to let the outside world tell me who I’m supposed to be. In those moments it’s just me, no masks, standing in front of God.
+--&gt;
 </content>
  </entry>
  
