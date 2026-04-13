@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-04-13T21:11:59+00:00</updated>
+ <updated>2026-04-13T21:16:08+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -17,7 +17,7 @@
    <link href="https://apolzek.github.io/2026/02/08/proposing-a-workflow"/>
    <updated>2026-02-08T00:00:00+00:00</updated>
    <id>https://apolzek.github.io/2026/02/08/proposing-a-workflow</id>
-   <content type="html">&lt;p&gt;You are an &lt;strong&gt;SRE&lt;/strong&gt; and you like having a holistic view of the product. Or maybe you are a &lt;strong&gt;Platform Engineer&lt;/strong&gt; and want to understand every part of the platform and how data flows through it. The problem is that the team does not have this view. Most of the knowledge lives in the heads of the most senior people. The decision-making context stayed with them. What you are left with is an outdated inventory and, if you are lucky, a few partially documented flows :&lt;strong&gt;(&lt;/strong&gt;&lt;/p&gt;
+   <content type="html">&lt;p&gt;You are an &lt;strong&gt;SRE&lt;/strong&gt; and you like having a holistic view of the product. Or maybe you are a &lt;strong&gt;Platform Engineer&lt;/strong&gt; and want to understand every part of the platform and how data flows through it. The problem is that the team does not have this view. Most of the knowledge lives in the heads of the most senior people. The decision-making context stayed with them. What you are left with is an outdated inventory and, if you are lucky, a few partially documented flows.&lt;/p&gt;
 
 &lt;p&gt;That is when you roll up your sleeves and start doing reverse engineering of the product or platform. Time to “&lt;strong&gt;Give it everything you’ve got&lt;/strong&gt;”&lt;/p&gt;
 
@@ -27,7 +27,7 @@
 
 &lt;p&gt;So, what do you do after that?&lt;/p&gt;
 
-&lt;p&gt;At this point, you understand the end-to-end flows. Just like a doctor blinks and “sees” human anatomy, you blink and see the &lt;strong&gt;entire system/platform&lt;/strong&gt;. As Uncle Ben said, &lt;em&gt;“ßwith great power comes great responsibility”&lt;/em&gt;. Your role now is to help less senior people reach the same level of understanding. The people who support the system also need this view, so they can break out of the endless loop of repetitive on-call actions.&lt;/p&gt;
+&lt;p&gt;At this point, you understand the end-to-end flows. Just like a doctor blinks and “sees” human anatomy, you blink and see the &lt;strong&gt;entire system/platform&lt;/strong&gt;. As Uncle Ben said, &lt;em&gt;“with great power comes great responsibility”&lt;/em&gt;. Your role now is to help less senior people reach the same level of understanding. The people who support the system also need this view, so they can break out of the endless loop of repetitive on-call actions.&lt;/p&gt;
 
 &lt;p&gt;This is where you start thinking about how to make this knowledge fluid, accessible, and evolvable. And this is exactly where the workflow I have been enjoying comes in.&lt;/p&gt;
 
@@ -64,9 +64,9 @@
 
 &lt;p&gt;&lt;em&gt;To wrap up&lt;/em&gt;..&lt;/p&gt;
 
-&lt;p&gt;Now that you’ve put in all the work to &lt;strong&gt;standardize things&lt;/strong&gt;, it’s time to reap the benefits. Your arrows have styles or tags, so you can probably already see where this is going. From here on, this becomes a perfect playground for using &lt;strong&gt;LLMs&lt;/strong&gt;. You can use them not just to sketch things out for you, but also to help you understand your architecture and even give feedback on it. You can ask them to isolate flows, like “&lt;em&gt;isolate the flow with red arrows,&lt;/em&gt;” or “&lt;em&gt;isolate components with a specific tag, like #cash-in”. You can also ask questions such as “&lt;/em&gt;what are the weak points in my architecture* ?? “.&lt;/p&gt;
+&lt;p&gt;Now that you’ve put in all the work to &lt;strong&gt;standardize things&lt;/strong&gt;, it’s time to reap the benefits. Your arrows have styles or tags, so you can probably already see where this is going. From here on, this becomes a perfect playground for using &lt;strong&gt;LLMs&lt;/strong&gt;. You can use them not just to sketch things out for you, but also to help you understand your architecture and even give feedback on it. You can ask them to isolate flows, like &lt;em&gt;“isolate the flow with red arrows,”&lt;/em&gt; or &lt;em&gt;“isolate components with a specific tag, like #cash-in”&lt;/em&gt;. You can also ask questions such as &lt;em&gt;“what are the weak points in my architecture?”&lt;/em&gt;.&lt;/p&gt;
 
-&lt;p&gt;These are just a few ideas, but once your diagrams are structured, the kinds of questions you can ask and the insights you can get grow really fast. **After all that, make some coffee and go listen to good music. 🤠&lt;/p&gt;
+&lt;p&gt;These are just a few ideas, but once your diagrams are structured, the kinds of questions you can ask and the insights you can get grow really fast. &lt;strong&gt;After all that, make some coffee and go listen to good music.&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Mermaid legend&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;flowchart LR
@@ -75,10 +75,10 @@
     C --&amp;gt; D
     D --&amp;gt; E
 
-    %% Todos os links da mesma cor/espessura
+    %% All links with the same color/thickness
     linkStyle default stroke:#ff4444,stroke-width:3px
 
-    %% Só links específicos (começa do 0 na ordem que aparecem)
+    %% Only specific links (starts from 0 in the order they appear)
     linkStyle 0 stroke:#00cc00,stroke-width:5px
     linkStyle 2 stroke:blue,stroke-dasharray: 5 5
 &lt;/code&gt;&lt;/pre&gt;
@@ -295,7 +295,7 @@ nodes:
 
 &lt;h3 id=&quot;instructions&quot;&gt;Instructions&lt;/h3&gt;
 
-&lt;p&gt;All details can be found in this &lt;a href=&quot;https://github.com/apolzek/shared/tree/main/content/003&quot;&gt;repository&lt;/a&gt;.Follow the step by step instructions in the README&lt;/p&gt;
+&lt;p&gt;All details can be found in this &lt;a href=&quot;https://github.com/apolzek/shared/tree/main/content/003&quot;&gt;repository&lt;/a&gt;. Follow the step-by-step instructions in the README.&lt;/p&gt;
 
 &lt;h3 id=&quot;creating-a-basic-view-in-grafana&quot;&gt;Creating a basic view in grafana&lt;/h3&gt;
 
@@ -854,7 +854,7 @@ journalctl &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; json-pretty
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/ubuntu-vm-lab.png&quot; alt=&quot;ubuntu-vm&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;After installing the virtual machine (VM) and assigning an IP address via DHCP, follow the steps below (:&lt;/p&gt;
+&lt;p&gt;After installing the virtual machine (VM) and assigning an IP address via DHCP, follow the steps below:&lt;/p&gt;
 
 &lt;h3 id=&quot;configure-ubuntu-server&quot;&gt;Configure Ubuntu Server&lt;/h3&gt;
 
@@ -904,7 +904,7 @@ apolzek IN  CNAME github.com.   ; add CNAME
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo coredns -conf ./Corefile
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;configure-linux-host-im-using-ubuntu&quot;&gt;Configure linux host (i’m using ubuntu)&lt;/h3&gt;
+&lt;h3 id=&quot;configure-linux-host-im-using-ubuntu&quot;&gt;Configure Linux host (I’m using Ubuntu)&lt;/h3&gt;
 
 &lt;p&gt;Add the VM’s IP to resolv.conf&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nameserver 192.168.100.218 # VM with Ubuntu Server and CoreDNS
@@ -975,7 +975,9 @@ dig @192.168.100.218 admin.meudominio.local
 
 &lt;h2 id=&quot;create-kubernetes-cluster-with-kind&quot;&gt;Create kubernetes cluster with kind&lt;/h2&gt;
 
-&lt;p&gt;1 Create kind configuration(&lt;em&gt;kind-config.yaml&lt;/em&gt;)&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Create kind configuration (&lt;em&gt;kind-config.yaml&lt;/em&gt;)&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;cat &amp;lt;&amp;lt;EOF &amp;gt; /tmp/kind-config.yaml&lt;/span&gt;
 &lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kind.x-k8s.io/v1alpha4&lt;/span&gt;
@@ -993,14 +995,18 @@ dig @192.168.100.218 admin.meudominio.local
 &lt;span class=&quot;s&quot;&gt;EOF&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;2 Create a kind cluster&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Create a kind cluster&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kind create cluster &lt;span class=&quot;nt&quot;&gt;--config&lt;/span&gt; /tmp/kind-config.yaml &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; my-cluster
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;install-kafka&quot;&gt;Install Kafka&lt;/h2&gt;
 
-&lt;p&gt;1 Apply yaml&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Apply yaml&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;cat &amp;lt;&amp;lt;EOF | kubectl apply -f -&lt;/span&gt;
 &lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;v1&lt;/span&gt;
@@ -1086,7 +1092,9 @@ dig @192.168.100.218 admin.meudominio.local
   &lt;p&gt;🕗 Wait until all 3 Kafka pods are in the “Running” state.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;2 Create a topic&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Create a topic&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; kafka-0 &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; kafka &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; bash
 kafka-topics.sh &lt;span class=&quot;nt&quot;&gt;--create&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--topic&lt;/span&gt; my-topic &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt;/span&gt; kafka-svc:9092
@@ -1095,7 +1103,9 @@ kafka-topics.sh &lt;span class=&quot;nt&quot;&gt;--list&lt;/span&gt; &lt;span cl
 kafka-console-producer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt;/span&gt; kafka-svc:9092 &lt;span class=&quot;nt&quot;&gt;--topic&lt;/span&gt; my-topic
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;3 Consume message&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Consume message&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# consumer&lt;/span&gt;
 kubectl &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; kafka-1 &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; kafka &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; bash
@@ -1106,7 +1116,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
   &lt;p&gt;Run the producer and consumer in different Linux terminals&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;4 Delete topic&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Delete topic&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kafka-topics.sh &lt;span class=&quot;nt&quot;&gt;--delete&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--topic&lt;/span&gt; my-topic &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt;/span&gt; kafka-svc:9092
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -1119,7 +1131,9 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
 
 &lt;h2 id=&quot;install-rabbitmq&quot;&gt;Install RabbitMQ&lt;/h2&gt;
 
-&lt;p&gt;1 Create a YAML file &lt;em&gt;/tmp/rabbitmq.yml&lt;/em&gt; with the content below&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Create a YAML file &lt;em&gt;/tmp/rabbitmq.yml&lt;/em&gt; with the content below&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;v1&lt;/span&gt;
 &lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Namespace&lt;/span&gt;
@@ -1337,12 +1351,16 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
     &lt;span class=&quot;na&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rabbitmq&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;2 Apply file &lt;em&gt;/tmp/rabbitmq.yml&lt;/em&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Apply file &lt;em&gt;/tmp/rabbitmq.yml&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl apply &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; /tmp/rabbitmq.yml
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;3 Port-forward&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Port-forward&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl port-forward svc/rabbitmq 15672:15672 &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; rabbitmq
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
