@@ -66,7 +66,7 @@ Some scenarios that make sense to deal with signals..
 - Graceful Interruption of Services
 - Avoiding Database Corruption
 - Releasing Network or Hardware Resources
-- Maintaining Consistent Variable State-
+- Maintaining Consistent Variable State
 
 | Signal              | Description                                                                                         | How to Invoke                 |
 | ------------------- | --------------------------------------------------------------------------------------------------- | ----------------------------- |
@@ -187,7 +187,7 @@ echo "Ending the script."
 
 set +x  # Disable debugging mode
 
-echo "now debugging mode is disable"
+echo "now debugging mode is disabled"
 echo "did you understand ?"
 ```
 

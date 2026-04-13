@@ -14,12 +14,25 @@ permalink: /cheatsheet/
   <h2>Cheatsheet</h2>
   <p class="cheatsheet-subtitle">commands and tricks for day to day</p>
 
+  <div class="cs-search-wrap">
+    <svg class="cs-search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="11" cy="11" r="8"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
+    <input type="search" id="cs-search-input" placeholder="Search title, description or command" aria-label="Search cheatsheet">
+  </div>
+
   <div class="cs-tag-filter" id="cs-tag-filter"></div>
+
+  <p class="cs-empty" id="cs-empty" hidden>No matches.</p>
 
   <ul class="cs-list" id="cs-list">
     {% assign sorted_cs = site.data.cheatsheet %}
     {% for entry in sorted_cs %}
-    <li class="cs-item" data-tags="{{ entry.tags | join: ',' }}">
+    <li class="cs-item"
+        data-tags="{{ entry.tags | join: ',' }}"
+        data-search="{{ entry.title | append: ' ' | append: entry.description | append: ' ' | append: entry.commands | downcase | escape }}">
       <div class="cs-header">
         <span class="cs-title">{{ entry.title }}</span>
         {% if entry.tags %}
@@ -63,6 +76,45 @@ permalink: /cheatsheet/
     font-size: 0.85em;
     margin-bottom: 1.5rem;
     font-style: italic;
+  }
+
+  /* Search bar */
+  .cs-search-wrap {
+    position: relative;
+    margin-bottom: 0.9rem;
+  }
+
+  .cs-search-icon {
+    position: absolute;
+    left: 0.7rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(128,128,128,0.8);
+    pointer-events: none;
+  }
+
+  #cs-search-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.5rem 0.75rem 0.5rem 2.2rem;
+    font: inherit;
+    font-size: 0.9rem;
+    color: inherit;
+    background: var(--code-bg-color, rgba(128,128,128,0.08));
+    border: 1px solid rgba(128,128,128,0.25);
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  #cs-search-input:focus {
+    border-color: var(--link-color);
+  }
+
+  .cs-empty {
+    font-style: italic;
+    opacity: 0.6;
+    margin: 1rem 0;
   }
 
   /* Tag filter bar */
@@ -284,15 +336,26 @@ permalink: /cheatsheet/
     let filtered = allItems.slice();
     let currentPage = 1;
     let activeTag = null;
+    let searchQuery = '';
 
     function applyFilters() {
       filtered = allItems.filter(function (item) {
-        return !activeTag ||
+        const tagOk = !activeTag ||
           (item.dataset.tags || '').split(',').map(function (t) { return t.trim(); }).includes(activeTag);
+        if (!tagOk) return false;
+        if (!searchQuery) return true;
+        return (item.dataset.search || '').indexOf(searchQuery) !== -1;
       });
       currentPage = 1;
       render(currentPage);
     }
+
+    const searchInput = document.getElementById('cs-search-input');
+    const emptyMsg = document.getElementById('cs-empty');
+    searchInput.addEventListener('input', function () {
+      searchQuery = searchInput.value.trim().toLowerCase();
+      applyFilters();
+    });
 
     const tagSet = new Set();
     allItems.forEach(function (item) {
@@ -339,6 +402,7 @@ permalink: /cheatsheet/
       filtered.forEach(function (item, i) {
         item.style.display = (i >= start && i < end) ? '' : 'none';
       });
+      emptyMsg.hidden = filtered.length !== 0;
       renderPagination(page);
     }
 
