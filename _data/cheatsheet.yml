@@ -33,7 +33,12 @@
           | select(.name == "blogs")
           | .children[]
           | .url'
-
+- title: "Chrome Bookmarks (list folders)"
+  description: "List all Chrome bookmark folders using jq"
+  tags: [chrome, jq, linux]
+  commands: |
+    cat ~/.config/google-chrome/Default/Bookmarks \
+      | jq -r '[.. | objects | select(.type == "folder") | .name] | unique | sort | .[]'
 - title: "Post-install Docker"
   description: "Add current user to docker group after installation"
   tags: [docker, linux]
