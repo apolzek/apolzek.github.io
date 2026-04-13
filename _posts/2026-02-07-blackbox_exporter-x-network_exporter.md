@@ -219,7 +219,7 @@ nodes:
 
 ### Instructions
 
-All details can be found in this [repository](https://github.com/apolzek/shared/tree/main/content/003).Follow the step by step instructions in the README
+All details can be found in this [repository](https://github.com/apolzek/shared/tree/main/content/003). Follow the step-by-step instructions in the README.
 
 ### Creating a basic view in grafana
 

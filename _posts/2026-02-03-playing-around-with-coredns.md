@@ -23,7 +23,7 @@ minute: 8
 
 ![ubuntu-vm](/assets/img/ubuntu-vm-lab.png)
 
-After installing the virtual machine (VM) and assigning an IP address via DHCP, follow the steps below (:
+After installing the virtual machine (VM) and assigning an IP address via DHCP, follow the steps below:
 
 ### Configure Ubuntu Server
 
@@ -77,7 +77,7 @@ start CoreDNS
 sudo coredns -conf ./Corefile
 ```
 
-### Configure linux host (i'm using ubuntu)
+### Configure Linux host (I'm using Ubuntu)
 
 Add the VM's IP to resolv.conf
 ```
