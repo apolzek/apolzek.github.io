@@ -1,0 +1,4 @@
+- text: “E conhecereis a verdade, e a verdade vos libertará” (João 8:32)
+  date: "2026-04-02"
+- text: "Broken Path MTU Discovery can silently drop oversized packets, causing connections to hang until the interface MTU is manually lowered." 
+  date: "2026-05-17"

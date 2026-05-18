@@ -1,0 +1,444 @@
+---
+layout: default
+title: cheatsheet
+permalink: /cheatsheet/
+---
+<section class="cheatsheet-page">
+  <div class="flex-row-between">
+    <a href="{{ site.url }}{{ site.baseurl }}/"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> home</a>
+    <button title="Change theme" id="theme-toggle" onclick="modeSwitcher()">
+      <div></div>
+    </button>
+  </div>
+
+  <h2>Cheatsheet</h2>
+  <p class="cheatsheet-subtitle">commands and tricks for day to day</p>
+
+  <div class="cs-search-wrap">
+    <svg class="cs-search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="11" cy="11" r="8"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
+    <input type="search" id="cs-search-input" placeholder="Search title, description or command" aria-label="Search cheatsheet">
+  </div>
+
+  <div class="cs-tag-filter" id="cs-tag-filter"></div>
+
+  <p class="cs-empty" id="cs-empty" hidden>No matches.</p>
+
+  <ul class="cs-list" id="cs-list">
+    {% assign sorted_cs = site.data.cheatsheet %}
+    {% for entry in sorted_cs %}
+    <li class="cs-item"
+        data-tags="{{ entry.tags | join: ',' }}"
+        data-search="{{ entry.title | append: ' ' | append: entry.description | append: ' ' | append: entry.commands | downcase | escape }}">
+      <div class="cs-header">
+        <span class="cs-title">{{ entry.title }}</span>
+        {% if entry.tags %}
+        <span class="cs-tags">
+          {% for tag in entry.tags %}<span class="cs-tag">{{ tag }}</span>{% endfor %}
+        </span>
+        {% endif %}
+      </div>
+      {% if entry.description %}
+      <p class="cs-description">{{ entry.description }}</p>
+      {% endif %}
+      <div class="cs-code-wrap">
+        <button class="cs-copy-btn" title="Copy commands" onclick="copyCode(this)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+        </button>
+        <pre class="cs-code"><code>{{ entry.commands | strip }}</code></pre>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+
+  <nav class="cs-pagination" id="cs-pagination"></nav>
+</section>
+
+<style>
+  main {
+    max-width: 72rem;
+  }
+
+  .cheatsheet-page h2 {
+    margin-top: 2rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .cheatsheet-subtitle {
+    color: var(--link-color);
+    font-size: 0.85em;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+
+  /* Search bar */
+  .cs-search-wrap {
+    position: relative;
+    margin-bottom: 0.9rem;
+  }
+
+  .cs-search-icon {
+    position: absolute;
+    left: 0.7rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(128,128,128,0.8);
+    pointer-events: none;
+  }
+
+  #cs-search-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.5rem 0.75rem 0.5rem 2.2rem;
+    font: inherit;
+    font-size: 0.9rem;
+    color: inherit;
+    background: var(--code-bg-color, rgba(128,128,128,0.08));
+    border: 1px solid rgba(128,128,128,0.25);
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  #cs-search-input:focus {
+    border-color: var(--link-color);
+  }
+
+  .cs-empty {
+    font-style: italic;
+    opacity: 0.6;
+    margin: 1rem 0;
+  }
+
+  /* Tag filter bar */
+  .cs-tag-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+    min-height: 1.6rem;
+  }
+
+  .cs-filter-btn {
+    background: none;
+    border: 1px solid rgba(128,128,128,0.3);
+    border-radius: 3px;
+    padding: 0.15rem 0.55rem;
+    font-size: 0.75em;
+    font-family: inherit;
+    cursor: pointer;
+    color: inherit;
+    opacity: 0.6;
+    transition: opacity 0.2s, border-color 0.2s;
+  }
+
+  .cs-filter-btn:hover,
+  .cs-filter-btn.active {
+    opacity: 1;
+    border-color: var(--link-color);
+    color: var(--link-color);
+  }
+
+  /* List */
+  .cs-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    columns: 2;
+    column-gap: 3rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 700px) {
+    .cs-list {
+      columns: 1;
+    }
+  }
+
+  .cs-item {
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(128,128,128,0.15);
+    break-inside: avoid;
+    overflow: hidden;
+  }
+
+  .cs-header {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .cs-title {
+    font-size: 0.95rem;
+    font-weight: bold;
+  }
+
+  .cs-title::before {
+    content: "$ ";
+    color: var(--link-color);
+    font-weight: bold;
+  }
+
+  .cs-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+
+  .cs-tag {
+    font-size: 0.68em;
+    border: 1px solid rgba(128,128,128,0.3);
+    border-radius: 3px;
+    padding: 0.05rem 0.4rem;
+    opacity: 0.55;
+    cursor: pointer;
+    transition: opacity 0.2s, border-color 0.2s;
+  }
+
+  .cs-tag:hover {
+    opacity: 1;
+    border-color: var(--link-color);
+    color: var(--link-color);
+  }
+
+  .cs-description {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.82rem;
+    font-style: italic;
+    opacity: 0.65;
+    line-height: 1.4;
+  }
+
+  /* Code block */
+  .cs-code-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
+  }
+
+  .cs-code {
+    width: 100%;
+    background: var(--code-bg-color, rgba(128,128,128,0.08));
+    border: 1px solid rgba(128,128,128,0.15);
+    border-radius: 5px;
+    padding: 0.75rem 0.85rem;
+    margin: 0;
+    overflow-x: auto;
+    font-size: 0.82rem;
+    line-height: 1.55;
+    white-space: pre;
+    box-sizing: border-box;
+  }
+
+  .cs-code code {
+    background: none;
+    padding: 0;
+    font-family: inherit;
+  }
+
+  .cs-copy-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    opacity: 0.35;
+    padding: 0.2rem;
+    border-radius: 3px;
+    transition: opacity 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+  }
+
+  .cs-copy-btn:hover {
+    opacity: 1;
+    color: var(--link-color);
+  }
+
+  .cs-copy-btn.copied {
+    opacity: 1;
+    color: var(--link-color);
+  }
+
+  /* Pagination */
+  .cs-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 1.5rem;
+  }
+
+  .cs-pagination a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: normal;
+    transition: font-weight 0.2s ease, text-shadow 0.2s ease;
+  }
+
+  .cs-pagination a:hover {
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(255,255,255,0.6);
+  }
+</style>
+
+<script>
+  function showCopied(btn) {
+    btn.classList.add('copied');
+    var orig = btn.innerHTML;
+    btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+    setTimeout(function () {
+      btn.classList.remove('copied');
+      btn.innerHTML = orig;
+    }, 1500);
+  }
+
+  function fallbackCopy(text, btn) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); showCopied(btn); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+
+  function copyCode(btn) {
+    var wrap = btn.closest('.cs-code-wrap');
+    var codeEl = wrap && wrap.querySelector('code');
+    if (!codeEl) { console.error('copyCode: code element not found'); return; }
+    var code = codeEl.textContent;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(code).then(function () {
+        showCopied(btn);
+      }).catch(function (err) {
+        console.warn('clipboard failed, trying fallback', err);
+        fallbackCopy(code, btn);
+      });
+    } else {
+      fallbackCopy(code, btn);
+    }
+  }
+
+  (function () {
+    const PER_PAGE = 10;
+    const allItems = Array.from(document.querySelectorAll('#cs-list .cs-item'));
+    let filtered = allItems.slice();
+    let currentPage = 1;
+    let activeTag = null;
+    let searchQuery = '';
+
+    function applyFilters() {
+      filtered = allItems.filter(function (item) {
+        const tagOk = !activeTag ||
+          (item.dataset.tags || '').split(',').map(function (t) { return t.trim(); }).includes(activeTag);
+        if (!tagOk) return false;
+        if (!searchQuery) return true;
+        return (item.dataset.search || '').indexOf(searchQuery) !== -1;
+      });
+      currentPage = 1;
+      render(currentPage);
+    }
+
+    const searchInput = document.getElementById('cs-search-input');
+    const emptyMsg = document.getElementById('cs-empty');
+    searchInput.addEventListener('input', function () {
+      searchQuery = searchInput.value.trim().toLowerCase();
+      applyFilters();
+    });
+
+    const tagSet = new Set();
+    allItems.forEach(function (item) {
+      const tags = item.dataset.tags ? item.dataset.tags.split(',') : [];
+      tags.forEach(function (t) { if (t) tagSet.add(t.trim()); });
+    });
+
+    const filterBar = document.getElementById('cs-tag-filter');
+
+    function setFilter(tag) {
+      activeTag = tag;
+      document.querySelectorAll('.cs-filter-btn').forEach(function (btn) {
+        btn.classList.toggle('active', btn.dataset.tag === (tag || ''));
+      });
+      applyFilters();
+    }
+
+    const allBtn = document.createElement('button');
+    allBtn.className = 'cs-filter-btn active';
+    allBtn.textContent = 'all';
+    allBtn.dataset.tag = '';
+    allBtn.addEventListener('click', function () { setFilter(null); });
+    filterBar.appendChild(allBtn);
+
+    Array.from(tagSet).sort().forEach(function (tag) {
+      const btn = document.createElement('button');
+      btn.className = 'cs-filter-btn';
+      btn.textContent = tag;
+      btn.dataset.tag = tag;
+      btn.addEventListener('click', function () { setFilter(tag); });
+      filterBar.appendChild(btn);
+    });
+
+    document.querySelectorAll('.cs-tag').forEach(function (span) {
+      span.addEventListener('click', function () {
+        setFilter(span.textContent.trim());
+      });
+    });
+
+    function render(page) {
+      const start = (page - 1) * PER_PAGE;
+      const end = start + PER_PAGE;
+      allItems.forEach(function (item) { item.style.display = 'none'; });
+      filtered.forEach(function (item, i) {
+        item.style.display = (i >= start && i < end) ? '' : 'none';
+      });
+      emptyMsg.hidden = filtered.length !== 0;
+      renderPagination(page);
+    }
+
+    function renderPagination(page) {
+      const nav = document.getElementById('cs-pagination');
+      nav.innerHTML = '';
+      const totalPages = Math.ceil(filtered.length / PER_PAGE);
+      if (totalPages <= 1) return;
+
+      if (page > 1) {
+        const prev = document.createElement('a');
+        prev.href = '#';
+        prev.textContent = 'Previous';
+        prev.addEventListener('click', function (e) {
+          e.preventDefault();
+          currentPage = page - 1;
+          render(currentPage);
+          window.scrollTo(0, 0);
+        });
+        nav.appendChild(prev);
+      }
+
+      if (page < totalPages) {
+        const next = document.createElement('a');
+        next.href = '#';
+        next.textContent = 'Next';
+        next.addEventListener('click', function (e) {
+          e.preventDefault();
+          currentPage = page + 1;
+          render(currentPage);
+          window.scrollTo(0, 0);
+        });
+        nav.appendChild(next);
+      }
+    }
+
+    render(currentPage);
+  })();
+</script>
