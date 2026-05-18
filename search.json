@@ -1,67 +1,11 @@
 [
   
     {
-      "title"    : "tracking changes in complex architectures",
-      "category" : "",
-      "tags"     : "",
-      "url"      : "/2026/02/08/proposing-a-workflow",
-      "date"     : "2026-02-08 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "blackbox_exporter x network_exporter",
-      "category" : "",
-      "tags"     : "",
-      "url"      : "/2026/02/07/blackbox-exporter-x-network-exporter",
-      "date"     : "2026-02-07 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "cheatsheet powershell",
-      "category" : "",
-      "tags"     : "windows, powershell, script, ps1",
-      "url"      : "/2026/02/06/cheatsheet-powershell",
-      "date"     : "2026-02-06 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "cheatsheet golang",
-      "category" : "",
-      "tags"     : "",
-      "url"      : "/2026/02/05/golang",
-      "date"     : "2026-02-05 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "cheatsheet shell",
-      "category" : "",
-      "tags"     : "",
-      "url"      : "/2026/02/04/cheatsheet-shell",
-      "date"     : "2026-02-04 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "Playing around with CoreDNS",
-      "category" : "",
-      "tags"     : "",
-      "url"      : "/2026/02/03/playing-around-with-coredns",
-      "date"     : "2026-02-03 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "Kafka and RabbitMQ on Kubernetes using Kind",
-      "category" : "",
-      "tags"     : "",
-      "url"      : "/2026/02/02/kafka-and-rabbitmq-on-kubernetes",
-      "date"     : "2026-02-02 00:00:00 +0000"
-    } ,
-  
-    {
       "title"    : "starting here",
       "category" : "",
       "tags"     : "",
-      "url"      : "/2026/01/01/apolzek",
-      "date"     : "2026-01-01 00:00:00 +0000"
+      "url"      : "/2026/05/18/apolzek",
+      "date"     : "2026-05-18 00:00:00 +0000"
     } 
   
 ]
