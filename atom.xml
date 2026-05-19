@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-05-19T22:52:23+00:00</updated>
+ <updated>2026-05-19T23:04:04+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -13,7 +13,7 @@
 
  
  <entry>
-   <title>ebpf</title>
+   <title>getting your feet wet</title>
    <link href="https://apolzek.github.io/2026/05/19/ebpf"/>
    <updated>2026-05-19T00:00:00+00:00</updated>
    <id>https://apolzek.github.io/2026/05/19/ebpf</id>
@@ -21,8 +21,15 @@
     printf(&quot;%s -&amp;gt; %s\n&quot;, comm, str(args-&amp;gt;filename));
 }&apos;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;20-prerequisites-to-master-ebpf-security--observability-focus&quot;&gt;20 Prerequisites to Master eBPF (Security &amp;amp; Observability Focus)&lt;/h3&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>ebpf pre-req</title>
+   <link href="https://apolzek.github.io/2026/05/19/ebpf-pre-req"/>
+   <updated>2026-05-19T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2026/05/19/ebpf-pre-req</id>
+   <content type="html">&lt;h3 id=&quot;20-prerequisites-to-master-ebpf-security--observability-focus&quot;&gt;20 Prerequisites to Master eBPF (Security &amp;amp; Observability Focus)&lt;/h3&gt;
 
 &lt;p&gt;Here is my view of the 20 main prerequisites to master eBPF with a focus on security and observability, organized from foundation to applied mastery. The mapping aligns with the actual content categories in the gojue/ebpf-slide repository (Security, Observability, Tracing/Profiling, eBPF Basic, eBPF Advanced, Networking, Android).&lt;/p&gt;
 
