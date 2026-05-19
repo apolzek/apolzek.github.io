@@ -4,13 +4,25 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-05-18T13:13:16+00:00</updated>
+ <updated>2026-05-19T21:40:07+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>ebpf</title>
+   <link href="https://apolzek.github.io/2026/05/19/ebpf"/>
+   <updated>2026-05-19T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2026/05/19/ebpf</id>
+   <content type="html">&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;bpftrace &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;tracepoint:syscalls:sys_enter_openat /comm == &quot;curl&quot;/ {
+    printf(&quot;%s -&amp;gt; %s\n&quot;, comm, str(args-&amp;gt;filename));
+}&apos;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Diálogo sobre os Rótulos e a Verdade</title>

@@ -17,6 +17,30 @@
 "items": [
     
         {
+            "id": "https://apolzek.github.io/2026/05/19/ebpf",
+            "title": "ebpf",
+            "summary": null,
+            "content_text": "sudo bpftrace -e 'tracepoint:syscalls:sys_enter_openat /comm == \"curl\"/ {    printf(\"%s -&gt; %s\\n\", comm, str(args-&gt;filename));}'",
+            "content_html": "<div class=\"language-bash highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">sudo </span>bpftrace <span class=\"nt\">-e</span> <span class=\"s1\">'tracepoint:syscalls:sys_enter_openat /comm == \"curl\"/ {    printf(\"%s -&gt; %s\\n\", comm, str(args-&gt;filename));}'</span></code></pre></div></div>",
+            "url": "https://apolzek.github.io/2026/05/19/ebpf",
+            
+            
+            
+            
+            
+            "date_published": "2026-05-19T00:00:00+00:00",
+            "date_modified": "2026-05-19T00:00:00+00:00",
+            
+                "author":  {
+                "name": "apolzek",
+                "url": null,
+                "avatar": null
+                }
+                
+            
+        },
+    
+        {
             "id": "https://apolzek.github.io/2026/05/18/dialogo-sobre-rotulos-e-verdade",
             "title": "Diálogo sobre os Rótulos e a Verdade",
             "summary": null,
