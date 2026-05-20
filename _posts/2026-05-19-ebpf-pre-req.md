@@ -1,15 +1,15 @@
 ---
 layout: post
-title: ebpf pre-req
+title: the journey to learn ebpf
 description:
 summary:
 # tags: ebpf linux prerequisites
 minute: 8
 ---
 
-### 20 Prerequisites to Master eBPF (Security & Observability Focus)
+### The Journey to Learn eBPF (Security & Observability Focus)
 
-Here is my view of the 20 main prerequisites to master eBPF with a focus on security and observability, organized from foundation to applied mastery. The mapping aligns with the actual content categories in the gojue/ebpf-slide repository (Security, Observability, Tracing/Profiling, eBPF Basic, eBPF Advanced, Networking, Android).
+This is a learning path that **Claude Opus 4.7** defined: a route to master eBPF with focus on security and observability, built on solid fundamentals and organized from foundation to applied mastery. The mapping aligns with the actual content categories in the gojue/ebpf-slide repository (Security, Observability, Tracing/Profiling, eBPF Basic, eBPF Advanced, Networking, Android).
 
 #### Technical Foundation (1-7)
 
@@ -84,3 +84,9 @@ eBPF is also an attack surface. Historical verifier CVEs, Spectre in BPF (Daniel
 Practical study order using the repo itself: `eBPF_basic` (covers 1-13) then `tracing_profiling` (Brendan Gregg to anchor 14), then `observability_monitoring`, then `security` (16, 17, 20), then `eBPF_advanced` (verifier, CO-RE, JIT, Spectre).
 
 A useful shortcut: after items 1-7, read Liz Rice's *Learning eBPF* in parallel with her slide in the repo (`LIz_Rice-Beginners_guide_to_eBPF`), then go straight to the Tetragon or Tracee source code. They materialize almost all 20 points in real production.
+
+#### A Closing Note
+
+Let's be honest: eBPF is a hard subject. It is not something you pick up in a weekend, and most of this list assumes prior experience — comfort with C, a real mental model of the Linux kernel, and time spent debugging things that fail in non-obvious ways. The verifier alone humbles most people. So if this feels overwhelming, that is normal, not a sign you are not cut out for it.
+
+But hard is not the same as impossible. Every item here is learnable, one at a time, and you do not need all 20 before doing something useful. Start small, accept that you will be stuck often, and keep going. The barrier is real, and it can be crossed.
