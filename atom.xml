@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-05-20T14:34:41+00:00</updated>
+ <updated>2026-05-20T14:36:54+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -13,24 +13,10 @@
 
  
  <entry>
-   <title>getting your feet wet</title>
-   <link href="https://apolzek.github.io/2026/05/19/ebpf"/>
-   <updated>2026-05-19T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2026/05/19/ebpf</id>
-   <content type="html">&lt;p&gt;No theory, no setup marathon — just dipping your toes into eBPF. One line, and you can already watch the kernel tell you which files &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;curl&lt;/code&gt; opens. That’s the whole point here: get your feet wet, see something real happen, and let the curiosity take it from there.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;bpftrace &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;tracepoint:syscalls:sys_enter_openat /comm == &quot;curl&quot;/ {
-    printf(&quot;%s -&amp;gt; %s\n&quot;, comm, str(args-&amp;gt;filename));
-}&apos;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
    <title>the journey to learn ebpf</title>
-   <link href="https://apolzek.github.io/2026/05/19/ebpf-pre-req"/>
+   <link href="https://apolzek.github.io/2026/05/19/the-journey-to-learn-ebpf"/>
    <updated>2026-05-19T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2026/05/19/ebpf-pre-req</id>
+   <id>https://apolzek.github.io/2026/05/19/the-journey-to-learn-ebpf</id>
    <content type="html">&lt;h3 id=&quot;the-journey-to-learn-ebpf-security--observability-focus&quot;&gt;The Journey to Learn eBPF (Security &amp;amp; Observability Focus)&lt;/h3&gt;
 
 &lt;p&gt;This is a learning path that &lt;strong&gt;Claude Opus 4.7&lt;/strong&gt; defined: a route to master eBPF with focus on security and observability, built on solid fundamentals and organized from foundation to applied mastery. The mapping aligns with the actual content categories in the gojue/ebpf-slide repository (Security, Observability, Tracing/Profiling, eBPF Basic, eBPF Advanced, Networking, Android).&lt;/p&gt;
@@ -114,6 +100,20 @@ eBPF is also an attack surface. Historical verifier CVEs, Spectre in BPF (Daniel
 &lt;p&gt;Let’s be honest: eBPF is a hard subject. It is not something you pick up in a weekend, and most of this list assumes prior experience — comfort with C, a real mental model of the Linux kernel, and time spent debugging things that fail in non-obvious ways. The verifier alone humbles most people. So if this feels overwhelming, that is normal, not a sign you are not cut out for it.&lt;/p&gt;
 
 &lt;p&gt;But hard is not the same as impossible. Every item here is learnable, one at a time, and you do not need all 20 before doing something useful. Start small, accept that you will be stuck often, and keep going. The barrier is real, and it can be crossed.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>getting your feet wet</title>
+   <link href="https://apolzek.github.io/2026/05/19/getting-your-feet-wet"/>
+   <updated>2026-05-19T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2026/05/19/getting-your-feet-wet</id>
+   <content type="html">&lt;p&gt;No theory, no setup marathon — just dipping your toes into eBPF. One line, and you can already watch the kernel tell you which files &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;curl&lt;/code&gt; opens. That’s the whole point here: get your feet wet, see something real happen, and let the curiosity take it from there.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;bpftrace &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;tracepoint:syscalls:sys_enter_openat /comm == &quot;curl&quot;/ {
+    printf(&quot;%s -&amp;gt; %s\n&quot;, comm, str(args-&amp;gt;filename));
+}&apos;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
  
