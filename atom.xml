@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-05-20T14:36:54+00:00</updated>
+ <updated>2026-05-20T14:41:28+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -104,11 +104,11 @@ eBPF is also an attack surface. Historical verifier CVEs, Spectre in BPF (Daniel
  </entry>
  
  <entry>
-   <title>getting your feet wet</title>
-   <link href="https://apolzek.github.io/2026/05/19/getting-your-feet-wet"/>
+   <title>first taste of ebpf</title>
+   <link href="https://apolzek.github.io/2026/05/19/first-taste-of-ebpf"/>
    <updated>2026-05-19T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2026/05/19/getting-your-feet-wet</id>
-   <content type="html">&lt;p&gt;No theory, no setup marathon — just dipping your toes into eBPF. One line, and you can already watch the kernel tell you which files &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;curl&lt;/code&gt; opens. That’s the whole point here: get your feet wet, see something real happen, and let the curiosity take it from there.&lt;/p&gt;
+   <id>https://apolzek.github.io/2026/05/19/first-taste-of-ebpf</id>
+   <content type="html">&lt;p&gt;No theory, no setup marathon — just your first hands-on taste of eBPF. One line, and you can already watch the kernel tell you which files &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;curl&lt;/code&gt; opens. That’s the whole point here: poke at it, see something real happen, and let the curiosity take it from there.&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;bpftrace &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;tracepoint:syscalls:sys_enter_openat /comm == &quot;curl&quot;/ {
     printf(&quot;%s -&amp;gt; %s\n&quot;, comm, str(args-&amp;gt;filename));
