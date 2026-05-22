@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-05-22T17:01:54+00:00</updated>
+ <updated>2026-05-22T17:25:05+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -17,12 +17,31 @@
    <link href="https://apolzek.github.io/2026/05/20/first-taste-of-ebpf"/>
    <updated>2026-05-20T00:00:00+00:00</updated>
    <id>https://apolzek.github.io/2026/05/20/first-taste-of-ebpf</id>
-   <content type="html">&lt;p&gt;No theory, no setup marathon — just your first hands-on taste of eBPF. One line, and you can already watch the kernel tell you which files &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;curl&lt;/code&gt; opens. That’s the whole point here: poke at it, see something real happen, and let the curiosity take it from there.&lt;/p&gt;
+   <content type="html">&lt;p&gt;As the article title suggests, I’m not going to dive into writing eBPF programs, and honestly I don’t know enough to talk about that anyway. What we’re really going to do is explore what’s possible straight from the command line using tracing tools like &lt;strong&gt;bpftrace&lt;/strong&gt; and similar ones. This is the moment where we get to use our imagination to see what we can pull off with eBPF that’s actually useful and, at the same time, helps us understand this incredibly powerful technology. Let’s get hands on.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/ebpf.png&quot; alt=&quot;eBPF&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I want to run some tools (:&lt;/p&gt;
+
+&lt;h3 id=&quot;spying-on-curls-file-access-with-bpftrace&quot;&gt;Spying on curl’s file access with bpftrace&lt;/h3&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;bpftrace &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;tracepoint:syscalls:sys_enter_openat /comm == &quot;curl&quot;/ {
     printf(&quot;%s -&amp;gt; %s\n&quot;, comm, str(args-&amp;gt;filename));
 }&apos;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This command uses &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bpftrace&lt;/code&gt; to spy, in real time, on which files the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;curl&lt;/code&gt; process is opening. Let’s break it down:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo bpftrace -e &apos;...&apos;&lt;/code&gt; runs bpftrace with an inline program (the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-e&lt;/code&gt; flag means “execute this script directly” instead of reading it from a file). It needs root because eBPF tracing touches the kernel.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tracepoint:syscalls:sys_enter_openat&lt;/code&gt; is the probe, the hook point. It fires every time any process on the system &lt;em&gt;enters&lt;/em&gt; the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;openat&lt;/code&gt; syscall, which is the syscall the kernel uses to open files. The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sys_enter&lt;/code&gt; part means it triggers right at the start of the call, before the kernel actually does the work.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/comm == &quot;curl&quot;/&lt;/code&gt; is a filter (called a predicate). &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;comm&lt;/code&gt; is a built-in variable that holds the name of the process that triggered the probe. So this says “only run the action if the process is named curl”. Without this filter you would get noise from every process on the machine.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{ printf(&quot;%s -&amp;gt; %s\n&quot;, comm, str(args-&amp;gt;filename)); }&lt;/code&gt; is the action block. When the filter passes, it prints two things: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;comm&lt;/code&gt; (the process name, which here will always be “curl”) and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;args-&amp;gt;filename&lt;/code&gt;, which is the path of the file being opened. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;args&lt;/code&gt; gives you access to the syscall arguments, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;str()&lt;/code&gt; is needed because &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;filename&lt;/code&gt; is a raw pointer into memory, so &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;str()&lt;/code&gt; reads that pointer and converts it into a readable string.&lt;/p&gt;
+
+&lt;p&gt;End result: while the command is running, every time &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;curl&lt;/code&gt; opens a file you will see a line like this:&lt;/p&gt;
+
 </content>
  </entry>
  
@@ -388,15 +407,21 @@
 
 &lt;hr /&gt;
 
-&lt;p&gt;&lt;em&gt;ânforas&lt;/em&gt;: vasos antigos usados para guardar líquidos como vinho e azeite
-&lt;em&gt;dracma&lt;/em&gt;: moeda usada na Grécia antiga
-&lt;em&gt;rédeas&lt;/em&gt;: tiras usadas para guiar e controlar um cavalo
-&lt;em&gt;pórtico&lt;/em&gt;: entrada com colunas na frente de um edifício
-&lt;em&gt;cenho franzido&lt;/em&gt;: expressão de preocupação ou irritação; testa enrugada por tensão&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;HELP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;ânforas&lt;/em&gt;: vasos antigos usados para guardar líquidos como vinho e azeite&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;dracma&lt;/em&gt;: moeda usada na Grécia antiga&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;rédeas&lt;/em&gt;: tiras usadas para guiar e controlar um cavalo&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;pórtico&lt;/em&gt;: entrada com colunas na frente de um edifício&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;cenho franzido&lt;/em&gt;: expressão de preocupação ou irritação; testa enrugada por tensão&lt;/p&gt;
 
 &lt;hr /&gt;
 
-&lt;p&gt;Quando li &lt;strong&gt;A República, de Platão&lt;/strong&gt;, eu ainda não tinha a base necessária para aproveitá-la plenamente, mas, mesmo assim, recomendo a leitura. Quero relê-la em breve, justamente para acompanhar como a percepção de uma obra se transforma conforme amadurecemos como leitores.&lt;/p&gt;
+&lt;p&gt;Quando li &lt;strong&gt;A República, de Platão&lt;/strong&gt; eu sabia que não tinha e talvez ainda não tenha a base suficiente para aproveitá-la plenamente, mesmo assim senti que era uma leitura que valia a pena. Quero relê-la em breve, justamente para perceber como a experiência com uma obra muda conforme amadurecemos como leitores.&lt;/p&gt;
 </content>
  </entry>
  
