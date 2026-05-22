@@ -67,16 +67,17 @@ minute: 4
 
 **SÓCRATES:** Esse é seu preço, e também sua dignidade. Examina cada obra, cada acusação, cada situação. Pede sempre as razões. Decide. E quando a consequência vier, doce ou amarga, recebe-a como tua. **É o único caminho para se tornar de fato alguém**.
 
+..então Sócrates ajeitou o manto, Glauco virou a tábua contra a parede, e ambos foram tomar uma cerveja.
+
 ---
 
 **help with words**
 
 - *ânforas*: vasos antigos usados para guardar líquidos como vinho e azeite
 - *dracma*: moeda usada na Grécia antiga
-- *rédeas*: tiras usadas para guiar e controlar um cavalo
 - *pórtico*: entrada com colunas na frente de um edifício
 - *cenho franzido*: expressão de preocupação ou irritação; testa enrugada por tensão
 
 ---
 
-Quando li **A República, de Platão** eu sabia que não tinha e talvez ainda não tenha a base suficiente para aproveitá-la plenamente, mesmo assim senti que era uma leitura que valia a pena. Quero relê-la em breve, justamente para perceber como a experiência com uma obra muda conforme amadurecemos como leitores.
+💬 Quando li **A República, de Platão** eu sabia que não tinha e talvez ainda não tenha a base suficiente para aproveitá-la plenamente, mesmo assim senti que era uma leitura que valia a pena. Quero relê-la em breve, justamente para perceber como a experiência com uma obra muda conforme amadurecemos como leitores.
