@@ -13,6 +13,10 @@ As the article title suggests, I'm not going to dive into writing eBPF programs,
 
 I want to run some tools (:
 
+## Environment
+
+I'm on macOS and starting to play around with eBPF on **Ubuntu 25** inside **OrbStack**. It's not ideal, since it runs a custom kernel in a VM rather than native Linux, and I'm not using containers either. I'll soon test on a host Linux machine as I progress in my studies.
+
 ### Spying on curl's file access with bpftrace
 
 ```bash

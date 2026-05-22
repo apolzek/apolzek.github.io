@@ -69,17 +69,13 @@ minute: 4
 
 ---
 
-**HELP**
+**help with words**
 
-*ânforas*: vasos antigos usados para guardar líquidos como vinho e azeite
-
-*dracma*: moeda usada na Grécia antiga
-
-*rédeas*: tiras usadas para guiar e controlar um cavalo
-
-*pórtico*: entrada com colunas na frente de um edifício
-
-*cenho franzido*: expressão de preocupação ou irritação; testa enrugada por tensão
+- *ânforas*: vasos antigos usados para guardar líquidos como vinho e azeite
+- *dracma*: moeda usada na Grécia antiga
+- *rédeas*: tiras usadas para guiar e controlar um cavalo
+- *pórtico*: entrada com colunas na frente de um edifício
+- *cenho franzido*: expressão de preocupação ou irritação; testa enrugada por tensão
 
 ---
 

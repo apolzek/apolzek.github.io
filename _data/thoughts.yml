@@ -1,8 +1,8 @@
-- text: “E conhecereis a verdade, e a verdade vos libertará” (João 8:32)
+- text: "E conhecereis a verdade, e a verdade vos libertará” (João 8:32)
   date: "2026-04-02"
-- text: "MTU problems are silent. The connection works fine for small packets and only breaks when something large needs to pass through, which makes them so hard to diagnose." 
-  date: "2026-05-17"
+
 - text: "In the contrib Collector, the more components you add to your pipeline, the harder it gets to guarantee execution predictability. Every new combination, and every version bump, is one more variable that can change the behavior of a pipeline that used to work."
   date: "2026-05-22"
-- text: "The more components you add to your pipeline, the harder it gets to guarantee execution predictability. Every new combination, and every version bump, is one more variable that can change the behavior of a pipeline that used to work."
+
+- text: "Os que correram comigo continuam do meu lado. Tenho poucos amigos, mas não foram comprados. 🎵"
   date: "2026-05-22"
