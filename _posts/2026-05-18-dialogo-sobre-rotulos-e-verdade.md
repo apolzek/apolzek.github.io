@@ -65,4 +65,16 @@ minute: 4
 
 **GLAUCO:** Então a liberdade tem o preço da responsabilidade.
 
-**SÓCRATES:** Esse é seu preço, e também sua dignidade. Examina cada obra, cada acusação, cada situação. Pede sempre as razões. Decide. E quando a consequência vier, doce ou amarga, recebe-a como tua. É o único caminho para se tornar de fato alguém.
+**SÓCRATES:** Esse é seu preço, e também sua dignidade. Examina cada obra, cada acusação, cada situação. Pede sempre as razões. Decide. E quando a consequência vier, doce ou amarga, recebe-a como tua. **É o único caminho para se tornar de fato alguém**.
+
+---
+
+*ânforas*: vasos antigos usados para guardar líquidos como vinho e azeite
+*dracma*: moeda usada na Grécia antiga
+*rédeas*: tiras usadas para guiar e controlar um cavalo
+*pórtico*: entrada com colunas na frente de um edifício
+*cenho franzido*: expressão de preocupação ou irritação; testa enrugada por tensão
+
+---
+
+Quando li **A República, de Platão**, eu ainda não tinha a base necessária para aproveitá-la plenamente, mas, mesmo assim, recomendo a leitura. Quero relê-la em breve, justamente para acompanhar como a percepção de uma obra se transforma conforme amadurecemos como leitores.
