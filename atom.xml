@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-05-22T16:31:27+00:00</updated>
+ <updated>2026-05-22T16:32:12+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -17,7 +17,7 @@
    <link href="https://apolzek.github.io/2026/05/19/the-journey-to-learn-ebpf"/>
    <updated>2026-05-19T00:00:00+00:00</updated>
    <id>https://apolzek.github.io/2026/05/19/the-journey-to-learn-ebpf</id>
-   <content type="html">&lt;h2 id=&quot;índice&quot;&gt;Índice&lt;/h2&gt;
+   <content type="html">&lt;h2 id=&quot;table-of-contents&quot;&gt;Table of Contents&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;#questions-about-ebpf&quot;&gt;Questions about eBPF&lt;/a&gt;&lt;/li&gt;
