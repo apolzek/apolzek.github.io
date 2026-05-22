@@ -4,13 +4,27 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-05-22T16:32:12+00:00</updated>
+ <updated>2026-05-22T17:01:54+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>first taste of ebpf</title>
+   <link href="https://apolzek.github.io/2026/05/20/first-taste-of-ebpf"/>
+   <updated>2026-05-20T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2026/05/20/first-taste-of-ebpf</id>
+   <content type="html">&lt;p&gt;No theory, no setup marathon — just your first hands-on taste of eBPF. One line, and you can already watch the kernel tell you which files &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;curl&lt;/code&gt; opens. That’s the whole point here: poke at it, see something real happen, and let the curiosity take it from there.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;bpftrace &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;tracepoint:syscalls:sys_enter_openat /comm == &quot;curl&quot;/ {
+    printf(&quot;%s -&amp;gt; %s\n&quot;, comm, str(args-&amp;gt;filename));
+}&apos;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
  
  <entry>
    <title>the journey to learn ebpf</title>
@@ -308,20 +322,6 @@
  </entry>
  
  <entry>
-   <title>first taste of ebpf</title>
-   <link href="https://apolzek.github.io/2026/05/19/first-taste-of-ebpf"/>
-   <updated>2026-05-19T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2026/05/19/first-taste-of-ebpf</id>
-   <content type="html">&lt;p&gt;No theory, no setup marathon — just your first hands-on taste of eBPF. One line, and you can already watch the kernel tell you which files &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;curl&lt;/code&gt; opens. That’s the whole point here: poke at it, see something real happen, and let the curiosity take it from there.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;bpftrace &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;tracepoint:syscalls:sys_enter_openat /comm == &quot;curl&quot;/ {
-    printf(&quot;%s -&amp;gt; %s\n&quot;, comm, str(args-&amp;gt;filename));
-}&apos;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
    <title>Diálogo sobre os Rótulos e a Verdade</title>
    <link href="https://apolzek.github.io/2026/05/18/dialogo-sobre-rotulos-e-verdade"/>
    <updated>2026-05-18T00:00:00+00:00</updated>
@@ -384,7 +384,19 @@
 
 &lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Então a liberdade tem o preço da responsabilidade.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Esse é seu preço, e também sua dignidade. Examina cada obra, cada acusação, cada situação. Pede sempre as razões. Decide. E quando a consequência vier, doce ou amarga, recebe-a como tua. É o único caminho para se tornar de fato alguém.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Esse é seu preço, e também sua dignidade. Examina cada obra, cada acusação, cada situação. Pede sempre as razões. Decide. E quando a consequência vier, doce ou amarga, recebe-a como tua. &lt;strong&gt;É o único caminho para se tornar de fato alguém&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;em&gt;ânforas&lt;/em&gt;: vasos antigos usados para guardar líquidos como vinho e azeite
+&lt;em&gt;dracma&lt;/em&gt;: moeda usada na Grécia antiga
+&lt;em&gt;rédeas&lt;/em&gt;: tiras usadas para guiar e controlar um cavalo
+&lt;em&gt;pórtico&lt;/em&gt;: entrada com colunas na frente de um edifício
+&lt;em&gt;cenho franzido&lt;/em&gt;: expressão de preocupação ou irritação; testa enrugada por tensão&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Quando li &lt;strong&gt;A República, de Platão&lt;/strong&gt;, eu ainda não tinha a base necessária para aproveitá-la plenamente, mas, mesmo assim, recomendo a leitura. Quero relê-la em breve, justamente para acompanhar como a percepção de uma obra se transforma conforme amadurecemos como leitores.&lt;/p&gt;
 </content>
  </entry>
  
@@ -393,23 +405,19 @@
    <link href="https://apolzek.github.io/2026/05/18/apolzek"/>
    <updated>2026-05-18T00:00:00+00:00</updated>
    <id>https://apolzek.github.io/2026/05/18/apolzek</id>
-   <content type="html">&lt;p&gt;Blog reset.&lt;/p&gt;
+   <content type="html">&lt;p&gt;Blog reset, May 18, 2026&lt;/p&gt;
 
-&lt;p&gt;I’m Vinicius Batista. “apolzek” is a nickname born from the combination of two people I met during the CTF and IRC chat days: Apol-0 and ZekAng3l. With them, I learned far beyond technology. Philosophy, economics, biology, and especially the idea that different and even conflicting perspectives can coexist in the same space.&lt;/p&gt;
+&lt;p&gt;I’m Vinicius Batista. “apolzek” is a nickname born from the combination of two people I met during the IRC chat days: Apol-0 and ZekAng3l. With them, I learned far beyond technology, gaining knowledge across diverse fields and especially an understanding that different and even conflicting perspectives can coexist within the same space.&lt;/p&gt;
 
 &lt;p&gt;Right now I’m using a picture of Júlio from Cocoricó because he represents exactly what I’m trying to recover: genuine curiosity. Asking more questions, being honest, keeping things simple, and relearning how to learn.&lt;/p&gt;
 
 &lt;p&gt;This blog is a relatively organized chaos: technical writing, philosophical reflections, occasional confessions, and a few scattered ideas.&lt;/p&gt;
 
-&lt;p&gt;I mainly write for myself, but I also intend to share texts that may help people growing professionally in areas where I have more experience, such as reliability engineering and platform engineering.&lt;/p&gt;
+&lt;p&gt;I mainly write for myself, but I also intend to share texts, especially about mistakes, lessons learned, and hard-earned experience, that may help people grow professionally in areas where I have more experience, such as reliability engineering and platform engineering.&lt;/p&gt;
 
 &lt;p&gt;This is not just a blog. It is a piece of my original self.&lt;/p&gt;
 
 &lt;p&gt;Let’s go together. Let’s go with God.&lt;/p&gt;
-
-&lt;!-- 
-My birth name, Vinícius Gomes Batista, is the name I was given when I was presented to God and welcomed into this life. It holds my story, my family roots, and a sense of purpose. Over the years, though, that name has picked up so many layers. Social expectations, roles I learned to play, ways I adapted to fit in. Most of the time those things don’t feel like the real me at my deepest level. That’s why I created apolzek. It’s not about replacing Vinícius or turning my back on him. It’s more like a deliberate practice, almost a quiet sacred space, where I try to bring the real Vinícius closer to who he truly is underneath everything. When I’m in apolzek mode, I focus on stripping away those extra layers. I try to speak and act with complete honesty toward myself, and I refuse to let the outside world tell me who I’m supposed to be. In those moments it’s just me, no masks, standing in front of God.
---&gt;
 </content>
  </entry>
  
