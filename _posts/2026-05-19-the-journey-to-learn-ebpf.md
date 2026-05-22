@@ -4,7 +4,7 @@ title: the journey to learn ebpf
 description:
 summary:
 # tags: ebpf linux prerequisites
-minute: 8
+minute: 15
 ---
 
 ## Table of Contents

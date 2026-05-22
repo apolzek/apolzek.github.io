@@ -69,12 +69,18 @@ minute: 4
 
 ---
 
+**HELP**
+
 *ânforas*: vasos antigos usados para guardar líquidos como vinho e azeite
+
 *dracma*: moeda usada na Grécia antiga
+
 *rédeas*: tiras usadas para guiar e controlar um cavalo
+
 *pórtico*: entrada com colunas na frente de um edifício
+
 *cenho franzido*: expressão de preocupação ou irritação; testa enrugada por tensão
 
 ---
 
-Quando li **A República, de Platão**, eu ainda não tinha a base necessária para aproveitá-la plenamente, mas, mesmo assim, recomendo a leitura. Quero relê-la em breve, justamente para acompanhar como a percepção de uma obra se transforma conforme amadurecemos como leitores.
+Quando li **A República, de Platão** eu sabia que não tinha e talvez ainda não tenha a base suficiente para aproveitá-la plenamente, mesmo assim senti que era uma leitura que valia a pena. Quero relê-la em breve, justamente para perceber como a experiência com uma obra muda conforme amadurecemos como leitores.
