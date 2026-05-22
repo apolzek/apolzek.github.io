@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-05-22T17:25:05+00:00</updated>
+ <updated>2026-05-22T17:50:28+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -22,6 +22,10 @@
 &lt;p&gt;&lt;img src=&quot;/assets/img/ebpf.png&quot; alt=&quot;eBPF&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;I want to run some tools (:&lt;/p&gt;
+
+&lt;h2 id=&quot;environment&quot;&gt;Environment&lt;/h2&gt;
+
+&lt;p&gt;I’m on macOS and starting to play around with eBPF on &lt;strong&gt;Ubuntu 25&lt;/strong&gt; inside &lt;strong&gt;OrbStack&lt;/strong&gt;. It’s not ideal, since it runs a custom kernel in a VM rather than native Linux, and I’m not using containers either. I’ll soon test on a host Linux machine as I progress in my studies.&lt;/p&gt;
 
 &lt;h3 id=&quot;spying-on-curls-file-access-with-bpftrace&quot;&gt;Spying on curl’s file access with bpftrace&lt;/h3&gt;
 
@@ -407,17 +411,15 @@
 
 &lt;hr /&gt;
 
-&lt;p&gt;&lt;strong&gt;HELP&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;help with words&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;ânforas&lt;/em&gt;: vasos antigos usados para guardar líquidos como vinho e azeite&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;dracma&lt;/em&gt;: moeda usada na Grécia antiga&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;rédeas&lt;/em&gt;: tiras usadas para guiar e controlar um cavalo&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;pórtico&lt;/em&gt;: entrada com colunas na frente de um edifício&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;cenho franzido&lt;/em&gt;: expressão de preocupação ou irritação; testa enrugada por tensão&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;ânforas&lt;/em&gt;: vasos antigos usados para guardar líquidos como vinho e azeite&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;dracma&lt;/em&gt;: moeda usada na Grécia antiga&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;rédeas&lt;/em&gt;: tiras usadas para guiar e controlar um cavalo&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;pórtico&lt;/em&gt;: entrada com colunas na frente de um edifício&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;cenho franzido&lt;/em&gt;: expressão de preocupação ou irritação; testa enrugada por tensão&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;hr /&gt;
 
