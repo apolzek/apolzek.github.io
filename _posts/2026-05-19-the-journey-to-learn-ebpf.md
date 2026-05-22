@@ -7,7 +7,7 @@ summary:
 minute: 8
 ---
 
-## Índice
+## Table of Contents
 
 - [Questions about eBPF](#questions-about-ebpf)
 - [General questions](#general-questions)
