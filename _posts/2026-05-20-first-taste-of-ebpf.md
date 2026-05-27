@@ -11,11 +11,11 @@ As the article title suggests, I'm not going to dive into writing eBPF programs,
 
 ![eBPF](/assets/img/ebpf.png)
 
-I want to run some tools (:
+Brendan Gregg's slides make the case that bpftrace is the perfect place to start. (:
 
 ## Environment
 
-I'm on macOS and starting to play around with eBPF on **Ubuntu 25** inside **OrbStack**. It's not ideal, since it runs a custom kernel in a VM rather than native Linux, and I'm not using containers either. I'll soon test on a host Linux machine as I progress in my studies.
+I'm starting to play around with eBPF on Ubuntu 25 running in a VirtualBox VM.I'm starting to play around with eBPF on Ubuntu 25 running in a VirtualBox.
 
 ### Spying on curl's file access with bpftrace
 

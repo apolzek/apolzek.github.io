@@ -69,15 +69,13 @@ minute: 4
 
 ..então Sócrates ajeitou o manto, Glauco virou a tábua contra a parede, e ambos foram tomar uma cerveja.
 
----
-
-**help with words**
+## Glossário
 
 - *ânforas*: vasos antigos usados para guardar líquidos como vinho e azeite
 - *dracma*: moeda usada na Grécia antiga
 - *pórtico*: entrada com colunas na frente de um edifício
 - *cenho franzido*: expressão de preocupação ou irritação; testa enrugada por tensão
 
----
+## Nota
 
 💬 Quando li **A República, de Platão** eu sabia que não tinha e talvez ainda não tenha a base suficiente para aproveitá-la plenamente, mesmo assim senti que era uma leitura que valia a pena. Quero relê-la em breve, justamente para perceber como a experiência com uma obra muda conforme amadurecemos como leitores.
