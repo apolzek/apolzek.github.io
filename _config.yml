@@ -1,7 +1,7 @@
 site: apolzek
 title: apolzek
 description:
-googlewebfonts: Fira+Code:wght@400;500;700
+googlewebfonts: Fira+Code:wght@400;500;700&family=Space+Mono:wght@400;700
 lang: en-US
 timezone: Rome
 repo: https://github.com/apolzek/apolzek.github.io
