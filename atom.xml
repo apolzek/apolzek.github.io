@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-05-28T21:17:12+00:00</updated>
+ <updated>2026-05-28T21:22:43+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -71,36 +71,42 @@ and build new ones along the way. That is the approach this article takes.&lt;/p
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;#general-questions&quot;&gt;General questions&lt;/a&gt;
-    - &lt;a href=&quot;#what-is-ebpf&quot;&gt;What is eBPF?&lt;/a&gt;
-    - &lt;a href=&quot;#what-is-the-difference-between-ebpf-and-bpf&quot;&gt;What is the difference between eBPF and BPF?&lt;/a&gt;
-    - &lt;a href=&quot;#why-by-whom-and-when-was-ebpf-created&quot;&gt;Why, by whom, and when was eBPF created?&lt;/a&gt;
-    - &lt;a href=&quot;#what-are-the-main-changes-to-ebpf-throughout-its-history&quot;&gt;What are the main changes to eBPF throughout its history?&lt;/a&gt;
-    - &lt;a href=&quot;#what-are-the-main-tools-built-using-ebpf&quot;&gt;What are the main tools built using eBPF?&lt;/a&gt;
-    - &lt;a href=&quot;#who-are-the-key-technical-references-in-ebpf&quot;&gt;Who are the key technical references in eBPF?&lt;/a&gt;&lt;/li&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-is-ebpf&quot;&gt;What is eBPF?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-is-the-difference-between-ebpf-and-bpf&quot;&gt;What is the difference between eBPF and BPF?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#why-by-whom-and-when-was-ebpf-created&quot;&gt;Why, by whom, and when was eBPF created?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-are-the-main-changes-to-ebpf-throughout-its-history&quot;&gt;What are the main changes to eBPF throughout its history?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-are-the-main-tools-built-using-ebpf&quot;&gt;What are the main tools built using eBPF?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#who-are-the-key-technical-references-in-ebpf&quot;&gt;Who are the key technical references in eBPF?&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#specific-questions&quot;&gt;Specific questions&lt;/a&gt;
-    - &lt;a href=&quot;#how-does-ebpf-actually-work-under-the-hood&quot;&gt;How does eBPF actually work under the hood?&lt;/a&gt;
-    - &lt;a href=&quot;#what-is-the-ebpf-verifier-and-why-does-it-matter&quot;&gt;What is the eBPF verifier and why does it matter?&lt;/a&gt;
-    - &lt;a href=&quot;#what-are-ebpf-maps-and-how-are-they-used&quot;&gt;What are eBPF maps and how are they used?&lt;/a&gt;
-    - &lt;a href=&quot;#what-are-the-different-ebpf-program-types-and-hook-points&quot;&gt;What are the different eBPF program types and hook points?&lt;/a&gt;
-    - &lt;a href=&quot;#how-does-the-jit-compiler-fit-into-ebpf&quot;&gt;How does the JIT compiler fit into eBPF?&lt;/a&gt;
-    - &lt;a href=&quot;#what-are-the-safety-guarantees-of-ebpf-and-what-are-its-limitations&quot;&gt;What are the safety guarantees of eBPF and what are its limitations?&lt;/a&gt;
-    - &lt;a href=&quot;#how-does-ebpf-compare-to-kernel-modules&quot;&gt;How does eBPF compare to kernel modules?&lt;/a&gt;
-    - &lt;a href=&quot;#why-is-ebpf-often-described-as-superpowers-for-the-kernel&quot;&gt;Why is eBPF often described as “superpowers for the kernel”?&lt;/a&gt;
-    - &lt;a href=&quot;#what-problems-did-ebpf-solve-that-werent-solvable-before&quot;&gt;What problems did eBPF solve that weren’t solvable before?&lt;/a&gt;
-    - &lt;a href=&quot;#what-are-the-main-use-cases-for-ebpf&quot;&gt;What are the main use cases for eBPF?&lt;/a&gt;
-    - &lt;a href=&quot;#how-is-ebpf-used-in-production-at-large-companies&quot;&gt;How is eBPF used in production at large companies?&lt;/a&gt;
-    - &lt;a href=&quot;#what-is-xdp-and-how-does-it-relate-to-ebpf&quot;&gt;What is XDP and how does it relate to eBPF?&lt;/a&gt;
-    - &lt;a href=&quot;#what-is-the-difference-between-bcc-bpftrace-and-libbpf&quot;&gt;What is the difference between BCC, bpftrace, and libbpf?&lt;/a&gt;
-    - &lt;a href=&quot;#what-is-co-re-and-why-does-it-matter&quot;&gt;What is CO-RE and why does it matter?&lt;/a&gt;
-    - &lt;a href=&quot;#how-does-cilium-use-ebpf&quot;&gt;How does Cilium use eBPF?&lt;/a&gt;
-    - &lt;a href=&quot;#what-kernel-version-do-i-need-for-ebpf&quot;&gt;What kernel version do I need for eBPF?&lt;/a&gt;
-    - &lt;a href=&quot;#what-do-i-need-to-know-to-write-my-first-ebpf-program&quot;&gt;What do I need to know to write my first eBPF program?&lt;/a&gt;
-    - &lt;a href=&quot;#what-languages-can-i-use-to-write-ebpf-programs&quot;&gt;What languages can I use to write eBPF programs?&lt;/a&gt;
-    - &lt;a href=&quot;#how-do-i-debug-an-ebpf-program&quot;&gt;How do I debug an eBPF program?&lt;/a&gt;
-    - &lt;a href=&quot;#what-are-common-pitfalls-when-getting-started-with-ebpf&quot;&gt;What are common pitfalls when getting started with eBPF?&lt;/a&gt;
-    - &lt;a href=&quot;#what-cant-ebpf-do-yet&quot;&gt;What can’t eBPF do (yet)?&lt;/a&gt;
-    - &lt;a href=&quot;#what-is-ebpf-for-windows&quot;&gt;What is eBPF for Windows?&lt;/a&gt;
-    - &lt;a href=&quot;#where-is-ebpf-headed-in-the-next-few-years&quot;&gt;Where is eBPF headed in the next few years?&lt;/a&gt;&lt;/li&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#how-does-ebpf-actually-work-under-the-hood&quot;&gt;How does eBPF actually work under the hood?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-is-the-ebpf-verifier-and-why-does-it-matter&quot;&gt;What is the eBPF verifier and why does it matter?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-are-ebpf-maps-and-how-are-they-used&quot;&gt;What are eBPF maps and how are they used?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-are-the-different-ebpf-program-types-and-hook-points&quot;&gt;What are the different eBPF program types and hook points?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#how-does-the-jit-compiler-fit-into-ebpf&quot;&gt;How does the JIT compiler fit into eBPF?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-are-the-safety-guarantees-of-ebpf-and-what-are-its-limitations&quot;&gt;What are the safety guarantees of eBPF and what are its limitations?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#how-does-ebpf-compare-to-kernel-modules&quot;&gt;How does eBPF compare to kernel modules?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#why-is-ebpf-often-described-as-superpowers-for-the-kernel&quot;&gt;Why is eBPF often described as “superpowers for the kernel”?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-problems-did-ebpf-solve-that-werent-solvable-before&quot;&gt;What problems did eBPF solve that weren’t solvable before?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-are-the-main-use-cases-for-ebpf&quot;&gt;What are the main use cases for eBPF?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#how-is-ebpf-used-in-production-at-large-companies&quot;&gt;How is eBPF used in production at large companies?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-is-xdp-and-how-does-it-relate-to-ebpf&quot;&gt;What is XDP and how does it relate to eBPF?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-is-the-difference-between-bcc-bpftrace-and-libbpf&quot;&gt;What is the difference between BCC, bpftrace, and libbpf?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-is-co-re-and-why-does-it-matter&quot;&gt;What is CO-RE and why does it matter?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#how-does-cilium-use-ebpf&quot;&gt;How does Cilium use eBPF?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-kernel-version-do-i-need-for-ebpf&quot;&gt;What kernel version do I need for eBPF?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-do-i-need-to-know-to-write-my-first-ebpf-program&quot;&gt;What do I need to know to write my first eBPF program?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-languages-can-i-use-to-write-ebpf-programs&quot;&gt;What languages can I use to write eBPF programs?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#how-do-i-debug-an-ebpf-program&quot;&gt;How do I debug an eBPF program?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-are-common-pitfalls-when-getting-started-with-ebpf&quot;&gt;What are common pitfalls when getting started with eBPF?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-cant-ebpf-do-yet&quot;&gt;What can’t eBPF do (yet)?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-is-ebpf-for-windows&quot;&gt;What is eBPF for Windows?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#where-is-ebpf-headed-in-the-next-few-years&quot;&gt;Where is eBPF headed in the next few years?&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#the-journey-to-learn-ebpf-security--observability-focus&quot;&gt;The Journey to Learn eBPF (Security &amp;amp; Observability Focus)&lt;/a&gt;
     &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#technical-foundation-1-7&quot;&gt;Technical Foundation (1-7)&lt;/a&gt;&lt;/li&gt;
