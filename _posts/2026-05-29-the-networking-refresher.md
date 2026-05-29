@@ -180,10 +180,10 @@ top three into one Application layer and the bottom two into Link:
 flowchart LR
   subgraph TCPIP["TCP/IP model (reality)"]
     direction TB
-    A["Application<br/>HTTP, TLS, DNS"]
-    T["Transport<br/>TCP, UDP"]
-    I["Internet<br/>IP"]
-    L["Link<br/>Ethernet, Wi-Fi, physical"]
+    A["Application (HTTP, TLS, DNS)"]
+    T["Transport (TCP, UDP)"]
+    I["Internet (IP)"]
+    L["Link (Ethernet, Wi-Fi)"]
   end
   subgraph OSI["OSI model (vocabulary)"]
     direction TB
@@ -195,10 +195,13 @@ flowchart LR
     O2["2 Data Link"]
     O1["1 Physical"]
   end
-  A --- O7 & O6 & O5
+  A --- O7
+  A --- O6
+  A --- O5
   T --- O4
   I --- O3
-  L --- O2 & O1
+  L --- O2
+  L --- O1
 ```
 
 Rule of thumb: **use TCP/IP to reason about reality, use OSI's layer numbers to talk to other
@@ -432,15 +435,15 @@ many leading bits are fixed as the *network* part; the remaining bits are free f
 
 ```mermaid
 flowchart LR
-  subgraph A["10.0.0.0/24  =  256 addresses"]
+  subgraph A["10.0.0.0/24 = 256 addresses"]
     direction LR
-    N1["network: 10.0.0<br/>(24 bits fixed)"]
-    H1["host: .0 to .255<br/>(8 bits free)"]
+    N1["network 10.0.0 (24 bits fixed)"]
+    H1["host .0 to .255 (8 bits free)"]
   end
-  subgraph B["10.0.0.0/16  =  65,536 addresses"]
+  subgraph B["10.0.0.0/16 = 65536 addresses"]
     direction LR
-    N2["network: 10.0<br/>(16 bits fixed)"]
-    H2["host: 16 bits free"]
+    N2["network 10.0 (16 bits fixed)"]
+    H2["host (16 bits free)"]
   end
 ```
 
@@ -485,13 +488,13 @@ device.
 
 ```mermaid
 flowchart LR
-  L["Laptop<br/>192.168.1.42:51000"]
-  R["Router NAT<br/>public 203.0.113.7:62000<br/>table: 62000 -> 192.168.1.42:51000"]
-  S["Server<br/>93.184.216.34:443"]
-  L -->|"out: src rewritten to 203.0.113.7:62000"| R
+  L["Laptop 192.168.1.42 port 51000"]
+  R["Router NAT public 203.0.113.7 port 62000"]
+  S["Server 93.184.216.34 port 443"]
+  L -->|"src rewritten to public port 62000"| R
   R --> S
-  S -->|"reply to 203.0.113.7:62000"| R
-  R -->|"in: dst rewritten back via table"| L
+  S -->|"reply to public port 62000"| R
+  R -->|"dst rewritten back via NAT table"| L
 ```
 
 Because two devices might both pick source port 51000, NAT maps each to a *different* external
@@ -644,10 +647,10 @@ DNS is **hierarchical**, read right to left:
 
 ```mermaid
 flowchart TD
-  root["root .<br/>(the implicit trailing dot)"]
-  com[".com<br/>(TLD)"]
-  example["example.com<br/>(second level, authoritative)"]
-  www["www.example.com<br/>(hostname)"]
+  root["root (the implicit trailing dot)"]
+  com[".com (TLD)"]
+  example["example.com (second level, authoritative)"]
+  www["www.example.com (hostname)"]
   root --> com --> example --> www
 ```
 
@@ -770,8 +773,8 @@ wants.
 sequenceDiagram
   participant C as Client
   participant S as Server
-  C->>S: GET /chat HTTP/1.1 + Upgrade: websocket
-  S->>C: HTTP/1.1 101 Switching Protocols
+  C->>S: GET /chat with Upgrade header
+  S->>C: 101 Switching Protocols
   Note over C,S: Connection is now full-duplex WebSocket
   C-->>S: frame (any time)
   S-->>C: frame (any time)
@@ -1118,18 +1121,18 @@ The tower's radio is the **eNodeB**. Behind it sits the all-IP core that 4G intr
 
 ```mermaid
 flowchart LR
-  UE["UE<br/>phone + SIM"]
-  EN["eNodeB<br/>tower radio"]
-  SGW["SGW<br/>user-plane anchor"]
-  PGW["PGW<br/>exit, assigns your IP"]
+  UE["UE (phone + SIM)"]
+  EN["eNodeB (tower radio)"]
+  SGW["SGW (user-plane anchor)"]
+  PGW["PGW (exit, assigns your IP)"]
   NET["Internet"]
-  MME["MME<br/>control plane"]
-  HSS["HSS<br/>subscriber DB + keys"]
+  MME["MME (control plane)"]
+  HSS["HSS (subscriber DB and keys)"]
   UE -->|radio| EN
-  EN -->|"S1-U: GTP-U tunnel (user data)"| SGW
+  EN -->|"S1-U GTP-U tunnel, user data"| SGW
   SGW --> PGW --> NET
-  EN -.->|"S1-AP (control)"| MME
-  MME <-.->|keys| HSS
+  EN -.->|"S1-AP control"| MME
+  MME -.-|keys| HSS
 ```
 
 ### Attaching, tunneling, and the CGNAT punchline
