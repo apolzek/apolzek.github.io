@@ -46,7 +46,7 @@
     import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
     const mermaidTheme = () => document.documentElement.getAttribute('data-theme') === 'light' ? 'default' : 'dark';
 
-    // Preserve the original source so we can re-render on theme toggle.
+    /* Preserve the original source so we can re-render on theme toggle. */
     const mermaidSources = [];
     document.querySelectorAll('code.language-mermaid').forEach(el => {
       const pre = el.parentElement;
@@ -68,7 +68,7 @@
 
     renderMermaid();
 
-    // Re-render whenever the theme toggle flips data-theme on <html>.
+    /* Re-render whenever the theme toggle flips data-theme on <html>. */
     new MutationObserver(renderMermaid).observe(
       document.documentElement,
       { attributes: true, attributeFilter: ['data-theme'] }
