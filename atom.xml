@@ -4,13 +4,1873 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-05-28T21:22:43+00:00</updated>
+ <updated>2026-05-29T20:51:05+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>the networking refresher</title>
+   <link href="https://apolzek.github.io/2026/05/29/the-networking-refresher"/>
+   <updated>2026-05-29T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2026/05/29/the-networking-refresher</id>
+   <content type="html">&lt;p&gt;This is the article I wish someone had handed me when I needed to &lt;em&gt;refresh&lt;/em&gt; networking in
+a weekend. Not a textbook, not a 600-page tome, but a guided climb that starts at the
+physics and ends with you typing a URL into a browser, understanding every layer the bytes
+pass through on the way out.&lt;/p&gt;
+
+&lt;p&gt;The order is deliberately bottom-up and chronological: we start with raw signals on a wire,
+build up to frames and packets, get an address, escape the home network through the
+provider’s NAT, ride TCP or UDP, resolve a name through DNS, speak HTTP, wrap it in TLS, and
+finally watch the whole thing happen end to end from a browser. Along the way we stop at the
+tools you actually use to debug each layer.&lt;/p&gt;
+
+&lt;p&gt;I lean on one recurring trick: &lt;strong&gt;suppose&lt;/strong&gt; something concrete, then trace it through the
+machine. Networking makes far more sense when you stop memorizing acronyms and start
+following a single byte from copper to code.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A note on altitude: this piece slides up and down constantly. One section is about voltage
+and antennas, the next is about GraphQL queries. That is the point. Modern networking &lt;em&gt;is&lt;/em&gt;
+a stack of abstractions, and you only understand it by moving through all of them.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;table-of-contents&quot;&gt;Table of Contents&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#how-the-internet-evolved-and-the-rfcs-that-mark-it&quot;&gt;How the internet evolved (and the RFCs that mark it)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#the-people-who-built-the-internet&quot;&gt;The people who built the internet&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#the-mental-model-layers-of-abstraction&quot;&gt;The mental model: layers of abstraction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#signals-the-analog-truth-under-every-digital-network&quot;&gt;Signals: the analog truth under every digital network&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#the-physical-layer-media-cables-and-speed&quot;&gt;The physical layer: media, cables, and speed&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#wireless-antennas-and-the-air&quot;&gt;Wireless, antennas, and the air&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#network-cards-and-drivers&quot;&gt;Network cards and drivers&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#frames-packets-and-mtu&quot;&gt;Frames, packets, and MTU&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#addresses-mac-ip-arp-and-dhcp&quot;&gt;Addresses: MAC, IP, ARP, and DHCP&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#nat-cgnat-and-firewalls-the-providers-world&quot;&gt;NAT, CGNAT, and firewalls: the provider’s world&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#the-transport-layer-tcp-vs-udp-and-quic&quot;&gt;The transport layer: TCP vs UDP (and QUIC)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#latency-response-time-and-throughput&quot;&gt;Latency, response time, and throughput&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#dns-the-internets-directory&quot;&gt;DNS: the internet’s directory&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#the-application-layer-the-protocols-you-actually-use&quot;&gt;The application layer: the protocols you actually use&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#network-security&quot;&gt;Network security&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#network-in-the-cloud-aws-vpc-abstractions&quot;&gt;Network in the cloud: AWS VPC abstractions&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#mobile-data-how-4g-actually-works-and-the-brazil-picture&quot;&gt;Mobile data: how 4G actually works (and the Brazil picture)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#the-toolbox-modern-linux-networking-commands&quot;&gt;The toolbox: modern Linux networking commands&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#putting-it-all-together-one-url-from-the-browser&quot;&gt;Putting it all together: one URL from the browser&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#going-deeper-certifications-and-a-study-path&quot;&gt;Going deeper: certifications and a study path&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;how-the-internet-evolved-and-the-rfcs-that-mark-it&quot;&gt;How the internet evolved (and the RFCs that mark it)&lt;/h2&gt;
+
+&lt;p&gt;Before climbing the stack, it helps to know how it got built, because almost every “why is it
+like this?” has a historical answer. The internet was not designed in one go, it accreted over
+fifty years, and each layer of this article corresponds to a moment someone solved a concrete
+problem.&lt;/p&gt;
+
+&lt;p&gt;The specifications themselves are public documents called &lt;strong&gt;RFCs (“Request for Comments”)&lt;/strong&gt;,
+published by the IETF since 1969. The name is humble on purpose: they began as open invitations
+to comment, and that culture of rough consensus and running code is how the internet is still
+standardized today. Reading the right RFC is the ultimate ground truth.&lt;/p&gt;
+
+&lt;p&gt;The short version of how we got here:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;1960s, packet switching.&lt;/strong&gt; The founding idea: instead of a dedicated circuit per call (the
+telephone model), chop data into packets that find their own way and share the links. ARPANET
+carried its first message in 1969.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;1974 to 1983, TCP/IP.&lt;/strong&gt; Vint Cerf and Bob Kahn designed a protocol to connect &lt;em&gt;different&lt;/em&gt;
+networks together (an “inter-net”). It was split into &lt;strong&gt;IP&lt;/strong&gt; (RFC 791, addressing and routing)
+and &lt;strong&gt;TCP&lt;/strong&gt; (RFC 793, reliability). On 1 January 1983, ARPANET switched to TCP/IP in a single
+“flag day,” the moment most people mark as the birth of the internet.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;1983 to 1987, DNS.&lt;/strong&gt; As hosts multiplied, a single shared &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HOSTS.TXT&lt;/code&gt; file stopped scaling.
+Paul Mockapetris designed &lt;strong&gt;DNS&lt;/strong&gt; (RFC 1034 and 1035) to distribute name lookups, the system
+we still use.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;1989 to 1991, the Web.&lt;/strong&gt; Tim Berners-Lee invented HTTP, HTML, and the URL at CERN, turning
+the internet from a specialist tool into something anyone could browse.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;1990s, scaling and securing.&lt;/strong&gt; Explosive growth forced two fixes: &lt;strong&gt;CIDR&lt;/strong&gt; (RFC 1519, 1993)
+to stop wasting addresses, and &lt;strong&gt;NAT&lt;/strong&gt; with private ranges (RFC 1918) to stretch IPv4 further.
+Netscape created SSL to encrypt commerce, which became &lt;strong&gt;TLS&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;1998 onward, the long IPv4 endgame.&lt;/strong&gt; &lt;strong&gt;IPv6&lt;/strong&gt; (RFC 8200) was standardized to fix address
+exhaustion for good, while &lt;strong&gt;CGNAT&lt;/strong&gt; (RFC 6598) bought the IPv4 world more time.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;2008 to today, the modern web.&lt;/strong&gt; &lt;strong&gt;TLS 1.3&lt;/strong&gt; (RFC 8446, 2018) streamlined encryption,
+&lt;strong&gt;HTTP/2&lt;/strong&gt; (2015) multiplexed it, and &lt;strong&gt;QUIC&lt;/strong&gt; (RFC 9000) plus &lt;strong&gt;HTTP/3&lt;/strong&gt; (RFC 9114) rebuilt
+transport on UDP.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You rarely read an RFC end to end, but knowing which one defines what is a superpower. The
+greatest hits, most of which we touch later:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;RFC&lt;/th&gt;
+      &lt;th&gt;Defines&lt;/th&gt;
+      &lt;th&gt;Why it matters&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;791 / 8200&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;IPv4 / IPv6&lt;/td&gt;
+      &lt;td&gt;addressing and routing&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;793 / 9293&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;TCP&lt;/td&gt;
+      &lt;td&gt;reliable transport (9293 is the modern consolidation)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;768&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;UDP&lt;/td&gt;
+      &lt;td&gt;unreliable transport&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;1519&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;CIDR&lt;/td&gt;
+      &lt;td&gt;classless addressing and route aggregation&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;1918&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;private IP ranges&lt;/td&gt;
+      &lt;td&gt;the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;192.168.x.x&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;10.x.x.x&lt;/code&gt; behind NAT&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;6598&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;shared address space&lt;/td&gt;
+      &lt;td&gt;the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;100.64.0.0/10&lt;/code&gt; range used by CGNAT&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;8446&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;TLS 1.3&lt;/td&gt;
+      &lt;td&gt;the current encryption standard&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;9000&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;QUIC&lt;/td&gt;
+      &lt;td&gt;the UDP-based transport under HTTP/3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;9110 / 9112&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;HTTP semantics / HTTP/1.1&lt;/td&gt;
+      &lt;td&gt;what methods and status codes mean&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;9113 / 9114&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;HTTP/2 / HTTP/3&lt;/td&gt;
+      &lt;td&gt;binary framing, multiplexing, HTTP over QUIC&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;1034 / 1035&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;DNS&lt;/td&gt;
+      &lt;td&gt;turning names into addresses&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;6455&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;WebSocket&lt;/td&gt;
+      &lt;td&gt;the HTTP upgrade to a full-duplex connection&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;4271&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;BGP&lt;/td&gt;
+      &lt;td&gt;routing between providers&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;the-people-who-built-the-internet&quot;&gt;The people who built the internet&lt;/h2&gt;
+
+&lt;p&gt;The internet has no single inventor. It is the work of many people across protocols, physical
+media, and the foundational science underneath. A few worth knowing, grouped by what they gave
+us:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Protocols and architecture&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Vint Cerf and Bob Kahn&lt;/strong&gt;, designers of TCP/IP, often called the fathers of the internet.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Jon Postel&lt;/strong&gt;, who edited the RFCs and ran the address and number assignments for decades; the
+steady hand behind the standards.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Paul Mockapetris&lt;/strong&gt;, who invented DNS.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Tim Berners-Lee&lt;/strong&gt;, who invented the World Wide Web (HTTP, HTML, URL).&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Radia Perlman&lt;/strong&gt;, whose Spanning Tree Protocol made large switched networks possible; called
+the mother of the internet.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Van Jacobson&lt;/strong&gt;, whose TCP congestion control rescued the internet from congestion collapse
+in the late 1980s, and who also gave us &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;traceroute&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tcpdump&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Paul Baran and Donald Davies&lt;/strong&gt;, who independently invented packet switching, the core idea.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Leonard Kleinrock&lt;/strong&gt;, an early theorist of packet networks whose lab sent the first ARPANET
+message.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Physical media and access&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Robert Metcalfe&lt;/strong&gt;, co-inventor of Ethernet, the dominant wired LAN technology.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Charles Kao&lt;/strong&gt;, whose work on optical fiber (a Nobel Prize) made the long-haul backbone
+possible; the reason intercontinental links are glass.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Hedy Lamarr (with George Antheil)&lt;/strong&gt;, who patented frequency-hopping spread spectrum, an idea
+underpinning modern wireless.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Security and the math underneath&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Whitfield Diffie and Martin Hellman&lt;/strong&gt;, who introduced public-key cryptography, the basis of
+the TLS handshake.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Taher Elgamal&lt;/strong&gt;, often called the father of SSL, the encryption that became TLS.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Claude Shannon&lt;/strong&gt;, whose information theory set the hard limits on how much data any channel
+can carry; the math floor under every layer in this article.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The pattern worth noticing: the internet is not one invention but a &lt;em&gt;stack&lt;/em&gt; of them, each by
+different people solving the problem in front of them. Shannon’s limits made Kao’s fiber worth
+building, which carried Cerf and Kahn’s packets, which Berners-Lee turned into the Web, which
+Diffie, Hellman, and Elgamal made safe to shop on. The rest of this article is that stack,
+from the bottom up.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;the-mental-model-layers-of-abstraction&quot;&gt;The mental model: layers of abstraction&lt;/h2&gt;
+
+&lt;p&gt;Here is the single most useful idea in all of networking: &lt;strong&gt;each layer talks to its peer on
+the other machine as if the layers below did not exist.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Your browser thinks it is talking directly to a web server. It is not. It hands bytes to the
+operating system’s TCP stack, which hands them to the IP layer, which hands them to a network
+card, which turns them into electrical pulses on a wire. On the other end the same stack is
+climbed back up in reverse. The &lt;em&gt;illusion&lt;/em&gt; that HTTP talks to HTTP is what lets us build
+anything at all.&lt;/p&gt;
+
+&lt;p&gt;You will see two models. Know what each is for.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The OSI model (7 layers)&lt;/strong&gt; is the &lt;em&gt;teaching&lt;/em&gt; model. Nobody implements it literally, but its
+vocabulary is everywhere. When someone says “that is a layer 7 problem” or “a layer 4 load
+balancer,” they mean OSI.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;#&lt;/th&gt;
+      &lt;th&gt;OSI Layer&lt;/th&gt;
+      &lt;th&gt;What lives here&lt;/th&gt;
+      &lt;th&gt;Example&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;Application&lt;/td&gt;
+      &lt;td&gt;what the app speaks&lt;/td&gt;
+      &lt;td&gt;HTTP, gRPC, DNS, SSH&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;6&lt;/td&gt;
+      &lt;td&gt;Presentation&lt;/td&gt;
+      &lt;td&gt;encoding, encryption&lt;/td&gt;
+      &lt;td&gt;TLS, UTF-8, JPEG&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;Session&lt;/td&gt;
+      &lt;td&gt;connection state&lt;/td&gt;
+      &lt;td&gt;(mostly folded into others)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;Transport&lt;/td&gt;
+      &lt;td&gt;end-to-end delivery&lt;/td&gt;
+      &lt;td&gt;TCP, UDP, QUIC&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;Network&lt;/td&gt;
+      &lt;td&gt;routing between networks&lt;/td&gt;
+      &lt;td&gt;IP, ICMP&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;Data Link&lt;/td&gt;
+      &lt;td&gt;local link framing&lt;/td&gt;
+      &lt;td&gt;Ethernet, Wi-Fi (802.11)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;Physical&lt;/td&gt;
+      &lt;td&gt;bits on the medium&lt;/td&gt;
+      &lt;td&gt;copper, fiber, radio&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;The TCP/IP model (4 layers)&lt;/strong&gt; is what the internet &lt;em&gt;actually&lt;/em&gt; runs on. It collapses OSI’s
+top three into one Application layer and the bottom two into Link:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;flowchart LR
+  subgraph TCPIP[&quot;TCP/IP model (reality)&quot;]
+    direction TB
+    A[&quot;Application&amp;lt;br/&amp;gt;HTTP, TLS, DNS&quot;]
+    T[&quot;Transport&amp;lt;br/&amp;gt;TCP, UDP&quot;]
+    I[&quot;Internet&amp;lt;br/&amp;gt;IP&quot;]
+    L[&quot;Link&amp;lt;br/&amp;gt;Ethernet, Wi-Fi, physical&quot;]
+  end
+  subgraph OSI[&quot;OSI model (vocabulary)&quot;]
+    direction TB
+    O7[&quot;7 Application&quot;]
+    O6[&quot;6 Presentation&quot;]
+    O5[&quot;5 Session&quot;]
+    O4[&quot;4 Transport&quot;]
+    O3[&quot;3 Network&quot;]
+    O2[&quot;2 Data Link&quot;]
+    O1[&quot;1 Physical&quot;]
+  end
+  A --- O7 &amp;amp; O6 &amp;amp; O5
+  T --- O4
+  I --- O3
+  L --- O2 &amp;amp; O1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Rule of thumb: &lt;strong&gt;use TCP/IP to reason about reality, use OSI’s layer numbers to talk to other
+engineers.&lt;/strong&gt; When a colleague says “L4 vs L7 load balancing,” L4 means “routes by IP and port
+without reading the payload” and L7 means “reads the HTTP request and routes by URL or host.”&lt;/p&gt;
+
+&lt;p&gt;Every layer wraps the layer above it in its own header. Your HTTP request does not &lt;em&gt;become&lt;/em&gt; a
+packet, it gets nested inside one, like Russian dolls:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;flowchart LR
+  subgraph L2[&quot;Ethernet frame (L2)&quot;]
+    direction LR
+    subgraph L3[&quot;IP packet (L3)&quot;]
+      direction LR
+      subgraph L4[&quot;TCP segment (L4)&quot;]
+        direction LR
+        subgraph L6[&quot;TLS (L6)&quot;]
+          direction LR
+          APP[&quot;HTTP request (L7)&quot;]
+        end
+      end
+    end
+  end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Going &lt;em&gt;down&lt;/em&gt; the stack on the sender, each layer adds its header (encapsulation). Going &lt;em&gt;up&lt;/em&gt;
+on the receiver, each layer strips its own header (decapsulation). The web server’s TCP code
+never sees the Ethernet header, the link layer already removed it. This is also why “packet”
+is genuinely ambiguous: at L2 it is a &lt;em&gt;frame&lt;/em&gt;, at L3 a &lt;em&gt;packet&lt;/em&gt;, at L4 a &lt;em&gt;segment&lt;/em&gt; (TCP) or a
+&lt;em&gt;datagram&lt;/em&gt; (UDP). Same bytes, different name depending on which doll you are looking at.&lt;/p&gt;
+
+&lt;h2 id=&quot;signals-the-analog-truth-under-every-digital-network&quot;&gt;Signals: the analog truth under every digital network&lt;/h2&gt;
+
+&lt;p&gt;We say networks are “digital,” but the physical world is stubbornly analog. A wire carries a
+continuously varying voltage. Fiber carries a continuously varying light intensity. Air
+carries continuously varying electromagnetic waves. There are no actual 1s and 0s out there,
+only physics. The digital abstraction is something we &lt;em&gt;impose&lt;/em&gt; on top.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Analog vs digital.&lt;/strong&gt; An analog signal is a continuous waveform with infinitely many possible
+values (think of a sine wave). A digital signal is a sequence of discrete symbols, in the
+simplest case just two: high and low, 1 and 0. The whole job of the physical layer is to carry
+discrete symbols reliably over a medium that is fundamentally continuous.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Conversion: ADC and DAC.&lt;/strong&gt; Whenever the digital world meets the analog world, a converter
+sits between them. An &lt;strong&gt;ADC&lt;/strong&gt; (Analog to Digital Converter) samples a continuous signal at
+regular intervals and rounds each sample to the nearest digital value (quantization). A
+&lt;strong&gt;DAC&lt;/strong&gt; does the reverse. The Nyquist theorem sets the rule: to faithfully capture a signal,
+you must sample at least twice its highest frequency. This is why CD audio samples at 44.1 kHz
+to capture sound up to ~20 kHz, and it is the same math that governs how much data a radio
+channel of a given width can carry.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Modulation: putting bits on a wave.&lt;/strong&gt; You cannot just shove square 1s and 0s onto a radio or
+a long copper run, the medium will not allow it cleanly. Instead you take a smooth &lt;em&gt;carrier
+wave&lt;/em&gt; and vary one of its properties to encode bits:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;vary the &lt;strong&gt;amplitude&lt;/strong&gt; (height) -&amp;gt; ASK&lt;/li&gt;
+  &lt;li&gt;vary the &lt;strong&gt;frequency&lt;/strong&gt; -&amp;gt; FSK&lt;/li&gt;
+  &lt;li&gt;vary the &lt;strong&gt;phase&lt;/strong&gt; (timing) -&amp;gt; PSK&lt;/li&gt;
+  &lt;li&gt;vary amplitude &lt;em&gt;and&lt;/em&gt; phase together -&amp;gt; &lt;strong&gt;QAM&lt;/strong&gt;, which is how modern Wi-Fi and cellular pack
+many bits into each symbol. 256-QAM encodes 8 bits per symbol, 1024-QAM encodes 10. More
+bits per symbol means more speed, but it needs a cleaner signal, which is exactly why your
+Wi-Fi rate drops as you walk away from the router: it falls back to a simpler, more robust
+modulation.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Suppose&lt;/strong&gt; your phone reports a great signal but a low data rate. The radio is healthy
+enough to &lt;em&gt;hear&lt;/em&gt; the access point, but not cleanly enough to use the densest modulation, so
+it negotiates down from 1024-QAM to something sturdier. Signal strength and data rate are
+related but not the same thing.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;On copper, the equivalent idea is a &lt;em&gt;line code&lt;/em&gt;. Gigabit Ethernet does not send raw square
+waves either, it uses multi-level encoding (PAM) across the twisted pairs. The takeaway: every
+“digital” link is really clever analog signaling underneath, and the cleaner the medium, the
+more aggressively you can encode.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-physical-layer-media-cables-and-speed&quot;&gt;The physical layer: media, cables, and speed&lt;/h2&gt;
+
+&lt;p&gt;Strip away every abstraction and you are left with one job: get a 1 or a 0 from here to there
+using some physical phenomenon. Three media matter.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Copper (electrical):&lt;/strong&gt; voltage changes pushed down a metal wire. Cheap and easy, but the
+signal weakens with distance and picks up electromagnetic interference. This is twisted-pair
+Ethernet, the RJ45 cable on your desk.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Fiber (light):&lt;/strong&gt; pulses of light bounced down a glass strand. Immune to electrical
+interference, enormous bandwidth, travels kilometers without a repeater. Every undersea
+cable and ISP backbone is fiber.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Air (radio):&lt;/strong&gt; electromagnetic waves at a chosen frequency. No cable needed, but the
+medium is shared with everyone nearby, blocked by walls, and fundamentally a broadcast.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Fiber wins long distances because light in glass loses very little energy per kilometer, while
+electrical signals in copper attenuate fast and the wire acts like an antenna for noise. That
+is physics, not a software problem, and it is why the backbone is glass.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Ethernet cable categories.&lt;/strong&gt; When someone says “Cat6 cable,” the category bounds how fast and
+how far you can push signals through twisted copper before noise wins. Higher category means
+tighter twists, better shielding, higher frequency, more speed.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Category&lt;/th&gt;
+      &lt;th&gt;Max speed&lt;/th&gt;
+      &lt;th&gt;Bandwidth&lt;/th&gt;
+      &lt;th&gt;Run&lt;/th&gt;
+      &lt;th&gt;Notes&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Cat5e&lt;/td&gt;
+      &lt;td&gt;1 Gbps&lt;/td&gt;
+      &lt;td&gt;100 MHz&lt;/td&gt;
+      &lt;td&gt;100 m&lt;/td&gt;
+      &lt;td&gt;the old reliable, still everywhere&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Cat6&lt;/td&gt;
+      &lt;td&gt;1 Gbps (10 Gbps under ~55 m)&lt;/td&gt;
+      &lt;td&gt;250 MHz&lt;/td&gt;
+      &lt;td&gt;100 m / 55 m at 10G&lt;/td&gt;
+      &lt;td&gt;sweet spot for offices&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Cat6a&lt;/td&gt;
+      &lt;td&gt;10 Gbps&lt;/td&gt;
+      &lt;td&gt;500 MHz&lt;/td&gt;
+      &lt;td&gt;100 m&lt;/td&gt;
+      &lt;td&gt;10 Gbps at full distance&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Cat7&lt;/td&gt;
+      &lt;td&gt;10 Gbps&lt;/td&gt;
+      &lt;td&gt;600 MHz&lt;/td&gt;
+      &lt;td&gt;100 m&lt;/td&gt;
+      &lt;td&gt;heavily shielded, niche&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Cat8&lt;/td&gt;
+      &lt;td&gt;25 to 40 Gbps&lt;/td&gt;
+      &lt;td&gt;2000 MHz&lt;/td&gt;
+      &lt;td&gt;30 m&lt;/td&gt;
+      &lt;td&gt;data-center short runs only&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The pattern to internalize: &lt;strong&gt;speed and distance trade against each other, bounded by the
+physics of the medium.&lt;/strong&gt; Cat6 can do 10 Gbps, but only over a shorter run, because at higher
+frequencies the signal degrades faster. There is no free lunch in copper. Once you need both
+speed and distance, you stop fighting and switch to fiber.&lt;/p&gt;
+
+&lt;h2 id=&quot;wireless-antennas-and-the-air&quot;&gt;Wireless, antennas, and the air&lt;/h2&gt;
+
+&lt;p&gt;Wi-Fi is governed by the IEEE &lt;strong&gt;802.11&lt;/strong&gt; family. The naming finally got sane:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Marketing name&lt;/th&gt;
+      &lt;th&gt;Standard&lt;/th&gt;
+      &lt;th&gt;Bands&lt;/th&gt;
+      &lt;th&gt;Realistic throughput&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Wi-Fi 4&lt;/td&gt;
+      &lt;td&gt;802.11n&lt;/td&gt;
+      &lt;td&gt;2.4 / 5 GHz&lt;/td&gt;
+      &lt;td&gt;~150 to 600 Mbps&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Wi-Fi 5&lt;/td&gt;
+      &lt;td&gt;802.11ac&lt;/td&gt;
+      &lt;td&gt;5 GHz&lt;/td&gt;
+      &lt;td&gt;hundreds of Mbps to ~1 Gbps&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Wi-Fi 6 / 6E&lt;/td&gt;
+      &lt;td&gt;802.11ax&lt;/td&gt;
+      &lt;td&gt;2.4 / 5 / 6 GHz&lt;/td&gt;
+      &lt;td&gt;multi-Gbps, better in crowds&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Wi-Fi 7&lt;/td&gt;
+      &lt;td&gt;802.11be&lt;/td&gt;
+      &lt;td&gt;2.4 / 5 / 6 GHz&lt;/td&gt;
+      &lt;td&gt;multi-Gbps, very low latency&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The crucial mental model is the &lt;strong&gt;frequency trade-off&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;2.4 GHz&lt;/strong&gt;, lower frequency, longer waves: travels far, punches through walls, but slower
+and horribly congested (microwaves, Bluetooth, your neighbors all share it).&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;5 / 6 GHz&lt;/strong&gt;, higher frequency, shorter waves: much faster, far less crowded, but short
+range and easily blocked by walls.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Antennas: analog by nature, “digital” by marketing.&lt;/strong&gt; An antenna is a purely analog device.
+It converts an electrical signal into an electromagnetic wave (transmit) and a wave back into
+an electrical signal (receive). There is no such thing as a fundamentally “digital antenna” in
+the physics sense. When a TV antenna is sold as “digital,” it just means it receives a
+broadcast that is &lt;em&gt;digitally modulated&lt;/em&gt; (ATSC, DVB) rather than the old analog TV signal. The
+metal does the same job either way, the difference is in how the bits are encoded onto the
+wave and decoded by the receiver’s chip.&lt;/p&gt;
+
+&lt;p&gt;What &lt;em&gt;is&lt;/em&gt; genuinely modern about antennas is using &lt;em&gt;many&lt;/em&gt; of them at once:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;MIMO&lt;/strong&gt; (Multiple Input, Multiple Output) uses several antennas to send multiple data
+streams in parallel over the same channel, multiplying throughput.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Beamforming&lt;/strong&gt; shapes the combined signal from those antennas to aim energy toward a
+specific device instead of radiating in all directions, improving range and speed.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Suppose&lt;/strong&gt; your phone shows “Wi-Fi 6, 1200 Mbps” but your download crawls. That number is
+the &lt;em&gt;physical-layer&lt;/em&gt; maximum under perfect conditions. Reality subtracts distance, walls,
+interference, the fact that Wi-Fi is half-duplex (only one device talks at a time on a
+channel), and the airtime you share with everyone else. The advertised link speed is a
+promise about the medium, your real throughput is what survives after every layer above
+takes its cut.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;network-cards-and-drivers&quot;&gt;Network cards and drivers&lt;/h2&gt;
+
+&lt;p&gt;A network card (NIC) is useless to the operating system until a &lt;strong&gt;driver&lt;/strong&gt; teaches the kernel
+how to talk to that specific hardware. The driver is the translation layer between the generic
+network stack (“send this frame”) and the particular registers and DMA rings of one chip.&lt;/p&gt;
+
+&lt;p&gt;There are two pieces of low-level software involved:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Firmware&lt;/strong&gt;, code that runs &lt;em&gt;on the NIC itself&lt;/em&gt;, often loaded by the driver at boot. Wi-Fi
+cards especially need firmware blobs (this is why a fresh Linux install sometimes has no
+Wi-Fi until you install the firmware package).&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;The kernel driver&lt;/strong&gt;, code in the OS. On Linux you will meet names like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;e1000e&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;igb&lt;/code&gt;,
+and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ixgbe&lt;/code&gt; (Intel wired), &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;r8169&lt;/code&gt; (Realtek), and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;iwlwifi&lt;/code&gt; (Intel Wi-Fi).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can see exactly which driver is bound to a device:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;lspci &lt;span class=&quot;nt&quot;&gt;-k&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-A3&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; ethernet      &lt;span class=&quot;c&quot;&gt;# which kernel driver is in use&lt;/span&gt;
+ethtool &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0                      &lt;span class=&quot;c&quot;&gt;# driver and firmware version for an interface&lt;/span&gt;
+ethtool eth0                         &lt;span class=&quot;c&quot;&gt;# negotiated speed, duplex, link status&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Modern NICs also push work &lt;em&gt;off&lt;/em&gt; the CPU through &lt;strong&gt;offloading&lt;/strong&gt;, all managed by the driver:
+checksum offload, segmentation offload (TSO/GSO), and receive coalescing (GRO). When you
+benchmark a fast link and the CPU is not pegged, offloading is why. At the extreme end,
+high-performance systems bypass the kernel stack entirely with &lt;strong&gt;DPDK&lt;/strong&gt; or hook into the driver
+with &lt;strong&gt;XDP/eBPF&lt;/strong&gt; to process packets at line rate. The lesson: even the “wire” has a software
+contract, and a missing or buggy driver looks exactly like a broken cable.&lt;/p&gt;
+
+&lt;h2 id=&quot;frames-packets-and-mtu&quot;&gt;Frames, packets, and MTU&lt;/h2&gt;
+
+&lt;p&gt;Once you have a working link, there is a limit on how much you can send in a single chunk. That
+limit is the &lt;strong&gt;MTU&lt;/strong&gt; (Maximum Transmission Unit): the largest L3 payload that fits in one L2
+frame. On standard Ethernet the MTU is &lt;strong&gt;1500 bytes&lt;/strong&gt;. &lt;strong&gt;Jumbo frames&lt;/strong&gt; raise it to ~9000
+bytes, common inside data centers to reduce per-packet overhead.&lt;/p&gt;
+
+&lt;p&gt;Related and constantly confused: the &lt;strong&gt;MSS&lt;/strong&gt; (Maximum Segment Size) is how much &lt;em&gt;application&lt;/em&gt;
+data fits in one TCP segment. On a 1500-byte MTU link, MSS is typically 1460 (1500 minus 20
+bytes of IP header minus 20 bytes of TCP header).&lt;/p&gt;
+
+&lt;p&gt;What happens when a packet is too big for the next link?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;IPv4&lt;/strong&gt; routers can &lt;strong&gt;fragment&lt;/strong&gt; it into smaller pieces and the receiver reassembles them.
+Fragmentation is bad for performance, and if any fragment is lost the whole packet is lost.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;IPv6&lt;/strong&gt; forbids in-network fragmentation. The sending host must size packets correctly.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Path MTU Discovery (PMTUD)&lt;/strong&gt; finds the smallest MTU along the entire path. The sender marks
+packets “do not fragment,” and if a router cannot forward one it replies with an ICMP
+“fragmentation needed” message telling the sender to use a smaller size.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Here is where it bites in practice. &lt;strong&gt;Suppose&lt;/strong&gt; you set up a VPN or a tunnel. Every packet now
+carries extra encapsulation headers, so the &lt;em&gt;effective&lt;/em&gt; MTU inside the tunnel drops below 1500.
+If something on the path blocks the ICMP messages PMTUD relies on (many overzealous firewalls
+do), the sender never learns it must shrink its packets. Small requests work, large responses
+silently vanish, and you get the classic symptom: SSH connects fine but hangs the moment output
+gets long, web pages load their headers but stall on big bodies. This “PMTUD blackhole” is one
+of the most baffling bugs in networking until you know to look for it. The fix is usually
+&lt;strong&gt;MSS clamping&lt;/strong&gt;, forcing a smaller MSS so packets never exceed the tunnel MTU.&lt;/p&gt;
+
+&lt;h2 id=&quot;addresses-mac-ip-arp-and-dhcp&quot;&gt;Addresses: MAC, IP, ARP, and DHCP&lt;/h2&gt;
+
+&lt;p&gt;Two kinds of address, two completely different jobs. Confusing them is the classic beginner
+mistake.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;MAC address&lt;/strong&gt; (L2, e.g. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a4:83:e7:1f:22:0b&lt;/code&gt;) is burned into the network card at the
+factory. It identifies &lt;em&gt;a specific piece of hardware&lt;/em&gt; and only matters on the &lt;strong&gt;local link&lt;/strong&gt;.
+It does not travel across the internet.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;IP address&lt;/strong&gt; (L3, e.g. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;192.168.1.42&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2606:4700::1&lt;/code&gt;) is &lt;em&gt;assigned&lt;/em&gt; and identifies
+&lt;em&gt;where you are in the network topology&lt;/em&gt;. It is what makes global routing possible, hop by hop
+across the world.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The analogy that sticks: &lt;strong&gt;MAC is your name, IP is your mailing address.&lt;/strong&gt; Your name never
+changes but is useless for delivery across cities. Your address changes when you move but is
+exactly how the postal system finds you.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;CIDR: how addresses are grouped.&lt;/strong&gt; An IP address rarely travels alone; it belongs to a
+&lt;em&gt;block&lt;/em&gt;. &lt;strong&gt;CIDR (Classless Inter-Domain Routing)&lt;/strong&gt; is the notation for those blocks, and it is
+everywhere once you start looking (it is exactly what you typed when you created the
+&lt;a href=&quot;#network-in-the-cloud-aws-vpc-abstractions&quot;&gt;AWS VPC&lt;/a&gt; earlier). The notation is an address
+followed by a slash and a number: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;192.168.1.0/24&lt;/code&gt;. That number, the &lt;strong&gt;prefix length&lt;/strong&gt;, says how
+many leading bits are fixed as the &lt;em&gt;network&lt;/em&gt; part; the remaining bits are free for &lt;em&gt;hosts&lt;/em&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;flowchart LR
+  subgraph A[&quot;10.0.0.0/24  =  256 addresses&quot;]
+    direction LR
+    N1[&quot;network: 10.0.0&amp;lt;br/&amp;gt;(24 bits fixed)&quot;]
+    H1[&quot;host: .0 to .255&amp;lt;br/&amp;gt;(8 bits free)&quot;]
+  end
+  subgraph B[&quot;10.0.0.0/16  =  65,536 addresses&quot;]
+    direction LR
+    N2[&quot;network: 10.0&amp;lt;br/&amp;gt;(16 bits fixed)&quot;]
+    H2[&quot;host: 16 bits free&quot;]
+  end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The smaller the prefix, the bigger the block: a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/24&lt;/code&gt; fixes 24 bits and leaves 8 for hosts (256
+addresses), a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/16&lt;/code&gt; leaves 16 bits (65,536 addresses), and a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/8&lt;/code&gt; is enormous. The math is
+simply 2 to the power of the free bits. A &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/32&lt;/code&gt; is a single host. CIDR (RFC 1519, 1993) replaced
+the old rigid “class A/B/C” system, which only allowed blocks of three fixed sizes and wasted
+addresses on a massive scale. Its second gift is &lt;strong&gt;route aggregation&lt;/strong&gt;: a router can advertise
+one &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/16&lt;/code&gt; instead of 256 separate &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/24&lt;/code&gt; routes, which is what keeps the global routing table
+from exploding. This is also the language you use to write firewall rules, subnet a VPC, and
+read the &lt;a href=&quot;#nat-cgnat-and-firewalls-the-providers-world&quot;&gt;RFC 1918 private ranges&lt;/a&gt; like
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;10.0.0.0/8&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;So how do these get connected? Two protocols do the wiring:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;ARP&lt;/strong&gt; (Address Resolution Protocol) answers “I want to reach this IP on my local network,
+which MAC do I hand the frame to?” Your machine broadcasts “who has 192.168.1.1?” and the
+router replies with its MAC. This is local-only, and as we will see later, it is also a
+classic attack surface.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;DHCP&lt;/strong&gt; (Dynamic Host Configuration Protocol) is how you &lt;em&gt;get&lt;/em&gt; an IP in the first place.
+When you join a network, your device runs the &lt;strong&gt;DORA&lt;/strong&gt; exchange: &lt;strong&gt;D&lt;/strong&gt;iscover (broadcast “is
+there a DHCP server?”), &lt;strong&gt;O&lt;/strong&gt;ffer (server proposes an address), &lt;strong&gt;R&lt;/strong&gt;equest (you ask for it),
+&lt;strong&gt;A&lt;/strong&gt;ck (server confirms, and hands you your IP, subnet mask, default gateway, and DNS
+servers). All of this happens before you can send a single useful packet.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A word on IPv4 vs IPv6. IPv4 has ~4.3 billion addresses (32 bits) and the world ran out years
+ago. IPv6 (128 bits) has effectively unlimited addresses. We survived the shortage this long
+because of one set of hacks built around private addressing and translation, which is the next
+section.&lt;/p&gt;
+
+&lt;h2 id=&quot;nat-cgnat-and-firewalls-the-providers-world&quot;&gt;NAT, CGNAT, and firewalls: the provider’s world&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;NAT (Network Address Translation)&lt;/strong&gt; is why your laptop, phone, TV, and smart fridge can all
+be online while your home has exactly &lt;em&gt;one&lt;/em&gt; public IP from your ISP.&lt;/p&gt;
+
+&lt;p&gt;Inside your house everything gets a &lt;strong&gt;private IP&lt;/strong&gt; (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;192.168.x.x&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;10.x.x.x&lt;/code&gt;, or
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;172.16-31.x.x&lt;/code&gt;, reserved per RFC 1918 and not globally routable). Your router holds the one
+public IP. When a private device reaches out, the router &lt;strong&gt;rewrites&lt;/strong&gt; the packet’s source
+address and port, remembers the mapping, and sends it out under its public IP. Replies come
+back to the router, which looks up the table and rewrites the destination back to the right
+device.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;flowchart LR
+  L[&quot;Laptop&amp;lt;br/&amp;gt;192.168.1.42:51000&quot;]
+  R[&quot;Router NAT&amp;lt;br/&amp;gt;public 203.0.113.7:62000&amp;lt;br/&amp;gt;table: 62000 -&amp;gt; 192.168.1.42:51000&quot;]
+  S[&quot;Server&amp;lt;br/&amp;gt;93.184.216.34:443&quot;]
+  L --&amp;gt;|&quot;out: src rewritten to 203.0.113.7:62000&quot;| R
+  R --&amp;gt; S
+  S --&amp;gt;|&quot;reply to 203.0.113.7:62000&quot;| R
+  R --&amp;gt;|&quot;in: dst rewritten back via table&quot;| L
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Because two devices might both pick source port 51000, NAT maps each to a &lt;em&gt;different&lt;/em&gt; external
+port. That port rewriting is why it is often called &lt;strong&gt;PAT&lt;/strong&gt; (Port Address Translation) or “NAT
+overload.” It is the mechanism that multiplexes hundreds of devices through one address.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;CGNAT (Carrier-Grade NAT).&lt;/strong&gt; Here is the part most refreshers skip. With IPv4 fully
+exhausted, ISPs cannot give every customer even a single public IPv4 address anymore. So they
+run &lt;em&gt;another&lt;/em&gt; layer of NAT inside their own network. Your home router NATs your devices behind
+its “public” IP, but that IP is itself a private one from the shared range &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;100.64.0.0/10&lt;/code&gt;
+(RFC 6598), which the ISP then NATs again behind a pool of real public addresses shared across
+thousands of subscribers. You are behind &lt;strong&gt;double NAT&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;The consequences are real and worth knowing:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Inbound connections are impossible.&lt;/strong&gt; Port forwarding on your home router does nothing,
+because the ISP’s CGNAT in front of you has no rule pointing to you. Self-hosting a server at
+home over IPv4 simply does not work on a CGNAT line.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Peer-to-peer is hard.&lt;/strong&gt; Game consoles report “strict NAT,” and video-call apps must lean on
+&lt;strong&gt;STUN/TURN&lt;/strong&gt; servers and &lt;strong&gt;NAT hole punching&lt;/strong&gt; to connect two devices that are each hidden
+behind their own translators.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Many users share one public IP&lt;/strong&gt;, which complicates geolocation and abuse attribution (one
+IP getting banned can affect a whole neighborhood).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This is one of the strongest practical arguments for IPv6: with enough addresses, every device
+can have a real, routable one, and the layers of translation collapse.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Firewalls.&lt;/strong&gt; A firewall decides which packets are allowed to pass. The important distinctions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Stateless&lt;/strong&gt; filtering looks at each packet in isolation (allow TCP to port 443). Simple and
+fast, but blind to context.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Stateful&lt;/strong&gt; filtering tracks whole connections in a &lt;strong&gt;connection-tracking&lt;/strong&gt; table. It can
+say “allow replies to connections &lt;em&gt;I&lt;/em&gt; started, but drop unsolicited inbound.” This is what
+makes a NAT box act as an accidental firewall: there is simply no table entry for an
+uninvited inbound packet, so it is dropped.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;L7 / application firewalls and WAFs&lt;/strong&gt; read the actual payload. A Web Application Firewall
+inspects HTTP requests and can block SQL injection or path traversal patterns that a
+port-based rule would never catch.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;On Linux this lives in the kernel’s netfilter framework, configured with &lt;strong&gt;nftables&lt;/strong&gt; (modern)
+or &lt;strong&gt;iptables&lt;/strong&gt; (legacy), with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;conntrack&lt;/code&gt; exposing the state table.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-transport-layer-tcp-vs-udp-and-quic&quot;&gt;The transport layer: TCP vs UDP (and QUIC)&lt;/h2&gt;
+
+&lt;p&gt;IP gets a packet &lt;em&gt;to&lt;/em&gt; a host. But which program on that host, and what if the packet is lost?
+That is the transport layer. The two classic choices embody opposite philosophies.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;TCP (Transmission Control Protocol)&lt;/strong&gt; gives you a &lt;em&gt;connection&lt;/em&gt;: an ordered, reliable,
+bidirectional stream of bytes. The exact bytes you write come out the other end, in order, or
+you get an error. It achieves this with:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;The three-way handshake&lt;/strong&gt; before any data flows:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;sequenceDiagram
+  participant C as Client
+  participant S as Server
+  C-&amp;gt;&amp;gt;S: SYN (my sequence starts at X)
+  S-&amp;gt;&amp;gt;C: SYN-ACK (mine starts at Y, got your X)
+  C-&amp;gt;&amp;gt;S: ACK (got your Y)
+  Note over C,S: Connection established
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Sequence numbers and acknowledgments&lt;/strong&gt;, so the sender knows exactly what to retransmit if
+something is lost.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Flow control&lt;/strong&gt; (do not overwhelm a slow receiver) and &lt;strong&gt;congestion control&lt;/strong&gt; (do not
+overwhelm the network). TCP actively slows itself when it detects loss.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The cost: the handshake is a full round trip &lt;em&gt;before&lt;/em&gt; the first byte of data, and ordered
+delivery means one lost packet stalls everything queued behind it (&lt;strong&gt;head-of-line blocking&lt;/strong&gt;).
+Use TCP when correctness matters more than latency: web pages, APIs, file transfers, SSH,
+databases.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;UDP (User Datagram Protocol)&lt;/strong&gt; is almost nothing: here is a datagram, here is the destination
+port, good luck. No handshake, no ordering, no retransmission, no congestion control. Packets
+may arrive out of order, duplicated, or not at all, and UDP will not tell you.&lt;/p&gt;
+
+&lt;p&gt;Why want this? Because sometimes late data is worse than no data.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Suppose&lt;/strong&gt; you are on a video call and a packet carrying 20 ms of audio is lost. With TCP the
+stream would stop and &lt;em&gt;wait&lt;/em&gt; to retransmit it, so you hear a freeze then a catch-up. With UDP
+the app simply skips it, you hear a tiny glitch, and the conversation stays real-time. For
+live media, freshness beats completeness.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;UDP underpins DNS (one tiny query, one tiny answer, why pay for a handshake), real-time gaming,
+voice and video, and QUIC.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;TCP&lt;/th&gt;
+      &lt;th&gt;UDP&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Connection&lt;/td&gt;
+      &lt;td&gt;yes (handshake)&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Reliable / ordered&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Overhead&lt;/td&gt;
+      &lt;td&gt;higher&lt;/td&gt;
+      &lt;td&gt;minimal&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Congestion control&lt;/td&gt;
+      &lt;td&gt;built in&lt;/td&gt;
+      &lt;td&gt;you build it yourself&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Use when&lt;/td&gt;
+      &lt;td&gt;correctness matters&lt;/td&gt;
+      &lt;td&gt;freshness matters&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Examples&lt;/td&gt;
+      &lt;td&gt;HTTP, SSH, databases&lt;/td&gt;
+      &lt;td&gt;DNS, VoIP, games, QUIC&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;QUIC (RFC 9000)&lt;/strong&gt; is the modern plot twist. For decades it was “TCP for reliable, UDP for
+fast.” Then the question became: what if we got TCP’s reliability but built it on UDP so we
+could fix TCP’s flaws? QUIC runs over UDP and reimplements reliability, ordering, and
+congestion control in user space, plus it bakes TLS 1.3 encryption directly into the transport.
+The payoffs: a faster handshake (transport and encryption set up together, often in one round
+trip or zero on a return visit), independent streams so one lost packet only stalls &lt;em&gt;its&lt;/em&gt; stream
+instead of all of them, and connection migration so switching from Wi-Fi to cellular does not
+drop the connection. QUIC is the transport under HTTP/3.&lt;/p&gt;
+
+&lt;h2 id=&quot;latency-response-time-and-throughput&quot;&gt;Latency, response time, and throughput&lt;/h2&gt;
+
+&lt;p&gt;These three get used interchangeably and they are not the same. Getting them straight is what
+separates “the internet is slow” from a real diagnosis.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Latency&lt;/strong&gt; is how long a packet takes to travel, usually measured as &lt;strong&gt;round-trip time (RTT)&lt;/strong&gt;,
+the there-and-back time that &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ping&lt;/code&gt; reports. It is built from four parts:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Propagation delay:&lt;/strong&gt; distance divided by signal speed. This is a hard floor set by physics.
+Light through fiber to a server on another continent simply takes time, no amount of bandwidth
+removes it.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Transmission delay:&lt;/strong&gt; packet size divided by link bandwidth, the time to clock the bits onto
+the wire.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Processing delay:&lt;/strong&gt; time routers spend examining and forwarding.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Queuing delay:&lt;/strong&gt; time spent waiting in buffers when a link is congested. This is the one
+that explodes under load.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Throughput (or bandwidth)&lt;/strong&gt; is how much data moves per second. Bandwidth is the &lt;em&gt;capacity&lt;/em&gt; of
+the pipe, throughput is what you actually achieve. A fat pipe with high latency is still slow to
+&lt;em&gt;start&lt;/em&gt;, and TCP’s congestion control needs several round trips to ramp up to full speed, so a
+high-RTT link underperforms its bandwidth on short transfers.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Response time&lt;/strong&gt; is the user-facing number: total time from sending a request to receiving the
+complete response. It includes network latency &lt;em&gt;plus&lt;/em&gt; the server’s processing time &lt;em&gt;plus&lt;/em&gt; the
+time to transfer the payload.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Suppose&lt;/strong&gt; an API call takes 800 ms and you blame “the network.” Break it down: maybe 40 ms is
+RTT, 700 ms is the server running a slow database query, and 60 ms is transferring the
+response. The latency is fine. The &lt;em&gt;response time&lt;/em&gt; is bad because of server processing.
+Conversely, a satellite link can have huge bandwidth and still feel terrible because its
+propagation delay (up to a satellite and back) gives it 600 ms of latency no matter what.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;One more term: &lt;strong&gt;jitter&lt;/strong&gt; is the &lt;em&gt;variation&lt;/em&gt; in latency between packets. Steady 100 ms is fine
+for a download and tolerable for a call. Latency that swings between 20 ms and 300 ms wrecks
+real-time audio even if the average looks fine, because the playback buffer cannot keep up. This
+is why VoIP quality depends on jitter, not just average latency.&lt;/p&gt;
+
+&lt;h2 id=&quot;dns-the-internets-directory&quot;&gt;DNS: the internet’s directory&lt;/h2&gt;
+
+&lt;p&gt;Computers route to IP addresses, humans remember names. &lt;strong&gt;DNS (Domain Name System)&lt;/strong&gt; is the
+distributed database that translates &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;example.com&lt;/code&gt; into &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;93.184.216.34&lt;/code&gt;. It is one of the most
+important and most attacked systems on the internet, so it earns its own section.&lt;/p&gt;
+
+&lt;p&gt;DNS is &lt;strong&gt;hierarchical&lt;/strong&gt;, read right to left:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;flowchart TD
+  root[&quot;root .&amp;lt;br/&amp;gt;(the implicit trailing dot)&quot;]
+  com[&quot;.com&amp;lt;br/&amp;gt;(TLD)&quot;]
+  example[&quot;example.com&amp;lt;br/&amp;gt;(second level, authoritative)&quot;]
+  www[&quot;www.example.com&amp;lt;br/&amp;gt;(hostname)&quot;]
+  root --&amp;gt; com --&amp;gt; example --&amp;gt; www
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A lookup walks that hierarchy. &lt;strong&gt;Suppose&lt;/strong&gt; you resolve &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;www.example.com&lt;/code&gt; with an empty cache:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Your machine asks its configured &lt;strong&gt;recursive resolver&lt;/strong&gt; (your ISP’s, or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1.1.1.1&lt;/code&gt;,
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;8.8.8.8&lt;/code&gt;). The resolver does the legwork.&lt;/li&gt;
+  &lt;li&gt;The resolver asks a &lt;strong&gt;root server&lt;/strong&gt;: “where is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.com&lt;/code&gt;?” The root replies with the TLD
+servers for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.com&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;The resolver asks a &lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.com&lt;/code&gt; TLD server&lt;/strong&gt;: “where is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;example.com&lt;/code&gt;?” It replies with the
+&lt;strong&gt;authoritative&lt;/strong&gt; name servers for that domain.&lt;/li&gt;
+  &lt;li&gt;The resolver asks the &lt;strong&gt;authoritative server&lt;/strong&gt;: “what is the A record for
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;www.example.com&lt;/code&gt;?” It replies &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;93.184.216.34&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;The resolver caches the answer (honoring its &lt;strong&gt;TTL&lt;/strong&gt;) and hands it back to you.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The first query is a recursive request from you to the resolver, then iterative queries from the
+resolver out to the hierarchy. The next time anyone on that resolver asks, the cached answer
+returns instantly until the TTL expires. Caching is what keeps the root servers from melting.&lt;/p&gt;
+
+&lt;p&gt;The record types you meet most:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Record&lt;/th&gt;
+      &lt;th&gt;Maps&lt;/th&gt;
+      &lt;th&gt;Purpose&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;A&lt;/td&gt;
+      &lt;td&gt;name -&amp;gt; IPv4&lt;/td&gt;
+      &lt;td&gt;the classic lookup&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;AAAA&lt;/td&gt;
+      &lt;td&gt;name -&amp;gt; IPv6&lt;/td&gt;
+      &lt;td&gt;the IPv6 lookup&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;CNAME&lt;/td&gt;
+      &lt;td&gt;name -&amp;gt; another name&lt;/td&gt;
+      &lt;td&gt;aliasing&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;MX&lt;/td&gt;
+      &lt;td&gt;domain -&amp;gt; mail server&lt;/td&gt;
+      &lt;td&gt;email routing&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;TXT&lt;/td&gt;
+      &lt;td&gt;name -&amp;gt; arbitrary text&lt;/td&gt;
+      &lt;td&gt;SPF, DKIM, domain verification&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;NS&lt;/td&gt;
+      &lt;td&gt;domain -&amp;gt; name servers&lt;/td&gt;
+      &lt;td&gt;delegation&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SOA&lt;/td&gt;
+      &lt;td&gt;domain -&amp;gt; zone metadata&lt;/td&gt;
+      &lt;td&gt;authority and serial&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;PTR&lt;/td&gt;
+      &lt;td&gt;IP -&amp;gt; name&lt;/td&gt;
+      &lt;td&gt;reverse DNS&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SRV&lt;/td&gt;
+      &lt;td&gt;service -&amp;gt; host and port&lt;/td&gt;
+      &lt;td&gt;service discovery&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;CAA&lt;/td&gt;
+      &lt;td&gt;domain -&amp;gt; allowed CAs&lt;/td&gt;
+      &lt;td&gt;which authorities may issue certs&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;DNS normally rides &lt;strong&gt;UDP port 53&lt;/strong&gt; (small, fast, fire-and-forget). It falls back to &lt;strong&gt;TCP port
+53&lt;/strong&gt; when a response is too large to fit, and for zone transfers between servers (AXFR). Two
+modern privacy upgrades wrap DNS in encryption: &lt;strong&gt;DoH (DNS over HTTPS)&lt;/strong&gt; and &lt;strong&gt;DoT (DNS over
+TLS)&lt;/strong&gt;, both of which hide your lookups from anyone watching the network. &lt;strong&gt;DNSSEC&lt;/strong&gt; adds
+cryptographic signatures so a resolver can verify an answer was not forged (more on why that
+matters in the security section).&lt;/p&gt;
+
+&lt;p&gt;On Linux the relevant files and tools are &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/resolv.conf&lt;/code&gt; (which resolver to use),
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/hosts&lt;/code&gt; (static overrides checked first), &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/nsswitch.conf&lt;/code&gt; (resolution order), and
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;systemd-resolved&lt;/code&gt; with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;resolvectl status&lt;/code&gt;. To query directly:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dig www.example.com            &lt;span class=&quot;c&quot;&gt;# full answer with timing and the resolver used&lt;/span&gt;
+dig +short example.com         &lt;span class=&quot;c&quot;&gt;# just the IP&lt;/span&gt;
+dig MX example.com             &lt;span class=&quot;c&quot;&gt;# mail servers&lt;/span&gt;
+dig +trace example.com         &lt;span class=&quot;c&quot;&gt;# walk the hierarchy from the root yourself&lt;/span&gt;
+host example.com               &lt;span class=&quot;c&quot;&gt;# quick and simple&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;the-application-layer-the-protocols-you-actually-use&quot;&gt;The application layer: the protocols you actually use&lt;/h2&gt;
+
+&lt;p&gt;This is where your code usually lives. We will start with HTTP and its relatives, then the
+real-time and event styles (WebSocket, Webhook), then GraphQL, then a tour of the other
+essential protocols and their ports.&lt;/p&gt;
+
+&lt;h3 id=&quot;http11-http2-http3&quot;&gt;HTTP/1.1, HTTP/2, HTTP/3&lt;/h3&gt;
+
+&lt;p&gt;HTTP is a request/response protocol: a client sends a request (method, URL, headers, optional
+body), the server returns a response (status code, headers, body).&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;HTTP/1.1&lt;/strong&gt;: text-based, one request at a time per connection. To load a page with 50
+resources, browsers open several parallel connections. Human-readable, simple, inefficient.
+Over TCP.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;HTTP/2&lt;/strong&gt;: binary framing, &lt;strong&gt;multiplexing&lt;/strong&gt; many requests over a single TCP connection,
+header compression, server push. A big win, but it still suffers TCP head-of-line blocking:
+one lost TCP packet stalls &lt;em&gt;all&lt;/em&gt; the multiplexed streams, because TCP must deliver in order.
+Over TCP.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;HTTP/3&lt;/strong&gt;: the same multiplexing, but over &lt;strong&gt;QUIC (UDP)&lt;/strong&gt;, so independent streams mean a lost
+packet stalls only its own stream. Over UDP.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The whole evolution of HTTP since 2015 is essentially a war against head-of-line blocking.
+HTTP/2 multiplexed requests but TCP still serialized packets. HTTP/3 moved to QUIC so one lost
+packet stops being everyone’s problem.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;rest-rpc-and-grpc&quot;&gt;REST, RPC, and gRPC&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;RPC (Remote Procedure Call)&lt;/strong&gt; is a &lt;em&gt;paradigm&lt;/em&gt;: make calling a function on another machine look
+like a local call. You write &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user = getUser(42)&lt;/code&gt; and the framework hides the serialization, the
+network trip, and the remote execution.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;REST&lt;/strong&gt; is the opposite philosophy: instead of calling functions, you manipulate &lt;em&gt;resources&lt;/em&gt;
+with HTTP verbs on URLs (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GET /users/42&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;POST /users&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DELETE /users/42&lt;/code&gt;). Resource-centric,
+usually JSON, trivially debuggable with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;curl&lt;/code&gt;. It is the default for public web APIs because
+every language and browser already speaks HTTP and JSON.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;gRPC&lt;/strong&gt; is Google’s high-performance RPC framework. The pieces that make it tick: you define
+your service in a &lt;strong&gt;Protocol Buffers&lt;/strong&gt; (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.proto&lt;/code&gt;) file, a compiler generates type-safe client
+and server code, messages serialize to a compact &lt;em&gt;binary&lt;/em&gt; format, and it runs over &lt;strong&gt;HTTP/2&lt;/strong&gt;
+so it gets multiplexing and bidirectional streaming for free.&lt;/p&gt;
+
+&lt;div class=&quot;language-protobuf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;service&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;UserService&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;rpc&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GetUser&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetUserRequest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;returns&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;rpc&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WatchUsers&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WatchRequest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;returns&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stream&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// server streaming&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;GetUserRequest&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int32&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int32&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;email&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Suppose&lt;/strong&gt; you are building microservices that call each other thousands of times per second.
+REST and JSON mean parsing text and loose contracts. gRPC gives you a binary wire format, a
+compile-time contract, and HTTP/2 streaming, which is why gRPC dominates &lt;em&gt;internal&lt;/em&gt;
+service-to-service traffic, while REST still rules &lt;em&gt;public&lt;/em&gt; APIs you can debug by eye.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;websocket-a-persistent-two-way-pipe&quot;&gt;WebSocket: a persistent two-way pipe&lt;/h3&gt;
+
+&lt;p&gt;Plain HTTP is request/response: the client always asks first. That is wrong for chat, live
+dashboards, multiplayer, and notifications, where the &lt;em&gt;server&lt;/em&gt; needs to push at any moment.
+&lt;strong&gt;WebSocket&lt;/strong&gt; solves it. The client starts with a normal HTTP request carrying an upgrade
+header, the server agrees with status &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;101 Switching Protocols&lt;/code&gt;, and from that point the same
+TCP connection becomes a &lt;strong&gt;full-duplex&lt;/strong&gt; channel where either side sends messages whenever it
+wants.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;sequenceDiagram
+  participant C as Client
+  participant S as Server
+  C-&amp;gt;&amp;gt;S: GET /chat HTTP/1.1 + Upgrade: websocket
+  S-&amp;gt;&amp;gt;C: HTTP/1.1 101 Switching Protocols
+  Note over C,S: Connection is now full-duplex WebSocket
+  C--&amp;gt;&amp;gt;S: frame (any time)
+  S--&amp;gt;&amp;gt;C: frame (any time)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Use WebSocket when you need low-latency, ongoing, two-way communication over a long-lived
+connection: a trading ticker, a collaborative editor, a game lobby.&lt;/p&gt;
+
+&lt;h3 id=&quot;webhook-do-not-call-us-we-will-call-you&quot;&gt;Webhook: “do not call us, we will call you”&lt;/h3&gt;
+
+&lt;p&gt;A &lt;strong&gt;webhook&lt;/strong&gt; is the inverse of polling. Instead of your app repeatedly asking an API “anything
+new yet?”, you register a URL with the provider, and &lt;em&gt;they&lt;/em&gt; send an HTTP &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;POST&lt;/code&gt; to your URL the
+moment an event happens. GitHub posts to your endpoint when someone pushes, Stripe posts when a
+payment succeeds.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Suppose&lt;/strong&gt; you want to react to payments. Polling Stripe every few seconds is wasteful and
+laggy. With a webhook, Stripe calls &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;POST https://yourapp.com/webhooks/stripe&lt;/code&gt; with the event
+the instant it occurs. Note the catch that ties back to earlier: your endpoint must be
+&lt;em&gt;publicly reachable&lt;/em&gt;, which is exactly why a server behind CGNAT or a home NAT cannot receive
+webhooks without a tunnel or a public host. Because anyone could POST to that URL, providers
+sign each request (an HMAC in a header) so you can verify it genuinely came from them.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;graphql-ask-for-exactly-what-you-want&quot;&gt;GraphQL: ask for exactly what you want&lt;/h3&gt;
+
+&lt;p&gt;REST gives you fixed endpoints that return fixed shapes, which leads to &lt;strong&gt;over-fetching&lt;/strong&gt;
+(getting fields you do not need) and &lt;strong&gt;under-fetching&lt;/strong&gt; (needing three calls to assemble one
+screen). &lt;strong&gt;GraphQL&lt;/strong&gt; flips this: a single endpoint, and the &lt;em&gt;client&lt;/em&gt; sends a query describing
+precisely the fields it wants. The server returns exactly that shape, no more.&lt;/p&gt;
+
+&lt;div class=&quot;language-graphql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;42&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;posts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;last&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;That one request returns the user’s name, email, and the titles of their last three posts, in
+one round trip, with nothing extra. GraphQL has &lt;strong&gt;queries&lt;/strong&gt; (read), &lt;strong&gt;mutations&lt;/strong&gt; (write), and
+&lt;strong&gt;subscriptions&lt;/strong&gt; (live updates, usually delivered over WebSocket). The trade-off: the
+flexibility moves complexity to the server, and caching is harder than with REST’s stable URLs.&lt;/p&gt;
+
+&lt;p&gt;Quick decision guide:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Want&lt;/th&gt;
+      &lt;th&gt;Reach for&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;A public API for arbitrary clients and browsers&lt;/td&gt;
+      &lt;td&gt;REST + JSON&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Fast, typed, internal service-to-service calls&lt;/td&gt;
+      &lt;td&gt;gRPC&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Server pushing to the client in real time&lt;/td&gt;
+      &lt;td&gt;WebSocket&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;React to an external event without polling&lt;/td&gt;
+      &lt;td&gt;Webhook&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Let clients select exactly the fields they need&lt;/td&gt;
+      &lt;td&gt;GraphQL&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;the-other-essential-protocols-and-their-ports&quot;&gt;The other essential protocols (and their ports)&lt;/h3&gt;
+
+&lt;p&gt;Networking is more than the web. These are the protocols you constantly run into, with the
+port and transport worth memorizing:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Protocol&lt;/th&gt;
+      &lt;th&gt;Port&lt;/th&gt;
+      &lt;th&gt;Transport&lt;/th&gt;
+      &lt;th&gt;What it does&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;SSH&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;22&lt;/td&gt;
+      &lt;td&gt;TCP&lt;/td&gt;
+      &lt;td&gt;encrypted remote shell, key-based auth, and tunneling. The Swiss-army knife of remote work: it also forwards ports, letting you reach a service on a remote private network through an encrypted channel.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;DNS&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;53&lt;/td&gt;
+      &lt;td&gt;UDP (TCP fallback)&lt;/td&gt;
+      &lt;td&gt;name resolution, covered above&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;DHCP&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;67/68&lt;/td&gt;
+      &lt;td&gt;UDP&lt;/td&gt;
+      &lt;td&gt;hands out IP addresses (the DORA exchange)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;NTP&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;123&lt;/td&gt;
+      &lt;td&gt;UDP&lt;/td&gt;
+      &lt;td&gt;clock synchronization. Underrated and critical: TLS certificate validation, log correlation, and Kerberos all break if clocks drift. NTP organizes time sources into &lt;em&gt;strata&lt;/em&gt;, stratum 0 being atomic clocks and GPS, each layer syncing from the one above.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;HTTP / HTTPS&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;80 / 443&lt;/td&gt;
+      &lt;td&gt;TCP&lt;/td&gt;
+      &lt;td&gt;the web&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;SMTP&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;25 / 587&lt;/td&gt;
+      &lt;td&gt;TCP&lt;/td&gt;
+      &lt;td&gt;sending email&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;IMAP / POP3&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;993 / 995&lt;/td&gt;
+      &lt;td&gt;TCP&lt;/td&gt;
+      &lt;td&gt;retrieving email (encrypted ports)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;SNMP&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;161&lt;/td&gt;
+      &lt;td&gt;UDP&lt;/td&gt;
+      &lt;td&gt;polling devices for monitoring metrics&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;BGP&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;179&lt;/td&gt;
+      &lt;td&gt;TCP&lt;/td&gt;
+      &lt;td&gt;the routing protocol &lt;em&gt;between&lt;/em&gt; ISPs that holds the global internet together&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;ICMP&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;none&lt;/td&gt;
+      &lt;td&gt;n/a&lt;/td&gt;
+      &lt;td&gt;control and diagnostics; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ping&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;traceroute&lt;/code&gt; ride on it&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;network-security&quot;&gt;Network security&lt;/h2&gt;
+
+&lt;p&gt;Every layer we have built up is also an attack surface. Here is the security view, working from
+the cryptography that protects a connection up through the attacks that target each layer.&lt;/p&gt;
+
+&lt;h3 id=&quot;tls-https-and-mtls&quot;&gt;TLS, HTTPS, and mTLS&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;TLS (Transport Layer Security&lt;/strong&gt;, successor to SSL) sits between TCP and the application and
+provides three things: &lt;strong&gt;encryption&lt;/strong&gt; (nobody on the path can read your data), &lt;strong&gt;integrity&lt;/strong&gt;
+(nobody can tamper with it undetected), and &lt;strong&gt;authentication&lt;/strong&gt; (you can verify who you are
+talking to, via certificates signed by a trusted &lt;strong&gt;Certificate Authority&lt;/strong&gt;).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;HTTPS&lt;/strong&gt; is simply HTTP carried inside a TLS tunnel. That is the whole definition:
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HTTPS = HTTP + TLS&lt;/code&gt;. Same HTTP requests you already know, wrapped so the coffee-shop Wi-Fi
+cannot read your password.&lt;/p&gt;
+
+&lt;p&gt;The handshake in plain terms:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;sequenceDiagram
+  participant C as Client
+  participant S as Server
+  C-&amp;gt;&amp;gt;S: ClientHello (ciphers I support)
+  S-&amp;gt;&amp;gt;C: ServerHello + certificate (signed by a trusted CA)
+  C-&amp;gt;&amp;gt;C: verify cert chains to a trusted CA
+  Note over C,S: both derive a shared session key
+  C-&amp;gt;&amp;gt;S: encrypted application data
+  S-&amp;gt;&amp;gt;C: encrypted application data
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The asymmetry to notice: in normal TLS, &lt;strong&gt;only the server proves its identity.&lt;/strong&gt; The client
+checks the server’s certificate (a bad cert is what triggers a browser warning), but the server
+does not know who the client is until a password or token arrives &lt;em&gt;inside&lt;/em&gt; the encrypted
+channel.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;mTLS (mutual TLS)&lt;/strong&gt; closes that gap: &lt;strong&gt;both sides present certificates.&lt;/strong&gt; The connection
+itself proves identity in both directions before any application data flows, no passwords
+needed. This is why service meshes (Istio, Linkerd) use mTLS everywhere, and it is the backbone
+of “zero trust” networking: authentication baked into the transport so application code does not
+have to think about it.&lt;/p&gt;
+
+&lt;h3 id=&quot;man-in-the-middle-and-the-lan-attacks&quot;&gt;Man-in-the-middle and the LAN attacks&lt;/h3&gt;
+
+&lt;p&gt;A &lt;strong&gt;man-in-the-middle (MITM)&lt;/strong&gt; attack puts the attacker silently between you and your
+destination, reading or altering traffic. The lower layers offer several ways in:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;ARP spoofing.&lt;/strong&gt; Recall that ARP trusts whoever answers “who has this IP?” An attacker on
+your LAN can answer falsely, claiming the gateway’s IP maps to &lt;em&gt;their&lt;/em&gt; MAC, so your traffic
+flows through them first. There is no built-in authentication in ARP, which is the root flaw.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Rogue access point / evil twin.&lt;/strong&gt; A fake Wi-Fi AP broadcasting a familiar name (“Airport
+Free WiFi”) gets victims to associate, and now the attacker is the network.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;DHCP spoofing.&lt;/strong&gt; A rogue DHCP server hands you a malicious gateway or DNS server, routing
+you through the attacker from the moment you join.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The defense against all of these is the same: assume the network is hostile and rely on
+end-to-end cryptography. Properly validated &lt;strong&gt;TLS defeats MITM&lt;/strong&gt;, because the attacker cannot
+present a valid certificate for the real domain. The warning page when a cert does not validate
+is TLS doing exactly its job.&lt;/p&gt;
+
+&lt;h3 id=&quot;attacks-on-dns&quot;&gt;Attacks on DNS&lt;/h3&gt;
+
+&lt;p&gt;DNS is a prime target because if you control name resolution, you control where traffic goes.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;DNS spoofing / cache poisoning.&lt;/strong&gt; An attacker tricks a resolver into caching a forged
+answer, so &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yourbank.com&lt;/code&gt; resolves to &lt;em&gt;their&lt;/em&gt; server. The classic Kaminsky attack exploited
+predictable query fields to race a forged reply ahead of the real one. The defense is
+&lt;strong&gt;DNSSEC&lt;/strong&gt;, which signs records so a resolver can detect forgery.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;DNS hijacking.&lt;/strong&gt; Changing the resolver a victim uses (via malware or a compromised router)
+so all lookups go through an attacker-controlled server.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Eavesdropping.&lt;/strong&gt; Plain DNS is unencrypted, so anyone on the path sees every site you look
+up. &lt;strong&gt;DoH&lt;/strong&gt; and &lt;strong&gt;DoT&lt;/strong&gt; encrypt the queries.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;downgrade-attacks-and-hsts&quot;&gt;Downgrade attacks and HSTS&lt;/h3&gt;
+
+&lt;p&gt;Even with HTTPS available, an attacker who controls the path can try &lt;strong&gt;TLS stripping&lt;/strong&gt;:
+intercept the initial plain-HTTP request before it upgrades and keep the victim on unencrypted
+HTTP while the attacker talks HTTPS to the real server. The defense is &lt;strong&gt;HSTS (HTTP Strict
+Transport Security)&lt;/strong&gt;, a header (and a preloaded browser list) that tells the browser “never use
+plain HTTP for this domain again,” removing the window the attacker needs.&lt;/p&gt;
+
+&lt;h3 id=&quot;reflection-and-amplification-ddos&quot;&gt;Reflection and amplification (DDoS)&lt;/h3&gt;
+
+&lt;p&gt;Remember that DNS and NTP run over connectionless UDP, where the source address is trivially
+forged. An attacker sends a small query with the &lt;em&gt;victim’s&lt;/em&gt; address as the source, and the
+server dutifully sends a much larger reply to the victim. Multiply across thousands of open
+servers and you have an &lt;strong&gt;amplification DDoS&lt;/strong&gt; that buries the target in traffic it never asked
+for. This is a direct, practical consequence of UDP having no handshake to prove who is asking,
+and it is why open DNS/NTP resolvers are considered a liability.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The throughline of network security: &lt;strong&gt;never trust the network, trust cryptography.&lt;/strong&gt; Every
+lower layer (ARP, DHCP, DNS, plain UDP) was designed in a friendlier era and authenticates
+nothing. TLS, mTLS, DNSSEC, and HSTS are the retrofitted guarantees that let us build safely
+on top of an inherently untrustworthy substrate.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;network-in-the-cloud-aws-vpc-abstractions&quot;&gt;Network in the cloud: AWS VPC abstractions&lt;/h2&gt;
+
+&lt;p&gt;Everything so far is general networking. Now watch a cloud provider rebuild all of it in
+software. AWS is the clearest example: a VPC is not new networking, it is the exact same
+concepts (CIDRs, routing tables, NAT, DHCP, stateful and stateless firewalls, VPN tunnels)
+exposed as API objects you create instead of hardware you rack. Once you see the mapping, the
+whole VPC console stops being intimidating. Each item below is named, then tied back to the
+fundamental it implements.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;VPC (Virtual Private Cloud).&lt;/strong&gt; Your own isolated layer-3 network inside AWS. You give it a
+private CIDR block, almost always from RFC 1918 space (for example &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;10.0.0.0/16&lt;/code&gt;). Everything
+else plugs into this. Think of it as “a building’s private network,” logically separated from
+every other tenant.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Subnets.&lt;/strong&gt; Subdivisions of the VPC’s CIDR (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;10.0.1.0/24&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;10.0.2.0/24&lt;/code&gt;, …), each pinned to
+a single Availability Zone. The famous “public vs private subnet” distinction is &lt;em&gt;not&lt;/em&gt; a flag
+on the subnet, it is purely about routing: a subnet is “public” only because its route table
+sends internet-bound traffic to an Internet Gateway. Same subnet object, different route.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Route Tables.&lt;/strong&gt; The layer-3 routing decisions from the &lt;a href=&quot;#addresses-mac-ip-arp-and-dhcp&quot;&gt;addressing section&lt;/a&gt;,
+as data. Each is a list of “destination CIDR -&amp;gt; target,” attached to one or more subnets. A
+route like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0.0.0.0/0 -&amp;gt; igw-...&lt;/code&gt; is what literally makes a subnet public. Local traffic within
+the VPC CIDR always routes internally and cannot be removed.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Internet Gateway (IGW).&lt;/strong&gt; The VPC’s door to the public internet, horizontally scaled and
+managed for you. It performs the IPv4 translation between an instance’s public address and its
+private one, and allows both inbound and outbound for resources that have a public IP. No IGW
+on the route table means no internet, full stop.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Egress-only Internet Gateway.&lt;/strong&gt; The IPv6 counterpart, and a neat callback to the NAT
+discussion. IPv6 has no NAT, so to get the “can reach out, cannot be reached” behavior that
+private IPv4 hosts enjoy by accident, AWS gives you a separate gateway that allows &lt;em&gt;outbound&lt;/em&gt;
+IPv6 only, statefully blocking unsolicited inbound. It exists precisely because IPv6 abundance
+removed the NAT that used to provide that shielding for free.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;DHCP option sets.&lt;/strong&gt; A direct cloud version of the &lt;a href=&quot;#addresses-mac-ip-arp-and-dhcp&quot;&gt;DHCP&lt;/a&gt;
+section. This object defines what the VPC’s built-in DHCP hands to instances at boot: the DNS
+servers (domain name servers), the search domain, and the NTP servers. Change the option set
+and every instance picks up new resolvers or time sources through normal DORA.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Elastic IPs (EIP).&lt;/strong&gt; A static, public IPv4 address that &lt;em&gt;you&lt;/em&gt; own and can remap between
+instances or NAT Gateways. Because IPv4 is exhausted (the same scarcity that gave us CGNAT),
+AWS now charges for allocated EIPs, idle or not. They matter when you need a fixed public
+address that survives instance replacement.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;NAT Gateways.&lt;/strong&gt; This is your home router’s NAT, &lt;a href=&quot;#nat-cgnat-and-firewalls-the-providers-world&quot;&gt;covered earlier&lt;/a&gt;,
+rebuilt as a managed service. Instances in a &lt;em&gt;private&lt;/em&gt; subnet have no public IP, so they cannot
+reach the internet directly. A NAT Gateway (which sits in a public subnet and owns an Elastic
+IP) lets them make &lt;em&gt;outbound&lt;/em&gt; connections (package updates, API calls) while blocking all
+unsolicited inbound. Exactly source-port rewriting at cloud scale.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;VPC Endpoints.&lt;/strong&gt; Private on-ramps to AWS services so traffic never touches the public
+internet. Two flavors: a &lt;strong&gt;Gateway Endpoint&lt;/strong&gt; (for S3 and DynamoDB) adds a route in your route
+table; an &lt;strong&gt;Interface Endpoint&lt;/strong&gt; drops a real network interface with a private IP into your
+subnet (powered by PrivateLink), so calling the service looks like calling something on your
+own LAN. Lower latency, no IGW required, and the traffic stays inside AWS.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Instance Connect Endpoints.&lt;/strong&gt; A callback to the &lt;a href=&quot;#the-application-layer-the-protocols-you-actually-use&quot;&gt;SSH&lt;/a&gt;
+discussion. This lets you SSH (or RDP) to an instance sitting in a private subnet &lt;em&gt;without&lt;/em&gt; a
+public IP and &lt;em&gt;without&lt;/em&gt; running a bastion host. AWS tunnels the SSH session in through the
+endpoint, so you keep the instance fully private while still getting a shell.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Endpoint Services.&lt;/strong&gt; The provider side of PrivateLink. If a VPC Endpoint is how you &lt;em&gt;consume&lt;/em&gt;
+a service privately, an Endpoint Service is how you &lt;em&gt;publish&lt;/em&gt; your own service (fronted by a
+load balancer) so that other VPCs, even in other accounts, can reach it over private interface
+endpoints instead of the internet.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;VPC Peering Connections.&lt;/strong&gt; A private one-to-one link between two VPCs, so resources route to
+each other using private IPs as if on one network. Two gotchas worth remembering: peering is
+&lt;strong&gt;non-transitive&lt;/strong&gt; (if A peers with B and B with C, A still cannot reach C), and the two VPC
+CIDRs must not overlap, because routing cannot disambiguate duplicate address ranges.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Network ACLs (NACLs).&lt;/strong&gt; The &lt;strong&gt;stateless&lt;/strong&gt; firewall from the
+&lt;a href=&quot;#nat-cgnat-and-firewalls-the-providers-world&quot;&gt;firewall section&lt;/a&gt;, applied at the &lt;em&gt;subnet&lt;/em&gt;
+boundary. Because it is stateless, return traffic is not automatically allowed: if you permit an
+inbound request you must &lt;em&gt;also&lt;/em&gt; explicitly permit the outbound reply (typically on the ephemeral
+port range). Rules are numbered and evaluated in order, and unlike security groups, NACLs
+support explicit &lt;strong&gt;deny&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Security Groups.&lt;/strong&gt; The &lt;strong&gt;stateful&lt;/strong&gt; firewall, applied at the &lt;em&gt;instance&lt;/em&gt; (network interface)
+level. You write allow rules only, and because it is stateful, a reply to an allowed connection
+is automatically permitted without a matching outbound rule. This is the everyday control: “this
+group accepts 443 from anywhere and 22 only from the office.” NACL is the coarse subnet guard,
+the security group is the precise per-instance guard, and traffic must satisfy both.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Customer Gateways, Virtual Private Gateways, and Site-to-Site VPN.&lt;/strong&gt; These three build the
+encrypted tunnel between your on-premises network and your VPC, a direct application of the
+&lt;a href=&quot;#frames-packets-and-mtu&quot;&gt;VPN and MTU&lt;/a&gt; material:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A &lt;strong&gt;Customer Gateway&lt;/strong&gt; is the AWS object that &lt;em&gt;describes your side&lt;/em&gt;: the public IP and routing
+details of your physical on-prem router or firewall.&lt;/li&gt;
+  &lt;li&gt;A &lt;strong&gt;Virtual Private Gateway (VGW)&lt;/strong&gt; is the &lt;em&gt;AWS side&lt;/em&gt;, attached to your VPC as the tunnel
+endpoint.&lt;/li&gt;
+  &lt;li&gt;A &lt;strong&gt;Site-to-Site VPN Connection&lt;/strong&gt; is the actual IPsec tunnel (a redundant pair, in fact)
+between those two. Remember the MTU lesson here: the IPsec encapsulation shrinks the effective
+MTU, so MSS clamping over a VPN is a common and necessary fix.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Running Instances.&lt;/strong&gt; Finally, the EC2 virtual machines themselves. Each gets an &lt;strong&gt;elastic
+network interface (ENI)&lt;/strong&gt; with a private IP from its subnet, optionally a public IP or Elastic
+IP, and a set of security groups. From the instance’s point of view it is just a Linux box with
+a NIC; every command in the next section works exactly the same inside it.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Suppose&lt;/strong&gt; you launch a web app: a public subnet holds the load balancer and a NAT Gateway,
+a private subnet holds your instances. Route tables send the public subnet to an Internet
+Gateway and the private subnet’s outbound through the NAT Gateway. A security group lets the
+instances accept 443 only from the load balancer, a NACL provides a coarse subnet backstop,
+the instances reach S3 through a Gateway Endpoint without ever touching the internet, and you
+debug them over an Instance Connect Endpoint. Every one of those pieces is a concept from the
+earlier sections, just rendered as an API call. That is the whole trick of cloud networking:
+it is not new physics, it is the same networking you already understand, defined in software.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;mobile-data-how-4g-actually-works-and-the-brazil-picture&quot;&gt;Mobile data: how 4G actually works (and the Brazil picture)&lt;/h2&gt;
+
+&lt;p&gt;When you open an app on the train, you are using the most elaborate access network humans have
+built. But here is the reassuring part: once your traffic leaves the carrier’s core, it is
+plain IP, TCP/UDP, DNS, TLS, and HTTP, exactly the stack in the rest of this article. The
+cellular network is essentially a very sophisticated way of getting you an IP address over
+radio and tunneling your packets to the internet. Let us walk it from the antenna inward.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-radio-cells-bands-and-modulation&quot;&gt;The radio: cells, bands, and modulation&lt;/h3&gt;
+
+&lt;p&gt;A “cellular” network divides territory into &lt;strong&gt;cells&lt;/strong&gt;, each served by a base station (the
+tower). Adjacent cells use different frequencies so they do not interfere, and the same
+frequencies are &lt;em&gt;reused&lt;/em&gt; far enough apart. As you move, you &lt;strong&gt;hand over&lt;/strong&gt; from one cell to the
+next without dropping the connection.&lt;/p&gt;
+
+&lt;p&gt;The air interface is the &lt;a href=&quot;#signals-the-analog-truth-under-every-digital-network&quot;&gt;signals and modulation&lt;/a&gt;
+section made concrete. LTE (the technology behind 4G) uses &lt;strong&gt;OFDMA&lt;/strong&gt; on the downlink and
+&lt;strong&gt;SC-FDMA&lt;/strong&gt; on the uplink: the channel is split into many narrow subcarriers, and bits ride on
+them using &lt;strong&gt;QAM&lt;/strong&gt; (up to 256-QAM in LTE-Advanced when the signal is clean, dropping to sturdier
+modulation as you move away from the tower). It leans on the same modern radio tricks as Wi-Fi:
+&lt;strong&gt;MIMO&lt;/strong&gt; (multiple antennas, multiple parallel streams) and &lt;strong&gt;carrier aggregation&lt;/strong&gt; (bonding
+several frequency bands together for more total bandwidth).&lt;/p&gt;
+
+&lt;p&gt;Two ways to separate the “you talk” and “tower talks” directions: &lt;strong&gt;FDD&lt;/strong&gt; uses two separate
+frequencies at once, &lt;strong&gt;TDD&lt;/strong&gt; uses one frequency split into time slots. Brazil uses both,
+depending on the band.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-brazil-picture-bands-and-operators&quot;&gt;The Brazil picture: bands and operators&lt;/h3&gt;
+
+&lt;p&gt;4G LTE has been live in Brazil since 2013, regulated and auctioned by &lt;strong&gt;ANATEL&lt;/strong&gt;. The mobile
+market consolidated to three carriers (&lt;strong&gt;Vivo, Claro, TIM&lt;/strong&gt;) after Oi’s mobile operation was
+split among them. The bands in use map cleanly onto the frequency trade-off from the wireless
+section, low frequency for reach, high frequency for capacity:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Band&lt;/th&gt;
+      &lt;th&gt;Frequency&lt;/th&gt;
+      &lt;th&gt;Role in Brazil&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Band 28&lt;/td&gt;
+      &lt;td&gt;700 MHz&lt;/td&gt;
+      &lt;td&gt;the coverage band: long range, excellent indoor and rural reach. Freed up by the analog TV switch-off (the “digital dividend”)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Band 3&lt;/td&gt;
+      &lt;td&gt;1800 MHz&lt;/td&gt;
+      &lt;td&gt;a balance of coverage and capacity, widely deployed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Band 7&lt;/td&gt;
+      &lt;td&gt;2600 MHz (FDD)&lt;/td&gt;
+      &lt;td&gt;the capacity band in dense cities&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Band 38&lt;/td&gt;
+      &lt;td&gt;2600 MHz (TDD)&lt;/td&gt;
+      &lt;td&gt;additional capacity in the same 2600 range&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Suppose&lt;/strong&gt; you are downtown in Sao Paulo versus in the interior. In the city your phone leans
+on 2600 MHz: tons of capacity, short range, lots of towers. Out in the interior it falls back
+to 700 MHz: one tower covers a large area and the signal penetrates buildings, at the cost of
+sharing less bandwidth among more people. Same phone, same physics from earlier, just a
+different point on the speed-versus-distance curve.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;the-network-behind-the-tower-epc&quot;&gt;The network behind the tower: EPC&lt;/h3&gt;
+
+&lt;p&gt;Your phone is the &lt;strong&gt;UE&lt;/strong&gt; (User Equipment): the device plus its &lt;strong&gt;SIM card&lt;/strong&gt;. The SIM is not just
+an ID, it holds your &lt;strong&gt;IMSI&lt;/strong&gt; (subscriber identity) and a secret key that never leaves the card,
+used to cryptographically authenticate you to the network (a challenge-response scheme called
+AKA). This is why cloning a line is hard: the key is locked in the SIM.&lt;/p&gt;
+
+&lt;p&gt;The tower’s radio is the &lt;strong&gt;eNodeB&lt;/strong&gt;. Behind it sits the all-IP core that 4G introduced, the
+&lt;strong&gt;EPC (Evolved Packet Core)&lt;/strong&gt;, a handful of cooperating nodes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;MME (Mobility Management Entity)&lt;/strong&gt;: the control-plane brain. It handles authentication,
+tracks which cell you are in, manages handovers, and pages your phone when data arrives.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;HSS (Home Subscriber Server)&lt;/strong&gt;: the subscriber database holding your profile and the keys
+the MME checks against.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;SGW (Serving Gateway)&lt;/strong&gt;: a user-plane anchor that forwards your data and holds it steady as
+you move between towers.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;PGW (PDN Gateway)&lt;/strong&gt;: the exit door to the internet. It &lt;em&gt;assigns your phone its IP address&lt;/em&gt;,
+enforces policy and billing, and is where your traffic finally becomes ordinary internet
+traffic.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;flowchart LR
+  UE[&quot;UE&amp;lt;br/&amp;gt;phone + SIM&quot;]
+  EN[&quot;eNodeB&amp;lt;br/&amp;gt;tower radio&quot;]
+  SGW[&quot;SGW&amp;lt;br/&amp;gt;user-plane anchor&quot;]
+  PGW[&quot;PGW&amp;lt;br/&amp;gt;exit, assigns your IP&quot;]
+  NET[&quot;Internet&quot;]
+  MME[&quot;MME&amp;lt;br/&amp;gt;control plane&quot;]
+  HSS[&quot;HSS&amp;lt;br/&amp;gt;subscriber DB + keys&quot;]
+  UE --&amp;gt;|radio| EN
+  EN --&amp;gt;|&quot;S1-U: GTP-U tunnel (user data)&quot;| SGW
+  SGW --&amp;gt; PGW --&amp;gt; NET
+  EN -.-&amp;gt;|&quot;S1-AP (control)&quot;| MME
+  MME &amp;lt;-.-&amp;gt;|keys| HSS
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;attaching-tunneling-and-the-cgnat-punchline&quot;&gt;Attaching, tunneling, and the CGNAT punchline&lt;/h3&gt;
+
+&lt;p&gt;When your phone powers on it &lt;strong&gt;attaches&lt;/strong&gt;: it sets up a radio link to the eNodeB, the MME
+authenticates it against the HSS using the SIM key, and an &lt;strong&gt;EPS bearer&lt;/strong&gt; is established. That
+bearer is a QoS pipe; the &lt;em&gt;default&lt;/em&gt; bearer carries your normal data, and &lt;em&gt;dedicated&lt;/em&gt; bearers
+with guaranteed quality can be set up for things like &lt;strong&gt;VoLTE&lt;/strong&gt; (voice carried as IP packets
+over the same network, replacing the old circuit-switched call). At the end of attach, the PGW
+hands your phone an &lt;strong&gt;IP address&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;The clever part is how your packets travel inside the carrier. Between the eNodeB and the
+gateways, your data is wrapped in &lt;strong&gt;GTP-U&lt;/strong&gt; (GPRS Tunneling Protocol), a tunnel riding over the
+operator’s own IP backbone. This is the cellular answer to mobility: as you move from tower to
+tower at highway speed, the &lt;em&gt;tunnel endpoint&lt;/em&gt; moves but your assigned IP address stays the same,
+so your TCP connections survive. It is the same idea as QUIC’s connection migration, solved one
+layer lower.&lt;/p&gt;
+
+&lt;p&gt;Here is the punchline that ties straight back to &lt;a href=&quot;#nat-cgnat-and-firewalls-the-providers-world&quot;&gt;CGNAT&lt;/a&gt;:
+the IP the PGW gives you is almost always a &lt;strong&gt;private address behind carrier-grade NAT&lt;/strong&gt;.
+Mobile networks were CGNAT-heavy long before home broadband, simply because there were never
+enough IPv4 addresses for hundreds of millions of phones. This is exactly why you cannot host a
+server reachable from the internet on a 4G connection, why peer-to-peer apps struggle on mobile,
+and why carriers have pushed hard toward IPv6, where every phone can finally have a real address.&lt;/p&gt;
+
+&lt;h3 id=&quot;where-it-all-rejoins-the-article&quot;&gt;Where it all rejoins the article&lt;/h3&gt;
+
+&lt;p&gt;The generations are just refinements of this pattern: 2G (GSM) gave voice and SMS with slow
+GPRS/EDGE data, 3G (UMTS/HSPA) made data usable, 4G (LTE) made the core all-IP, and 5G adds a
+new radio and, in its standalone form, a new cloud-native core. But the moment your packet exits
+the PGW, none of that matters anymore. It is a normal IP packet: it gets routed, it resolves
+names through &lt;strong&gt;DNS&lt;/strong&gt;, it rides &lt;strong&gt;TCP&lt;/strong&gt; or &lt;strong&gt;QUIC&lt;/strong&gt;, it is wrapped in &lt;strong&gt;TLS&lt;/strong&gt;, and it speaks
+&lt;strong&gt;HTTP&lt;/strong&gt; to a server that has no idea whether you arrived over fiber, Wi-Fi, or a 700 MHz tower
+in the countryside. The cellular network is a magnificent on-ramp, and everything past the
+on-ramp is the internet you already understand.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-toolbox-modern-linux-networking-commands&quot;&gt;The toolbox: modern Linux networking commands&lt;/h2&gt;
+
+&lt;p&gt;When something breaks, you debug it layer by layer with these. The old tools (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ifconfig&lt;/code&gt;,
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;route&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;netstat&lt;/code&gt;) still appear in tutorials, but the modern &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;iproute2&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ss&lt;/code&gt; replacements
+are what you should reach for.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Inspect and configure interfaces and routes:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ip addr                    &lt;span class=&quot;c&quot;&gt;# show interfaces and their IPs (replaces ifconfig)&lt;/span&gt;
+ip route                   &lt;span class=&quot;c&quot;&gt;# show the routing table (replaces route)&lt;/span&gt;
+ip &lt;span class=&quot;nb&quot;&gt;link set &lt;/span&gt;eth0 up        &lt;span class=&quot;c&quot;&gt;# bring an interface up&lt;/span&gt;
+ip neigh                   &lt;span class=&quot;c&quot;&gt;# the ARP/neighbor table (who is on my link)&lt;/span&gt;
+nmcli device status        &lt;span class=&quot;c&quot;&gt;# NetworkManager&apos;s high-level view&lt;/span&gt;
+ethtool eth0               &lt;span class=&quot;c&quot;&gt;# link speed, duplex, driver-level NIC settings&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;See what is listening and connected:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ss &lt;span class=&quot;nt&quot;&gt;-tulpn&lt;/span&gt;                  &lt;span class=&quot;c&quot;&gt;# all listening TCP/UDP sockets with the owning process&lt;/span&gt;
+ss &lt;span class=&quot;nt&quot;&gt;-tan&lt;/span&gt; state established  &lt;span class=&quot;c&quot;&gt;# every established TCP connection&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ss&lt;/code&gt; (socket statistics) replaces &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;netstat&lt;/code&gt; and is dramatically faster on busy hosts.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Reachability and path:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ping 1.1.1.1               &lt;span class=&quot;c&quot;&gt;# is the host reachable, and what is the RTT (ICMP)&lt;/span&gt;
+traceroute example.com     &lt;span class=&quot;c&quot;&gt;# the hops along the path&lt;/span&gt;
+mtr example.com            &lt;span class=&quot;c&quot;&gt;# ping + traceroute combined, live and continuous&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mtr&lt;/code&gt; is the one to remember: it pings every hop continuously, so you can &lt;em&gt;see&lt;/em&gt; exactly where
+latency or loss is introduced along the path.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Make requests and move data:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; https://example.com    &lt;span class=&quot;c&quot;&gt;# full request/response with headers and TLS info&lt;/span&gt;
+curl &lt;span class=&quot;nt&quot;&gt;-I&lt;/span&gt; https://example.com    &lt;span class=&quot;c&quot;&gt;# headers only (great for checking redirects, HSTS)&lt;/span&gt;
+nc &lt;span class=&quot;nt&quot;&gt;-vz&lt;/span&gt; example.com 443         &lt;span class=&quot;c&quot;&gt;# is a TCP port open (netcat)&lt;/span&gt;
+iperf3 &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; host                 &lt;span class=&quot;c&quot;&gt;# measure real throughput between two machines&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;DNS specifically:&lt;/strong&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dig&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;host&lt;/code&gt;, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;resolvectl query&lt;/code&gt; as shown in the DNS section.&lt;/p&gt;
+
+&lt;h3 id=&quot;tcpdump-capture-packets-anywhere&quot;&gt;tcpdump: capture packets anywhere&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tcpdump&lt;/code&gt; is the universal packet capture tool, on every server, no GUI required. It uses &lt;strong&gt;BPF
+filters&lt;/strong&gt; to grab exactly the traffic you want and can write a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.pcap&lt;/code&gt; file to open later in
+Wireshark.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 port 443                 &lt;span class=&quot;c&quot;&gt;# all traffic on the HTTPS port&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; any host 93.184.216.34        &lt;span class=&quot;c&quot;&gt;# everything to/from one host, any interface&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 &lt;span class=&quot;nt&quot;&gt;-nn&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-A&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;tcp port 80&apos;&lt;/span&gt;     &lt;span class=&quot;c&quot;&gt;# show HTTP payloads, no name resolution&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 &lt;span class=&quot;nt&quot;&gt;-w&lt;/span&gt; capture.pcap          &lt;span class=&quot;c&quot;&gt;# write raw packets to a file for Wireshark&lt;/span&gt;
+tcpdump &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; eth0 &lt;span class=&quot;s1&quot;&gt;&apos;tcp[tcpflags] &amp;amp; tcp-syn != 0&apos;&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;# only SYN packets (new connections)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Suppose&lt;/strong&gt; a service “cannot reach” a database. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tcpdump -i any port 5432&lt;/code&gt; on the client
+instantly tells you the truth: are SYN packets even leaving? Do they get a SYN-ACK back, a
+reset (port closed), or silence (firewall dropping)? Each answer points at a different layer.
+Packet capture turns “it does not work” into a specific, falsifiable observation.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;wireshark-read-what-you-captured&quot;&gt;Wireshark: read what you captured&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Wireshark&lt;/strong&gt; is the graphical counterpart. It opens the same &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.pcap&lt;/code&gt; files and brings deep
+&lt;strong&gt;protocol dissectors&lt;/strong&gt;: it parses raw bytes into labeled TCP, TLS, HTTP, and DNS fields,
+follows an entire TCP stream so you can read a conversation in order, color-codes problems
+(retransmissions, resets), and lets you filter with expressions like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http.response.code == 500&lt;/code&gt;
+or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tcp.analysis.retransmission&lt;/code&gt;. Its CLI sibling &lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tshark&lt;/code&gt;&lt;/strong&gt; does the same on a headless
+server. The common workflow: capture on a remote box with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tcpdump -w&lt;/code&gt;, copy the file down,
+analyze it visually in Wireshark.&lt;/p&gt;
+
+&lt;h2 id=&quot;putting-it-all-together-one-url-from-the-browser&quot;&gt;Putting it all together: one URL from the browser&lt;/h2&gt;
+
+&lt;p&gt;Now collect everything by tracing what happens the moment you type &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://example.com&lt;/code&gt; into a
+browser and press enter. Watch the layers light up in order.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Get on the network (L1 to L3).&lt;/strong&gt; Your NIC’s driver has the link up, and earlier your device
+ran &lt;strong&gt;DHCP (DORA)&lt;/strong&gt; to receive an IP, subnet mask, default gateway, and DNS servers. You now
+have an address.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Resolve the name (DNS, L7 over UDP).&lt;/strong&gt; The browser needs an IP for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;example.com&lt;/code&gt;. Your
+resolver walks root, TLD, and authoritative servers (or returns a cached answer) and replies
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;93.184.216.34&lt;/code&gt;. Names became addresses.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Decide where to send it (L3 + L2).&lt;/strong&gt; The destination is not on your local network, so your
+OS sends the packet to the &lt;strong&gt;default gateway&lt;/strong&gt;. To put it on the wire it needs the gateway’s
+MAC, which &lt;strong&gt;ARP&lt;/strong&gt; resolves.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Leave the building (NAT, then CGNAT).&lt;/strong&gt; Your home router rewrites your private source
+address to its own, and on most consumer lines the ISP’s &lt;strong&gt;CGNAT&lt;/strong&gt; rewrites it again behind a
+shared public address. The mappings are stored so replies find their way back.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Open the connection (TCP handshake, L4).&lt;/strong&gt; SYN, SYN-ACK, ACK with the server, sized to fit
+the path &lt;strong&gt;MTU&lt;/strong&gt;. (On HTTP/3 this and the next step collapse into a single QUIC handshake over
+UDP.)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Secure it (TLS handshake, L6).&lt;/strong&gt; The server presents its certificate, the browser verifies
+it chains to a trusted CA (and that &lt;strong&gt;HSTS&lt;/strong&gt; is honored), and both derive a session key. The
+tunnel is now encrypted, and a MITM cannot read or forge it.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Make the request (HTTP, L7).&lt;/strong&gt; &lt;em&gt;Inside&lt;/em&gt; that encrypted tunnel, finally: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GET / HTTP/2&lt;/code&gt;. The
+server replies &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;200 OK&lt;/code&gt; with the HTML. If the page opens a live feed, it may now upgrade to a
+&lt;strong&gt;WebSocket&lt;/strong&gt;; if it is a modern API, the data may come from a &lt;strong&gt;GraphQL&lt;/strong&gt; query or a &lt;strong&gt;gRPC&lt;/strong&gt;
+call behind the scenes.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Physical reality the whole time (L1).&lt;/strong&gt; Every byte above was light in a fiber under the
+ocean, voltage on the copper to your router, and modulated radio waves between your laptop and
+the access point. Encapsulated on the way out, decapsulated on the way in, and you never had
+to think about a single volt.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;That is the entire machine. Every acronym in this article is just one of those steps, abstracted
+so the step above it can pretend the complexity below does not exist. Once you can trace a single
+byte from the browser down through the dolls, out through your provider’s NAT, across the ocean,
+and back up the other side, networking stops being a pile of trivia and becomes one coherent
+system.&lt;/p&gt;
+
+&lt;h2 id=&quot;going-deeper-certifications-and-a-study-path&quot;&gt;Going deeper: certifications and a study path&lt;/h2&gt;
+
+&lt;p&gt;This article is a map, not the territory. If you want to go from “I understand the concepts” to
+“I can design and operate real networks,” the industry has a well-worn ladder of certifications,
+and even if you never sit an exam, their published syllabi are excellent free study outlines.
+Here is the landscape and where to focus next.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-certification-ladder&quot;&gt;The certification ladder&lt;/h3&gt;
+
+&lt;p&gt;Networking certs come in roughly four tiers. The Cisco track is the most recognized, but
+vendor-neutral and cloud options matter just as much today.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Tier&lt;/th&gt;
+      &lt;th&gt;Cisco track&lt;/th&gt;
+      &lt;th&gt;Vendor-neutral / cloud&lt;/th&gt;
+      &lt;th&gt;Focus&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Entry&lt;/td&gt;
+      &lt;td&gt;CCST Networking&lt;/td&gt;
+      &lt;td&gt;CompTIA Network+&lt;/td&gt;
+      &lt;td&gt;the fundamentals in this article&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Associate&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;CCNA&lt;/strong&gt; (200-301)&lt;/td&gt;
+      &lt;td&gt;Juniper JNCIA-Junos&lt;/td&gt;
+      &lt;td&gt;configure and operate a real network&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Professional&lt;/td&gt;
+      &lt;td&gt;CCNP Enterprise / Security&lt;/td&gt;
+      &lt;td&gt;AWS Advanced Networking Specialty, Azure AZ-700&lt;/td&gt;
+      &lt;td&gt;design, scale, and specialize&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Expert&lt;/td&gt;
+      &lt;td&gt;CCIE&lt;/td&gt;
+      &lt;td&gt;Juniper JNCIE&lt;/td&gt;
+      &lt;td&gt;architect and troubleshoot at the deepest level&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Vendor-neutral picks like &lt;strong&gt;CompTIA Network+&lt;/strong&gt; and &lt;strong&gt;Security+&lt;/strong&gt; teach concepts without tying
+you to one vendor’s command syntax, which pairs well with everything here. For wireless
+specifically there is the &lt;strong&gt;CWNP&lt;/strong&gt; track (CWNA and up), and for the cloud side the &lt;strong&gt;AWS
+Advanced Networking&lt;/strong&gt; and &lt;strong&gt;Azure Network Engineer (AZ-700)&lt;/strong&gt; specialties map directly onto the
+&lt;a href=&quot;#network-in-the-cloud-aws-vpc-abstractions&quot;&gt;VPC section&lt;/a&gt; of this article.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-ccna-curriculum-cisco-200-301&quot;&gt;The CCNA curriculum (Cisco 200-301)&lt;/h3&gt;
+
+&lt;p&gt;The CCNA is the single best structured target for solidifying everything above, because its
+exam blueprint &lt;em&gt;is&lt;/em&gt; a complete networking syllabus. The six domains, with their approximate exam
+weights:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;#&lt;/th&gt;
+      &lt;th&gt;Domain&lt;/th&gt;
+      &lt;th&gt;Weight&lt;/th&gt;
+      &lt;th&gt;What it covers&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;Network Fundamentals&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;20%&lt;/td&gt;
+      &lt;td&gt;the OSI/TCP-IP models, cabling, IPv4 and IPv6 addressing and subnetting, switches, routers, interfaces&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;Network Access&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;20%&lt;/td&gt;
+      &lt;td&gt;VLANs, trunking (802.1Q), EtherChannel, spanning tree (STP), and wireless (WLAN) fundamentals&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;IP Connectivity&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;25%&lt;/td&gt;
+      &lt;td&gt;routing concepts, static routing, the OSPF dynamic routing protocol, and how routers choose paths&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;IP Services&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;10%&lt;/td&gt;
+      &lt;td&gt;NAT, DHCP, DNS, NTP, QoS, SNMP, and syslog (almost every applied protocol in this article)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;Security Fundamentals&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;15%&lt;/td&gt;
+      &lt;td&gt;access control lists, port security, AAA, VPNs, and core threat concepts&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;6&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;Automation and Programmability&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;10%&lt;/td&gt;
+      &lt;td&gt;SDN concepts, controller-based networking, REST APIs, JSON, and config tools like Ansible&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Notice how much of domains 1 and 4 you already hold after reading this far. The CCNA’s real new
+material is the hands-on configuration: subnetting by hand, building VLANs, and bringing up OSPF.&lt;/p&gt;
+
+&lt;h3 id=&quot;advanced-topics-worth-studying-next&quot;&gt;Advanced topics worth studying next&lt;/h3&gt;
+
+&lt;p&gt;Beyond the associate level, these are the subjects that separate someone who &lt;em&gt;uses&lt;/em&gt; networks
+from someone who &lt;em&gt;engineers&lt;/em&gt; them. Pick by where your work is heading:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Routing in depth:&lt;/strong&gt; OSPF and IS-IS (link-state), EIGRP, and above all &lt;strong&gt;BGP&lt;/strong&gt;, the protocol
+that glues the internet together and the one you must know for any large network or cloud
+interconnect.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Switching and data-center fabrics:&lt;/strong&gt; spanning tree internals, &lt;strong&gt;VXLAN&lt;/strong&gt; and &lt;strong&gt;EVPN&lt;/strong&gt;
+(the overlays modern data centers run on), and leaf-spine fabric design.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Service-provider and WAN:&lt;/strong&gt; &lt;strong&gt;MPLS&lt;/strong&gt;, segment routing, and &lt;strong&gt;SD-WAN&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Quality of Service (QoS) and multicast:&lt;/strong&gt; how voice, video, and real-time traffic get
+prioritized, building on the latency and jitter discussion from earlier.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Network automation and programmability:&lt;/strong&gt; Python for network engineers, &lt;strong&gt;NETCONF/RESTCONF&lt;/strong&gt;
+with &lt;strong&gt;YANG&lt;/strong&gt; data models, Ansible, and infrastructure-as-code. This is the fastest-growing
+part of the field and the through-line of the CCNA’s domain 6.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;IPv6 in earnest:&lt;/strong&gt; addressing, SLAAC, transition mechanisms, and running dual-stack at
+scale, the long-term answer to the NAT and CGNAT limits described above.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Network security and observability:&lt;/strong&gt; firewall and IDS/IPS design, &lt;strong&gt;DDoS&lt;/strong&gt; mitigation,
+zero-trust and mTLS at scale, and the eBPF-based observability tooling that is reshaping how
+we see traffic inside hosts.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A study tip that mirrors the spirit of this whole article: do not just read, &lt;em&gt;capture and
+observe&lt;/em&gt;. Build a lab (GNS3, Cisco Packet Tracer, Containerlab, or a few cheap VMs), break
+things on purpose, and run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tcpdump&lt;/code&gt; or Wireshark while you do. The concepts here only become
+intuition once you have watched a real SYN, a real DNS query, and a real TLS handshake cross
+the wire with your own eyes.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;closing-thought&quot;&gt;Closing thought&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The meta-lesson worth keeping: &lt;strong&gt;networking is layers of useful lies, and every lie is
+load-bearing.&lt;/strong&gt; “HTTP talks to HTTP.” “This is a reliable byte stream.” “You have your own
+public address.” None are literally true, and the entire internet works precisely &lt;em&gt;because&lt;/em&gt;
+each layer keeps its promise to the one above it.&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+ </entry>
  
  <entry>
    <title>first taste of ebpf</title>
