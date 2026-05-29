@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-05-29T20:51:05+00:00</updated>
+ <updated>2026-05-29T21:38:32+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -309,10 +309,10 @@ top three into one Application layer and the bottom two into Link:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;flowchart LR
   subgraph TCPIP[&quot;TCP/IP model (reality)&quot;]
     direction TB
-    A[&quot;Application&amp;lt;br/&amp;gt;HTTP, TLS, DNS&quot;]
-    T[&quot;Transport&amp;lt;br/&amp;gt;TCP, UDP&quot;]
-    I[&quot;Internet&amp;lt;br/&amp;gt;IP&quot;]
-    L[&quot;Link&amp;lt;br/&amp;gt;Ethernet, Wi-Fi, physical&quot;]
+    A[&quot;Application (HTTP, TLS, DNS)&quot;]
+    T[&quot;Transport (TCP, UDP)&quot;]
+    I[&quot;Internet (IP)&quot;]
+    L[&quot;Link (Ethernet, Wi-Fi)&quot;]
   end
   subgraph OSI[&quot;OSI model (vocabulary)&quot;]
     direction TB
@@ -324,10 +324,13 @@ top three into one Application layer and the bottom two into Link:&lt;/p&gt;
     O2[&quot;2 Data Link&quot;]
     O1[&quot;1 Physical&quot;]
   end
-  A --- O7 &amp;amp; O6 &amp;amp; O5
+  A --- O7
+  A --- O6
+  A --- O5
   T --- O4
   I --- O3
-  L --- O2 &amp;amp; O1
+  L --- O2
+  L --- O1
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Rule of thumb: &lt;strong&gt;use TCP/IP to reason about reality, use OSI’s layer numbers to talk to other
@@ -647,15 +650,15 @@ followed by a slash and a number: &lt;code class=&quot;language-plaintext highli
 many leading bits are fixed as the &lt;em&gt;network&lt;/em&gt; part; the remaining bits are free for &lt;em&gt;hosts&lt;/em&gt;.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;flowchart LR
-  subgraph A[&quot;10.0.0.0/24  =  256 addresses&quot;]
+  subgraph A[&quot;10.0.0.0/24 = 256 addresses&quot;]
     direction LR
-    N1[&quot;network: 10.0.0&amp;lt;br/&amp;gt;(24 bits fixed)&quot;]
-    H1[&quot;host: .0 to .255&amp;lt;br/&amp;gt;(8 bits free)&quot;]
+    N1[&quot;network 10.0.0 (24 bits fixed)&quot;]
+    H1[&quot;host .0 to .255 (8 bits free)&quot;]
   end
-  subgraph B[&quot;10.0.0.0/16  =  65,536 addresses&quot;]
+  subgraph B[&quot;10.0.0.0/16 = 65536 addresses&quot;]
     direction LR
-    N2[&quot;network: 10.0&amp;lt;br/&amp;gt;(16 bits fixed)&quot;]
-    H2[&quot;host: 16 bits free&quot;]
+    N2[&quot;network 10.0 (16 bits fixed)&quot;]
+    H2[&quot;host (16 bits free)&quot;]
   end
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -701,13 +704,13 @@ back to the router, which looks up the table and rewrites the destination back t
 device.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;flowchart LR
-  L[&quot;Laptop&amp;lt;br/&amp;gt;192.168.1.42:51000&quot;]
-  R[&quot;Router NAT&amp;lt;br/&amp;gt;public 203.0.113.7:62000&amp;lt;br/&amp;gt;table: 62000 -&amp;gt; 192.168.1.42:51000&quot;]
-  S[&quot;Server&amp;lt;br/&amp;gt;93.184.216.34:443&quot;]
-  L --&amp;gt;|&quot;out: src rewritten to 203.0.113.7:62000&quot;| R
+  L[&quot;Laptop 192.168.1.42 port 51000&quot;]
+  R[&quot;Router NAT public 203.0.113.7 port 62000&quot;]
+  S[&quot;Server 93.184.216.34 port 443&quot;]
+  L --&amp;gt;|&quot;src rewritten to public port 62000&quot;| R
   R --&amp;gt; S
-  S --&amp;gt;|&quot;reply to 203.0.113.7:62000&quot;| R
-  R --&amp;gt;|&quot;in: dst rewritten back via table&quot;| L
+  S --&amp;gt;|&quot;reply to public port 62000&quot;| R
+  R --&amp;gt;|&quot;dst rewritten back via NAT table&quot;| L
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Because two devices might both pick source port 51000, NAT maps each to a &lt;em&gt;different&lt;/em&gt; external
@@ -905,10 +908,10 @@ important and most attacked systems on the internet, so it earns its own section
 &lt;p&gt;DNS is &lt;strong&gt;hierarchical&lt;/strong&gt;, read right to left:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;flowchart TD
-  root[&quot;root .&amp;lt;br/&amp;gt;(the implicit trailing dot)&quot;]
-  com[&quot;.com&amp;lt;br/&amp;gt;(TLD)&quot;]
-  example[&quot;example.com&amp;lt;br/&amp;gt;(second level, authoritative)&quot;]
-  www[&quot;www.example.com&amp;lt;br/&amp;gt;(hostname)&quot;]
+  root[&quot;root (the implicit trailing dot)&quot;]
+  com[&quot;.com (TLD)&quot;]
+  example[&quot;example.com (second level, authoritative)&quot;]
+  www[&quot;www.example.com (hostname)&quot;]
   root --&amp;gt; com --&amp;gt; example --&amp;gt; www
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -1085,8 +1088,8 @@ wants.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;sequenceDiagram
   participant C as Client
   participant S as Server
-  C-&amp;gt;&amp;gt;S: GET /chat HTTP/1.1 + Upgrade: websocket
-  S-&amp;gt;&amp;gt;C: HTTP/1.1 101 Switching Protocols
+  C-&amp;gt;&amp;gt;S: GET /chat with Upgrade header
+  S-&amp;gt;&amp;gt;C: 101 Switching Protocols
   Note over C,S: Connection is now full-duplex WebSocket
   C--&amp;gt;&amp;gt;S: frame (any time)
   S--&amp;gt;&amp;gt;C: frame (any time)
@@ -1554,18 +1557,18 @@ traffic.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;flowchart LR
-  UE[&quot;UE&amp;lt;br/&amp;gt;phone + SIM&quot;]
-  EN[&quot;eNodeB&amp;lt;br/&amp;gt;tower radio&quot;]
-  SGW[&quot;SGW&amp;lt;br/&amp;gt;user-plane anchor&quot;]
-  PGW[&quot;PGW&amp;lt;br/&amp;gt;exit, assigns your IP&quot;]
+  UE[&quot;UE (phone + SIM)&quot;]
+  EN[&quot;eNodeB (tower radio)&quot;]
+  SGW[&quot;SGW (user-plane anchor)&quot;]
+  PGW[&quot;PGW (exit, assigns your IP)&quot;]
   NET[&quot;Internet&quot;]
-  MME[&quot;MME&amp;lt;br/&amp;gt;control plane&quot;]
-  HSS[&quot;HSS&amp;lt;br/&amp;gt;subscriber DB + keys&quot;]
+  MME[&quot;MME (control plane)&quot;]
+  HSS[&quot;HSS (subscriber DB and keys)&quot;]
   UE --&amp;gt;|radio| EN
-  EN --&amp;gt;|&quot;S1-U: GTP-U tunnel (user data)&quot;| SGW
+  EN --&amp;gt;|&quot;S1-U GTP-U tunnel, user data&quot;| SGW
   SGW --&amp;gt; PGW --&amp;gt; NET
-  EN -.-&amp;gt;|&quot;S1-AP (control)&quot;| MME
-  MME &amp;lt;-.-&amp;gt;|keys| HSS
+  EN -.-&amp;gt;|&quot;S1-AP control&quot;| MME
+  MME -.-|keys| HSS
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&quot;attaching-tunneling-and-the-cgnat-punchline&quot;&gt;Attaching, tunneling, and the CGNAT punchline&lt;/h3&gt;
