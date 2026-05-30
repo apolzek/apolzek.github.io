@@ -487,7 +487,7 @@ back to the router, which looks up the table and rewrites the destination back t
 device.
 
 ```mermaid
-flowchart LR
+flowchart TD
   L["Laptop 192.168.1.42 port 51000"]
   R["Router NAT public 203.0.113.7 port 62000"]
   S["Server 93.184.216.34 port 443"]
