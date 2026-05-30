@@ -1120,7 +1120,7 @@ The tower's radio is the **eNodeB**. Behind it sits the all-IP core that 4G intr
   traffic.
 
 ```mermaid
-flowchart LR
+flowchart TD
   UE["UE (phone + SIM)"]
   EN["eNodeB (tower radio)"]
   SGW["SGW (user-plane anchor)"]

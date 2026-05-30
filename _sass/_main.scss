@@ -540,6 +540,16 @@ html[data-theme="dark"] pre:has(code.language-mermaid) {
 	background: rgb(19, 20, 24);
 }
 
+/* Rendered Mermaid diagram: center the SVG within the full content width. */
+pre.mermaid {
+	text-align: center;
+
+	svg {
+		display: block;
+		margin: 0 auto;
+	}
+}
+
 .post-nav {
   display: flex;
   position: relative;
