@@ -4,7 +4,7 @@ title: a shallow review of computer networks
 description: A hands-on refresher on modern networking, from signals up to NAT, DNS, TLS, and the protocols that run the internet.
 summary: A hands-on refresher on modern networking, from signals up to NAT, DNS, TLS, and the protocols that run the internet.
 # tags: networking tcp udp tls dns linux
-minute: 52
+minute: 57
 ---
 
 This is the article I wish someone had handed me when I needed to *refresh* networking in
@@ -34,6 +34,7 @@ following a single byte from copper to code.
 - [Signals: the analog truth under every digital network](#signals-the-analog-truth-under-every-digital-network)
 - [The physical layer: media, cables, and speed](#the-physical-layer-media-cables-and-speed)
 - [Wireless, antennas, and the air](#wireless-antennas-and-the-air)
+- [Layer 0: short-range, offline, and the buses below the network](#layer-0-short-range-offline-and-the-buses-below-the-network)
 - [Network cards and drivers](#network-cards-and-drivers)
 - [Frames, packets, and MTU](#frames-packets-and-mtu)
 - [Addresses: MAC, IP, ARP, and DHCP](#addresses-mac-ip-arp-and-dhcp)
@@ -351,6 +352,156 @@ What *is* genuinely modern about antennas is using *many* of them at once:
 > channel), and the airtime you share with everyone else. The advertised link speed is a
 > promise about the medium, your real throughput is what survives after every layer above
 > takes its cut.
+
+## Layer 0: short-range, offline, and the buses below the network
+
+Everything so far assumed the goal was to carry IP packets toward the internet. But there is a
+whole tier *below* OSI layer 1 that most networking courses skip: point-to-point, short-range,
+often **offline** links that frequently carry no IP at all. This is the world of your building
+access badge, your car key fob, the garage remote, the RFID tag on a pallet, the TV remote, and
+the chips talking to each other *inside* a single device. I like to call it **Layer 0**: the
+physical world getting digitized before it is ever worthy of the name "packet."
+
+It splits into two families: **short-range radio/optical** (contactless, through the air) and
+**wired buses** (chip-to-chip, on a board). Both are usually driven by a cheap, low-power
+microcontroller rather than a full OS and a NIC.
+
+### Short-range radio: RFID, NFC, and the Sub-1 GHz band
+
+These are the same antenna physics from the last section, just at very short range and very low
+data rate. What changes everything is the **frequency band**, because frequency dictates range,
+penetration, and how the tag is powered. Passive tags have no battery: the reader's field
+*induces* the energy to power the chip and backscatter a reply.
+
+| Tech | Frequency | Range | Powering | Typical use |
+|------|-----------|-------|----------|-------------|
+| **LF RFID** | 125–134 kHz | 1–10 cm | passive (inductive) | old access cards, animal microchips, car immobilizers |
+| **HF RFID / NFC** | 13.56 MHz | up to ~10 cm | passive (inductive) | building badges (MIFARE), contactless payment, NFC phones, transit cards |
+| **UHF RFID** | 860–960 MHz | 1–12 m | passive (backscatter) | warehouse inventory, toll tags, retail anti-theft |
+| **Sub-1 GHz ISM** | 315 / 433 / 868 / 915 MHz | 10 m–km | active (battery) | garage/gate remotes, key fobs, weather sensors, LoRa |
+
+The **ISM bands** (Industrial, Scientific, Medical) are license-free slices like 433 MHz in
+Europe/Brazil and 915 MHz in the Americas, which is exactly why every cheap remote, doorbell,
+and sensor lives there. The flip side of "license-free and simple" is "trivially sniffable."
+
+**The security story is the interesting part**, and it ties straight back to the security
+section later. Most of Layer 0 was designed when nobody was listening:
+
+- **Fixed-code 433 MHz remotes** (cheap gates, old garage doors) send the *same* code every
+  press. Capture once, replay forever, a textbook **replay attack**.
+- **Rolling codes** (KeeLoq and friends) fix that by changing the code each press from a shared
+  counter, but weak implementations have been broken, and **relay attacks** defeat even
+  well-designed keyless car entry by simply *forwarding* the legitimate signal between two
+  radios.
+- **MIFARE Classic** (13.56 MHz, everywhere in building access) uses a proprietary cipher
+  (Crypto1) that has been thoroughly broken; its cards can be cloned in seconds.
+- **LF 125 kHz cards** usually have *no crypto at all*, just a readable ID number. Cloning is
+  copy-paste.
+
+The tooling makes this concrete. A cheap **RTL-SDR** dongle plus `rtl_433` decodes most of the
+Sub-1 GHz sensor and remote traffic around you; a **Proxmark3** or **Flipper Zero** reads,
+emulates, and clones LF/HF cards:
+
+```bash
+# Decode 433 MHz sensors, remotes, weather stations in the air around you (RTL-SDR)
+rtl_433 -f 433.92M                       # listen on the 433 MHz ISM band, auto-decode
+rtl_433 -f 915M -F json                  # 915 MHz band, emit decoded events as JSON
+
+# Capture raw I/Q to replay or analyze later
+rtl_433 -f 433.92M -S all                # save unknown signals as .cu8 for inspection
+```
+
+> **Suppose** a "smart" doorbell or a cheap weather station seems to expose data it should not.
+> Point `rtl_433 -f 433.92M` at it and you often see the temperature, the button press, even a
+> device ID broadcast in the clear, no pairing, no encryption. Layer 0 is where the comforting
+> lie "it is wireless, so it must be secure" goes to die.
+
+### Infrared: line-of-sight, no radio at all
+
+Your TV remote is not radio, it is **infrared (IR)** light, modulated onto a ~38 kHz carrier so
+the receiver can reject sunlight and ambient noise. Protocols like **NEC** and **RC-5** encode
+a few address and command bytes per button press. There is no addressing of *networks*, no
+retransmission, and it is line-of-sight only, which is also its one security property: you have
+to be in the room. On Linux, **LIRC** captures and replays IR, so a Raspberry Pi with an IR LED
+can learn and impersonate any remote:
+
+```bash
+mode2 -d /dev/lirc0            # watch raw IR pulse/space timings as you press buttons
+irrecord -d /dev/lirc0 my.lircd.conf   # record a remote into a config you can replay
+irsend SEND_ONCE my_tv KEY_POWER       # transmit a learned button
+```
+
+### Wired buses: UART, SPI, I²C, and 1-Wire
+
+Inside a device, chips talk over **buses**, not networks. No IP, no MAC, just a few wires and a
+timing convention. These are genuinely "layer 0" links with their own miniature versions of
+framing and addressing, and you meet them constantly on a Raspberry Pi, an Arduino, or when
+soldering onto a router's debug header.
+
+| Bus | Wires | Clock | Addressing | Duplex | Typical speed | Classic use |
+|-----|-------|-------|------------|--------|---------------|-------------|
+| **UART** | 2 (TX, RX) | none (async, agreed baud) | none (point-to-point) | full | 9.6 k–3 Mbps | serial consoles, GPS, modems |
+| **SPI** | 4 (MOSI, MISO, SCLK, CS) | shared clock | chip-select line per device | full | tens of MHz | displays, SD cards, flash |
+| **I²C** | 2 (SDA, SCL) | shared clock | 7-bit address on the bus | half | 100 k–3.4 Mbps | sensors, EEPROMs, RTCs |
+| **1-Wire** | 1 (+ ground) | none (timed pulses) | 64-bit unique ID | half | ~16 kbps | iButton fobs, DS18B20 temp sensors |
+
+- **UART** is the asynchronous serial line. Two wires cross over (TX→RX), both sides must agree
+  on the **baud rate** (no clock wire to negotiate it), and that is the entire contract. It is
+  how you get a **serial console** onto a router or embedded board, the single most useful
+  debugging skill in hardware.
+- **SPI** is fast and full-duplex: a shared clock plus separate data-in/data-out lines, and a
+  **chip-select (CS)** line per peripheral instead of addressing. More wires, more speed.
+- **I²C** trades speed for wires: just two lines shared by *many* devices, each answering to a
+  **7-bit address**. This is why a single pair of pins on a Pi can host a dozen sensors.
+- **1-Wire** (Dallas/Maxim) is the extreme: a *single* data wire, parasitic power, and every
+  chip carries a factory **64-bit unique ID**. The **iButton** is a 1-Wire chip in a coin-shaped
+  steel can, used for decades as an access "key" you touch to a reader, and the **DS18B20**
+  temperature sensor is the same family.
+
+Linux exposes all of these. With a serial adapter and the `i2c-tools` / `w1` kernel support you
+talk to hardware directly:
+
+```bash
+# UART: open a serial console (115200 is the most common router/board baud)
+screen /dev/ttyUSB0 115200             # interactive serial terminal
+stty -F /dev/ttyUSB0 115200 -echo      # set line params without a terminal program
+
+# I2C: scan the bus, then read/write a register on a device
+i2cdetect -y 1                         # map every device address on I2C bus 1
+i2cget -y 1 0x76 0xd0                  # read register 0xD0 (e.g. a BME280 chip ID)
+i2cset -y 1 0x76 0xf4 0x27             # write 0x27 to register 0xF4
+
+# 1-Wire / iButton: the kernel presents each device by its 64-bit ID
+ls /sys/bus/w1/devices/                # one entry per chip, named by family + unique ID
+cat /sys/bus/w1/devices/28-*/w1_slave  # read a DS18B20 temperature sensor
+```
+
+### How Layer 0 reaches the internet
+
+None of this is IP. A sensor on an I²C bus or a tag at 13.56 MHz produces a few bytes that go
+nowhere until a **gateway** lifts them up the stack. The pattern is always the same: a
+microcontroller reads the bus or the radio, then re-encodes the data onto a real network,
+usually a lightweight protocol built *for* constrained devices, **MQTT** or **CoAP** over
+Wi-Fi, BLE, or cellular IoT (NB-IoT / LTE-M).
+
+```mermaid
+flowchart TD
+  sensor["I2C / 1-Wire sensor (a few bytes)"]
+  rf["RFID / Sub-1 GHz tag (an ID, a reading)"]
+  mcu["Microcontroller / gateway (reads bus or radio)"]
+  net["MQTT / CoAP over Wi-Fi, BLE, NB-IoT"]
+  cloud["The IP world: TCP/IP, the internet"]
+  sensor --> mcu
+  rf --> mcu
+  mcu --> net --> cloud
+```
+
+The takeaway that connects Layer 0 to everything above it: **the same layered idea reappears in
+miniature even down here.** A bus has physical signaling (voltage levels, pulse timing), it has
+framing and addressing (an I²C address, an RFID UID, a 1-Wire serial number), and sometimes a
+crude reliability bit (an I²C ACK). It is networking stripped to its absolute essentials, which
+makes it the clearest place to *see* what every layer above is really doing once you wrap it in
+headers and call it a packet.
 
 ## Network cards and drivers
 
