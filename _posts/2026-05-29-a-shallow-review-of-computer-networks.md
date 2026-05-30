@@ -1,6 +1,6 @@
 ---
 layout: post
-title: the networking refresher
+title: a shallow review of computer networks
 description: A hands-on refresher on modern networking, from signals up to NAT, DNS, TLS, and the protocols that run the internet.
 summary: A hands-on refresher on modern networking, from signals up to NAT, DNS, TLS, and the protocols that run the internet.
 # tags: networking tcp udp tls dns linux
