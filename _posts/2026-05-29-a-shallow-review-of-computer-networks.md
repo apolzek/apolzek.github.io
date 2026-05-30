@@ -375,10 +375,10 @@ penetration, and how the tag is powered. Passive tags have no battery: the reade
 
 | Tech | Frequency | Range | Powering | Typical use |
 |------|-----------|-------|----------|-------------|
-| **LF RFID** | 125–134 kHz | 1–10 cm | passive (inductive) | old access cards, animal microchips, car immobilizers |
+| **LF RFID** | 125 to 134 kHz | 1 to 10 cm | passive (inductive) | old access cards, animal microchips, car immobilizers |
 | **HF RFID / NFC** | 13.56 MHz | up to ~10 cm | passive (inductive) | building badges (MIFARE), contactless payment, NFC phones, transit cards |
-| **UHF RFID** | 860–960 MHz | 1–12 m | passive (backscatter) | warehouse inventory, toll tags, retail anti-theft |
-| **Sub-1 GHz ISM** | 315 / 433 / 868 / 915 MHz | 10 m–km | active (battery) | garage/gate remotes, key fobs, weather sensors, LoRa |
+| **UHF RFID** | 860 to 960 MHz | 1 to 12 m | passive (backscatter) | warehouse inventory, toll tags, retail anti-theft |
+| **Sub-1 GHz ISM** | 315 / 433 / 868 / 915 MHz | 10 m to km | active (battery) | garage/gate remotes, key fobs, weather sensors, LoRa |
 
 The **ISM bands** (Industrial, Scientific, Medical) are license-free slices like 433 MHz in
 Europe/Brazil and 915 MHz in the Americas, which is exactly why every cheap remote, doorbell,
@@ -440,9 +440,9 @@ soldering onto a router's debug header.
 
 | Bus | Wires | Clock | Addressing | Duplex | Typical speed | Classic use |
 |-----|-------|-------|------------|--------|---------------|-------------|
-| **UART** | 2 (TX, RX) | none (async, agreed baud) | none (point-to-point) | full | 9.6 k–3 Mbps | serial consoles, GPS, modems |
+| **UART** | 2 (TX, RX) | none (async, agreed baud) | none (point-to-point) | full | 9.6 k to 3 Mbps | serial consoles, GPS, modems |
 | **SPI** | 4 (MOSI, MISO, SCLK, CS) | shared clock | chip-select line per device | full | tens of MHz | displays, SD cards, flash |
-| **I²C** | 2 (SDA, SCL) | shared clock | 7-bit address on the bus | half | 100 k–3.4 Mbps | sensors, EEPROMs, RTCs |
+| **I²C** | 2 (SDA, SCL) | shared clock | 7-bit address on the bus | half | 100 k to 3.4 Mbps | sensors, EEPROMs, RTCs |
 | **1-Wire** | 1 (+ ground) | none (timed pulses) | 64-bit unique ID | half | ~16 kbps | iButton fobs, DS18B20 temp sensors |
 
 - **UART** is the asynchronous serial line. Two wires cross over (TX→RX), both sides must agree
