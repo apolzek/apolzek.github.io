@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-05-29T23:10:40+00:00</updated>
+ <updated>2026-05-30T00:04:30+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -1556,7 +1556,7 @@ enforces policy and billing, and is where your traffic finally becomes ordinary 
 traffic.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;flowchart LR
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;flowchart TD
   UE[&quot;UE (phone + SIM)&quot;]
   EN[&quot;eNodeB (tower radio)&quot;]
   SGW[&quot;SGW (user-plane anchor)&quot;]
