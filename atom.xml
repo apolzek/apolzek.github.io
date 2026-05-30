@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-05-30T00:11:04+00:00</updated>
+ <updated>2026-05-30T03:45:32+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -47,6 +47,7 @@ a stack of abstractions, and you only understand it by moving through all of the
   &lt;li&gt;&lt;a href=&quot;#signals-the-analog-truth-under-every-digital-network&quot;&gt;Signals: the analog truth under every digital network&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#the-physical-layer-media-cables-and-speed&quot;&gt;The physical layer: media, cables, and speed&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#wireless-antennas-and-the-air&quot;&gt;Wireless, antennas, and the air&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#layer-0-short-range-offline-and-the-buses-below-the-network&quot;&gt;Layer 0: short-range, offline, and the buses below the network&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#network-cards-and-drivers&quot;&gt;Network cards and drivers&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#frames-packets-and-mtu&quot;&gt;Frames, packets, and MTU&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#addresses-mac-ip-arp-and-dhcp&quot;&gt;Addresses: MAC, IP, ARP, and DHCP&lt;/a&gt;&lt;/li&gt;
@@ -562,6 +563,238 @@ channel), and the airtime you share with everyone else. The advertised link spee
 promise about the medium, your real throughput is what survives after every layer above
 takes its cut.&lt;/p&gt;
 &lt;/blockquote&gt;
+
+&lt;h2 id=&quot;layer-0-short-range-offline-and-the-buses-below-the-network&quot;&gt;Layer 0: short-range, offline, and the buses below the network&lt;/h2&gt;
+
+&lt;p&gt;Everything so far assumed the goal was to carry IP packets toward the internet. But there is a
+whole tier &lt;em&gt;below&lt;/em&gt; OSI layer 1 that most networking courses skip: point-to-point, short-range,
+often &lt;strong&gt;offline&lt;/strong&gt; links that frequently carry no IP at all. This is the world of your building
+access badge, your car key fob, the garage remote, the RFID tag on a pallet, the TV remote, and
+the chips talking to each other &lt;em&gt;inside&lt;/em&gt; a single device. I like to call it &lt;strong&gt;Layer 0&lt;/strong&gt;: the
+physical world getting digitized before it is ever worthy of the name “packet.”&lt;/p&gt;
+
+&lt;p&gt;It splits into two families: &lt;strong&gt;short-range radio/optical&lt;/strong&gt; (contactless, through the air) and
+&lt;strong&gt;wired buses&lt;/strong&gt; (chip-to-chip, on a board). Both are usually driven by a cheap, low-power
+microcontroller rather than a full OS and a NIC.&lt;/p&gt;
+
+&lt;h3 id=&quot;short-range-radio-rfid-nfc-and-the-sub-1-ghz-band&quot;&gt;Short-range radio: RFID, NFC, and the Sub-1 GHz band&lt;/h3&gt;
+
+&lt;p&gt;These are the same antenna physics from the last section, just at very short range and very low
+data rate. What changes everything is the &lt;strong&gt;frequency band&lt;/strong&gt;, because frequency dictates range,
+penetration, and how the tag is powered. Passive tags have no battery: the reader’s field
+&lt;em&gt;induces&lt;/em&gt; the energy to power the chip and backscatter a reply.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Tech&lt;/th&gt;
+      &lt;th&gt;Frequency&lt;/th&gt;
+      &lt;th&gt;Range&lt;/th&gt;
+      &lt;th&gt;Powering&lt;/th&gt;
+      &lt;th&gt;Typical use&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;LF RFID&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;125–134 kHz&lt;/td&gt;
+      &lt;td&gt;1–10 cm&lt;/td&gt;
+      &lt;td&gt;passive (inductive)&lt;/td&gt;
+      &lt;td&gt;old access cards, animal microchips, car immobilizers&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;HF RFID / NFC&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;13.56 MHz&lt;/td&gt;
+      &lt;td&gt;up to ~10 cm&lt;/td&gt;
+      &lt;td&gt;passive (inductive)&lt;/td&gt;
+      &lt;td&gt;building badges (MIFARE), contactless payment, NFC phones, transit cards&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;UHF RFID&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;860–960 MHz&lt;/td&gt;
+      &lt;td&gt;1–12 m&lt;/td&gt;
+      &lt;td&gt;passive (backscatter)&lt;/td&gt;
+      &lt;td&gt;warehouse inventory, toll tags, retail anti-theft&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Sub-1 GHz ISM&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;315 / 433 / 868 / 915 MHz&lt;/td&gt;
+      &lt;td&gt;10 m–km&lt;/td&gt;
+      &lt;td&gt;active (battery)&lt;/td&gt;
+      &lt;td&gt;garage/gate remotes, key fobs, weather sensors, LoRa&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The &lt;strong&gt;ISM bands&lt;/strong&gt; (Industrial, Scientific, Medical) are license-free slices like 433 MHz in
+Europe/Brazil and 915 MHz in the Americas, which is exactly why every cheap remote, doorbell,
+and sensor lives there. The flip side of “license-free and simple” is “trivially sniffable.”&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The security story is the interesting part&lt;/strong&gt;, and it ties straight back to the security
+section later. Most of Layer 0 was designed when nobody was listening:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Fixed-code 433 MHz remotes&lt;/strong&gt; (cheap gates, old garage doors) send the &lt;em&gt;same&lt;/em&gt; code every
+press. Capture once, replay forever, a textbook &lt;strong&gt;replay attack&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Rolling codes&lt;/strong&gt; (KeeLoq and friends) fix that by changing the code each press from a shared
+counter, but weak implementations have been broken, and &lt;strong&gt;relay attacks&lt;/strong&gt; defeat even
+well-designed keyless car entry by simply &lt;em&gt;forwarding&lt;/em&gt; the legitimate signal between two
+radios.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;MIFARE Classic&lt;/strong&gt; (13.56 MHz, everywhere in building access) uses a proprietary cipher
+(Crypto1) that has been thoroughly broken; its cards can be cloned in seconds.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;LF 125 kHz cards&lt;/strong&gt; usually have &lt;em&gt;no crypto at all&lt;/em&gt;, just a readable ID number. Cloning is
+copy-paste.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The tooling makes this concrete. A cheap &lt;strong&gt;RTL-SDR&lt;/strong&gt; dongle plus &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rtl_433&lt;/code&gt; decodes most of the
+Sub-1 GHz sensor and remote traffic around you; a &lt;strong&gt;Proxmark3&lt;/strong&gt; or &lt;strong&gt;Flipper Zero&lt;/strong&gt; reads,
+emulates, and clones LF/HF cards:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Decode 433 MHz sensors, remotes, weather stations in the air around you (RTL-SDR)&lt;/span&gt;
+rtl_433 &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; 433.92M                       &lt;span class=&quot;c&quot;&gt;# listen on the 433 MHz ISM band, auto-decode&lt;/span&gt;
+rtl_433 &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; 915M &lt;span class=&quot;nt&quot;&gt;-F&lt;/span&gt; json                  &lt;span class=&quot;c&quot;&gt;# 915 MHz band, emit decoded events as JSON&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Capture raw I/Q to replay or analyze later&lt;/span&gt;
+rtl_433 &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; 433.92M &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; all                &lt;span class=&quot;c&quot;&gt;# save unknown signals as .cu8 for inspection&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Suppose&lt;/strong&gt; a “smart” doorbell or a cheap weather station seems to expose data it should not.
+Point &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rtl_433 -f 433.92M&lt;/code&gt; at it and you often see the temperature, the button press, even a
+device ID broadcast in the clear, no pairing, no encryption. Layer 0 is where the comforting
+lie “it is wireless, so it must be secure” goes to die.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;infrared-line-of-sight-no-radio-at-all&quot;&gt;Infrared: line-of-sight, no radio at all&lt;/h3&gt;
+
+&lt;p&gt;Your TV remote is not radio, it is &lt;strong&gt;infrared (IR)&lt;/strong&gt; light, modulated onto a ~38 kHz carrier so
+the receiver can reject sunlight and ambient noise. Protocols like &lt;strong&gt;NEC&lt;/strong&gt; and &lt;strong&gt;RC-5&lt;/strong&gt; encode
+a few address and command bytes per button press. There is no addressing of &lt;em&gt;networks&lt;/em&gt;, no
+retransmission, and it is line-of-sight only, which is also its one security property: you have
+to be in the room. On Linux, &lt;strong&gt;LIRC&lt;/strong&gt; captures and replays IR, so a Raspberry Pi with an IR LED
+can learn and impersonate any remote:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mode2 &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; /dev/lirc0            &lt;span class=&quot;c&quot;&gt;# watch raw IR pulse/space timings as you press buttons&lt;/span&gt;
+irrecord &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; /dev/lirc0 my.lircd.conf   &lt;span class=&quot;c&quot;&gt;# record a remote into a config you can replay&lt;/span&gt;
+irsend SEND_ONCE my_tv KEY_POWER       &lt;span class=&quot;c&quot;&gt;# transmit a learned button&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;wired-buses-uart-spi-ic-and-1-wire&quot;&gt;Wired buses: UART, SPI, I²C, and 1-Wire&lt;/h3&gt;
+
+&lt;p&gt;Inside a device, chips talk over &lt;strong&gt;buses&lt;/strong&gt;, not networks. No IP, no MAC, just a few wires and a
+timing convention. These are genuinely “layer 0” links with their own miniature versions of
+framing and addressing, and you meet them constantly on a Raspberry Pi, an Arduino, or when
+soldering onto a router’s debug header.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Bus&lt;/th&gt;
+      &lt;th&gt;Wires&lt;/th&gt;
+      &lt;th&gt;Clock&lt;/th&gt;
+      &lt;th&gt;Addressing&lt;/th&gt;
+      &lt;th&gt;Duplex&lt;/th&gt;
+      &lt;th&gt;Typical speed&lt;/th&gt;
+      &lt;th&gt;Classic use&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;UART&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;2 (TX, RX)&lt;/td&gt;
+      &lt;td&gt;none (async, agreed baud)&lt;/td&gt;
+      &lt;td&gt;none (point-to-point)&lt;/td&gt;
+      &lt;td&gt;full&lt;/td&gt;
+      &lt;td&gt;9.6 k–3 Mbps&lt;/td&gt;
+      &lt;td&gt;serial consoles, GPS, modems&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;SPI&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;4 (MOSI, MISO, SCLK, CS)&lt;/td&gt;
+      &lt;td&gt;shared clock&lt;/td&gt;
+      &lt;td&gt;chip-select line per device&lt;/td&gt;
+      &lt;td&gt;full&lt;/td&gt;
+      &lt;td&gt;tens of MHz&lt;/td&gt;
+      &lt;td&gt;displays, SD cards, flash&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;I²C&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;2 (SDA, SCL)&lt;/td&gt;
+      &lt;td&gt;shared clock&lt;/td&gt;
+      &lt;td&gt;7-bit address on the bus&lt;/td&gt;
+      &lt;td&gt;half&lt;/td&gt;
+      &lt;td&gt;100 k–3.4 Mbps&lt;/td&gt;
+      &lt;td&gt;sensors, EEPROMs, RTCs&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;1-Wire&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;1 (+ ground)&lt;/td&gt;
+      &lt;td&gt;none (timed pulses)&lt;/td&gt;
+      &lt;td&gt;64-bit unique ID&lt;/td&gt;
+      &lt;td&gt;half&lt;/td&gt;
+      &lt;td&gt;~16 kbps&lt;/td&gt;
+      &lt;td&gt;iButton fobs, DS18B20 temp sensors&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;UART&lt;/strong&gt; is the asynchronous serial line. Two wires cross over (TX→RX), both sides must agree
+on the &lt;strong&gt;baud rate&lt;/strong&gt; (no clock wire to negotiate it), and that is the entire contract. It is
+how you get a &lt;strong&gt;serial console&lt;/strong&gt; onto a router or embedded board, the single most useful
+debugging skill in hardware.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;SPI&lt;/strong&gt; is fast and full-duplex: a shared clock plus separate data-in/data-out lines, and a
+&lt;strong&gt;chip-select (CS)&lt;/strong&gt; line per peripheral instead of addressing. More wires, more speed.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;I²C&lt;/strong&gt; trades speed for wires: just two lines shared by &lt;em&gt;many&lt;/em&gt; devices, each answering to a
+&lt;strong&gt;7-bit address&lt;/strong&gt;. This is why a single pair of pins on a Pi can host a dozen sensors.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;1-Wire&lt;/strong&gt; (Dallas/Maxim) is the extreme: a &lt;em&gt;single&lt;/em&gt; data wire, parasitic power, and every
+chip carries a factory &lt;strong&gt;64-bit unique ID&lt;/strong&gt;. The &lt;strong&gt;iButton&lt;/strong&gt; is a 1-Wire chip in a coin-shaped
+steel can, used for decades as an access “key” you touch to a reader, and the &lt;strong&gt;DS18B20&lt;/strong&gt;
+temperature sensor is the same family.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Linux exposes all of these. With a serial adapter and the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;i2c-tools&lt;/code&gt; / &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;w1&lt;/code&gt; kernel support you
+talk to hardware directly:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# UART: open a serial console (115200 is the most common router/board baud)&lt;/span&gt;
+screen /dev/ttyUSB0 115200             &lt;span class=&quot;c&quot;&gt;# interactive serial terminal&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;stty&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-F&lt;/span&gt; /dev/ttyUSB0 115200 &lt;span class=&quot;nt&quot;&gt;-echo&lt;/span&gt;      &lt;span class=&quot;c&quot;&gt;# set line params without a terminal program&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# I2C: scan the bus, then read/write a register on a device&lt;/span&gt;
+i2cdetect &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; 1                         &lt;span class=&quot;c&quot;&gt;# map every device address on I2C bus 1&lt;/span&gt;
+i2cget &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; 1 0x76 0xd0                  &lt;span class=&quot;c&quot;&gt;# read register 0xD0 (e.g. a BME280 chip ID)&lt;/span&gt;
+i2cset &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; 1 0x76 0xf4 0x27             &lt;span class=&quot;c&quot;&gt;# write 0x27 to register 0xF4&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 1-Wire / iButton: the kernel presents each device by its 64-bit ID&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; /sys/bus/w1/devices/                &lt;span class=&quot;c&quot;&gt;# one entry per chip, named by family + unique ID&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; /sys/bus/w1/devices/28-&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;/w1_slave  &lt;span class=&quot;c&quot;&gt;# read a DS18B20 temperature sensor&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;how-layer-0-reaches-the-internet&quot;&gt;How Layer 0 reaches the internet&lt;/h3&gt;
+
+&lt;p&gt;None of this is IP. A sensor on an I²C bus or a tag at 13.56 MHz produces a few bytes that go
+nowhere until a &lt;strong&gt;gateway&lt;/strong&gt; lifts them up the stack. The pattern is always the same: a
+microcontroller reads the bus or the radio, then re-encodes the data onto a real network,
+usually a lightweight protocol built &lt;em&gt;for&lt;/em&gt; constrained devices, &lt;strong&gt;MQTT&lt;/strong&gt; or &lt;strong&gt;CoAP&lt;/strong&gt; over
+Wi-Fi, BLE, or cellular IoT (NB-IoT / LTE-M).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;flowchart TD
+  sensor[&quot;I2C / 1-Wire sensor (a few bytes)&quot;]
+  rf[&quot;RFID / Sub-1 GHz tag (an ID, a reading)&quot;]
+  mcu[&quot;Microcontroller / gateway (reads bus or radio)&quot;]
+  net[&quot;MQTT / CoAP over Wi-Fi, BLE, NB-IoT&quot;]
+  cloud[&quot;The IP world: TCP/IP, the internet&quot;]
+  sensor --&amp;gt; mcu
+  rf --&amp;gt; mcu
+  mcu --&amp;gt; net --&amp;gt; cloud
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The takeaway that connects Layer 0 to everything above it: &lt;strong&gt;the same layered idea reappears in
+miniature even down here.&lt;/strong&gt; A bus has physical signaling (voltage levels, pulse timing), it has
+framing and addressing (an I²C address, an RFID UID, a 1-Wire serial number), and sometimes a
+crude reliability bit (an I²C ACK). It is networking stripped to its absolute essentials, which
+makes it the clearest place to &lt;em&gt;see&lt;/em&gt; what every layer above is really doing once you wrap it in
+headers and call it a packet.&lt;/p&gt;
 
 &lt;h2 id=&quot;network-cards-and-drivers&quot;&gt;Network cards and drivers&lt;/h2&gt;
 
