@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-05-30T00:04:30+00:00</updated>
+ <updated>2026-05-30T00:08:40+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -703,7 +703,7 @@ address and port, remembers the mapping, and sends it out under its public IP. R
 back to the router, which looks up the table and rewrites the destination back to the right
 device.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;flowchart LR
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;flowchart TD
   L[&quot;Laptop 192.168.1.42 port 51000&quot;]
   R[&quot;Router NAT public 203.0.113.7 port 62000&quot;]
   S[&quot;Server 93.184.216.34 port 443&quot;]
