@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-05-30T03:45:32+00:00</updated>
+ <updated>2026-05-30T03:53:03+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -597,8 +597,8 @@ penetration, and how the tag is powered. Passive tags have no battery: the reade
   &lt;tbody&gt;
     &lt;tr&gt;
       &lt;td&gt;&lt;strong&gt;LF RFID&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;125–134 kHz&lt;/td&gt;
-      &lt;td&gt;1–10 cm&lt;/td&gt;
+      &lt;td&gt;125 to 134 kHz&lt;/td&gt;
+      &lt;td&gt;1 to 10 cm&lt;/td&gt;
       &lt;td&gt;passive (inductive)&lt;/td&gt;
       &lt;td&gt;old access cards, animal microchips, car immobilizers&lt;/td&gt;
     &lt;/tr&gt;
@@ -611,15 +611,15 @@ penetration, and how the tag is powered. Passive tags have no battery: the reade
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;&lt;strong&gt;UHF RFID&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;860–960 MHz&lt;/td&gt;
-      &lt;td&gt;1–12 m&lt;/td&gt;
+      &lt;td&gt;860 to 960 MHz&lt;/td&gt;
+      &lt;td&gt;1 to 12 m&lt;/td&gt;
       &lt;td&gt;passive (backscatter)&lt;/td&gt;
       &lt;td&gt;warehouse inventory, toll tags, retail anti-theft&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;&lt;strong&gt;Sub-1 GHz ISM&lt;/strong&gt;&lt;/td&gt;
       &lt;td&gt;315 / 433 / 868 / 915 MHz&lt;/td&gt;
-      &lt;td&gt;10 m–km&lt;/td&gt;
+      &lt;td&gt;10 m to km&lt;/td&gt;
       &lt;td&gt;active (battery)&lt;/td&gt;
       &lt;td&gt;garage/gate remotes, key fobs, weather sensors, LoRa&lt;/td&gt;
     &lt;/tr&gt;
@@ -705,7 +705,7 @@ soldering onto a router’s debug header.&lt;/p&gt;
       &lt;td&gt;none (async, agreed baud)&lt;/td&gt;
       &lt;td&gt;none (point-to-point)&lt;/td&gt;
       &lt;td&gt;full&lt;/td&gt;
-      &lt;td&gt;9.6 k–3 Mbps&lt;/td&gt;
+      &lt;td&gt;9.6 k to 3 Mbps&lt;/td&gt;
       &lt;td&gt;serial consoles, GPS, modems&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
@@ -723,7 +723,7 @@ soldering onto a router’s debug header.&lt;/p&gt;
       &lt;td&gt;shared clock&lt;/td&gt;
       &lt;td&gt;7-bit address on the bus&lt;/td&gt;
       &lt;td&gt;half&lt;/td&gt;
-      &lt;td&gt;100 k–3.4 Mbps&lt;/td&gt;
+      &lt;td&gt;100 k to 3.4 Mbps&lt;/td&gt;
       &lt;td&gt;sensors, EEPROMs, RTCs&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
