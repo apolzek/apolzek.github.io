@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-05-31T03:18:13+00:00</updated>
+ <updated>2026-05-31T03:28:10+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -13,10 +13,10 @@
 
  
  <entry>
-   <title>a shallow review of computer networks</title>
-   <link href="https://apolzek.github.io/2026/05/29/a-shallow-review-of-computer-networks"/>
+   <title>review: computer networks</title>
+   <link href="https://apolzek.github.io/review/computer-networks/"/>
    <updated>2026-05-29T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2026/05/29/a-shallow-review-of-computer-networks</id>
+   <id>https://apolzek.github.io/review/review-computer-networks</id>
    <content type="html">&lt;p&gt;This is the article I wish someone had handed me when I needed to &lt;em&gt;refresh&lt;/em&gt; networking in
 a weekend. Not a textbook, not a 600-page tome, but a guided climb that starts at the
 physics and ends with you typing a URL into a browser, understanding every layer the bytes
