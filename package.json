@@ -1,0 +1,8 @@
+{
+  "requires": true,
+  "lockfileVersion": 1,
+  "dependencies": {
+    "fuzzysearch": "1.0.3",
+    "simple-jekyll-search": "^1.9.2"
+  }
+}
