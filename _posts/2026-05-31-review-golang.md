@@ -2,8 +2,8 @@
 layout: post
 title: "[review] golang"
 permalink: /review/golang/
-description: A hands-on refresher on Go, from zero values up to goroutines, channels, select, context, the scheduler, and what changed in the last four releases.
-summary: A hands-on refresher on Go, from zero values up to goroutines, channels, select, context, the scheduler, and what changed in the last four releases.
+description: A hands-on refresher on Go, from the type system to concurrency and the runtime.
+summary: A hands-on refresher on Go, from the type system to concurrency and the runtime.
 # tags: go golang concurrency goroutines channels runtime
 minute: 41
 ---
