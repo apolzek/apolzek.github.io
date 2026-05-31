@@ -4,13 +4,1426 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-05-31T13:51:08+00:00</updated>
+ <updated>2026-05-31T15:43:23+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>[review] software engineering</title>
+   <link href="https://apolzek.github.io/review/software-engineering/"/>
+   <updated>2026-05-31T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/review/review-software-engineering</id>
+   <content type="html">&lt;p&gt;This is the article I wish someone had handed me when I needed to &lt;em&gt;refresh&lt;/em&gt; software engineering
+in a weekend. Not a textbook, not a 600-page tome, but a guided climb that starts with what
+engineering even means when the material is invisible, and ends with you reasoning about sagas,
+bounded contexts, and circuit breakers the way a senior engineer does on a whiteboard.&lt;/p&gt;
+
+&lt;p&gt;The order is deliberately bottom-up: we start with the difference between &lt;em&gt;coding&lt;/em&gt; and
+&lt;em&gt;engineering&lt;/em&gt;, walk the lifecycle and the methodologies that organize the work, get the design
+principles and disciplines straight (KISS, SOLID, TDD, BDD, DDD, and the new spec-driven kid on
+the block), then climb into testing, architecture, the sync-versus-async divide, the distributed
+patterns that keep systems alive, and the delivery machinery that ships it all.&lt;/p&gt;
+
+&lt;p&gt;I lean on one recurring trick: &lt;strong&gt;suppose&lt;/strong&gt; something concrete, then trace it through the system,
+plus the occasional terrible analogy, because abstractions stick better when they are a little
+ridiculous. Software engineering makes far more sense when you stop memorizing acronyms and start
+asking what problem each one was invented to kill.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A note on altitude: this piece slides up and down constantly. One section is about naming a
+variable, the next is about consistency across a fleet of services. That is the point. Software
+engineering &lt;em&gt;is&lt;/em&gt; the art of managing complexity across every altitude at once, and you only
+understand it by moving through all of them.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;table-of-contents&quot;&gt;Table of Contents&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#coding-vs-engineering&quot;&gt;Coding vs. engineering&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#the-software-development-life-cycle&quot;&gt;The software development life cycle&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#methodologies-waterfall-to-agile&quot;&gt;Methodologies: Waterfall to Agile&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#extreme-programming-xp&quot;&gt;Extreme Programming (XP)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#design-principles-kiss-dry-yagni-solid&quot;&gt;Design principles: KISS, DRY, YAGNI, SOLID&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#the-development-disciplines-tdd-bdd-ddd-sdd&quot;&gt;The development disciplines: TDD, BDD, DDD, SDD&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#testing-the-pyramid-and-the-zoo&quot;&gt;Testing: the pyramid and the zoo&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#architecture-styles&quot;&gt;Architecture styles&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#synchronous-vs-asynchronous&quot;&gt;Synchronous vs. asynchronous&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#distributed-systems-patterns-including-saga&quot;&gt;Distributed systems patterns (including SAGA)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#design-patterns-gang-of-four&quot;&gt;Design patterns (Gang of Four)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#code-quality-smells-debt-refactoring-reviews&quot;&gt;Code quality: smells, debt, refactoring, reviews&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#delivery-cicd-12-factor-devops-dora&quot;&gt;Delivery: CI/CD, 12-factor, DevOps, DORA&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#decisions-and-documentation&quot;&gt;Decisions and documentation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#the-laws-every-engineer-should-know&quot;&gt;The laws every engineer should know&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#closing-thought&quot;&gt;Closing thought&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;coding-vs-engineering&quot;&gt;Coding vs. engineering&lt;/h2&gt;
+
+&lt;p&gt;Before any methodology, settle the most important distinction: &lt;strong&gt;coding is making a computer do a
+thing; engineering is making it keep doing that thing, correctly, while a team changes it for
+years, under deadline, without anyone fully holding it in their head.&lt;/strong&gt; Coding is a skill.
+Engineering is coding plus &lt;em&gt;time&lt;/em&gt;, &lt;em&gt;people&lt;/em&gt;, and &lt;em&gt;uncertainty&lt;/em&gt;.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Concern&lt;/th&gt;
+      &lt;th&gt;Coding&lt;/th&gt;
+      &lt;th&gt;Engineering&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Goal&lt;/td&gt;
+      &lt;td&gt;Make it work&lt;/td&gt;
+      &lt;td&gt;Make it work, last, and change cheaply&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Time horizon&lt;/td&gt;
+      &lt;td&gt;Now&lt;/td&gt;
+      &lt;td&gt;Years&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Team size&lt;/td&gt;
+      &lt;td&gt;One head&lt;/td&gt;
+      &lt;td&gt;Many heads, rotating&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Success metric&lt;/td&gt;
+      &lt;td&gt;“It runs”&lt;/td&gt;
+      &lt;td&gt;“It still runs after the 400th change”&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Main enemy&lt;/td&gt;
+      &lt;td&gt;Bugs&lt;/td&gt;
+      &lt;td&gt;Complexity and entropy&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Output&lt;/td&gt;
+      &lt;td&gt;A program&lt;/td&gt;
+      &lt;td&gt;A system other people can safely evolve&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The analogy: coding is cooking a great meal once. Engineering is running a restaurant kitchen —
+the recipe matters, but so do food safety, training new cooks, surviving the Friday rush, and
+the fact that the head chef quit and nobody wrote anything down. A genius who cannot hand off
+the recipe is a liability, not an asset.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The entire field is, at bottom, &lt;strong&gt;complexity management&lt;/strong&gt;. Every principle, pattern, and process
+in this article exists to fight one enemy: the moment a system grows past what a single person
+can understand, and changes start breaking things in places no one expected.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-software-development-life-cycle&quot;&gt;The software development life cycle&lt;/h2&gt;
+
+&lt;p&gt;The &lt;strong&gt;SDLC&lt;/strong&gt; is the skeleton under every methodology: the phases work passes through, whether you
+do them once in a giant sequence (Waterfall) or a hundred times in tiny loops (Agile).&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Phase&lt;/th&gt;
+      &lt;th&gt;What happens&lt;/th&gt;
+      &lt;th&gt;Failure mode if skipped&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Requirements&lt;/td&gt;
+      &lt;td&gt;Figure out what to build and why&lt;/td&gt;
+      &lt;td&gt;You build the wrong thing, beautifully&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Design&lt;/td&gt;
+      &lt;td&gt;Decide how to structure it&lt;/td&gt;
+      &lt;td&gt;You build the right thing as a tangled mess&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Implementation&lt;/td&gt;
+      &lt;td&gt;Write the code&lt;/td&gt;
+      &lt;td&gt;(this is the part everyone thinks is the whole job)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Testing&lt;/td&gt;
+      &lt;td&gt;Verify it does what was asked&lt;/td&gt;
+      &lt;td&gt;You ship bugs to users instead of catching them&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Deployment&lt;/td&gt;
+      &lt;td&gt;Release it to production&lt;/td&gt;
+      &lt;td&gt;Great code that never reaches anyone&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Maintenance&lt;/td&gt;
+      &lt;td&gt;Fix, adapt, and evolve&lt;/td&gt;
+      &lt;td&gt;The system rots until it is replaced&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The single most important fact about this diagram is the &lt;strong&gt;cost-of-change curve&lt;/strong&gt;: a bug caught
+in requirements costs roughly a coffee; the same bug caught in production costs a fire drill, a
+post-mortem, and possibly a customer. Defects get exponentially more expensive the later you find
+them, which is the economic justification for testing early, designing deliberately, and shipping
+in small batches.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Suppose&lt;/strong&gt; a stakeholder says “make the report exportable.” Skip requirements and you will
+guess: PDF? CSV? Which columns? Scheduled or on-demand? You will build something plausible, demo
+it, and watch their face fall. The cheapest line of code is the one you did not write because
+you asked a question first.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;methodologies-waterfall-to-agile&quot;&gt;Methodologies: Waterfall to Agile&lt;/h2&gt;
+
+&lt;p&gt;A methodology is how you &lt;em&gt;sequence and re-sequence&lt;/em&gt; the SDLC phases and who decides what, when.
+The history is a pendulum swinging from “plan everything up front” to “plan as little as you can
+get away with.”&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Methodology&lt;/th&gt;
+      &lt;th&gt;Core idea&lt;/th&gt;
+      &lt;th&gt;Best for&lt;/th&gt;
+      &lt;th&gt;Weakness&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Waterfall&lt;/td&gt;
+      &lt;td&gt;Do each phase fully, in order, once&lt;/td&gt;
+      &lt;td&gt;Fixed, well-understood scope (bridges, regulated systems)&lt;/td&gt;
+      &lt;td&gt;Reality changes; you learn too late&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Agile (umbrella)&lt;/td&gt;
+      &lt;td&gt;Short iterations, working software, embrace change&lt;/td&gt;
+      &lt;td&gt;Most product software&lt;/td&gt;
+      &lt;td&gt;Can decay into chaos without discipline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Scrum&lt;/td&gt;
+      &lt;td&gt;Time-boxed sprints, fixed roles and ceremonies&lt;/td&gt;
+      &lt;td&gt;Teams that need rhythm and predictability&lt;/td&gt;
+      &lt;td&gt;Ceremony overhead, “Scrum theater”&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Kanban&lt;/td&gt;
+      &lt;td&gt;Continuous flow, limit work-in-progress (WIP)&lt;/td&gt;
+      &lt;td&gt;Support, ops, steady streams of work&lt;/td&gt;
+      &lt;td&gt;Less long-range planning structure&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Lean&lt;/td&gt;
+      &lt;td&gt;Maximize value, eliminate waste&lt;/td&gt;
+      &lt;td&gt;Startups, efficiency-focused orgs&lt;/td&gt;
+      &lt;td&gt;Vague without concrete practices&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Agile&lt;/strong&gt; is not a process; it is a &lt;a href=&quot;https://agilemanifesto.org/&quot;&gt;2001 manifesto&lt;/a&gt; of four
+preferences — individuals over process, working software over documentation, collaboration over
+contracts, responding to change over following a plan. &lt;strong&gt;Scrum&lt;/strong&gt; and &lt;strong&gt;Kanban&lt;/strong&gt; are concrete
+implementations of that spirit.&lt;/p&gt;
+
+&lt;p&gt;Scrum’s vocabulary you will hear daily: a &lt;strong&gt;sprint&lt;/strong&gt; (a 1–4 week iteration), the &lt;strong&gt;backlog&lt;/strong&gt;
+(prioritized to-do list), &lt;strong&gt;user stories&lt;/strong&gt; (“As a &lt;em&gt;user&lt;/em&gt;, I want &lt;em&gt;X&lt;/em&gt; so that &lt;em&gt;Y&lt;/em&gt;”), &lt;strong&gt;story
+points&lt;/strong&gt; (relative effort, not hours), and ceremonies — planning, daily &lt;strong&gt;standup&lt;/strong&gt;, review, and
+&lt;strong&gt;retrospective&lt;/strong&gt;. Kanban swaps fixed sprints for a &lt;strong&gt;board&lt;/strong&gt; with &lt;strong&gt;WIP limits&lt;/strong&gt; that physically
+stop a team from starting ten things and finishing none.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The analogy: Waterfall is building a house from a blueprint — you do not pour the foundation,
+realize you want a basement, and start over. Agile is sculpting clay — you keep shaping, step
+back, and adjust, because you are not sure what the statue wants to be until you are halfway in.
+Most software is clay pretending to be concrete. The trap is “Agile theater”: doing all the
+standups and none of the actual responding-to-change, which is cargo-culting the rituals while
+missing the point.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;extreme-programming-xp&quot;&gt;Extreme Programming (XP)&lt;/h2&gt;
+
+&lt;p&gt;XP, created by Kent Beck in the late 1990s, is the most &lt;em&gt;engineering-flavored&lt;/em&gt; of the Agile
+methods. Where Scrum mostly organizes the work, XP prescribes how to actually write the code. Many
+practices the whole industry now takes for granted — TDD, continuous integration, relentless
+refactoring — were popularized by XP.&lt;/p&gt;
+
+&lt;p&gt;It rests on five values: &lt;strong&gt;communication, simplicity, feedback, courage, and respect.&lt;/strong&gt; From
+those flow the practices:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Practice&lt;/th&gt;
+      &lt;th&gt;What it is&lt;/th&gt;
+      &lt;th&gt;Why it works&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Pair programming&lt;/td&gt;
+      &lt;td&gt;Two devs, one keyboard, one driving and one navigating&lt;/td&gt;
+      &lt;td&gt;Real-time review; fewer defects; knowledge spreads&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Test-driven development&lt;/td&gt;
+      &lt;td&gt;Write the failing test first, then the code&lt;/td&gt;
+      &lt;td&gt;Design pressure + a safety net, for free&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Continuous integration&lt;/td&gt;
+      &lt;td&gt;Merge to mainline many times a day&lt;/td&gt;
+      &lt;td&gt;Integration pain stays small instead of exploding at the end&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Small releases&lt;/td&gt;
+      &lt;td&gt;Ship tiny increments frequently&lt;/td&gt;
+      &lt;td&gt;Fast feedback from real users&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Refactoring&lt;/td&gt;
+      &lt;td&gt;Continuously improve structure without changing behavior&lt;/td&gt;
+      &lt;td&gt;Fights entropy before it compounds&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Collective ownership&lt;/td&gt;
+      &lt;td&gt;Anyone can change any code&lt;/td&gt;
+      &lt;td&gt;No bus-factor-of-one bottlenecks&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Sustainable pace&lt;/td&gt;
+      &lt;td&gt;No death marches (“40-hour week”)&lt;/td&gt;
+      &lt;td&gt;Tired engineers write tomorrow’s bugs&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The name is the joke and the philosophy: take the practices everyone agrees are &lt;em&gt;good&lt;/em&gt; and turn
+them up to &lt;strong&gt;extreme&lt;/strong&gt;. Testing is good? Test before you even write the code. Code review is
+good? Review every line as it is typed, by pairing. Integration is good? Integrate ten times a
+day. XP’s bet is that if a practice is beneficial in moderation, doing it constantly compounds
+the benefit.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;design-principles-kiss-dry-yagni-solid&quot;&gt;Design principles: KISS, DRY, YAGNI, SOLID&lt;/h2&gt;
+
+&lt;p&gt;Principles are the rules of thumb you apply &lt;em&gt;inside&lt;/em&gt; the code, the proverbs you mutter in a code
+review. They are not laws; they are tensions to balance.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Principle&lt;/th&gt;
+      &lt;th&gt;Stands for&lt;/th&gt;
+      &lt;th&gt;The one-liner&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;KISS&lt;/td&gt;
+      &lt;td&gt;Keep It Simple, Stupid&lt;/td&gt;
+      &lt;td&gt;Prefer the boring solution; complexity is a cost, not a flex&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;DRY&lt;/td&gt;
+      &lt;td&gt;Don’t Repeat Yourself&lt;/td&gt;
+      &lt;td&gt;Every piece of knowledge has one authoritative home&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;YAGNI&lt;/td&gt;
+      &lt;td&gt;You Ain’t Gonna Need It&lt;/td&gt;
+      &lt;td&gt;Don’t build for an imagined future; build for now&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SoC&lt;/td&gt;
+      &lt;td&gt;Separation of Concerns&lt;/td&gt;
+      &lt;td&gt;Each module does one job and minds its own business&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Law of Demeter&lt;/td&gt;
+      &lt;td&gt;“Don’t talk to strangers”&lt;/td&gt;
+      &lt;td&gt;An object should only talk to its immediate friends&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Composition over inheritance&lt;/td&gt;
+      &lt;td&gt;—&lt;/td&gt;
+      &lt;td&gt;Assemble behavior from parts; don’t build deep class trees&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;SOLID&lt;/strong&gt; is the famous five for object-oriented design:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Letter&lt;/th&gt;
+      &lt;th&gt;Principle&lt;/th&gt;
+      &lt;th&gt;Plain English&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;S&lt;/td&gt;
+      &lt;td&gt;Single Responsibility&lt;/td&gt;
+      &lt;td&gt;A class should have one reason to change&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;O&lt;/td&gt;
+      &lt;td&gt;Open/Closed&lt;/td&gt;
+      &lt;td&gt;Open to extension, closed to modification&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;L&lt;/td&gt;
+      &lt;td&gt;Liskov Substitution&lt;/td&gt;
+      &lt;td&gt;A subtype must be usable wherever its parent is, no surprises&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;I&lt;/td&gt;
+      &lt;td&gt;Interface Segregation&lt;/td&gt;
+      &lt;td&gt;Many small interfaces beat one fat one&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;D&lt;/td&gt;
+      &lt;td&gt;Dependency Inversion&lt;/td&gt;
+      &lt;td&gt;Depend on abstractions, not concrete details&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# DRY gone wrong vs. right
+# WRONG: the tax rate lives in three files; a law change means a three-file bug hunt
+price * 1.07   (checkout.js)
+price * 1.07   (invoice.py)
+price * 1.07   (report.go)
+
+# RIGHT: one source of truth
+TAX_RATE = 0.07   # change it here, it&apos;s fixed everywhere
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The crucial nuance, and the most common rookie mistake: these principles &lt;strong&gt;fight each other&lt;/strong&gt;,
+and the skill is balancing them, not maximizing one. DRY taken to the extreme creates a tangled
+mess of premature abstractions where two things that merely &lt;em&gt;looked&lt;/em&gt; alike are now fused forever
+(the “wrong abstraction” is more expensive than duplication). YAGNI says don’t build the
+plugin system you imagine you’ll need; SOLID’s Open/Closed says make it extensible. The Go
+proverb captures the resolution perfectly: &lt;em&gt;“a little copying is better than a little
+dependency.”&lt;/em&gt; When in doubt, KISS wins — you can always add complexity later, but you can rarely
+remove it.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;the-development-disciplines-tdd-bdd-ddd-sdd&quot;&gt;The development disciplines: TDD, BDD, DDD, SDD&lt;/h2&gt;
+
+&lt;p&gt;These four are &lt;em&gt;disciplines&lt;/em&gt;: opinionated ways to drive the act of building from something other
+than “just start typing.” They answer different questions, and they stack.&lt;/p&gt;
+
+&lt;h3 id=&quot;tdd--test-driven-development&quot;&gt;TDD — Test-Driven Development&lt;/h3&gt;
+
+&lt;p&gt;TDD inverts the obvious order: you write a &lt;strong&gt;failing test first&lt;/strong&gt;, then the minimum code to pass
+it, then clean up. The rhythm is &lt;strong&gt;red, green, refactor&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1. RED    — write a test for behavior that doesn&apos;t exist yet; run it; watch it fail
+2. GREEN  — write the simplest code that makes the test pass (even if it&apos;s ugly)
+3. REFACTOR — improve the design now that a test has your back; keep it green
+   ↺ repeat in tiny loops
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# RED: this fails because add() doesn&apos;t exist
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;test_add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# GREEN: simplest thing that passes
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# REFACTOR: nothing to clean here yet — but now you can, safely
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;TDD’s real payoff is not the tests (though you get a regression suite for free). It is &lt;strong&gt;design
+pressure&lt;/strong&gt;: code that is hard to test is usually badly coupled, so writing the test first forces
+you to design seams and dependencies you can actually isolate.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The analogy: TDD is like building a staircase by first nailing the next step you want to stand
+on, then standing on it. You never reach into the dark — every step is verified before you put
+weight on it. The discipline feels slow for ten minutes and saves you for ten months.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;bdd--behavior-driven-development&quot;&gt;BDD — Behavior-Driven Development&lt;/h3&gt;
+
+&lt;p&gt;BDD is TDD with the focus shifted from “does this function return 5” to “does the &lt;em&gt;system behave&lt;/em&gt;
+the way the business expects,” written in language a non-programmer can read. The canonical format
+is &lt;strong&gt;Given / When / Then&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-gherkin highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;Feature&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; Withdraw cash
+  &lt;span class=&quot;kn&quot;&gt;Scenario&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; Account has enough money
+    &lt;span class=&quot;nf&quot;&gt;Given &lt;/span&gt;my balance is $100
+    &lt;span class=&quot;nf&quot;&gt;When &lt;/span&gt;I withdraw $40
+    &lt;span class=&quot;nf&quot;&gt;Then &lt;/span&gt;my balance should be $60
+    &lt;span class=&quot;nf&quot;&gt;And &lt;/span&gt;I should receive $40
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;BDD’s gift is a &lt;strong&gt;shared language&lt;/strong&gt; between developers, QA, and product. The Gherkin scenarios are
+executable &lt;em&gt;and&lt;/em&gt; readable by the person who asked for the feature, which closes the “that’s not
+what I meant” gap.&lt;/p&gt;
+
+&lt;h3 id=&quot;ddd--domain-driven-design&quot;&gt;DDD — Domain-Driven Design&lt;/h3&gt;
+
+&lt;p&gt;DDD, from Eric Evans, says the structure of your code should mirror the structure of the
+&lt;strong&gt;business domain&lt;/strong&gt;, expressed in a &lt;strong&gt;ubiquitous language&lt;/strong&gt; that everyone — engineers and domain
+experts — uses identically in conversation, documentation, and code. No translation layer between
+“what the business calls it” and “what the variable is named.”&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;DDD concept&lt;/th&gt;
+      &lt;th&gt;What it means&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Ubiquitous language&lt;/td&gt;
+      &lt;td&gt;One shared vocabulary; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Policy&lt;/code&gt; in code means exactly what underwriters mean&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Bounded context&lt;/td&gt;
+      &lt;td&gt;A boundary where a model is consistent; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Customer&lt;/code&gt; means different things in Billing vs. Support&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Entity&lt;/td&gt;
+      &lt;td&gt;An object with identity that persists over time (a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;User&lt;/code&gt;)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Value object&lt;/td&gt;
+      &lt;td&gt;Defined only by its values, no identity (a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Money&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Address&lt;/code&gt;)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Aggregate&lt;/td&gt;
+      &lt;td&gt;A cluster of objects treated as one consistency unit, edited only via its &lt;strong&gt;root&lt;/strong&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Repository&lt;/td&gt;
+      &lt;td&gt;The abstraction that loads and saves aggregates&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Domain event&lt;/td&gt;
+      &lt;td&gt;Something meaningful that happened (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OrderPlaced&lt;/code&gt;)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The killer insight is &lt;strong&gt;bounded context&lt;/strong&gt;. The same word means different things to different
+parts of a business, and pretending otherwise is how you get a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Customer&lt;/code&gt; class with 80 fields
+that no team fully owns. In Sales, a “customer” is a lead with a deal size. In Shipping, a
+“customer” is an address and a doorbell. DDD says: stop forcing them into one model. Draw the
+boundary, let each side have its own &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Customer&lt;/code&gt;, and translate at the border. It is the
+organizational version of good fences making good neighbors.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;sdd--spec-driven-development&quot;&gt;SDD — Spec-Driven Development&lt;/h3&gt;
+
+&lt;p&gt;The newest entry, supercharged by AI coding agents. SDD &lt;strong&gt;inverts the source of truth&lt;/strong&gt;: instead
+of code being primary and docs being an afterthought, the &lt;strong&gt;specification is the artifact you
+maintain&lt;/strong&gt;, and the code is generated or verified against it. It is the structured antidote to
+“vibe coding” — throwing vague prompts at an LLM and praying.&lt;/p&gt;
+
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Traditional:  idea → code (the spec lives only in your head, then rots)
+Spec-driven:  idea → SPEC → plan → tasks → code (the spec stays the source of truth)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Tools like &lt;strong&gt;GitHub Spec Kit&lt;/strong&gt;, AWS &lt;strong&gt;Kiro&lt;/strong&gt;, and &lt;strong&gt;Tessl&lt;/strong&gt; formalize this: you write a precise
+spec (requirements, constraints, acceptance criteria), the agent produces a plan and a task
+breakdown, and &lt;em&gt;then&lt;/em&gt; it writes code that satisfies the spec. Your job shifts from typing every
+line to &lt;strong&gt;steering&lt;/strong&gt; and reviewing.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The analogy: vibe coding is telling a contractor “build me a nice house” and leaving for the
+weekend. SDD is handing them blueprints, a materials list, and inspection checkpoints. AI is an
+extraordinarily fast junior who is also a confident guesser — the spec is how you stop it from
+confidently guessing wrong at 200 lines per second. Note that “spec as source of truth” is an
+old idea (Specification by Example, contract-first APIs); the AI era just made it urgent again.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;testing-the-pyramid-and-the-zoo&quot;&gt;Testing: the pyramid and the zoo&lt;/h2&gt;
+
+&lt;p&gt;Testing is how you buy confidence to change code without fear. The guiding shape is the &lt;strong&gt;testing
+pyramid&lt;/strong&gt;: lots of fast, cheap tests at the bottom, few slow, expensive ones at the top.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;flowchart TD
+  E2E[&quot;E2E / UI tests — few, slow, brittle, high confidence&quot;]
+  INT[&quot;Integration tests — some, medium speed&quot;]
+  UNIT[&quot;Unit tests — many, fast, cheap, isolated&quot;]
+  E2E --&amp;gt; INT --&amp;gt; UNIT
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A common rule of thumb is roughly &lt;strong&gt;70% unit, 20% integration, 10% end-to-end&lt;/strong&gt;, though the exact
+mix depends on the system. Invert the pyramid into an &lt;strong&gt;ice-cream cone&lt;/strong&gt; (mostly slow E2E tests)
+and your suite becomes flaky, slow, and so painful that people stop running it — which is worse
+than no suite, because it lies about being safe.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-zoo-of-test-types&quot;&gt;The zoo of test types&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Test type&lt;/th&gt;
+      &lt;th&gt;Question it answers&lt;/th&gt;
+      &lt;th&gt;Scope&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Unit&lt;/td&gt;
+      &lt;td&gt;Does this one function/class behave?&lt;/td&gt;
+      &lt;td&gt;Tiny, isolated&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Integration&lt;/td&gt;
+      &lt;td&gt;Do these modules work together (DB, API)?&lt;/td&gt;
+      &lt;td&gt;A few components&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;End-to-end (E2E)&lt;/td&gt;
+      &lt;td&gt;Does the whole flow work like a real user?&lt;/td&gt;
+      &lt;td&gt;The entire system&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Smoke&lt;/td&gt;
+      &lt;td&gt;Is the build even alive? (sanity check)&lt;/td&gt;
+      &lt;td&gt;Critical paths only&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Regression&lt;/td&gt;
+      &lt;td&gt;Did we re-break something we already fixed?&lt;/td&gt;
+      &lt;td&gt;Wherever the old bug was&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Acceptance&lt;/td&gt;
+      &lt;td&gt;Does it meet the agreed business criteria?&lt;/td&gt;
+      &lt;td&gt;Feature-level&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Contract&lt;/td&gt;
+      &lt;td&gt;Do two services still agree on the interface?&lt;/td&gt;
+      &lt;td&gt;Service boundary&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Property-based&lt;/td&gt;
+      &lt;td&gt;Does it hold for &lt;em&gt;thousands&lt;/em&gt; of generated inputs?&lt;/td&gt;
+      &lt;td&gt;A function’s invariants&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Mutation&lt;/td&gt;
+      &lt;td&gt;Are the tests themselves any good?&lt;/td&gt;
+      &lt;td&gt;The test suite&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Performance / load&lt;/td&gt;
+      &lt;td&gt;Is it fast enough under N users?&lt;/td&gt;
+      &lt;td&gt;System under stress&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Fuzz&lt;/td&gt;
+      &lt;td&gt;Does weird/random input crash it?&lt;/td&gt;
+      &lt;td&gt;Input handling&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Snapshot&lt;/td&gt;
+      &lt;td&gt;Did the output change unexpectedly?&lt;/td&gt;
+      &lt;td&gt;Rendered output&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Two deserve a spotlight. &lt;strong&gt;Property-based testing&lt;/strong&gt; (QuickCheck, Hypothesis) doesn’t check one
+example; it generates hundreds of random inputs and asserts a &lt;em&gt;property&lt;/em&gt; always holds — like
+“reversing a list twice gives the original” — then shrinks any failure to the smallest case.
+&lt;strong&gt;Mutation testing&lt;/strong&gt; (Stryker, mutmut) tests your &lt;em&gt;tests&lt;/em&gt;: it deliberately introduces bugs
+(“mutants”) into your code and checks whether your suite catches them. If a mutant survives, your
+test gave you false confidence.&lt;/p&gt;
+
+&lt;h3 id=&quot;test-doubles-the-stunt-actors&quot;&gt;Test doubles: the stunt actors&lt;/h3&gt;
+
+&lt;p&gt;When a unit test needs a dependency it cannot use for real (a payment gateway, a database), you
+swap in a &lt;strong&gt;test double&lt;/strong&gt; — Gerard Meszaros’s term, popularized by Martin Fowler.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Double&lt;/th&gt;
+      &lt;th&gt;What it does&lt;/th&gt;
+      &lt;th&gt;Analogy&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Dummy&lt;/td&gt;
+      &lt;td&gt;Passed but never used; fills a parameter slot&lt;/td&gt;
+      &lt;td&gt;An extra in the background of a scene&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Stub&lt;/td&gt;
+      &lt;td&gt;Returns canned answers to calls&lt;/td&gt;
+      &lt;td&gt;A cardboard cutout that always says one line&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Spy&lt;/td&gt;
+      &lt;td&gt;A stub that also records how it was called&lt;/td&gt;
+      &lt;td&gt;A cutout wearing a hidden camera&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Fake&lt;/td&gt;
+      &lt;td&gt;A real, working, but shortcut implementation (in-memory DB)&lt;/td&gt;
+      &lt;td&gt;A stunt car that drives but isn’t street-legal&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Mock&lt;/td&gt;
+      &lt;td&gt;Pre-programmed with expectations; verifies behavior&lt;/td&gt;
+      &lt;td&gt;A method actor who fails the scene if you flub your cue&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The distinction that confuses everyone: &lt;strong&gt;stub vs. mock&lt;/strong&gt;. A &lt;strong&gt;stub&lt;/strong&gt; answers a question and you
+assert on the resulting &lt;em&gt;state&lt;/em&gt; (“after this, the balance is 60”). A &lt;strong&gt;mock&lt;/strong&gt; verifies an
+&lt;em&gt;interaction&lt;/em&gt; (“the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;chargeCard&lt;/code&gt; method was called exactly once with $40”). Stubs test what came
+out; mocks test what happened. Over-mock and your tests become a brittle mirror of the
+implementation — they break every time you refactor, even when behavior is unchanged.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;architecture-styles&quot;&gt;Architecture styles&lt;/h2&gt;
+
+&lt;p&gt;Architecture is the set of decisions that are expensive to reverse: the big boxes, how they talk,
+and where the boundaries are. There is no “best” — only trade-offs against your team size, scale,
+and how fast requirements change.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Style&lt;/th&gt;
+      &lt;th&gt;Idea&lt;/th&gt;
+      &lt;th&gt;Strength&lt;/th&gt;
+      &lt;th&gt;Weakness&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Monolith&lt;/td&gt;
+      &lt;td&gt;One deployable unit&lt;/td&gt;
+      &lt;td&gt;Simple to build, test, deploy, reason about&lt;/td&gt;
+      &lt;td&gt;Scales as one lump; one bug can sink all of it&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Modular monolith&lt;/td&gt;
+      &lt;td&gt;One deploy, strong internal module boundaries&lt;/td&gt;
+      &lt;td&gt;Monolith simplicity + clean seams&lt;/td&gt;
+      &lt;td&gt;Requires discipline to keep modules honest&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Microservices&lt;/td&gt;
+      &lt;td&gt;Many small, independently deployable services&lt;/td&gt;
+      &lt;td&gt;Independent scaling and teams&lt;/td&gt;
+      &lt;td&gt;Distributed-systems pain: network, consistency, ops&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Layered (n-tier)&lt;/td&gt;
+      &lt;td&gt;Presentation → business → data layers&lt;/td&gt;
+      &lt;td&gt;Familiar, organized&lt;/td&gt;
+      &lt;td&gt;Layers can leak; “fat” middle&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Hexagonal (ports &amp;amp; adapters)&lt;/td&gt;
+      &lt;td&gt;Core logic isolated behind ports&lt;/td&gt;
+      &lt;td&gt;Swappable tech, highly testable&lt;/td&gt;
+      &lt;td&gt;More upfront indirection&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Clean architecture&lt;/td&gt;
+      &lt;td&gt;Dependencies point inward to the domain&lt;/td&gt;
+      &lt;td&gt;Framework-independent core&lt;/td&gt;
+      &lt;td&gt;Ceremony for small apps&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Event-driven&lt;/td&gt;
+      &lt;td&gt;Components react to events asynchronously&lt;/td&gt;
+      &lt;td&gt;Loose coupling, high throughput&lt;/td&gt;
+      &lt;td&gt;Hard to trace; eventual consistency&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;CQRS&lt;/td&gt;
+      &lt;td&gt;Separate read and write models&lt;/td&gt;
+      &lt;td&gt;Optimize reads and writes independently&lt;/td&gt;
+      &lt;td&gt;Two models to keep in sync&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Event sourcing&lt;/td&gt;
+      &lt;td&gt;Store the events, not the current state&lt;/td&gt;
+      &lt;td&gt;Full audit trail; rebuild any past state&lt;/td&gt;
+      &lt;td&gt;Querying and schema evolution get tricky&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Hexagonal architecture&lt;/strong&gt; (ports and adapters) is worth internalizing: your business logic sits
+in the center and knows &lt;em&gt;nothing&lt;/em&gt; about the database, the web framework, or the message bus. It
+exposes &lt;strong&gt;ports&lt;/strong&gt; (interfaces), and the outside world plugs in &lt;strong&gt;adapters&lt;/strong&gt; (a Postgres adapter, a
+REST adapter, a test adapter). Swapping Postgres for DynamoDB, or the real DB for an in-memory
+fake in tests, touches zero business code.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;flowchart LR
+  subgraph Outside
+    web[&quot;REST adapter&quot;]
+    db[&quot;Postgres adapter&quot;]
+    test[&quot;Test adapter&quot;]
+  end
+  subgraph Core[&quot;Domain core (knows no tech)&quot;]
+    logic[&quot;Business logic + ports&quot;]
+  end
+  web --&amp;gt; logic
+  logic --&amp;gt; db
+  test --&amp;gt; logic
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The eternal debate: &lt;strong&gt;monolith vs. microservices.&lt;/strong&gt; The honest answer for almost everyone is
+&lt;em&gt;start with a (modular) monolith.&lt;/em&gt; Microservices solve &lt;strong&gt;organizational&lt;/strong&gt; scaling — letting 50
+teams deploy without coordinating — at the cost of turning every method call into a network call
+that can fail, time out, or arrive twice. As the saying goes, microservices let you turn a
+function call into a &lt;em&gt;distributed&lt;/em&gt; function call, complete with latency, partial failure, and a
+3 a.m. page. Don’t pay that tax until the org actually needs it. A “distributed monolith” —
+microservices that must all deploy together — is the worst of both worlds.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;synchronous-vs-asynchronous&quot;&gt;Synchronous vs. asynchronous&lt;/h2&gt;
+
+&lt;p&gt;This one axis quietly shapes everything above it. &lt;strong&gt;Synchronous&lt;/strong&gt;: the caller sends a request and
+&lt;em&gt;waits&lt;/em&gt;, blocked, for the response. &lt;strong&gt;Asynchronous&lt;/strong&gt;: the caller fires a message and moves on; the
+result arrives later, if at all.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;Synchronous&lt;/th&gt;
+      &lt;th&gt;Asynchronous&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Mental model&lt;/td&gt;
+      &lt;td&gt;A phone call&lt;/td&gt;
+      &lt;td&gt;An email / a voicemail&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Caller waits?&lt;/td&gt;
+      &lt;td&gt;Yes, blocked&lt;/td&gt;
+      &lt;td&gt;No, continues&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Coupling&lt;/td&gt;
+      &lt;td&gt;Tighter (both must be up &lt;em&gt;now&lt;/em&gt;)&lt;/td&gt;
+      &lt;td&gt;Looser (receiver can be down)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Latency feel&lt;/td&gt;
+      &lt;td&gt;Immediate&lt;/td&gt;
+      &lt;td&gt;Deferred&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Failure blast radius&lt;/td&gt;
+      &lt;td&gt;Cascades (one slow service stalls the chain)&lt;/td&gt;
+      &lt;td&gt;Contained (queue absorbs the spike)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Examples&lt;/td&gt;
+      &lt;td&gt;REST/gRPC call, DB query&lt;/td&gt;
+      &lt;td&gt;Message queue, pub/sub, webhooks, background jobs&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Best for&lt;/td&gt;
+      &lt;td&gt;“I need the answer to continue”&lt;/td&gt;
+      &lt;td&gt;“Do this eventually; I don’t need to watch”&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Async usually runs over a &lt;strong&gt;broker&lt;/strong&gt;. Two flavors:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Message queue&lt;/strong&gt; (point-to-point): a producer drops a job on a queue, &lt;em&gt;one&lt;/em&gt; consumer picks it
+up. Great for work distribution — sending emails, processing uploads. (RabbitMQ, SQS.)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Publish/subscribe&lt;/strong&gt; (fan-out): a publisher emits an event, &lt;em&gt;every&lt;/em&gt; interested subscriber gets
+a copy, and the publisher doesn’t know or care who is listening. Great for decoupling — when an
+order is placed, billing, shipping, and analytics all react independently. (Kafka, SNS, NATS.)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The analogy: synchronous is a phone call — both people must be present and attentive, and if the
+other person puts you on hold, &lt;em&gt;you&lt;/em&gt; are stuck holding too. Asynchronous is texting — you send
+it, get on with your life, and they reply when they can. Synchronous is simpler to reason about
+(you get an answer or an error right now), but it is also how one slow service takes down five
+healthy ones in a cascade. Async buys resilience and scale, and pays for it with &lt;strong&gt;eventual
+consistency&lt;/strong&gt; and the headache of debugging a flow you can’t watch end-to-end.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;distributed-systems-patterns-including-saga&quot;&gt;Distributed systems patterns (including SAGA)&lt;/h2&gt;
+
+&lt;p&gt;The moment your data lives in more than one service or database, the comforting guarantees of a
+single ACID transaction evaporate. These patterns are how you claw back correctness and
+resilience in a world of networks that lose, delay, and duplicate messages.&lt;/p&gt;
+
+&lt;p&gt;First, the law that governs the whole game — &lt;strong&gt;CAP theorem&lt;/strong&gt;: in the presence of a network
+&lt;strong&gt;P&lt;/strong&gt;artition, you must choose between &lt;strong&gt;C&lt;/strong&gt;onsistency and &lt;strong&gt;A&lt;/strong&gt;vailability. You cannot have all
+three. Most internet-scale systems pick availability and embrace &lt;strong&gt;eventual consistency&lt;/strong&gt;: the
+data will agree &lt;em&gt;soon&lt;/em&gt;, just not this instant.&lt;/p&gt;
+
+&lt;h3 id=&quot;saga--distributed-transactions-without-distributed-locks&quot;&gt;SAGA — distributed transactions without distributed locks&lt;/h3&gt;
+
+&lt;p&gt;You cannot wrap “charge the card, reserve inventory, book shipping” in one database transaction
+when each lives in a different service. The &lt;strong&gt;SAGA pattern&lt;/strong&gt; replaces one big transaction with a
+&lt;strong&gt;sequence of local transactions&lt;/strong&gt;, each publishing an event that triggers the next. If a step
+fails, the saga runs &lt;strong&gt;compensating transactions&lt;/strong&gt; to undo the prior steps — the business-logic
+equivalent of a rollback.&lt;/p&gt;
+
+&lt;p&gt;There are two ways to coordinate a saga:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;flowchart TD
+  subgraph Orchestration
+    O[&quot;Orchestrator&quot;] --&amp;gt; A1[&quot;Order svc&quot;]
+    O --&amp;gt; B1[&quot;Payment svc&quot;]
+    O --&amp;gt; C1[&quot;Inventory svc&quot;]
+  end
+  subgraph Choreography
+    A2[&quot;Order svc&quot;] --&amp;gt;|OrderPlaced| B2[&quot;Payment svc&quot;]
+    B2 --&amp;gt;|PaymentDone| C2[&quot;Inventory svc&quot;]
+    C2 --&amp;gt;|Reserved| D2[&quot;Shipping svc&quot;]
+  end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;Orchestration&lt;/th&gt;
+      &lt;th&gt;Choreography&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Control&lt;/td&gt;
+      &lt;td&gt;A central coordinator issues commands&lt;/td&gt;
+      &lt;td&gt;Services react to each other’s events&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Visibility&lt;/td&gt;
+      &lt;td&gt;Easy — the flow lives in one place&lt;/td&gt;
+      &lt;td&gt;Hard — the flow is spread across services&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Coupling&lt;/td&gt;
+      &lt;td&gt;Coupled to the orchestrator&lt;/td&gt;
+      &lt;td&gt;Loosely coupled, fully event-driven&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Best for&lt;/td&gt;
+      &lt;td&gt;Complex workflows needing control&lt;/td&gt;
+      &lt;td&gt;Simple, linear flows&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Risk&lt;/td&gt;
+      &lt;td&gt;Orchestrator becomes a god object&lt;/td&gt;
+      &lt;td&gt;“Where did this flow break?” archaeology&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The analogy: &lt;strong&gt;orchestration&lt;/strong&gt; is a conductor in front of an orchestra — one baton, everyone
+follows it, and if the music stops you know exactly who to look at. &lt;strong&gt;Choreography&lt;/strong&gt; is a flash
+mob — each dancer knows their cue from the dancer next to them, gorgeous when it works, but when
+someone trips there is no conductor to ask what went wrong, just confused dancers and a phone
+full of “who started this?” Compensating transactions are the part people forget: there is no
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ROLLBACK&lt;/code&gt;, so &lt;em&gt;you&lt;/em&gt; must write the “refund the card we already charged” logic by hand.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;the-resilience-toolkit&quot;&gt;The resilience toolkit&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Pattern&lt;/th&gt;
+      &lt;th&gt;Problem it solves&lt;/th&gt;
+      &lt;th&gt;One-liner&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Retry + backoff + jitter&lt;/td&gt;
+      &lt;td&gt;Transient failures (a blip)&lt;/td&gt;
+      &lt;td&gt;Try again, but wait longer each time, with randomness&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Circuit breaker&lt;/td&gt;
+      &lt;td&gt;A dependency is &lt;em&gt;down&lt;/em&gt;, not blipping&lt;/td&gt;
+      &lt;td&gt;Stop calling a failing service; fail fast; check back later&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Bulkhead&lt;/td&gt;
+      &lt;td&gt;One overloaded part drowns the rest&lt;/td&gt;
+      &lt;td&gt;Isolate resources so a flood stays in one compartment&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Timeout&lt;/td&gt;
+      &lt;td&gt;A call hangs forever&lt;/td&gt;
+      &lt;td&gt;Give up after N seconds; never wait indefinitely&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Idempotency&lt;/td&gt;
+      &lt;td&gt;Retries cause duplicates&lt;/td&gt;
+      &lt;td&gt;Make “do it twice” equal “do it once” (idempotency keys)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Outbox&lt;/td&gt;
+      &lt;td&gt;“Save to DB &lt;em&gt;and&lt;/em&gt; publish event” can half-fail&lt;/td&gt;
+      &lt;td&gt;Write the event to the DB in the same transaction, publish later&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Strangler fig&lt;/td&gt;
+      &lt;td&gt;Replacing a legacy system safely&lt;/td&gt;
+      &lt;td&gt;Wrap the old system; reroute features one by one until it’s gone&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Two of these are non-negotiable and constantly skipped. &lt;strong&gt;Idempotency&lt;/strong&gt;: if a payment request
+times out and the client retries, did you charge the customer twice? An idempotency key — a
+unique ID the server remembers — turns a retried request into a no-op. &lt;strong&gt;Circuit breaker&lt;/strong&gt;: the
+name is literal. Like the breaker in your house that trips before the wiring melts, it detects a
+service failing and &lt;em&gt;stops calling it&lt;/em&gt;, so you fail fast instead of piling up thousands of
+requests waiting on a corpse. The &lt;strong&gt;bulkhead&lt;/strong&gt; is named after a ship’s watertight compartments —
+one flooded section doesn’t sink the whole vessel; one overloaded thread pool doesn’t take down
+every endpoint.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;design-patterns-gang-of-four&quot;&gt;Design patterns (Gang of Four)&lt;/h2&gt;
+
+&lt;p&gt;The 1994 “Gang of Four” book catalogued 23 reusable solutions to recurring object-oriented design
+problems. They are a &lt;strong&gt;shared vocabulary&lt;/strong&gt; as much as code: saying “use a Strategy here” conveys a
+whole design in two words. They come in three families.&lt;/p&gt;
+
+&lt;h3 id=&quot;creational--how-objects-get-made&quot;&gt;Creational — how objects get made&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Pattern&lt;/th&gt;
+      &lt;th&gt;What it does&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Singleton&lt;/td&gt;
+      &lt;td&gt;Guarantees one instance (use sparingly — it’s global state in a hat)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Factory Method&lt;/td&gt;
+      &lt;td&gt;Subclasses decide which concrete class to instantiate&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Abstract Factory&lt;/td&gt;
+      &lt;td&gt;Creates families of related objects&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Builder&lt;/td&gt;
+      &lt;td&gt;Constructs a complex object step by step&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Prototype&lt;/td&gt;
+      &lt;td&gt;Creates new objects by cloning an existing one&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;structural--how-objects-are-composed&quot;&gt;Structural — how objects are composed&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Pattern&lt;/th&gt;
+      &lt;th&gt;What it does&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Adapter&lt;/td&gt;
+      &lt;td&gt;Makes two incompatible interfaces work together&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Decorator&lt;/td&gt;
+      &lt;td&gt;Adds behavior to an object dynamically, without subclassing&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Facade&lt;/td&gt;
+      &lt;td&gt;A simple front door over a complex subsystem&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Proxy&lt;/td&gt;
+      &lt;td&gt;A stand-in that controls access to another object&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Composite&lt;/td&gt;
+      &lt;td&gt;Treats individual objects and groups uniformly (trees)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Bridge&lt;/td&gt;
+      &lt;td&gt;Splits abstraction from implementation so both vary freely&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Flyweight&lt;/td&gt;
+      &lt;td&gt;Shares common state to save memory&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;behavioral--how-objects-collaborate&quot;&gt;Behavioral — how objects collaborate&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Pattern&lt;/th&gt;
+      &lt;th&gt;What it does&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Strategy&lt;/td&gt;
+      &lt;td&gt;Swap an algorithm at runtime behind a common interface&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Observer&lt;/td&gt;
+      &lt;td&gt;Subscribers get notified when a subject changes (pub/sub’s ancestor)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Command&lt;/td&gt;
+      &lt;td&gt;Wrap a request as an object (undo, queues, logs)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Iterator&lt;/td&gt;
+      &lt;td&gt;Walk a collection without exposing its internals&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;State&lt;/td&gt;
+      &lt;td&gt;Change behavior when internal state changes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Template Method&lt;/td&gt;
+      &lt;td&gt;Define a skeleton, let subclasses fill steps&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Chain of Responsibility&lt;/td&gt;
+      &lt;td&gt;Pass a request along a chain until someone handles it (middleware!)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Strategy in one breath: same interface, swappable behavior
+sorter.set_strategy(QuickSort())   # or MergeSort(), or BubbleSort()
+sorter.sort(data)                  # caller doesn&apos;t know or care which
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Two cautions worth more than the patterns themselves. First, &lt;strong&gt;Adapter&lt;/strong&gt; and &lt;strong&gt;Decorator&lt;/strong&gt; are
+everywhere you already work — a payment “adapter” wrapping Stripe’s SDK, HTTP “middleware” that
+is literally Chain of Responsibility, an Observer hiding inside every event listener. You’ve been
+using these without the names. Second, &lt;strong&gt;patternitis&lt;/strong&gt; is real: a junior who just read the book
+will wrap a one-line function in an AbstractStrategyFactoryProvider. Patterns are answers to
+&lt;em&gt;problems you actually have&lt;/em&gt; — reach for them when the problem appears, not to decorate code that
+was fine.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;code-quality-smells-debt-refactoring-reviews&quot;&gt;Code quality: smells, debt, refactoring, reviews&lt;/h2&gt;
+
+&lt;p&gt;Architecture is the big bones; this is the daily hygiene that decides whether the codebase is a
+joy or a haunted house in two years.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Concept&lt;/th&gt;
+      &lt;th&gt;What it is&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Code smell&lt;/td&gt;
+      &lt;td&gt;A surface symptom of a deeper problem (long method, huge class, duplicated code)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Technical debt&lt;/td&gt;
+      &lt;td&gt;Shortcuts taken for speed that you “pay interest” on later&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Refactoring&lt;/td&gt;
+      &lt;td&gt;Changing structure &lt;em&gt;without&lt;/em&gt; changing behavior, in safe small steps&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Code review&lt;/td&gt;
+      &lt;td&gt;A second pair of eyes before merge — catches bugs and spreads knowledge&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Pair / mob programming&lt;/td&gt;
+      &lt;td&gt;Review in real time, as the code is written&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Boy Scout Rule&lt;/td&gt;
+      &lt;td&gt;Leave the code a little cleaner than you found it&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Technical debt&lt;/strong&gt; is the most useful metaphor in the field, coined by Ward Cunningham. Like
+financial debt, a little can be &lt;em&gt;strategic&lt;/em&gt; — borrow speed now to hit a deadline, pay it back
+soon. The danger is &lt;em&gt;unmanaged&lt;/em&gt; debt: you only ever pay the interest (every change gets slower)
+and never the principal, until the codebase is so brittle that a one-line feature takes a week and
+everyone is afraid to touch it.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The analogy: a code smell is that faint funk in the fridge. It doesn’t &lt;em&gt;prove&lt;/em&gt; something has
+gone bad, but it’s worth investigating before you trust the leftovers. Technical debt is the
+credit card: occasionally the smart move (buy the flight now, pay next month), ruinous if you
+only ever make minimum payments. And refactoring is cleaning the kitchen &lt;em&gt;as you cook&lt;/em&gt; instead of
+facing a mountain of dishes at midnight — which is exactly why the Boy Scout Rule beats the
+heroic month-long “refactoring project” that management never approves.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;delivery-cicd-12-factor-devops-dora&quot;&gt;Delivery: CI/CD, 12-factor, DevOps, DORA&lt;/h2&gt;
+
+&lt;p&gt;Code that isn’t shipped is a museum piece. &lt;strong&gt;DevOps&lt;/strong&gt; tore down the wall between the people who
+&lt;em&gt;write&lt;/em&gt; software and the people who &lt;em&gt;run&lt;/em&gt; it, on the theory that “you build it, you run it”
+produces better software than throwing a release over a fence.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Term&lt;/th&gt;
+      &lt;th&gt;Meaning&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Continuous Integration (CI)&lt;/td&gt;
+      &lt;td&gt;Merge to mainline often; run automated tests on every commit&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Continuous Delivery (CD)&lt;/td&gt;
+      &lt;td&gt;Every passing build is &lt;em&gt;deployable&lt;/em&gt; at the push of a button&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Continuous Deployment&lt;/td&gt;
+      &lt;td&gt;Every passing build &lt;em&gt;auto-deploys&lt;/em&gt; to production&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Infrastructure as Code (IaC)&lt;/td&gt;
+      &lt;td&gt;Servers/networks defined in version-controlled files (Terraform)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Observability&lt;/td&gt;
+      &lt;td&gt;Logs, metrics, traces — knowing &lt;em&gt;why&lt;/em&gt; prod is sad, not just &lt;em&gt;that&lt;/em&gt; it is&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Trunk-based development&lt;/td&gt;
+      &lt;td&gt;Everyone commits to one short-lived mainline; tiny branches&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Feature flag&lt;/td&gt;
+      &lt;td&gt;Ship code dark, toggle it on later, decouple deploy from release&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The &lt;strong&gt;12-Factor App&lt;/strong&gt; is the canonical checklist for cloud-native services — config in the
+environment (not in code), stateless processes, treat logs as event streams, dev/prod parity, and
+so on. Follow it and your app is portable, scalable, and disposable by design.&lt;/p&gt;
+
+&lt;p&gt;How do you know if your delivery is any good? &lt;strong&gt;DORA metrics&lt;/strong&gt;, the research-backed four:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;DORA metric&lt;/th&gt;
+      &lt;th&gt;Measures&lt;/th&gt;
+      &lt;th&gt;Elite looks like&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Deployment frequency&lt;/td&gt;
+      &lt;td&gt;How often you ship&lt;/td&gt;
+      &lt;td&gt;On-demand, many times a day&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Lead time for changes&lt;/td&gt;
+      &lt;td&gt;Commit → production&lt;/td&gt;
+      &lt;td&gt;Less than a day (often hours)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Change failure rate&lt;/td&gt;
+      &lt;td&gt;% of deploys causing a problem&lt;/td&gt;
+      &lt;td&gt;0–15%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Time to restore service&lt;/td&gt;
+      &lt;td&gt;How fast you recover from incidents&lt;/td&gt;
+      &lt;td&gt;Less than an hour&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The counterintuitive finding from years of DORA research: &lt;strong&gt;speed and stability are not a
+trade-off — they rise together.&lt;/strong&gt; Teams that deploy more often also fail &lt;em&gt;less&lt;/em&gt; and recover
+&lt;em&gt;faster&lt;/em&gt;. The reason is batch size. Shipping a tiny change daily means if it breaks, the culprit
+is obvious and the rollback is trivial. Shipping a giant quarterly release means a failure is a
+needle in a haystack of 400 changes. The analogy: it is safer to walk down ten small steps than
+to jump off the top of the staircase once.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;decisions-and-documentation&quot;&gt;Decisions and documentation&lt;/h2&gt;
+
+&lt;p&gt;The code says &lt;em&gt;what&lt;/em&gt; the system does. It rarely says &lt;em&gt;why&lt;/em&gt; — why this database, why this
+trade-off, why that weird workaround that looks like a bug but is load-bearing. That “why”
+evaporates the moment the engineer who knew it leaves.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Artifact&lt;/th&gt;
+      &lt;th&gt;Purpose&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;ADR (Architecture Decision Record)&lt;/td&gt;
+      &lt;td&gt;A short, dated note capturing one decision, its context, and its consequences&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;README&lt;/td&gt;
+      &lt;td&gt;How to run, build, and contribute — the front door&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Runbook&lt;/td&gt;
+      &lt;td&gt;Step-by-step for operating and fixing the system at 3 a.m.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;API docs / OpenAPI&lt;/td&gt;
+      &lt;td&gt;The contract consumers depend on&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Diagrams (C4, sequence)&lt;/td&gt;
+      &lt;td&gt;The picture worth a thousand lines of code&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The cheapest, highest-leverage habit most teams skip: the &lt;strong&gt;ADR&lt;/strong&gt;. When you make a real decision
+(“we chose Postgres over Mongo because of X, accepting trade-off Y”), write fifteen lines and
+commit them next to the code. A year later, when someone asks “why on earth is it built this
+way,” the answer exists instead of being a shrug and a guess. Documentation isn’t about writing
+a novel; it’s about leaving a trail of breadcrumbs for the very tired person who maintains this
+next — and that person is often &lt;em&gt;you&lt;/em&gt;, six months from now, having forgotten everything.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;the-laws-every-engineer-should-know&quot;&gt;The laws every engineer should know&lt;/h2&gt;
+
+&lt;p&gt;The field has accumulated a set of wry “laws” that are funny because they are painfully true.
+Knowing them is a shortcut to wisdom you’d otherwise earn the hard way.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Law&lt;/th&gt;
+      &lt;th&gt;What it says&lt;/th&gt;
+      &lt;th&gt;Why it bites&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Conway’s Law&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Systems mirror the communication structure of the org that built them&lt;/td&gt;
+      &lt;td&gt;Four teams will build a four-part compiler whether or not that’s the right design&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Brooks’s Law&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Adding people to a late project makes it later&lt;/td&gt;
+      &lt;td&gt;Onboarding and communication overhead swamp the extra hands&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Hofstadter’s Law&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;It always takes longer than you expect, even accounting for Hofstadter’s Law&lt;/td&gt;
+      &lt;td&gt;Estimation is recursively optimistic&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Murphy’s Law&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Anything that can go wrong, will&lt;/td&gt;
+      &lt;td&gt;So design for failure, not for the happy path&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Postel’s Law&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Be conservative in what you send, liberal in what you accept&lt;/td&gt;
+      &lt;td&gt;Robust interfaces tolerate sloppy inputs&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Goodhart’s Law&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;When a measure becomes a target, it stops being a good measure&lt;/td&gt;
+      &lt;td&gt;Reward “lines of code” and you’ll get bloated code&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;The Pareto Principle&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;80% of effects come from 20% of causes&lt;/td&gt;
+      &lt;td&gt;20% of the code holds 80% of the bugs (and value)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Conway’s Law&lt;/strong&gt; is the one that quietly runs your career. If you want a modular system, you need
+modular &lt;em&gt;teams&lt;/em&gt; — architecture and org chart are the same shape whether you like it or not. The
+savvy move, the “Inverse Conway Maneuver,” is to &lt;strong&gt;design the team structure you want the
+software to have&lt;/strong&gt;, then let the software follow. You cannot draw a clean microservices diagram
+on top of one giant team that talks about everything in one channel; the boxes will leak because
+the conversations do.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;closing-thought&quot;&gt;Closing thought&lt;/h2&gt;
+
+&lt;p&gt;Software engineering is the discipline of building things that are too big and too long-lived for
+any one person to hold in their head. Every acronym in this article — TDD, DDD, SOLID, CQRS, SAGA
+— is a tool for the same job: keeping complexity from winning as a system grows, ages, and passes
+through many hands.&lt;/p&gt;
+
+&lt;p&gt;If you take one thing from this refresher, make it the meta-skill underneath all the others:
+&lt;strong&gt;there are no best practices, only trade-offs in a context.&lt;/strong&gt; Microservices are brilliant and
+ruinous. DRY is wisdom and a trap. The senior engineer is not the one who memorized the most
+patterns; it is the one who knows which one &lt;em&gt;this&lt;/em&gt; problem is asking for, and — more often than
+juniors expect — has the courage to choose the boring, simple option and move on. Clear is better
+than clever, here as everywhere. The rest is practice.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>[review] golang</title>
