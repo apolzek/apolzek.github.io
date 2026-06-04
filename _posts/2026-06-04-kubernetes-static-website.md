@@ -7,4 +7,4 @@ summary:
 minute: 10
 ---
 
-Simply don't do it
+**Simply don't do it**
