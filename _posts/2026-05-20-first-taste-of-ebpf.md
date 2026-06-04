@@ -15,7 +15,7 @@ Brendan Gregg's slides make the case that bpftrace is the perfect place to start
 
 ## Environment
 
-I'm starting to play around with eBPF on Ubuntu 25 running in a VirtualBox VM.I'm starting to play around with eBPF on Ubuntu 25 running in a VirtualBox.
+I'm starting to play around with eBPF on Ubuntu 25 running in a VirtualBox VM.
 
 ### Spying on curl's file access with bpftrace
 
