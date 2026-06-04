@@ -9,19 +9,19 @@ minute: 10
 
 ## Reflexões de um ex-péssimo aluno
 
-Quando alguém decide estudar seriamente um assunto novo, quase sempre experimenta uma espécie de ansiedade intelectual. É um fenômeno compreensível. À medida que cresce o desejo de conhecer, cresce também a consciência da própria ignorância. Quanto mais se enxerga, mais se percebe aquilo que ainda permanece oculto.
+Quando alguém decide estudar seriamente um assunto novo, quase sempre experimenta uma espécie de ansiedade intelectual. É um fenômeno compreensível. À medida que cresce o desejo de conhecer, cresce também a consciência da própria ignorância. Quanto mais se enxerga, mais se percebe aquilo que ainda permanece oculto. "Só sei que nada sei" — Sócrates.
 
 Nesse momento surge um problema que antes não existia: a limitação do tempo. Já não basta desejar aprender; torna-se necessário discernir o que merece aprofundamento e o que pode permanecer no campo da informação geral. A maturidade intelectual consiste precisamente nisso: saber até onde é preciso ir e onde convém parar.
 
 Observando a realidade, percebe-se que existem, em linhas gerais, três tipos de estudiosos. O primeiro é o generalista superficial: conhece um pouco de muitas coisas, mas raramente alcança a essência de qualquer uma delas. O segundo é o especialista restrito: domina profundamente poucos assuntos, sacrificando a amplitude em favor da profundidade. O terceiro reúne ambas as qualidades: possui vasta cultura e, ao mesmo tempo, conhecimento profundo dos temas que estudou. É o tipo mais raro, pois exige não apenas inteligência, mas disciplina, tempo e uma extraordinária capacidade de ordenar o próprio pensamento.
 
-O problema é que esse terceiro ideal, embora admirável, torna-se praticamente inalcançável dentro do tempo médio de vida de um ser humano, sobretudo para aqueles que possuem curiosidade genuína por diversas áreas do conhecimento. Basta um exame sincero da realidade para perceber que não há tempo suficiente para absorver tudo o que a humanidade já produziu, muito menos para acompanhar tudo aquilo que continua produzindo diariamente.
+O problema é que esse terceiro ideal, embora admirável, torna-se praticamente inalcançável dentro do tempo médio de vida de um ser humano, sobretudo para aqueles que possuem curiosidade genuína por diversas áreas do conhecimento. Basta um exame sincero da realidade para perceber que não há tempo suficiente para absorver tudo o que a humanidade já produziu, muito menos para acompanhar o que continua produzindo.
 
-É nesse ponto que surge o primeiro grande desafio intelectual: a delimitação. Escolher o que estudar e, principalmente, até onde estudar. Traçar uma linha não é um ato de resignação, mas de prudência. Sem essa delimitação, o estudante corre o risco de viver permanentemente assombrado pela sensação de insuficiência, como se estivesse sempre atrasado diante da imensidão do conhecimento disponível. A definição clara de objetivos não empobrece a busca intelectual; ao contrário, confere-lhe direção e sentido.
+É nesse ponto que surge o primeiro grande desafio intelectual: a delimitação. Traçar uma linha não é um ato de resignação, mas de prudência. Sem essa delimitação, o estudante corre o risco de viver permanentemente assombrado pela sensação de insuficiência, como se estivesse sempre atrasado diante da imensidão do conhecimento disponível. A definição clara de objetivos não empobrece a busca intelectual; ao contrário, confere-lhe direção e sentido.
 
-Há, porém, um segundo problema igualmente importante. A humanidade produziu e continua produzindo uma quantidade colossal de conteúdo sobre praticamente todos os assuntos imagináveis. Entretanto, quantidade jamais foi sinônimo de qualidade. Grande parte dessa produção nasce da ingenuidade, da falta de rigor, da insuficiência de informações ou, pior ainda, da substituição dos fatos por opiniões travestidas de conhecimento. Nem todo autor merece confiança. Nem toda obra merece atenção. Nem toda autoridade é verdadeiramente autorizada.
+Há, porém, um segundo problema igualmente importante. A humanidade produziu e continua produzindo uma quantidade colossal de conteúdo sobre praticamente todos os assuntos imagináveis. Entretanto, quantidade jamais foi sinônimo de qualidade. Grande parte dessa produção nasce da ingenuidade, da falta de rigor, da insuficiência de informações ou, pior ainda, da substituição dos fatos por opiniões travestidas de conhecimento. Nem todo autor merece confiança. Nem toda obra merece atenção.
 
-Por isso, duas virtudes tornam-se indispensáveis ao estudante: a capacidade de delimitar o próprio campo de investigação e a capacidade de selecionar cuidadosamente suas fontes. Antes de iniciar uma jornada de estudos, reserve algum tempo para determinar o que realmente precisa aprender e qual nível de domínio é necessário para atingir seu objetivo. Trace uma linha clara. Ao alcançá-la, considere a meta cumprida. Caso contrário, o estudo transforma-se numa busca interminável, incapaz de produzir qualquer sensação legítima de conclusão.
+Por isso, duas virtudes tornam-se indispensáveis ao estudante: a capacidade de delimitar o próprio campo de investigação e a capacidade de selecionar cuidadosamente suas fontes. Antes de iniciar uma jornada de estudos, reserve algum tempo para determinar o que realmente precisa aprender e qual nível de domínio é necessário para atingir seu objetivo. Ao alcançá-lo, considere a meta cumprida. Caso contrário, o estudo transforma-se numa busca interminável, incapaz de produzir qualquer sensação legítima de conclusão.
 
 Da mesma forma, reserve tempo para identificar autores, professores e pensadores que tenham resistido ao julgamento do tempo e cuja reputação tenha sido construída sobre a seriedade intelectual. Prefira aqueles que demonstram prudência ao avaliar seus predecessores, que conhecem a tradição da qual falam e que possuem a honestidade de distinguir claramente entre aquilo que sabem, aquilo em que acreditam e aquilo que apenas supõem. Em matéria de estudo, escolher os guias corretos é, muitas vezes, mais importante do que escolher os temas corretos.
 
@@ -31,7 +31,7 @@ Tente estudar Cálculo Diferencial e Integral sem antes dominar a álgebra bási
 
 Demorei muito tempo para compreender a importância da lógica, da linguagem, da matemática básica, da epistemologia, do método científico, da estatística e da história das ideias. Durante anos pensei: "Para que vou precisar disso?". E, sob certo aspecto, eu tinha razão. No mercado de trabalho e na vida cotidiana convencional, grande parte desses conhecimentos parece dispensável. Na maioria das profissões, é perfeitamente possível viver sem eles.
 
-Mas existe uma diferença entre aquilo que é útil para ganhar a vida e aquilo que é necessário para compreender a vida. Para uma existência orientada pelo autoconhecimento, pela busca da verdade e pela compreensão da realidade, esses estudos constituem fundamentos indispensáveis. São instrumentos de libertação intelectual.
+Mas existe uma diferença entre aquilo que é útil para ganhar a vida e aquilo que é necessário para compreender a vida. Para uma existência orientada pelo autoconhecimento e pela compreensão da realidade, esses estudos constituem fundamentos indispensáveis. São instrumentos de libertação intelectual.
 
 Vale a pena perguntar a si mesmo: aquilo que estou estudando possui relação com quem eu sou ou apenas com o lugar onde trabalho? Está ligado à minha formação como ser humano ou apenas ao próximo objetivo profissional que desejo alcançar?
 
@@ -43,13 +43,13 @@ Quantas pessoas do seu convívio você conhece que ainda carregam o título info
 
 Não se trata de rejeitar os avanços da medicina nem de idealizar o passado. A questão é outra: estamos nos tornando cada vez mais dependentes de sistemas que compreendemos cada vez menos. Perdemos contato com tradições, conhecimentos locais e formas de entendimento que durante séculos fizeram parte da experiência humana.
 
-Tenho a impressão de que estamos formando indivíduos cada vez mais especializados em operar mecanismos e cada vez menos capazes de compreender a si mesmos. O conhecimento cresce em volume, mas a sabedoria parece tornar-se mais rara.
+Tenho a impressão de que estamos formando indivíduos cada vez mais especializados em operar mecanismos e menos capazes de compreender a si mesmos. O conhecimento cresce em volume, mas a sabedoria parece tornar-se mais rara.
 
 Este texto começou falando sobre conhecimento e termina com uma crítica. Talvez porque, no fundo, conhecimento não seja apenas acumular informações, mas compreender o lugar que ocupamos no mundo e a direção para a qual estamos caminhando.
 
 Lembro, por fim, de uma frase que ouvi certa vez de um cardiologista já falecido:
 
-"*Somente o conhecimento liberta o homem.*" E.C
+"Somente o conhecimento liberta o homem." — E.C.
 
 ---
 
