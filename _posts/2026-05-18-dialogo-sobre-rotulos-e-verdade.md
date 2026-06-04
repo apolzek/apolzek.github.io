@@ -78,4 +78,6 @@ minute: 4
 
 ## Nota
 
-💬 Quando li **A República, de Platão** eu sabia que não tinha e talvez ainda não tenha a base suficiente para aproveitá-la plenamente, mesmo assim senti que era uma leitura que valia a pena. Quero relê-la em breve, justamente para perceber como a experiência com uma obra muda conforme amadurecemos como leitores.
+Ler os textos gregos implica não tratá-los como meras construções discursivas, mas como registros de uma percepção efetiva da realidade, orientada pela busca de apreender a essência e os processos internos dos objetos da natureza.
+
+Quando li **A República, de Platão** eu sabia que não tinha e talvez ainda não tenha a base suficiente para aproveitá-la plenamente, mesmo assim senti que era uma leitura que valia a pena. Quero relê-la em breve, justamente para perceber como a experiência com uma obra muda conforme amadurecemos como leitores.

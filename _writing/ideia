@@ -1,0 +1,49 @@
+Fundamentos de protocolo
+Resolver recursivo — servidor que faz todo o trabalho de resolução em nome do cliente, consultando a hierarquia (raiz → TLD → autoritativo) até obter a resposta final.
+Servidor autoritativo — detém os dados reais de uma zona e responde com autoridade sobre ela, sem precisar perguntar a ninguém.
+Stub resolver — o resolver mínimo embutido no sistema operacional do cliente; apenas delega a consulta a um recursivo.
+Forwarder — resolver que, em vez de consultar a hierarquia diretamente, encaminha as queries a outro recursivo.
+Query iterativa vs. recursiva — na recursiva, o servidor entrega a resposta completa; na iterativa, ele apenas devolve uma referência (referral) ao próximo servidor na cadeia.
+Glue records — registros A/AAAA fornecidos junto da delegação NS para evitar dependência circular quando o nameserver está dentro da própria zona delegada.
+Negative caching — armazenamento de respostas NXDOMAIN/NODATA, com a duração controlada pelo campo minimum do registro SOA.
+Tipos de registro avançados
+SRV — localiza serviços (host + porta) para protocolos como SIP, XMPP e Active Directory.
+CAA — define quais autoridades certificadoras (CAs) podem emitir certificados para o domínio.
+TLSA — base do DANE; vincula um certificado/chave TLS ao nome DNS, validado via DNSSEC.
+SVCB / HTTPS — registros modernos que entregam parâmetros de conexão (ALPN, ECH, portas, hints de endereço) numa única consulta, reduzindo round-trips. O HTTPS é a especialização para a web.
+PTR — resolução reversa (IP → nome), hospedada nas zonas in-addr.arpa (IPv4) e ip6.arpa (IPv6).
+NAPTR — usado em regras de reescrita e descoberta de serviços (ENUM, telefonia).
+DNSSEC (assinatura e cadeia de confiança)
+DNSKEY — chave pública da zona usada para verificar as assinaturas.
+RRSIG — a assinatura criptográfica de um conjunto de registros (RRset).
+DS (Delegation Signer) — hash da DNSKEY publicado na zona-pai, estabelecendo o elo da cadeia de confiança entre níveis.
+KSK vs. ZSK — Key Signing Key assina apenas as DNSKEYs (é a âncora referenciada pelo DS); Zone Signing Key assina os demais registros. Separá-las facilita o rollover de chaves.
+NSEC / NSEC3 — provam a não existência de um registro de forma autenticada. O NSEC3 usa hashes para dificultar o zone walking (enumeração da zona), e o opt-out reduz o número de assinaturas em zonas grandes com muitas delegações não assinadas.
+Chain of trust — validação que parte da âncora de confiança da raiz e desce DS→DNSKEY→RRSIG até o registro consultado.
+EDNS e extensões
+EDNS0 — mecanismo que estende o DNS além do limite original de 512 bytes, sinalizando suporte a UDP de payloads maiores, flags adicionais e DNSSEC.
+EDNS Client Subnet (ECS) — envia parte do prefixo IP do cliente ao autoritativo para que CDNs/GeoDNS respondam com o servidor mais próximo. Tem implicações de privacidade.
+DNS Cookies — mecanismo leve contra spoofing e ataques de amplificação off-path.
+Transporte criptografado e privacidade
+DoT (DNS over TLS) — DNS encapsulado em TLS na porta 853.
+DoH (DNS over HTTPS) — DNS sobre HTTPS (porta 443), indistinguível do tráfego web normal.
+DoQ (DNS over QUIC) — DNS sobre QUIC, combinando criptografia com menor latência de conexão.
+ODoH (Oblivious DoH) — adiciona um proxy intermediário para que o resolver veja a query mas não o cliente, e o proxy veja o cliente mas não a query.
+QNAME minimization — o resolver envia a cada servidor apenas a parte do nome necessária para o próximo passo, em vez do nome completo, melhorando a privacidade.
+Segurança e ataques
+Cache poisoning — injeção de dados falsos no cache de um resolver.
+Ataque de Kaminsky — técnica clássica de envenenamento que explora a previsibilidade do transaction ID; mitigada por randomização de porta de origem.
+0x20 encoding — randomização de maiúsculas/minúsculas no QNAME para aumentar a entropia e dificultar o spoofing.
+DNS amplification — abuso de servidores recursivos abertos para amplificar tráfego em ataques DDoS refletidos.
+RPZ (Response Policy Zones) — "firewall de DNS"; permite reescrever ou bloquear respostas com base em políticas (ex.: bloqueio de domínios maliciosos).
+Operação e serviços
+AXFR / IXFR — transferência de zona completa (AXFR) ou incremental (IXFR) entre servidores primário e secundário.
+NOTIFY — mensagem do primário avisando os secundários de que a zona mudou, disparando a transferência.
+TSIG — autenticação por chave simétrica de transações como transferências de zona e atualizações dinâmicas. O SIG(0) é a alternativa baseada em chave assimétrica.
+Dynamic DNS Update (DDNS) — atualização programática de registros em tempo real (RFC 2136), comum com DHCP e Active Directory.
+Anycast — mesmo endereço IP anunciado de vários locais; o roteamento leva o cliente ao nó mais próximo, dando resiliência e baixa latência (usado pelos servidores raiz).
+GeoDNS / round-robin — balanceamento por geolocalização ou por rotação de respostas entre múltiplos endereços.
+Split-horizon (split-brain) — respostas diferentes para a mesma consulta conforme a origem (rede interna vs. externa).
+CNAME flattening / ANAME — soluções para apontar o ápice do domínio (zone apex) a um nome em vez de IP, contornando a regra que proíbe CNAME no topo da zona.
+Hidden primary — servidor primário que não é listado publicamente nos registros NS; só os secundários respondem aos clientes.
+Catalog zones — zona especial que descreve um conjunto de outras zonas, automatizando o provisionamento em massa nos secundários.
