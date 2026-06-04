@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-06-04T19:23:41+00:00</updated>
+ <updated>2026-06-04T19:32:25+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -78,6 +78,15 @@
  </entry>
  
  <entry>
+   <title>How to set up a Kubernetes cluster to host your static website</title>
+   <link href="https://apolzek.github.io/2026/06/04/kubernetes-static-website"/>
+   <updated>2026-06-04T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2026/06/04/kubernetes-static-website</id>
+   <content type="html">&lt;p&gt;Simply don’t do it&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>first taste of ebpf</title>
    <link href="https://apolzek.github.io/2026/05/20/first-taste-of-ebpf"/>
    <updated>2026-05-20T00:00:00+00:00</updated>
@@ -90,7 +99,7 @@
 
 &lt;h2 id=&quot;environment&quot;&gt;Environment&lt;/h2&gt;
 
-&lt;p&gt;I’m starting to play around with eBPF on Ubuntu 25 running in a VirtualBox VM.I’m starting to play around with eBPF on Ubuntu 25 running in a VirtualBox.&lt;/p&gt;
+&lt;p&gt;I’m starting to play around with eBPF on Ubuntu 25 running in a VirtualBox VM.&lt;/p&gt;
 
 &lt;h3 id=&quot;spying-on-curls-file-access-with-bpftrace&quot;&gt;Spying on curl’s file access with bpftrace&lt;/h3&gt;
 
