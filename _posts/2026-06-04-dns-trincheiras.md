@@ -1,19 +1,21 @@
 ---
 layout: post
-title: DNS parecia simples, ate..
+title: DNS por quem já viveu nas trincheiras
 description:
 summary:
-# tags: ebpf bpftrace linux
+# tags: dns linux
 minute: 10
 ---
 
 > A história a seguir é fictícia e tem apenas objetivos didáticos de ensinar sobre o funcionamento do DNS (Domain Name System). Qualquer semelhança com eventos, sistemas ou situações reais é mera coincidência. O conteúdo não descreve fatos reais nem deve ser interpretado como informação factual.
 
-Bem vamos a definicao do que eh DNS: 
+Bem, vamos à definição do que é DNS:
 
 *DNS (Domain Name System) é um sistema distribuído da internet que converte nomes de domínio legíveis por humanos, como www.google.com, em endereços IP, como 142.250.191.14, permitindo que dispositivos localizem e se conectem aos servidores corretos sem que os usuários precisem memorizar números.*
 
-BEEEEM, NAO TEM COMO ISSO SER COMPLEXO, CORRETO ? 
+Não tem como isso ser complexo, correto?
+
+![gif](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcGh0bTlrdXBkczNlNnRld203bzVuYTR2cmFodXdoeWljMWVxYng2ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jN86rcdOyrpyo/giphy.gif)
 
 ### Vamos comecar do inicio
 
