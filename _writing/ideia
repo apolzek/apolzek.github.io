@@ -47,3 +47,8 @@ Split-horizon (split-brain) — respostas diferentes para a mesma consulta confo
 CNAME flattening / ANAME — soluções para apontar o ápice do domínio (zone apex) a um nome em vez de IP, contornando a regra que proíbe CNAME no topo da zona.
 Hidden primary — servidor primário que não é listado publicamente nos registros NS; só os secundários respondem aos clientes.
 Catalog zones — zona especial que descreve um conjunto de outras zonas, automatizando o provisionamento em massa nos secundários.
+
+
+se um processador moderno tem um nucleo e 2 threads da pra fazer paralelismo ou apenas concorrencia ?
+explique o que aconteria se removessimos o protocolo DNS , a internte pararia ? 
+

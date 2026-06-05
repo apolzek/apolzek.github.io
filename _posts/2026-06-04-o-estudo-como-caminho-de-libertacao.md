@@ -39,7 +39,7 @@ Essa é uma decisão difícil. O que você aprenderá para desenvolver-se como p
 
 Gostaria de encerrar com uma reflexão.
 
-Quantas pessoas do seu convívio você conhece que ainda carregam o título informal de "curandeiras", guardiãs de saberes transmitidos de geração em geração? Quantas existirão daqui a cem anos? Depois de responder mentalmente, saia de casa, caminhe duas quadras e observe a realidade ao seu redor. Muito provavelmente você encontrará uma drogaria.
+Quantas pessoas do seu convívio você conhece que ainda carregam o título informal de “curandeiras”, guardiãs de saberes transmitidos de geração em geração? Quantas existirão daqui a cem anos? Depois de responder mentalmente, saia de casa, caminhe duas quadras e observe a realidade ao seu redor. Muito provavelmente você encontrará uma drogaria. Elas estão por toda parte: em esquinas, avenidas, centros comerciais e bairros residenciais, acessíveis a poucos minutos de distância para a maioria da população.
 
 Não se trata de rejeitar os avanços da medicina nem de idealizar o passado. A questão é outra: estamos nos tornando cada vez mais dependentes de sistemas que compreendemos cada vez menos. Perdemos contato com tradições, conhecimentos locais e formas de entendimento que durante séculos fizeram parte da experiência humana.
 
@@ -53,7 +53,7 @@ Lembro, por fim, de uma frase que ouvi certa vez de um cardiologista já falecid
 
 ---
 
-## Reflexão
+## Conhecimento x Inteligência x Sabedoria
 
 **Conhecimento** é o conjunto de informações, conceitos e fatos que uma pessoa adquiriu por estudo, observação ou experiência. Trata-se daquilo que alguém sabe. Um médico conhece anatomia, fisiologia e farmacologia porque estudou essas disciplinas; um mecânico conhece o funcionamento de motores porque aprendeu sua estrutura e operação. O conhecimento responde principalmente à pergunta: "o que é?".
 
