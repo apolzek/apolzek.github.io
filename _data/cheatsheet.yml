@@ -17,15 +17,37 @@
       | jq -r '.roots.bookmark_bar.children[]
           | select(.name == "tree")
           | .children[]
-          | select(.name == "blogs")
-          | .children[]
           | .url'
+
+- title: "Chrome Bookmarks (list all)"
+  description: "List all bookmarks from Chrome's JSON file showing name and URL"
+  tags: [chrome, jq, linux]
+  commands: |
+    cat ~/.config/google-chrome/Default/Bookmarks \
+      | jq '.roots.bookmark_bar.children[] | {name: .name, url: .url}'
+
 - title: "Chrome Bookmarks (list folders)"
   description: "List all Chrome bookmark folders using jq"
   tags: [chrome, jq, linux]
   commands: |
     cat ~/.config/google-chrome/Default/Bookmarks \
       | jq -r '[.. | objects | select(.type == "folder") | .name] | unique | sort | .[]'
+
+- title: "Chrome Internals Pages"
+  description: "Useful chrome:// internal pages for debugging DNS, events, and proxy settings"
+  tags: [chrome, debug]
+  commands: |
+    chrome://net-internals/#dns
+    chrome://net-internals/#events
+    chrome://net-internals/#proxy
+
+- title: "Chrome Bookmarks MacOS(bookmark bar root)"
+  description: "List all entries from the root of Chrome's bookmarks bar"
+  tags: [chrome, jq, macos]
+  commands: |
+    jq -r '.roots.bookmark_bar.children[]' \
+      "$HOME/Library/Application Support/Google/Chrome/Default/Bookmarks"
+
 - title: "Post-install Docker"
   description: "Add current user to docker group after installation"
   tags: [docker, linux]
@@ -61,43 +83,13 @@
   commands: |
     curl -d "Backup successful" ntfy.sh/mytopic
 
-- title: "Convert Video for DaVinci Resolve"
-  description: "Convert MP4 to ProRes format compatible with DaVinci Resolve"
-  tags: [ffmpeg, video]
-  commands: |
-    ffmpeg -i input.mp4 -c:v prores -profile:v 3 -c:a pcm_s16le output.mov
-
-- title: "Generate OpenTelemetry Traces"
-  description: "Generate 200 traces in a loop using telemetrygen"
-  tags: [opentelemetry, observability]
-  commands: |
-    for i in $(seq 1 200); do
-      echo $i
-      telemetrygen traces --otlp-insecure --traces 1 --service telemetrygen
-      sleep 0.5
-    done
-
 - title: "curl with --resolve"
   description: "Force curl to resolve a hostname to a specific IP address, bypassing DNS"
   tags: [curl, network]
   commands: |
+    curl --resolve <hostname>:<porta>:<ip> <protocolo>://<hostname>:<porta>
     curl --resolve meuservidor.com:8080:192.168.0.100 http://meuservidor.com:8080
     curl --resolve google.com:8888:127.0.0.1 https://google.com:8888
-
-- title: "Chrome Internals Pages"
-  description: "Useful chrome:// internal pages for debugging DNS, events, and proxy settings"
-  tags: [chrome, debug]
-  commands: |
-    chrome://net-internals/#dns
-    chrome://net-internals/#events
-    chrome://net-internals/#proxy
-
-- title: "Write to Container stdout/stderr"
-  description: "Send a message directly to a container's stdout or stderr via /proc"
-  tags: [docker, linux, debug]
-  commands: |
-    # stderr (fd/2) or stdout (fd/1)
-    echo '2025/03/09 07:55:58 [emerg] 12345#0: unexpected "}" in /etc/nginx/nginx.conf:25' > /proc/1/fd/2
 
 - title: "Windows Activation (massgrave)"
   description: "Activate Windows using the massgrave open-source script"
@@ -129,13 +121,6 @@
     curl -s https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/secreto.enc \
       | openssl enc -aes-256-cbc -d -salt -pbkdf2
 
-- title: "Chrome Bookmarks (list all)"
-  description: "List all bookmarks from Chrome's JSON file showing name and URL"
-  tags: [chrome, jq, linux]
-  commands: |
-    cat ~/.config/google-chrome/Default/Bookmarks \
-      | jq '.roots.bookmark_bar.children[] | {name: .name, url: .url}'
-
 - title: "Linux Network Connections"
   description: "View all saved NetworkManager connection configs"
   tags: [linux, network]
@@ -147,3 +132,137 @@
   tags: [linux, network, mtu]
   commands: |
     sudo ip link set wlp3s0 mtu 1280
+
+- title: "macOS DNS Commands"
+  description: "Commands for viewing, configuring, and troubleshooting DNS on macOS"
+  tags: [macos, dns, network]
+
+  commands: |
+    # Show current DNS resolver configuration (system-wide)
+    scutil --dns
+
+    # Display DNS servers currently in use (per interface)
+    networksetup -getdnsservers Wi-Fi
+
+    # Set custom DNS servers for Wi-Fi (replace with your desired servers)
+    sudo networksetup -setdnsservers Wi-Fi 1.1.1.1 8.8.8.8
+
+    # Reset DNS back to automatic (DHCP-provided DNS)
+    sudo networksetup -setdnsservers Wi-Fi empty
+
+    # Flush DNS cache (modern macOS)
+    sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
+
+    # Query DNS resolution for a domain (low-level system resolver test)
+    dig example.com
+
+    # Alternative DNS lookup tool (simpler output)
+    nslookup example.com
+
+    # Test which DNS server is resolving a domain
+    dig example.com +short
+
+    # Show detailed resolver behavior and search domains
+    scutil --dns | grep 'nameserver'
+
+    # Check current network services (to identify correct interface name)
+    networksetup -listallnetworkservices
+
+    # View DNS configuration for a specific interface (example: Ethernet)
+    networksetup -getdnsservers Ethernet
+
+    # Set DNS for Ethernet interface
+    sudo networksetup -setdnsservers Ethernet 9.9.9.9 1.1.1.1
+
+- title: "Ubuntu Linux DNS Commands"
+  description: "Commands for viewing, configuring, and troubleshooting DNS on Ubuntu (systemd-resolved and NetworkManager based systems)"
+  tags: [linux, ubuntu, dns, network]
+
+  commands: |
+    # Show current DNS configuration (systemd-resolved)
+    resolvectl status
+
+    # Alternative command (older systems)
+    systemd-resolve --status
+
+    # Show DNS servers currently in use per interface
+    nmcli dev show | grep DNS
+
+    # Show NetworkManager connection profiles
+    nmcli connection show
+
+    # Set DNS servers for a specific connection (replace 'Wired connection 1')
+    sudo nmcli connection modify "Wired connection 1" ipv4.dns "1.1.1.1 8.8.8.8"
+
+    # Ignore DHCP-provided DNS and use manual DNS
+    sudo nmcli connection modify "Wired connection 1" ipv4.ignore-auto-dns yes
+
+    # Restart connection to apply DNS changes
+    sudo nmcli connection down "Wired connection 1" && sudo nmcli connection up "Wired connection 1"
+
+    # Flush DNS cache (systemd-resolved)
+    sudo resolvectl flush-caches
+
+    # Alternative cache restart (forces full reload of resolver)
+    sudo systemctl restart systemd-resolved
+
+    # Query DNS resolution using system resolver
+    getent hosts example.com
+
+    # Query DNS records with dig (recommended tool)
+    dig example.com
+
+    # Query specific DNS record type (A record)
+    dig example.com A
+
+    # Show trace of DNS resolution path
+    dig example.com +trace
+
+    # Simple DNS lookup tool (basic output)
+    nslookup example.com
+
+    # Check /etc/resolv.conf (often symlinked to systemd stub)
+    cat /etc/resolv.conf
+
+    # Verify if systemd stub resolver is active
+    ls -l /etc/resolv.conf
+
+    # Temporarily set DNS by editing resolv.conf (not persistent on most modern systems)
+    sudo bash -c 'echo -e "nameserver 1.1.1.1\nnameserver 8.8.8.8" > /etc/resolv.conf'
+
+- title: "macOS Clipboard Basic Commands"
+  description: "Minimal commands to copy file content to clipboard and paste it back"
+  tags: [macos, terminal, clipboard]
+
+  commands: |
+    # Copy file content to clipboard using pipe
+    cat arquivo.txt | pbcopy
+
+    # Paste clipboard content in terminal
+    pbpaste
+- title: "Linux Clipboard (Ubuntu) Equivalent to pbcopy/pbpaste"
+  description: "Setup and commands to copy file content to clipboard and paste it back on Ubuntu using xclip or xsel"
+  tags: [linux, ubuntu, clipboard]
+
+  commands: |
+    # Install clipboard utility (xclip)
+    sudo apt update && sudo apt install -y xclip
+
+    # Copy file content to clipboard (equivalent to: cat arquivo.txt | pbcopy)
+    cat arquivo.txt | xclip -selection clipboard
+
+    # Paste clipboard content to terminal (equivalent to pbpaste)
+    xclip -selection clipboard -o
+
+    # Alternative install (xsel instead of xclip)
+    sudo apt install -y xsel
+
+    # Copy file content using xsel
+    cat arquivo.txt | xsel --clipboard --input
+
+    # Paste clipboard content using xsel
+    xsel --clipboard --output
+
+    # Optional aliases for convenience (add to ~/.bashrc or ~/.zshrc)
+    alias pbcopy='xclip -selection clipboard'
+    alias pbpaste='xclip -selection clipboard -o'
