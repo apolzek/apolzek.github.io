@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-06-05T01:02:00+00:00</updated>
+ <updated>2026-06-05T01:11:23+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -91,19 +91,21 @@
  </entry>
  
  <entry>
-   <title>DNS parecia simples, ate..</title>
-   <link href="https://apolzek.github.io/2026/06/04/dns-jornada-sre-2026"/>
+   <title>DNS por quem já viveu nas trincheiras</title>
+   <link href="https://apolzek.github.io/2026/06/04/dns-trincheiras"/>
    <updated>2026-06-04T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2026/06/04/dns-jornada-sre-2026</id>
+   <id>https://apolzek.github.io/2026/06/04/dns-trincheiras</id>
    <content type="html">&lt;blockquote&gt;
   &lt;p&gt;A história a seguir é fictícia e tem apenas objetivos didáticos de ensinar sobre o funcionamento do DNS (Domain Name System). Qualquer semelhança com eventos, sistemas ou situações reais é mera coincidência. O conteúdo não descreve fatos reais nem deve ser interpretado como informação factual.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;Bem vamos a definicao do que eh DNS:&lt;/p&gt;
+&lt;p&gt;Bem, vamos à definição do que é DNS:&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;DNS (Domain Name System) é um sistema distribuído da internet que converte nomes de domínio legíveis por humanos, como www.google.com, em endereços IP, como 142.250.191.14, permitindo que dispositivos localizem e se conectem aos servidores corretos sem que os usuários precisem memorizar números.&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;BEEEEM, NAO TEM COMO ISSO SER COMPLEXO, CORRETO ?&lt;/p&gt;
+&lt;p&gt;Não tem como isso ser complexo, correto?&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcGh0bTlrdXBkczNlNnRld203bzVuYTR2cmFodXdoeWljMWVxYng2ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jN86rcdOyrpyo/giphy.gif&quot; alt=&quot;gif&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;vamos-comecar-do-inicio&quot;&gt;Vamos comecar do inicio&lt;/h3&gt;
 
