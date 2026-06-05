@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-06-04T19:46:28+00:00</updated>
+ <updated>2026-06-05T00:22:54+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -49,7 +49,7 @@
 
 &lt;p&gt;Gostaria de encerrar com uma reflexão.&lt;/p&gt;
 
-&lt;p&gt;Quantas pessoas do seu convívio você conhece que ainda carregam o título informal de “curandeiras”, guardiãs de saberes transmitidos de geração em geração? Quantas existirão daqui a cem anos? Depois de responder mentalmente, saia de casa, caminhe duas quadras e observe a realidade ao seu redor. Muito provavelmente você encontrará uma drogaria.&lt;/p&gt;
+&lt;p&gt;Quantas pessoas do seu convívio você conhece que ainda carregam o título informal de “curandeiras”, guardiãs de saberes transmitidos de geração em geração? Quantas existirão daqui a cem anos? Depois de responder mentalmente, saia de casa, caminhe duas quadras e observe a realidade ao seu redor. Muito provavelmente você encontrará uma drogaria. Elas estão por toda parte: em esquinas, avenidas, centros comerciais e bairros residenciais, acessíveis a poucos minutos de distância para a maioria da população.&lt;/p&gt;
 
 &lt;p&gt;Não se trata de rejeitar os avanços da medicina nem de idealizar o passado. A questão é outra: estamos nos tornando cada vez mais dependentes de sistemas que compreendemos cada vez menos. Perdemos contato com tradições, conhecimentos locais e formas de entendimento que durante séculos fizeram parte da experiência humana.&lt;/p&gt;
 
@@ -63,7 +63,7 @@
 
 &lt;hr /&gt;
 
-&lt;h2 id=&quot;reflexão&quot;&gt;Reflexão&lt;/h2&gt;
+&lt;h2 id=&quot;conhecimento-x-inteligência-x-sabedoria&quot;&gt;Conhecimento x Inteligência x Sabedoria&lt;/h2&gt;
 
 &lt;p&gt;&lt;strong&gt;Conhecimento&lt;/strong&gt; é o conjunto de informações, conceitos e fatos que uma pessoa adquiriu por estudo, observação ou experiência. Trata-se daquilo que alguém sabe. Um médico conhece anatomia, fisiologia e farmacologia porque estudou essas disciplinas; um mecânico conhece o funcionamento de motores porque aprendeu sua estrutura e operação. O conhecimento responde principalmente à pergunta: “o que é?”.&lt;/p&gt;
 
@@ -87,6 +87,186 @@
    <updated>2026-06-04T00:00:00+00:00</updated>
    <id>https://apolzek.github.io/2026/06/04/kubernetes-static-website</id>
    <content type="html">&lt;p&gt;&lt;strong&gt;Simply don’t do it&lt;/strong&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>DNS parecia simples, ate..</title>
+   <link href="https://apolzek.github.io/2026/06/04/dns-jornada-sre-2026"/>
+   <updated>2026-06-04T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2026/06/04/dns-jornada-sre-2026</id>
+   <content type="html">&lt;p&gt;Bem vamos a definicao do que eh DNS:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;DNS (Domain Name System) é um sistema distribuído da internet que converte nomes de domínio legíveis por humanos, como www.google.com, em endereços IP, como 142.250.191.14, permitindo que dispositivos localizem e se conectem aos servidores corretos sem que os usuários precisem memorizar números.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;BEEEEM, NAO TEM COMO ISSO SER COMPLEXO, CORRETO ?&lt;/p&gt;
+
+&lt;h3 id=&quot;vamos-comecar-do-inicio&quot;&gt;Vamos comecar do inicio&lt;/h3&gt;
+
+&lt;p&gt;Me contrataram pra “cuidar dos servidores”. Ninguém avisou que metade dos meus incidentes começaria com alguém jurando, de alma e coração, que “a internet caiu”, quando na real era DNS. É sempre DNS. Existe até um haiku famoso entre sysadmins cujo desfecho é exatamente esse: a culpa, no fim, é do DNS. Esta é a história de como saí de não saber o que era um resolver até virar a pessoa que assina zonas com DNSSEC às três da manhã, xingando. Com sorte, você aprende aqui o que eu aprendi chorando.&lt;/p&gt;
+
+&lt;h3 id=&quot;primeiro-dia-três-sistemas-a-mesma-desgraça&quot;&gt;Primeiro dia: três sistemas, a mesma desgraça&lt;/h3&gt;
+
+&lt;p&gt;Primeiro chamado: um notebook “sem internet” que pingava IP numa boa, mas não abria &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;intranet&lt;/code&gt;. O número certo, o nome é que não virava número.&lt;/p&gt;
+
+&lt;p&gt;Conheci ali o &lt;strong&gt;stub resolver&lt;/strong&gt;: a peça mínima dentro do sistema operacional que não resolve nada sozinha, só repassa o pedido pra outra pessoa. E quem é essa pessoa depende do sistema. Naquele primeiro dia, peguei os três.&lt;/p&gt;
+
+&lt;p&gt;No &lt;strong&gt;Linux&lt;/strong&gt; do dev, abri o de praxe e descobri que quem manda hoje não é mais só o velho arquivo:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; /etc/resolv.conf
+resolvectl status
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;O &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;systemd-resolved&lt;/code&gt; cacheia e às vezes guarda rancor; quando eu trocava o servidor e nada mudava, a cura era &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;resolvectl flush-caches&lt;/code&gt;. E tem o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/nsswitch.conf&lt;/code&gt;, a linha &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hosts:&lt;/code&gt;, que decide se ele olha o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/hosts&lt;/code&gt; &lt;strong&gt;antes&lt;/strong&gt; do DNS. Foi exatamente isso que sabotou meu teste: um &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/hosts&lt;/code&gt; esquecido apontando pro IP errado.&lt;/p&gt;
+
+&lt;p&gt;No &lt;strong&gt;Windows&lt;/strong&gt; do financeiro, outra liturgia:&lt;/p&gt;
+
+&lt;div class=&quot;language-powershell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;ipconfig&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;/all&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;          
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ipconfig&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;/displaydns&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;   
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ipconfig&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;/flushdns&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;     
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Resolve-DnsName&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;intranet&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;O Windows tem um serviço chamado &lt;strong&gt;DNS Client&lt;/strong&gt; (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dnscache&lt;/code&gt;) que cacheia tudo. Esquecer dele já me custou uma hora de vida.&lt;/p&gt;
+
+&lt;p&gt;No &lt;strong&gt;Mac&lt;/strong&gt; da designer, terceira religião:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;scutil &lt;span class=&quot;nt&quot;&gt;--dns&lt;/span&gt;          
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dscacheutil &lt;span class=&quot;nt&quot;&gt;-flushcache&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;killall &lt;span class=&quot;nt&quot;&gt;-HUP&lt;/span&gt; mDNSResponder
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;No macOS quem cacheia é o &lt;strong&gt;mDNSResponder&lt;/strong&gt;, e limpar exige esse combo (o segundo comando chuta o processo). Felizmente &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dig&lt;/code&gt; e &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;host&lt;/code&gt; existem no Mac também, então não fiquei órfão.&lt;/p&gt;
+
+&lt;p&gt;A ferramenta que me salvou nos três foi o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dig&lt;/code&gt;. Rodei &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dig +trace www.intranet&lt;/code&gt; e vi, ao vivo, a peregrinação: o &lt;strong&gt;resolver recursivo&lt;/strong&gt; pergunta a um servidor &lt;strong&gt;raiz&lt;/strong&gt;, que não sabe e aponta pro &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.com&lt;/code&gt;; o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.com&lt;/code&gt; aponta pro &lt;strong&gt;autoritativo&lt;/strong&gt; do domínio; e o autoritativo, o único que conhece a verdade, devolve o IP. Os intermediários nunca respondem de verdade, só dão &lt;em&gt;referrals&lt;/em&gt;. Essa é a diferença entre consulta &lt;strong&gt;recursiva&lt;/strong&gt; (“me resolve inteiro”) e &lt;strong&gt;iterativa&lt;/strong&gt; (“vira-te com o próximo”). No protocolo são dois bits, &lt;strong&gt;RD&lt;/strong&gt; e &lt;strong&gt;RA&lt;/strong&gt;, “quero recursão” e “ofereço recursão”. Servidor raiz tem RA desligado de propósito: ele não é seu mordomo.&lt;/p&gt;
+
+&lt;p&gt;E por que metade das consultas internas ia pra outro lugar? &lt;strong&gt;Forwarder&lt;/strong&gt;. Tudo que terminava em &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;corp.interno&lt;/code&gt; era encaminhado pro DNS do Active Directory; o resto ia pro mundo. Encaminhamento condicional. Aprendi a diferença entre “forward only” e “forward first” na madrugada em que o AD reiniciou e o “forward only” levou junto.&lt;/p&gt;
+
+&lt;h3 id=&quot;comprando-o-domínio-na-godaddy-o-teatro-nos-bastidores&quot;&gt;Comprando o domínio na GoDaddy (o teatro nos bastidores)&lt;/h3&gt;
+
+&lt;p&gt;Quando me deixaram comprar o domínio da empresa, fui na GoDaddy, cliquei, paguei, e achei que tinha “comprado um DNS”. Comprei um &lt;strong&gt;nome&lt;/strong&gt;, que é outra coisa, e finalmente entendi o teatro por trás.&lt;/p&gt;
+
+&lt;p&gt;Existem três papéis. Eu sou a &lt;strong&gt;registrante&lt;/strong&gt; (dona do nome). A GoDaddy é a &lt;strong&gt;registrar&lt;/strong&gt; (a loja). Quem realmente manda no &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.com&lt;/code&gt; é a &lt;strong&gt;registry&lt;/strong&gt;, a Verisign (a prefeitura do TLD). E por cima de tudo, a &lt;strong&gt;ICANN&lt;/strong&gt;. Quando paguei, a GoDaddy não gravou nada por mágica: ela conversou com a registry por um protocolo chamado &lt;strong&gt;EPP&lt;/strong&gt; e disse “este nome agora é dela, e os nameservers são esses”. Pra consultar quem é dono e quais os NS, dá pra usar o velho &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;whois&lt;/code&gt;, hoje em boa parte substituído pelo &lt;strong&gt;RDAP&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;whois meudominio.com
+dig NS meudominio.com
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Por padrão, a GoDaddy já apontava pros nameservers dela. Como eu queria meus próprios autoritativos, troquei a delegação pra &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ns1.meudominio.com&lt;/code&gt; e &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ns2.meudominio.com&lt;/code&gt;, e caí no quebra-cabeça circular clássico: pra achar o IP de &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ns1.meudominio.com&lt;/code&gt;, o mundo teria que perguntar a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;meudominio.com&lt;/code&gt;, que só responde via &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ns1&lt;/code&gt;. Galinha e ovo. A solução de décadas atende por &lt;strong&gt;glue records&lt;/strong&gt;: a zona-pai entrega o IP dos meus nameservers de brinde, junto da delegação.&lt;/p&gt;
+
+&lt;p&gt;Duas coisas que a GoDaddy oferecia e eu ignorei por burrice (e que voltariam a me assombrar): o &lt;strong&gt;registrar lock&lt;/strong&gt;, que impede transferências não autorizadas, e o &lt;strong&gt;auth code&lt;/strong&gt; (código EPP), que é literalmente a senha pra mudar o domínio de registrar. Guarde isso na memória, porque tem alguém querendo essa senha.&lt;/p&gt;
+
+&lt;p&gt;E o trauma eterno do iniciante: mudei um registro, salvei, nada. Refiz, nada. Quase abri chamado contra a GoDaddy antes de alguém rir e dizer “TTL”. Cada registro tem tempo de vida, e os resolvers do mundo cachearam o valor antigo. Pior ainda: criei um registro novo que “demorou a existir”, culpa do &lt;strong&gt;negative caching&lt;/strong&gt;, que cacheia o “não existe” pelo tempo do último campo do &lt;strong&gt;SOA&lt;/strong&gt;. Desde então eu rodo:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dig SOA meudominio.com
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;antes de prometer prazo pra qualquer mudança nova..&lt;/p&gt;
+
+&lt;h3 id=&quot;o-cadeado-verde-dns-certificados-e-a-confiança-de-um-site&quot;&gt;O cadeado verde: DNS, certificados e a confiança de um site&lt;/h3&gt;
+
+&lt;p&gt;Montamos e-mail próprio, e metade do que mandávamos sumia. Primeiro vilão: &lt;strong&gt;PTR&lt;/strong&gt;, a resolução reversa (IP vira nome). Servidores sérios desconfiam de quem conecta sem PTR válido, ou que falha no &lt;strong&gt;FCrDNS&lt;/strong&gt; (o reverso aponta pra um nome que, resolvido de volta, dá o mesmo IP). Configurei com a operadora e a reputação melhorou. De brinde aprendi o &lt;strong&gt;SRV&lt;/strong&gt;, que aponta pra um &lt;em&gt;serviço&lt;/em&gt; e não a um host, e é como o Active Directory se acha sozinho na rede.&lt;/p&gt;
+
+&lt;p&gt;Mas a parte que mudou minha cabeça foi entender de onde vem o cadeado do navegador. Aquele cadeado é um &lt;strong&gt;certificado TLS&lt;/strong&gt; assinado por uma autoridade certificadora (CA) em que o navegador confia. A pergunta que eu nunca tinha feito: &lt;em&gt;como a CA sabe que o domínio é meu?&lt;/em&gt; Resposta: via DNS. Quando pedi um certificado na Let’s Encrypt, ela mandou publicar um registro TXT específico:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dig TXT _acme-challenge.meudominio.com
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Esse é o &lt;strong&gt;desafio DNS-01&lt;/strong&gt; do protocolo &lt;strong&gt;ACME&lt;/strong&gt;: se eu consigo publicar aquele valor no DNS, provo que controlo o DNS, logo controlo o domínio, logo mereço o certificado (e é exatamente assim que se emite certificado curinga, pra &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;*.meudominio.com&lt;/code&gt;). O DNS é a prova de posse que sustenta a confiança da web inteira. Pare e sinta o peso disso.&lt;/p&gt;
+
+&lt;p&gt;Aí veio o susto que justificou o &lt;strong&gt;CAA&lt;/strong&gt;. Alguém quase emitiu um certificado pro nosso domínio por uma CA que a gente nem usava. Publiquei e conferi:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dig CAA meudominio.com
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;declarando “só a Let’s Encrypt emite aqui”. As CAs são obrigadas a checar isso antes de emitir; uma linha que barra emissão fraudulenta. Existe um nível mais paranoico, o &lt;strong&gt;DANE/TLSA&lt;/strong&gt;, que prende o próprio certificado no DNS:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dig TLSA _443._tcp.meudominio.com
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;mas isso só é seguro se o DNS for inviolável, o que me empurrou, lá na frente, direto pro DNSSEC.&lt;/p&gt;
+
+&lt;p&gt;Pra fechar, aprendi a debugar certificado sem abrir navegador (comando que rodei mil vezes, sempre às vésperas de um certificado vencer num domingo):&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; | openssl s_client &lt;span class=&quot;nt&quot;&gt;-connect&lt;/span&gt; meudominio.com:443 &lt;span class=&quot;nt&quot;&gt;-servername&lt;/span&gt; meudominio.com 2&amp;gt;/dev/null &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  | openssl x509 &lt;span class=&quot;nt&quot;&gt;-noout&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-dates&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-subject&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-issuer&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;crescer-dói-escala-latência-e-o-apex-teimoso&quot;&gt;Crescer dói: escala, latência e o apex teimoso&lt;/h3&gt;
+
+&lt;p&gt;Veio tráfego do mundo todo e meu DNS estava num datacenter só. Usuário no Japão sofria. A solução é o truque mais elegante do DNS: &lt;strong&gt;anycast&lt;/strong&gt;. Você anuncia o mesmo IP de vários lugares (via BGP) e o roteamento entrega cada um ao nó mais perto. É como &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1.1.1.1&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;8.8.8.8&lt;/code&gt; e os servidores raiz funcionam, e dá latência baixa, resiliência e absorção de ataque de uma tacada só. No mesmo balaio conheci &lt;strong&gt;GeoDNS&lt;/strong&gt; (responder IP diferente por região, a base das CDNs) e o velho &lt;strong&gt;round-robin&lt;/strong&gt;, que só rotaciona uma lista e, importante, não sabe se um servidor morreu: continua entregando o IP do cadáver, todo feliz.&lt;/p&gt;
+
+&lt;p&gt;Bati então numa parede que enlouquece todo júnior: queria &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;meudominio.com&lt;/code&gt; puro (sem &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;www&lt;/code&gt;) apontando pra um host de CDN. O DNS não deixa, porque o ápice já tem SOA e NS, e um CNAME não convive com outros registros. A salvação foram truques de provedor, o &lt;strong&gt;CNAME flattening&lt;/strong&gt; da Cloudflare e o &lt;strong&gt;ALIAS&lt;/strong&gt; do Route 53, que resolvem o destino por baixo dos panos e devolvem um A normalzinho.&lt;/p&gt;
+
+&lt;p&gt;E comecei a publicar os registros novos da turma, &lt;strong&gt;HTTPS/SVCB&lt;/strong&gt;, que entregam parâmetros de conexão numa consulta só:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dig HTTPS meudominio.com
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Eles anunciam “este site fala HTTP/3” e carregam o &lt;strong&gt;ECH&lt;/strong&gt; (Encrypted Client Hello), peça que volta a aparecer no capítulo de privacidade. Em 2026, é assim que um navegador moderno decide ir direto de QUIC e esconder de bisbilhoteiros qual site você abriu.&lt;/p&gt;
+
+&lt;h2 id=&quot;operação-dilúvio-a-noite-em-que-o-dns-virou-alvo&quot;&gt;Operação Dilúvio: a noite em que o DNS virou alvo&lt;/h2&gt;
+
+&lt;p&gt;Três e dezessete da manhã, o pager dispara: os autoritativos a 100% de CPU, consultas empilhando, e o site ficando intermitente porque resolver nenhum conseguia resposta. Liguei o laptop achando que era pico de tráfego. Não era.&lt;/p&gt;
+
+&lt;p&gt;Rodei o básico e fui pro log:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dig @ns1.meudominio.com meudominio.com
+&lt;span class=&quot;nb&quot;&gt;tail&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; /var/log/named/query.log
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;E lá estava o monstro: milhares de consultas por segundo pra subdomínios aleatórios que não existiam, tipo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a7f3k9z.meudominio.com&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;qx12bb8.meudominio.com&lt;/code&gt;, cada um diferente do outro, todos retornando “não existe”. Joguei o log numa peneira pra confirmar:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;{print $9}&apos;&lt;/span&gt; query.log | &lt;span class=&quot;nb&quot;&gt;sort&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;uniq&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;sort&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-rn&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;head&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Nomes únicos, sem repetição. Era um ataque de &lt;strong&gt;DNS water torture&lt;/strong&gt; (inundação por subdomínio aleatório). O nome aleatório é a sacanagem: como cada um é único, o &lt;strong&gt;negative caching&lt;/strong&gt; não ajuda (não há nada repetido pra cachear), então toda consulta vaza até mim, e os atacantes usavam resolvers abertos pelo mundo como megafone, forjando a origem. O objetivo era simples: derreter meu DNS e, com ele, tirar a empresa do ar.&lt;/p&gt;
+
+&lt;p&gt;Resolvi em camadas, e cada camada me ensinou na prática um conceito que eu só conhecia da teoria:&lt;/p&gt;
+
+&lt;p&gt;Primeiro, sangrar a enxurrada com &lt;strong&gt;Response Rate Limiting&lt;/strong&gt; no autoritativo, que corta respostas abusivas por origem. Deu fôlego, mas não matou, porque os nomes eram únicos.&lt;/p&gt;
+
+&lt;p&gt;Segundo, joguei os autoritativos pra trás de uma rede &lt;strong&gt;anycast&lt;/strong&gt; (aquele truque da quarta parte, mesmo IP em vários lugares), o que diluiu o ataque entre os pontos em vez de concentrar tudo num servidor. O DNS voltou a respirar.&lt;/p&gt;
+
+&lt;p&gt;Terceiro, montei uma &lt;strong&gt;RPZ&lt;/strong&gt; (um firewall de DNS) pra derrubar exatamente aquele padrão de lixo e limitar por origem, e confirmei que eu não estava, por descuido, rodando um resolver aberto que pudesse virar parte de uma &lt;strong&gt;amplificação&lt;/strong&gt; contra outra vítima. Acionei o upstream sobre filtro de origem forjada (BCP38), que é o que mataria a brincadeira na raiz.&lt;/p&gt;
+
+&lt;p&gt;Aquela noite me deixou paranoica do jeito certo. Eu já tinha ouvido a lenda do &lt;strong&gt;ataque de Kaminsky&lt;/strong&gt; de 2008, quando o número de transação do DNS, de só 16 bits, era adivinhável e dava pra envenenar o cache de um resolver inteiro (o famoso &lt;em&gt;cache poisoning&lt;/em&gt;); a correção foi randomizar a porta de origem, e existe até o truque do &lt;strong&gt;0x20&lt;/strong&gt;, que embaralha maiúsculas e minúsculas do nome (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;WwW.eXeMpLo&lt;/code&gt;) pra denunciar respostas forjadas. Mas tudo isso são curativos. Saí daquele plantão querendo uma coisa só: poder provar, matematicamente, que uma resposta DNS é autêntica. Esse desejo tem nome, e ele me daria muito trabalho.&lt;/p&gt;
+
+&lt;h3 id=&quot;assinando-a-verdade-a-saga-do-dnssec&quot;&gt;Assinando a verdade: a saga do DNSSEC&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;DNSSEC&lt;/strong&gt; é a ideia de que cada resposta venha assinada de um jeito que ninguém falsifica. A execução é uma matrioska. A zona ganha uma &lt;strong&gt;DNSKEY&lt;/strong&gt; (chave pública); cada conjunto de registros passa a vir com uma &lt;strong&gt;RRSIG&lt;/strong&gt; (a assinatura). Como confiar na DNSKEY? Por um &lt;strong&gt;DS&lt;/strong&gt;, um resumo dela que eu publico na zona-pai, lá no registrar (sim, de volta na GoDaddy do capítulo 2). A raiz assina o DS do &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.com&lt;/code&gt;, o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.com&lt;/code&gt; assina o meu, e eu assino meus registros: essa é a &lt;strong&gt;cadeia de confiança&lt;/strong&gt;, ancorada numa chave da raiz que vem embutida nos sistemas e é trocada em cerimônias públicas, com testemunhas e cofre (não é piada).&lt;/p&gt;
+
+&lt;p&gt;Por segurança, separamos em duas chaves: a &lt;strong&gt;KSK&lt;/strong&gt; assina só as chaves e é a que o DS aponta; a &lt;strong&gt;ZSK&lt;/strong&gt; assina o resto. Assim eu giro a ZSK sozinha e sempre, deixando a KSK (que mexe com o pai) pra eventos raros e cuidadosos. E como provar, assinado, que um nome &lt;em&gt;não&lt;/em&gt; existe? Com &lt;strong&gt;NSEC&lt;/strong&gt;, ou melhor, &lt;strong&gt;NSEC3&lt;/strong&gt;, que troca nomes por hashes pra ninguém sair listando minha zona inteira; TLDs gigantes usam NSEC3 com &lt;em&gt;opt-out&lt;/em&gt; pra não ter que assinar o infinito.&lt;/p&gt;
+
+&lt;p&gt;Foi aqui que o &lt;strong&gt;EDNS0&lt;/strong&gt; fez sentido: o DNS nasceu limitado a 512 bytes por resposta UDP, e assinatura estoura isso fácil; o EDNS0 permite respostas maiores e diz “pode mandar as assinaturas junto”. Pra validar e debugar, troquei o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dig&lt;/code&gt; puro por:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dig +dnssec meudominio.com   &lt;span class=&quot;c&quot;&gt;# mostra as RRSIG e o bit DO&lt;/span&gt;
+delv meudominio.com          &lt;span class=&quot;c&quot;&gt;# valida e fala se está &quot;fully validated&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A lição mais dolorosa não foi sobre ataque, foi sobre tiro no pé. &lt;strong&gt;Assinaturas RRSIG expiram.&lt;/strong&gt; Num fim de semana, a automação de re-assinatura falhou, as assinaturas venceram, e todo resolver validador do planeta passou a responder &lt;strong&gt;SERVFAIL&lt;/strong&gt; pro meu domínio. O site não foi hackeado. Ele simplesmente sumiu, por minha conta. DNSSEC dá segurança e tira o sono em doses iguais. (E o &lt;strong&gt;DANE/TLSA&lt;/strong&gt; do capítulo 3 só agora fazia sentido pra mim: prender certificado no DNS só vale se o DNS for inviolável.)&lt;/p&gt;
+
+&lt;h3 id=&quot;privacidade-anonimato-e-o-dns-de-2026&quot;&gt;Privacidade, anonimato e o DNS de 2026&lt;/h3&gt;
+
+&lt;p&gt;A virada seguinte não foi sobre falsificação, foi sobre bisbilhotagem. Por décadas, toda consulta DNS trafegou em texto puro: qualquer um no caminho via cada site que você abria. Em 2026, isso é, em grande parte, passado.&lt;/p&gt;
+
+&lt;p&gt;Hoje o DNS anda criptografado, e em vários sabores. Tem o &lt;strong&gt;DoT&lt;/strong&gt; (DNS over TLS, porta 853), que é o que o Android usa no “Private DNS”; o &lt;strong&gt;DoH&lt;/strong&gt; (DNS over HTTPS, porta 443), que se esconde dentro do tráfego web e por isso é ótimo contra censura e um pesadelo pra mim, que administro rede corporativa (ele contorna meus filtros, e eu desabilito por política onde preciso de controle); o &lt;strong&gt;DoQ&lt;/strong&gt;, sobre QUIC, mais rápido; e o mais esperto de todos, o &lt;strong&gt;ODoH&lt;/strong&gt;, que põe um proxy no meio pra que o resolver veja a pergunta mas não você, e o proxy veja você mas não a pergunta (a parceria Cloudflare + Apple demonstrou isso). Pra testar, o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kdig&lt;/code&gt; do Knot fala esses protocolos:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kdig +tls   @1.1.1.1 meudominio.com
+kdig +https @https://cloudflare-dns.com/dns-query meudominio.com
+resolvectl status   &lt;span class=&quot;c&quot;&gt;# no Linux mostra se o DoT está ativo por interface&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Em 2026 também virou padrão a &lt;strong&gt;QNAME minimization&lt;/strong&gt;: o resolver conta pra cada servidor só o pedaço necessário (pra raiz, só &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.com&lt;/code&gt;; pro TLD, só &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;meudominio.com&lt;/code&gt;), então os operadores da raiz não veem mais tudo que você acessa. No sentido oposto, por um bom motivo, existe o &lt;strong&gt;ECS&lt;/strong&gt;, em que o resolver conta sua sub-rede ao autoritativo pra a CDN te mandar pro nó mais perto; é troca de privacidade por velocidade, e por isso o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1.1.1.1&lt;/code&gt; não manda ECS enquanto o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;8.8.8.8&lt;/code&gt; manda pra parceiros.&lt;/p&gt;
+
+&lt;p&gt;Agora, a parte que poucos contam: &lt;strong&gt;criptografar o DNS não te deixa anônimo.&lt;/strong&gt; Por anos, mesmo com DNS cifrado, o nome do site ainda vazava no SNI do TLS. É aí que entra o &lt;strong&gt;ECH&lt;/strong&gt; lá do capítulo 4, que em 2026 está se espalhando e fecha essa fresta. Mesmo assim, sobra o IP de destino e o padrão de tráfego: privacidade de DNS não é anonimato. Pra anonimato de verdade você precisa de algo como o &lt;strong&gt;Tor&lt;/strong&gt;, que resolve nomes pela própria rede dele (tem até a ferramenta &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tor-resolve&lt;/code&gt;) em vez de pelo seu resolver, e ainda assim com ressalvas. E nada disso adianta se o resolver público que você escolheu guarda log de tudo: a política de retenção de quem você confia importa tanto quanto o protocolo. (No horizonte de 2026, já se discute assinatura pós-quântica pro DNSSEC, mas isso ainda é mais laboratório que produção.)&lt;/p&gt;
+
+&lt;h3 id=&quot;epílogo-tudo-numa-tecla-enter&quot;&gt;Epílogo. Tudo numa tecla Enter&lt;/h3&gt;
+
+&lt;p&gt;Anos depois, ainda sorrio com o tanto que acontece quando alguém digita &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://www.meudominio.com&lt;/code&gt; e dá Enter, sem fazer a menor ideia:&lt;/p&gt;
+
+&lt;p&gt;o &lt;strong&gt;stub resolver&lt;/strong&gt; (no Windows, no Linux ou no Mac, cada um com sua manha e seu cache teimoso) entrega ao &lt;strong&gt;recursivo&lt;/strong&gt;, talvez por &lt;strong&gt;DoH&lt;/strong&gt; cifrado; o recursivo sobe a hierarquia com &lt;strong&gt;QNAME minimization&lt;/strong&gt;, contando o mínimo a cada degrau; em cada passo ele pode validar &lt;strong&gt;DNSSEC&lt;/strong&gt; (DS, DNSKEY, RRSIG), usando &lt;strong&gt;EDNS0&lt;/strong&gt; pra caber as assinaturas; o &lt;strong&gt;autoritativo&lt;/strong&gt;, em &lt;strong&gt;anycast&lt;/strong&gt; e olhando o &lt;strong&gt;ECS&lt;/strong&gt;, devolve um registro &lt;strong&gt;HTTPS&lt;/strong&gt; com &lt;strong&gt;ECH&lt;/strong&gt; que manda o navegador ir de QUIC e esconder o SNI; o &lt;strong&gt;certificado&lt;/strong&gt; que pinta o cadeado existe porque um dia eu publiquei um TXT provando posse do domínio; e se aquela rede roda uma &lt;strong&gt;RPZ&lt;/strong&gt;, tudo isso pode ser barrado antes mesmo de começar.&lt;/p&gt;
+
+&lt;p&gt;Cada peça nasceu pra resolver escala, latência, privacidade ou segurança, e quase nunca trabalham sozinhas. “DNS é simples”, continuam me dizendo. É simples como um iceberg: a pontinha que você vê, e os anos de engenharia (e plantões) que seguram tudo embaixo d’água. E quando der ruim, respire fundo, porque você já sabe a resposta: é sempre DNS.&lt;/p&gt;
 </content>
  </entry>
  

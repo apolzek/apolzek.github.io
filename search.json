@@ -17,6 +17,14 @@
     } ,
   
     {
+      "title"    : "DNS parecia simples, ate..",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/2026/06/04/dns-jornada-sre-2026",
+      "date"     : "2026-06-04 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "first taste of ebpf",
       "category" : "",
       "tags"     : "",
