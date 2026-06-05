@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-06-05T00:50:49+00:00</updated>
+ <updated>2026-06-05T01:02:00+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -95,7 +95,11 @@
    <link href="https://apolzek.github.io/2026/06/04/dns-jornada-sre-2026"/>
    <updated>2026-06-04T00:00:00+00:00</updated>
    <id>https://apolzek.github.io/2026/06/04/dns-jornada-sre-2026</id>
-   <content type="html">&lt;p&gt;Bem vamos a definicao do que eh DNS:&lt;/p&gt;
+   <content type="html">&lt;blockquote&gt;
+  &lt;p&gt;A história a seguir é fictícia e tem apenas objetivos didáticos de ensinar sobre o funcionamento do DNS (Domain Name System). Qualquer semelhança com eventos, sistemas ou situações reais é mera coincidência. O conteúdo não descreve fatos reais nem deve ser interpretado como informação factual.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Bem vamos a definicao do que eh DNS:&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;DNS (Domain Name System) é um sistema distribuído da internet que converte nomes de domínio legíveis por humanos, como www.google.com, em endereços IP, como 142.250.191.14, permitindo que dispositivos localizem e se conectem aos servidores corretos sem que os usuários precisem memorizar números.&lt;/em&gt;&lt;/p&gt;
 
@@ -204,7 +208,7 @@ dig NS meudominio.com
 
 &lt;p&gt;Eles anunciam “este site fala HTTP/3” e carregam o &lt;strong&gt;ECH&lt;/strong&gt; (Encrypted Client Hello), peça que volta a aparecer no capítulo de privacidade. Em 2026, é assim que um navegador moderno decide ir direto de QUIC e esconder de bisbilhoteiros qual site você abriu.&lt;/p&gt;
 
-&lt;h2 id=&quot;operação-dilúvio-a-noite-em-que-o-dns-virou-alvo&quot;&gt;Operação Dilúvio: a noite em que o DNS virou alvo&lt;/h2&gt;
+&lt;h3 id=&quot;operação-dilúvio-a-noite-em-que-o-dns-virou-alvo&quot;&gt;Operação Dilúvio: a noite em que o DNS virou alvo&lt;/h3&gt;
 
 &lt;p&gt;Três e dezessete da manhã, o pager dispara: os autoritativos a 100% de CPU, consultas empilhando, e o site ficando intermitente porque resolver nenhum conseguia resposta. Liguei o laptop achando que era pico de tráfego. Não era.&lt;/p&gt;
 
@@ -267,6 +271,223 @@ resolvectl status   &lt;span class=&quot;c&quot;&gt;# no Linux mostra se o DoT e
 &lt;p&gt;o &lt;strong&gt;stub resolver&lt;/strong&gt; (no Windows, no Linux ou no Mac, cada um com sua manha e seu cache teimoso) entrega ao &lt;strong&gt;recursivo&lt;/strong&gt;, talvez por &lt;strong&gt;DoH&lt;/strong&gt; cifrado; o recursivo sobe a hierarquia com &lt;strong&gt;QNAME minimization&lt;/strong&gt;, contando o mínimo a cada degrau; em cada passo ele pode validar &lt;strong&gt;DNSSEC&lt;/strong&gt; (DS, DNSKEY, RRSIG), usando &lt;strong&gt;EDNS0&lt;/strong&gt; pra caber as assinaturas; o &lt;strong&gt;autoritativo&lt;/strong&gt;, em &lt;strong&gt;anycast&lt;/strong&gt; e olhando o &lt;strong&gt;ECS&lt;/strong&gt;, devolve um registro &lt;strong&gt;HTTPS&lt;/strong&gt; com &lt;strong&gt;ECH&lt;/strong&gt; que manda o navegador ir de QUIC e esconder o SNI; o &lt;strong&gt;certificado&lt;/strong&gt; que pinta o cadeado existe porque um dia eu publiquei um TXT provando posse do domínio; e se aquela rede roda uma &lt;strong&gt;RPZ&lt;/strong&gt;, tudo isso pode ser barrado antes mesmo de começar.&lt;/p&gt;
 
 &lt;p&gt;Cada peça nasceu pra resolver escala, latência, privacidade ou segurança, e quase nunca trabalham sozinhas. “DNS é simples”, continuam me dizendo. É simples como um iceberg: a pontinha que você vê, e os anos de engenharia (e plantões) que seguram tudo embaixo d’água. E quando der ruim, respire fundo, porque você já sabe a resposta: é sempre DNS.&lt;/p&gt;
+
+&lt;h2 id=&quot;dns-terminology-reference&quot;&gt;DNS terminology reference&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Term&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;DNS (Domain Name System)&lt;/td&gt;
+      &lt;td&gt;A distributed naming system that translates human-readable domain names (e.g., example.com) into IP addresses used by machines to locate and communicate with servers on the internet.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Domain&lt;/td&gt;
+      &lt;td&gt;A human-friendly identifier for a network resource, typically used to represent websites and services instead of numeric IP addresses.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;IP Address&lt;/td&gt;
+      &lt;td&gt;A numerical identifier assigned to devices on a network, used to route traffic to the correct destination (IPv4 or IPv6).&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Resolver (DNS Resolver)&lt;/td&gt;
+      &lt;td&gt;A server or system component that receives DNS queries from clients and performs the necessary lookup process to return the corresponding IP address.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Stub Resolver&lt;/td&gt;
+      &lt;td&gt;A lightweight DNS client built into an operating system that forwards DNS queries to a recursive resolver without performing full resolution itself.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;DNS Cache&lt;/td&gt;
+      &lt;td&gt;A temporary storage mechanism that keeps previously resolved DNS records to reduce lookup time and network traffic.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;TTL (Time To Live)&lt;/td&gt;
+      &lt;td&gt;A value that defines how long a DNS record can be cached before it must be refreshed from authoritative sources.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;A Record&lt;/td&gt;
+      &lt;td&gt;A DNS record type that maps a domain name to an IPv4 address.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;AAAA Record&lt;/td&gt;
+      &lt;td&gt;A DNS record type that maps a domain name to an IPv6 address.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;TXT Record&lt;/td&gt;
+      &lt;td&gt;A flexible DNS record type used to store arbitrary text data, often for verification, SPF, DKIM, and ACME challenges.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;NS Record&lt;/td&gt;
+      &lt;td&gt;A DNS record that specifies which authoritative name servers are responsible for a domain or zone.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;CNAME Record&lt;/td&gt;
+      &lt;td&gt;A DNS record that aliases one domain name to another canonical domain name.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SOA (Start of Authority)&lt;/td&gt;
+      &lt;td&gt;A DNS record that defines the authoritative information about a DNS zone, including serial number, refresh intervals, and administrative data.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;PTR Record&lt;/td&gt;
+      &lt;td&gt;A reverse DNS record that maps an IP address back to a domain name, commonly used for verification and email reputation.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SRV Record&lt;/td&gt;
+      &lt;td&gt;A DNS record that defines the location (host and port) of specific services such as SIP or Active Directory.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;CAA Record&lt;/td&gt;
+      &lt;td&gt;A security-related DNS record that specifies which certificate authorities are allowed to issue TLS certificates for a domain.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;DNS Recursion&lt;/td&gt;
+      &lt;td&gt;A process where a DNS resolver performs multiple queries on behalf of the client until it obtains the final answer.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Iterative Query&lt;/td&gt;
+      &lt;td&gt;A DNS query method where each server returns the best information it has, typically a referral to another DNS server.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Root DNS Server&lt;/td&gt;
+      &lt;td&gt;The top-level servers in the DNS hierarchy that direct queries to appropriate top-level domain (TLD) servers.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;TLD (Top-Level Domain)&lt;/td&gt;
+      &lt;td&gt;The highest level in the DNS hierarchy, such as .com, .org, or country-specific domains like .br.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Authoritative DNS Server&lt;/td&gt;
+      &lt;td&gt;A DNS server that holds the original and definitive records for a domain zone.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Glue Record&lt;/td&gt;
+      &lt;td&gt;A DNS record that provides the IP address of a name server within the same domain it is authoritative for, preventing circular dependencies.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Zone Delegation&lt;/td&gt;
+      &lt;td&gt;The process of assigning responsibility for a DNS zone to specific authoritative name servers.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Forwarder&lt;/td&gt;
+      &lt;td&gt;A DNS server that forwards unresolved queries to another DNS server for resolution.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Conditional Forwarding&lt;/td&gt;
+      &lt;td&gt;A configuration where DNS queries for specific domains are forwarded to designated DNS servers.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Negative Caching&lt;/td&gt;
+      &lt;td&gt;The caching of failed DNS lookups (e.g., non-existent domains) to reduce repeated queries for missing records.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;EDNS0&lt;/td&gt;
+      &lt;td&gt;An extension to DNS that allows larger packet sizes and additional functionality beyond the original DNS protocol limits.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Anycast&lt;/td&gt;
+      &lt;td&gt;A routing technique where multiple servers share the same IP address, and requests are routed to the nearest available instance.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;GeoDNS&lt;/td&gt;
+      &lt;td&gt;A DNS technique that returns different responses based on the geographic location of the client.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Round-Robin DNS&lt;/td&gt;
+      &lt;td&gt;A simple load balancing method that rotates multiple IP addresses for a single domain name.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;CNAME Flattening&lt;/td&gt;
+      &lt;td&gt;A DNS feature that resolves CNAME records at the apex of a domain and returns A/AAAA records instead.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;ALIAS Record&lt;/td&gt;
+      &lt;td&gt;A non-standard DNS record type that behaves similarly to CNAME but works at the root domain level.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;DNSSEC&lt;/td&gt;
+      &lt;td&gt;A set of security extensions that add cryptographic signatures to DNS records to ensure authenticity and integrity.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RRSIG&lt;/td&gt;
+      &lt;td&gt;A DNSSEC record containing cryptographic signatures for DNS data sets.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;DNSKEY&lt;/td&gt;
+      &lt;td&gt;A DNSSEC record that stores the public key used to verify DNS signatures.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;DS Record&lt;/td&gt;
+      &lt;td&gt;A record used to link a child DNS zone to its parent zone in DNSSEC, forming a chain of trust.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;KSK (Key Signing Key)&lt;/td&gt;
+      &lt;td&gt;A DNSSEC key used specifically to sign other DNS keys within a zone.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;ZSK (Zone Signing Key)&lt;/td&gt;
+      &lt;td&gt;A DNSSEC key used to sign the actual DNS zone records.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;NSEC / NSEC3&lt;/td&gt;
+      &lt;td&gt;DNSSEC mechanisms used to prove that a DNS record does not exist, preventing spoofing of negative responses.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;DoT (DNS over TLS)&lt;/td&gt;
+      &lt;td&gt;A protocol that encrypts DNS queries using TLS to improve privacy and security.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;DoH (DNS over HTTPS)&lt;/td&gt;
+      &lt;td&gt;A method of sending DNS queries over HTTPS, hiding them within regular web traffic.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;DoQ (DNS over QUIC)&lt;/td&gt;
+      &lt;td&gt;A DNS transport protocol using QUIC for lower latency and improved performance.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;ODoH (Oblivious DNS over HTTPS)&lt;/td&gt;
+      &lt;td&gt;A privacy-enhanced DNS protocol that separates client identity from query content using a proxy layer.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;ECS (EDNS Client Subnet)&lt;/td&gt;
+      &lt;td&gt;An extension that includes part of the client’s IP subnet in DNS queries to improve geolocation-based responses.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;QNAME Minimization&lt;/td&gt;
+      &lt;td&gt;A privacy technique where DNS resolvers only send the minimal required portion of a query to upstream servers.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RPZ (Response Policy Zone)&lt;/td&gt;
+      &lt;td&gt;A DNS-based filtering mechanism used to block or redirect malicious or unwanted domains.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RRL (Response Rate Limiting)&lt;/td&gt;
+      &lt;td&gt;A mechanism used by authoritative DNS servers to mitigate abuse by limiting response rates.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;DNS Water Torture Attack&lt;/td&gt;
+      &lt;td&gt;A type of DNS flood attack using randomized subdomains to overwhelm authoritative servers.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Cache Poisoning&lt;/td&gt;
+      &lt;td&gt;A security attack that injects false DNS data into a resolver’s cache.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Kaminsky Attack&lt;/td&gt;
+      &lt;td&gt;A classic DNS cache poisoning exploit that abuses predictable transaction IDs in DNS queries.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;0x20 Encoding&lt;/td&gt;
+      &lt;td&gt;A DNS security technique that randomizes letter casing in queries to detect forged responses.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 </content>
  </entry>
  
