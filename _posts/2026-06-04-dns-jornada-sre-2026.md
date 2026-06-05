@@ -7,6 +7,8 @@ summary:
 minute: 10
 ---
 
+> A história a seguir é fictícia e tem apenas objetivos didáticos de ensinar sobre o funcionamento do DNS (Domain Name System). Qualquer semelhança com eventos, sistemas ou situações reais é mera coincidência. O conteúdo não descreve fatos reais nem deve ser interpretado como informação factual.
+
 Bem vamos a definicao do que eh DNS: 
 
 *DNS (Domain Name System) é um sistema distribuído da internet que converte nomes de domínio legíveis por humanos, como www.google.com, em endereços IP, como 142.250.191.14, permitindo que dispositivos localizem e se conectem aos servidores corretos sem que os usuários precisem memorizar números.*
@@ -127,7 +129,7 @@ dig HTTPS meudominio.com
 
 Eles anunciam "este site fala HTTP/3" e carregam o **ECH** (Encrypted Client Hello), peça que volta a aparecer no capítulo de privacidade. Em 2026, é assim que um navegador moderno decide ir direto de QUIC e esconder de bisbilhoteiros qual site você abriu.
 
-## Operação Dilúvio: a noite em que o DNS virou alvo
+### Operação Dilúvio: a noite em que o DNS virou alvo
 
 Três e dezessete da manhã, o pager dispara: os autoritativos a 100% de CPU, consultas empilhando, e o site ficando intermitente porque resolver nenhum conseguia resposta. Liguei o laptop achando que era pico de tráfego. Não era.
 
@@ -194,3 +196,60 @@ Anos depois, ainda sorrio com o tanto que acontece quando alguém digita `https:
 o **stub resolver** (no Windows, no Linux ou no Mac, cada um com sua manha e seu cache teimoso) entrega ao **recursivo**, talvez por **DoH** cifrado; o recursivo sobe a hierarquia com **QNAME minimization**, contando o mínimo a cada degrau; em cada passo ele pode validar **DNSSEC** (DS, DNSKEY, RRSIG), usando **EDNS0** pra caber as assinaturas; o **autoritativo**, em **anycast** e olhando o **ECS**, devolve um registro **HTTPS** com **ECH** que manda o navegador ir de QUIC e esconder o SNI; o **certificado** que pinta o cadeado existe porque um dia eu publiquei um TXT provando posse do domínio; e se aquela rede roda uma **RPZ**, tudo isso pode ser barrado antes mesmo de começar.
 
 Cada peça nasceu pra resolver escala, latência, privacidade ou segurança, e quase nunca trabalham sozinhas. "DNS é simples", continuam me dizendo. É simples como um iceberg: a pontinha que você vê, e os anos de engenharia (e plantões) que seguram tudo embaixo d'água. E quando der ruim, respire fundo, porque você já sabe a resposta: é sempre DNS.
+
+
+## DNS terminology reference
+
+| Term | Description |
+|------|-------------|
+| DNS (Domain Name System) | A distributed naming system that translates human-readable domain names (e.g., example.com) into IP addresses used by machines to locate and communicate with servers on the internet. |
+| Domain | A human-friendly identifier for a network resource, typically used to represent websites and services instead of numeric IP addresses. |
+| IP Address | A numerical identifier assigned to devices on a network, used to route traffic to the correct destination (IPv4 or IPv6). |
+| Resolver (DNS Resolver) | A server or system component that receives DNS queries from clients and performs the necessary lookup process to return the corresponding IP address. |
+| Stub Resolver | A lightweight DNS client built into an operating system that forwards DNS queries to a recursive resolver without performing full resolution itself. |
+| DNS Cache | A temporary storage mechanism that keeps previously resolved DNS records to reduce lookup time and network traffic. |
+| TTL (Time To Live) | A value that defines how long a DNS record can be cached before it must be refreshed from authoritative sources. |
+| A Record | A DNS record type that maps a domain name to an IPv4 address. |
+| AAAA Record | A DNS record type that maps a domain name to an IPv6 address. |
+| TXT Record | A flexible DNS record type used to store arbitrary text data, often for verification, SPF, DKIM, and ACME challenges. |
+| NS Record | A DNS record that specifies which authoritative name servers are responsible for a domain or zone. |
+| CNAME Record | A DNS record that aliases one domain name to another canonical domain name. |
+| SOA (Start of Authority) | A DNS record that defines the authoritative information about a DNS zone, including serial number, refresh intervals, and administrative data. |
+| PTR Record | A reverse DNS record that maps an IP address back to a domain name, commonly used for verification and email reputation. |
+| SRV Record | A DNS record that defines the location (host and port) of specific services such as SIP or Active Directory. |
+| CAA Record | A security-related DNS record that specifies which certificate authorities are allowed to issue TLS certificates for a domain. |
+| DNS Recursion | A process where a DNS resolver performs multiple queries on behalf of the client until it obtains the final answer. |
+| Iterative Query | A DNS query method where each server returns the best information it has, typically a referral to another DNS server. |
+| Root DNS Server | The top-level servers in the DNS hierarchy that direct queries to appropriate top-level domain (TLD) servers. |
+| TLD (Top-Level Domain) | The highest level in the DNS hierarchy, such as .com, .org, or country-specific domains like .br. |
+| Authoritative DNS Server | A DNS server that holds the original and definitive records for a domain zone. |
+| Glue Record | A DNS record that provides the IP address of a name server within the same domain it is authoritative for, preventing circular dependencies. |
+| Zone Delegation | The process of assigning responsibility for a DNS zone to specific authoritative name servers. |
+| Forwarder | A DNS server that forwards unresolved queries to another DNS server for resolution. |
+| Conditional Forwarding | A configuration where DNS queries for specific domains are forwarded to designated DNS servers. |
+| Negative Caching | The caching of failed DNS lookups (e.g., non-existent domains) to reduce repeated queries for missing records. |
+| EDNS0 | An extension to DNS that allows larger packet sizes and additional functionality beyond the original DNS protocol limits. |
+| Anycast | A routing technique where multiple servers share the same IP address, and requests are routed to the nearest available instance. |
+| GeoDNS | A DNS technique that returns different responses based on the geographic location of the client. |
+| Round-Robin DNS | A simple load balancing method that rotates multiple IP addresses for a single domain name. |
+| CNAME Flattening | A DNS feature that resolves CNAME records at the apex of a domain and returns A/AAAA records instead. |
+| ALIAS Record | A non-standard DNS record type that behaves similarly to CNAME but works at the root domain level. |
+| DNSSEC | A set of security extensions that add cryptographic signatures to DNS records to ensure authenticity and integrity. |
+| RRSIG | A DNSSEC record containing cryptographic signatures for DNS data sets. |
+| DNSKEY | A DNSSEC record that stores the public key used to verify DNS signatures. |
+| DS Record | A record used to link a child DNS zone to its parent zone in DNSSEC, forming a chain of trust. |
+| KSK (Key Signing Key) | A DNSSEC key used specifically to sign other DNS keys within a zone. |
+| ZSK (Zone Signing Key) | A DNSSEC key used to sign the actual DNS zone records. |
+| NSEC / NSEC3 | DNSSEC mechanisms used to prove that a DNS record does not exist, preventing spoofing of negative responses. |
+| DoT (DNS over TLS) | A protocol that encrypts DNS queries using TLS to improve privacy and security. |
+| DoH (DNS over HTTPS) | A method of sending DNS queries over HTTPS, hiding them within regular web traffic. |
+| DoQ (DNS over QUIC) | A DNS transport protocol using QUIC for lower latency and improved performance. |
+| ODoH (Oblivious DNS over HTTPS) | A privacy-enhanced DNS protocol that separates client identity from query content using a proxy layer. |
+| ECS (EDNS Client Subnet) | An extension that includes part of the client’s IP subnet in DNS queries to improve geolocation-based responses. |
+| QNAME Minimization | A privacy technique where DNS resolvers only send the minimal required portion of a query to upstream servers. |
+| RPZ (Response Policy Zone) | A DNS-based filtering mechanism used to block or redirect malicious or unwanted domains. |
+| RRL (Response Rate Limiting) | A mechanism used by authoritative DNS servers to mitigate abuse by limiting response rates. |
+| DNS Water Torture Attack | A type of DNS flood attack using randomized subdomains to overwhelm authoritative servers. |
+| Cache Poisoning | A security attack that injects false DNS data into a resolver’s cache. |
+| Kaminsky Attack | A classic DNS cache poisoning exploit that abuses predictable transaction IDs in DNS queries. |
+| 0x20 Encoding | A DNS security technique that randomizes letter casing in queries to detect forged responses. |
