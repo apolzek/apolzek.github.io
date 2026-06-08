@@ -67,4 +67,6 @@ Essa distinção aparece, sob diferentes formulações, em autores como Aristót
 
 ---
 
+## Ser polímata
+
 Um **polímata** é alguém cuja mente transcende as fronteiras artificiais entre os campos do conhecimento, identificando os princípios, padrões e estruturas que conectam áreas distintas em uma compreensão unificada da realidade. Em vez de apenas acumular informações, o polímata sintetiza, reconstrói e integra saberes, transformando aprendizado em percepção sistêmica. Sua cognição não opera de forma linear ou compartimentalizada, mas como uma rede dinâmica de conexões, na qual ciência, filosofia, psicologia, política, finanças e experiência humana revelam diferentes expressões das mesmas verdades fundamentais.
