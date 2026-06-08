@@ -103,17 +103,87 @@ layout: compress
   });
 </script>
 <script src="{{ site.url }}/assets/js/cosmos.js"></script>
-<script src="{{ site.url }}/assets/js/simple-jekyll-search.js"></script>
 <script>
-  var sjs = SimpleJekyllSearch({
-    searchInput: document.getElementById('search-input'),
-    resultsContainer: document.getElementById('search-results'),
-    json: '{{ site.url }}/search.json',
-    searchResultTemplate: '<li><a href="{url}" title="{desc}">{title}</a></li>',
-    noResultsText: 'Não encontrado..',
-    limit: 10,
-    fuzzy: true,
-  })
+  (function () {
+    var input = document.getElementById('search-input');
+    var results = document.getElementById('search-results');
+    if (!input || !results) return;
+
+    var REVEAL = '%revelare';
+    var LIMIT = 10;
+    var posts = [];
+
+    /* Subsequence ("fuzzy") match, same spirit as the previous search lib. */
+    function fuzzy(needle, haystack) {
+      needle = (needle || '').toLowerCase();
+      haystack = (haystack || '').toLowerCase();
+      var n = 0;
+      for (var i = 0; i < haystack.length && n < needle.length; i++) {
+        if (haystack[i] === needle[n]) n++;
+      }
+      return n === needle.length;
+    }
+
+    function isSecret(p) {
+      return p.secret === true || p.secret === 'true';
+    }
+
+    var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    /* Format "2026-06-08 00:00:00 +0000" -> "Jun 08, 2026", matching the post list. */
+    function fmtDate(s) {
+      var p = (s || '').slice(0, 10).split('-');
+      if (p.length < 3) return '';
+      return MONTHS[parseInt(p[1], 10) - 1] + ' ' + p[2] + ', ' + p[0];
+    }
+
+    function render(list) {
+      if (!list.length) {
+        results.innerHTML = 'Não encontrado..';
+        return;
+      }
+      results.innerHTML = list.map(function (p) {
+        return '<li><a href="' + p.url + '">' + p.title + '</a>' +
+               '<time datetime="' + p.date + '">' + fmtDate(p.date) + '</time></li>';
+      }).join('');
+    }
+
+    var loaded = false;
+
+    fetch('{{ site.url }}/search.json', { cache: 'no-store' })
+      .then(function (r) { return r.json(); })
+      .then(function (data) { posts = data; loaded = true; runSearch(); });
+
+    var blog = document.getElementById('Blog');
+
+    /* Hide the default post listing while a search is active. */
+    function setBlogHidden(hidden) {
+      if (blog) blog.style.display = hidden ? 'none' : '';
+    }
+
+    function runSearch() {
+      var q = input.value.trim();
+      if (!q) { results.innerHTML = ''; setBlogHidden(false); return; }
+
+      setBlogHidden(true);
+
+      /* Posts not loaded yet: re-run once the fetch resolves. */
+      if (!loaded) { results.innerHTML = ''; return; }
+
+      /* Secret reveal mode: list only secret posts. */
+      if (q.toLowerCase() === REVEAL) {
+        render(posts.filter(isSecret));
+        return;
+      }
+
+      /* Normal search never surfaces secret posts. */
+      var matches = posts.filter(function (p) {
+        return !isSecret(p) && (fuzzy(q, p.title) || fuzzy(q, p.tags));
+      }).slice(0, LIMIT);
+      render(matches);
+    }
+
+    input.addEventListener('input', runSearch);
+  })();
 </script>
 
 

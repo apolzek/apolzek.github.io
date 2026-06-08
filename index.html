@@ -64,10 +64,12 @@ layout: default
         <h2>Posts</h2>
         <ul>
             {% for post in paginator.posts %}
+            {% unless post.secret %}
             <li>
                 <a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
                 <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d, %Y" }}</time>
             </li>
+            {% endunless %}
             {% endfor %}
         </ul>
 

@@ -525,8 +525,22 @@ color: #333;
 
   text-align: center;
   li {
-    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
     list-style-type: none;
+  }
+  li a {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bold;
+  }
+  li time {
+    padding-left: 1rem;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
   }
 }
 
