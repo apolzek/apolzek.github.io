@@ -1,11 +1,21 @@
 [
   
     {
+      "title"    : "segredo de teste revelare",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/2026/06/08/segredo-de-teste",
+      "date"     : "2026-06-08 00:00:00 +0000",
+      "secret"   : true
+    } ,
+  
+    {
       "title"    : "O estudo como caminho de libertação",
       "category" : "",
       "tags"     : "",
       "url"      : "/2026/06/04/o-estudo-como-caminho-de-libertacao",
-      "date"     : "2026-06-04 00:00:00 +0000"
+      "date"     : "2026-06-04 00:00:00 +0000",
+      "secret"   : false
     } ,
   
     {
@@ -13,7 +23,8 @@
       "category" : "",
       "tags"     : "",
       "url"      : "/2026/06/04/kubernetes-static-website",
-      "date"     : "2026-06-04 00:00:00 +0000"
+      "date"     : "2026-06-04 00:00:00 +0000",
+      "secret"   : false
     } ,
   
     {
@@ -21,7 +32,8 @@
       "category" : "",
       "tags"     : "",
       "url"      : "/2026/06/04/dns-trincheiras",
-      "date"     : "2026-06-04 00:00:00 +0000"
+      "date"     : "2026-06-04 00:00:00 +0000",
+      "secret"   : false
     } ,
   
     {
@@ -29,7 +41,8 @@
       "category" : "",
       "tags"     : "",
       "url"      : "/2026/05/20/first-taste-of-ebpf",
-      "date"     : "2026-05-20 00:00:00 +0000"
+      "date"     : "2026-05-20 00:00:00 +0000",
+      "secret"   : false
     } ,
   
     {
@@ -37,7 +50,8 @@
       "category" : "",
       "tags"     : "",
       "url"      : "/2026/05/19/the-journey-to-learn-ebpf",
-      "date"     : "2026-05-19 00:00:00 +0000"
+      "date"     : "2026-05-19 00:00:00 +0000",
+      "secret"   : false
     } ,
   
     {
@@ -45,7 +59,8 @@
       "category" : "",
       "tags"     : "",
       "url"      : "/2026/05/18/dialogo-sobre-rotulos-e-verdade",
-      "date"     : "2026-05-18 00:00:00 +0000"
+      "date"     : "2026-05-18 00:00:00 +0000",
+      "secret"   : false
     } ,
   
     {
@@ -53,7 +68,8 @@
       "category" : "",
       "tags"     : "",
       "url"      : "/2026/05/18/apolzek",
-      "date"     : "2026-05-18 00:00:00 +0000"
+      "date"     : "2026-05-18 00:00:00 +0000",
+      "secret"   : false
     } 
   
 ]
