@@ -13,7 +13,7 @@ Bem, vamos à definição do que é DNS:
 
 *DNS (Domain Name System) é um sistema distribuído da internet que converte nomes de domínio legíveis por humanos, como www.google.com, em endereços IP, como 142.250.191.14, permitindo que dispositivos localizem e se conectem aos servidores corretos sem que os usuários precisem memorizar números.*
 
-Não tem como isso ser complexo, correto?
+Não tem como isso ser complexo, correto ?
 
 ![gif](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcGh0bTlrdXBkczNlNnRld203bzVuYTR2cmFodXdoeWljMWVxYng2ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jN86rcdOyrpyo/giphy.gif)
 
@@ -59,7 +59,7 @@ No macOS quem cacheia é o **mDNSResponder**, e limpar exige esse combo (o segun
 
 A ferramenta que me salvou nos três foi o `dig`. Rodei `dig +trace www.intranet` e vi, ao vivo, a peregrinação: o **resolver recursivo** pergunta a um servidor **raiz**, que não sabe e aponta pro `.com`; o `.com` aponta pro **autoritativo** do domínio; e o autoritativo, o único que conhece a verdade, devolve o IP. Os intermediários nunca respondem de verdade, só dão *referrals*. Essa é a diferença entre consulta **recursiva** ("me resolve inteiro") e **iterativa** ("vira-te com o próximo"). No protocolo são dois bits, **RD** e **RA**, "quero recursão" e "ofereço recursão". Servidor raiz tem RA desligado de propósito: ele não é seu mordomo.
 
-E por que metade das consultas internas ia pra outro lugar? **Forwarder**. Tudo que terminava em `corp.interno` era encaminhado pro DNS do Active Directory; o resto ia pro mundo. Encaminhamento condicional. Aprendi a diferença entre "forward only" e "forward first" na madrugada em que o AD reiniciou e o "forward only" levou junto.
+E por que metade das consultas internas ia pra outro lugar ? **Forwarder**. Tudo que terminava em `corp.interno` era encaminhado pro DNS do Active Directory; o resto ia pro mundo. Encaminhamento condicional. Aprendi a diferença entre "forward only" e "forward first" na madrugada em que o AD reiniciou e o "forward only" levou junto.
 
 ### Comprando o domínio na GoDaddy (o teatro nos bastidores)
 
@@ -88,7 +88,7 @@ antes de prometer prazo pra qualquer mudança nova..
 
 Montamos e-mail próprio, e metade do que mandávamos sumia. Primeiro vilão: **PTR**, a resolução reversa (IP vira nome). Servidores sérios desconfiam de quem conecta sem PTR válido, ou que falha no **FCrDNS** (o reverso aponta pra um nome que, resolvido de volta, dá o mesmo IP). Configurei com a operadora e a reputação melhorou. De brinde aprendi o **SRV**, que aponta pra um *serviço* e não a um host, e é como o Active Directory se acha sozinho na rede.
 
-Mas a parte que mudou minha cabeça foi entender de onde vem o cadeado do navegador. Aquele cadeado é um **certificado TLS** assinado por uma autoridade certificadora (CA) em que o navegador confia. A pergunta que eu nunca tinha feito: *como a CA sabe que o domínio é meu?* Resposta: via DNS. Quando pedi um certificado na Let's Encrypt, ela mandou publicar um registro TXT específico:
+Mas a parte que mudou minha cabeça foi entender de onde vem o cadeado do navegador. Aquele cadeado é um **certificado TLS** assinado por uma autoridade certificadora (CA) em que o navegador confia. A pergunta que eu nunca tinha feito: *como a CA sabe que o domínio é meu ?* Resposta: via DNS. Quando pedi um certificado na Let's Encrypt, ela mandou publicar um registro TXT específico:
 
 ```bash
 dig TXT _acme-challenge.meudominio.com
@@ -162,9 +162,9 @@ Aquela noite me deixou paranoica do jeito certo. Eu já tinha ouvido a lenda do 
 
 ### Assinando a verdade: a saga do DNSSEC
 
-**DNSSEC** é a ideia de que cada resposta venha assinada de um jeito que ninguém falsifica. A execução é uma matrioska. A zona ganha uma **DNSKEY** (chave pública); cada conjunto de registros passa a vir com uma **RRSIG** (a assinatura). Como confiar na DNSKEY? Por um **DS**, um resumo dela que eu publico na zona-pai, lá no registrar (sim, de volta na GoDaddy do capítulo 2). A raiz assina o DS do `.com`, o `.com` assina o meu, e eu assino meus registros: essa é a **cadeia de confiança**, ancorada numa chave da raiz que vem embutida nos sistemas e é trocada em cerimônias públicas, com testemunhas e cofre (não é piada).
+**DNSSEC** é a ideia de que cada resposta venha assinada de um jeito que ninguém falsifica. A execução é uma matrioska. A zona ganha uma **DNSKEY** (chave pública); cada conjunto de registros passa a vir com uma **RRSIG** (a assinatura). Como confiar na DNSKEY ? Por um **DS**, um resumo dela que eu publico na zona-pai, lá no registrar (sim, de volta na GoDaddy do capítulo 2). A raiz assina o DS do `.com`, o `.com` assina o meu, e eu assino meus registros: essa é a **cadeia de confiança**, ancorada numa chave da raiz que vem embutida nos sistemas e é trocada em cerimônias públicas, com testemunhas e cofre (não é piada).
 
-Por segurança, separamos em duas chaves: a **KSK** assina só as chaves e é a que o DS aponta; a **ZSK** assina o resto. Assim eu giro a ZSK sozinha e sempre, deixando a KSK (que mexe com o pai) pra eventos raros e cuidadosos. E como provar, assinado, que um nome *não* existe? Com **NSEC**, ou melhor, **NSEC3**, que troca nomes por hashes pra ninguém sair listando minha zona inteira; TLDs gigantes usam NSEC3 com *opt-out* pra não ter que assinar o infinito.
+Por segurança, separamos em duas chaves: a **KSK** assina só as chaves e é a que o DS aponta; a **ZSK** assina o resto. Assim eu giro a ZSK sozinha e sempre, deixando a KSK (que mexe com o pai) pra eventos raros e cuidadosos. E como provar, assinado, que um nome *não* existe ? Com **NSEC**, ou melhor, **NSEC3**, que troca nomes por hashes pra ninguém sair listando minha zona inteira; TLDs gigantes usam NSEC3 com *opt-out* pra não ter que assinar o infinito.
 
 Foi aqui que o **EDNS0** fez sentido: o DNS nasceu limitado a 512 bytes por resposta UDP, e assinatura estoura isso fácil; o EDNS0 permite respostas maiores e diz "pode mandar as assinaturas junto". Pra validar e debugar, troquei o `dig` puro por:
 

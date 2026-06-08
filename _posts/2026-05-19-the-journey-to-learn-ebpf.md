@@ -21,36 +21,36 @@ and build new ones along the way. That is the approach this article takes.
 ## Table of Contents
 
 - [General questions](#general-questions)
-  - [What is eBPF?](#what-is-ebpf)
-  - [What is the difference between eBPF and BPF?](#what-is-the-difference-between-ebpf-and-bpf)
-  - [Why, by whom, and when was eBPF created?](#why-by-whom-and-when-was-ebpf-created)
-  - [What are the main changes to eBPF throughout its history?](#what-are-the-main-changes-to-ebpf-throughout-its-history)
-  - [What are the main tools built using eBPF?](#what-are-the-main-tools-built-using-ebpf)
-  - [Who are the key technical references in eBPF?](#who-are-the-key-technical-references-in-ebpf)
+  - [What is eBPF ?](#what-is-ebpf)
+  - [What is the difference between eBPF and BPF ?](#what-is-the-difference-between-ebpf-and-bpf)
+  - [Why, by whom, and when was eBPF created ?](#why-by-whom-and-when-was-ebpf-created)
+  - [What are the main changes to eBPF throughout its history ?](#what-are-the-main-changes-to-ebpf-throughout-its-history)
+  - [What are the main tools built using eBPF ?](#what-are-the-main-tools-built-using-ebpf)
+  - [Who are the key technical references in eBPF ?](#who-are-the-key-technical-references-in-ebpf)
 - [Specific questions](#specific-questions)
-  - [How does eBPF actually work under the hood?](#how-does-ebpf-actually-work-under-the-hood)
-  - [What is the eBPF verifier and why does it matter?](#what-is-the-ebpf-verifier-and-why-does-it-matter)
-  - [What are eBPF maps and how are they used?](#what-are-ebpf-maps-and-how-are-they-used)
-  - [What are the different eBPF program types and hook points?](#what-are-the-different-ebpf-program-types-and-hook-points)
-  - [How does the JIT compiler fit into eBPF?](#how-does-the-jit-compiler-fit-into-ebpf)
-  - [What are the safety guarantees of eBPF and what are its limitations?](#what-are-the-safety-guarantees-of-ebpf-and-what-are-its-limitations)
-  - [How does eBPF compare to kernel modules?](#how-does-ebpf-compare-to-kernel-modules)
-  - [Why is eBPF often described as "superpowers for the kernel"?](#why-is-ebpf-often-described-as-superpowers-for-the-kernel)
-  - [What problems did eBPF solve that weren't solvable before?](#what-problems-did-ebpf-solve-that-werent-solvable-before)
-  - [What are the main use cases for eBPF?](#what-are-the-main-use-cases-for-ebpf)
-  - [How is eBPF used in production at large companies?](#how-is-ebpf-used-in-production-at-large-companies)
-  - [What is XDP and how does it relate to eBPF?](#what-is-xdp-and-how-does-it-relate-to-ebpf)
-  - [What is the difference between BCC, bpftrace, and libbpf?](#what-is-the-difference-between-bcc-bpftrace-and-libbpf)
-  - [What is CO-RE and why does it matter?](#what-is-co-re-and-why-does-it-matter)
-  - [How does Cilium use eBPF?](#how-does-cilium-use-ebpf)
-  - [What kernel version do I need for eBPF?](#what-kernel-version-do-i-need-for-ebpf)
-  - [What do I need to know to write my first eBPF program?](#what-do-i-need-to-know-to-write-my-first-ebpf-program)
-  - [What languages can I use to write eBPF programs?](#what-languages-can-i-use-to-write-ebpf-programs)
-  - [How do I debug an eBPF program?](#how-do-i-debug-an-ebpf-program)
-  - [What are common pitfalls when getting started with eBPF?](#what-are-common-pitfalls-when-getting-started-with-ebpf)
-  - [What can't eBPF do (yet)?](#what-cant-ebpf-do-yet)
-  - [What is eBPF for Windows?](#what-is-ebpf-for-windows)
-  - [Where is eBPF headed in the next few years?](#where-is-ebpf-headed-in-the-next-few-years)
+  - [How does eBPF actually work under the hood ?](#how-does-ebpf-actually-work-under-the-hood)
+  - [What is the eBPF verifier and why does it matter ?](#what-is-the-ebpf-verifier-and-why-does-it-matter)
+  - [What are eBPF maps and how are they used ?](#what-are-ebpf-maps-and-how-are-they-used)
+  - [What are the different eBPF program types and hook points ?](#what-are-the-different-ebpf-program-types-and-hook-points)
+  - [How does the JIT compiler fit into eBPF ?](#how-does-the-jit-compiler-fit-into-ebpf)
+  - [What are the safety guarantees of eBPF and what are its limitations ?](#what-are-the-safety-guarantees-of-ebpf-and-what-are-its-limitations)
+  - [How does eBPF compare to kernel modules ?](#how-does-ebpf-compare-to-kernel-modules)
+  - [Why is eBPF often described as "superpowers for the kernel" ?](#why-is-ebpf-often-described-as-superpowers-for-the-kernel)
+  - [What problems did eBPF solve that weren't solvable before ?](#what-problems-did-ebpf-solve-that-werent-solvable-before)
+  - [What are the main use cases for eBPF ?](#what-are-the-main-use-cases-for-ebpf)
+  - [How is eBPF used in production at large companies ?](#how-is-ebpf-used-in-production-at-large-companies)
+  - [What is XDP and how does it relate to eBPF ?](#what-is-xdp-and-how-does-it-relate-to-ebpf)
+  - [What is the difference between BCC, bpftrace, and libbpf ?](#what-is-the-difference-between-bcc-bpftrace-and-libbpf)
+  - [What is CO-RE and why does it matter ?](#what-is-co-re-and-why-does-it-matter)
+  - [How does Cilium use eBPF ?](#how-does-cilium-use-ebpf)
+  - [What kernel version do I need for eBPF ?](#what-kernel-version-do-i-need-for-ebpf)
+  - [What do I need to know to write my first eBPF program ?](#what-do-i-need-to-know-to-write-my-first-ebpf-program)
+  - [What languages can I use to write eBPF programs ?](#what-languages-can-i-use-to-write-ebpf-programs)
+  - [How do I debug an eBPF program ?](#how-do-i-debug-an-ebpf-program)
+  - [What are common pitfalls when getting started with eBPF ?](#what-are-common-pitfalls-when-getting-started-with-ebpf)
+  - [What can't eBPF do (yet) ?](#what-cant-ebpf-do-yet)
+  - [What is eBPF for Windows ?](#what-is-ebpf-for-windows)
+  - [Where is eBPF headed in the next few years ?](#where-is-ebpf-headed-in-the-next-few-years)
 - [The Journey to Learn eBPF (Security & Observability Focus)](#the-journey-to-learn-ebpf-security--observability-focus)
   - [Technical Foundation (1-7)](#technical-foundation-1-7)
   - [eBPF Mechanics (8-13)](#ebpf-mechanics-8-13)
@@ -61,7 +61,7 @@ and build new ones along the way. That is the approach this article takes.
 
 ## General questions
 
-##### What is eBPF?
+##### What is eBPF ?
 
 eBPF is a technology that lets you run small, sandboxed programs inside the Linux
 kernel without changing kernel source code or loading kernel modules. It can be thought
@@ -70,7 +70,7 @@ Programs are event-driven (triggered by hooks), verified for safety before they 
 and execute at near-native performance. In effect, eBPF turns the kernel into a
 programmable platform.
 
-##### What is the difference between eBPF and BPF?
+##### What is the difference between eBPF and BPF ?
 
 "BPF" originally meant Berkeley Packet Filter, a 1990s mechanism for filtering network
 packets. "eBPF" is the modern, extended redesign. The extended instruction set first
@@ -86,7 +86,7 @@ kernel only runs eBPF; classic BPF bytecode is transparently translated into eBP
 before execution. In practice, "BPF" and "eBPF" are now often used interchangeably to
 mean the modern technology.
 
-##### Why, by whom, and when was eBPF created?
+##### Why, by whom, and when was eBPF created ?
 
 The original BPF was created in 1992 by Van Jacobson and colleagues because existing
 packet filters were too slow for kernel use. As networking evolved, BPF's limitations
@@ -97,7 +97,7 @@ general-purpose execution engine. Daniel Borkmann is the other principal origina
 author. The `bpf()` syscall was added to the Linux kernel in December 2014, in
 version 3.18.
 
-##### What are the main changes to eBPF throughout its history?
+##### What are the main changes to eBPF throughout its history ?
 
 The major milestones:
 
@@ -111,7 +111,7 @@ The major milestones:
 - **Later additions** — BPF LSM hooks for security enforcement, the ring buffer
   (kernel 5.8), and eBPF for Windows.
 
-##### What are the main tools built using eBPF?
+##### What are the main tools built using eBPF ?
 
 The widely used ones include BCC, bpftrace, Cilium, Tetragon, Falco, Pixie, Inspektor
 Gadget, Tracee, Parca, and kubectl-trace — mature, production-tested solutions for
@@ -123,7 +123,7 @@ no code changes; and Falco does runtime security observability, detecting anomal
 behavior. bpftrace and BCC are the go-to tracing and diagnostics toolkits, and Hubble
 provides network observability on top of Cilium.
 
-##### Who are the key technical references in eBPF?
+##### Who are the key technical references in eBPF ?
 
 Pioneers of the technology include Alexei Starovoitov, Daniel Borkmann, Thomas Graf,
 Brendan Gregg, David Miller, and Liz Rice, all of whom have been instrumental in
@@ -135,7 +135,7 @@ Thomas Graf and Liz Rice are prominent on the Cilium and cloud-native side.
 
 ## Specific questions
 
-##### How does eBPF actually work under the hood?
+##### How does eBPF actually work under the hood ?
 
 The lifecycle: a developer writes a program (usually in restricted C), compiles it to
 eBPF bytecode with Clang/LLVM, then loads it into the kernel via the `bpf()` syscall.
@@ -146,7 +146,7 @@ runs in response to specific hook points: when an event occurs, the kernel runs 
 corresponding program, and developers interact with it from user space using eBPF
 maps.
 
-##### What is the eBPF verifier and why does it matter?
+##### What is the eBPF verifier and why does it matter ?
 
 The verifier is the security gate that makes eBPF safe to run in the kernel. It checks
 the bytecode before the program is loaded to make sure it contains no harmful
@@ -156,7 +156,7 @@ process holds the required privileges and that the program always runs to comple
 It matters because it is what allows custom code to run in kernel space without
 crashing or compromising the system.
 
-##### What are eBPF maps and how are they used?
+##### What are eBPF maps and how are they used ?
 
 eBPF maps are key-value data structures with read/write access. They provide shared
 storage and let eBPF kernel programs interact with user-space applications. Created and
@@ -166,7 +166,7 @@ least-recently-used (LRU) variants, longest-prefix-match (LPM) tries, and more. 
 typical pattern: a kernel program writes counters or events into a map, and a
 user-space agent reads them out.
 
-##### What are the different eBPF program types and hook points?
+##### What are the different eBPF program types and hook points ?
 
 Each eBPF program type represents a different interface or hook point in the kernel's
 workflow. By selecting a program type at load time, the developer defines which kernel
@@ -177,7 +177,7 @@ Common hook points include XDP (network driver level), TC (traffic control), soc
 filters, kprobes (kernel functions), tracepoints (stable kernel events), uprobes (user
 functions), and perf events (hardware), plus LSM hooks for security enforcement.
 
-##### How does the JIT compiler fit into eBPF?
+##### How does the JIT compiler fit into eBPF ?
 
 After the verifier approves a program, the JIT (Just-In-Time) compiler translates the
 eBPF bytecode into native machine code for the host CPU, giving near-native
@@ -185,7 +185,7 @@ performance. On x86_64, eBPF instructions map almost 1:1 to native instructions.
 is what gives eBPF its speed advantage; without JIT, the kernel falls back to a slower
 interpreter.
 
-##### What are the safety guarantees of eBPF and what are its limitations?
+##### What are the safety guarantees of eBPF and what are its limitations ?
 
 The verifier enforces several guarantees: the program can only be loaded by a
 privileged process (unless configured otherwise), it will not damage or crash the
@@ -196,7 +196,7 @@ complexity, no arbitrary memory access, and no arbitrary calls into kernel funct
 a program must use a fixed set of kernel-provided helper functions instead. This
 deliberately limits expressiveness in exchange for safety.
 
-##### How does eBPF compare to kernel modules?
+##### How does eBPF compare to kernel modules ?
 
 Kernel modules (LKMs) can do anything but are risky: a bug can crash or compromise the
 whole system, and they are hard to debug. eBPF programs are verified, sandboxed, can be
@@ -205,7 +205,7 @@ completely replacing LKMs, but it sets itself apart by bringing great flexibilit
 mitigating risk through solid safety controls. The trade-off: modules are unrestricted,
 eBPF is constrained by the verifier.
 
-##### Why is eBPF often described as "superpowers for the kernel"?
+##### Why is eBPF often described as "superpowers for the kernel" ?
 
 Because it lets you safely add new capabilities to the kernel — networking,
 observability, security — at runtime, without recompiling or rebooting. Historically,
@@ -214,7 +214,7 @@ source meant working through abstracted layers and complex infrastructure that a
 difficult to debug. A common analogy: eBPF is to the kernel what JavaScript is to the
 browser — a safe way to program something that was previously fixed.
 
-##### What problems did eBPF solve that weren't solvable before?
+##### What problems did eBPF solve that weren't solvable before ?
 
 Before eBPF, deep kernel-level visibility and custom logic required either kernel
 modules (dangerous) or user-space tools (slow, with constant copying of data between
@@ -223,7 +223,7 @@ Traditional observability requires instrumenting your code; eBPF lets you observ
 system without changing a single line of application code, directly from the kernel.
 It also enabled faster packet processing than older mechanisms such as iptables.
 
-##### What are the main use cases for eBPF?
+##### What are the main use cases for eBPF ?
 
 The four big categories:
 
@@ -236,7 +236,7 @@ The four big categories:
 - **Tracing and debugging** — inspecting syscalls, function calls, and I/O live on
   production systems.
 
-##### How is eBPF used in production at large companies?
+##### How is eBPF used in production at large companies ?
 
 Companies such as Meta, Google, Netflix, and Cloudflare run eBPF in production. Modern
 Kubernetes networking is built on it, as are tools like Cilium, Falco, Pixie, and
@@ -244,7 +244,7 @@ Parca. In Kubernetes specifically, eBPF is usually deployed as a privileged Daem
 that loads programs into each node's kernel for networking, observability, and
 security.
 
-##### What is XDP and how does it relate to eBPF?
+##### What is XDP and how does it relate to eBPF ?
 
 XDP (eXpress Data Path) is a specific eBPF hook point at the earliest stage of the
 network stack — the network driver level — ideal for DDoS mitigation and packet
@@ -252,7 +252,7 @@ filtering. Because the eBPF program runs before the kernel builds heavier networ
 data structures, XDP enables extremely fast packet processing (drop, redirect,
 modify), which makes it popular for high-performance networking and DDoS defense.
 
-##### What is the difference between BCC, bpftrace, and libbpf?
+##### What is the difference between BCC, bpftrace, and libbpf ?
 
 They sit at different abstraction levels. bpftrace is a high-level tracing language
 that makes eBPF accessible through concise one-liners, designed for quick
@@ -262,7 +262,7 @@ production path for writing custom eBPF C programs. A rough rule: bpftrace for a
 one-liners, BCC for ready-made tools and scripting, libbpf for shipping production
 software.
 
-##### What is CO-RE and why does it matter?
+##### What is CO-RE and why does it matter ?
 
 CO-RE (Compile Once, Run Everywhere) solves eBPF's portability problem across kernel
 versions. It uses BTF (BPF Type Format) metadata to relocate struct field offsets at
@@ -272,7 +272,7 @@ recompilation. It matters because before CO-RE, programs often had to be recompi
 per-kernel and needed kernel headers on every target machine; CO-RE makes one binary
 portable.
 
-##### How does Cilium use eBPF?
+##### How does Cilium use eBPF ?
 
 Cilium is an open source project that provides eBPF-powered networking, security, and
 observability, designed from the ground up to bring eBPF's advantages to Kubernetes and
@@ -280,7 +280,7 @@ to meet the scalability, security, and visibility requirements of container work
 It replaces kube-proxy and enforces NetworkPolicy at wire speed. Its companion, Hubble,
 adds network observability on top.
 
-##### What kernel version do I need for eBPF?
+##### What kernel version do I need for eBPF ?
 
 It depends on which features you need, but here are the practical milestones:
 
@@ -293,7 +293,7 @@ For production use, kernel 5.15 LTS or newer is a sensible practical minimum, an
 recent distributions ship with BTF enabled out of the box. You can check for BTF by
 verifying that `/sys/kernel/btf/vmlinux` exists.
 
-##### What do I need to know to write my first eBPF program?
+##### What do I need to know to write my first eBPF program ?
 
 Practically: a reasonably recent Linux kernel with BTF enabled, the LLVM/Clang
 toolchain, and a loader library. A good starting path is to begin with bpftrace
@@ -312,7 +312,7 @@ sudo bpftrace -e 'tracepoint:syscalls:sys_enter_execve { printf("%s\n", comm); }
 No compilation, no setup beyond installing bpftrace — it is the fastest way to see
 eBPF do something useful.
 
-##### What languages can I use to write eBPF programs?
+##### What languages can I use to write eBPF programs ?
 
 The eBPF program itself (the kernel side) is typically written in a restricted subset
 of C and compiled to bytecode; Rust is increasingly supported. The user-space loader
@@ -321,7 +321,7 @@ libbpf; for Python users, BCC provides Python bindings; for Go users, Cilium's
 ebpf-go library is the standard choice. bpftrace also offers its own high-level
 language, inspired by awk and DTrace's D language.
 
-##### How do I debug an eBPF program?
+##### How do I debug an eBPF program ?
 
 Common approaches: read verifier rejection messages, which explain why a program
 failed; use `bpf_printk`-style logging to a trace pipe; inspect map contents from user
@@ -329,7 +329,7 @@ space; and use tooling like `bpftool` to introspect loaded programs and maps. St
 with bpftrace or BCC is easier, since they surface errors more readably than raw
 libbpf.
 
-##### What are common pitfalls when getting started with eBPF?
+##### What are common pitfalls when getting started with eBPF ?
 
 Frequent ones:
 
@@ -341,7 +341,7 @@ Frequent ones:
 - Underestimating the overhead of high-frequency probes on hot paths.
 - Forgetting that loading programs requires elevated privileges.
 
-##### What can't eBPF do (yet)?
+##### What can't eBPF do (yet) ?
 
 eBPF is deliberately constrained: no unbounded loops, limited program complexity and
 size, no arbitrary kernel function calls (only helpers), and limited memory access. It
@@ -350,7 +350,7 @@ capability. And because eBPF-based approaches operate at the kernel level, they 
 provide application-level instrumentation; for some deep application-context tasks,
 in-process instrumentation still wins.
 
-##### What is eBPF for Windows?
+##### What is eBPF for Windows ?
 
 It is a Microsoft-led project that brings the eBPF programming model to Windows. The
 Windows implementation is MIT-licensed and hosted at
@@ -358,7 +358,7 @@ Windows implementation is MIT-licensed and hosted at
 toolchains work on Windows, so developers can write portable eBPF code across both
 operating systems.
 
-##### Where is eBPF headed in the next few years?
+##### Where is eBPF headed in the next few years ?
 
 The trajectory points to broader adoption beyond Linux (eBPF for Windows maturing),
 deeper integration into cloud-native infrastructure, and stronger language and tooling
@@ -494,7 +494,7 @@ stay stuck.
 eBPF is also an attack surface. Historical verifier CVEs, Spectre in BPF (Daniel
 Borkmann's "BPF and Spectre" slide in the repo), capabilities (`CAP_BPF`,
 `CAP_PERFMON`, `CAP_SYS_ADMIN`), unprivileged BPF being disabled by default, kernel
-hardening, and the "With Friends Like eBPF, Who Needs Enemies?" slide, which shows eBPF
+hardening, and the "With Friends Like eBPF, Who Needs Enemies ?" slide, which shows eBPF
 being used offensively. Anyone working in security needs to think about both sides.
 
 ### Suggested Study Path
