@@ -154,7 +154,7 @@ layout: compress
 
     var loaded = false;
 
-    fetch('{{ site.url }}/search.json', { cache: 'no-store' })
+    fetch('{{ "/search.json" | relative_url }}', { cache: 'no-store' })
       .then(function (r) { return r.json(); })
       .then(function (data) { posts = data; loaded = true; runSearch(); });
 
