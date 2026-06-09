@@ -18,7 +18,8 @@ layout: null
     },{% else %}"{{ site.author }}",{% endif %}
     {% endif %}
 "items": [
-    {% for post in site.posts limit:36 %}
+    {% assign visible_posts = site.posts | where_exp: "post", "post.secret != true" %}
+    {% for post in visible_posts limit:36 %}
         {
             "id": "{{ post.url | absolute_url | sha1 }}",
             "title": {{ post.title | jsonify }},
