@@ -20,7 +20,7 @@ url: "https://apolzek.github.io"
 baseurl: ""
 permalink: pretty
 
-paginate: 10
+paginate: 12
 paginate_path: "/page:num/"
 
 markdown: kramdown
