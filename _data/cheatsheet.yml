@@ -266,3 +266,10 @@
     # Optional aliases for convenience (add to ~/.bashrc or ~/.zshrc)
     alias pbcopy='xclip -selection clipboard'
     alias pbpaste='xclip -selection clipboard -o'
+
+- title: "Finds all files larger than 10 MB in the current directory tree"
+  description: "Searches recursively for files larger than 10 MB, filters out any files inside .git directories, removes the leading ./ from the paths, and appends the resulting file paths to .gitignore."
+  tags: [linux, git]
+
+  commands: |
+    find . -type f -size +10M | grep -v ".git" | sed 's|^\./||' >> .gitignore 
