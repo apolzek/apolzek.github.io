@@ -1,6 +1,26 @@
 [
   
     {
+      "title"    : "sollicitudo",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/2026/06/15/sollicitudo",
+      "date"     : "2026-06-15 00:00:00 +0000",
+      "secret"   : true,
+      "password" : null
+    } ,
+  
+    {
+      "title"    : "Nexus com Lorenço de Ávila da Costa Batista",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/2026/06/15/nexus-1",
+      "date"     : "2026-06-15 00:00:00 +0000",
+      "secret"   : true,
+      "password" : "enigma"
+    } ,
+  
+    {
       "title"    : "Segredo I — revelado por %revelare",
       "category" : "",
       "tags"     : "",
@@ -16,26 +36,6 @@
       "tags"     : "",
       "url"      : "/2026/06/09/segredo-revelare-dois",
       "date"     : "2026-06-09 00:00:00 +0000",
-      "secret"   : true,
-      "password" : null
-    } ,
-  
-    {
-      "title"    : "Segredo III — protegido por senha",
-      "category" : "",
-      "tags"     : "",
-      "url"      : "/2026/06/09/segredo-com-senha",
-      "date"     : "2026-06-09 00:00:00 +0000",
-      "secret"   : true,
-      "password" : "enigma"
-    } ,
-  
-    {
-      "title"    : "sollicitudo",
-      "category" : "",
-      "tags"     : "",
-      "url"      : "/2026/06/08/sollicitudo",
-      "date"     : "2026-06-08 00:00:00 +0000",
       "secret"   : true,
       "password" : null
     } ,
