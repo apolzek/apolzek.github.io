@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-06-17T16:35:19+00:00</updated>
+ <updated>2026-06-17T16:36:31+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -12,6 +12,148 @@
  </author>
 
  
+ 
+ <entry>
+   <title>The 20 Most Valuable Companies in the World (June 2026)</title>
+   <link href="https://apolzek.github.io/2026/06/17/most-valuable-companies-top20"/>
+   <updated>2026-06-17T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2026/06/17/most-valuable-companies-top20</id>
+   <content type="html">&lt;h1 id=&quot;as-20-empresas-mais-valiosas-do-mundo-em-junho-de-2026&quot;&gt;As 20 empresas mais valiosas do mundo em Junho de 2026&lt;/h1&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;#&lt;/th&gt;
+      &lt;th&gt;Empresa&lt;/th&gt;
+      &lt;th&gt;Valor&lt;/th&gt;
+      &lt;th&gt;Categoria (o que mexe)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;NVIDIA&lt;/td&gt;
+      &lt;td&gt;~US$ 5,0 tri&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#chips&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#IA&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#GPU&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;Alphabet (Google)&lt;/td&gt;
+      &lt;td&gt;~US$ 4,4 tri&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#busca&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#publicidade&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#IA&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#cloud&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;Apple&lt;/td&gt;
+      &lt;td&gt;~US$ 4,3 tri&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#eletrônicos&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#iPhone&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#serviços&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;Microsoft&lt;/td&gt;
+      &lt;td&gt;~US$ 2,9 tri&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#software&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#cloud&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#IA&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;SpaceX&lt;/td&gt;
+      &lt;td&gt;~US$ 2,65 tri&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#aeroespacial&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#satélites&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#IA&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;6&lt;/td&gt;
+      &lt;td&gt;Amazon&lt;/td&gt;
+      &lt;td&gt;~US$ 2,59 tri&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#ecommerce&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#cloud&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#logística&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;TSMC&lt;/td&gt;
+      &lt;td&gt;~US$ 2,2 tri&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#chips&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#semicondutores&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;8&lt;/td&gt;
+      &lt;td&gt;Broadcom&lt;/td&gt;
+      &lt;td&gt;~US$ 1,86 tri&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#chips&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#IA&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#semicondutores&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9&lt;/td&gt;
+      &lt;td&gt;Saudi Aramco&lt;/td&gt;
+      &lt;td&gt;~US$ 1,7 tri&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#petróleo&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#energia&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;10&lt;/td&gt;
+      &lt;td&gt;Meta&lt;/td&gt;
+      &lt;td&gt;~US$ 1,45 tri&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#redessociais&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#publicidade&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#IA&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;11&lt;/td&gt;
+      &lt;td&gt;Tesla&lt;/td&gt;
+      &lt;td&gt;~US$ 1,44 tri&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#carroselétricos&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#energia&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#IA&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;12&lt;/td&gt;
+      &lt;td&gt;Micron&lt;/td&gt;
+      &lt;td&gt;~US$ 1,12 tri&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#chips&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#memória&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;13&lt;/td&gt;
+      &lt;td&gt;Berkshire Hathaway&lt;/td&gt;
+      &lt;td&gt;~US$ 1,06 tri&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#investimentos&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#seguros&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#holding&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;14&lt;/td&gt;
+      &lt;td&gt;Eli Lilly&lt;/td&gt;
+      &lt;td&gt;~US$ 1,02 tri&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#farmacêutica&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#saúde&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#emagrecedores&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;15&lt;/td&gt;
+      &lt;td&gt;Walmart&lt;/td&gt;
+      &lt;td&gt;~US$ 968 bi&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#varejo&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#supermercado&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;16&lt;/td&gt;
+      &lt;td&gt;JPMorgan Chase&lt;/td&gt;
+      &lt;td&gt;~US$ 896 bi&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#banco&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#finanças&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;17&lt;/td&gt;
+      &lt;td&gt;AMD&lt;/td&gt;
+      &lt;td&gt;~US$ 844 bi&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#chips&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#processadores&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;18&lt;/td&gt;
+      &lt;td&gt;ASML&lt;/td&gt;
+      &lt;td&gt;~US$ 719 bi&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#litografia&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#equipamentos&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#chips&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;19&lt;/td&gt;
+      &lt;td&gt;Intel&lt;/td&gt;
+      &lt;td&gt;~US$ 633 bi&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#chips&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#processadores&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20&lt;/td&gt;
+      &lt;td&gt;Visa&lt;/td&gt;
+      &lt;td&gt;~US$ 623 bi&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#pagamentos&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#finanças&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</content>
+ </entry>
  
  <entry>
    <title>O estudo como caminho de libertação</title>

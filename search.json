@@ -6,7 +6,7 @@
       "tags"     : "",
       "url"      : "/2026/06/17/most-valuable-companies-top20",
       "date"     : "2026-06-17 00:00:00 +0000",
-      "secret"   : true,
+      "secret"   : false,
       "password" : null
     } ,
   
@@ -35,16 +35,6 @@
       "category" : "",
       "tags"     : "",
       "url"      : "/2026/06/09/segredo-revelare-um",
-      "date"     : "2026-06-09 00:00:00 +0000",
-      "secret"   : true,
-      "password" : null
-    } ,
-  
-    {
-      "title"    : "Segredo II — também revelado por %revelare",
-      "category" : "",
-      "tags"     : "",
-      "url"      : "/2026/06/09/segredo-revelare-dois",
       "date"     : "2026-06-09 00:00:00 +0000",
       "secret"   : true,
       "password" : null
