@@ -4,8 +4,8 @@
       "title"    : "Plano de Estudos 2º Semestre 2026",
       "category" : "",
       "tags"     : "",
-      "url"      : "/2026/06/24/cronograma",
-      "date"     : "2026-06-24 00:00:00 +0000",
+      "url"      : "/2026/06/13/cronograma",
+      "date"     : "2026-06-13 00:00:00 +0000",
       "secret"   : false,
       "password" : null
     } ,
@@ -14,8 +14,8 @@
       "title"    : "The 20 Most Valuable Companies in the World (June 2026)",
       "category" : "",
       "tags"     : "",
-      "url"      : "/2026/06/17/most-valuable-companies-top20",
-      "date"     : "2026-06-17 00:00:00 +0000",
+      "url"      : "/2026/06/06/most-valuable-companies-top20",
+      "date"     : "2026-06-06 00:00:00 +0000",
       "secret"   : false,
       "password" : null
     } ,
@@ -24,8 +24,8 @@
       "title"    : "sollicitudo",
       "category" : "",
       "tags"     : "",
-      "url"      : "/2026/06/15/sollicitudo",
-      "date"     : "2026-06-15 00:00:00 +0000",
+      "url"      : "/2026/05/30/sollicitudo",
+      "date"     : "2026-05-30 00:00:00 +0000",
       "secret"   : true,
       "password" : null
     } ,
@@ -34,8 +34,8 @@
       "title"    : "Nexus com Lorenço de Ávila da Costa Batista",
       "category" : "",
       "tags"     : "",
-      "url"      : "/2026/06/15/nexus-1",
-      "date"     : "2026-06-15 00:00:00 +0000",
+      "url"      : "/2026/05/23/nexus-1",
+      "date"     : "2026-05-23 00:00:00 +0000",
       "secret"   : true,
       "password" : "nexus"
     } ,
@@ -44,8 +44,8 @@
       "title"    : "Segredo I — revelado por %revelare",
       "category" : "",
       "tags"     : "",
-      "url"      : "/2026/06/09/segredo-revelare-um",
-      "date"     : "2026-06-09 00:00:00 +0000",
+      "url"      : "/2026/05/16/segredo-revelare-um",
+      "date"     : "2026-05-16 00:00:00 +0000",
       "secret"   : true,
       "password" : null
     } ,
@@ -54,8 +54,8 @@
       "title"    : "O estudo como caminho de libertação",
       "category" : "",
       "tags"     : "",
-      "url"      : "/2026/06/04/o-estudo-como-caminho-de-libertacao",
-      "date"     : "2026-06-04 00:00:00 +0000",
+      "url"      : "/2026/05/09/o-estudo-como-caminho-de-libertacao",
+      "date"     : "2026-05-09 00:00:00 +0000",
       "secret"   : false,
       "password" : null
     } ,
@@ -64,18 +64,8 @@
       "title"    : "How to set up a Kubernetes cluster to host your static website",
       "category" : "",
       "tags"     : "",
-      "url"      : "/2026/06/04/kubernetes-static-website",
-      "date"     : "2026-06-04 00:00:00 +0000",
-      "secret"   : false,
-      "password" : null
-    } ,
-  
-    {
-      "title"    : "DNS por quem já viveu nas trincheiras",
-      "category" : "",
-      "tags"     : "",
-      "url"      : "/2026/06/04/dns-trincheiras",
-      "date"     : "2026-06-04 00:00:00 +0000",
+      "url"      : "/2026/05/02/kubernetes-static-website",
+      "date"     : "2026-05-02 00:00:00 +0000",
       "secret"   : false,
       "password" : null
     } ,
@@ -84,8 +74,8 @@
       "title"    : "first taste of ebpf",
       "category" : "",
       "tags"     : "",
-      "url"      : "/2026/05/20/first-taste-of-ebpf",
-      "date"     : "2026-05-20 00:00:00 +0000",
+      "url"      : "/2026/04/25/first-taste-of-ebpf",
+      "date"     : "2026-04-25 00:00:00 +0000",
       "secret"   : false,
       "password" : null
     } ,
@@ -94,8 +84,8 @@
       "title"    : "the journey to learn ebpf",
       "category" : "",
       "tags"     : "",
-      "url"      : "/2026/05/19/the-journey-to-learn-ebpf",
-      "date"     : "2026-05-19 00:00:00 +0000",
+      "url"      : "/2026/04/18/the-journey-to-learn-ebpf",
+      "date"     : "2026-04-18 00:00:00 +0000",
       "secret"   : false,
       "password" : null
     } ,
@@ -104,8 +94,8 @@
       "title"    : "Diálogo sobre os Rótulos e a Verdade",
       "category" : "",
       "tags"     : "",
-      "url"      : "/2026/05/18/dialogo-sobre-rotulos-e-verdade",
-      "date"     : "2026-05-18 00:00:00 +0000",
+      "url"      : "/2026/04/11/dialogo-sobre-rotulos-e-verdade",
+      "date"     : "2026-04-11 00:00:00 +0000",
       "secret"   : false,
       "password" : null
     } ,
@@ -114,8 +104,8 @@
       "title"    : "starting here",
       "category" : "",
       "tags"     : "",
-      "url"      : "/2026/05/18/apolzek",
-      "date"     : "2026-05-18 00:00:00 +0000",
+      "url"      : "/2026/04/04/apolzek",
+      "date"     : "2026-04-04 00:00:00 +0000",
       "secret"   : false,
       "password" : null
     } 
