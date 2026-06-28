@@ -1,0 +1,77 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="stylesheet" href="{{ site.url }}/assets/css/catppuccin.css">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <title>
+      {% if page.tag or page.title %}
+        {% if page.tag %}
+          {{ page.tag | escape }}
+        {% else %}
+          {{ page.title | escape }}
+        {% endif %}
+      {% endif %}
+      {% if paginator and paginator.page and paginator.total_pages > 1 and paginator.page > 1 %}
+        Page {{ paginator.page }} of {{ paginator.total_pages }}
+      {% endif %}
+      {{ site.title | escape }}
+      {% unless page.tag or page.title %}
+        {{ site.description | escape }}
+      {% endunless %}
+    </title>
+  
+  
+  {% if site.googlewebfonts %}
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family={{ site.googlewebfonts }}&display=swap" rel="stylesheet">
+  {% endif %}
+  
+  <link rel="shortcut icon" href="{{ site.url }}/assets/img/apolzek.ico">
+  <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ site.url }}/atom.xml">
+  <link rel="alternate" type="application/json" title="{{ site.title }}" href="{{ "/feed.json" | prepend: site.baseurl | prepend: site.url }}" />
+  <link rel="sitemap" type="application/xml" title="sitemap" href="{{ site.url }}/sitemap.xml" />
+      
+
+  <style>
+    {% capture include_to_scssify %}
+      {% include inline.scss %}
+    {% endcapture %}
+    {{ include_to_scssify | scssify }}
+  </style>
+
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    const mermaidTheme = () => document.documentElement.getAttribute('data-theme') === 'light' ? 'default' : 'dark';
+
+    /* Preserve the original source so we can re-render on theme toggle. */
+    const mermaidSources = [];
+    document.querySelectorAll('code.language-mermaid').forEach(el => {
+      const pre = el.parentElement;
+      const div = document.createElement('pre');
+      div.className = 'mermaid';
+      div.textContent = el.textContent;
+      mermaidSources.push({ node: div, source: el.textContent });
+      pre.replaceWith(div);
+    });
+
+    const renderMermaid = () => {
+      mermaid.initialize({ startOnLoad: false, theme: mermaidTheme() });
+      mermaidSources.forEach(({ node, source }) => {
+        node.removeAttribute('data-processed');
+        node.innerHTML = source;
+      });
+      mermaid.run();
+    };
+
+    renderMermaid();
+
+    /* Re-render whenever the theme toggle flips data-theme on <html>. */
+    new MutationObserver(renderMermaid).observe(
+      document.documentElement,
+      { attributes: true, attributeFilter: ['data-theme'] }
+    );
+  </script>
+</head>

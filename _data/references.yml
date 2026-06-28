@@ -1,0 +1,23 @@
+- name: "Brendan Gregg"
+  url: "https://www.brendangregg.com/blog/"
+
+- name: "Julia Evans"
+  url: "https://jvns.ca/"
+
+- name: "Dan Luu"
+  url: "https://danluu.com/"
+
+- name: "Matheus Fidelis"
+  url: "https://fidelissauro.dev/"
+
+- name: "AkitaOnRails"
+  url: "https://akitaonrails.com/"
+
+- name: "Mário Ferreira dos Santos"
+  url: ""
+
+- name: "Ayrton Senna"
+  url: ""
+
+- name: "Enéas Carneiro"
+  url: ""

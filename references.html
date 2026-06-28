@@ -1,0 +1,65 @@
+---
+layout: default
+title: references
+permalink: /references/
+---
+<section class="references-page">
+  <div class="flex-row-between">
+    <a href="{{ site.url }}{{ site.baseurl }}/"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> home</a>
+    <button title="Change theme" id="theme-toggle" onclick="modeSwitcher()">
+      <div></div>
+    </button>
+  </div>
+
+  <h2>References</h2>
+  <p class="references-subtitle">People I admire across different fields of knowledge</p>
+
+  <ul class="references-list">
+    {% for reference in site.data.references %}
+    <li class="reference-item">
+      <a href="{{ reference.url }}" target="_blank" rel="noopener noreferrer" class="reference-link">{{ reference.name }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+
+<style>
+  .references-page h2 {
+    margin-top: 2rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .references-subtitle {
+    color: var(--link-color);
+    font-size: 0.85em;
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  .references-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .reference-item {
+    padding: 0.1rem 0;
+  }
+
+  .reference-link {
+    font-size: 0.95rem;
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s;
+  }
+
+  .reference-link::before {
+    content: "> ";
+    color: var(--link-color);
+    font-weight: bold;
+  }
+
+  .reference-link:hover {
+    color: var(--link-color);
+  }
+</style>

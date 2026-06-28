@@ -1,0 +1,362 @@
+- title: "Delete All Commit History on GitHub"
+  description: "Reset a repository's commit history by creating an orphan branch"
+  tags: [git, github]
+  commands: |
+    git checkout --orphan latest_branch
+    git add -A
+    git commit -am "reset configs"
+    git branch -D main
+    git branch -m main
+    git push -f origin main
+
+- title: "Chrome Bookmarks (filter by folder)"
+  description: "Extract URLs from a specific Chrome bookmark folder using jq"
+  tags: [chrome, jq, linux]
+  commands: |
+    cat ~/.config/google-chrome/Default/Bookmarks \
+      | jq -r '.roots.bookmark_bar.children[]
+          | select(.name == "tree")
+          | .children[]
+          | .url'
+
+- title: "Chrome Bookmarks (list all)"
+  description: "List all bookmarks from Chrome's JSON file showing name and URL"
+  tags: [chrome, jq, linux]
+  commands: |
+    cat ~/.config/google-chrome/Default/Bookmarks \
+      | jq '.roots.bookmark_bar.children[] | {name: .name, url: .url}'
+
+- title: "Chrome Bookmarks (list folders)"
+  description: "List all Chrome bookmark folders using jq"
+  tags: [chrome, jq, linux]
+  commands: |
+    cat ~/.config/google-chrome/Default/Bookmarks \
+      | jq -r '[.. | objects | select(.type == "folder") | .name] | unique | sort | .[]'
+
+- title: "Chrome Internals Pages"
+  description: "Useful chrome:// internal pages for debugging DNS, events, and proxy settings"
+  tags: [chrome, debug]
+  commands: |
+    chrome://net-internals/#dns
+    chrome://net-internals/#events
+    chrome://net-internals/#proxy
+
+- title: "Chrome Bookmarks MacOS(bookmark bar root)"
+  description: "List all entries from the root of Chrome's bookmarks bar"
+  tags: [chrome, jq, macos]
+  commands: |
+    jq -r '.roots.bookmark_bar.children[]' \
+      "$HOME/Library/Application Support/Google/Chrome/Default/Bookmarks"
+
+- title: "Post-install Docker"
+  description: "Add current user to docker group after installation"
+  tags: [docker, linux]
+  commands: |
+    sudo usermod -aG docker $USER
+    exec su -l $USER
+    groups $USER
+    docker ps
+
+- title: "k6 Load Testing"
+  description: "Basic k6 script with ramp-up, sustained load, and ramp-down stages"
+  tags: [k6, testing, performance]
+  commands: |
+    import http from 'k6/http';
+    import { sleep } from 'k6';
+
+    export const options = {
+        stages: [
+            { duration: '10s', target: 100 },
+            { duration: '30s', target: 100 },
+            { duration: '10s', target: 0 }
+        ]
+    }
+
+    export default function () {
+        http.get('http://192.168.68.108:3000');
+        sleep(1);
+    }
+
+- title: "ntfy Send Notification"
+  description: "Send a push notification via ntfy.sh using curl"
+  tags: [curl, notification]
+  commands: |
+    curl -d "Backup successful" ntfy.sh/mytopic
+
+- title: "curl with --resolve"
+  description: "Force curl to resolve a hostname to a specific IP address, bypassing DNS"
+  tags: [curl, network]
+  commands: |
+    curl --resolve <hostname>:<porta>:<ip> <protocolo>://<hostname>:<porta>
+    curl --resolve meuservidor.com:8080:192.168.0.100 http://meuservidor.com:8080
+    curl --resolve google.com:8888:127.0.0.1 https://google.com:8888
+
+- title: "Windows Activation (massgrave)"
+  description: "Activate Windows using the massgrave open-source script"
+  tags: [windows, powershell]
+  commands: |
+    irm https://massgrave.dev/get | iex
+
+- title: "View WiFi Passwords"
+  description: "Retrieve saved WiFi passwords on Linux using NetworkManager"
+  tags: [linux, wifi, network]
+  commands: |
+    ls /etc/NetworkManager/system-connections/
+    sudo cat /etc/NetworkManager/system-connections/[network-name]
+    nmcli device wifi list
+    sudo nmcli connection show "<wifi_name>" --show-secrets
+
+- title: "Encrypt / Decrypt File with Password"
+  description: "Use OpenSSL AES-256-CBC with PBKDF2 to encrypt and decrypt files"
+  tags: [openssl, security, linux]
+  commands: |
+    # Encrypt
+    echo "Este é um arquivo de teste" > original.txt
+    openssl enc -aes-256-cbc -salt -pbkdf2 -in original.txt -out secreto.enc
+
+    # Decrypt
+    openssl enc -aes-256-cbc -d -salt -pbkdf2 -in secreto.enc
+
+    # Decrypt from remote URL
+    curl -s https://raw.githubusercontent.com/apolzek/apolzek.github.io/main/secreto.enc \
+      | openssl enc -aes-256-cbc -d -salt -pbkdf2
+
+- title: "Linux Network Connections"
+  description: "View all saved NetworkManager connection configs"
+  tags: [linux, network]
+  commands: |
+    sudo cat /etc/NetworkManager/system-connections/*
+
+- title: "Set Network Interface MTU"
+  description: "Lower the MTU on a network interface to avoid packet drops (e.g. on iPhone tethering)"
+  tags: [linux, network, mtu]
+  commands: |
+    sudo ip link set wlp3s0 mtu 1280
+
+- title: "macOS DNS Commands"
+  description: "Commands for viewing, configuring, and troubleshooting DNS on macOS"
+  tags: [macos, dns, network]
+
+  commands: |
+    # Show current DNS resolver configuration (system-wide)
+    scutil --dns
+
+    # Display DNS servers currently in use (per interface)
+    networksetup -getdnsservers Wi-Fi
+
+    # Set custom DNS servers for Wi-Fi (replace with your desired servers)
+    sudo networksetup -setdnsservers Wi-Fi 1.1.1.1 8.8.8.8
+
+    # Reset DNS back to automatic (DHCP-provided DNS)
+    sudo networksetup -setdnsservers Wi-Fi empty
+
+    # Flush DNS cache (modern macOS)
+    sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
+
+    # Query DNS resolution for a domain (low-level system resolver test)
+    dig example.com
+
+    # Alternative DNS lookup tool (simpler output)
+    nslookup example.com
+
+    # Test which DNS server is resolving a domain
+    dig example.com +short
+
+    # Show detailed resolver behavior and search domains
+    scutil --dns | grep 'nameserver'
+
+    # Check current network services (to identify correct interface name)
+    networksetup -listallnetworkservices
+
+    # View DNS configuration for a specific interface (example: Ethernet)
+    networksetup -getdnsservers Ethernet
+
+    # Set DNS for Ethernet interface
+    sudo networksetup -setdnsservers Ethernet 9.9.9.9 1.1.1.1
+
+- title: "Ubuntu Linux DNS Commands"
+  description: "Commands for viewing, configuring, and troubleshooting DNS on Ubuntu (systemd-resolved and NetworkManager based systems)"
+  tags: [linux, ubuntu, dns, network]
+
+  commands: |
+    # Show current DNS configuration (systemd-resolved)
+    resolvectl status
+
+    # Alternative command (older systems)
+    systemd-resolve --status
+
+    # Show DNS servers currently in use per interface
+    nmcli dev show | grep DNS
+
+    # Show NetworkManager connection profiles
+    nmcli connection show
+
+    # Set DNS servers for a specific connection (replace 'Wired connection 1')
+    sudo nmcli connection modify "Wired connection 1" ipv4.dns "1.1.1.1 8.8.8.8"
+
+    # Ignore DHCP-provided DNS and use manual DNS
+    sudo nmcli connection modify "Wired connection 1" ipv4.ignore-auto-dns yes
+
+    # Restart connection to apply DNS changes
+    sudo nmcli connection down "Wired connection 1" && sudo nmcli connection up "Wired connection 1"
+
+    # Flush DNS cache (systemd-resolved)
+    sudo resolvectl flush-caches
+
+    # Alternative cache restart (forces full reload of resolver)
+    sudo systemctl restart systemd-resolved
+
+    # Query DNS resolution using system resolver
+    getent hosts example.com
+
+    # Query DNS records with dig (recommended tool)
+    dig example.com
+
+    # Query specific DNS record type (A record)
+    dig example.com A
+
+    # Show trace of DNS resolution path
+    dig example.com +trace
+
+    # Simple DNS lookup tool (basic output)
+    nslookup example.com
+
+    # Check /etc/resolv.conf (often symlinked to systemd stub)
+    cat /etc/resolv.conf
+
+    # Verify if systemd stub resolver is active
+    ls -l /etc/resolv.conf
+
+    # Temporarily set DNS by editing resolv.conf (not persistent on most modern systems)
+    sudo bash -c 'echo -e "nameserver 1.1.1.1\nnameserver 8.8.8.8" > /etc/resolv.conf'
+
+- title: "macOS Clipboard Basic Commands"
+  description: "Minimal commands to copy file content to clipboard and paste it back"
+  tags: [macos, terminal, clipboard]
+
+  commands: |
+    # Copy file content to clipboard using pipe
+    cat arquivo.txt | pbcopy
+
+    # Paste clipboard content in terminal
+    pbpaste
+- title: "Linux Clipboard (Ubuntu) Equivalent to pbcopy/pbpaste"
+  description: "Setup and commands to copy file content to clipboard and paste it back on Ubuntu using xclip or xsel"
+  tags: [linux, ubuntu, clipboard]
+
+  commands: |
+    # Install clipboard utility (xclip)
+    sudo apt update && sudo apt install -y xclip
+
+    # Copy file content to clipboard (equivalent to: cat arquivo.txt | pbcopy)
+    cat arquivo.txt | xclip -selection clipboard
+
+    # Paste clipboard content to terminal (equivalent to pbpaste)
+    xclip -selection clipboard -o
+
+    # Alternative install (xsel instead of xclip)
+    sudo apt install -y xsel
+
+    # Copy file content using xsel
+    cat arquivo.txt | xsel --clipboard --input
+
+    # Paste clipboard content using xsel
+    xsel --clipboard --output
+
+    # Optional aliases for convenience (add to ~/.bashrc or ~/.zshrc)
+    alias pbcopy='xclip -selection clipboard'
+    alias pbpaste='xclip -selection clipboard -o'
+
+- title: "Finds all files larger than 10 MB in the current directory tree"
+  description: "Searches recursively for files larger than 10 MB, filters out any files inside .git directories, removes the leading ./ from the paths, and appends the resulting file paths to .gitignore."
+  tags: [linux, git]
+
+  commands: |
+    find . -type f -size +10M | grep -v ".git" | sed 's|^\./||' >> .gitignore 
+
+- title: "Linux Inotify Cheat Sheet"
+  description: "Quick reference for checking, increasing, and troubleshooting Linux Inotify limits, including watches, instances, event queues, and common filesystem monitoring errors."
+  tags: [linux, git]
+
+  commands: |
+    # Show current inotify limits
+    sysctl fs.inotify.max_user_instances
+    sysctl fs.inotify.max_user_watches
+    sysctl fs.inotify.max_queued_events
+
+    # Show all inotify-related kernel parameters
+    sysctl -a | grep inotify
+
+    # Temporarily increase the maximum number of inotify instances per user
+    sudo sysctl -w fs.inotify.max_user_instances=1024
+
+    # Temporarily increase the maximum number of watched files/directories per user
+    sudo sysctl -w fs.inotify.max_user_watches=1048576
+
+    # Temporarily increase the inotify event queue size
+    sudo sysctl -w fs.inotify.max_queued_events=65536
+
+    # Persist custom inotify limits across reboots
+    sudo tee /etc/sysctl.d/99-inotify.conf > /dev/null <<EOF
+    fs.inotify.max_user_instances=1024
+    fs.inotify.max_user_watches=1048576
+    fs.inotify.max_queued_events=65536
+    EOF
+
+    # Reload all sysctl configuration files
+    sudo sysctl --system
+
+    # Reload a specific sysctl configuration file
+    sudo sysctl -p /etc/sysctl.d/99-inotify.conf
+
+    # Check how many watches are currently allocated system-wide
+    sudo find /proc/*/fdinfo -type f 2>/dev/null | xargs grep -h '^inotify' 2>/dev/null | wc -l
+
+    # Show processes using inotify
+    sudo lsof | grep inotify
+
+    # Show per-process inotify usage (PID and count)
+    for pid in /proc/[0-9]*; do
+      count=$(grep -c '^inotify' "$pid"/fdinfo/* 2>/dev/null)
+      [ "$count" -gt 0 ] && echo "$(basename "$pid"): $count"
+    done
+
+    # Monitor filesystem events in real time (requires inotify-tools)
+    inotifywait -m /path/to/watch
+
+    # Monitor recursively including subdirectories
+    inotifywait -mr /path/to/watch
+
+    # Watch for specific events only
+    inotifywait -m -e create,modify,delete /path/to/watch
+
+    # Continuously print filesystem events
+    inotifywatch -v /path/to/watch
+
+    # Install inotify-tools (Debian/Ubuntu)
+    sudo apt install inotify-tools
+
+    # Install inotify-tools (RHEL/CentOS/Fedora)
+    sudo dnf install inotify-tools
+
+    # Check kernel messages for inotify-related errors
+    dmesg | grep -i inotify
+
+    # Find common watch-limit errors in logs
+    journalctl -xe | grep -Ei 'inotify|watch'
+
+- title: "Linux Performance Analysis"
+  description: "Linux Performance Analysis Commands"
+  tags: [linux]
+
+  commands: |
+    uptime
+    dmesg | tail
+    vmstat 1
+    mpstat -P ALL 1
+    pidstat 1
+    iostat -xz 1
+    free -m
+    sar -n DEV 1
+    sar -n TCP,ETCP 1
+    top
