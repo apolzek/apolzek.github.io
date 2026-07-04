@@ -7,6 +7,8 @@ secret: true
 minute: 5
 ---
 
+> Sollicitudo vem do latim sollicitudo, derivado de sollicitus e do verbo sollicitare, que significa “agitar” ou “perturbar”; originalmente descreve um estado de preocupação ativa ou inquietação diante de algo considerado importante.
+
 Entre a profundidade legítima e o mero pedantismo, muitas obras se apoiam em jargões filosóficos, intelectualizações excessivas e, por vezes, em certo obscurantismo que pode ser tanto consequência natural da complexidade de seus autores quanto simples ornamento de vaidade intelectual. Para leitores como eu, que chegaram mais tarde à vida do saber, o acesso ao sentido da obra acaba se tornando difícil, não por falta de interesse ou disposição, mas porque a densidade da linguagem frequentemente se interpõe entre aquilo que está sendo pensado e a possibilidade de compreendê-lo plenamente.
 
 O ponto é que já tenho trinta e um anos e, supondo que Deus me permita viver até os noventa, mais de um terço da minha vida já ficou para trás. Comecei tarde, e essa constatação frequentemente se transforma em ansiedade. Escutar o que pessoas em quem confio dizem sobre as grandes obras parece insuficiente; por mais valiosos que sejam seus relatos, eles não substituem o encontro direto com os textos. Algumas dessas obras consegui ler por conta própria. Outras, felizmente, tive a humildade de reconhecer que ainda exigiam de mim uma preparação que eu não possuía.
