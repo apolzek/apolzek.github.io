@@ -21,7 +21,8 @@ jobs:
         -v ${{ github.workspace }}:/srv/jekyll \
         -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
         jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll &&\
-        jekyll build --future -d build"
+        bundle install &&\
+        bundle exec jekyll build --future -d build"
     
     # Deploy to gh-pages branch
     - name: 🚀 Deploy to Github Pages
