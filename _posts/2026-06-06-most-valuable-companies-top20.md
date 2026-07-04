@@ -6,6 +6,8 @@ summary:
 minute: 5
 ---
 
+If your goal is **US$5 trillion** and you earn **US$200,000 per day**, it would take **25,000,000 days**, or approximately **68,493 years**, to reach that amount. HAHAHAHAHA =) *Have a good day*
+
 | # | Empresa | Valor | Categoria (o que mexe) |
 |---|---------|-------|------------------------|
 | 1 | NVIDIA | ~US$ 5,0 tri | `#chips` `#IA` `#GPU` |
@@ -28,3 +30,5 @@ minute: 5
 | 18 | ASML | ~US$ 719 bi | `#litografia` `#equipamentos` `#chips` |
 | 19 | Intel | ~US$ 633 bi | `#chips` `#processadores` |
 | 20 | Visa | ~US$ 623 bi | `#pagamentos` `#finanças` |
+
+My prompt was simply to list the companies with the highest market value. These numbers are impressive if they haven't already sparked something in you. Either way, we keep moving forward, building incredible things and not-so-incredible ones in pursuit of something truly remarkable. This is just a snapshot of history at this moment, and maybe one day I'll come back here to see how much has changed. 🙂

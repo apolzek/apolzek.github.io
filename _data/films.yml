@@ -1,0 +1,32 @@
+movies:
+  - english_name: "The Matrix"
+    portuguese_name: "Matrix"
+    genre: "Science Fiction"
+    year: 1999
+    description: "A computer programmer discovers that reality is a simulation and joins a rebellion against intelligent machines."
+    actors:
+      - "Keanu Reeves"
+      - "Laurence Fishburne"
+      - "Carrie-Anne Moss"
+      - "Hugo Weaving"
+
+  - english_name: "The Watch"
+    portuguese_name: "Um Show de Vizinha"
+    genre: "Comedy"
+    year: 2012
+    description: "A group of suburban neighbors forms a neighborhood watch and uncovers an alien invasion."
+    actors:
+      - "Ben Stiller"
+      - "Vince Vaughn"
+      - "Jonah Hill"
+      - "Richard Ayoade"
+
+  - english_name: "Materialists"
+    portuguese_name: "Amores Materialistas"
+    genre: "Romantic Comedy"
+    year: 2025
+    description: "A successful matchmaker finds her personal life complicated when she becomes caught between a wealthy new suitor and her imperfect former boyfriend."
+    actors:
+      - "Dakota Johnson"
+      - "Chris Evans"
+      - "Pedro Pascal"
