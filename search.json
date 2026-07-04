@@ -1,6 +1,16 @@
 [
   
     {
+      "title"    : "Velhas Armadilhas, Novas Vítimas",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/2026/07/04/velhas-armadilhas-novas-vitimas",
+      "date"     : "2026-07-04 00:00:00 +0000",
+      "secret"   : true,
+      "password" : null
+    } ,
+  
+    {
       "title"    : "Plano de Estudos 2º Semestre 2026",
       "category" : "",
       "tags"     : "",
@@ -38,16 +48,6 @@
       "date"     : "2026-05-23 00:00:00 +0000",
       "secret"   : true,
       "password" : "nexus"
-    } ,
-  
-    {
-      "title"    : "Segredo I — revelado por %revelare",
-      "category" : "",
-      "tags"     : "",
-      "url"      : "/2026/05/16/segredo-revelare-um",
-      "date"     : "2026-05-16 00:00:00 +0000",
-      "secret"   : true,
-      "password" : null
     } ,
   
     {
