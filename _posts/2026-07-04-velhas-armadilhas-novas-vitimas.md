@@ -3,7 +3,6 @@ layout: post
 title: Velhas Armadilhas, Novas Vítimas
 description:
 summary:
-secret: true
 minute: 5
 ---
 
