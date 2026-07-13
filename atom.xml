@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-07-13T12:56:02+00:00</updated>
+ <updated>2026-07-13T16:46:10+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -12,6 +12,29 @@
  </author>
 
  
+ 
+ <entry>
+   <title>Velhas Armadilhas, Novas Vítimas</title>
+   <link href="https://apolzek.github.io/2026/07/04/velhas-armadilhas-novas-vitimas"/>
+   <updated>2026-07-04T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2026/07/04/velhas-armadilhas-novas-vitimas</id>
+   <content type="html">&lt;h2 id=&quot;sem-lenga-lenga&quot;&gt;Sem lenga lenga&lt;/h2&gt;
+
+&lt;p&gt;Cuidado com uma armadilha cada vez mais comum nos vídeos que você assiste: a enrolação calculada. Ela tem até nomes técnicos. Padding é o ato de inflar um vídeo com conteúdo desnecessário apenas para aumentar sua duração. Burying the lede é esconder a informação principal até o final, fazendo você consumir muito conteúdo antes de chegar ao que realmente importa. Watch time baiting é prender sua atenção pelo maior tempo possível para aumentar as métricas de retenção. Fique atento aos sinais: promessas constantemente adiadas, recapitulações desnecessárias e a sensação de que a resposta está sempre “logo ali”. Qua ndo perceber isso, lembre-se: o vídeo não foi feito para te informar, mas para maximizar o tempo que você passa assistindo. &lt;strong&gt;Seu tempo é valioso&lt;/strong&gt;. Decida rapidamente se vale a pena continuar assistindo. Se o conteúdo demonstrar valor, consuma-o por completo. Se perceber que está sendo apenas retido, saia sem culpa.&lt;/p&gt;
+
+&lt;h2 id=&quot;clickbait&quot;&gt;Clickbait&lt;/h2&gt;
+
+&lt;p&gt;Tome cuidado com títulos feitos para explorar sua curiosidade e seu medo de ficar de fora. Frases como “você precisa saber isso”, “sem isso você nunca vai conseguir”, “o erro que 99% das pessoas cometem” ou “ninguém está te contando isso” costumam apelar mais para a emoção do que para o conteúdo. Um bom conteúdo explica claramente o que você vai aprender. Um clickbait faz promessas vagas, exageradas ou urgentes para conquistar seu clique antes de conquistar sua confiança. Antes de abrir um vídeo, pergunte-se: o título descreve uma informação concreta ou apenas desperta ansiedade e curiosidade? Se a promessa for genérica demais, trate com ceticismo. Seu clique e sua atenção têm valor. Gaste-os apenas com conteúdos que entregam o que prometem.&lt;/p&gt;
+
+&lt;h2 id=&quot;eu-acho&quot;&gt;Eu acho..&lt;/h2&gt;
+
+&lt;p&gt;Tome cuidado com conteúdos que apresentam opiniões pessoais como se fossem fatos. Nem todo criador está transmitindo conhecimento; muitas vezes, está compartilhando sua própria visão de mundo, suas experiências e suas crenças, sem deixar isso explícito. Conhecimento pode ser verificado, questionado e comparado com evidências. Opiniões refletem interpretações individuais e podem variar de pessoa para pessoa. Quando essa diferença não é clara, é fácil absorver uma perspectiva particular como se fosse uma verdade universal. Pergunte-se: essa afirmação está sendo sustentada por dados, evidências ou fontes confiáveis, ou é apenas uma conclusão do autor? Desenvolver esse hábito ajuda a aprender de forma mais crítica e a construir suas próprias conclusões, em vez de apenas adotar as de outra pessoa.&lt;/p&gt;
+
+&lt;h2 id=&quot;produto-perfeito-&quot;&gt;Produto perfeito (:&lt;/h2&gt;
+
+&lt;p&gt;Lembre-se de que apresentação não é conteúdo. Produção impecável, animações, slides chamativos, edição acelerada e promessas grandiosas podem tornar uma mensagem mais convincente, mas não a tornam mais verdadeira ou mais útil. Avalie primeiro o que está sendo dito, não como está sendo apresentado. A forma pode chamar sua atenção; o conteúdo é o que deve justificar seu tempo e sua confiança.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Plano de Estudos 2º Semestre 2026</title>
@@ -29,157 +52,151 @@
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;06/07 a 12/07&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13/07 a 19/07&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
       &lt;td style=&quot;text-align: left&quot;&gt;Review Data Engineer Roadmap;  Review Data Analyst Roadmap; Deepen my knowledge of Apache Flink&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;13/07 a 19/07&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;20/07 a 26/07&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
       &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;27/07 a 02/08&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
       &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;03/08 a 09/08&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
       &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;10/08 a 16/08&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
       &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;17/08 a 23/08&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
       &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;24/08 a 30/08&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
       &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;31/08 a 06/09&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
       &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;07/09 a 13/09&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
       &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;14/09 a 20/09&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
       &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;21/09 a 27/09&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
       &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;28/09 a 04/10&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
       &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;05/10 a 11/10&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
       &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;12/10 a 18/10&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
       &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;17&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;19/10 a 25/10&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
       &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;26/10 a 01/11&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
       &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;19&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;17&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;02/11 a 08/11&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
       &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;20&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;09/11 a 15/11&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
       &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;21&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;19&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;16/11 a 22/11&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
       &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;22&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;20&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;23/11 a 29/11&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
       &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;23&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;21&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;30/11 a 06/12&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
       &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;24&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;22&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;07/12 a 13/12&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
       &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;25&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;23&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;14/12 a 20/12&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
       &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;26&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;24&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;21/12 a 27/12&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
       &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;27&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;25&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;28/12 a 31/12&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
       &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
