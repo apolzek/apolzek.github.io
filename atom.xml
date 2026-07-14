@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-07-14T00:17:46+00:00</updated>
+ <updated>2026-07-14T00:21:57+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -66,25 +66,31 @@
       &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;13/07 a 19/07&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Review Data Engineer Roadmap;  Review Data Analyst Roadmap; Deepen my knowledge of Apache Flink&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Deepen my knowledge of Apache Flink&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;20/07 a 26/07&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Review Data Engineer Roadmap&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;27/07 a 02/08&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Review Data Analyst Roadmap&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;03/08 a 09/08&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;eBPF&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;03/08 a 09/08&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;eBPF&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
