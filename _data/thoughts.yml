@@ -54,3 +54,5 @@
   date: "2026-07-13"
 - text: "O dilema do porco-espinho de Arthur Schopenhauer mostra que, quando uma pessoa se aproxima demais dos outros, pode se machucar; quando se afasta demais, sente o frio da solidão."
   date: "2026-07-13"
+- text: " A complexidade assintótica mede, de forma teórica, como o tempo de execução ou o consumo de memória de um algoritmo cresce conforme aumenta o tamanho da entrada, sendo geralmente expressa pela Notação Big O."
+  date: "2026-07-13"
