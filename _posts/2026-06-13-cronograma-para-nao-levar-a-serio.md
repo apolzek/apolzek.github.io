@@ -8,11 +8,12 @@ minute: 1
 
 | Semana | Período | Conteúdo Fixo | Conteúdo da Semana |
 |:------:|:-------:|:-------------:|:-------------------|
-| 1 | 13/07 a 19/07 | Inglês | Review Data Engineer Roadmap;  Review Data Analyst Roadmap; Deepen my knowledge of Apache Flink |
-| 2 | 20/07 a 26/07 | Inglês | |
-| 3 | 27/07 a 02/08 | Inglês | |
-| 4 | 03/08 a 09/08 | Inglês | |
-| 5 | 10/08 a 16/08 | Inglês | |
+| 1 | 13/07 a 19/07 | Inglês | Deepen my knowledge of Apache Flink |
+| 2 | 20/07 a 26/07 | Inglês | Review Data Engineer Roadmap  |
+| 3 | 27/07 a 02/08 | Inglês | Review Data Analyst Roadmap |
+| 4 | 03/08 a 09/08 | Inglês | eBPF |
+| 4 | 03/08 a 09/08 | Inglês | eBPF |
+| 5 | 10/08 a 16/08 | Inglês |  |
 | 6 | 17/08 a 23/08 | Inglês | |
 | 7 | 24/08 a 30/08 | Inglês | |
 | 8 | 31/08 a 06/09 | Inglês | |
