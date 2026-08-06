@@ -51,7 +51,6 @@ _includes/   # partials
 _sass/       # styles
 assets/      # images, gifs, downloads
 index.html   # home (typing title + subtitle live here)
-references.html   # people i admire across different fields
 thoughts.html
 cheatsheet.html
 ```
