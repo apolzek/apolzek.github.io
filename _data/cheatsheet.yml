@@ -360,3 +360,43 @@
     sar -n DEV 1
     sar -n TCP,ETCP 1
     top
+
+- title: "VirtualBox Guest Additions (Ubuntu)"
+  description: "Install Guest Additions on an Ubuntu guest, plus the ISO/Extension Pack setup on the host"
+  tags: [virtualbox, ubuntu, linux]
+  commands: |
+    ### HOST (your machine running VirtualBox) ###
+
+    # Ships the ISO at /usr/share/virtualbox/VBoxGuestAdditions.iso
+    # Skip it if VirtualBox came from Oracle's .deb (ISO already bundled)
+    sudo apt install virtualbox-guest-additions-iso
+
+    # Needed for USB passthrough
+    sudo usermod -aG vboxusers $USER
+
+    # Optional Extension Pack (USB 2.0/3.0, RDP) - version MUST match
+    VBoxManage --version
+    VBoxManage extpack install ~/Downloads/Oracle_VM_VirtualBox_Extension_Pack-*.vbox-extpack
+    VBoxManage list extpacks
+
+    ### GUEST (inside the Ubuntu VM) ###
+
+    # Build deps - dkms rebuilds the module after kernel upgrades
+    sudo apt update
+    sudo apt install build-essential dkms linux-headers-$(uname -r)
+
+    # Menu: Devices > Insert Guest Additions CD image, then:
+    sudo mkdir -p /mnt/cdrom
+    sudo mount /dev/cdrom /mnt/cdrom
+    sudo /mnt/cdrom/VBoxLinuxAdditions.run
+    sudo reboot
+
+    # Alternative without the ISO (may lag the host version slightly)
+    sudo apt install virtualbox-guest-x11   # virtualbox-guest-utils if headless
+
+    # Shared folders access - logout/login afterwards
+    sudo usermod -aG vboxsf $USER
+
+    # Verify (in the guest, after reboot)
+    lsmod | grep vboxguest
+    modinfo vboxguest | grep version
