@@ -11,11 +11,11 @@ minute: 1
 | 1 | 10/08 a 16/08 | Inglês | Deepen my knowledge of Apache Flink |
 | 2 | 17/08 a 23/08 | Inglês | Review Data Engineer Roadmap |
 | 3 | 24/08 a 30/08 | Inglês | Review Data Analyst Roadmap |
-| 4 | 31/08 a 06/09 | Inglês | eBPF |
-| 5 | 07/09 a 13/09 | Inglês | |
-| 6 | 14/09 a 20/09 | Inglês | |
-| 7 | 21/09 a 27/09 | Inglês | |
-| 8 | 28/09 a 04/10 | Inglês | |
+| 4 | 31/08 a 06/09 | Inglês | System Design Fundamentals |
+| 5 | 07/09 a 13/09 | Inglês | eBPF |
+| 6 | 14/09 a 20/09 | Inglês | Review Golang |
+| 7 | 21/09 a 27/09 | Inglês | Machine Learning |
+| 8 | 28/09 a 04/10 | Inglês | Journey to get the CKA certification |
 | 9 | 05/10 a 11/10 | Inglês | |
 | 10 | 12/10 a 18/10 | Inglês | |
 | 11 | 19/10 a 25/10 | Inglês | |
