@@ -10,3 +10,5 @@ _site
 .obsidian
 .aider*
 marp/
+vendor/
+.bundle/
