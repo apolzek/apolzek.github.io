@@ -419,6 +419,30 @@ main {
   }
 }
 
+/* No mobile a quote sai do modo fixo: fixa na viewport ela flutuava por cima
+   dos artigos durante o scroll (o double-tap de zoom dispara o dblclick que a
+   revela). Aqui ela vive no fim da página, sem ocupar espaço até ser revelada. */
+@media (max-width: 860px) {
+  .site-quote {
+    position: static;
+    transform: none;
+    left: auto;
+    bottom: auto;
+    white-space: normal;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 0 1rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 1.2s ease, max-height 1.2s ease;
+
+    &.visible {
+      max-height: 8rem;
+      padding: 1.5rem 1rem 0.5rem;
+    }
+  }
+}
+
 .social-footer {
   padding: 1rem;
   display: flex;
