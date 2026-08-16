@@ -4,7 +4,7 @@ title: O estudo como caminho de libertação
 description:
 summary:
 # tags: ebpf bpftrace linux
-minute: 10
+minute: 8
 ---
 
 ## Reflexões de um ex-péssimo aluno

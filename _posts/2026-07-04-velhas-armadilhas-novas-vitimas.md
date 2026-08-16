@@ -6,7 +6,7 @@ summary:
 minute: 5
 ---
 
-Em um mundo onde há excesso de informação, o maior desafio já não é encontrar conteúdo, mas separar o que realmente agrega valor do que apenas prende sua atenção. Neste artigo, compartilho estratégias práticas para evitar perder horas com vídeos e materiais que parecem educativos, mas entregam pouco conhecimento de fato, uma situação muito comum no YouTube, que hoje é uma das minhas principais fontes de estudo.
+Em um mundo onde há excesso de informação, o maior desafio já não é encontrar conteúdo, mas **separar o que realmente agrega valor do que apenas prende sua atenção**. Neste artigo, compartilho estratégias práticas para evitar perder horas com vídeos e materiais que parecem educativos, mas entregam pouco conhecimento de fato, uma situação muito comum no YouTube, que hoje é uma das minhas principais fontes de estudo.
 
 ## Sem lenga lenga
 
