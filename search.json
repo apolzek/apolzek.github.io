@@ -71,26 +71,6 @@
     } ,
   
     {
-      "title"    : "sollicitudo",
-      "category" : "",
-      "tags"     : "",
-      "url"      : "/2026/05/30/sollicitudo",
-      "date"     : "2026-05-30 00:00:00 +0000",
-      "secret"   : true,
-      "password" : null
-    } ,
-  
-    {
-      "title"    : "Nexus com Lorenço de Ávila da Costa Batista",
-      "category" : "",
-      "tags"     : "",
-      "url"      : "/2026/05/23/nexus-intro",
-      "date"     : "2026-05-23 00:00:00 +0000",
-      "secret"   : true,
-      "password" : "nexus"
-    } ,
-  
-    {
       "title"    : "O estudo como caminho de libertação",
       "category" : "",
       "tags"     : "",
