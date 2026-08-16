@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-08-16T20:17:28+00:00</updated>
+ <updated>2026-08-16T20:25:06+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -12,6 +12,269 @@
  </author>
 
  
+ 
+ <entry>
+   <title>Apache Flink ensinando enquanto aprendo</title>
+   <link href="https://apolzek.github.io/2026/08/16/apache-flink-ensinando-enquanto-aprendo"/>
+   <updated>2026-08-16T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2026/08/16/apache-flink-ensinando-enquanto-aprendo</id>
+   <content type="html">&lt;p&gt;A primeira semana do meu cronograma do segundo semestre dizia apenas: &lt;em&gt;“Deepen my knowledge of Apache Flink”&lt;/em&gt;. Este texto é o resultado dessa semana. Não é um tutorial de alguém que domina o assunto, é o caderno de anotações de alguém que está aprendendo e resolveu escrever enquanto aprende.&lt;/p&gt;
+
+&lt;p&gt;Sempre achei que explicar é a melhor forma de descobrir o que a gente realmente entendeu. Quando escrevo, os buracos aparecem sozinhos: a frase trava, o exemplo não fecha, e fica claro que aquilo ali eu só tinha decorado. Então este artigo é meio egoísta — ele existe primeiro para me ensinar.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Aviso honesto: onde eu não tenho certeza, eu digo que não tenho certeza.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;o-problema-que-o-flink-resolve&quot;&gt;O problema que o Flink resolve&lt;/h4&gt;
+
+&lt;p&gt;Durante muito tempo o mundo de dados foi organizado em torno do lote. Você acumula dados durante o dia, roda um job à meia-noite, e de manhã o relatório está pronto. Isso funciona, e continua funcionando para muita coisa. O problema é quando a resposta precisa vir antes.&lt;/p&gt;
+
+&lt;p&gt;Detectar uma fraude de cartão dez horas depois da compra é o mesmo que não detectar. Um alerta de infraestrutura que chega no dia seguinte é um post-mortem, não um alerta. Nesses casos, você não quer perguntar aos dados de tempos em tempos, você quer que os dados respondam continuamente.&lt;/p&gt;
+
+&lt;p&gt;Essa é a inversão que o processamento de streams propõe:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Batch&lt;/strong&gt;: a consulta é permanente, os dados são finitos. Você roda a query contra um conjunto parado.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Streaming&lt;/strong&gt;: os dados são infinitos, a consulta é que fica parada. Ela é registrada uma vez e reage a cada evento que passa.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;O Apache Flink é um motor distribuído para escrever esse segundo tipo de programa. E aqui vem a parte que mais me chamou atenção: no Flink, batch é tratado como um caso particular de streaming — um stream que, por acaso, tem fim. Não são dois motores diferentes colados no mesmo produto.&lt;/p&gt;
+
+&lt;h4 id=&quot;a-arquitetura-em-poucas-peças&quot;&gt;A arquitetura, em poucas peças&lt;/h4&gt;
+
+&lt;p&gt;Levei um tempo para montar esse mapa mental, então vou deixá-lo explícito:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Peça&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;O que faz&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;JobManager&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;O coordenador. Recebe o job, transforma o grafo lógico em grafo de execução, distribui as tarefas, dispara os checkpoints e coordena a recuperação de falhas.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;TaskManager&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;O trabalhador. É um processo JVM que executa as tarefas de verdade e guarda o estado local.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;Task Slot&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;A unidade de paralelismo dentro de um TaskManager. Um TaskManager com 4 slots consegue rodar 4 fatias de trabalho em paralelo.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;Client&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Quem empacota o job e submete ao JobManager. Depois disso, ele pode ir embora.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Um job vira um &lt;strong&gt;grafo de operadores&lt;/strong&gt;: fontes (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;source&lt;/code&gt;), transformações (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;map&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;filter&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;keyBy&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;window&lt;/code&gt;) e destinos (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sink&lt;/code&gt;). O Flink pega esse grafo, decide quantas instâncias paralelas de cada operador criar e espalha tudo pelos slots disponíveis.&lt;/p&gt;
+
+&lt;p&gt;O &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;keyBy&lt;/code&gt; merece atenção especial, porque é ele que faz o particionamento. Quando você diz &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;keyBy(evento -&amp;gt; evento.getUsuarioId())&lt;/code&gt;, está garantindo que todos os eventos de um mesmo usuário vão sempre parar na mesma instância paralela do operador seguinte. É isso que torna possível manter estado por chave sem coordenação distribuída a cada evento — cada partição cuida do seu pedaço, sozinha.&lt;/p&gt;
+
+&lt;h4 id=&quot;tempo-a-parte-que-quebra-a-intuição&quot;&gt;Tempo: a parte que quebra a intuição&lt;/h4&gt;
+
+&lt;p&gt;Essa foi a seção que mais me fez parar e reler. Em streaming existem, no mínimo, dois tempos diferentes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Event time&lt;/strong&gt; — quando o evento aconteceu de verdade. Está gravado dentro do próprio evento.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Processing time&lt;/strong&gt; — quando o Flink viu o evento. É o relógio da máquina.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Parece detalhe, mas não é. O celular de alguém ficou sem sinal no metrô e sincronizou vinte minutos depois. Um broker teve um pico de latência. Uma partição do Kafka ficou atrasada em relação às outras. Em todos esses casos, os eventos chegam &lt;strong&gt;fora de ordem&lt;/strong&gt; e &lt;strong&gt;atrasados&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Se você agrupar por processing time, o resultado depende de quando o job rodou. Reprocessar o mesmo dia amanhã dá um número diferente. Se você agrupar por event time, o resultado é o mesmo sempre, independente de quando o processamento aconteceu. Essa reprodutibilidade é o motivo de event time ser o padrão em quase todo pipeline sério.&lt;/p&gt;
+
+&lt;p&gt;Mas isso cria um problema novo: se os eventos chegam fora de ordem, como saber quando uma janela de tempo pode ser fechada? Nunca chega um evento dizendo “acabou, pode contar”.&lt;/p&gt;
+
+&lt;h4 id=&quot;watermarks&quot;&gt;Watermarks&lt;/h4&gt;
+
+&lt;p&gt;A resposta do Flink são as &lt;strong&gt;watermarks&lt;/strong&gt;. Uma watermark é um marcador que viaja junto com o stream carregando uma afirmação:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“Acredito que não vou mais receber eventos com timestamp anterior a T.”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;É uma aposta, não uma certeza. E é exatamente por ser uma aposta que ela é útil: ela transforma uma pergunta impossível (“já chegou tudo?”) em uma decisão configurável (“quanto atraso eu tolero?”).&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;WatermarkStrategy&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;.&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Evento&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;forBoundedOutOfOrderness&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Duration&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ofSeconds&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;withTimestampAssigner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;evento&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ts&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;evento&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getTimestamp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Esse código diz: tolere até 10 segundos de desordem. Se o maior timestamp já visto é &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;12:00:30&lt;/code&gt;, a watermark vale &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;12:00:20&lt;/code&gt;, e qualquer janela que termine antes disso pode ser fechada e emitida.&lt;/p&gt;
+
+&lt;p&gt;O trade-off aparece na hora:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Watermark &lt;strong&gt;agressiva&lt;/strong&gt; (pouco atraso tolerado) → resultado rápido, mais eventos perdidos por chegarem tarde.&lt;/li&gt;
+  &lt;li&gt;Watermark &lt;strong&gt;conservadora&lt;/strong&gt; (muito atraso tolerado) → resultado correto, mas você espera mais para ver qualquer coisa.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Não existe valor certo. Existe o valor que combina com o seu negócio, e essa é uma decisão de produto disfarçada de configuração técnica.&lt;/p&gt;
+
+&lt;p&gt;Para os eventos que chegam depois da watermark, o Flink dá duas saídas: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;allowedLateness&lt;/code&gt;, que mantém a janela viva por mais um tempo e reemite o resultado corrigido, e o &lt;strong&gt;side output&lt;/strong&gt;, que desvia os retardatários para um stream separado — bom para auditoria, ou simplesmente para descobrir que você configurou a watermark errado.&lt;/p&gt;
+
+&lt;h4 id=&quot;janelas&quot;&gt;Janelas&lt;/h4&gt;
+
+&lt;p&gt;Como o stream é infinito, agregações só fazem sentido dentro de recortes. Os tipos que estudei:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Tumbling&lt;/strong&gt; — janelas fixas que não se sobrepõem. “A cada 5 minutos, quantos pedidos?”&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Sliding&lt;/strong&gt; — janelas fixas que se sobrepõem. “Nos últimos 10 minutos, atualizando a cada 1 minuto.” Um mesmo evento cai em várias janelas.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Session&lt;/strong&gt; — janelas definidas por inatividade. “Agrupe a atividade de um usuário até ele ficar 30 minutos parado.” O tamanho da janela é dado pelos dados, não por você.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;stream&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;keyBy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;Evento:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getUsuarioId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;TumblingEventTimeWindows&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;minutes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)))&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;aggregate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ContadorDeEventos&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Um detalhe que eu não tinha entendido de cara: prefira &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reduce&lt;/code&gt;/&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;aggregate&lt;/code&gt; a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;process&lt;/code&gt; quando puder. O &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;process&lt;/code&gt; recebe todos os eventos da janela de uma vez, o que significa guardar todos eles em estado até o fechamento. Já &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;aggregate&lt;/code&gt; mantém apenas o acumulador. Em janelas grandes, essa diferença é a diferença entre um job estável e um job que morre de OOM.&lt;/p&gt;
+
+&lt;h4 id=&quot;estado&quot;&gt;Estado&lt;/h4&gt;
+
+&lt;p&gt;Se eu tivesse que escolher uma única coisa que separa o Flink de um consumidor Kafka escrito à mão, seria o &lt;strong&gt;estado gerenciado&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Qualquer coisa interessante em streaming precisa de memória: contar, deduplicar, detectar padrões, juntar dois streams, comparar com o valor anterior. Manter isso em uma variável local funciona até o processo cair — e aí você perde tudo.&lt;/p&gt;
+
+&lt;p&gt;O Flink oferece estado como uma primitiva de primeira classe, com tipos como &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ValueState&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ListState&lt;/code&gt; e &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MapState&lt;/code&gt;, sempre associados a uma chave depois do &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;keyBy&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DetectorDeAnomalia&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;KeyedProcessFunction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Evento&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Alerta&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;transient&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ValueState&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Double&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ultimoValor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Configuration&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ultimoValor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getRuntimeContext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getState&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ValueStateDescriptor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ultimo-valor&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Double&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;processElement&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Evento&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;evento&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Context&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Collector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Alerta&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;anterior&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ultimoValor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;anterior&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;evento&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getValor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;anterior&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;collect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Alerta&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;evento&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;anterior&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ultimoValor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;evento&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getValor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Esse estado é &lt;strong&gt;particionado por chave&lt;/strong&gt; — cada usuário tem o seu próprio &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ultimoValor&lt;/code&gt;, e o operador só enxerga a chave do evento atual. Também dá para configurar TTL, o que evita o problema clássico de estado que só cresce até estourar o disco.&lt;/p&gt;
+
+&lt;p&gt;O backend padrão hoje é o RocksDB, que guarda o estado em disco local em vez de manter tudo em heap. Isso permite estado maior que a memória disponível, ao custo de serialização em cada acesso.&lt;/p&gt;
+
+&lt;h4 id=&quot;checkpoints-e-savepoints&quot;&gt;Checkpoints e savepoints&lt;/h4&gt;
+
+&lt;p&gt;O estado só é confiável porque existe um mecanismo de tolerância a falhas por trás dele.&lt;/p&gt;
+
+&lt;p&gt;Periodicamente, o JobManager injeta &lt;strong&gt;barreiras de checkpoint&lt;/strong&gt; nas fontes. Essas barreiras fluem pelo grafo junto com os dados; quando um operador recebe a barreira, ele persiste seu estado em armazenamento durável (S3, HDFS, o que for) e repassa a barreira adiante. Quando todos os operadores terminam, o checkpoint está completo.&lt;/p&gt;
+
+&lt;p&gt;O algoritmo é uma variação do &lt;strong&gt;Chandy-Lamport&lt;/strong&gt; para snapshots distribuídos. Achei bonito descobrir que uma coisa tão prática está apoiada num paper de 1985.&lt;/p&gt;
+
+&lt;p&gt;Na falha, o Flink restaura o último checkpoint completo, reposiciona os offsets das fontes e retoma. Daí vem o famoso &lt;strong&gt;exactly-once&lt;/strong&gt;, que eu entendi errado durante bastante tempo. Não significa que cada evento é processado uma única vez fisicamente — na recuperação, eventos são sim reprocessados. Significa que o &lt;strong&gt;efeito sobre o estado&lt;/strong&gt; é como se cada evento tivesse sido processado uma vez só. É uma garantia sobre o resultado, não sobre a execução.&lt;/p&gt;
+
+&lt;p&gt;Estender essa garantia até o sink é outro assunto, e depende de o destino suportar escrita transacional ou idempotente (Kafka com transações, por exemplo).&lt;/p&gt;
+
+&lt;p&gt;A diferença entre checkpoint e savepoint também levou um tempo para assentar:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt; &lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Checkpoint&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Savepoint&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Quem dispara&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;O Flink, automaticamente&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Você, manualmente&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Propósito&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Recuperação de falha&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Upgrade, migração, fork do job&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Ciclo de vida&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Gerenciado pelo Flink&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Seu para sempre&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Savepoint é o que permite parar um job, subir uma versão nova do código e continuar exatamente de onde parou, com o estado intacto. Na prática, é isso que torna um job de streaming algo que se pode operar por anos.&lt;/p&gt;
+
+&lt;h4 id=&quot;flink-sql&quot;&gt;Flink SQL&lt;/h4&gt;
+
+&lt;p&gt;Nem tudo precisa de Java. O Flink expõe uma Table API e SQL sobre o mesmo motor, e a mesma consulta roda tanto sobre dados finitos quanto sobre um stream infinito:&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;usuario_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;TUMBLE_START&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;evento_time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INTERVAL&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;5&apos;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;MINUTE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inicio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;COUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;total&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pedidos&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;GROUP&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;usuario_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;TUMBLE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;evento_time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INTERVAL&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;5&apos;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;MINUTE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;O conceito que sustenta isso é a &lt;strong&gt;dualidade stream/tabela&lt;/strong&gt;: um stream é o log de mudanças de uma tabela, e uma tabela é o estado acumulado de um stream. São a mesma informação vista de dois ângulos.&lt;/p&gt;
+
+&lt;p&gt;Para quem vem de dados, essa é a porta de entrada mais rápida — dá para chegar longe sem escrever uma linha de Java.&lt;/p&gt;
+
+&lt;h4 id=&quot;in-praxi--na-prática&quot;&gt;In praxi — “na prática”&lt;/h4&gt;
+
+&lt;p&gt;Subir um cluster local é mais simples do que eu imaginava:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# um cluster mínimo com JobManager e TaskManager&lt;/span&gt;
+docker run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; jobmanager &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 8081:8081 &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  flink:latest jobmanager
+
+docker run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; taskmanager &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;--link&lt;/span&gt; jobmanager:jobmanager &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;JOB_MANAGER_RPC_ADDRESS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;jobmanager &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  flink:latest taskmanager
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A Web UI em &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;localhost:8081&lt;/code&gt; foi onde eu mais aprendi. Ela mostra o grafo do job, o paralelismo real de cada operador, o histórico de checkpoints (duração e tamanho) e, principalmente, o &lt;strong&gt;backpressure&lt;/strong&gt; — quando um operador não consegue acompanhar o ritmo do anterior e a pressão se propaga para trás até a fonte. Ver isso acontecendo em tempo real ensina mais do que qualquer diagrama.&lt;/p&gt;
+
+&lt;p&gt;Para SQL, o caminho mais curto é o cliente interativo:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; jobmanager ./bin/sql-client.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;E o Flink 2.x trouxe uma reorganização grande — remoção de APIs antigas já depreciadas e evolução do modelo de estado desagregado. Ainda não explorei isso a fundo o suficiente para escrever com segurança; fica anotado para uma próxima rodada.&lt;/p&gt;
+
+&lt;h4 id=&quot;o-que-eu-ainda-não-sei&quot;&gt;O que eu ainda não sei&lt;/h4&gt;
+
+&lt;p&gt;Lista honesta do que ficou em aberto:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ajuste fino de RocksDB e o comportamento do estado quando ele cresce muito além da memória.&lt;/li&gt;
+  &lt;li&gt;Estratégias de join entre streams, principalmente interval joins e temporal joins.&lt;/li&gt;
+  &lt;li&gt;CEP, a biblioteca de detecção de padrões complexos.&lt;/li&gt;
+  &lt;li&gt;Como isso tudo se comporta de verdade em produção sob carga irregular — a parte que nenhuma documentação ensina.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;o-que-ficou&quot;&gt;O que ficou&lt;/h4&gt;
+
+&lt;p&gt;Terminei a semana com uma impressão que não esperava ter: a parte difícil de streaming não é distribuir o processamento. Isso o Flink resolve. A parte difícil é o &lt;strong&gt;tempo&lt;/strong&gt; — aceitar que os dados chegam desordenados, que “completo” é uma aposta e não um fato, e que quase toda decisão técnica aqui é, no fundo, uma escolha entre latência e correção.&lt;/p&gt;
+
+&lt;p&gt;Escrever isto me forçou a admitir umas três ou quatro coisas que eu achava que sabia e não sabia. Valeu pelo esforço.&lt;/p&gt;
+
+&lt;p&gt;Próxima semana no cronograma: revisar o roadmap de Data Engineer. Continuo escrevendo enquanto aprendo.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Plano de Estudos 2º Semestre 2026</title>
@@ -283,11 +546,11 @@
    <link href="https://apolzek.github.io/2026/08/10/understanding-the-body-and-reaching-its-potential"/>
    <updated>2026-08-10T00:00:00+00:00</updated>
    <id>https://apolzek.github.io/2026/08/10/understanding-the-body-and-reaching-its-potential</id>
-   <content type="html">&lt;p&gt;Eu não vou negar: aprendi a estudar tarde. Hoje, sinto uma leve ansiedade quando percebo que não terei tempo suficiente para estudar tudo aquilo que tenho vontade. Já estou na casa dos trinta, e talvez essa sensação venha justamente da consciência de que o tempo é limitado.&lt;/p&gt;
+   <content type="html">&lt;p&gt;Eu não vou negar: aprendi a estudar tarde. Hoje, sinto uma leve ansiedade quando percebo que não terei tempo suficiente para estudar tudo aquilo que tenho vontade. Já estou na casa dos trinta, e talvez essa sensação venha justamente da consciência GRITANDO de que o tempo é limitado.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/leonardo.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Sinto que, a cada obra que lemos, existem ideias que influenciam nossas ações apenas naquele momento, enquanto outras permanecem conosco por toda a vida. Nesta fase, tenho consumido bastante filosofia grega do período socrático, e uma das ideias que mais despertou meu interesse foi a importância do desenvolvimento do corpo.&lt;/p&gt;
+&lt;p&gt;Sinto que, a cada obra que lemos, existem ideias que influenciam nossas ações apenas naquele momento, enquanto outras permanecem conosco por toda a vida. Nesta fase, tenho consumido bastante filosofia grega do período socrático, e uma das ideias que mais despertou meu interesse foi a importância do &lt;strong&gt;desenvolvimento do corpo&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;p&gt;Não se trata simplesmente de aumentar os músculos ou melhorar a aparência, mas de compreender o corpo em sua totalidade: como ele funciona por fora e por dentro, como interage com a natureza, quais são seus limites e potencialidades e como podemos desenvolvê-lo de maneira plena, consciente e responsável. E, só nesse caminho, já existe quase um pequeno curso de medicina.&lt;/p&gt;
 
@@ -300,6 +563,10 @@
 &lt;p&gt;Os espartanos entendiam que um corpo forte não era apenas uma questão de aparência, mas de disciplina, resistência e preparação para a vida. Alexandre, o Grande, levou seu corpo e sua mente aos limites para atravessar territórios, suportar privações e conduzir homens em campanhas que mudaram a história. Para os antigos, o corpo não era separado da formação do indivíduo: &lt;strong&gt;era o instrumento através do qual a vontade se manifestava no mundo&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/Aquiles.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Eu sou fã do filme Troia e da representação de Brad Pitt como Aquiles. O corpo de Aquiles não era apenas um instrumento de guerra, mas a expressão física de uma vida moldada para o combate, pela disciplina e pela busca da excelência.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;Conhecer profundamente como o corpo funciona é, portanto, aprender a cuidar dele antes que ele cobre o preço da negligência. Entender força, recuperação, alimentação, sono, movimento, envelhecimento e os mecanismos que sustentam nossa saúde nos permite não apenas permanecer fortes, mas preservar nossas capacidades por mais tempo.&lt;/p&gt;
 
@@ -321,19 +588,19 @@
 
 &lt;p&gt;Espero que esse conhecimento transforme a minha própria vida e, talvez, também seja útil para as pessoas que amo — ou até para algum leitor aleatório que venha parar aqui no futuro.&lt;/p&gt;
 
-&lt;h4 id=&quot;3-brains&quot;&gt;3 Brains&lt;/h4&gt;
+&lt;h3 id=&quot;3-brains&quot;&gt;3 Brains&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/3-brains.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;alimentação&quot;&gt;Alimentação&lt;/h4&gt;
+&lt;h3 id=&quot;alimentação&quot;&gt;Alimentação&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/comp-nutricional.jpeg&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;descansarrecuperar&quot;&gt;Descansar/Recuperar&lt;/h4&gt;
+&lt;h3 id=&quot;descansarrecuperar&quot;&gt;Descansar/Recuperar&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/goku-training.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;consistência&quot;&gt;Consistência&lt;/h4&gt;
+&lt;h3 id=&quot;consistência&quot;&gt;Consistência&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/arm.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 </content>
