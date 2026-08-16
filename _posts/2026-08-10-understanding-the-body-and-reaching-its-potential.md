@@ -6,11 +6,11 @@ summary:
 minute: 1
 ---
 
-Eu não vou negar: aprendi a estudar tarde. Hoje, sinto uma leve ansiedade quando percebo que não terei tempo suficiente para estudar tudo aquilo que tenho vontade. Já estou na casa dos trinta, e talvez essa sensação venha justamente da consciência de que o tempo é limitado.
+Eu não vou negar: aprendi a estudar tarde. Hoje, sinto uma leve ansiedade quando percebo que não terei tempo suficiente para estudar tudo aquilo que tenho vontade. Já estou na casa dos trinta, e talvez essa sensação venha justamente da consciência GRITANDO de que o tempo é limitado.
 
 ![](/assets/img/leonardo.jpg)
 
-Sinto que, a cada obra que lemos, existem ideias que influenciam nossas ações apenas naquele momento, enquanto outras permanecem conosco por toda a vida. Nesta fase, tenho consumido bastante filosofia grega do período socrático, e uma das ideias que mais despertou meu interesse foi a importância do desenvolvimento do corpo.
+Sinto que, a cada obra que lemos, existem ideias que influenciam nossas ações apenas naquele momento, enquanto outras permanecem conosco por toda a vida. Nesta fase, tenho consumido bastante filosofia grega do período socrático, e uma das ideias que mais despertou meu interesse foi a importância do **desenvolvimento do corpo**.
 
 Não se trata simplesmente de aumentar os músculos ou melhorar a aparência, mas de compreender o corpo em sua totalidade: como ele funciona por fora e por dentro, como interage com a natureza, quais são seus limites e potencialidades e como podemos desenvolvê-lo de maneira plena, consciente e responsável. E, só nesse caminho, já existe quase um pequeno curso de medicina.
 
@@ -23,6 +23,8 @@ Negligenciamos, muitas vezes, o conhecimento profundo do próprio corpo. E talve
 Os espartanos entendiam que um corpo forte não era apenas uma questão de aparência, mas de disciplina, resistência e preparação para a vida. Alexandre, o Grande, levou seu corpo e sua mente aos limites para atravessar territórios, suportar privações e conduzir homens em campanhas que mudaram a história. Para os antigos, o corpo não era separado da formação do indivíduo: **era o instrumento através do qual a vontade se manifestava no mundo**.
 
 ![](/assets/img/Aquiles.jpeg)
+
+> Eu sou fã do filme Troia e da representação de Brad Pitt como Aquiles. O corpo de Aquiles não era apenas um instrumento de guerra, mas a expressão física de uma vida moldada para o combate, pela disciplina e pela busca da excelência.
 
 Conhecer profundamente como o corpo funciona é, portanto, aprender a cuidar dele antes que ele cobre o preço da negligência. Entender força, recuperação, alimentação, sono, movimento, envelhecimento e os mecanismos que sustentam nossa saúde nos permite não apenas permanecer fortes, mas preservar nossas capacidades por mais tempo.
 
@@ -44,18 +46,18 @@ Sei que ainda existem inúmeros territórios inexplorados, inclusive aqueles rel
 
 Espero que esse conhecimento transforme a minha própria vida e, talvez, também seja útil para as pessoas que amo — ou até para algum leitor aleatório que venha parar aqui no futuro.
 
-#### 3 Brains
+### 3 Brains
 
 ![](/assets/img/3-brains.png)
 
-#### Alimentação
+### Alimentação
 
 ![alt text](/assets/img/comp-nutricional.jpeg)
 
-#### Descansar/Recuperar
+### Descansar/Recuperar
 
 ![](/assets/img/goku-training.jpeg)
 
-#### Consistência
+### Consistência
 
 ![](/assets/img/arm.jpeg)
