@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-08-16T20:25:06+00:00</updated>
+ <updated>2026-08-18T04:42:30+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -277,11 +277,13 @@ docker run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot
  </entry>
  
  <entry>
-   <title>Plano de Estudos 2º Semestre 2026</title>
+   <title>Plano de Estudos pro resto de 2026</title>
    <link href="https://apolzek.github.io/2026/08/13/cronograma-para-nao-levar-a-serio"/>
    <updated>2026-08-13T00:00:00+00:00</updated>
    <id>https://apolzek.github.io/2026/08/13/cronograma-para-nao-levar-a-serio</id>
-   <content type="html">&lt;table&gt;
+   <content type="html">&lt;p&gt;devo focar nesses conteudos..&lt;/p&gt;
+
+&lt;table&gt;
   &lt;thead&gt;
     &lt;tr&gt;
       &lt;th style=&quot;text-align: center&quot;&gt;Semana&lt;/th&gt;
@@ -343,19 +345,19 @@ docker run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot
       &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;05/10 a 11/10&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Journey to get the CKA certification&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;12/10 a 18/10&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Journey to get the CKA certification&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;19/10 a 25/10&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;..idk&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
