@@ -1,10 +1,12 @@
 ---
 layout: post
-title: Plano de Estudos 2º Semestre 2026
+title: Plano de Estudos pro resto de 2026
 description:
 summary:
-minute: 1
+minute: 2
 ---
+
+devo focar nesses conteudos..
 
 | Semana | Período | Conteúdo Fixo | Conteúdo da Semana |
 |:------:|:-------:|:-------------:|:-------------------|
@@ -16,9 +18,9 @@ minute: 1
 | 6 | 14/09 a 20/09 | Inglês | Review Golang |
 | 7 | 21/09 a 27/09 | Inglês | Machine Learning |
 | 8 | 28/09 a 04/10 | Inglês | Journey to get the CKA certification |
-| 9 | 05/10 a 11/10 | Inglês | |
-| 10 | 12/10 a 18/10 | Inglês | |
-| 11 | 19/10 a 25/10 | Inglês | |
+| 9 | 05/10 a 11/10 | Inglês | Journey to get the CKA certification |
+| 10 | 12/10 a 18/10 | Inglês | Journey to get the CKA certification |
+| 11 | 19/10 a 25/10 | Inglês |..idk |
 | 12 | 26/10 a 01/11 | Inglês | |
 | 13 | 02/11 a 08/11 | Inglês | |
 | 14 | 09/11 a 15/11 | Inglês | |
