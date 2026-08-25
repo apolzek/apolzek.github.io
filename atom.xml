@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-08-25T14:08:35-03:00</updated>
+ <updated>2026-08-25T14:34:57-03:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -12,6 +12,163 @@
  </author>
 
  
+ 
+ <entry>
+   <title>Jornada para contribuir com o OTel Collector, parte 2</title>
+   <link href="https://apolzek.github.io/2026/08/25/jornada-otel-collector-parte-2"/>
+   <updated>2026-08-25T00:00:00-03:00</updated>
+   <id>https://apolzek.github.io/2026/08/25/jornada-otel-collector-parte-2</id>
+   <content type="html">&lt;p&gt;Na parte 1 eu listei o que precisava aprender. Antes de estudar qualquer coisa dessa lista, resolvi fazer um exercício mais básico: pegar um componente que já existe, mudar alguma coisa nele, gerar um binário com a mudança, rodar os testes e ver o efeito acontecendo de verdade.&lt;/p&gt;
+
+&lt;p&gt;A ideia não é contribuir com isso. É provar que consigo fechar o ciclo. Enquanto eu não conseguisse fazer uma alteração chegar até um Collector rodando, qualquer estudo seria teórico.&lt;/p&gt;
+
+&lt;p&gt;Escolhi o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;filterprocessor&lt;/code&gt; e inventei uma tarefa sem valor nenhum para o projeto, mas útil para mim: quando aparecer um trace com &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;service.name&lt;/code&gt; igual a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;trying&lt;/code&gt;, o processor deve registrar uma marca minha no log junto com o dado inteiro em JSON.&lt;/p&gt;
+
+&lt;h4 id=&quot;passo-1-baixar-só-o-que-interessa&quot;&gt;Passo 1: baixar só o que interessa&lt;/h4&gt;
+
+&lt;p&gt;O &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;contrib&lt;/code&gt; é grande. Como cada componente é um módulo separado, dá para clonar só o pedaço necessário.&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /tmp/otel-lab &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /tmp/otel-lab
+git clone &lt;span class=&quot;nt&quot;&gt;--depth&lt;/span&gt; 1 &lt;span class=&quot;nt&quot;&gt;--filter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;blob:none &lt;span class=&quot;nt&quot;&gt;--sparse&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  https://github.com/open-telemetry/opentelemetry-collector-contrib.git
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;opentelemetry-collector-contrib
+git sparse-checkout &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;processor/filterprocessor internal pkg
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Isso deixou 25 MB em disco em vez do repositório inteiro. Precisei incluir &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;internal&lt;/code&gt; e &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pkg&lt;/code&gt; porque o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;go.mod&lt;/code&gt; do &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;filterprocessor&lt;/code&gt; aponta para eles com caminhos relativos.&lt;/p&gt;
+
+&lt;h4 id=&quot;passo-2-escrever-a-alteração&quot;&gt;Passo 2: escrever a alteração&lt;/h4&gt;
+
+&lt;p&gt;Criei um arquivo novo, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;trying.go&lt;/code&gt;, em vez de espalhar código no &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;traces.go&lt;/code&gt;. A função varre os resources procurando o atributo, e serializa o lote inteiro usando o marshaler que o próprio pdata oferece.&lt;/p&gt;
+
+&lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tryingServiceName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;trying&quot;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tryingMarshaler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ptrace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;JSONMarshaler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;logTryingTraces&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;td&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ptrace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Traces&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hasTryingService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;td&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;raw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tryingMarshaler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MarshalTraces&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;td&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;apolzek was here: could not marshal traces&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;apolzek was here&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;zap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;service.name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tryingServiceName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;zap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;spans&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;td&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SpanCount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()),&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;zap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;payload&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;raw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)),&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A chamada entrou no início de &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;processTraces&lt;/code&gt;. Esse detalhe importa: a função tem um retorno antecipado logo abaixo, que sai na hora quando nenhuma condição de filtro está configurada. Se eu tivesse colocado a chamada depois dele, o teste manual não mostraria nada e eu passaria um tempo procurando erro no lugar errado.&lt;/p&gt;
+
+&lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fsp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filterSpanProcessor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;processTraces&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ctx&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;td&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ptrace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Traces&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ptrace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Traces&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;logTryingTraces&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fsp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;td&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fsp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;skipResourceExpr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fsp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;skipSpanExpr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;passo-3-testar&quot;&gt;Passo 3: testar&lt;/h4&gt;
+
+&lt;p&gt;Escrevi um teste usando o observador de logs do zap, que captura o que foi registrado sem precisar ler saída de terminal. Cobri o caso que casa, um serviço diferente, um nome que só começa com &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;trying&lt;/code&gt;, o nome vazio, o logger nulo e um &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;service.name&lt;/code&gt; que não é string.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;=== RUN   TestLogTryingTraces
+=== RUN   TestLogTryingTraces/matches
+=== RUN   TestLogTryingTraces/different_service
+=== RUN   TestLogTryingTraces/prefix_only
+=== RUN   TestLogTryingTraces/empty
+--- PASS: TestLogTryingTraces (0.00s)
+--- PASS: TestLogTryingTracesNilLogger (0.00s)
+--- PASS: TestHasTryingServiceNonStringAttribute (0.00s)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Depois rodei a suíte inteira do componente, que é o que de fato responde se eu quebrei alguma coisa. Foram 82 testes, nenhuma falha.&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;go &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt; ./...
+ok  github.com/open-telemetry/opentelemetry-collector-contrib/processor/filterprocessor  1.319s
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;passo-4-gerar-um-collector-com-a-alteração&quot;&gt;Passo 4: gerar um Collector com a alteração&lt;/h4&gt;
+
+&lt;p&gt;O binário oficial não serve, porque ele traz o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;filterprocessor&lt;/code&gt; publicado, não o meu. Para isso existe o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;builder&lt;/code&gt;, que monta um Collector sob medida a partir de uma lista de componentes.&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;go &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;go.opentelemetry.io/collector/cmd/builder@v0.144.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A parte central da configuração é o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;replaces&lt;/code&gt;, que manda o Go usar minha cópia local no lugar do módulo publicado.&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;dist&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;otelcol-lab&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;output_path&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/tmp/otel-lab/build/otelcol-lab&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;otelcol_version&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;0.144.0&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;receivers&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;gomod&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;go.opentelemetry.io/collector/receiver/otlpreceiver v0.144.0&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;processors&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;gomod&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;github.com/open-telemetry/opentelemetry-collector-contrib/processor/filterprocessor v0.144.0&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;exporters&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;gomod&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;go.opentelemetry.io/collector/exporter/debugexporter v0.144.0&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;replaces&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;github.com/open-telemetry/opentelemetry-collector-contrib/processor/filterprocessor =&amp;gt; /tmp/otel-lab/opentelemetry-collector-contrib/processor/filterprocessor&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Antes de rodar, conferi se o binário realmente tinha meu código dentro, o que é mais rápido do que descobrir isso depois pelo silêncio no log:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;strings otelcol-lab | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;apolzek was here&quot;&lt;/span&gt;
+2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Saíram 35 MB de binário com um receiver, um processor e um exporter.&lt;/p&gt;
+
+&lt;h4 id=&quot;passo-5-rodar-e-enviar-dados&quot;&gt;Passo 5: rodar e enviar dados&lt;/h4&gt;
+
+&lt;p&gt;Subi o Collector com um pipeline de traces mínimo, recebendo OTLP por HTTP e escrevendo no exportador de debug. Enviei dois traces por &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;curl&lt;/code&gt;, iguais em tudo menos no &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;service.name&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;O primeiro, com &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;service.name&lt;/code&gt; igual a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;checkout&lt;/code&gt;, para confirmar que a alteração não dispara em qualquer coisa:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;HTTP 200
+ocorrencias de &apos;apolzek was here&apos; no log: 0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;O segundo, com &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;service.name&lt;/code&gt; igual a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;trying&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;HTTP 200
+ocorrencias de &apos;apolzek was here&apos; no log: 1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;a-prova&quot;&gt;A prova&lt;/h4&gt;
+
+&lt;p&gt;A linha que apareceu no log do Collector:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;2026-08-25T14:32:47.120-0300  info  filterprocessor@v0.144.0/trying.go:47
+apolzek was here
+{&quot;otelcol.component.id&quot;: &quot;filter&quot;, &quot;otelcol.component.kind&quot;: &quot;processor&quot;,
+ &quot;otelcol.pipeline.id&quot;: &quot;traces&quot;, &quot;otelcol.signal&quot;: &quot;traces&quot;,
+ &quot;service.name&quot;: &quot;trying&quot;, &quot;spans&quot;: 1,
+ &quot;payload&quot;: &quot;{\&quot;resourceSpans\&quot;:[{\&quot;resource\&quot;:{\&quot;attributes\&quot;:[{\&quot;key\&quot;:\&quot;service.name\&quot;,
+ \&quot;value\&quot;:{\&quot;stringValue\&quot;:\&quot;trying\&quot;}},{\&quot;key\&quot;:\&quot;deployment.environment\&quot;,
+ \&quot;value\&quot;:{\&quot;stringValue\&quot;:\&quot;lab\&quot;}}]},\&quot;scopeSpans\&quot;:[{\&quot;scope\&quot;:{\&quot;name\&quot;:\&quot;manual-curl\&quot;},
+ \&quot;spans\&quot;:[{\&quot;traceId\&quot;:\&quot;5b8efff798038103d269b633813fc60c\&quot;,
+ \&quot;spanId\&quot;:\&quot;eee19b7ec3c1b174\&quot;,\&quot;name\&quot;:\&quot;GET /checkout\&quot;,\&quot;kind\&quot;:2,
+ \&quot;startTimeUnixNano\&quot;:\&quot;1544712660000000000\&quot;,\&quot;endTimeUnixNano\&quot;:\&quot;1544712661000000000\&quot;,
+ \&quot;attributes\&quot;:[{\&quot;key\&quot;:\&quot;http.method\&quot;,\&quot;value\&quot;:{\&quot;stringValue\&quot;:\&quot;GET\&quot;}}],
+ \&quot;status\&quot;:{}}]}]}]}&quot;}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Repare no caminho do arquivo no início da linha: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;filterprocessor@v0.144.0/trying.go:47&lt;/code&gt;. O componente se apresenta com a versão publicada, mas está executando o arquivo que eu criei. É o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;replaces&lt;/code&gt; funcionando.&lt;/p&gt;
+
+&lt;h4 id=&quot;o-que-ficou&quot;&gt;O que ficou&lt;/h4&gt;
+
+&lt;p&gt;O ciclo fecha: editar, testar, gerar binário, rodar, ver acontecer. Isso é o que eu não sabia fazer na semana passada, e é pré-requisito para qualquer coisa útil depois.&lt;/p&gt;
+
+&lt;p&gt;Duas coisas me pegaram. A primeira foi o retorno antecipado no &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;processTraces&lt;/code&gt;, que me faria depurar no lugar errado. A segunda foi perceber que testar exige montar um Collector próprio, porque o binário oficial nunca vai conter a minha alteração.&lt;/p&gt;
+
+&lt;p&gt;Nada disso vira pull request. É andaime, e andaime se descarta. Mas agora, quando eu pegar uma issue de verdade, a parte mecânica já está resolvida.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Jornada para contribuir com o OTel Collector, parte 1</title>
