@@ -1,7 +1,13 @@
 ---
 layout: none
 ---
-[
+{% comment %}
+  Secret posts are listed here on purpose, password and all, and the password
+  is checked in the browser. That is decorative by design, not a mistake: this
+  is a static site, so anyone who opens this file or reads the source sees both
+  the URL and the password. The point is the easter egg, not access control.
+  Anything that genuinely must not be read should not be published at all.
+{% endcomment %}[
   {% for post in site.posts %}
     {
       "title"    : "{{ post.title | escape }}",
