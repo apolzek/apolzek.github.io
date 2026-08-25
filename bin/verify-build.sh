@@ -47,7 +47,7 @@ grep -q 'class="build-stamp"' "$DIR/index.html" || fail "build stamp missing fro
 ok "build stamp present"
 
 # Files that have leaked into the output before.
-for f in package.json package-lock.json Gemfile bin; do
+for f in package.json package-lock.json Gemfile bin AGENTS.md CLAUDE.md README.md; do
   [ ! -e "$DIR/$f" ] || fail "$f should not be published"
 done
 ok "no dev files published"

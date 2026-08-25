@@ -30,6 +30,8 @@ kramdown:
 
 exclude:
   - bin
+  - AGENTS.md
+  - CLAUDE.md
   - .jekyll-cache
   - .obsidian
   - Gemfile
