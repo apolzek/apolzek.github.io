@@ -29,6 +29,7 @@ kramdown:
   syntax_highlighter: rouge
 
 exclude:
+  - bin
   - .jekyll-cache
   - .obsidian
   - Gemfile

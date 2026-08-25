@@ -55,6 +55,21 @@ thoughts.html
 cheatsheet.html
 ```
 
+## Build stamp
+
+The home page shows the commit it was built from, just above the title. Jekyll
+cannot read git, so `bin/build-stamp.sh` writes `_data/build.yml` (short sha,
+full sha, ISO date and a pre-formatted date string) and the template reads it
+from there. CI runs the script before building; `_data/build.yml` is gitignored.
+
+To see the stamp on a local build, run it first:
+
+```sh
+./bin/build-stamp.sh && bundle exec jekyll serve
+```
+
+Without that file the stamp is simply omitted — the page still builds.
+
 ## Authoring a post
 
 Create a file in `_posts/` named `YYYY-MM-DD-slug.md` with the front matter:

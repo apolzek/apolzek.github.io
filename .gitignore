@@ -12,3 +12,4 @@ _site
 marp/
 vendor/
 .bundle/
+_data/build.yml
