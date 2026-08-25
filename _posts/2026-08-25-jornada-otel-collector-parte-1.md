@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Jornada para contribuir com o OTel Collector, parte 1"
-minute: 10
+minute: 12
 ---
 
 O plano era simples: escolher uma issue com a label `good first issue`, mandar um PR e ir dormir com a sensação boa de ter contribuído para o OpenTelemetry Collector. O que aconteceu foi que eu abri o repositório, li três arquivos e percebi que não tinha ideia do que estava acontecendo ali xD
@@ -31,9 +31,21 @@ Golang =))
 
 Esta parte reúne os conceitos que eu precisei entender para conseguir ler o código. Usei o `receiver/nginxreceiver` do `opentelemetry-collector-contrib` como referência, porque ele é pequeno e tem quase tudo que existe nos outros componentes.
 
+#### Os dois repositórios
+
+O projeto vive em dois repositórios, e saber qual é qual muda para onde vai o seu pull request.
+
+O `opentelemetry-collector`, que todo mundo chama de core, é o framework em si: o que carrega a configuração, monta os pipelines, define as interfaces e implementa os helpers. Junto vem um conjunto pequeno de componentes considerados essenciais, basicamente o OTLP. Hoje são dois receivers, quatro exporters e sete processors. É um número que quase não cresce, e isso é proposital.
+
+O `opentelemetry-collector-contrib` é todo o resto: 114 receivers, 47 exporters, 35 processors, 32 extensions e 14 connectors. É onde estão as integrações com fornecedores, com bancos, com sistemas específicos. O `filterprocessor` e o `nginxreceiver` que uso como exemplo estão aqui.
+
+O critério para separar é manutenção. O core precisa ser estável e ter poucas dependências, porque tudo depende dele. O contrib aceita código que só um grupo de pessoas usa, desde que alguém se responsabilize por manter.
+
+Na prática, quase toda primeira contribuição acontece no contrib. Se a sua ideia envolve integrar com alguma tecnologia específica, é lá.
+
 #### Organização do repositório
 
-O `contrib` não é um projeto Go. São mais de quatrocentos. Cada componente tem seu próprio `go.mod`, ou seja, é um módulo independente, com dependências e versão próprias.
+O contrib não é um projeto Go. São mais de quatrocentos módulos. Cada componente tem o seu próprio `go.mod`, com dependências e versão próprias.
 
 A razão é evitar peso desnecessário. O receiver do nginx depende de uma biblioteca de nginx, o exporter da AWS depende do SDK da AWS. Num módulo único, quem quisesse apenas ler métricas de nginx carregaria também o SDK da AWS.
 
@@ -128,6 +140,16 @@ Os testes usam dublês para o que está em volta: um consumidor que descarta o q
 Dois testes vêm prontos, gerados a partir do `metadata.yaml`. O primeiro é de ciclo de vida: inicia o componente, encerra, inicia de novo, encerra sem nunca ter iniciado, e verifica que nada disso quebra. O segundo checa, ao fim do pacote, se sobrou alguma goroutine viva.
 
 Esse par cobre recurso não liberado e vazamento de goroutine sem você escrever nada.
+
+#### Distribuições e o builder
+
+Não existe "o binário do Collector". Existe uma escolha de componentes compilada num binário.
+
+O projeto publica duas distribuições prontas. A `otelcol` traz apenas o core. A `otelcol-contrib` traz o core mais tudo do contrib, o que a deixa grande e com muita coisa que você não usa.
+
+Para montar a sua própria existe o OCB, sigla de OpenTelemetry Collector Builder. Você escreve um YAML listando quais receivers, processors e exporters quer, e ele gera o código Go que registra esses componentes, resolve as dependências e compila.
+
+Isso importa para quem contribui por um motivo direto: a distribuição oficial sempre traz a versão publicada de um componente, nunca a sua cópia local alterada. Para ver a sua mudança rodando é preciso montar um binário com o OCB, apontando o módulo publicado para a sua pasta. É o que faço na parte 2.
 
 #### Changelog e revisão
 

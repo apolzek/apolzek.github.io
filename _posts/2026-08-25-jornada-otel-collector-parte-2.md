@@ -83,7 +83,7 @@ ok  github.com/open-telemetry/opentelemetry-collector-contrib/processor/filterpr
 
 #### Passo 4: gerar um Collector com a alteração
 
-O binário oficial não serve, porque ele traz o `filterprocessor` publicado, não o meu. Para isso existe o `builder`, que monta um Collector sob medida a partir de uma lista de componentes.
+O binário oficial não serve, porque ele traz o `filterprocessor` publicado, não o meu. Para isso existe o OCB, o OpenTelemetry Collector Builder, que monta um Collector sob medida a partir de uma lista de componentes.
 
 ```sh
 go install go.opentelemetry.io/collector/cmd/builder@v0.144.0
