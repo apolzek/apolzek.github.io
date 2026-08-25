@@ -2,7 +2,17 @@
   var canvas = document.getElementById('cosmos');
   if (!canvas) return;
   var ctx = canvas.getContext('2d');
-  var stars = [], nebulae = [], W, H, raf;
+  var stars = [], nebulae = [], W, H, raf, lastT = 0;
+
+  /* Drift speed of the star field, in pixels per SECOND. Deliberately low:
+     at 0.8 a star crosses roughly one screen-width per half hour. Bump this
+     single number to make the sky livelier, drop it to calm it down. */
+  var DRIFT = 0.8;
+  var DRIFT_ANGLE = -Math.PI / 2.6;   /* up and slightly to the right */
+
+  /* Honour the OS "reduce motion" setting: the sky holds still, stars still
+     twinkle. Nothing here is load-bearing, so this costs the visitor nothing. */
+  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function isDark() {
     return document.documentElement.getAttribute('data-theme') !== 'light';
@@ -17,12 +27,19 @@
     stars = [];
     var count = Math.floor((W * H) / 4000);
     for (var i = 0; i < count; i++) {
+      var r = Math.random() * 1.4 + 0.2;
+      /* Parallax: bigger stars read as closer, so they drift a little faster.
+         Each one also strays slightly off the shared heading, which keeps the
+         field from sliding as one rigid sheet. */
+      var speed = DRIFT * (0.5 + (r / 1.6) * 1.3);
+      var angle = DRIFT_ANGLE + (Math.random() - 0.5) * 0.5;
       stars.push({
         x: Math.random() * W,
         y: Math.random() * H,
-        r: Math.random() * 1.4 + 0.2,
+        r: r,
         alpha: Math.random() * 0.6 + 0.2,
-        speed: Math.random() * 0.015 + 0.003,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
         twinkleOffset: Math.random() * Math.PI * 2
       });
     }
@@ -38,17 +55,17 @@
         ry: Math.random() * 120 + 60,
         hue: Math.random() * 60 + (isDark() ? 220 : 190),
         alpha: Math.random() * 0.045 + 0.01,
-        vx: (Math.random() - 0.5) * 0.06,
-        vy: (Math.random() - 0.5) * 0.04
+        vx: (Math.random() - 0.5) * 3.6,
+        vy: (Math.random() - 0.5) * 2.4
       });
     }
   }
 
-  function drawDark(t) {
+  function drawDark(t, dt) {
     ctx.clearRect(0, 0, W, H);
 
     nebulae.forEach(function (n) {
-      n.x += n.vx; n.y += n.vy;
+      n.x += n.vx * dt; n.y += n.vy * dt;
       if (n.x < -n.rx) n.x = W + n.rx;
       if (n.x > W + n.rx) n.x = -n.rx;
       if (n.y < -n.ry) n.y = H + n.ry;
@@ -64,8 +81,10 @@
     });
 
     stars.forEach(function (s) {
-      s.y += s.speed;
-      if (s.y > H) { s.y = 0; s.x = Math.random() * W; }
+      s.x += s.vx * dt; s.y += s.vy * dt;
+      /* Wrap on all four edges so the drift can point anywhere. */
+      if (s.x < -s.r) s.x = W + s.r; else if (s.x > W + s.r) s.x = -s.r;
+      if (s.y < -s.r) s.y = H + s.r; else if (s.y > H + s.r) s.y = -s.r;
       var tw = Math.sin(t * 0.001 + s.twinkleOffset) * 0.3 + 0.7;
       ctx.beginPath();
       ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
@@ -74,11 +93,11 @@
     });
   }
 
-  function drawLight(t) {
+  function drawLight(t, dt) {
     ctx.clearRect(0, 0, W, H);
 
     nebulae.forEach(function (n) {
-      n.x += n.vx; n.y += n.vy;
+      n.x += n.vx * dt; n.y += n.vy * dt;
       if (n.x < -n.rx) n.x = W + n.rx;
       if (n.x > W + n.rx) n.x = -n.rx;
       if (n.y < -n.ry) n.y = H + n.ry;
@@ -94,8 +113,10 @@
     });
 
     stars.forEach(function (s) {
-      s.y += s.speed;
-      if (s.y > H) { s.y = 0; s.x = Math.random() * W; }
+      s.x += s.vx * dt; s.y += s.vy * dt;
+      /* Wrap on all four edges so the drift can point anywhere. */
+      if (s.x < -s.r) s.x = W + s.r; else if (s.x > W + s.r) s.x = -s.r;
+      if (s.y < -s.r) s.y = H + s.r; else if (s.y > H + s.r) s.y = -s.r;
       var tw = Math.sin(t * 0.001 + s.twinkleOffset) * 0.3 + 0.7;
       ctx.beginPath();
       ctx.arc(s.x, s.y, Math.max(s.r, 1), 0, Math.PI * 2);
@@ -105,7 +126,13 @@
   }
 
   function loop(t) {
-    if (isDark()) drawDark(t); else drawLight(t);
+    /* Elapsed seconds, not frames: without this the sky drifts twice as fast
+       on a 120Hz display as on a 60Hz one. Capped so that coming back to a
+       backgrounded tab does not teleport everything across the screen. */
+    var dt = lastT ? Math.min((t - lastT) / 1000, 0.1) : 0;
+    lastT = t;
+    if (still) dt = 0;
+    if (isDark()) drawDark(t, dt); else drawLight(t, dt);
     raf = requestAnimationFrame(loop);
   }
 
@@ -114,6 +141,7 @@
     initStars();
     initNebulae();
     cancelAnimationFrame(raf);
+    lastT = 0;
     raf = requestAnimationFrame(loop);
   }
 
