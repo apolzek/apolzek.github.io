@@ -4,10 +4,15 @@
   var ctx = canvas.getContext('2d');
   var stars = [], nebulae = [], W, H, raf, lastT = 0;
 
-  /* Drift speed of the star field, in pixels per SECOND. Deliberately low:
-     at 0.8 a star crosses roughly one screen-width per half hour. Bump this
-     single number to make the sky livelier, drop it to calm it down. */
-  var DRIFT = 0.8;
+  /* Drift speed of the star field, in pixels per SECOND of elapsed time.
+     Rough guide, measured on a 1470px-wide screen:
+       0.8 -> 0.95 px/s, 10px per 10s  (looks completely still)
+       2   -> 2.5  px/s, 25px per 10s  (barely there)
+       3.5 -> 4.4  px/s, 44px per 10s  (slow, but you can see it)
+       5   -> 6.1  px/s, 61px per 10s  (a clear drift)
+       8   -> 9.6  px/s, 96px per 10s  (busy enough to pull the eye)
+     This is the only number to touch. */
+  var DRIFT = 5;
   var DRIFT_ANGLE = -Math.PI / 2.6;   /* up and slightly to the right */
 
   /* Honour the OS "reduce motion" setting: the sky holds still, stars still
