@@ -1,21 +1,21 @@
 [
   
     {
-      "title"    : "Apache Flink ensinando enquanto aprendo",
+      "title"    : "Jornada para contribuir com o OTel Collector — Parte 1: o inventário do que eu não sei",
       "category" : "",
       "tags"     : "",
-      "url"      : "/2026/08/16/apache-flink-ensinando-enquanto-aprendo",
-      "date"     : "2026-08-16 00:00:00 +0000",
+      "url"      : "/2026/08/25/jornada-otel-collector-parte-1",
+      "date"     : "2026-08-25 00:00:00 +0000",
       "secret"   : false,
       "password" : null
     } ,
   
     {
-      "title"    : "Plano de Estudos pro resto de 2026",
+      "title"    : "Apache Flink: Aprendendo em Público",
       "category" : "",
       "tags"     : "",
-      "url"      : "/2026/08/13/cronograma-para-nao-levar-a-serio",
-      "date"     : "2026-08-13 00:00:00 +0000",
+      "url"      : "/2026/08/16/apache-flink-aprendendo-em-publico",
+      "date"     : "2026-08-16 00:00:00 +0000",
       "secret"   : false,
       "password" : null
     } ,

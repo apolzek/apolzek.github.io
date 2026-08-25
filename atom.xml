@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-08-18T18:00:04+00:00</updated>
+ <updated>2026-08-25T13:06:07+00:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -14,10 +14,43 @@
  
  
  <entry>
-   <title>Apache Flink ensinando enquanto aprendo</title>
-   <link href="https://apolzek.github.io/2026/08/16/apache-flink-ensinando-enquanto-aprendo"/>
+   <title>Jornada para contribuir com o OTel Collector — Parte 1: o inventário do que eu não sei</title>
+   <link href="https://apolzek.github.io/2026/08/25/jornada-otel-collector-parte-1"/>
+   <updated>2026-08-25T00:00:00+00:00</updated>
+   <id>https://apolzek.github.io/2026/08/25/jornada-otel-collector-parte-1</id>
+   <content type="html">&lt;p&gt;O plano era simples: escolher uma issue com a label &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;good first issue&lt;/code&gt;, mandar um PR e ir dormir com a sensação boa de ter contribuído para o OpenTelemetry. O que aconteceu foi que eu abri o repositório, li três arquivos e percebi que não tinha ideia do que estava acontecendo ali.&lt;/p&gt;
+
+&lt;p&gt;Não é uma reclamação. É que a distância entre &lt;em&gt;usar&lt;/em&gt; o Collector e &lt;em&gt;mexer&lt;/em&gt; no Collector é maior do que eu imaginava. Então mudei o plano: em vez de forçar um PR, resolvi documentar a jornada inteira. Esta é a parte 1, e ela não tem uma linha de código — é só o mapa do território que eu ainda não conheço.&lt;/p&gt;
+
+&lt;h4 id=&quot;o-que-eu-achava-que-precisava-saber&quot;&gt;O que eu achava que precisava saber&lt;/h4&gt;
+
+&lt;p&gt;Go. Só isso. Achei que era Go.&lt;/p&gt;
+
+&lt;h4 id=&quot;o-que-eu-descobri-que-precisava-saber&quot;&gt;O que eu descobri que precisava saber&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;Go, de verdade.&lt;/strong&gt; Não o Go de escrever um binário que chama uma API. O Go de interfaces, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;context&lt;/code&gt;, goroutines com ciclo de vida e generics espalhados pelo código. Dá pra ler sem isso; escrever, não.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;O modelo de componentes.&lt;/strong&gt; Receiver, processor, exporter, connector, extension. Todo o Collector é essa combinação, e antes de tocar em qualquer linha eu preciso saber em qual dessas caixas o meu problema mora. Passei um tempo achando que o que eu queria mexer era um processor quando era um receiver.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;pdata.&lt;/strong&gt; As estruturas internas (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pcommon&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;plog&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pmetric&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ptrace&lt;/code&gt;) não são structs comuns — são wrappers sobre a representação interna, com regras próprias sobre cópia e mutação. É o tipo de coisa que o compilador deixa passar e o teste reprova.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;O repositório certo.&lt;/strong&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;collector&lt;/code&gt; e &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;collector-contrib&lt;/code&gt; são coisas diferentes, com critérios diferentes sobre o que entra. Descobrir isso &lt;em&gt;antes&lt;/em&gt; de abrir o PR economiza uma conversa constrangedora.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;A burocracia boa.&lt;/strong&gt; CLA assinado, changelog gerado por ferramenta em vez de escrito na mão, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;metadata.yaml&lt;/code&gt; que gera código, testes de ciclo de vida que rodam sozinhos, e um CODEOWNERS que decide quem precisa aprovar. Nada disso é difícil. Tudo isso é invisível até você tropeçar.&lt;/p&gt;
+
+&lt;h4 id=&quot;o-que-fica-desta-parte&quot;&gt;O que fica desta parte&lt;/h4&gt;
+
+&lt;p&gt;A primeira contribuição não começa no código, começa no inventário honesto do que você ainda não sabe. Escrever essa lista foi desconfortável e, justamente por isso, útil: agora eu tenho itens pra riscar em vez de uma sensação vaga de estar perdido.&lt;/p&gt;
+
+&lt;p&gt;Na &lt;strong&gt;parte 2&lt;/strong&gt;, eu paro de fazer lista e começo a subir o ambiente: compilar o Collector do zero, rodar os testes e ver o que quebra. Aposto que quebra bastante.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Apache Flink: Aprendendo em Público</title>
+   <link href="https://apolzek.github.io/2026/08/16/apache-flink-aprendendo-em-publico"/>
    <updated>2026-08-16T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2026/08/16/apache-flink-ensinando-enquanto-aprendo</id>
+   <id>https://apolzek.github.io/2026/08/16/apache-flink-aprendendo-em-publico</id>
    <content type="html">&lt;p&gt;A primeira semana do meu cronograma do segundo semestre dizia apenas: &lt;em&gt;“Deepen my knowledge of Apache Flink”&lt;/em&gt;. Este texto é o resultado dessa semana. Não é um tutorial de alguém que domina o assunto, é o caderno de anotações de alguém que está aprendendo e resolveu escrever enquanto aprende.&lt;/p&gt;
 
 &lt;p&gt;Sempre achei que explicar é a melhor forma de descobrir o que a gente realmente entendeu. Quando escrevo, os buracos aparecem sozinhos: a frase trava, o exemplo não fecha, e fica claro que aquilo ali eu só tinha decorado. Então este artigo é meio egoísta — ele existe primeiro para me ensinar.&lt;/p&gt;
@@ -273,154 +306,6 @@ docker run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot
 &lt;p&gt;Escrever isto me forçou a admitir umas três ou quatro coisas que eu achava que sabia e não sabia. Valeu pelo esforço.&lt;/p&gt;
 
 &lt;p&gt;Próxima semana no cronograma: revisar o roadmap de Data Engineer. Continuo escrevendo enquanto aprendo.&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>Plano de Estudos pro resto de 2026</title>
-   <link href="https://apolzek.github.io/2026/08/13/cronograma-para-nao-levar-a-serio"/>
-   <updated>2026-08-13T00:00:00+00:00</updated>
-   <id>https://apolzek.github.io/2026/08/13/cronograma-para-nao-levar-a-serio</id>
-   <content type="html">&lt;p&gt;devo focar nesses conteudos..&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Semana&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Período&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Conteúdo Fixo&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Conteúdo da Semana&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;10/08 a 16/08&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Deepen my knowledge of Apache Flink&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;17/08 a 23/08&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Review Data Engineer Roadmap&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;24/08 a 30/08&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Review Data Analyst Roadmap&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;31/08 a 06/09&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;System Design Fundamentals&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;07/09 a 13/09&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;eBPF&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;14/09 a 20/09&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Review Golang&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;21/09 a 27/09&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Machine Learning&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;28/09 a 04/10&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Journey to get the CKA certification&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;05/10 a 11/10&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Journey to get the CKA certification&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;12/10 a 18/10&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Journey to get the CKA certification&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;19/10 a 25/10&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;..idk&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;26/10 a 01/11&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;02/11 a 08/11&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;09/11 a 15/11&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;16/11 a 22/11&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;23/11 a 29/11&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;17&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;30/11 a 06/12&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;07/12 a 13/12&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;19&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;14/12 a 20/12&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;20&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;21/12 a 27/12&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;21&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;28/12 a 31/12&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Inglês&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
 </content>
  </entry>
  
