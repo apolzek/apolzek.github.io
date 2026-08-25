@@ -8,6 +8,12 @@ on:
   pull_request:
     branches: [ main ]
 
+env:
+  # Pinned by digest, not by :latest. The tag matches the jekyll version in
+  # Gemfile.lock; the digest is what makes rebuilding an old commit produce the
+  # same site it produced back then.
+  BUILDER_IMAGE: jekyll/builder:4.4.1@sha256:9a1d688659e8e7e0e7413120f94656eefddc81ee1adc2623a731e2f0289fd8cf
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,18 +24,36 @@ jobs:
     - name: 🔖 Stamp the build with the current commit
       run: ./bin/build-stamp.sh
 
-    # Build
-    - name: 👷 Build the site in the jekyll container 
+    # Gems land in the workspace so they survive between runs. Keyed on the
+    # lockfile: a dependency change misses the cache and reinstalls, anything
+    # else reuses it.
+    - name: 📦 Cache gems
+      uses: actions/cache@v4
+      with:
+        path: vendor/bundle
+        key: gems-${{ runner.os }}-${{ hashFiles('Gemfile.lock') }}
+        restore-keys: gems-${{ runner.os }}-
+
+    - name: 👷 Build the site in the jekyll container
       run: |
         docker run \
         -v ${{ github.workspace }}:/srv/jekyll \
-        -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-        jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll &&\
+        -e BUNDLE_PATH=/srv/jekyll/vendor/bundle \
+        ${{ env.BUILDER_IMAGE }} /bin/bash -c "chmod -R 777 /srv/jekyll &&\
         bundle install &&\
         bundle exec jekyll build --future -d build"
-    
+
+    # The only gate between a build and the live site. Without it, a build that
+    # succeeds while producing nonsense - an asset wrapped in a layout, invalid
+    # JSON, a missing stylesheet - publishes anyway.
+    - name: ✅ Verify the build
+      run: ./bin/verify-build.sh build
+
     # Deploy to gh-pages branch
     - name: 🚀 Deploy to Github Pages
+      # Without this a pull request publishes its own contents to the live site,
+      # no merge required.
+      if: github.event_name != 'pull_request'
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         branch: gh-pages # The branch the action should deploy to.
