@@ -1,8 +1,6 @@
 ---
 layout: post
 title: Plano de Estudos pro resto de 2026
-description:
-summary:
 minute: 2
 ---
 

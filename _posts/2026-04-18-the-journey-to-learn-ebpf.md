@@ -1,8 +1,6 @@
 ---
 layout: post
 title: the journey to learn ebpf
-description: A map of questions and a 20-point study path for anyone starting out with eBPF, focused on security and observability.
-summary: A map of questions and a 20-point study path for anyone starting out with eBPF, focused on security and observability.
 # tags: ebpf linux prerequisites
 minute: 15
 ---

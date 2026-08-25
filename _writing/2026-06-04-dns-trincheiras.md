@@ -1,8 +1,6 @@
 ---
 layout: post
 title: DNS por quem já viveu nas trincheiras
-description:
-summary:
 # tags: dns linux
 minute: 10
 ---

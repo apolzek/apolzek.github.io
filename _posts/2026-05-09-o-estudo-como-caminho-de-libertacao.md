@@ -1,8 +1,6 @@
 ---
 layout: post
 title: O estudo como caminho de libertação
-description:
-summary:
 # tags: ebpf bpftrace linux
 minute: 8
 ---

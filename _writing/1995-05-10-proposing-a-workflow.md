@@ -1,8 +1,6 @@
 ---
-description: null
 layout: post
 minute: 7
-summary: null
 title: tracking changes in complex architectures
 ---
 

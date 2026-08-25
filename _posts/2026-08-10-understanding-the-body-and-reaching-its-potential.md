@@ -1,8 +1,6 @@
 ---
 layout: post
 title: Understanding the Body and Reaching Its Potential
-description:
-summary:
 minute: 1
 ---
 

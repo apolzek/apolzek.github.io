@@ -1,8 +1,6 @@
 ---
 layout: post
 title: The 20 Most Valuable Companies in the World (June 2026)
-description:
-summary:
 minute: 5
 ---
 

@@ -1,8 +1,6 @@
 ---
 layout: post
 title: first taste of ebpf
-description:
-summary:
 # tags: ebpf bpftrace linux
 minute: 10
 ---

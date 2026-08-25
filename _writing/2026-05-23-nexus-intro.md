@@ -1,8 +1,6 @@
 ---
 layout: post
 title: Nexus com Lorenço de Ávila da Costa Batista
-description:
-summary:
 secret: true
 password: nexus
 minute: 1

@@ -1,8 +1,6 @@
 ---
 layout: post
 title: Diálogo sobre o Mestre e a Prática
-description:
-summary:
 minute: 5
 ---
 

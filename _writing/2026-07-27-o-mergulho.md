@@ -1,8 +1,6 @@
 ---
 layout: post
 title: O Mergulho
-description:
-summary:
 minute: 5
 ---
 

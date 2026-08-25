@@ -1,8 +1,6 @@
 ---
 layout: post
 title: sollicitudo
-description:
-summary:
 secret: true
 minute: 5
 ---

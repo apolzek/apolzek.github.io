@@ -1,8 +1,6 @@
 ---
 layout: post
 title: A Obra Final
-description:
-summary:
 minute: 14
 ---
 

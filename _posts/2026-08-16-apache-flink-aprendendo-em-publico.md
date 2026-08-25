@@ -1,8 +1,6 @@
 ---
 layout: post
-title: Apache Flink ensinando enquanto aprendo
-description: Anotações de estudo sobre Apache Flink - arquitetura, tempo de evento, watermarks, estado e checkpoints - escritas enquanto aprendo.
-summary: Anotações de estudo sobre Apache Flink - arquitetura, tempo de evento, watermarks, estado e checkpoints - escritas enquanto aprendo.
+title: "Apache Flink: Aprendendo em Público"
 # tags: flink streaming data-engineering
 minute: 12
 ---

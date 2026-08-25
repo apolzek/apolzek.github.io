@@ -1,8 +1,6 @@
 ---
 layout: post
 title: Velhas Armadilhas, Novas Vítimas
-description:
-summary:
 minute: 5
 ---
 

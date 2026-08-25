@@ -63,8 +63,6 @@ Create a file in `_posts/` named `YYYY-MM-DD-slug.md` with the front matter:
 ---
 layout: post
 title: post title
-description: short blurb (optional)
-summary:
 # tags: tag1 tag2
 minute: 6
 ---

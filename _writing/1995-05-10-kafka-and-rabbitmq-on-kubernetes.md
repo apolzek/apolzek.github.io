@@ -1,8 +1,6 @@
 ---
 layout: post
 title: Kafka and RabbitMQ on Kubernetes using Kind
-description:
-summary:
 # tags: kafka kind kubernetes rabbitmq
 minute: 10
 ---

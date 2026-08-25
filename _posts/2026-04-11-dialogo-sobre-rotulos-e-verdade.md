@@ -1,8 +1,6 @@
 ---
 layout: post
 title: Diálogo sobre os Rótulos e a Verdade
-description:
-summary:
 # tags: filosofia dialogo socrates
 minute: 4
 ---
