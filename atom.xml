@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-08-25T13:27:30+00:00</updated>
+ <updated>2026-08-25T10:32:01-03:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -16,7 +16,7 @@
  <entry>
    <title>Jornada para contribuir com o OTel Collector — Parte 1: o inventário do que eu não sei</title>
    <link href="https://apolzek.github.io/2026/08/25/jornada-otel-collector-parte-1"/>
-   <updated>2026-08-25T00:00:00+00:00</updated>
+   <updated>2026-08-25T00:00:00-03:00</updated>
    <id>https://apolzek.github.io/2026/08/25/jornada-otel-collector-parte-1</id>
    <content type="html">&lt;p&gt;O plano era simples: escolher uma issue com a label &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;good first issue&lt;/code&gt;, mandar um PR e ir dormir com a sensação boa de ter contribuído para o OpenTelemetry. O que aconteceu foi que eu abri o repositório, li três arquivos e percebi que não tinha ideia do que estava acontecendo ali.&lt;/p&gt;
 
@@ -49,7 +49,7 @@
  <entry>
    <title>Apache Flink: Aprendendo em Público</title>
    <link href="https://apolzek.github.io/2026/08/16/apache-flink-aprendendo-em-publico"/>
-   <updated>2026-08-16T00:00:00+00:00</updated>
+   <updated>2026-08-16T00:00:00-03:00</updated>
    <id>https://apolzek.github.io/2026/08/16/apache-flink-aprendendo-em-publico</id>
    <content type="html">&lt;p&gt;A primeira semana do meu cronograma do segundo semestre dizia apenas: &lt;em&gt;“Deepen my knowledge of Apache Flink”&lt;/em&gt;. Este texto é o resultado dessa semana. Não é um tutorial de alguém que domina o assunto, é o caderno de anotações de alguém que está aprendendo e resolveu escrever enquanto aprende.&lt;/p&gt;
 
@@ -312,7 +312,7 @@ docker run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot
  <entry>
    <title>A Obra Final</title>
    <link href="https://apolzek.github.io/2026/08/12/a-obra-final"/>
-   <updated>2026-08-12T00:00:00+00:00</updated>
+   <updated>2026-08-12T00:00:00-03:00</updated>
    <id>https://apolzek.github.io/2026/08/12/a-obra-final</id>
    <content type="html">&lt;p&gt;Toda obra final carrega o peso de tudo o que veio antes dela.&lt;/p&gt;
 
@@ -431,7 +431,7 @@ docker run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot
  <entry>
    <title>Understanding the Body and Reaching Its Potential</title>
    <link href="https://apolzek.github.io/2026/08/10/understanding-the-body-and-reaching-its-potential"/>
-   <updated>2026-08-10T00:00:00+00:00</updated>
+   <updated>2026-08-10T00:00:00-03:00</updated>
    <id>https://apolzek.github.io/2026/08/10/understanding-the-body-and-reaching-its-potential</id>
    <content type="html">&lt;p&gt;Eu não vou negar: aprendi a estudar tarde. Hoje, sinto uma leve ansiedade quando percebo que não terei tempo suficiente para estudar tudo aquilo que tenho vontade. Já estou na casa dos trinta, e talvez essa sensação venha justamente da consciência GRITANDO de que o tempo é limitado.&lt;/p&gt;
 
@@ -496,7 +496,7 @@ docker run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot
  <entry>
    <title>Mito de Er</title>
    <link href="https://apolzek.github.io/2026/08/04/mito-de-er"/>
-   <updated>2026-08-04T00:00:00+00:00</updated>
+   <updated>2026-08-04T00:00:00-03:00</updated>
    <id>https://apolzek.github.io/2026/08/04/mito-de-er</id>
    <content type="html">&lt;p&gt;Este é um texto sobre o Mito de Er, da República de Platão. É um livro que li sem possuir, naquele momento, os fundamentos necessários para compreendê-lo plenamente. Ainda assim, sua leitura se fez necessária para a fase da vida pela qual eu estava passando. Antes de lê-lo, pesquisei sobre a obra, já conhecia a biografia de Platão e havia despertado meu interesse pela filosofia.&lt;/p&gt;
 
@@ -602,7 +602,7 @@ docker run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot
  <entry>
    <title>Diálogo sobre o Mestre e a Prática</title>
    <link href="https://apolzek.github.io/2026/07/15/dialogo-sobre-o-mestre-e-a-pratica"/>
-   <updated>2026-07-15T00:00:00+00:00</updated>
+   <updated>2026-07-15T00:00:00-03:00</updated>
    <id>https://apolzek.github.io/2026/07/15/dialogo-sobre-o-mestre-e-a-pratica</id>
    <content type="html">&lt;p&gt;&lt;em&gt;Cenário: Sócrates caminha próximo à palestra quando Glauco sai dela às pressas, ainda com poeira nos ombros e visivelmente contrariado.&lt;/em&gt;&lt;/p&gt;
 
@@ -687,7 +687,7 @@ docker run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot
  <entry>
    <title>Velhas Armadilhas, Novas Vítimas</title>
    <link href="https://apolzek.github.io/2026/07/04/velhas-armadilhas-novas-vitimas"/>
-   <updated>2026-07-04T00:00:00+00:00</updated>
+   <updated>2026-07-04T00:00:00-03:00</updated>
    <id>https://apolzek.github.io/2026/07/04/velhas-armadilhas-novas-vitimas</id>
    <content type="html">&lt;p&gt;Em um mundo onde há excesso de informação, o maior desafio já não é encontrar conteúdo, mas &lt;strong&gt;separar o que realmente agrega valor do que apenas prende sua atenção&lt;/strong&gt;. Neste artigo, compartilho estratégias práticas para evitar perder horas com vídeos e materiais que parecem educativos, mas entregam pouco conhecimento de fato, uma situação muito comum no YouTube, que hoje é uma das minhas principais fontes de estudo.&lt;/p&gt;
 
@@ -721,7 +721,7 @@ docker run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot
  <entry>
    <title>The 20 Most Valuable Companies in the World (June 2026)</title>
    <link href="https://apolzek.github.io/2026/06/06/most-valuable-companies-top20"/>
-   <updated>2026-06-06T00:00:00+00:00</updated>
+   <updated>2026-06-06T00:00:00-03:00</updated>
    <id>https://apolzek.github.io/2026/06/06/most-valuable-companies-top20</id>
    <content type="html">&lt;p&gt;If your goal is &lt;strong&gt;US$5 trillion&lt;/strong&gt; and you earn &lt;strong&gt;US$200,000 per day&lt;/strong&gt;, it would take &lt;strong&gt;25,000,000 days&lt;/strong&gt;, or approximately &lt;strong&gt;68,493 years&lt;/strong&gt;, to reach that amount. HAHAHAHAHA &lt;em&gt;Just a joke, have a good day ;P&lt;/em&gt;&lt;/p&gt;
 
@@ -867,7 +867,7 @@ docker run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot
  <entry>
    <title>O estudo como caminho de libertação</title>
    <link href="https://apolzek.github.io/2026/05/09/o-estudo-como-caminho-de-libertacao"/>
-   <updated>2026-05-09T00:00:00+00:00</updated>
+   <updated>2026-05-09T00:00:00-03:00</updated>
    <id>https://apolzek.github.io/2026/05/09/o-estudo-como-caminho-de-libertacao</id>
    <content type="html">&lt;h2 id=&quot;reflexões-de-um-ex-péssimo-aluno&quot;&gt;Reflexões de um ex-péssimo aluno&lt;/h2&gt;
 
@@ -938,7 +938,7 @@ docker run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot
  <entry>
    <title>How to set up a Kubernetes cluster to host your static website</title>
    <link href="https://apolzek.github.io/2026/05/02/kubernetes-static-website"/>
-   <updated>2026-05-02T00:00:00+00:00</updated>
+   <updated>2026-05-02T00:00:00-03:00</updated>
    <id>https://apolzek.github.io/2026/05/02/kubernetes-static-website</id>
    <content type="html">&lt;p&gt;&lt;strong&gt;don’t do it&lt;/strong&gt;&lt;/p&gt;
 </content>
@@ -947,7 +947,7 @@ docker run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot
  <entry>
    <title>first taste of ebpf</title>
    <link href="https://apolzek.github.io/2026/04/25/first-taste-of-ebpf"/>
-   <updated>2026-04-25T00:00:00+00:00</updated>
+   <updated>2026-04-25T00:00:00-03:00</updated>
    <id>https://apolzek.github.io/2026/04/25/first-taste-of-ebpf</id>
    <content type="html">&lt;p&gt;As the article title suggests, I’m not going to dive into writing eBPF programs, and honestly I don’t know enough to talk about that anyway. What we’re really going to do is explore what’s possible straight from the command line using tracing tools like &lt;strong&gt;bpftrace&lt;/strong&gt; and similar ones. This is the moment where we get to use our imagination to see what we can pull off with eBPF that’s actually useful and, at the same time, helps us understand this incredibly powerful technology. Let’s get hands on.&lt;/p&gt;
 
@@ -984,7 +984,7 @@ docker run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot
  <entry>
    <title>the journey to learn ebpf</title>
    <link href="https://apolzek.github.io/2026/04/18/the-journey-to-learn-ebpf"/>
-   <updated>2026-04-18T00:00:00+00:00</updated>
+   <updated>2026-04-18T00:00:00-03:00</updated>
    <id>https://apolzek.github.io/2026/04/18/the-journey-to-learn-ebpf</id>
    <content type="html">&lt;p&gt;This article has two parts. The first is a map of questions about eBPF, moving from
 general to specific, with answers that are deliberately concise. The second is a
@@ -1516,7 +1516,7 @@ production.&lt;/p&gt;
  <entry>
    <title>Diálogo sobre os Rótulos e a Verdade</title>
    <link href="https://apolzek.github.io/2026/04/11/dialogo-sobre-rotulos-e-verdade"/>
-   <updated>2026-04-11T00:00:00+00:00</updated>
+   <updated>2026-04-11T00:00:00-03:00</updated>
    <id>https://apolzek.github.io/2026/04/11/dialogo-sobre-rotulos-e-verdade</id>
    <content type="html">&lt;p&gt;&lt;em&gt;Cenário: Sócrates encontra Glauco no pórtico de uma praça, onde este examina, irritado, uma tábua cheia de inscrições.&lt;/em&gt;&lt;/p&gt;
 
@@ -1600,7 +1600,7 @@ production.&lt;/p&gt;
  <entry>
    <title>starting here</title>
    <link href="https://apolzek.github.io/2026/04/04/apolzek"/>
-   <updated>2026-04-04T00:00:00+00:00</updated>
+   <updated>2026-04-04T00:00:00-03:00</updated>
    <id>https://apolzek.github.io/2026/04/04/apolzek</id>
    <content type="html">&lt;p&gt;Blog reset, May 18, 2026&lt;/p&gt;
 

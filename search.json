@@ -5,7 +5,7 @@
       "category" : "",
       "tags"     : "",
       "url"      : "/2026/08/25/jornada-otel-collector-parte-1",
-      "date"     : "2026-08-25 00:00:00 +0000",
+      "date"     : "2026-08-25 00:00:00 -0300",
       "secret"   : false,
       "password" : null
     } ,
@@ -15,7 +15,7 @@
       "category" : "",
       "tags"     : "",
       "url"      : "/2026/08/16/apache-flink-aprendendo-em-publico",
-      "date"     : "2026-08-16 00:00:00 +0000",
+      "date"     : "2026-08-16 00:00:00 -0300",
       "secret"   : false,
       "password" : null
     } ,
@@ -25,7 +25,7 @@
       "category" : "",
       "tags"     : "",
       "url"      : "/2026/08/12/a-obra-final",
-      "date"     : "2026-08-12 00:00:00 +0000",
+      "date"     : "2026-08-12 00:00:00 -0300",
       "secret"   : false,
       "password" : null
     } ,
@@ -35,7 +35,7 @@
       "category" : "",
       "tags"     : "",
       "url"      : "/2026/08/10/understanding-the-body-and-reaching-its-potential",
-      "date"     : "2026-08-10 00:00:00 +0000",
+      "date"     : "2026-08-10 00:00:00 -0300",
       "secret"   : false,
       "password" : null
     } ,
@@ -45,7 +45,7 @@
       "category" : "",
       "tags"     : "",
       "url"      : "/2026/08/04/mito-de-er",
-      "date"     : "2026-08-04 00:00:00 +0000",
+      "date"     : "2026-08-04 00:00:00 -0300",
       "secret"   : false,
       "password" : null
     } ,
@@ -55,7 +55,7 @@
       "category" : "",
       "tags"     : "",
       "url"      : "/2026/07/15/dialogo-sobre-o-mestre-e-a-pratica",
-      "date"     : "2026-07-15 00:00:00 +0000",
+      "date"     : "2026-07-15 00:00:00 -0300",
       "secret"   : false,
       "password" : null
     } ,
@@ -65,7 +65,7 @@
       "category" : "",
       "tags"     : "",
       "url"      : "/2026/07/04/velhas-armadilhas-novas-vitimas",
-      "date"     : "2026-07-04 00:00:00 +0000",
+      "date"     : "2026-07-04 00:00:00 -0300",
       "secret"   : false,
       "password" : null
     } ,
@@ -75,7 +75,7 @@
       "category" : "",
       "tags"     : "",
       "url"      : "/2026/06/06/most-valuable-companies-top20",
-      "date"     : "2026-06-06 00:00:00 +0000",
+      "date"     : "2026-06-06 00:00:00 -0300",
       "secret"   : false,
       "password" : null
     } ,
@@ -85,7 +85,7 @@
       "category" : "",
       "tags"     : "",
       "url"      : "/2026/05/09/o-estudo-como-caminho-de-libertacao",
-      "date"     : "2026-05-09 00:00:00 +0000",
+      "date"     : "2026-05-09 00:00:00 -0300",
       "secret"   : false,
       "password" : null
     } ,
@@ -95,7 +95,7 @@
       "category" : "",
       "tags"     : "",
       "url"      : "/2026/05/02/kubernetes-static-website",
-      "date"     : "2026-05-02 00:00:00 +0000",
+      "date"     : "2026-05-02 00:00:00 -0300",
       "secret"   : false,
       "password" : null
     } ,
@@ -105,7 +105,7 @@
       "category" : "",
       "tags"     : "",
       "url"      : "/2026/04/25/first-taste-of-ebpf",
-      "date"     : "2026-04-25 00:00:00 +0000",
+      "date"     : "2026-04-25 00:00:00 -0300",
       "secret"   : false,
       "password" : null
     } ,
@@ -115,7 +115,7 @@
       "category" : "",
       "tags"     : "",
       "url"      : "/2026/04/18/the-journey-to-learn-ebpf",
-      "date"     : "2026-04-18 00:00:00 +0000",
+      "date"     : "2026-04-18 00:00:00 -0300",
       "secret"   : false,
       "password" : null
     } ,
@@ -125,7 +125,7 @@
       "category" : "",
       "tags"     : "",
       "url"      : "/2026/04/11/dialogo-sobre-rotulos-e-verdade",
-      "date"     : "2026-04-11 00:00:00 +0000",
+      "date"     : "2026-04-11 00:00:00 -0300",
       "secret"   : false,
       "password" : null
     } ,
@@ -135,7 +135,7 @@
       "category" : "",
       "tags"     : "",
       "url"      : "/2026/04/04/apolzek",
-      "date"     : "2026-04-04 00:00:00 +0000",
+      "date"     : "2026-04-04 00:00:00 -0300",
       "secret"   : false,
       "password" : null
     } 
