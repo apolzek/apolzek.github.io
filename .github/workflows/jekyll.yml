@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
 
     # Jekyll cannot read git, so record the commit for the home page build stamp
     - name: 🔖 Stamp the build with the current commit
