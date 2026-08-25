@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Jornada para contribuir com o OTel Collector — Parte 1"
-minute: 14
+title: "Jornada para contribuir com o OTel Collector, parte 1"
+minute: 10
 ---
 
 O plano era simples: escolher uma issue com a label `good first issue`, mandar um PR e ir dormir com a sensação boa de ter contribuído para o OpenTelemetry Collector. O que aconteceu foi que eu abri o repositório, li três arquivos e percebi que não tinha ideia do que estava acontecendo ali xD
@@ -27,148 +27,76 @@ Golang =))
 **A burocracia boa.** CLA assinado, changelog gerado por ferramenta em vez de escrito na mão, `metadata.yaml` que gera código, testes de ciclo de vida que rodam sozinhos, e um CODEOWNERS que decide quem precisa aprovar. Nada disso é difícil. Tudo isso é invisível até você tropeçar.
 
 
-#### Glossário: o Go que aparece quando você abre um componente
+#### O Go que aparece quando você abre um componente
 
-Esta parte é o que eu queria ter tido no primeiro dia. Peguei o `receiver/nginxreceiver` do `opentelemetry-collector-contrib` como fio condutor, porque ele é pequeno e tem quase tudo. Os arquivos dele são estes:
+Escrevi esta parte pensando em mim uma semana atrás. Usei o `receiver/nginxreceiver` do `opentelemetry-collector-contrib` como referência, porque ele é pequeno e tem quase tudo que existe nos outros. A ideia aqui não é ensinar a sintaxe do Go, é explicar por que o código está organizado desse jeito.
 
-```
-config.go   factory.go   scraper.go   metadata.yaml   go.mod
-config_test.go   factory_test.go   scraper_test.go
-generated_component_test.go   generated_package_test.go
-documentation.md   internal/   testdata/
-```
+#### Como o repositório é organizado
 
-Quase todo componente do repositório tem essa mesma forma. Entender esses arquivos é entender o projeto.
+A primeira coisa que quebra a intuição é que o `contrib` não é um projeto Go, são mais de quatrocentos. Cada componente tem seu próprio `go.mod`, ou seja, é um módulo independente, com dependências e versão próprias.
 
-**Módulo (`go.mod`)** — o repositório tem mais de 400 arquivos `go.mod`. Cada componente é um módulo Go independente, com suas próprias dependências e sua própria versão. Isso existe para que quem usa só o `nginxreceiver` não arraste as dependências dos outros 400. Na prática, para você: rodar `go test` na raiz não testa o repositório inteiro, e adicionar uma dependência mexe no `go.mod` daquele componente, não num arquivo central.
+A razão é prática. O receiver do nginx precisa de uma biblioteca de nginx, o exporter da AWS precisa do SDK da AWS. Se tudo morasse num módulo só, quem quisesse apenas ler métricas de nginx carregaria junto o SDK da AWS inteiro. Separar é o que permite montar um binário enxuto.
 
-**Interface** — em Go, uma interface é um contrato de métodos, e um tipo a satisfaz sem declarar nada. O contrato base aqui é `component.Component`, que pede `Start(context.Context, component.Host) error` e `Shutdown(context.Context) error`. Você nunca escreve "implements": basta ter os métodos com a assinatura certa. É por isso que, lendo um componente, você não encontra a palavra que ligaria o seu código ao framework — a ligação é implícita, e essa foi a coisa que mais me confundiu no começo.
+O efeito colateral para quem contribui é que não existe "rodar os testes do projeto". Você roda os testes do componente em que está mexendo, e adicionar uma dependência mexe no `go.mod` daquela pasta, não num arquivo central.
 
-**Factory** — o ponto de entrada de todo componente. É uma função que devolve um objeto capaz de criar o componente sob demanda, com a configuração padrão junto:
+Dentro de cada componente você encontra uma pasta `internal/`. Isso não é convenção do OpenTelemetry, é regra da linguagem: o Go proíbe que código de fora importe qualquer coisa que esteja sob um `internal/`. É a maneira do Go de dizer "isto aqui é assunto interno, pode mudar sem aviso".
 
-```go
-func NewFactory() receiver.Factory {
-	return receiver.NewFactory(
-		metadata.Type,
-		createDefaultConfig,
-		receiver.WithMetrics(createMetricsReceiver, metadata.MetricsStability),
-	)
-}
-```
+#### As peças e como elas se encaixam
 
-O `WithMetrics` diz que este receiver produz métricas. Existem `WithTraces` e `WithLogs` para os outros sinais. Um componente que trabalha com os três registra os três, e cada um vem com seu próprio nível de estabilidade.
+O Collector é feito de cinco tipos de peça: receiver recebe, processor transforma, exporter envia, connector liga um pipeline a outro, extension oferece serviços de apoio como autenticação. Antes de escrever qualquer linha, você precisa saber em qual dessas caixas o seu problema mora.
 
-**`component.Config` e type assertion** — a configuração trafega como uma interface vazia, e a primeira coisa que a função de criação faz é converter para o tipo concreto:
+A parte que mais me confundiu foi descobrir como essas peças se conectam ao Collector, porque não existe nenhuma linha de código dizendo isso. Em Go, uma interface é uma lista de métodos, e qualquer tipo que tenha esses métodos a satisfaz automaticamente. Não se declara "esta classe implementa aquela interface", como em Java ou C#. Simplesmente funciona quando as assinaturas batem.
 
-```go
-cfg := rConf.(*Config)
-```
+Uma analogia que me ajudou: em outras linguagens, entrar num clube exige preencher a ficha de inscrição. Em Go, você entra por já vestir o uniforme certo. Ninguém registra nada, o porteiro só confere a roupa.
 
-Esse `.(*Config)` é uma type assertion. Se o tipo não bater, entra em pânico — por isso vários componentes usam a forma de duas saídas, `cfg, ok := rConf.(*Config)`, e devolvem erro quando `ok` é falso.
+O contrato mínimo do Collector chama `component.Component` e pede dois métodos: um para ligar e um para desligar. É isso. Se o seu tipo tem os dois, ele é um componente, e essa é a razão de você procurar a "ligação" no código e nunca encontrar.
 
-**`mapstructure` e `squash`** — as tags nos campos do struct dizem como o YAML do usuário vira Go:
+O que existe de explícito é a factory. Ela não é o componente, é a fábrica dele: um objeto que sabe produzir a configuração padrão e criar o componente quando o Collector pedir. A diferença importa porque o Collector precisa conhecer a configuração padrão antes de existir qualquer componente, para validar o YAML do usuário. A factory declara também com quais sinais ela trabalha, métricas, traces ou logs, e cada um pode estar num nível de maturidade diferente.
 
-```go
-type Config struct {
-	ControllerConfig scraperhelper.ControllerConfig `mapstructure:",squash"`
-	ClientConfig     confighttp.ClientConfig        `mapstructure:",squash"`
-}
-```
+A configuração viaja pelo sistema como um tipo genérico, e a primeira coisa que a fábrica faz é convertê-la para o tipo concreto do seu componente. Isso se chama type assertion e é o equivalente Go de abrir uma encomenda conferindo se veio o que estava na etiqueta. Se não veio, ou você trata o erro ou o programa quebra ali.
 
-`squash` achata o struct embutido: em vez de o usuário escrever `client_config: {endpoint: ...}`, ele escreve `endpoint:` direto. É assim que blocos comuns como timeout, TLS e retry aparecem em dezenas de componentes com a mesma grafia sem ninguém reescrever a definição.
+O YAML vira struct por meio de anotações nos campos. A que mais aparece é a que achata um struct dentro do outro, e é ela que faz opções comuns como timeout, TLS e retry terem exatamente a mesma grafia em dezenas de componentes sem ninguém redigitar nada.
 
-**`_ struct{}`** — aquele campo anônimo no fim de alguns `Config`. É um truque para impedir que alguém construa o struct sem nomear os campos (`Config{a, b}`), o que quebraria silenciosamente na hora que um campo novo fosse adicionado no meio.
+#### Como o dado atravessa o pipeline
 
-**`context.Context`** — o primeiro parâmetro de quase toda função do projeto. Carrega cancelamento e prazo: quando o Collector desliga, ele cancela o context, e todo mundo que estava esperando algo deve desistir. Você o recebe em `Start`, em `Shutdown`, no `scrape` e no consumo de dados. A regra prática é: nunca guarde um `Context` dentro de um struct, passe-o adiante; e sempre respeite `ctx.Done()` em qualquer espera longa.
+Não existe um maestro. Cada componente recebe, na hora em que é criado, uma referência ao próximo da fila, e entrega o resultado a ele. O pipeline que você desenha no YAML é apenas essa corrente sendo montada na inicialização. Um processor não sabe quem veio antes nem para onde vai no fim, conhece só o vizinho seguinte.
 
-**Goroutine e `CancelFunc`** — a goroutine é a unidade de concorrência do Go, criada com `go func() { ... }()`. Receivers que ficam ouvindo uma porta vivem dentro de uma. O padrão do projeto é guardar o cancelamento no struct e usá-lo no `Shutdown`:
+O que trafega por essa corrente é o que o projeto chama de pdata, os tipos `pmetric`, `plog`, `ptrace` e `pcommon`. Eles parecem structs normais e não são. São invólucros finos sobre uma estrutura compartilhada, então se comportam como referência: copiar a variável não copia o dado.
 
-```go
-func (r *statsdReceiver) Start(ctx context.Context, host component.Host) error {
-	ctx, r.cancel = context.WithCancel(ctx)
-	...
-	go func() {
-		if err := r.server.ListenAndServe(...); err != nil { ... }
-	}()
-```
+A analogia que me fez entender: pdata é a chave de um armário, não o conteúdo do armário. Passar a chave adiante não duplica nada. Se duas pessoas têm a chave e uma mexe lá dentro, a outra vê a mudança. Foi o conceito que mais me custou tempo, porque o compilador não reclama e o erro só aparece quando dois destinos do mesmo pipeline começam a interferir um no outro.
 
-Uma goroutine que ninguém encerra é um vazamento, e os testes do repositório verificam exatamente isso (veja `goleak`, mais abaixo).
+É por isso que existe uma declaração de que o componente altera os dados que recebe. Ela não é decorativa. Quando um pipeline se ramifica para vários destinos, o Collector consulta essa declaração para decidir se precisa fazer uma cópia antes de entregar. Declarar errado é a receita para corrupção difícil de rastrear.
 
-**`consumer.Metrics` e `nextConsumer`** — o encanamento. Cada componente recebe o próximo da fila e entrega os dados a ele. Um processor tem a assinatura `createMetricsProcessor(ctx, set, cfg, nextConsumer consumer.Metrics)`, e é esse `nextConsumer` que forma o pipeline do arquivo de configuração. Não existe um orquestrador central mandando nos componentes: cada um só conhece o próximo.
+O acesso a esses dados também não é o Go idiomático que você aprendeu. Em vez de percorrer uma lista com `range`, você navega perguntando o tamanho e pedindo o item de cada posição. É mais verboso de propósito: o Collector move volumes altos, e essa forma evita cópias que o `range` faria.
 
-**`Capabilities` e `MutatesData`** — a declaração de que o componente altera os dados que recebe:
+#### Tempo, concorrência e desligamento
 
-```go
-var processorCapabilities = consumer.Capabilities{MutatesData: true}
-```
+Quase toda função do projeto recebe um `context` como primeiro parâmetro. Ele carrega prazo e cancelamento, e serve para propagar uma ordem de "pode parar" por toda a cadeia de chamadas.
 
-Isso não é decorativo. Quando um pipeline se ramifica para vários destinos, o Collector usa essa flag para decidir se precisa copiar os dados antes de entregar. Declarar errado gera corrupção difícil de rastrear.
+Pense num bilhete que passa de mão em mão junto com o trabalho. Quando o Collector começa a desligar, ele risca o bilhete original, e todo mundo que estiver segurando uma cópia percebe e desiste do que estava fazendo. A regra prática é nunca guardar o context dentro de um struct, sempre passá-lo adiante, e verificá-lo em qualquer espera longa.
 
-**pdata (`pmetric`, `plog`, `ptrace`, `pcommon`)** — as estruturas que carregam telemetria. Não são structs comuns: são wrappers finos sobre a representação interna, e por isso se comportam como referências. Copiar a variável não copia o dado. O acesso também é diferente do Go idiomático — em vez de `range`, você navega com `Len()` e `At(i)`:
+Receivers que ficam ouvindo uma porta rodam dentro de goroutines, que são a unidade de concorrência do Go: baratas o suficiente para você criar milhares. O padrão do projeto é guardar a função de cancelamento no struct do componente na hora de ligar, e chamá-la na hora de desligar. Sem isso a goroutine continua viva depois que o componente morreu, o que é um vazamento, e o projeto tem testes que reprovam exatamente esse caso.
 
-```go
-for i := 0; i < resourceMetricsSlice.Len(); i++ {
-	rm := resourceMetricsSlice.At(i)
-	...
-}
-```
+#### O que a máquina escreve por você
 
-Esse formato existe por desempenho, já que o Collector move volumes altos. É o assunto que mais me custou tempo.
+Boa parte do código de um componente não é escrita à mão, e tentar escrevê-la é o erro que faz um PR voltar da revisão.
 
-**Helpers** — pacotes que implementam o trabalho repetitivo para você não reescrever ciclo de vida, agendamento e observabilidade em cada componente. Os que você mais encontra: `scraperhelper` (agenda a coleta em intervalos e cuida do controller), `processorhelper` (transforma uma função `processMetrics` num processor completo), `exporterhelper` (fila, retry, timeout) e `receiverhelper` (o `ObsReport`, que emite as métricas internas do próprio componente). Reescrever à mão o que um helper já faz é o motivo mais comum de um PR voltar para revisão.
+Existem pacotes de apoio, os helpers, que já implementam o trabalho repetitivo. Um cuida de agendar a coleta em intervalos regulares, outro transforma uma função simples de transformação num processor completo, outro cuida de fila, retry e timeout no envio. São andaimes prontos. Se você está escrevendo um laço com timer para coletar de tempos em tempos, provavelmente está reimplementando um deles.
 
-**`internal/`** — não é convenção do projeto, é regra da linguagem: pacotes dentro de um diretório `internal/` só podem ser importados de dentro daquela subárvore. É onde mora o código gerado e o que não é API pública do componente.
+Existe também um gerador de código. Você descreve o componente num arquivo `metadata.yaml`: o tipo, o nível de estabilidade, quem são os donos, e cada métrica com sua unidade e seus atributos. Uma ferramenta lê esse arquivo e gera o código Go que registra as métricas, a documentação em markdown e boa parte dos testes.
 
-**mdatagen e `metadata.yaml`** — o gerador de código do projeto. Você descreve o componente em YAML — tipo, estabilidade, donos, e cada métrica com unidade e atributos — e o `mdatagen` gera o `internal/metadata`, a `documentation.md` e parte dos testes:
+É a planta baixa gerando a casa. Para adicionar uma métrica você edita o YAML e roda a geração, não escreve o Go. Os arquivos gerados começam com um aviso de que não devem ser editados, e o CI compara o que está no repositório com o que a ferramenta produziria, reprovando se alguém mexeu na mão.
 
-```yaml
-status:
-  class: receiver
-  stability:
-    beta: [metrics]
-  distributions: [contrib]
-  codeowners:
-    active: [colelaven, ishleenk17]
-```
+#### Como se prova que funciona
 
-Consequência prática: para adicionar ou mudar uma métrica você edita o YAML e roda `make generate`, não escreve o Go na mão.
+Os testes usam dublês para tudo que está em volta: um consumidor que descarta o que recebe, uma configuração vazia de mentira. Isso deixa o teste focado no seu componente, sem precisar de um Collector inteiro de pé.
 
-**Código gerado** — arquivos que começam com `// Code generated by mdatagen. DO NOT EDIT.` Editar um deles significa perder a mudança na próxima geração, e o CI acusa a divergência.
+Os mais interessantes são os que você ganha de graça. O gerador cria um teste de ciclo de vida que liga o componente, desliga, liga de novo, desliga sem nunca ter ligado, e verifica que nada disso quebra. E há uma verificação, no fim de cada pacote de testes, de que não sobrou nenhuma goroutine viva. É esse par que pega recurso não liberado e vazamento, sem que você escreva uma linha.
 
-**`MetricsBuilder`** — o objeto gerado a partir do `metadata.yaml` que você usa para registrar valores. Em vez de montar a estrutura pdata na mão, você chama métodos com nome tipado:
+#### O que o projeto pede de você
 
-```go
-now := pcommon.NewTimestampFromTime(time.Now())
-r.mb.RecordNginxRequestsDataPoint(now, stats.Requests)
-```
+O changelog não é escrito no arquivo de changelog. Cada PR adiciona um YAML pequeno numa pasta própria, dizendo o tipo da mudança, o componente afetado, uma frase de descrição e a issue relacionada. A release junta tudo. Mudanças que não afetam quem usa dispensam o arquivo, mas precisam ser marcadas como tal no título do PR. Esquecer isso é o motivo mais comum de CI vermelho num primeiro PR.
 
-**`Settings` e `TelemetrySettings`** — o que o Collector entrega ao componente: logger, tracer, meter e informações de build. É de onde sai o `zap.Logger`, a biblioteca de log estruturado usada em todo o projeto:
+Cada componente tem donos declarados no próprio `metadata.yaml`, e são eles que aprovam. Marcar as pessoas certas é o que faz a revisão andar.
 
-```go
-r.settings.Logger.Error("Failed to fetch nginx stats", zap.Error(err))
-```
-
-**`component.Host`** — a visão que o componente tem do processo em volta. Serve principalmente para alcançar extensions, por exemplo para obter um cliente HTTP já configurado com autenticação: `r.cfg.ClientConfig.ToClient(ctx, host.GetExtensions(), r.settings)`.
-
-**Testes** — o repositório usa `testify` (`require` e `assert`) e um conjunto de pacotes de apoio terminados em `test`: `componenttest`, `receivertest`, `consumertest`. O padrão que aparece em todo componente é o dublê que não faz nada, `consumertest.NewNop()`, e as configurações vazias, `receivertest.NewNopSettings(typ)`.
-
-**Testes de ciclo de vida** — gerados pelo `mdatagen` no `generated_component_test.go`. Eles criam o componente, sobem, derrubam, e repetem — checando que `Shutdown` funciona mesmo sem `Start`, e que subir duas vezes não quebra. É o teste que pega goroutine vazada e recurso não liberado, e ele existe sem você escrever nada.
-
-**`goleak`** — a biblioteca que faz o teste falhar se sobrar goroutine viva no fim. É o `generated_package_test.go`. Se o seu componente esquecer de encerrar algo, é aqui que você descobre.
-
-**`testdata/`** — os YAML de configuração usados nos testes, carregados com `confmaptest.LoadConf`. É o jeito do projeto de testar que a configuração do usuário é interpretada como se espera.
-
-**chloggen** — o changelog não é escrito no `CHANGELOG.md`. Cada PR adiciona um arquivo YAML em `.chloggen/`, e a release junta tudo:
-
-```yaml
-change_type: bug_fix        # ou breaking, deprecation, new_component, enhancement
-component: receiver/nginx
-note: "Uma frase sobre a mudança"
-issues: [12345]
-```
-
-Mudanças que não afetam quem usa entram como `[chore]` no título do PR e dispensam o arquivo. Esquecer o chloggen é o motivo mais comum de CI vermelho num primeiro PR.
-
-**CODEOWNERS** — cada componente tem donos declarados no próprio `metadata.yaml`, e são eles que precisam aprovar. Marcar a pessoa certa no PR é o que faz a revisão andar.
-
-**Estabilidade e distribuições** — `development`, `alpha`, `beta`, `stable`, e o campo `distributions` dizendo em quais binários oficiais o componente entra. Isso define o quanto você pode quebrar compatibilidade: em `alpha` mudar uma opção de configuração é aceitável, em `beta` já não é.
+E cada componente tem um nível de estabilidade, de `development` até `stable`, além da lista de distribuições oficiais em que ele entra. Isso define o quanto você pode quebrar compatibilidade: mudar o nome de uma opção de configuração é aceitável em `alpha` e é um problema sério em `beta`.
