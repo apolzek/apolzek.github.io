@@ -6,7 +6,7 @@ layout: default
     <div class="build-stamp">
         <a href="{{ site.repo }}/commit/{{ site.data.build.commit_full }}"
            title="View this commit on GitHub" target="_blank" rel="noopener noreferrer">{{ site.data.build.commit }}</a>
-        <time datetime="{{ site.data.build.date | date_to_xmlschema }}">&middot; {{ site.data.build.date_display }}</time>
+        <time datetime="{{ site.data.build.date | date_to_xmlschema }}">{{ site.data.build.date_display }}</time>
     </div>
     {% endif %}
     <div class="flex-row-between">
@@ -169,15 +169,17 @@ layout: default
         text-align: center;
         font-size: 0.7rem;
         line-height: 1.4;
-        color: rgba(128, 128, 128, 0.7);
         margin-bottom: 0.9rem;
     }
 
     /* The commit hash links to GitHub but is styled exactly like the date
-       beside it: no underline, no hover colour, just the same grey. */
+       beside it. The date takes its colour from the global `time` rule, so
+       both are pinned to --main-text-color here: no underline, no hover
+       colour, no visual hint that one of the two is a link. */
     .build-stamp a,
-    .build-stamp a:hover {
-        color: inherit;
+    .build-stamp a:hover,
+    .build-stamp time {
+        color: var(--main-text-color);
         text-decoration: none;
         border-bottom: none;
     }
