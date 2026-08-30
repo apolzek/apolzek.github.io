@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-08-30T20:17:53-03:00</updated>
+ <updated>2026-08-30T20:52:44-03:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -15,9 +15,9 @@
  
  <entry>
    <title>Apache Flink: Aprendendo em Público</title>
-   <link href="https://apolzek.github.io/2026/08/30/apache-flink-aprendendo-em-publico"/>
+   <link href="https://apolzek.github.io/2026/08/30/apache-flink-aprendendo-em-publico-parte-1"/>
    <updated>2026-08-30T00:00:00-03:00</updated>
-   <id>https://apolzek.github.io/2026/08/30/apache-flink-aprendendo-em-publico</id>
+   <id>https://apolzek.github.io/2026/08/30/apache-flink-aprendendo-em-publico-parte-1</id>
    <content type="html">&lt;p&gt;Este texto é o resultado do que estudei e experimentei ao longo desta semana. Não é um tutorial de quem domina Apache Flink, nem pretende ser uma referência definitiva sobre o assunto. É mais como um caderno de anotações de alguém que está aprendendo, testando algumas coisas na prática e compartilhando o que conseguiu entender e descobrir até aqui.&lt;/p&gt;
 
 &lt;p&gt;Sempre achei que explicar é a melhor forma de descobrir o que a gente realmente entendeu. Quando escrevo, os buracos aparecem sozinhos.. ao longo do texto, misturo conceitual e técnico: tem uma parte mais conceitual, para entender como o Apache Flink funciona e quais são os principais conceitos por trás dele, e uma parte mais técnica, com exemplos, testes e experimentos que fui fazendo durante o estudo. A ideia é conectar o que a documentação diz com o que consegui colocar em prática e observar nos meus próprios testes.&lt;/p&gt;
