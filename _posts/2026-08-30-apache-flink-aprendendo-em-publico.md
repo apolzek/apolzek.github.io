@@ -1,8 +1,7 @@
 ---
 layout: post
 title: "Apache Flink: Aprendendo em Público"
-# tags: flink streaming data-engineering
-minute: 9
+minute: 10
 ---
 
 Este texto é o resultado do que estudei e experimentei ao longo desta semana. Não é um tutorial de quem domina Apache Flink, nem pretende ser uma referência definitiva sobre o assunto. É mais como um caderno de anotações de alguém que está aprendendo, testando algumas coisas na prática e compartilhando o que conseguiu entender e descobrir até aqui.
@@ -162,24 +161,91 @@ GROUP BY
 
 O conceito que sustenta isso é a **dualidade stream/tabela**: um stream é o log de mudanças de uma tabela, e uma tabela é o estado acumulado de um stream. São a mesma informação vista de dois ângulos.
 
+Isso deixa de ser abstrato assim que você roda um `GROUP BY` no cliente SQL e olha a coluna `op`:
+
+```
++----+------+-------+
+| op | name | total |
++----+------+-------+
+| +I |    a |     1 |
+| +I |    b |     1 |
+| -U |    a |     1 |
+| +U |    a |     2 |
++----+------+-------+
+```
+
+O `a` entra com 1, é retratado (`-U`) e reemitido com 2 (`+U`). Não é uma tabela sendo preenchida aos poucos, é o log de mudanças dela passando na tela. O resultado de uma query em streaming não é um valor final, é uma sequência de correções sobre o valor anterior.
+
 Para quem vem de dados, essa é a porta de entrada mais rápida, dá para chegar longe sem escrever uma linha de Java.
 
 #### In praxi ("na prática")
 
-Subir um cluster local é mais simples do que eu imaginava:
+Subir um cluster local é mais simples do que eu imaginava. Comecei com dois `docker run` soltos, mas troquei por um `docker-compose.yml` assim que quis mais de um TaskManager:
 
-```bash
-# um cluster mínimo com JobManager e TaskManager
-docker run -d --name jobmanager -p 8081:8081 \
-  flink:latest jobmanager
+```yaml
+name: flink-lab
 
-docker run -d --name taskmanager \
-  --link jobmanager:jobmanager \
-  -e JOB_MANAGER_RPC_ADDRESS=jobmanager \
-  flink:latest taskmanager
+services:
+  jobmanager:
+    image: flink:2.3.0-java21
+    container_name: jobmanager
+    command: jobmanager
+    ports:
+      - "8081:8081"
+    environment:
+      - |
+        FLINK_PROPERTIES=
+        jobmanager.rpc.address: jobmanager
+        rest.address: 0.0.0.0
+        rest.bind-address: 0.0.0.0
+        jobmanager.memory.process.size: 1024m
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:8081/overview || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 10s
+
+  taskmanager:
+    image: flink:2.3.0-java21
+    command: taskmanager
+    depends_on:
+      jobmanager:
+        condition: service_healthy
+    deploy:
+      replicas: 2
+    environment:
+      - |
+        FLINK_PROPERTIES=
+        jobmanager.rpc.address: jobmanager
+        taskmanager.numberOfTaskSlots: 2
+        taskmanager.memory.process.size: 1728m
 ```
 
-A Web UI em `localhost:8081` foi onde eu mais aprendi. Ela mostra o grafo do job, o paralelismo real de cada operador, o histórico de checkpoints (duração e tamanho) e, principalmente, o **backpressure**: quando um operador não consegue acompanhar o ritmo do anterior e a pressão se propaga para trás até a fonte. Ver isso acontecendo em tempo real ensina mais do que qualquer diagrama.
+Um `docker compose up -d` e a Web UI responde em `localhost:8081`.
+
+Três escolhas aí não são detalhe. Duas réplicas de TaskManager com dois slots cada dão quatro slots, e é isso que faz o paralelismo deixar de ser sempre 1: sem folga de slots, todo grafo de job aparece na UI como uma fila reta. O `healthcheck` combinado com `depends_on: service_healthy` existe porque, sem ele, o TaskManager sobe antes de o JobManager estar de pé, falha ao registrar e enche o log de erro antes de funcionar na segunda tentativa. E os limites de memória estão explícitos porque o padrão do Flink é generoso: com esses valores o cluster inteiro fica em torno de 4,5 GB e cabe em qualquer máquina.
+
+Antes de submeter qualquer coisa, a API REST diz se o cluster está inteiro de forma mais direta que a UI:
+
+```bash
+curl -s localhost:8081/overview
+```
+
+```json
+{"taskmanagers": 2, "slots-total": 4, "slots-available": 4, "flink-version": "2.3.0"}
+```
+
+Os dois TaskManagers registrados e os quatro slots livres são a confirmação de que o cluster formou. A imagem ainda traz jobs de exemplo, então dá para ver um grafo em execução sem escrever uma linha:
+
+```bash
+docker exec jobmanager ./bin/flink run -d \
+  /opt/flink/examples/streaming/TopSpeedWindowing.jar
+```
+
+Com ele rodando, `slots-available` cai para 3 e a UI finalmente tem o que mostrar.
+
+A Web UI foi onde eu mais aprendi. Ela mostra o grafo do job, o paralelismo real de cada operador, o histórico de checkpoints (duração e tamanho) e, principalmente, o **backpressure**: quando um operador não consegue acompanhar o ritmo do anterior e a pressão se propaga para trás até a fonte. Ver isso acontecendo em tempo real ensina mais do que qualquer diagrama.
 
 Para SQL, o caminho mais curto é o cliente interativo:
 
