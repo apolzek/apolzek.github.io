@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Apache Flink: Aprendendo em Público"
+title: "Apache Flink: Aprendendo em Público, parte 1"
 minute: 10
 ---
 
@@ -267,5 +267,9 @@ Lista honesta do que ficou em aberto:
 Terminei a semana com uma impressão que não esperava ter: a parte difícil de streaming não é distribuir o processamento. Isso o Flink resolve. A parte difícil é o **tempo**: aceitar que os dados chegam desordenados, que "completo" é uma aposta e não um fato, e que quase toda decisão técnica aqui é, no fundo, uma escolha entre latência e correção.
 
 Escrever isto me forçou a admitir umas três ou quatro coisas que eu achava que sabia e não sabia. Valeu pelo esforço.
+
+Falta dizer por que fui atrás disso, porque não é Flink pelo Flink. O que eu quero é processar OTLP, o formato que o OpenTelemetry Collector fala, e na prática isso significa os quatro sinais: logs, spans, métricas e profiles.
+
+O Collector recebe, transforma e encaminha muito bem, mas ele é feito para o dado passar. No momento em que a pergunta precisa de memória entre eventos, de janela por event time ou de correlacionar sinais que chegam separados e fora de ordem, ela cai exatamente no que este texto descreve: `keyBy`, estado por chave e watermark. É esse encaixe que eu quero testar na próxima rodada.
 
 Próxima semana no cronograma: revisar o roadmap de Data Engineer. Continuo escrevendo enquanto aprendo.
