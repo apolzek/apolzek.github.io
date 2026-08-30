@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-08-30T20:52:44-03:00</updated>
+ <updated>2026-08-30T20:53:00-03:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -14,7 +14,7 @@
  
  
  <entry>
-   <title>Apache Flink: Aprendendo em Público</title>
+   <title>Apache Flink: Aprendendo em Público, parte 1</title>
    <link href="https://apolzek.github.io/2026/08/30/apache-flink-aprendendo-em-publico-parte-1"/>
    <updated>2026-08-30T00:00:00-03:00</updated>
    <id>https://apolzek.github.io/2026/08/30/apache-flink-aprendendo-em-publico-parte-1</id>
@@ -324,6 +324,10 @@
 &lt;p&gt;Terminei a semana com uma impressão que não esperava ter: a parte difícil de streaming não é distribuir o processamento. Isso o Flink resolve. A parte difícil é o &lt;strong&gt;tempo&lt;/strong&gt;: aceitar que os dados chegam desordenados, que “completo” é uma aposta e não um fato, e que quase toda decisão técnica aqui é, no fundo, uma escolha entre latência e correção.&lt;/p&gt;
 
 &lt;p&gt;Escrever isto me forçou a admitir umas três ou quatro coisas que eu achava que sabia e não sabia. Valeu pelo esforço.&lt;/p&gt;
+
+&lt;p&gt;Falta dizer por que fui atrás disso, porque não é Flink pelo Flink. O que eu quero é processar OTLP, o formato que o OpenTelemetry Collector fala, e na prática isso significa os quatro sinais: logs, spans, métricas e profiles.&lt;/p&gt;
+
+&lt;p&gt;O Collector recebe, transforma e encaminha muito bem, mas ele é feito para o dado passar. No momento em que a pergunta precisa de memória entre eventos, de janela por event time ou de correlacionar sinais que chegam separados e fora de ordem, ela cai exatamente no que este texto descreve: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;keyBy&lt;/code&gt;, estado por chave e watermark. É esse encaixe que eu quero testar na próxima rodada.&lt;/p&gt;
 
 &lt;p&gt;Próxima semana no cronograma: revisar o roadmap de Data Engineer. Continuo escrevendo enquanto aprendo.&lt;/p&gt;
 </content>
