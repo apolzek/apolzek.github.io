@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-08-30T22:29:51-03:00</updated>
+ <updated>2026-08-31T04:07:05-03:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -30,6 +30,7 @@
    <content type="html">&lt;h4 id=&quot;índice&quot;&gt;Índice&lt;/h4&gt;
 
 &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#introdução&quot;&gt;Introdução&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#o-problema-que-o-flink-resolve&quot;&gt;O problema que o Flink resolve&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#a-arquitetura-em-poucas-peças&quot;&gt;A arquitetura, em poucas peças&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#tempo-a-parte-que-quebra-a-intuição&quot;&gt;Tempo: a parte que quebra a intuição&lt;/a&gt;&lt;/li&gt;
@@ -52,6 +53,8 @@
   &lt;li&gt;&lt;a href=&quot;#o-que-eu-ainda-não-sei&quot;&gt;O que eu ainda não sei&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#o-que-ficou&quot;&gt;O que ficou&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h4 id=&quot;introdução&quot;&gt;Introdução&lt;/h4&gt;
 
 &lt;p&gt;Este texto é o resultado do que estudei e experimentei ao longo desta semana. Não é um tutorial de quem domina Apache Flink, nem pretende ser uma referência definitiva sobre o assunto. É mais como um caderno de anotações de alguém que está aprendendo, testando algumas coisas na prática e compartilhando o que conseguiu entender e descobrir até aqui.&lt;/p&gt;
 
