@@ -6,6 +6,7 @@ minute: 18
 
 #### Índice
 
+- [Introdução](#introdução)
 - [O problema que o Flink resolve](#o-problema-que-o-flink-resolve)
 - [A arquitetura, em poucas peças](#a-arquitetura-em-poucas-peças)
 - [Tempo: a parte que quebra a intuição](#tempo-a-parte-que-quebra-a-intuição)
@@ -24,6 +25,8 @@ minute: 18
   - [S3 e o sistema de arquivos remoto](#s3-e-o-sistema-de-arquivos-remoto)
 - [O que eu ainda não sei](#o-que-eu-ainda-não-sei)
 - [O que ficou](#o-que-ficou)
+
+#### Introdução
 
 Este texto é o resultado do que estudei e experimentei ao longo desta semana. Não é um tutorial de quem domina Apache Flink, nem pretende ser uma referência definitiva sobre o assunto. É mais como um caderno de anotações de alguém que está aprendendo, testando algumas coisas na prática e compartilhando o que conseguiu entender e descobrir até aqui.
 
