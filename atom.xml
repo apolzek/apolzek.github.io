@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-08-30T21:18:10-03:00</updated>
+ <updated>2026-08-30T22:26:17-03:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -316,6 +316,126 @@
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; jobmanager ./bin/sql-client.sh
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;deploy&quot;&gt;Deploy&lt;/h4&gt;
+
+&lt;p&gt;O &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker-compose.yml&lt;/code&gt; acima é um laboratório. Ele sobe um cluster, mas esconde quase todas as decisões que aparecem quando o job precisa rodar por meses sem alguém olhando. Essa foi a parte que mais me obrigou a ler manual, porque aqui não tem intuição que salve: é conta, é limite de container e é escolha de onde o estado vai parar.&lt;/p&gt;
+
+&lt;h5 id=&quot;modos-de-execução&quot;&gt;Modos de execução&lt;/h5&gt;
+
+&lt;p&gt;Antes de escolher onde rodar, é preciso escolher como. O Flink tem dois modos vivos hoje, e a diferença entre eles é o ciclo de vida do cluster.&lt;/p&gt;
+
+&lt;p&gt;No &lt;strong&gt;session mode&lt;/strong&gt;, o cluster sobe primeiro e fica de pé esperando. Você submete vários jobs para o mesmo JobManager, e todos disputam os mesmos TaskManagers. É o que o meu compose faz, e é o modo certo para exploração, para o cliente SQL e para jobs curtos que não compensam o custo de subir um cluster novo. O preço é a ausência de isolamento: um job que estoura a memória derruba o TaskManager, e junto com ele vão as tarefas de todos os outros jobs que tinham slots naquele processo.&lt;/p&gt;
+
+&lt;p&gt;No &lt;strong&gt;application mode&lt;/strong&gt;, cada aplicação ganha o seu próprio cluster dedicado, que nasce com ela e morre com ela. A diferença mais importante é sutil e está no &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main()&lt;/code&gt;: em vez de rodar na máquina de quem submete, ele roda dentro do JobManager. Isso tira do cliente a responsabilidade de baixar dependências e montar o grafo do job, e é o que torna o modo adequado para automação, porque não existe mais um processo cliente de fora que precisa continuar vivo. Para produção, é a resposta padrão.&lt;/p&gt;
+
+&lt;p&gt;Existiu ainda um terceiro modo, o per-job, que também dava um cluster por job mas mantinha o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main()&lt;/code&gt; no cliente. Ele foi descontinuado e não faz mais parte da linha 2.x. Se você encontrar &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-t yarn-per-job&lt;/code&gt; em algum tutorial, é material de uma versão anterior.&lt;/p&gt;
+
+&lt;p&gt;Ortogonal a isso está o gerenciador de recursos: standalone (você mesmo sobe os processos, que é o caso do Docker Compose), Kubernetes ou YARN. A combinação que vejo recomendada com mais frequência hoje é application mode sobre Kubernetes.&lt;/p&gt;
+
+&lt;h5 id=&quot;kubernetes&quot;&gt;Kubernetes&lt;/h5&gt;
+
+&lt;p&gt;No Kubernetes existem três caminhos, e vale entender a diferença porque eles resolvem problemas distintos.&lt;/p&gt;
+
+&lt;p&gt;O primeiro é &lt;strong&gt;standalone no Kubernetes&lt;/strong&gt;: você escreve dois &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Deployment&lt;/code&gt;, um para o JobManager e outro para o TaskManager, um &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Service&lt;/code&gt; e um &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ConfigMap&lt;/code&gt; com o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flink-conf.yaml&lt;/code&gt;. O Flink não sabe que está no Kubernetes, ele só vê processos que se registram. Funciona, e é transparente, mas a escala é sua: mudar paralelismo é mudar réplicas na mão, e fazer upgrade com savepoint é uma sequência de comandos que alguém precisa lembrar de executar na ordem certa.&lt;/p&gt;
+
+&lt;p&gt;O segundo é o &lt;strong&gt;native Kubernetes&lt;/strong&gt;, em que o próprio JobManager fala com a API do Kubernetes e cria os pods de TaskManager que faltam para atender o paralelismo pedido. Você submete com &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flink run-application -t kubernetes-application&lt;/code&gt; e não escreve manifesto de TaskManager nenhum. O cluster passa a se dimensionar de acordo com o job, e não o contrário.&lt;/p&gt;
+
+&lt;p&gt;O terceiro, e o que eu usaria, é o &lt;strong&gt;Flink Kubernetes Operator&lt;/strong&gt;. Ele instala CRDs e transforma o job em um objeto declarativo do cluster:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;flink.apache.org/v1beta1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;FlinkDeployment&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;otlp-processor&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;registry.example.com/otlp-processor:1.4.0&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;flinkVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;v2_0&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;serviceAccount&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;flink&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;flinkConfiguration&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;taskmanager.numberOfTaskSlots&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;4&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;state.backend.type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rocksdb&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;state.checkpoints.dir&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;s3://flink-state/otlp-processor/checkpoints&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;state.savepoints.dir&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;s3://flink-state/otlp-processor/savepoints&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;execution.checkpointing.interval&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;60s&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;high-availability.type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kubernetes&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;high-availability.storageDir&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;s3://flink-state/otlp-processor/ha&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;jobManager&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;resource&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;cpu&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;memory&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;2048m&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;taskManager&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;replicas&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;resource&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;cpu&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;memory&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;8192m&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;job&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;jarURI&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;local:///opt/flink/usrlib/otlp-processor.jar&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;parallelism&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;12&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;upgradeMode&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;savepoint&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;O que esse manifesto compra é operação. O &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;upgradeMode: savepoint&lt;/code&gt; significa que, quando eu trocar a tag da imagem e aplicar de novo, o operator dispara um savepoint, para o job, sobe a versão nova e restaura o estado a partir dele, sem que ninguém precise executar &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flink stop --savepointPath&lt;/code&gt; manualmente às três da manhã. Ele também cuida de rollback quando o job novo não estabiliza, e traz um autoscaler que observa o backpressure real dos operadores e ajusta o paralelismo, que é bem diferente de um HPA olhando uso de CPU do pod.&lt;/p&gt;
+
+&lt;p&gt;Dois detalhes que não são opcionais. O primeiro é a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;serviceAccount&lt;/code&gt;: o JobManager precisa de permissão de RBAC para criar pods e para ler e escrever ConfigMaps, porque é em ConfigMap que a alta disponibilidade nativa guarda quem é o líder e qual é o último checkpoint. O segundo é o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;high-availability.storageDir&lt;/code&gt;: o ConfigMap guarda só o ponteiro, os metadados de verdade vão para armazenamento durável. Sem esse diretório configurado, um JobManager que morre volta sem saber de onde retomar, e o estado inteiro se perde apesar dos checkpoints existirem.&lt;/p&gt;
+
+&lt;h5 id=&quot;memória&quot;&gt;Memória&lt;/h5&gt;
+
+&lt;p&gt;Essa é a conta que mais dá trabalho, porque o Flink não tem um número de memória, tem uma árvore deles. O valor que você configura é o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;taskmanager.memory.process.size&lt;/code&gt;, e ele é o total que o processo pode ocupar no sistema operacional. Tudo o mais é subdivisão.&lt;/p&gt;
+
+&lt;p&gt;Dentro dele, o Flink separa primeiro o que pertence à JVM e não ao Flink: o metaspace (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;taskmanager.memory.jvm-metaspace.size&lt;/code&gt;, 256m por padrão) e um overhead para pilhas de thread, buffers internos e código nativo (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;taskmanager.memory.jvm-overhead.fraction&lt;/code&gt;, 10% do process size). O que sobra é a memória do Flink propriamente dita, e ela se divide em quatro partes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;O heap de tarefa, onde vivem os seus objetos e o estado quando o backend é o de heap.&lt;/li&gt;
+  &lt;li&gt;A memória gerenciada, que é off-heap e é onde o RocksDB aloca seus block caches e write buffers. Em job batch, é também onde acontecem sort e hash join.&lt;/li&gt;
+  &lt;li&gt;A memória de rede, que são os buffers de troca de dados entre tarefas.&lt;/li&gt;
+  &lt;li&gt;Um pedaço reservado para o framework, que raramente se mexe.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A regra que importa acima de todas: &lt;strong&gt;o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;process.size&lt;/code&gt; tem que caber no limite de memória do container&lt;/strong&gt;. Se você der 8Gi de limite no pod e configurar &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;process.size: 8192m&lt;/code&gt;, o pod vai ser morto por OOMKill, porque o cgroup conta também páginas de arquivo, alocações nativas do RocksDB fora do que o Flink contabiliza e o que o próprio kernel usa. Deixar uma folga de 10 a 15% resolve. Para 8Gi de limite, eu configuraria em torno de 7000m e dormiria melhor.&lt;/p&gt;
+
+&lt;p&gt;A segunda decisão é como dividir. Se o estado é grande e o backend é RocksDB, a memória gerenciada é a que faz diferença, porque é ela que determina o tamanho do cache antes de o acesso virar leitura de disco. Uma divisão de partida razoável é 40% de memória gerenciada e o resto entre heap e rede. Se o estado é pequeno e cabe em heap, o caminho inverso: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;taskmanager.memory.managed.fraction: 0.1&lt;/code&gt; e todo o resto para o heap.&lt;/p&gt;
+
+&lt;p&gt;A memória de rede é a que mais surpreende. Ela é 10% da memória do Flink por padrão, limitada a 1 GB, e o consumo cresce com o número de conexões entre tarefas, que por sua vez cresce com o quadrado do paralelismo em trocas do tipo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;keyBy&lt;/code&gt;. Um job com paralelismo 4 que passa para 200 pode começar a falhar com erro de buffers insuficientes sem que uma linha do código tenha mudado. É um dos poucos casos em que aumentar o paralelismo piora as coisas antes de melhorar.&lt;/p&gt;
+
+&lt;h5 id=&quot;cpu-e-slots&quot;&gt;CPU e slots&lt;/h5&gt;
+
+&lt;p&gt;Slot não é CPU. Um slot é uma fatia de memória e um lugar no escalonamento, mas as threads de todos os slots de um TaskManager competem pelos mesmos cores da JVM. Não há isolamento de CPU entre slots.&lt;/p&gt;
+
+&lt;p&gt;Por isso a regra de partida é simples: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;taskmanager.numberOfTaskSlots&lt;/code&gt; igual ao número de cores que o container tem de limite. Quatro cores, quatro slots. Ir muito acima disso não aumenta a vazão, só aumenta a troca de contexto e o tempo de pausa que o coletor de lixo tem que administrar.&lt;/p&gt;
+
+&lt;p&gt;O paralelismo total do job então é o número de TaskManagers vezes os slots de cada um, e essa multiplicação é o número que aparece no manifesto. Três TaskManagers de quatro slots dão doze, que é o paralelismo do exemplo acima.&lt;/p&gt;
+
+&lt;p&gt;Para chegar ao número certo de TaskManagers, eu não tentaria calcular por primeiros princípios. O caminho que faz sentido é medir: subir o job com paralelismo baixo, injetar carga conhecida e olhar &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;numRecordsInPerSecond&lt;/code&gt; por subtarefa na UI ou no Prometheus. Isso dá uma vazão por slot. Divide o pico esperado por esse número, adiciona uma folga de uns 30% para picos e para reprocessamento (porque depois de uma queda o job precisa correr mais rápido do que a produção para alcançar o presente) e o resultado é quantos slots são necessários. Um job de filtro e projeção pode fazer centenas de milhares de eventos por segundo em um slot; um job com janela grande, estado em RocksDB e deserialização de JSON pode fazer alguns milhares. A diferença entre esses dois casos é de ordens de grandeza, e é exatamente por isso que não dá para adivinhar.&lt;/p&gt;
+
+&lt;p&gt;Vale lembrar que mudar o paralelismo de um job com estado depois não é livre: o estado é redistribuído entre as novas subtarefas na restauração, e isso é limitado pelo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;maxParallelism&lt;/code&gt;, que é fixado na primeira execução e não pode ser alterado sem reescrever o savepoint. Definir esse valor com folga desde o começo é uma daquelas decisões baratas de tomar hoje e caras de corrigir depois.&lt;/p&gt;
+
+&lt;h5 id=&quot;disco-local&quot;&gt;Disco local&lt;/h5&gt;
+
+&lt;p&gt;Com o RocksDB, o estado de trabalho não fica em memória, fica em arquivos no disco local do TaskManager, apontado por &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;io.tmp.dirs&lt;/code&gt;. Isso é o que permite ter estado maior que a RAM, e é também o que faz o tipo de disco importar.&lt;/p&gt;
+
+&lt;p&gt;Precisa ser SSD local, não volume de rede. O RocksDB é uma LSM tree: escreve em arquivos ordenados e depois compacta esses arquivos em segundo plano, reescrevendo dados que já estavam lá. Essa amplificação de escrita, somada a leituras aleatórias a cada acesso de estado, é exatamente o padrão de I/O que um disco de rede atende mal. Já vi o mesmo job ir de estável a inutilizável só pela troca do tipo de volume.&lt;/p&gt;
+
+&lt;p&gt;Para o tamanho, a conta parte do estado lógico: número de chaves ativas vezes o tamanho do estado por chave, dividido pelo paralelismo, dá o estado por TaskManager. Depois disso, multiplique. Duas a três vezes é uma margem razoável, porque a compactação precisa de espaço para escrever os arquivos novos antes de apagar os antigos, e porque os checkpoints incrementais mantêm arquivos referenciados por snapshots anteriores que ainda não foram descartados. Dez milhões de chaves com 1 KB de estado cada dão 10 GB de estado lógico; em três TaskManagers, isso é algo entre 7 e 10 GB de disco em cada um.&lt;/p&gt;
+
+&lt;p&gt;No Kubernetes, isso significa escolher entre &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;emptyDir&lt;/code&gt; e volume persistente. Com &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;emptyDir&lt;/code&gt;, o disco morre com o pod, e um restart obriga o TaskManager a baixar o estado inteiro do armazenamento remoto antes de voltar a processar, o que em estados grandes é a diferença entre segundos e muitos minutos de recuperação. Com um volume persistente e &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;state.backend.local-recovery: true&lt;/code&gt;, a cópia local sobrevive ao restart e a recuperação lê do disco em vez da rede. É mais complexidade em troca de tempo de recuperação, e a escolha depende de quanto o atraso custa.&lt;/p&gt;
+
+&lt;h5 id=&quot;s3-e-o-sistema-de-arquivos-remoto&quot;&gt;S3 e o sistema de arquivos remoto&lt;/h5&gt;
+
+&lt;p&gt;Aqui está a confusão que eu mesmo tinha antes de estudar: &lt;strong&gt;o S3 não é onde o estado vive, é onde as cópias dele são guardadas&lt;/strong&gt;. O estado quente está no heap ou no disco local do TaskManager, e é lá que ele é lido e escrito a cada evento. O S3 entra em quatro momentos, e todos eles são periódicos ou excepcionais.&lt;/p&gt;
+
+&lt;p&gt;O primeiro são os checkpoints. A cada intervalo configurado, cada operador escreve seu estado em &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;state.checkpoints.dir&lt;/code&gt;. É isso que sobrevive à perda simultânea de todos os pods.&lt;/p&gt;
+
+&lt;p&gt;O segundo são os savepoints, em &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;state.savepoints.dir&lt;/code&gt;, que é o mesmo mecanismo com outro ciclo de vida: eles são seus, não são apagados pelo Flink, e é deles que sai o upgrade sem perder estado.&lt;/p&gt;
+
+&lt;p&gt;O terceiro são os metadados de alta disponibilidade, em &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;high-availability.storageDir&lt;/code&gt;. O ConfigMap do Kubernetes é pequeno demais para guardar o grafo do job e os ponteiros completos, então ele guarda apenas a referência e o conteúdo fica no armazenamento remoto.&lt;/p&gt;
+
+&lt;p&gt;O quarto, quando existe, são os próprios dados: uma fonte que lê Parquet de um bucket, ou um sink que escreve resultados particionados por hora.&lt;/p&gt;
+
+&lt;p&gt;A razão de ser S3, e não um disco compartilhado, é que a durabilidade precisa ser independente do cluster. Um checkpoint que está no mesmo hardware que o job não protege contra a perda desse hardware. O armazenamento de objetos é barato, replicado e continua existindo depois de o cluster inteiro deixar de existir, que é precisamente a propriedade que faz um job de streaming ser recuperável. GCS, Azure Blob e HDFS ocupam o mesmo lugar na arquitetura, com outra letra no esquema da URI.&lt;/p&gt;
+
+&lt;p&gt;A configuração tem uma pegadinha que custa tempo. O Flink traz duas implementações de S3, e elas não são intercambiáveis. A &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flink-s3-fs-presto&lt;/code&gt; é a indicada para checkpoints, porque é rápida com arquivos pequenos e não depende de renomear objetos, operação que o S3 não tem de forma atômica e que emula com uma cópia seguida de uma remoção. A &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flink-s3-fs-hadoop&lt;/code&gt; é a que suporta escrita recuperável, que é o que o sink de arquivos precisa para fazer upload multipart e confirmar só no checkpoint. Muita gente instala as duas e usa &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s3p://&lt;/code&gt; para o estado e &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s3a://&lt;/code&gt; para os dados. As duas são plugins e precisam ir para &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/opt/flink/plugins/&lt;/code&gt;, cada uma em seu próprio diretório, e não para &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lib/&lt;/code&gt;. No &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lib/&lt;/code&gt; elas carregam no classloader principal e conflitam entre si.&lt;/p&gt;
+
+&lt;p&gt;O último ponto é sobre o intervalo de checkpoint, que parece uma configuração de latência e é também uma conta de custo. Cada checkpoint escreve pelo menos um arquivo por subtarefa com estado. Um job com paralelismo 200 e checkpoint a cada 10 segundos produz na ordem de setenta mil objetos por hora, e o S3 cobra por requisição além de limitar a taxa por prefixo. Isso aparece como latência de checkpoint subindo e, no limite, como checkpoint expirando por timeout. Duas defesas ajudam: subir o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;state.storage.fs.memory-threshold&lt;/code&gt; para que estados pequenos viajem dentro do arquivo de metadados em vez de virarem objetos separados, e aceitar um intervalo maior. Um minuto entre checkpoints é um valor comum, e o que ele custa é apenas a quantidade de trabalho que precisa ser refeita depois de uma falha.&lt;/p&gt;
 
 &lt;h4 id=&quot;o-que-eu-ainda-não-sei&quot;&gt;O que eu ainda não sei&lt;/h4&gt;
 
