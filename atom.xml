@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-08-30T22:26:17-03:00</updated>
+ <updated>2026-08-30T22:27:22-03:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -30,6 +30,32 @@
    <content type="html">&lt;p&gt;Este texto é o resultado do que estudei e experimentei ao longo desta semana. Não é um tutorial de quem domina Apache Flink, nem pretende ser uma referência definitiva sobre o assunto. É mais como um caderno de anotações de alguém que está aprendendo, testando algumas coisas na prática e compartilhando o que conseguiu entender e descobrir até aqui.&lt;/p&gt;
 
 &lt;p&gt;Sempre achei que explicar é a melhor forma de descobrir o que a gente realmente entendeu. Quando escrevo, os buracos aparecem sozinhos.. ao longo do texto, misturo conceitual e técnico: tem uma parte mais conceitual, para entender como o Apache Flink funciona e quais são os principais conceitos por trás dele, e uma parte mais técnica, com exemplos, testes e experimentos que fui fazendo durante o estudo. A ideia é conectar o que a documentação diz com o que consegui colocar em prática e observar nos meus próprios testes.&lt;/p&gt;
+
+&lt;h4 id=&quot;índice&quot;&gt;Índice&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#o-problema-que-o-flink-resolve&quot;&gt;O problema que o Flink resolve&lt;/a&gt;: por que existe streaming, e o que muda quando é a consulta que fica parada e os dados que passam.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#a-arquitetura-em-poucas-peças&quot;&gt;A arquitetura, em poucas peças&lt;/a&gt;: JobManager, TaskManager, slots, e como um job vira um grafo distribuído entre eles.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#tempo-a-parte-que-quebra-a-intuição&quot;&gt;Tempo: a parte que quebra a intuição&lt;/a&gt;: event time contra processing time, e por que um deles dá o mesmo resultado sempre.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#watermarks&quot;&gt;Watermarks&lt;/a&gt;: como o Flink decide que uma janela pode fechar sem nunca saber se os dados acabaram.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#janelas&quot;&gt;Janelas&lt;/a&gt;: tumbling, sliding e session, e a escolha entre &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;aggregate&lt;/code&gt; e &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;process&lt;/code&gt; que decide se o job sobrevive.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#estado&quot;&gt;Estado&lt;/a&gt;: o que o runtime resolve por você que um consumer Kafka escrito à mão não resolve.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#checkpoints-e-savepoints&quot;&gt;Checkpoints e savepoints&lt;/a&gt;: o mecanismo por trás do exactly-once, e o que essa garantia realmente promete.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#flink-sql&quot;&gt;Flink SQL&lt;/a&gt;: a dualidade entre stream e tabela, vista na coluna &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;op&lt;/code&gt; de um &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GROUP BY&lt;/code&gt; em execução.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#in-praxi-na-prática&quot;&gt;In praxi&lt;/a&gt;: um cluster local com Docker Compose, e o que a Web UI ensina que a documentação não ensina.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#deploy&quot;&gt;Deploy&lt;/a&gt;: o que o laboratório esconde e produção cobra.
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#modos-de-execução&quot;&gt;Modos de execução&lt;/a&gt;: session contra application mode, e onde o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main()&lt;/code&gt; roda em cada um.&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#kubernetes&quot;&gt;Kubernetes&lt;/a&gt;: standalone, native e o operator, com o manifesto que transforma o job em objeto do cluster.&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#memória&quot;&gt;Memória&lt;/a&gt;: a árvore do &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;process.size&lt;/code&gt; e a folga que evita o OOMKill.&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#cpu-e-slots&quot;&gt;CPU e slots&lt;/a&gt;: por que slot não é CPU, e como medir a vazão em vez de adivinhar o paralelismo.&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#disco-local&quot;&gt;Disco local&lt;/a&gt;: o padrão de I/O do RocksDB e a conta de espaço que a compactação exige.&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#s3-e-o-sistema-de-arquivos-remoto&quot;&gt;S3 e o sistema de arquivos remoto&lt;/a&gt;: o que vai para o bucket, o que nunca vai, e a pegadinha dos dois plugins.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#o-que-eu-ainda-não-sei&quot;&gt;O que eu ainda não sei&lt;/a&gt;: a lista honesta do que ficou em aberto.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#o-que-ficou&quot;&gt;O que ficou&lt;/a&gt;: a impressão que sobrou da semana, e por que fui atrás disso.&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h4 id=&quot;o-problema-que-o-flink-resolve&quot;&gt;O problema que o Flink resolve&lt;/h4&gt;
 
