@@ -4,30 +4,30 @@ title: "Apache Flink: Aprendendo em Público, parte 1"
 minute: 18
 ---
 
+#### Índice
+
+- [O problema que o Flink resolve](#o-problema-que-o-flink-resolve)
+- [A arquitetura, em poucas peças](#a-arquitetura-em-poucas-peças)
+- [Tempo: a parte que quebra a intuição](#tempo-a-parte-que-quebra-a-intuição)
+- [Watermarks](#watermarks)
+- [Janelas](#janelas)
+- [Estado](#estado)
+- [Checkpoints e savepoints](#checkpoints-e-savepoints)
+- [Flink SQL](#flink-sql)
+- [In praxi](#in-praxi-na-prática)
+- [Deploy](#deploy)
+  - [Modos de execução](#modos-de-execução)
+  - [Kubernetes](#kubernetes)
+  - [Memória](#memória)
+  - [CPU e slots](#cpu-e-slots)
+  - [Disco local](#disco-local)
+  - [S3 e o sistema de arquivos remoto](#s3-e-o-sistema-de-arquivos-remoto)
+- [O que eu ainda não sei](#o-que-eu-ainda-não-sei)
+- [O que ficou](#o-que-ficou)
+
 Este texto é o resultado do que estudei e experimentei ao longo desta semana. Não é um tutorial de quem domina Apache Flink, nem pretende ser uma referência definitiva sobre o assunto. É mais como um caderno de anotações de alguém que está aprendendo, testando algumas coisas na prática e compartilhando o que conseguiu entender e descobrir até aqui.
 
 Sempre achei que explicar é a melhor forma de descobrir o que a gente realmente entendeu. Quando escrevo, os buracos aparecem sozinhos.. ao longo do texto, misturo conceitual e técnico: tem uma parte mais conceitual, para entender como o Apache Flink funciona e quais são os principais conceitos por trás dele, e uma parte mais técnica, com exemplos, testes e experimentos que fui fazendo durante o estudo. A ideia é conectar o que a documentação diz com o que consegui colocar em prática e observar nos meus próprios testes.
-
-#### Índice
-
-- [O problema que o Flink resolve](#o-problema-que-o-flink-resolve): por que existe streaming, e o que muda quando é a consulta que fica parada e os dados que passam.
-- [A arquitetura, em poucas peças](#a-arquitetura-em-poucas-peças): JobManager, TaskManager, slots, e como um job vira um grafo distribuído entre eles.
-- [Tempo: a parte que quebra a intuição](#tempo-a-parte-que-quebra-a-intuição): event time contra processing time, e por que um deles dá o mesmo resultado sempre.
-- [Watermarks](#watermarks): como o Flink decide que uma janela pode fechar sem nunca saber se os dados acabaram.
-- [Janelas](#janelas): tumbling, sliding e session, e a escolha entre `aggregate` e `process` que decide se o job sobrevive.
-- [Estado](#estado): o que o runtime resolve por você que um consumer Kafka escrito à mão não resolve.
-- [Checkpoints e savepoints](#checkpoints-e-savepoints): o mecanismo por trás do exactly-once, e o que essa garantia realmente promete.
-- [Flink SQL](#flink-sql): a dualidade entre stream e tabela, vista na coluna `op` de um `GROUP BY` em execução.
-- [In praxi](#in-praxi-na-prática): um cluster local com Docker Compose, e o que a Web UI ensina que a documentação não ensina.
-- [Deploy](#deploy): o que o laboratório esconde e produção cobra.
-  - [Modos de execução](#modos-de-execução): session contra application mode, e onde o `main()` roda em cada um.
-  - [Kubernetes](#kubernetes): standalone, native e o operator, com o manifesto que transforma o job em objeto do cluster.
-  - [Memória](#memória): a árvore do `process.size` e a folga que evita o OOMKill.
-  - [CPU e slots](#cpu-e-slots): por que slot não é CPU, e como medir a vazão em vez de adivinhar o paralelismo.
-  - [Disco local](#disco-local): o padrão de I/O do RocksDB e a conta de espaço que a compactação exige.
-  - [S3 e o sistema de arquivos remoto](#s3-e-o-sistema-de-arquivos-remoto): o que vai para o bucket, o que nunca vai, e a pegadinha dos dois plugins.
-- [O que eu ainda não sei](#o-que-eu-ainda-não-sei): a lista honesta do que ficou em aberto.
-- [O que ficou](#o-que-ficou): a impressão que sobrou da semana, e por que fui atrás disso.
 
 #### O problema que o Flink resolve
 
