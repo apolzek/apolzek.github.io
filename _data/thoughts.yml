@@ -74,13 +74,11 @@
   date: "2026-07-29"
 - text: "Meu top 10 de mensagens no WhatsApp tem sido, há um tempo, meus pais e meus irmãos. Reparei nisso hoje e não pude deixar de dar um sorriso espontâneo."
   date: "2026-08-06"
-- text: "Qual é o próximo passo ??"
-  date: "2026-08-06"
 - text: "Burke foi um defensor de fundamentar as virtudes com bons modos na sociedade e da importância das instituições religiosas para a estabilidade moral e o bem do Estado"
   date: "2026-08-06"
 - text: "'Amai-vos uns aos outros, assim como eu vos amei' (Jo 15,12)"
   date: "2026-08-08"
-- text: "É fácil entender por que agimos tanto pensando em bens materiais, mas é perigoso esquecer da nossa alma."
+- text: "Não permita que a busca pelo que você pode possuir faça você esquecer aquilo que pode se tornar. Os bens materiais podem proporcionar conforto à vida exterior, mas é o cultivo da alma que dá sentido à existência."
   date: "2026-08-08"
 - text: "Às vezes, o milagre acontece diante de nós, mas não estamos prontos para reconhecê-lo."
   date: "2026-08-10"
@@ -94,3 +92,7 @@
   date: "2026-08-31"
 - text: 'Um agnóstico é alguém que acredita que a existência de Deus ou do divino é desconhecida ou impossível de comprovar racionalmente.'
   date: "2026-08-31"
+- text: 'Um agnóstico é alguém que acredita que a existência de Deus ou do divino é desconhecida ou impossível de comprovar racionalmente.'
+  date: "2026-08-31"
+- text: 'Modo Junior no Apache Flink: fazer funcionar eu sei.. explicar 100% como funciona é que é difícil =))'
+  date: "2026-09-01"

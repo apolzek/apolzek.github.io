@@ -22,7 +22,7 @@ Os espartanos entendiam que um corpo forte não era apenas uma questão de apar�
 
 ![](/assets/img/Aquiles.jpeg)
 
-> Eu sou fã do filme Troia e da representação de Brad Pitt como Aquiles. O corpo de Aquiles não era apenas um instrumento de guerra, mas a expressão física de uma vida moldada para o combate, pela disciplina e pela busca da excelência.
+> Sou fã das obras de Homero e também do filme Troia, especialmente da representação de Brad Pitt como Aquiles. O corpo de Aquiles não era apenas um instrumento de guerra, mas a expressão física de uma vida moldada para o combate, pela disciplina e pela busca da excelência.
 
 Conhecer profundamente como o corpo funciona é, portanto, aprender a cuidar dele antes que ele cobre o preço da negligência. Entender força, recuperação, alimentação, sono, movimento, envelhecimento e os mecanismos que sustentam nossa saúde nos permite não apenas permanecer fortes, mas preservar nossas capacidades por mais tempo.
 
