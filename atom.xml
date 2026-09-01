@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-09-01T20:07:05-03:00</updated>
+ <updated>2026-09-01T20:33:55-03:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -149,6 +149,113 @@
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
+
+&lt;h2 id=&quot;reference-architectures&quot;&gt;Reference architectures&lt;/h2&gt;
+
+&lt;p&gt;Three ways to wire the tools above into a working stack. All of them have the
+same three layers, ingestion, processing and storage, plus whatever consumes
+the result.&lt;/p&gt;
+
+&lt;h3 id=&quot;1-batch-lakehouse&quot;&gt;1. Batch lakehouse&lt;/h3&gt;
+
+&lt;p&gt;Nightly and hourly ELT. The default when latency is measured in hours.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;flowchart TB
+  subgraph ing[&quot;Ingestion&quot;]
+    airbyte[&quot;Airbyte&quot;]
+    debezium[&quot;Debezium + Kafka Connect&quot;]
+  end
+  subgraph proc[&quot;Processing&quot;]
+    spark[&quot;Apache Spark&quot;]
+    dbt[&quot;dbt&quot;]
+    ge[&quot;Great Expectations&quot;]
+  end
+  subgraph sto[&quot;Storage&quot;]
+    iceberg[&quot;Apache Iceberg&quot;]
+    s3[&quot;MinIO / S3&quot;]
+    polaris[&quot;Apache Polaris&quot;]
+  end
+  subgraph out[&quot;Consumption&quot;]
+    trino[&quot;Trino&quot;]
+    superset[&quot;Apache Superset&quot;]
+  end
+
+  airbyte --&amp;gt; spark
+  debezium --&amp;gt; spark
+  spark --&amp;gt; dbt --&amp;gt; ge --&amp;gt; iceberg
+  s3 -.- iceberg
+  polaris -.- iceberg
+  iceberg --&amp;gt; trino --&amp;gt; superset
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Apache Airflow sits outside the picture, triggering every arrow above.&lt;/p&gt;
+
+&lt;h3 id=&quot;2-streaming&quot;&gt;2. Streaming&lt;/h3&gt;
+
+&lt;p&gt;Seconds instead of hours. Two branches out of one job: the table for history,
+the OLAP store for the dashboard.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;flowchart TB
+  subgraph ing[&quot;Ingestion&quot;]
+    debezium[&quot;Debezium&quot;]
+    kafka[&quot;Apache Kafka&quot;]
+  end
+  subgraph proc[&quot;Processing&quot;]
+    flink[&quot;Apache Flink&quot;]
+  end
+  subgraph sto[&quot;Storage&quot;]
+    paimon[&quot;Apache Paimon on S3&quot;]
+    clickhouse[&quot;ClickHouse&quot;]
+  end
+  subgraph out[&quot;Consumption&quot;]
+    trino[&quot;Trino&quot;]
+    grafana[&quot;Grafana&quot;]
+  end
+
+  debezium --&amp;gt; kafka --&amp;gt; flink
+  flink --&amp;gt; paimon --&amp;gt; trino
+  flink --&amp;gt; clickhouse --&amp;gt; grafana
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Airflow is still needed here, not to schedule the job but to run the compaction
+and snapshot expiration the table needs because the job never stops writing.&lt;/p&gt;
+
+&lt;h3 id=&quot;3-ml-and-inference&quot;&gt;3. ML and inference&lt;/h3&gt;
+
+&lt;p&gt;Features written by the same pipeline that feeds training, and a model served
+out of a registry.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;flowchart TB
+  subgraph ing[&quot;Ingestion&quot;]
+    kafka[&quot;Apache Kafka&quot;]
+  end
+  subgraph proc[&quot;Processing&quot;]
+    flink[&quot;Apache Flink&quot;]
+    spark[&quot;Apache Spark&quot;]
+  end
+  subgraph sto[&quot;Storage&quot;]
+    feast[&quot;Feast&quot;]
+    delta[&quot;Delta Lake on S3&quot;]
+    qdrant[&quot;Qdrant&quot;]
+  end
+  subgraph train[&quot;Training&quot;]
+    ray[&quot;Ray&quot;]
+    mlflow[&quot;MLflow Registry&quot;]
+  end
+  subgraph serve[&quot;Serving&quot;]
+    kserve[&quot;KServe&quot;]
+    vllm[&quot;vLLM&quot;]
+  end
+
+  kafka --&amp;gt; flink
+  kafka --&amp;gt; spark
+  flink --&amp;gt; feast
+  flink --&amp;gt; qdrant
+  spark --&amp;gt; delta
+  delta --&amp;gt; ray --&amp;gt; mlflow --&amp;gt; kserve
+  feast --&amp;gt; kserve
+  qdrant --&amp;gt; vllm
+&lt;/code&gt;&lt;/pre&gt;
 </content>
  </entry>
  
