@@ -4,9 +4,9 @@ title: The 20 Most Valuable Companies in the World (June 2026)
 minute: 5
 ---
 
-If your goal is **US$5 trillion** and you earn **US$200,000 per day**, it would take **25,000,000 days**, or approximately **68,493 years**, to reach that amount. HAHAHAHAHA *Just a joke, have a good day ;P*
+A snapshot in time..
 
-| # | Empresa | Valor | Categoria (o que mexe) |
+| # | Company | Value | Category (what it does) |
 |---|---------|-------|------------------------|
 | 1 | NVIDIA | ~US$ 5,0 tri | `#chips` `#IA` `#GPU` |
 | 2 | Alphabet (Google) | ~US$ 4,4 tri | `#busca` `#publicidade` `#IA` `#cloud` |
