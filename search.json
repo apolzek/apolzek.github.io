@@ -11,26 +11,6 @@
     } ,
   
     {
-      "title"    : "A Obra Final",
-      "category" : "",
-      "tags"     : "",
-      "url"      : "/2026/08/12/a-obra-final",
-      "date"     : "2026-08-12 00:00:00 -0300",
-      "secret"   : false,
-      "password" : null
-    } ,
-  
-    {
-      "title"    : "Understanding the Body and Reaching Its Potential",
-      "category" : "",
-      "tags"     : "",
-      "url"      : "/2026/08/10/understanding-the-body-and-reaching-its-potential",
-      "date"     : "2026-08-10 00:00:00 -0300",
-      "secret"   : false,
-      "password" : null
-    } ,
-  
-    {
       "title"    : "Mito de Er",
       "category" : "",
       "tags"     : "",
@@ -86,26 +66,6 @@
       "tags"     : "",
       "url"      : "/2026/05/02/kubernetes-static-website",
       "date"     : "2026-05-02 00:00:00 -0300",
-      "secret"   : false,
-      "password" : null
-    } ,
-  
-    {
-      "title"    : "first taste of ebpf",
-      "category" : "",
-      "tags"     : "",
-      "url"      : "/2026/04/25/first-taste-of-ebpf",
-      "date"     : "2026-04-25 00:00:00 -0300",
-      "secret"   : false,
-      "password" : null
-    } ,
-  
-    {
-      "title"    : "the journey to learn ebpf",
-      "category" : "",
-      "tags"     : "",
-      "url"      : "/2026/04/18/the-journey-to-learn-ebpf",
-      "date"     : "2026-04-18 00:00:00 -0300",
       "secret"   : false,
       "password" : null
     } ,
