@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-09-01T14:30:58-03:00</updated>
+ <updated>2026-09-01T19:56:23-03:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -157,7 +157,7 @@
    <link href="https://apolzek.github.io/2026/08/30/apache-flink-aprendendo-em-publico-parte-1"/>
    <updated>2026-08-30T00:00:00-03:00</updated>
    <id>https://apolzek.github.io/2026/08/30/apache-flink-aprendendo-em-publico-parte-1</id>
-   <content type="html">&lt;h4 id=&quot;índice&quot;&gt;Índice&lt;/h4&gt;
+   <content type="html">&lt;h2 id=&quot;índice&quot;&gt;Índice&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;#índice&quot;&gt;Índice&lt;/a&gt;&lt;/li&gt;
@@ -202,7 +202,7 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&quot;introdução&quot;&gt;Introdução&lt;/h4&gt;
+&lt;h2 id=&quot;introdução&quot;&gt;Introdução&lt;/h2&gt;
 
 &lt;p&gt;Este texto é o resultado do que estudei e experimentei ao longo desta semana. Não é um tutorial de quem domina Apache Flink, nem pretende ser uma referência sobre o assunto. É mais como um caderno de anotações de alguém que está aprendendo, testando algumas coisas na prática e compartilhando o que conseguiu entender e descobrir até aqui.&lt;/p&gt;
 
@@ -210,11 +210,11 @@
 
 &lt;p&gt;O Apache Flink é interessante principalmente porque tratou &lt;strong&gt;streaming&lt;/strong&gt; como o caso geral, e não como um remendo sobre processamento em lote. Enquanto concorrentes da época simulavam fluxo contínuo com micro-batches, o Flink processa registro a registro, com latência baixa e throughput alto, mantendo estado distribuído consistente através de snapshots assíncronos (uma variação do algoritmo de &lt;em&gt;Chandy-Lamport&lt;/em&gt;) que garantem semântica exactly-once mesmo após falhas. Ele também oferece noção de tempo de evento com &lt;em&gt;watermarks&lt;/em&gt;, o que permite lidar corretamente com dados que chegam fora de ordem ou atrasados, algo essencial no mundo real. Sua origem é acadêmica: nasceu em 2010 como Stratosphere, projeto de pesquisa da TU Berlin em parceria com a Universidade Humboldt e o Hasso Plattner Institute, sob liderança de Volker Markl. Em 2014 o código foi doado à Apache Software Foundation, rebatizado de Flink (“ágil”, em alemão, daí o esquilo do logo) e promovido a projeto de topo ainda em dezembro daquele ano. Os criadores fundaram a &lt;a href=&quot;https://github.com/dataArtisans&quot;&gt;data Artisans&lt;/a&gt; para comercializá-lo, empresa comprada pelo Alibaba em 2019 e renomeada Ververica. O próprio Alibaba já mantinha um fork interno (Blink) para lidar com o volume do Singles’ Day, e boa parte dessas melhorias voltou para o projeto principal, ajudando a consolidar o Flink como padrão de fato em processamento de streams em empresas como Netflix, Uber e Stripe.&lt;/p&gt;
 
-&lt;h4 id=&quot;meu-objetivo&quot;&gt;Meu objetivo&lt;/h4&gt;
+&lt;h2 id=&quot;meu-objetivo&quot;&gt;Meu objetivo&lt;/h2&gt;
 
 &lt;p&gt;Meu objetivo é usar o Apache Flink conectado ao Kafka para processar dados OTLP do OpenTelemetry (traces, métricas e logs) e extrair mais inteligência dessa telemetria em tempo real, em vez de apenas armazená-la e consultá-la depois. A ideia é usar esse pipeline como laboratório para testar casos como detecção de anomalias em séries temporais de métricas e latências, geração de alertas com contexto e supressão de ruído, análise de causa raiz (RCA) correlacionando spans, logs e métricas de serviços afetados, predição de degradação e saturação de recursos antes que o incidente aconteça, e detecção de dados sensíveis trafegando indevidamente em atributos de span e mensagens de log. Além disso, quero explorar outros cenários em que o Flink se encaixa bem: enriquecimento e sampling inteligente de traces, decidindo com estado quais traces reter com base no que aconteceu na requisição inteira (tail-based sampling) em vez de descartar aleatoriamente na borda; cálculo contínuo de SLIs e error budgets por serviço, com janelas deslizantes e agregações por endpoint, time e versão de deploy; e detecção de mudança de comportamento após releases, comparando o perfil de tráfego, erros e latência entre versões para identificar regressões introduzidas por um deploy específico. Pretendo detalhar tudo isso em breve (:&lt;/p&gt;
 
-&lt;h4 id=&quot;o-problema-que-o-flink-resolve&quot;&gt;O problema que o Flink resolve&lt;/h4&gt;
+&lt;h2 id=&quot;o-problema-que-o-flink-resolve&quot;&gt;O problema que o Flink resolve&lt;/h2&gt;
 
 &lt;p&gt;Durante muito tempo o mundo de dados foi organizado em torno do lote(&lt;em&gt;batch&lt;/em&gt;). Você acumula dados durante o dia, roda um job à meia-noite, e de manhã o relatório está pronto. Isso funciona, e continua funcionando para muita coisa. O problema é quando a resposta precisa vir antes. Detectar uma fraude de cartão dez horas depois da compra é o mesmo que não detectar. Um alerta de infraestrutura que chega no dia seguinte é um post-mortem, não um alerta. Nesses casos, você não quer perguntar aos dados de tempos em tempos, você quer que os dados respondam continuamente. Essa é a inversão que o processamento de streams propõe:&lt;/p&gt;
 
@@ -225,7 +225,7 @@
 
 &lt;p&gt;O Apache Flink é um motor de processamento distribuído voltado para a construção desse segundo tipo de aplicação. Sua premissa fundadora: tudo é um stream. Um arquivo CSV de ontem é um stream que tem começo e fim (&lt;em&gt;bounded&lt;/em&gt;). O tópico Kafka com cliques do seu site é um stream que nunca acaba (&lt;em&gt;unbounded&lt;/em&gt;). Um dos pontos que mais me chamou atenção durante o estudo foi o modelo unificado de processamento: no Flink, batch pode ser entendido como um caso particular de streaming, em que o fluxo de dados possui um início e um fim definidos. Isso significa que o modelo de execução não depende de dois motores completamente distintos, mas de uma mesma arquitetura capaz de processar tanto fluxos contínuos quanto conjuntos de dados finitos.&lt;/p&gt;
 
-&lt;h4 id=&quot;casos-de-uso-reais&quot;&gt;Casos de uso reais&lt;/h4&gt;
+&lt;h2 id=&quot;casos-de-uso-reais&quot;&gt;Casos de uso reais&lt;/h2&gt;
 
 &lt;p&gt;Vale olhar onde isso aparece na prática, porque a lista ajuda a entender que tipo de problema o Flink resolve bem:&lt;/p&gt;
 
@@ -237,7 +237,7 @@
   &lt;li&gt;IA sobre streams. Inferência de modelos aplicada a eventos conforme eles passam, e o Flink Agents, subprojeto novo voltado a agentes de IA que reagem a eventos em tempo real.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&quot;a-arquitetura-em-poucas-peças&quot;&gt;A arquitetura, em poucas peças&lt;/h4&gt;
+&lt;h2 id=&quot;a-arquitetura-em-poucas-peças&quot;&gt;A arquitetura, em poucas peças&lt;/h2&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
@@ -270,7 +270,7 @@
 
 &lt;p&gt;O &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;keyBy&lt;/code&gt; merece atenção especial porque é responsável pelo particionamento dos dados. Quando você define &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;keyBy(event -&amp;gt; event.getUserId())&lt;/code&gt;, está determinando que eventos com a mesma chave sejam direcionados para a mesma instância paralela do operador seguinte. Esse particionamento é fundamental para o processamento com estado por chave, pois permite que cada instância mantenha e gerencie o estado associado às chaves sob sua responsabilidade, sem a necessidade de coordenação distribuída a cada evento.&lt;/p&gt;
 
-&lt;h4 id=&quot;fontes-e-destinos&quot;&gt;Fontes e destinos&lt;/h4&gt;
+&lt;h2 id=&quot;fontes-e-destinos&quot;&gt;Fontes e destinos&lt;/h2&gt;
 
 &lt;p&gt;Fonte e destino são os dois pontos em que o job encosta no mundo. Na linha 2.x eles passam por uma API só, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;env.fromSource(...)&lt;/code&gt; de um lado e &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;stream.sinkTo(...)&lt;/code&gt; do outro.&lt;/p&gt;
 
@@ -401,7 +401,7 @@
 
 &lt;p&gt;E repare que nem o Kafka lista a 2.3 na tabela acima. A defasagem de um release entre o núcleo e os conectores é o estado normal das coisas, não uma exceção. Se o seu pipeline depende de um conector específico, é ele que decide qual versão do Flink você pode rodar, e não o contrário.&lt;/p&gt;
 
-&lt;h4 id=&quot;paralelismo&quot;&gt;Paralelismo&lt;/h4&gt;
+&lt;h2 id=&quot;paralelismo&quot;&gt;Paralelismo&lt;/h2&gt;
 
 &lt;p&gt;Paralelismo é o número de instâncias de cada operador rodando ao mesmo tempo. Um job com paralelismo 8 tem oito cópias do source, oito do map e oito do sink, cada uma processando uma fatia dos dados e ocupando um slot. Cada uma dessas cópias é uma subtask, e é por isso que a interface web mostra métricas repetidas com índices de 0 a 7.&lt;/p&gt;
 
@@ -419,7 +419,7 @@
 
 &lt;p&gt;Definir na mão desde a primeira execução resolve, e &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;env.setMaxParallelism(1024)&lt;/code&gt; é um valor confortável. O que não vale é colocar 32768 por precaução: alguns state backends mantêm estruturas internas que crescem com o número de key groups, então exagerar cobra em desempenho. Um cuidado extra que sai de graça é escolher um valor divisível pelo paralelismo pretendido, porque assim os grupos se distribuem por igual. Com 128 grupos e paralelismo 12, algumas subtasks ficam com 11 e outras com 10, uma assimetria pequena mas evitável.&lt;/p&gt;
 
-&lt;h4 id=&quot;redistribuição-e-data-skew&quot;&gt;Redistribuição e data skew&lt;/h4&gt;
+&lt;h2 id=&quot;redistribuição-e-data-skew&quot;&gt;Redistribuição e data skew&lt;/h2&gt;
 
 &lt;p&gt;Entre dois operadores existe sempre uma decisão sobre para qual subtask seguinte cada evento vai. Na maior parte do tempo ela é tomada pelo Flink sem que você peça, mas dá para escolher, e as opções são poucas:&lt;/p&gt;
 
@@ -470,7 +470,7 @@
 
 &lt;p&gt;As saídas são três, em ordem de esforço. A primeira, e a mais usada, é agregar em duas fases: você acrescenta um sufixo aleatório à chave, algo como &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cliente-42#0&lt;/code&gt; até &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cliente-42#9&lt;/code&gt;, agrega parcialmente sobre essa chave inflada, e só então agrega de novo sobre a chave real. O trabalho pesado passa a ser dividido por dez subtasks, e a segunda etapa recebe apenas dez resultados parciais por chave em vez de milhões de eventos. A segunda, quando se está no SQL, é deixar o motor fazer isso: ligar o mini-batch e a otimização de agregação em duas fases resolve o caso comum sem reescrever consulta nenhuma, e existe até uma opção específica para dividir agregações com &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DISTINCT&lt;/code&gt;, que é a versão automática do mesmo truque. A terceira é aceitar que a chave-baleia é um caso à parte e tratá-la fora do fluxo normal, com um pipeline dedicado(clássica).&lt;/p&gt;
 
-&lt;h4 id=&quot;operator-chaining&quot;&gt;Operator chaining&lt;/h4&gt;
+&lt;h2 id=&quot;operator-chaining&quot;&gt;Operator chaining&lt;/h2&gt;
 
 &lt;p&gt;O grafo que você escreve não é exatamente o grafo que roda. Antes de executar, o Flink funde operadores adjacentes em uma única task, e isso se chama &lt;em&gt;operator chaining&lt;/em&gt;. Uma sequência como &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;map&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;filter&lt;/code&gt; e &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flatMap&lt;/code&gt; vira uma coisa só, executada na mesma thread.&lt;/p&gt;
 
@@ -482,7 +482,7 @@
 
 &lt;p&gt;A armadilha aparece na hora de investigar um problema. Métricas e backpressure são medidos por task, não por operador, então uma corrente inteira reporta um número só, e não dá para saber qual dos operadores fundidos está segurando o fluxo. Para descobrir, dá para quebrar a corrente de propósito: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.disableChaining()&lt;/code&gt; isola um operador dos dois lados, e &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.startNewChain()&lt;/code&gt; começa uma corrente nova a partir dele. Isso é ferramenta de diagnóstico, não configuração para deixar ligada. O custo de serialização que você reintroduziu é real, então vale reverter depois de medir.&lt;/p&gt;
 
-&lt;h4 id=&quot;rich-functions&quot;&gt;Rich functions&lt;/h4&gt;
+&lt;h2 id=&quot;rich-functions&quot;&gt;Rich functions&lt;/h2&gt;
 
 &lt;p&gt;Toda interface de função tem uma versão “rich”: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MapFunction&lt;/code&gt; tem &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RichMapFunction&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FilterFunction&lt;/code&gt; tem &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RichFilterFunction&lt;/code&gt;, e assim por diante. A diferença é que a versão rich acrescenta ciclo de vida e contexto, e é isso que separa uma função que apenas transforma um registro de uma função que precisa de recursos externos ou de memória.&lt;/p&gt;
 
@@ -494,7 +494,7 @@
 
 &lt;p&gt;Uma nota de versão que economiza tempo: até a 1.x a assinatura era &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;open(Configuration parameters)&lt;/code&gt;. Na 2.x ela foi removida, e o método passou a receber um &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OpenContext&lt;/code&gt;. Exemplo copiado de tutorial antigo não compila por causa disso.&lt;/p&gt;
 
-&lt;h4 id=&quot;tempo-a-parte-que-quebra-a-intuição&quot;&gt;Tempo: a parte que quebra a intuição&lt;/h4&gt;
+&lt;h2 id=&quot;tempo-a-parte-que-quebra-a-intuição&quot;&gt;Tempo: a parte que quebra a intuição&lt;/h2&gt;
 
 &lt;p&gt;Essa foi a seção que mais me fez parar e reler. Em streaming existem, no mínimo, dois tempos diferentes:&lt;/p&gt;
 
@@ -509,7 +509,7 @@
 
 &lt;p&gt;Mas isso cria um problema novo: se os eventos chegam fora de ordem, como saber quando uma janela de tempo pode ser fechada? Nunca chega um evento dizendo “acabou, pode contar”.&lt;/p&gt;
 
-&lt;h4 id=&quot;watermarks&quot;&gt;Watermarks&lt;/h4&gt;
+&lt;h2 id=&quot;watermarks&quot;&gt;Watermarks&lt;/h2&gt;
 
 &lt;p&gt;A resposta do Flink são as &lt;strong&gt;watermarks&lt;/strong&gt;. Uma watermark é um marcador que viaja junto com o stream carregando uma afirmação:&lt;/p&gt;
 
@@ -537,7 +537,7 @@
 
 &lt;p&gt;Para eventos que chegam após o avanço da watermark, o Flink oferece mecanismos específicos para tratar dados atrasados. O &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;allowedLateness&lt;/code&gt; permite manter a janela aberta por um período adicional, possibilitando o processamento de eventos tardios e a atualização dos resultados já produzidos. Outra alternativa é utilizar &lt;strong&gt;side output&lt;/strong&gt;, direcionando os eventos que ultrapassaram o limite de atraso para um stream separado. Esse mecanismo pode ser útil para auditoria, métricas de qualidade dos dados ou para identificar problemas na configuração da estratégia de watermark.&lt;/p&gt;
 
-&lt;h4 id=&quot;janelas&quot;&gt;Janelas&lt;/h4&gt;
+&lt;h2 id=&quot;janelas&quot;&gt;Janelas&lt;/h2&gt;
 
 &lt;p&gt;Como o stream é infinito, agregações só fazem sentido dentro de recortes.&lt;/p&gt;
 
@@ -555,7 +555,7 @@
 
 &lt;p&gt;Um detalhe que eu não tinha entendido de cara: prefira &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reduce&lt;/code&gt;/&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;aggregate&lt;/code&gt; a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;process&lt;/code&gt; quando puder. O &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;process&lt;/code&gt; recebe todos os eventos da janela de uma vez, o que significa guardar todos eles em estado até o fechamento. Já &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;aggregate&lt;/code&gt; mantém apenas o acumulador. Em janelas grandes, essa diferença é a diferença entre um job estável e um job que morre de OOM.&lt;/p&gt;
 
-&lt;h4 id=&quot;processfunction&quot;&gt;ProcessFunction&lt;/h4&gt;
+&lt;h2 id=&quot;processfunction&quot;&gt;ProcessFunction&lt;/h2&gt;
 
 &lt;p&gt;Os operadores prontos cobrem muita coisa, mas eles impõem uma forma. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;map&lt;/code&gt; transforma um evento em outro, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;window&lt;/code&gt; agrupa por recorte de tempo, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;aggregate&lt;/code&gt; acumula. Quando a lógica não cabe em nenhum desses moldes, o caminho é descer um nível e escrever uma &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ProcessFunction&lt;/code&gt;, que é o operador de mais baixo nível e mais poderoso da DataStream API. É a faca suíça do Flink, e não é exagero dizer que quase toda lógica de negócio realmente complicada acaba dentro de uma.&lt;/p&gt;
 
@@ -582,7 +582,7 @@
 
 &lt;p&gt;O preço de descer para esse nível é que o Flink para de cuidar das coisas por você. Uma janela sabe quando terminar e joga fora o que acumulou; um estado que você criou dentro de uma &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ProcessFunction&lt;/code&gt; fica lá para sempre, para cada chave que já apareceu, até você apagá-lo explicitamente ou configurar TTL. É a mesma liberdade e o mesmo risco de qualquer abstração de baixo nível, e é o motivo de a recomendação continuar sendo usar o operador pronto sempre que ele couber.&lt;/p&gt;
 
-&lt;h4 id=&quot;estado&quot;&gt;Estado&lt;/h4&gt;
+&lt;h2 id=&quot;estado&quot;&gt;Estado&lt;/h2&gt;
 
 &lt;p&gt;Comecei a estudar o Flink escrevendo, antes dele, meu próprio consumer Kafka. A ideia era responder uma pergunta só: &lt;em&gt;o que um framework de processamento distribuído resolve além de ler eventos de um tópico ?&lt;/em&gt;&lt;/p&gt;
 
@@ -663,7 +663,7 @@
 
 &lt;p&gt;A regra prática que eu tirei disso tem três casos. Estado de poucos gigabytes com latência crítica pede HashMap, porque a ausência de serialização é justamente o que você está comprando. Estado grande, de dezenas de gigabytes a terabytes, pede RocksDB com checkpoint incremental, e vale notar que ele é o único dos dois clássicos que oferece isso: com HashMap, todo checkpoint copia o estado inteiro. E estado enorme em nuvem, com autoscaling agressivo, é o caso para avaliar o ForSt, que é a aposta da série 2.x e sobre o qual escrevo mais no final.&lt;/p&gt;
 
-&lt;h4 id=&quot;checkpoints-e-savepoints&quot;&gt;Checkpoints e savepoints&lt;/h4&gt;
+&lt;h2 id=&quot;checkpoints-e-savepoints&quot;&gt;Checkpoints e savepoints&lt;/h2&gt;
 
 &lt;p&gt;O estado só é confiável porque existe um mecanismo de tolerância a falhas por trás dele.&lt;/p&gt;
 
@@ -706,7 +706,7 @@
 
 &lt;p&gt;Savepoint é o que permite parar um job, subir uma versão nova do código e continuar exatamente de onde parou, com o estado intacto. Na prática, é isso que torna um job de streaming algo que se pode operar por anos.&lt;/p&gt;
 
-&lt;h4 id=&quot;flink-sql&quot;&gt;Flink SQL&lt;/h4&gt;
+&lt;h2 id=&quot;flink-sql&quot;&gt;Flink SQL&lt;/h2&gt;
 
 &lt;p&gt;Nem tudo precisa de Java. O Flink expõe uma Table API e SQL sobre o mesmo motor, e a mesma consulta roda tanto sobre dados finitos quanto sobre um stream infinito:&lt;/p&gt;
 
@@ -777,7 +777,7 @@
 
 &lt;p&gt;Para quem vem de dados, essa é a porta de entrada mais rápida, dá para chegar longe sem escrever uma linha de Java.&lt;/p&gt;
 
-&lt;h4 id=&quot;in-praxi-na-prática&quot;&gt;In praxi (“na prática”)&lt;/h4&gt;
+&lt;h2 id=&quot;in-praxi-na-prática&quot;&gt;In praxi (“na prática”)&lt;/h2&gt;
 
 &lt;p&gt;Subir um cluster local é mais simples do que eu imaginava. Comecei com dois &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker run&lt;/code&gt; soltos, mas troquei por um &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker-compose.yml&lt;/code&gt; assim que quis mais de um TaskManager:&lt;/p&gt;
 
@@ -847,11 +847,11 @@
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; jobmanager ./bin/sql-client.sh
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h4 id=&quot;deploy&quot;&gt;Deploy&lt;/h4&gt;
+&lt;h2 id=&quot;deploy&quot;&gt;Deploy&lt;/h2&gt;
 
 &lt;p&gt;O &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker-compose.yml&lt;/code&gt; acima é um laboratório. Ele sobe um cluster, mas esconde quase todas as decisões que aparecem quando o job precisa rodar por meses sem alguém olhando. Essa foi a parte que mais me obrigou a ler manual, porque aqui não tem intuição que salve: é conta, é limite de container e é escolha de onde o estado vai parar.&lt;/p&gt;
 
-&lt;h5 id=&quot;modos-de-execução&quot;&gt;Modos de execução&lt;/h5&gt;
+&lt;h3 id=&quot;modos-de-execução&quot;&gt;Modos de execução&lt;/h3&gt;
 
 &lt;p&gt;Antes de escolher onde rodar, é preciso escolher como. O Flink tem dois modos vivos hoje, e a diferença entre eles é o ciclo de vida do cluster.&lt;/p&gt;
 
@@ -863,7 +863,7 @@
 
 &lt;p&gt;Ortogonal a isso está o gerenciador de recursos: standalone (você mesmo sobe os processos, que é o caso do Docker Compose), Kubernetes ou YARN. A combinação que vejo recomendada com mais frequência hoje é application mode sobre Kubernetes.&lt;/p&gt;
 
-&lt;h5 id=&quot;kubernetes&quot;&gt;Kubernetes&lt;/h5&gt;
+&lt;h3 id=&quot;kubernetes&quot;&gt;Kubernetes&lt;/h3&gt;
 
 &lt;p&gt;No Kubernetes existem três caminhos, e vale entender a diferença porque eles resolvem problemas distintos.&lt;/p&gt;
 
@@ -908,7 +908,7 @@
 
 &lt;p&gt;Dois detalhes que não são opcionais. O primeiro é a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;serviceAccount&lt;/code&gt;: o JobManager precisa de permissão de RBAC para criar pods e para ler e escrever ConfigMaps, porque é em ConfigMap que a alta disponibilidade nativa guarda quem é o líder e qual é o último checkpoint. O segundo é o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;high-availability.storageDir&lt;/code&gt;: o ConfigMap guarda só o ponteiro, os metadados de verdade vão para armazenamento durável. Sem esse diretório configurado, um JobManager que morre volta sem saber de onde retomar, e o estado inteiro se perde apesar dos checkpoints existirem.&lt;/p&gt;
 
-&lt;h5 id=&quot;memória&quot;&gt;Memória&lt;/h5&gt;
+&lt;h3 id=&quot;memória&quot;&gt;Memória&lt;/h3&gt;
 
 &lt;p&gt;Essa é a conta que mais dá trabalho, porque o Flink não tem um número de memória, tem uma árvore deles. O valor que você configura é o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;taskmanager.memory.process.size&lt;/code&gt;, e ele é o total que o processo pode ocupar no sistema operacional. Tudo o mais é subdivisão.&lt;/p&gt;
 
@@ -927,7 +927,7 @@
 
 &lt;p&gt;A memória de rede é a que mais surpreende. Ela é 10% da memória do Flink por padrão, limitada a 1 GB, e o consumo cresce com o número de conexões entre tarefas, que por sua vez cresce com o quadrado do paralelismo em trocas do tipo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;keyBy&lt;/code&gt;. Um job com paralelismo 4 que passa para 200 pode começar a falhar com erro de buffers insuficientes sem que uma linha do código tenha mudado. É um dos poucos casos em que aumentar o paralelismo piora as coisas antes de melhorar.&lt;/p&gt;
 
-&lt;h5 id=&quot;cpu-e-slots&quot;&gt;CPU e slots&lt;/h5&gt;
+&lt;h3 id=&quot;cpu-e-slots&quot;&gt;CPU e slots&lt;/h3&gt;
 
 &lt;p&gt;Slot não é CPU. Um slot é uma fatia de memória e um lugar no escalonamento, mas as threads de todos os slots de um TaskManager competem pelos mesmos cores da JVM. Não há isolamento de CPU entre slots.&lt;/p&gt;
 
@@ -939,7 +939,7 @@
 
 &lt;p&gt;Vale lembrar que mudar o paralelismo de um job com estado depois não é livre: o estado é redistribuído entre as novas subtarefas na restauração, e o teto continua sendo o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;maxParallelism&lt;/code&gt; fixado na primeira execução, pelo motivo que descrevi na seção de paralelismo.&lt;/p&gt;
 
-&lt;h5 id=&quot;disco-local&quot;&gt;Disco local&lt;/h5&gt;
+&lt;h3 id=&quot;disco-local&quot;&gt;Disco local&lt;/h3&gt;
 
 &lt;p&gt;Com o RocksDB, o estado de trabalho não fica em memória, fica em arquivos no disco local do TaskManager, apontado por &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;io.tmp.dirs&lt;/code&gt;. Isso é o que permite ter estado maior que a RAM, e é também o que faz o tipo de disco importar.&lt;/p&gt;
 
@@ -949,7 +949,7 @@
 
 &lt;p&gt;No Kubernetes, isso significa escolher entre &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;emptyDir&lt;/code&gt; e volume persistente. Com &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;emptyDir&lt;/code&gt;, o disco morre com o pod, e um restart obriga o TaskManager a baixar o estado inteiro do armazenamento remoto antes de voltar a processar, o que em estados grandes é a diferença entre segundos e muitos minutos de recuperação. Com um volume persistente e &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;state.backend.local-recovery: true&lt;/code&gt;, a cópia local sobrevive ao restart e a recuperação lê do disco em vez da rede. É mais complexidade em troca de tempo de recuperação, e a escolha depende de quanto o atraso custa.&lt;/p&gt;
 
-&lt;h5 id=&quot;s3-e-o-sistema-de-arquivos-remoto&quot;&gt;S3 e o sistema de arquivos remoto&lt;/h5&gt;
+&lt;h3 id=&quot;s3-e-o-sistema-de-arquivos-remoto&quot;&gt;S3 e o sistema de arquivos remoto&lt;/h3&gt;
 
 &lt;p&gt;Aqui está a confusão que eu mesmo tinha antes de estudar: &lt;strong&gt;o S3 não é onde o estado vive, é onde as cópias dele são guardadas&lt;/strong&gt;. O estado quente está no heap ou no disco local do TaskManager, e é lá que ele é lido e escrito a cada evento. O S3 entra em quatro momentos, e todos eles são periódicos ou excepcionais.&lt;/p&gt;
 
@@ -967,7 +967,7 @@
 
 &lt;p&gt;O último ponto é sobre o intervalo de checkpoint, que parece uma configuração de latência e é também uma conta de custo. Cada checkpoint escreve pelo menos um arquivo por subtarefa com estado. Um job com paralelismo 200 e checkpoint a cada 10 segundos produz na ordem de setenta mil objetos por hora, e o S3 cobra por requisição além de limitar a taxa por prefixo. Isso aparece como latência de checkpoint subindo e, no limite, como checkpoint expirando por timeout. Duas defesas ajudam: subir o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;state.storage.fs.memory-threshold&lt;/code&gt; para que estados pequenos viajem dentro do arquivo de metadados em vez de virarem objetos separados, e aceitar um intervalo maior. Um minuto entre checkpoints é um valor comum, e o que ele custa é apenas a quantidade de trabalho que precisa ser refeita depois de uma falha.&lt;/p&gt;
 
-&lt;h4 id=&quot;o-ecossistema-em-volta&quot;&gt;O ecossistema em volta&lt;/h4&gt;
+&lt;h2 id=&quot;o-ecossistema-em-volta&quot;&gt;O ecossistema em volta&lt;/h2&gt;
 
 &lt;p&gt;O Flink raramente aparece sozinho. Ele é um motor de processamento, e um motor precisa de algo que alimente, de algum lugar onde depositar e de gente que leia o que ele produziu. Boa parte do trabalho de montar um pipeline é escolher essas peças, então vale mapear as que mais aparecem ao lado dele e, principalmente, por que aparecem.&lt;/p&gt;
 
@@ -1061,7 +1061,7 @@
 
 &lt;p&gt;O terceiro é a razão de existir uma feature store, que demorei a entender. O problema que ela resolve não é de armazenamento, é de consistência: se a feature “média de compras nos últimos 30 minutos” é calculada por um job Flink na inferência e por uma query SQL no treino, as duas vão discordar em algum detalhe, e o modelo passa a ver em produção dados diferentes dos que viu ao aprender. Manter uma definição só, alimentada pelo mesmo job, é o ponto. E vale notar que parte disso está migrando para dentro do próprio Flink com as funções de modelo da 2.1 e 2.2, que descrevo mais adiante.&lt;/p&gt;
 
-&lt;h4 id=&quot;o-que-eu-ainda-não-sei&quot;&gt;O que eu ainda não sei&lt;/h4&gt;
+&lt;h2 id=&quot;o-que-eu-ainda-não-sei&quot;&gt;O que eu ainda não sei&lt;/h2&gt;
 
 &lt;p&gt;Lista honesta do que ficou em aberto:&lt;/p&gt;
 
@@ -1072,7 +1072,7 @@
   &lt;li&gt;Como isso tudo se comporta de verdade em produção sob carga irregular, a parte que nenhuma documentação ensina.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&quot;o-que-ficou&quot;&gt;O que ficou&lt;/h4&gt;
+&lt;h2 id=&quot;o-que-ficou&quot;&gt;O que ficou&lt;/h2&gt;
 
 &lt;p&gt;Terminei a semana com uma impressão que não esperava ter: a parte difícil de streaming não é distribuir o processamento. Isso o Flink resolve. A parte difícil é o &lt;strong&gt;tempo&lt;/strong&gt;: aceitar que os dados chegam desordenados, que “completo” é uma aposta e não um fato, e que quase toda decisão técnica aqui é, no fundo, uma escolha entre latência e correção.&lt;/p&gt;
 
@@ -1084,7 +1084,7 @@
 
 &lt;p&gt;Próxima semana no cronograma: revisar o roadmap de Data Engineer. Continuo escrevendo enquanto aprendo.&lt;/p&gt;
 
-&lt;h4 id=&quot;a-versão-atual-destaques-do-flink-23&quot;&gt;A versão atual: destaques do Flink 2.3&lt;/h4&gt;
+&lt;h2 id=&quot;a-versão-atual-destaques-do-flink-23&quot;&gt;A versão atual: destaques do Flink 2.3&lt;/h2&gt;
 
 &lt;p&gt;Tudo que está acima foi estudado sobre a linha 2.x, então vale registrar onde ela está hoje e o que cada salto trouxe. A versão estável no momento em que escrevo é a &lt;strong&gt;2.3.0&lt;/strong&gt;, de 25 de junho de 2026. Em paralelo, a linha 1.x continua viva na &lt;strong&gt;1.20&lt;/strong&gt;, que é a versão de suporte estendido (LTS) para quem ainda não migrou.&lt;/p&gt;
 
@@ -1120,7 +1120,7 @@
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h5 id=&quot;estado-desagregado&quot;&gt;Estado desagregado&lt;/h5&gt;
+&lt;h3 id=&quot;estado-desagregado&quot;&gt;Estado desagregado&lt;/h3&gt;
 
 &lt;p&gt;Esse é o item mais importante da linha 2.x, e vale entender o problema antes da solução. Nas versões anteriores, o estado quente vivia no disco local do TaskManager, normalmente sob o RocksDB. Isso é rápido, mas amarra o job ao hardware de três formas incômodas. O disco local é um recurso escasso e caro dentro de um contêiner, e um job com dezenas de terabytes de estado simplesmente não cabe. A compactação do RocksDB gera picos de CPU e de I/O que não têm relação nenhuma com o volume de eventos naquele instante, o que torna o dimensionamento um chute. E mudar o paralelismo obriga a redistribuir fisicamente todo esse estado entre as máquinas, o que faz um rescale de um job grande levar dezenas de minutos.&lt;/p&gt;
 
@@ -1137,15 +1137,15 @@
 
 &lt;p&gt;Os números que o projeto publicou, medidos com o Nexmark, ajudam a calibrar a expectativa. Em consultas pesadas de I/O, o estado desagregado entrega de 75% a 120% do throughput do estado local, ou seja, pode até ganhar. Em consultas com estado pequeno, de 10MB a 400MB, a diferença fica dentro de 10%. O ponto que eu tiro disso é que não se trata de um substituto universal: é a escolha certa quando o estado é grande demais para o disco local ou quando o rescale rápido importa mais que a latência mínima.&lt;/p&gt;
 
-&lt;h5 id=&quot;o-que-a-20-removeu&quot;&gt;O que a 2.0 removeu&lt;/h5&gt;
+&lt;h3 id=&quot;o-que-a-20-removeu&quot;&gt;O que a 2.0 removeu&lt;/h3&gt;
 
 &lt;p&gt;A 2.0 foi a primeira quebra de compatibilidade em uma década, e a lista de remoções é grande o suficiente para atrapalhar quem tentar migrar sem ler. A API DataSet foi removida, e o caminho é DataStream ou Table API. As APIs em Scala saíram junto. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SourceFunction&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SinkFunction&lt;/code&gt; e o Sink V1 foram removidos em favor das interfaces novas de fonte e destino. O &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flink-conf.yaml&lt;/code&gt; deu lugar ao &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;config.yaml&lt;/code&gt;, em YAML padrão de verdade, com mais de cem opções obsoletas eliminadas. O modo de execução per-job saiu, restando session e application. O Java 8 deixou de ser suportado, o 17 virou padrão e o 21 passou a ser oficial. E o detalhe que mais dói na prática: não há compatibilidade de estado entre 1.x e 2.x, então um savepoint antigo não é restaurável na 2.x.&lt;/p&gt;
 
-&lt;h5 id=&quot;ia-dentro-do-stream&quot;&gt;IA dentro do stream&lt;/h5&gt;
+&lt;h3 id=&quot;ia-dentro-do-stream&quot;&gt;IA dentro do stream&lt;/h3&gt;
 
 &lt;p&gt;Essa é a direção que o projeto vem seguindo desde a 2.1. A ideia é declarar um modelo como se declara uma tabela, com um provedor e credenciais, e então invocá-lo dentro da consulta. A 2.1 trouxe a função &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ML_PREDICT&lt;/code&gt; no SQL. A 2.2 levou isso para a Table API e adicionou &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;VECTOR_SEARCH&lt;/code&gt;, que faz busca por similaridade contra um índice vetorial dentro do próprio fluxo, com modo assíncrono e timeout configuráveis. É o que torna viável enriquecer um evento com contexto recuperado no momento em que ele passa, sem sair para um serviço externo escrito à mão.&lt;/p&gt;
 
-&lt;h5 id=&quot;os-destaques-da-23&quot;&gt;Os destaques da 2.3&lt;/h5&gt;
+&lt;h3 id=&quot;os-destaques-da-23&quot;&gt;Os destaques da 2.3&lt;/h3&gt;
 
 &lt;p&gt;A 2.3 é uma versão de amadurecimento, com quinze FLIPs implementados. Os pontos que me pareceram mais relevantes:&lt;/p&gt;
 
