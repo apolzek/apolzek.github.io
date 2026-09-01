@@ -11,6 +11,16 @@
     } ,
   
     {
+      "title"    : "Apache Flink 2.3: o que mudou na linha 2.x",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/2026/09/01/apache-flink-2-3-o-que-mudou-na-linha-2-x",
+      "date"     : "2026-09-01 00:00:00 -0300",
+      "secret"   : false,
+      "password" : null
+    } ,
+  
+    {
       "title"    : "Apache Flink: Aprendendo em Público, parte 1",
       "category" : "",
       "tags"     : "",
