@@ -1,6 +1,16 @@
 [
   
     {
+      "title"    : "Data and ML Stack Tools by Category",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/2026/09/01/data-and-ml-stack-tools",
+      "date"     : "2026-09-01 00:00:00 -0300",
+      "secret"   : false,
+      "password" : null
+    } ,
+  
+    {
       "title"    : "Apache Flink: Aprendendo em Público, parte 1",
       "category" : "",
       "tags"     : "",

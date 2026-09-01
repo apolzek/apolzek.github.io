@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-09-01T11:13:09-03:00</updated>
+ <updated>2026-09-01T14:29:05-03:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -12,6 +12,145 @@
  </author>
 
  
+ 
+ <entry>
+   <title>Data and ML Stack Tools by Category</title>
+   <link href="https://apolzek.github.io/2026/09/01/data-and-ml-stack-tools"/>
+   <updated>2026-09-01T00:00:00-03:00</updated>
+   <id>https://apolzek.github.io/2026/09/01/data-and-ml-stack-tools</id>
+   <content type="html">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Category&lt;/th&gt;
+      &lt;th&gt;Tools / Technologies&lt;/th&gt;
+      &lt;th&gt;Primary Use&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Machine Learning&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;MLflow, Kubeflow, Feast, Ray, TensorFlow, PyTorch, Scikit-learn, XGBoost, LightGBM&lt;/td&gt;
+      &lt;td&gt;Training, tracking, serving, feature store and MLOps&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Data Science / Analytics&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Python, Jupyter, Pandas, Polars, NumPy, SciPy, R, Apache Arrow&lt;/td&gt;
+      &lt;td&gt;Data exploration, statistical analysis and data preparation&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;BI / Analytics&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Apache Superset, Metabase, Grafana, Power BI, Tableau&lt;/td&gt;
+      &lt;td&gt;Dashboards, data exploration and visualization&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Data Engineering&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Apache Spark, Apache Flink, Apache Beam, Apache Kafka, dbt&lt;/td&gt;
+      &lt;td&gt;Data processing, pipelines and transformations&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Data Ingestion / CDC&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Apache Kafka, Debezium, Kafka Connect, Apache NiFi, Airbyte, Fivetran&lt;/td&gt;
+      &lt;td&gt;Data ingestion, CDC and data integration&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Workflow Orchestration&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Apache Airflow, Dagster, Prefect, Argo Workflows&lt;/td&gt;
+      &lt;td&gt;Pipeline and workflow orchestration&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Data Transformation&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;dbt, Apache Spark, SQLMesh, Dataform&lt;/td&gt;
+      &lt;td&gt;Data transformation, modeling and ELT&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Data Quality&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Great Expectations, Soda, dbt Tests, Deequ&lt;/td&gt;
+      &lt;td&gt;Data validation and quality checks&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Data Catalog / Governance&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;OpenMetadata, DataHub, Apache Atlas, Amundsen, OpenLineage&lt;/td&gt;
+      &lt;td&gt;Data catalog, lineage and governance&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Data Lake Storage&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Amazon S3, MinIO, Google Cloud Storage, Azure Data Lake Storage&lt;/td&gt;
+      &lt;td&gt;Object storage and data lake&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;File Formats&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Apache Parquet, Apache ORC, Apache Avro, Apache Arrow&lt;/td&gt;
+      &lt;td&gt;Data storage and interchange formats&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Open Table Formats&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Apache Iceberg, Apache Hudi, Delta Lake, Apache Paimon&lt;/td&gt;
+      &lt;td&gt;ACID tables, schema evolution, snapshots and time travel&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Lakehouse Catalog&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Apache Polaris, Project Nessie, AWS Glue Catalog, Hive Metastore&lt;/td&gt;
+      &lt;td&gt;Table catalog and metadata management&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Query Engines&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Trino, Presto, DuckDB, ClickHouse, Apache Doris, StarRocks&lt;/td&gt;
+      &lt;td&gt;SQL analytics and OLAP&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Lakehouse Platforms&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Databricks, Dremio, Starburst, Snowflake&lt;/td&gt;
+      &lt;td&gt;Data lakehouse and analytics platforms&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Feature Store&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Feast, Hopsworks, Tecton&lt;/td&gt;
+      &lt;td&gt;ML feature management and serving&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;ML Pipelines&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Kubeflow Pipelines, MLflow, Airflow, Metaflow, Flyte&lt;/td&gt;
+      &lt;td&gt;Machine learning pipelines&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Model Serving&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;KServe, Seldon, NVIDIA Triton, Ray Serve, BentoML, vLLM&lt;/td&gt;
+      &lt;td&gt;Model inference and serving&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Experiment Tracking&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;MLflow, Weights &amp;amp; Biases, Neptune, Comet&lt;/td&gt;
+      &lt;td&gt;Experiment tracking and metrics&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Model Registry&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;MLflow, Kubeflow, Vertex AI, SageMaker, Azure ML&lt;/td&gt;
+      &lt;td&gt;Model versioning and lifecycle management&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Vector Databases&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Qdrant, Milvus, Weaviate, pgvector, Pinecone&lt;/td&gt;
+      &lt;td&gt;Embeddings, semantic search and RAG&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Streaming / Event Processing&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Apache Kafka, Apache Flink, Redpanda, Apache Pulsar&lt;/td&gt;
+      &lt;td&gt;Real-time data processing&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Data Warehouse&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Snowflake, BigQuery, Redshift, ClickHouse, DuckDB&lt;/td&gt;
+      &lt;td&gt;Structured analytics and OLAP&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Data Observability&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;OpenTelemetry, Grafana, Prometheus, OpenLineage, Marquez&lt;/td&gt;
+      &lt;td&gt;Data and pipeline observability&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Apache Flink: Aprendendo em Público, parte 1</title>
