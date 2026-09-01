@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Apache Flink: Aprendendo em Público, parte 1"
-minute: 35
+minute: 47
 ---
 
 #### Índice
@@ -11,12 +11,15 @@ minute: 35
 - [O problema que o Flink resolve](#o-problema-que-o-flink-resolve)
 - [Casos de uso reais](#casos-de-uso-reais)
 - [A arquitetura, em poucas peças](#a-arquitetura-em-poucas-peças)
+- [Fontes e destinos](#fontes-e-destinos)
 - [Paralelismo](#paralelismo)
+- [Redistribuição e data skew](#redistribuição-e-data-skew)
 - [Operator chaining](#operator-chaining)
 - [Rich functions](#rich-functions)
 - [Tempo: a parte que quebra a intuição](#tempo-a-parte-que-quebra-a-intuição)
 - [Watermarks](#watermarks)
 - [Janelas](#janelas)
+- [ProcessFunction](#processfunction)
 - [Estado](#estado)
 - [Checkpoints e savepoints](#checkpoints-e-savepoints)
 - [Flink SQL](#flink-sql)
@@ -28,6 +31,7 @@ minute: 35
   - [CPU e slots](#cpu-e-slots)
   - [Disco local](#disco-local)
   - [S3 e o sistema de arquivos remoto](#s3-e-o-sistema-de-arquivos-remoto)
+- [O ecossistema em volta](#o-ecossistema-em-volta)
 - [O que eu ainda não sei](#o-que-eu-ainda-não-sei)
 - [O que ficou](#o-que-ficou)
 - [A versão atual: destaques do Flink 2.3](#a-versão-atual-destaques-do-flink-23)
@@ -80,6 +84,71 @@ Um job é representado como um **grafo de operadores**, composto por fontes (`so
 
 O `keyBy` merece atenção especial porque é responsável pelo particionamento dos dados. Quando você define `keyBy(event -> event.getUserId())`, está determinando que eventos com a mesma chave sejam direcionados para a mesma instância paralela do operador seguinte. Esse particionamento é fundamental para o processamento com estado por chave, pois permite que cada instância mantenha e gerencie o estado associado às chaves sob sua responsabilidade, sem a necessidade de coordenação distribuída a cada evento.
 
+#### Fontes e destinos
+
+Fonte e destino são os dois pontos em que o job encosta no mundo. Na linha 2.x eles passam por uma API só, `env.fromSource(...)` de um lado e `stream.sinkTo(...)` do outro.
+
+As três fontes que aparecem em quase todo projeto:
+
+| Fonte | Para que serve | O que ela guarda em estado |
+|:--|:--|:--|
+| **KafkaSource** | O caso comum. Lê um ou mais tópicos, com um consumer group. | O offset de cada partição |
+| **Flink CDC** | Lê o log de transações de um banco e transforma cada mudança de linha em evento. | A posição no binlog ou no WAL |
+| **FileSource** | Lê arquivos de um bucket ou do HDFS, em lote ou monitorando o diretório. | Quais arquivos e que trecho de cada um já foi lido |
+
+E os três destinos:
+
+| Destino | Para que serve | Garantia que oferece |
+|:--|:--|:--|
+| **KafkaSink** | Publica o resultado em outro tópico, para o próximo job ou para quem consome. | Exactly-once, via transações do Kafka |
+| **JdbcSink** | Grava em Postgres, MySQL e afins, tipicamente o resultado agregado. | Idempotência, quando existe chave primária |
+| **FileSink** | Escreve Parquet ou JSON particionado em armazenamento de objetos. | Exactly-once, confirmando os arquivos no checkpoint |
+
+O formato do código é sempre o mesmo, um builder de um lado e outro do outro:
+
+```java
+KafkaSource<String> source = KafkaSource.<String>builder()
+    .setBootstrapServers("kafka:9092")
+    .setTopics("otlp-spans")
+    .setGroupId("flink-otlp")
+    .setStartingOffsets(OffsetsInitializer.earliest())
+    .setValueOnlyDeserializer(new SimpleStringSchema())
+    .build();
+
+KafkaSink<String> sink = KafkaSink.<String>builder()
+    .setBootstrapServers("kafka:9092")
+    .setRecordSerializer(KafkaRecordSerializationSchema.builder()
+        .setTopic("otlp-alerts")
+        .setValueSerializationSchema(new SimpleStringSchema())
+        .build())
+    .setDeliveryGuarantee(DeliveryGuarantee.EXACTLY_ONCE)
+    .setTransactionalIdPrefix("otlp-")
+    .build();
+
+env.fromSource(source, watermarkStrategy, "otlp-spans")
+   .process(new AnomalyDetector())
+   .sinkTo(sink);
+```
+
+Duas coisas nesse código não são detalhe de sintaxe. A primeira é que a fonte não faz commit de offset por conta própria: o offset é estado do Flink, entra no checkpoint junto com o resto e volta com ele numa recuperação. É por isso que não se gerencia offset na mão aqui, e é por isso também que o painel de consumer lag do Kafka pode discordar da realidade do job, já que o commit para o Kafka é só informativo.
+
+A segunda é que o exactly-once no destino é uma propriedade do destino, não do Flink. O `KafkaSink` só alcança isso porque escreve dentro de uma transação que é confirmada quando o checkpoint fecha, e por isso ele exige um `transactionalIdPrefix` estável entre reinícios. O `FileSink` funciona pela mesma lógica: os arquivos ficam com sufixo de "em progresso" até o checkpoint confirmar, o que costuma assustar quem olha o bucket no meio do caminho e acha que nada está sendo escrito. Já o `JdbcSink` não tem transação distribuída, então a garantia que ele oferece depende de você escrever com chave primária e deixar a repetição ser inofensiva.
+
+Vale insistir na parte do versionamento, porque ela morde. Com exceção dos conectores de sistema de arquivos e do `datagen`, que vêm dentro da distribuição, cada conector é um projeto separado, com repositório próprio, release próprio e numeração que não tem relação nenhuma com a do Flink. O `flink-connector-kafka` está na 5.0.0 enquanto o Flink está na 2.3. Os dois números não conversam, e não existe "a versão do conector que combina com a minha" por dedução.
+
+O que existe é uma matriz de compatibilidade, publicada na página de downloads, e conferir essa matriz é passo obrigatório antes de escolher a versão do Flink de um projeto novo. O motivo é que a migração para a linha 2.x não foi simultânea, e boa parte do ecossistema ficou para trás. Alguns exemplos de como isso estava quando escrevi:
+
+| Conector | Versão | Flink compatível |
+|:--|:--|:--|
+| Kafka | 5.0.0 | 2.1.x e 2.2.x |
+| JDBC | 4.1.0 | 2.1.x e 2.2.x |
+| Elasticsearch | 4.0.0 | 2.0.x |
+| Prometheus | 1.0.0 | 1.19.x e 1.20.x |
+
+O conector do Prometheus é o caso mais eloquente, e é um que me interessa de perto, porque ele é a saída natural para métricas derivadas de telemetria. Ele existe, é oficial, e escreve via a API de remote write do Prometheus. É só sink, não há fonte correspondente, o que faz sentido: o Prometheus é onde a série temporal termina, não de onde ela vem. Só que a 1.0.0 ainda é da linha 1.x do Flink e não atravessou para a 2.x. Quem quiser esse destino hoje escolhe entre ficar na 1.20, que é LTS, ou escrever a integração na mão.
+
+E repare que nem o Kafka lista a 2.3 na tabela acima. A defasagem de um release entre o núcleo e os conectores é o estado normal das coisas, não uma exceção. Se o seu pipeline depende de um conector específico, é ele que decide qual versão do Flink você pode rodar, e não o contrário.
+
 #### Paralelismo
 
 Paralelismo é o número de instâncias de cada operador rodando ao mesmo tempo. Um job com paralelismo 8 tem oito cópias da fonte, oito do `map` e oito do sink, cada uma processando uma fatia dos dados e ocupando um slot. Cada uma dessas cópias é uma subtask, e é por isso que a interface web mostra métricas repetidas com índices de 0 a 7.
@@ -88,13 +157,43 @@ Ele pode ser definido em três alturas, da mais ampla para a mais específica. N
 
 Para o valor inicial, um ponto de partida razoável é igualar o paralelismo ao número de partições do tópico Kafka de entrada. A razão de não passar disso é específica e vale entender, porque o sintoma é confuso: as subtasks de fonte que sobram não recebem partição nenhuma, ficam ociosas e nunca emitem watermark. Como o watermark de um operador é o menor entre todas as suas entradas, uma fonte parada segura o relógio do job inteiro, e o resultado é uma janela que nunca fecha e um job que parece travado sem nenhum erro no log. Dá para contornar declarando `withIdleness()` na estratégia de watermark, que manda o Flink ignorar as entradas silenciosas, mas é mais simples não criar o problema. Ficar abaixo do número de partições também tem custo, menor: você deixa vazão do tópico na mesa, porque uma subtask passa a ler mais de uma partição.
 
-Depois disso, o ajuste é por medição, não por conta. Os dois números que interessam na interface web são o backpressure, que mostra qual operador está segurando o fluxo, e o busy time, que mostra a fração do tempo em que cada subtask esteve realmente trabalhando em vez de esperando. Aumentar o paralelismo de um operador que passa o dia ocioso não melhora nada. Falo mais sobre esse dimensionamento na seção de CPU e slots, incluindo o `maxParallelism`, que é fixado na primeira execução e limita até onde dá para crescer depois.
+Depois disso, o ajuste é por medição, não por conta. Os dois números que interessam na interface web são o backpressure, que mostra qual operador está segurando o fluxo, e o busy time, que mostra a fração do tempo em que cada subtask esteve realmente trabalhando em vez de esperando. Aumentar o paralelismo de um operador que passa o dia ocioso não melhora nada. Falo mais sobre esse dimensionamento na seção de CPU e slots.
+
+Falta uma peça para o rescale fazer sentido, e ela é interna: o Flink não distribui chave por chave. Ele passa cada chave por um hash e a coloca em um **key group**, e o que é distribuído entre as subtasks são os key groups, em faixas contíguas. O key group é a unidade de movimentação de estado, ou seja, quando você muda o paralelismo, o que migra de uma máquina para outra são grupos inteiros, nunca chaves avulsas. Não se mexe nisso diretamente quase nunca, mas o termo aparece em log e em qualquer conversa sobre rescaling.
+
+O número de key groups que existem é exatamente o `maxParallelism`. Daí vêm as duas propriedades que importam. Ele é o teto absoluto do paralelismo, porque não dá para ter mais subtasks do que grupos para distribuir entre elas. E ele não pode mudar depois, porque alterar a quantidade de grupos muda a que grupo cada chave pertence, o que invalida todo o estado já salvo.
+
+A armadilha está no valor padrão. Sem configuração, o Flink calcula esse número a partir do paralelismo inicial: algo em torno de uma vez e meia ele, arredondado para cima, com piso de 128 e teto de 32768. Um job que sobe com paralelismo 8 fica com 128 e ninguém repara, porque nada quebra. O problema chega no dia em que esse job precisa de paralelismo 200, e a única saída é reconstruir o estado do zero.
+
+Definir na mão desde a primeira execução resolve, e `env.setMaxParallelism(1024)` é um valor confortável. O que não vale é colocar 32768 por precaução: alguns state backends mantêm estruturas internas que crescem com o número de key groups, então exagerar cobra em desempenho. Um cuidado extra que sai de graça é escolher um valor divisível pelo paralelismo pretendido, porque assim os grupos se distribuem por igual. Com 128 grupos e paralelismo 12, algumas subtasks ficam com 11 e outras com 10, uma assimetria pequena mas evitável.
+
+#### Redistribuição e data skew
+
+Entre dois operadores existe sempre uma decisão sobre para qual subtask seguinte cada evento vai. Na maior parte do tempo ela é tomada pelo Flink sem que você peça, mas dá para escolher, e as opções são poucas:
+
+| Estratégia | O que faz | Quando aparece |
+|:--|:--|:--|
+| `forward` | O evento fica na mesma subtask. Nada atravessa a rede | Entre operadores adjacentes de mesmo paralelismo. É o que permite o chaining |
+| `hash` | Roteia pela chave, sempre a mesma chave para a mesma subtask | Todo `keyBy`, ou seja, sempre que existe estado por chave |
+| `rebalance` | Round-robin entre todas as subtasks seguintes | Para reequilibrar depois de uma fonte que chega desbalanceada |
+| `rescale` | Round-robin, mas só entre as subtasks vizinhas, preservando localidade | O mesmo objetivo do `rebalance`, evitando tráfego entre máquinas |
+| `broadcast` | Cada evento vai para todas as subtasks seguintes | Distribuir regras ou configuração para todas as instâncias |
+
+O `broadcast` merece nota porque é a base de um padrão inteiro: um stream pequeno de regras é transmitido para todas as subtasks, que o guardam em estado, enquanto o stream grande de eventos passa particionado por chave. É assim que se troca a lógica de um job sem redeploy.
+
+Vale lembrar também que `rebalance` e `rescale` ganharam distribuição adaptativa na 2.3, olhando a carga real do destino em vez de fazer round-robin cego, e é uma opção que precisa ser ligada, como descrevo nos destaques da versão.
+
+Nada disso resolve o problema que mais dói, que é o **data skew**. Skew é quando a distribuição das chaves é desigual: um cliente que sozinho responde por metade das transações, um produto que viralizou, um tenant gigante no meio de mil pequenos. Como o `keyBy` garante que a mesma chave vai sempre para a mesma subtask, essa subtask vira o gargalo, as outras ficam ociosas, e o job inteiro anda na velocidade da mais lenta. Aumentar o paralelismo não ajuda em nada, porque a chave pesada continua indo para um lugar só.
+
+O diagnóstico é direto na interface web, e é por isso que o busy time importa tanto: skew aparece como backpressure concentrado em uma subtask e como uma instância em 100% de ocupação enquanto as vizinhas estão em 10%. Se todas estivessem em 90%, o problema seria de capacidade, e a resposta seria outra.
+
+As saídas são três, em ordem de esforço. A primeira, e a mais usada, é agregar em duas fases: você acrescenta um sufixo aleatório à chave, algo como `cliente-42#0` até `cliente-42#9`, agrega parcialmente sobre essa chave inflada, e só então agrega de novo sobre a chave real. O trabalho pesado passa a ser dividido por dez subtasks, e a segunda etapa recebe apenas dez resultados parciais por chave em vez de milhões de eventos. A segunda, quando se está no SQL, é deixar o motor fazer isso: ligar o mini-batch e a otimização de agregação em duas fases resolve o caso comum sem reescrever consulta nenhuma, e existe até uma opção específica para dividir agregações com `DISTINCT`, que é a versão automática do mesmo truque. A terceira é aceitar que a chave-baleia é um caso à parte e tratá-la fora do fluxo normal, com um pipeline dedicado.
 
 #### Operator chaining
 
-O grafo que você escreve não é exatamente o grafo que roda. Antes de executar, o Flink funde operadores adjacentes em uma única task, e isso se chama operator chaining. Uma sequência como `map`, `filter` e `flatMap` vira uma coisa só, executada na mesma thread.
+O grafo que você escreve não é exatamente o grafo que roda. Antes de executar, o Flink funde operadores adjacentes em uma única task, e isso se chama *operator chaining*. Uma sequência como `map`, `filter` e `flatMap` vira uma coisa só, executada na mesma thread.
 
-A fusão só acontece sob três condições: não pode haver redistribuição de dados entre os operadores, eles precisam ter o mesmo paralelismo e precisam estar no mesmo grupo de compartilhamento de slot. Um `keyBy` ou um `rebalance` quebram a corrente, porque nesses casos o registro precisa mesmo sair de uma instância e ir para outra.
+A fusão só acontece sob três condições: a ligação entre os operadores precisa ser `forward`, eles precisam ter o mesmo paralelismo e precisam estar no mesmo grupo de compartilhamento de slot. Um `keyBy` ou um `rebalance` quebram a corrente, porque nesses casos o registro precisa mesmo sair de uma instância e ir para outra.
 
 O ganho é maior do que parece à primeira vista. Dentro de uma corrente, passar um registro de um operador para o próximo é uma chamada de método, e o objeto continua sendo o mesmo na memória. Entre duas tasks, o registro é serializado, vai para um buffer de rede e é desserializado do outro lado, e isso acontece mesmo quando as duas estão dentro do mesmo TaskManager. O chaining elimina esse custo inteiro.
 
@@ -168,6 +267,34 @@ stream
 ```
 
 Um detalhe que eu não tinha entendido de cara: prefira `reduce`/`aggregate` a `process` quando puder. O `process` recebe todos os eventos da janela de uma vez, o que significa guardar todos eles em estado até o fechamento. Já `aggregate` mantém apenas o acumulador. Em janelas grandes, essa diferença é a diferença entre um job estável e um job que morre de OOM.
+
+#### ProcessFunction
+
+Os operadores prontos cobrem muita coisa, mas eles impõem uma forma. `map` transforma um evento em outro, `window` agrupa por recorte de tempo, `aggregate` acumula. Quando a lógica não cabe em nenhum desses moldes, o caminho é descer um nível e escrever uma `ProcessFunction`, que é o operador de mais baixo nível e mais poderoso da DataStream API. É a faca suíça do Flink, e não é exagero dizer que quase toda lógica de negócio realmente complicada acaba dentro de uma.
+
+O que ela dá, a cada evento, são três coisas que os operadores prontos não dão juntas: acesso direto ao estado da chave, a capacidade de registrar timers e a de emitir para side outputs. As três chegam pelo mesmo lugar, aquele parâmetro `ctx` que aparece na assinatura do `processElement`.
+
+O timer é a parte que muda o que dá para construir, porque é ele que permite reagir à passagem do tempo, e não só à chegada de um evento. Você registra um instante futuro e o Flink chama o seu `onTimer` quando ele chega:
+
+```java
+@Override
+public void processElement(Event event, Context ctx, Collector<Alert> out) {
+    ctx.timerService().registerEventTimeTimer(event.getTimestamp() + 600_000);
+}
+
+@Override
+public void onTimer(long timestamp, OnTimerContext ctx, Collector<Alert> out) {
+    // dez minutos de event time se passaram desde aquele evento
+}
+```
+
+Duas propriedades desse mecanismo importam. A primeira é que um timer de event time não dispara quando o relógio da máquina chega lá, e sim quando a watermark passa daquele instante, o que amarra os timers na mesma noção de tempo das janelas: se a watermark não avança, o timer não dispara, e voltamos ao problema da fonte ociosa que descrevi antes. A segunda é que timers são estado, pertencem a uma chave e entram no checkpoint. Um job que reinicia não perde os timers pendentes, e é isso que torna viável escrever "se não acontecer nada nos próximos trinta minutos, alerte" e confiar na frase.
+
+O side output é a segunda porta. Já apareceu aqui como destino de eventos atrasados, mas serve para qualquer bifurcação: registros que não passaram na validação, eventos que dispararam uma regra, amostras para auditoria. Você declara um `OutputTag`, chama `ctx.output(tag, valor)` e recupera esse fluxo depois com `getSideOutput(tag)`. A vantagem sobre um `filter` duplicado é que o evento é examinado uma vez só, e a vantagem sobre lançar uma exceção é que o job não morre por causa de um registro malformado.
+
+Existem algumas variantes, e escolher a errada é um erro comum. A `KeyedProcessFunction` é a que vem depois de um `keyBy` e a única com estado por chave e timers. A `ProcessFunction` pura funciona sobre um stream não particionado e não tem nem uma coisa nem outra. A `CoProcessFunction` recebe dois streams e é o caminho para juntar um fluxo de eventos com um fluxo de regras ou de dados de referência. E a `ProcessWindowFunction` é a que roda no fechamento de uma janela, com todos os eventos dela em mãos.
+
+O preço de descer para esse nível é que o Flink para de cuidar das coisas por você. Uma janela sabe quando terminar e joga fora o que acumulou; um estado que você criou dentro de uma `ProcessFunction` fica lá para sempre, para cada chave que já apareceu, até você apagá-lo explicitamente ou configurar TTL. É a mesma liberdade e o mesmo risco de qualquer abstração de baixo nível, e é o motivo de a recomendação continuar sendo usar o operador pronto sempre que ele couber.
 
 #### Estado
 
@@ -460,7 +587,7 @@ O paralelismo total do job então é o número de TaskManagers vezes os slots de
 
 Para chegar ao número certo de TaskManagers, eu não tentaria calcular por primeiros princípios. O caminho que faz sentido é medir: subir o job com paralelismo baixo, injetar carga conhecida e olhar `numRecordsInPerSecond` por subtarefa na UI ou no Prometheus. Isso dá uma vazão por slot. Divide o pico esperado por esse número, adiciona uma folga de uns 30% para picos e para reprocessamento (porque depois de uma queda o job precisa correr mais rápido do que a produção para alcançar o presente) e o resultado é quantos slots são necessários. Um job de filtro e projeção pode fazer centenas de milhares de eventos por segundo em um slot; um job com janela grande, estado em RocksDB e deserialização de JSON pode fazer alguns milhares. A diferença entre esses dois casos é de ordens de grandeza, e é exatamente por isso que não dá para adivinhar.
 
-Vale lembrar que mudar o paralelismo de um job com estado depois não é livre: o estado é redistribuído entre as novas subtarefas na restauração, e isso é limitado pelo `maxParallelism`, que é fixado na primeira execução e não pode ser alterado sem reescrever o savepoint. Definir esse valor com folga desde o começo é uma daquelas decisões baratas de tomar hoje e caras de corrigir depois.
+Vale lembrar que mudar o paralelismo de um job com estado depois não é livre: o estado é redistribuído entre as novas subtarefas na restauração, e o teto continua sendo o `maxParallelism` fixado na primeira execução, pelo motivo que descrevi na seção de paralelismo.
 
 ##### Disco local
 
@@ -489,6 +616,35 @@ A razão de ser S3, e não um disco compartilhado, é que a durabilidade precisa
 A configuração tem uma pegadinha que custa tempo. O Flink traz duas implementações de S3, e elas não são intercambiáveis. A `flink-s3-fs-presto` é a indicada para checkpoints, porque é rápida com arquivos pequenos e não depende de renomear objetos, operação que o S3 não tem de forma atômica e que emula com uma cópia seguida de uma remoção. A `flink-s3-fs-hadoop` é a que suporta escrita recuperável, que é o que o sink de arquivos precisa para fazer upload multipart e confirmar só no checkpoint. Muita gente instala as duas e usa `s3p://` para o estado e `s3a://` para os dados. As duas são plugins e precisam ir para `/opt/flink/plugins/`, cada uma em seu próprio diretório, e não para `lib/`. No `lib/` elas carregam no classloader principal e conflitam entre si.
 
 O último ponto é sobre o intervalo de checkpoint, que parece uma configuração de latência e é também uma conta de custo. Cada checkpoint escreve pelo menos um arquivo por subtarefa com estado. Um job com paralelismo 200 e checkpoint a cada 10 segundos produz na ordem de setenta mil objetos por hora, e o S3 cobra por requisição além de limitar a taxa por prefixo. Isso aparece como latência de checkpoint subindo e, no limite, como checkpoint expirando por timeout. Duas defesas ajudam: subir o `state.storage.fs.memory-threshold` para que estados pequenos viajem dentro do arquivo de metadados em vez de virarem objetos separados, e aceitar um intervalo maior. Um minuto entre checkpoints é um valor comum, e o que ele custa é apenas a quantidade de trabalho que precisa ser refeita depois de uma falha.
+
+#### O ecossistema em volta
+
+O Flink raramente aparece sozinho. Ele é um motor de processamento, e um motor precisa de algo que alimente, de algum lugar onde depositar e de gente que leia o que ele produziu. Boa parte do trabalho de montar um pipeline é escolher essas peças, então vale mapear as que mais aparecem ao lado dele e, principalmente, por que aparecem.
+
+| Ferramenta | Onde entra | Por que ela aparece junto |
+|:--|:--|:--|
+| **Apache Kafka** | Ingestão | Desacopla quem produz de quem processa e guarda o histórico. É o que permite reprocessar um job desde o começo, e não apenas a partir de agora |
+| **Debezium** | Ingestão | Ler binlog e WAL corretamente, com snapshot inicial e sem perder transação, é difícil o bastante para ninguém querer reescrever. O Flink CDC o usa por baixo |
+| **Schema Registry, com Avro ou Protobuf** | Contrato | Um job que desserializa JSON na mão quebra na primeira mudança do produtor. O registro torna o contrato explícito e verificável antes do deploy, não em produção |
+| **Apache Iceberg** | Armazenamento | Dá transação, evolução de schema e viagem no tempo sobre arquivos em object storage. Sem isso o job escreve Parquet solto e quem lê enxerga escrita pela metade |
+| **Apache Paimon** | Armazenamento | Nasceu dentro da comunidade do Flink para o caso que o Iceberg atende pior: atualização por chave primária em alta taxa, com changelog que dá para ler de volta |
+| **Apache Hudi** | Armazenamento | A terceira opção do mesmo espaço, mais antiga, com foco em upsert e leitura incremental |
+| **Hive Metastore, AWS Glue ou Nessie** | Catálogo | O formato de tabela sabe quais arquivos formam uma tabela. O catálogo sabe quais tabelas existem. Sem ele, não há o que listar no Flink SQL |
+| **Trino** | Consulta | O Flink não é motor de consulta interativa. O Trino lê as mesmas tabelas Iceberg para responder a pergunta que ninguém tinha previsto |
+| **ClickHouse, Druid ou Pinot** | Serving analítico | Dashboard quer resposta em milissegundos sobre dados recentes. O Flink pré-agrega e empurra para lá, e a consulta do usuário nunca toca o stream |
+| **PostgreSQL e MySQL** | Operacional | Fonte via CDC de um lado e destino do resultado agregado do outro, quando quem consome é uma aplicação e não um analista |
+| **Redis** | Serving de baixa latência | Guarda o que já foi calculado para quem precisa ler fora do stream, em microssegundos. É também o online store típico de uma feature store |
+| **Feast** | Machine learning | Feature store. Garante que a feature usada no treino e a usada na inferência sejam a mesma coisa, calculada do mesmo jeito |
+| **Prometheus e Grafana** | Operação | Métricas do próprio job (duração de checkpoint, backpressure, lag por partição) e destino natural das métricas derivadas que o job calcula |
+| **Airflow ou Dagster** | Orquestração | Um job de streaming não tem agenda, mas tudo em volta dele tem: backfill, compactação de tabela, expiração de snapshot, upgrade com savepoint |
+
+Três dessas escolhas têm um detalhe que só aparece depois, e vale adiantar.
+
+O primeiro é o problema dos arquivos pequenos. O sink do Iceberg confirma o que escreveu quando o checkpoint fecha, então o intervalo de checkpoint deixa de ser só uma decisão de recuperação e passa a determinar quantos arquivos e quantos snapshots a tabela ganha por hora. Checkpoint a cada dez segundos em um job com paralelismo alto produz uma tabela com milhares de arquivos minúsculos por dia, que é o pior formato possível para quem for lê-la depois. A solução não é evitar o Iceberg, é aceitar que compactação e expiração de snapshot são trabalho recorrente, e é justamente esse trabalho que costuma justificar um Airflow ao lado de um pipeline que, no papel, não tinha nada de agendado.
+
+O segundo é o catálogo, que quase sempre é lembrado tarde. É fácil pensar no formato de tabela e esquecer que alguém precisa saber que a tabela existe. Sem catálogo configurado, o `CREATE TABLE` do Flink SQL vive só na sessão e some quando o cliente fecha, e o Trino do outro lado não enxerga nada do que foi criado. Escolher o catálogo é o que faz Flink e os outros motores estarem falando da mesma tabela, em vez de dos mesmos arquivos por coincidência.
+
+O terceiro é a razão de existir uma feature store, que demorei a entender. O problema que ela resolve não é de armazenamento, é de consistência: se a feature "média de compras nos últimos 30 minutos" é calculada por um job Flink na inferência e por uma query SQL no treino, as duas vão discordar em algum detalhe, e o modelo passa a ver em produção dados diferentes dos que viu ao aprender. Manter uma definição só, alimentada pelo mesmo job, é o ponto. E vale notar que parte disso está migrando para dentro do próprio Flink com as funções de modelo da 2.1 e 2.2, que descrevo mais adiante.
 
 #### O que eu ainda não sei
 
