@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-09-01T06:25:11-03:00</updated>
+ <updated>2026-09-01T07:19:08-03:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -35,12 +35,15 @@
   &lt;li&gt;&lt;a href=&quot;#o-problema-que-o-flink-resolve&quot;&gt;O problema que o Flink resolve&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#casos-de-uso-reais&quot;&gt;Casos de uso reais&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#a-arquitetura-em-poucas-peças&quot;&gt;A arquitetura, em poucas peças&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#fontes-e-destinos&quot;&gt;Fontes e destinos&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#paralelismo&quot;&gt;Paralelismo&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#redistribuição-e-data-skew&quot;&gt;Redistribuição e data skew&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#operator-chaining&quot;&gt;Operator chaining&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#rich-functions&quot;&gt;Rich functions&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#tempo-a-parte-que-quebra-a-intuição&quot;&gt;Tempo: a parte que quebra a intuição&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#watermarks&quot;&gt;Watermarks&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#janelas&quot;&gt;Janelas&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#processfunction&quot;&gt;ProcessFunction&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#estado&quot;&gt;Estado&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#checkpoints-e-savepoints&quot;&gt;Checkpoints e savepoints&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#flink-sql&quot;&gt;Flink SQL&lt;/a&gt;&lt;/li&gt;
@@ -55,6 +58,7 @@
       &lt;li&gt;&lt;a href=&quot;#s3-e-o-sistema-de-arquivos-remoto&quot;&gt;S3 e o sistema de arquivos remoto&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#o-ecossistema-em-volta&quot;&gt;O ecossistema em volta&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#o-que-eu-ainda-não-sei&quot;&gt;O que eu ainda não sei&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#o-que-ficou&quot;&gt;O que ficou&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#a-versão-atual-destaques-do-flink-23&quot;&gt;A versão atual: destaques do Flink 2.3&lt;/a&gt;
@@ -135,6 +139,137 @@
 
 &lt;p&gt;O &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;keyBy&lt;/code&gt; merece atenção especial porque é responsável pelo particionamento dos dados. Quando você define &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;keyBy(event -&amp;gt; event.getUserId())&lt;/code&gt;, está determinando que eventos com a mesma chave sejam direcionados para a mesma instância paralela do operador seguinte. Esse particionamento é fundamental para o processamento com estado por chave, pois permite que cada instância mantenha e gerencie o estado associado às chaves sob sua responsabilidade, sem a necessidade de coordenação distribuída a cada evento.&lt;/p&gt;
 
+&lt;h4 id=&quot;fontes-e-destinos&quot;&gt;Fontes e destinos&lt;/h4&gt;
+
+&lt;p&gt;Fonte e destino são os dois pontos em que o job encosta no mundo. Na linha 2.x eles passam por uma API só, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;env.fromSource(...)&lt;/code&gt; de um lado e &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;stream.sinkTo(...)&lt;/code&gt; do outro.&lt;/p&gt;
+
+&lt;p&gt;As três fontes que aparecem em quase todo projeto:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Fonte&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Para que serve&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;O que ela guarda em estado&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;KafkaSource&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;O caso comum. Lê um ou mais tópicos, com um consumer group.&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;O offset de cada partição&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;Flink CDC&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Lê o log de transações de um banco e transforma cada mudança de linha em evento.&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;A posição no binlog ou no WAL&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;FileSource&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Lê arquivos de um bucket ou do HDFS, em lote ou monitorando o diretório.&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Quais arquivos e que trecho de cada um já foi lido&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;E os três destinos:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Destino&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Para que serve&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Garantia que oferece&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;KafkaSink&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Publica o resultado em outro tópico, para o próximo job ou para quem consome.&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Exactly-once, via transações do Kafka&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;JdbcSink&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Grava em Postgres, MySQL e afins, tipicamente o resultado agregado.&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Idempotência, quando existe chave primária&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;FileSink&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Escreve Parquet ou JSON particionado em armazenamento de objetos.&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Exactly-once, confirmando os arquivos no checkpoint&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;O formato do código é sempre o mesmo, um builder de um lado e outro do outro:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;KafkaSource&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;KafkaSource&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;builder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setBootstrapServers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;kafka:9092&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setTopics&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;otlp-spans&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setGroupId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;flink-otlp&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setStartingOffsets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;OffsetsInitializer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;earliest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setValueOnlyDeserializer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SimpleStringSchema&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+&lt;span class=&quot;nc&quot;&gt;KafkaSink&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sink&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;KafkaSink&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;builder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setBootstrapServers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;kafka:9092&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setRecordSerializer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;KafkaRecordSerializationSchema&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;builder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setTopic&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;otlp-alerts&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setValueSerializationSchema&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SimpleStringSchema&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setDeliveryGuarantee&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;DeliveryGuarantee&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;EXACTLY_ONCE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setTransactionalIdPrefix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;otlp-&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;fromSource&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;watermarkStrategy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;otlp-spans&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+   &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AnomalyDetector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt;
+   &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;sinkTo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sink&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Duas coisas nesse código não são detalhe de sintaxe. A primeira é que a fonte não faz commit de offset por conta própria: o offset é estado do Flink, entra no checkpoint junto com o resto e volta com ele numa recuperação. É por isso que não se gerencia offset na mão aqui, e é por isso também que o painel de consumer lag do Kafka pode discordar da realidade do job, já que o commit para o Kafka é só informativo.&lt;/p&gt;
+
+&lt;p&gt;A segunda é que o exactly-once no destino é uma propriedade do destino, não do Flink. O &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;KafkaSink&lt;/code&gt; só alcança isso porque escreve dentro de uma transação que é confirmada quando o checkpoint fecha, e por isso ele exige um &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;transactionalIdPrefix&lt;/code&gt; estável entre reinícios. O &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FileSink&lt;/code&gt; funciona pela mesma lógica: os arquivos ficam com sufixo de “em progresso” até o checkpoint confirmar, o que costuma assustar quem olha o bucket no meio do caminho e acha que nada está sendo escrito. Já o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;JdbcSink&lt;/code&gt; não tem transação distribuída, então a garantia que ele oferece depende de você escrever com chave primária e deixar a repetição ser inofensiva.&lt;/p&gt;
+
+&lt;p&gt;Vale insistir na parte do versionamento, porque ela morde. Com exceção dos conectores de sistema de arquivos e do &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;datagen&lt;/code&gt;, que vêm dentro da distribuição, cada conector é um projeto separado, com repositório próprio, release próprio e numeração que não tem relação nenhuma com a do Flink. O &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flink-connector-kafka&lt;/code&gt; está na 5.0.0 enquanto o Flink está na 2.3. Os dois números não conversam, e não existe “a versão do conector que combina com a minha” por dedução.&lt;/p&gt;
+
+&lt;p&gt;O que existe é uma matriz de compatibilidade, publicada na página de downloads, e conferir essa matriz é passo obrigatório antes de escolher a versão do Flink de um projeto novo. O motivo é que a migração para a linha 2.x não foi simultânea, e boa parte do ecossistema ficou para trás. Alguns exemplos de como isso estava quando escrevi:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Conector&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Versão&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Flink compatível&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Kafka&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;5.0.0&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;2.1.x e 2.2.x&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;JDBC&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;4.1.0&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;2.1.x e 2.2.x&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Elasticsearch&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;4.0.0&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;2.0.x&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Prometheus&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;1.0.0&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;1.19.x e 1.20.x&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;O conector do Prometheus é o caso mais eloquente, e é um que me interessa de perto, porque ele é a saída natural para métricas derivadas de telemetria. Ele existe, é oficial, e escreve via a API de remote write do Prometheus. É só sink, não há fonte correspondente, o que faz sentido: o Prometheus é onde a série temporal termina, não de onde ela vem. Só que a 1.0.0 ainda é da linha 1.x do Flink e não atravessou para a 2.x. Quem quiser esse destino hoje escolhe entre ficar na 1.20, que é LTS, ou escrever a integração na mão.&lt;/p&gt;
+
+&lt;p&gt;E repare que nem o Kafka lista a 2.3 na tabela acima. A defasagem de um release entre o núcleo e os conectores é o estado normal das coisas, não uma exceção. Se o seu pipeline depende de um conector específico, é ele que decide qual versão do Flink você pode rodar, e não o contrário.&lt;/p&gt;
+
 &lt;h4 id=&quot;paralelismo&quot;&gt;Paralelismo&lt;/h4&gt;
 
 &lt;p&gt;Paralelismo é o número de instâncias de cada operador rodando ao mesmo tempo. Um job com paralelismo 8 tem oito cópias da fonte, oito do &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;map&lt;/code&gt; e oito do sink, cada uma processando uma fatia dos dados e ocupando um slot. Cada uma dessas cópias é uma subtask, e é por isso que a interface web mostra métricas repetidas com índices de 0 a 7.&lt;/p&gt;
@@ -143,13 +278,72 @@
 
 &lt;p&gt;Para o valor inicial, um ponto de partida razoável é igualar o paralelismo ao número de partições do tópico Kafka de entrada. A razão de não passar disso é específica e vale entender, porque o sintoma é confuso: as subtasks de fonte que sobram não recebem partição nenhuma, ficam ociosas e nunca emitem watermark. Como o watermark de um operador é o menor entre todas as suas entradas, uma fonte parada segura o relógio do job inteiro, e o resultado é uma janela que nunca fecha e um job que parece travado sem nenhum erro no log. Dá para contornar declarando &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;withIdleness()&lt;/code&gt; na estratégia de watermark, que manda o Flink ignorar as entradas silenciosas, mas é mais simples não criar o problema. Ficar abaixo do número de partições também tem custo, menor: você deixa vazão do tópico na mesa, porque uma subtask passa a ler mais de uma partição.&lt;/p&gt;
 
-&lt;p&gt;Depois disso, o ajuste é por medição, não por conta. Os dois números que interessam na interface web são o backpressure, que mostra qual operador está segurando o fluxo, e o busy time, que mostra a fração do tempo em que cada subtask esteve realmente trabalhando em vez de esperando. Aumentar o paralelismo de um operador que passa o dia ocioso não melhora nada. Falo mais sobre esse dimensionamento na seção de CPU e slots, incluindo o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;maxParallelism&lt;/code&gt;, que é fixado na primeira execução e limita até onde dá para crescer depois.&lt;/p&gt;
+&lt;p&gt;Depois disso, o ajuste é por medição, não por conta. Os dois números que interessam na interface web são o backpressure, que mostra qual operador está segurando o fluxo, e o busy time, que mostra a fração do tempo em que cada subtask esteve realmente trabalhando em vez de esperando. Aumentar o paralelismo de um operador que passa o dia ocioso não melhora nada. Falo mais sobre esse dimensionamento na seção de CPU e slots.&lt;/p&gt;
+
+&lt;p&gt;Falta uma peça para o rescale fazer sentido, e ela é interna: o Flink não distribui chave por chave. Ele passa cada chave por um hash e a coloca em um &lt;strong&gt;key group&lt;/strong&gt;, e o que é distribuído entre as subtasks são os key groups, em faixas contíguas. O key group é a unidade de movimentação de estado, ou seja, quando você muda o paralelismo, o que migra de uma máquina para outra são grupos inteiros, nunca chaves avulsas. Não se mexe nisso diretamente quase nunca, mas o termo aparece em log e em qualquer conversa sobre rescaling.&lt;/p&gt;
+
+&lt;p&gt;O número de key groups que existem é exatamente o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;maxParallelism&lt;/code&gt;. Daí vêm as duas propriedades que importam. Ele é o teto absoluto do paralelismo, porque não dá para ter mais subtasks do que grupos para distribuir entre elas. E ele não pode mudar depois, porque alterar a quantidade de grupos muda a que grupo cada chave pertence, o que invalida todo o estado já salvo.&lt;/p&gt;
+
+&lt;p&gt;A armadilha está no valor padrão. Sem configuração, o Flink calcula esse número a partir do paralelismo inicial: algo em torno de uma vez e meia ele, arredondado para cima, com piso de 128 e teto de 32768. Um job que sobe com paralelismo 8 fica com 128 e ninguém repara, porque nada quebra. O problema chega no dia em que esse job precisa de paralelismo 200, e a única saída é reconstruir o estado do zero.&lt;/p&gt;
+
+&lt;p&gt;Definir na mão desde a primeira execução resolve, e &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;env.setMaxParallelism(1024)&lt;/code&gt; é um valor confortável. O que não vale é colocar 32768 por precaução: alguns state backends mantêm estruturas internas que crescem com o número de key groups, então exagerar cobra em desempenho. Um cuidado extra que sai de graça é escolher um valor divisível pelo paralelismo pretendido, porque assim os grupos se distribuem por igual. Com 128 grupos e paralelismo 12, algumas subtasks ficam com 11 e outras com 10, uma assimetria pequena mas evitável.&lt;/p&gt;
+
+&lt;h4 id=&quot;redistribuição-e-data-skew&quot;&gt;Redistribuição e data skew&lt;/h4&gt;
+
+&lt;p&gt;Entre dois operadores existe sempre uma decisão sobre para qual subtask seguinte cada evento vai. Na maior parte do tempo ela é tomada pelo Flink sem que você peça, mas dá para escolher, e as opções são poucas:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Estratégia&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;O que faz&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Quando aparece&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;forward&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;O evento fica na mesma subtask. Nada atravessa a rede&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Entre operadores adjacentes de mesmo paralelismo. É o que permite o chaining&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hash&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Roteia pela chave, sempre a mesma chave para a mesma subtask&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Todo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;keyBy&lt;/code&gt;, ou seja, sempre que existe estado por chave&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rebalance&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Round-robin entre todas as subtasks seguintes&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Para reequilibrar depois de uma fonte que chega desbalanceada&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rescale&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Round-robin, mas só entre as subtasks vizinhas, preservando localidade&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;O mesmo objetivo do &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rebalance&lt;/code&gt;, evitando tráfego entre máquinas&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;broadcast&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Cada evento vai para todas as subtasks seguintes&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Distribuir regras ou configuração para todas as instâncias&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;O &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;broadcast&lt;/code&gt; merece nota porque é a base de um padrão inteiro: um stream pequeno de regras é transmitido para todas as subtasks, que o guardam em estado, enquanto o stream grande de eventos passa particionado por chave. É assim que se troca a lógica de um job sem redeploy.&lt;/p&gt;
+
+&lt;p&gt;Vale lembrar também que &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rebalance&lt;/code&gt; e &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rescale&lt;/code&gt; ganharam distribuição adaptativa na 2.3, olhando a carga real do destino em vez de fazer round-robin cego, e é uma opção que precisa ser ligada, como descrevo nos destaques da versão.&lt;/p&gt;
+
+&lt;p&gt;Nada disso resolve o problema que mais dói, que é o &lt;strong&gt;data skew&lt;/strong&gt;. Skew é quando a distribuição das chaves é desigual: um cliente que sozinho responde por metade das transações, um produto que viralizou, um tenant gigante no meio de mil pequenos. Como o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;keyBy&lt;/code&gt; garante que a mesma chave vai sempre para a mesma subtask, essa subtask vira o gargalo, as outras ficam ociosas, e o job inteiro anda na velocidade da mais lenta. Aumentar o paralelismo não ajuda em nada, porque a chave pesada continua indo para um lugar só.&lt;/p&gt;
+
+&lt;p&gt;O diagnóstico é direto na interface web, e é por isso que o busy time importa tanto: skew aparece como backpressure concentrado em uma subtask e como uma instância em 100% de ocupação enquanto as vizinhas estão em 10%. Se todas estivessem em 90%, o problema seria de capacidade, e a resposta seria outra.&lt;/p&gt;
+
+&lt;p&gt;As saídas são três, em ordem de esforço. A primeira, e a mais usada, é agregar em duas fases: você acrescenta um sufixo aleatório à chave, algo como &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cliente-42#0&lt;/code&gt; até &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cliente-42#9&lt;/code&gt;, agrega parcialmente sobre essa chave inflada, e só então agrega de novo sobre a chave real. O trabalho pesado passa a ser dividido por dez subtasks, e a segunda etapa recebe apenas dez resultados parciais por chave em vez de milhões de eventos. A segunda, quando se está no SQL, é deixar o motor fazer isso: ligar o mini-batch e a otimização de agregação em duas fases resolve o caso comum sem reescrever consulta nenhuma, e existe até uma opção específica para dividir agregações com &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DISTINCT&lt;/code&gt;, que é a versão automática do mesmo truque. A terceira é aceitar que a chave-baleia é um caso à parte e tratá-la fora do fluxo normal, com um pipeline dedicado.&lt;/p&gt;
 
 &lt;h4 id=&quot;operator-chaining&quot;&gt;Operator chaining&lt;/h4&gt;
 
-&lt;p&gt;O grafo que você escreve não é exatamente o grafo que roda. Antes de executar, o Flink funde operadores adjacentes em uma única task, e isso se chama operator chaining. Uma sequência como &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;map&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;filter&lt;/code&gt; e &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flatMap&lt;/code&gt; vira uma coisa só, executada na mesma thread.&lt;/p&gt;
+&lt;p&gt;O grafo que você escreve não é exatamente o grafo que roda. Antes de executar, o Flink funde operadores adjacentes em uma única task, e isso se chama &lt;em&gt;operator chaining&lt;/em&gt;. Uma sequência como &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;map&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;filter&lt;/code&gt; e &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flatMap&lt;/code&gt; vira uma coisa só, executada na mesma thread.&lt;/p&gt;
 
-&lt;p&gt;A fusão só acontece sob três condições: não pode haver redistribuição de dados entre os operadores, eles precisam ter o mesmo paralelismo e precisam estar no mesmo grupo de compartilhamento de slot. Um &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;keyBy&lt;/code&gt; ou um &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rebalance&lt;/code&gt; quebram a corrente, porque nesses casos o registro precisa mesmo sair de uma instância e ir para outra.&lt;/p&gt;
+&lt;p&gt;A fusão só acontece sob três condições: a ligação entre os operadores precisa ser &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;forward&lt;/code&gt;, eles precisam ter o mesmo paralelismo e precisam estar no mesmo grupo de compartilhamento de slot. Um &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;keyBy&lt;/code&gt; ou um &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rebalance&lt;/code&gt; quebram a corrente, porque nesses casos o registro precisa mesmo sair de uma instância e ir para outra.&lt;/p&gt;
 
 &lt;p&gt;O ganho é maior do que parece à primeira vista. Dentro de uma corrente, passar um registro de um operador para o próximo é uma chamada de método, e o objeto continua sendo o mesmo na memória. Entre duas tasks, o registro é serializado, vai para um buffer de rede e é desserializado do outro lado, e isso acontece mesmo quando as duas estão dentro do mesmo TaskManager. O chaining elimina esse custo inteiro.&lt;/p&gt;
 
@@ -229,6 +423,33 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Um detalhe que eu não tinha entendido de cara: prefira &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reduce&lt;/code&gt;/&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;aggregate&lt;/code&gt; a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;process&lt;/code&gt; quando puder. O &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;process&lt;/code&gt; recebe todos os eventos da janela de uma vez, o que significa guardar todos eles em estado até o fechamento. Já &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;aggregate&lt;/code&gt; mantém apenas o acumulador. Em janelas grandes, essa diferença é a diferença entre um job estável e um job que morre de OOM.&lt;/p&gt;
+
+&lt;h4 id=&quot;processfunction&quot;&gt;ProcessFunction&lt;/h4&gt;
+
+&lt;p&gt;Os operadores prontos cobrem muita coisa, mas eles impõem uma forma. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;map&lt;/code&gt; transforma um evento em outro, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;window&lt;/code&gt; agrupa por recorte de tempo, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;aggregate&lt;/code&gt; acumula. Quando a lógica não cabe em nenhum desses moldes, o caminho é descer um nível e escrever uma &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ProcessFunction&lt;/code&gt;, que é o operador de mais baixo nível e mais poderoso da DataStream API. É a faca suíça do Flink, e não é exagero dizer que quase toda lógica de negócio realmente complicada acaba dentro de uma.&lt;/p&gt;
+
+&lt;p&gt;O que ela dá, a cada evento, são três coisas que os operadores prontos não dão juntas: acesso direto ao estado da chave, a capacidade de registrar timers e a de emitir para side outputs. As três chegam pelo mesmo lugar, aquele parâmetro &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ctx&lt;/code&gt; que aparece na assinatura do &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;processElement&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;O timer é a parte que muda o que dá para construir, porque é ele que permite reagir à passagem do tempo, e não só à chegada de um evento. Você registra um instante futuro e o Flink chama o seu &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;onTimer&lt;/code&gt; quando ele chega:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;processElement&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Event&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Context&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Collector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Alert&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;timerService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;registerEventTimeTimer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getTimestamp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;600_000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;onTimer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;timestamp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;OnTimerContext&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Collector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Alert&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// dez minutos de event time se passaram desde aquele evento&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Duas propriedades desse mecanismo importam. A primeira é que um timer de event time não dispara quando o relógio da máquina chega lá, e sim quando a watermark passa daquele instante, o que amarra os timers na mesma noção de tempo das janelas: se a watermark não avança, o timer não dispara, e voltamos ao problema da fonte ociosa que descrevi antes. A segunda é que timers são estado, pertencem a uma chave e entram no checkpoint. Um job que reinicia não perde os timers pendentes, e é isso que torna viável escrever “se não acontecer nada nos próximos trinta minutos, alerte” e confiar na frase.&lt;/p&gt;
+
+&lt;p&gt;O side output é a segunda porta. Já apareceu aqui como destino de eventos atrasados, mas serve para qualquer bifurcação: registros que não passaram na validação, eventos que dispararam uma regra, amostras para auditoria. Você declara um &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OutputTag&lt;/code&gt;, chama &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ctx.output(tag, valor)&lt;/code&gt; e recupera esse fluxo depois com &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;getSideOutput(tag)&lt;/code&gt;. A vantagem sobre um &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;filter&lt;/code&gt; duplicado é que o evento é examinado uma vez só, e a vantagem sobre lançar uma exceção é que o job não morre por causa de um registro malformado.&lt;/p&gt;
+
+&lt;p&gt;Existem algumas variantes, e escolher a errada é um erro comum. A &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;KeyedProcessFunction&lt;/code&gt; é a que vem depois de um &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;keyBy&lt;/code&gt; e a única com estado por chave e timers. A &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ProcessFunction&lt;/code&gt; pura funciona sobre um stream não particionado e não tem nem uma coisa nem outra. A &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CoProcessFunction&lt;/code&gt; recebe dois streams e é o caminho para juntar um fluxo de eventos com um fluxo de regras ou de dados de referência. E a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ProcessWindowFunction&lt;/code&gt; é a que roda no fechamento de uma janela, com todos os eventos dela em mãos.&lt;/p&gt;
+
+&lt;p&gt;O preço de descer para esse nível é que o Flink para de cuidar das coisas por você. Uma janela sabe quando terminar e joga fora o que acumulou; um estado que você criou dentro de uma &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ProcessFunction&lt;/code&gt; fica lá para sempre, para cada chave que já apareceu, até você apagá-lo explicitamente ou configurar TTL. É a mesma liberdade e o mesmo risco de qualquer abstração de baixo nível, e é o motivo de a recomendação continuar sendo usar o operador pronto sempre que ele couber.&lt;/p&gt;
 
 &lt;h4 id=&quot;estado&quot;&gt;Estado&lt;/h4&gt;
 
@@ -585,7 +806,7 @@
 
 &lt;p&gt;Para chegar ao número certo de TaskManagers, eu não tentaria calcular por primeiros princípios. O caminho que faz sentido é medir: subir o job com paralelismo baixo, injetar carga conhecida e olhar &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;numRecordsInPerSecond&lt;/code&gt; por subtarefa na UI ou no Prometheus. Isso dá uma vazão por slot. Divide o pico esperado por esse número, adiciona uma folga de uns 30% para picos e para reprocessamento (porque depois de uma queda o job precisa correr mais rápido do que a produção para alcançar o presente) e o resultado é quantos slots são necessários. Um job de filtro e projeção pode fazer centenas de milhares de eventos por segundo em um slot; um job com janela grande, estado em RocksDB e deserialização de JSON pode fazer alguns milhares. A diferença entre esses dois casos é de ordens de grandeza, e é exatamente por isso que não dá para adivinhar.&lt;/p&gt;
 
-&lt;p&gt;Vale lembrar que mudar o paralelismo de um job com estado depois não é livre: o estado é redistribuído entre as novas subtarefas na restauração, e isso é limitado pelo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;maxParallelism&lt;/code&gt;, que é fixado na primeira execução e não pode ser alterado sem reescrever o savepoint. Definir esse valor com folga desde o começo é uma daquelas decisões baratas de tomar hoje e caras de corrigir depois.&lt;/p&gt;
+&lt;p&gt;Vale lembrar que mudar o paralelismo de um job com estado depois não é livre: o estado é redistribuído entre as novas subtarefas na restauração, e o teto continua sendo o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;maxParallelism&lt;/code&gt; fixado na primeira execução, pelo motivo que descrevi na seção de paralelismo.&lt;/p&gt;
 
 &lt;h5 id=&quot;disco-local&quot;&gt;Disco local&lt;/h5&gt;
 
@@ -614,6 +835,100 @@
 &lt;p&gt;A configuração tem uma pegadinha que custa tempo. O Flink traz duas implementações de S3, e elas não são intercambiáveis. A &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flink-s3-fs-presto&lt;/code&gt; é a indicada para checkpoints, porque é rápida com arquivos pequenos e não depende de renomear objetos, operação que o S3 não tem de forma atômica e que emula com uma cópia seguida de uma remoção. A &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flink-s3-fs-hadoop&lt;/code&gt; é a que suporta escrita recuperável, que é o que o sink de arquivos precisa para fazer upload multipart e confirmar só no checkpoint. Muita gente instala as duas e usa &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s3p://&lt;/code&gt; para o estado e &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s3a://&lt;/code&gt; para os dados. As duas são plugins e precisam ir para &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/opt/flink/plugins/&lt;/code&gt;, cada uma em seu próprio diretório, e não para &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lib/&lt;/code&gt;. No &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lib/&lt;/code&gt; elas carregam no classloader principal e conflitam entre si.&lt;/p&gt;
 
 &lt;p&gt;O último ponto é sobre o intervalo de checkpoint, que parece uma configuração de latência e é também uma conta de custo. Cada checkpoint escreve pelo menos um arquivo por subtarefa com estado. Um job com paralelismo 200 e checkpoint a cada 10 segundos produz na ordem de setenta mil objetos por hora, e o S3 cobra por requisição além de limitar a taxa por prefixo. Isso aparece como latência de checkpoint subindo e, no limite, como checkpoint expirando por timeout. Duas defesas ajudam: subir o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;state.storage.fs.memory-threshold&lt;/code&gt; para que estados pequenos viajem dentro do arquivo de metadados em vez de virarem objetos separados, e aceitar um intervalo maior. Um minuto entre checkpoints é um valor comum, e o que ele custa é apenas a quantidade de trabalho que precisa ser refeita depois de uma falha.&lt;/p&gt;
+
+&lt;h4 id=&quot;o-ecossistema-em-volta&quot;&gt;O ecossistema em volta&lt;/h4&gt;
+
+&lt;p&gt;O Flink raramente aparece sozinho. Ele é um motor de processamento, e um motor precisa de algo que alimente, de algum lugar onde depositar e de gente que leia o que ele produziu. Boa parte do trabalho de montar um pipeline é escolher essas peças, então vale mapear as que mais aparecem ao lado dele e, principalmente, por que aparecem.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Ferramenta&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Onde entra&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Por que ela aparece junto&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;Apache Kafka&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Ingestão&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Desacopla quem produz de quem processa e guarda o histórico. É o que permite reprocessar um job desde o começo, e não apenas a partir de agora&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;Debezium&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Ingestão&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Ler binlog e WAL corretamente, com snapshot inicial e sem perder transação, é difícil o bastante para ninguém querer reescrever. O Flink CDC o usa por baixo&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;Schema Registry, com Avro ou Protobuf&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Contrato&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Um job que desserializa JSON na mão quebra na primeira mudança do produtor. O registro torna o contrato explícito e verificável antes do deploy, não em produção&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;Apache Iceberg&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Armazenamento&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Dá transação, evolução de schema e viagem no tempo sobre arquivos em object storage. Sem isso o job escreve Parquet solto e quem lê enxerga escrita pela metade&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;Apache Paimon&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Armazenamento&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Nasceu dentro da comunidade do Flink para o caso que o Iceberg atende pior: atualização por chave primária em alta taxa, com changelog que dá para ler de volta&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;Apache Hudi&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Armazenamento&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;A terceira opção do mesmo espaço, mais antiga, com foco em upsert e leitura incremental&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;Hive Metastore, AWS Glue ou Nessie&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Catálogo&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;O formato de tabela sabe quais arquivos formam uma tabela. O catálogo sabe quais tabelas existem. Sem ele, não há o que listar no Flink SQL&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;Trino&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Consulta&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;O Flink não é motor de consulta interativa. O Trino lê as mesmas tabelas Iceberg para responder a pergunta que ninguém tinha previsto&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;ClickHouse, Druid ou Pinot&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Serving analítico&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Dashboard quer resposta em milissegundos sobre dados recentes. O Flink pré-agrega e empurra para lá, e a consulta do usuário nunca toca o stream&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;PostgreSQL e MySQL&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Operacional&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Fonte via CDC de um lado e destino do resultado agregado do outro, quando quem consome é uma aplicação e não um analista&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;Redis&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Serving de baixa latência&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Guarda o que já foi calculado para quem precisa ler fora do stream, em microssegundos. É também o online store típico de uma feature store&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;Feast&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Machine learning&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Feature store. Garante que a feature usada no treino e a usada na inferência sejam a mesma coisa, calculada do mesmo jeito&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;Prometheus e Grafana&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Operação&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Métricas do próprio job (duração de checkpoint, backpressure, lag por partição) e destino natural das métricas derivadas que o job calcula&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;Airflow ou Dagster&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Orquestração&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Um job de streaming não tem agenda, mas tudo em volta dele tem: backfill, compactação de tabela, expiração de snapshot, upgrade com savepoint&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Três dessas escolhas têm um detalhe que só aparece depois, e vale adiantar.&lt;/p&gt;
+
+&lt;p&gt;O primeiro é o problema dos arquivos pequenos. O sink do Iceberg confirma o que escreveu quando o checkpoint fecha, então o intervalo de checkpoint deixa de ser só uma decisão de recuperação e passa a determinar quantos arquivos e quantos snapshots a tabela ganha por hora. Checkpoint a cada dez segundos em um job com paralelismo alto produz uma tabela com milhares de arquivos minúsculos por dia, que é o pior formato possível para quem for lê-la depois. A solução não é evitar o Iceberg, é aceitar que compactação e expiração de snapshot são trabalho recorrente, e é justamente esse trabalho que costuma justificar um Airflow ao lado de um pipeline que, no papel, não tinha nada de agendado.&lt;/p&gt;
+
+&lt;p&gt;O segundo é o catálogo, que quase sempre é lembrado tarde. É fácil pensar no formato de tabela e esquecer que alguém precisa saber que a tabela existe. Sem catálogo configurado, o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CREATE TABLE&lt;/code&gt; do Flink SQL vive só na sessão e some quando o cliente fecha, e o Trino do outro lado não enxerga nada do que foi criado. Escolher o catálogo é o que faz Flink e os outros motores estarem falando da mesma tabela, em vez de dos mesmos arquivos por coincidência.&lt;/p&gt;
+
+&lt;p&gt;O terceiro é a razão de existir uma feature store, que demorei a entender. O problema que ela resolve não é de armazenamento, é de consistência: se a feature “média de compras nos últimos 30 minutos” é calculada por um job Flink na inferência e por uma query SQL no treino, as duas vão discordar em algum detalhe, e o modelo passa a ver em produção dados diferentes dos que viu ao aprender. Manter uma definição só, alimentada pelo mesmo job, é o ponto. E vale notar que parte disso está migrando para dentro do próprio Flink com as funções de modelo da 2.1 e 2.2, que descrevo mais adiante.&lt;/p&gt;
 
 &lt;h4 id=&quot;o-que-eu-ainda-não-sei&quot;&gt;O que eu ainda não sei&lt;/h4&gt;
 
@@ -718,326 +1033,6 @@
 &lt;p&gt;A exportação de métricas OpenTelemetry ficou mais robusta, relevante para o que eu quero fazer: o exportador OTel ganhou compressão (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;metrics.reporter.otel.exporter.compression: gzip&lt;/code&gt;) e divisão em lotes (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;metrics.reporter.otel.batch.size&lt;/code&gt;), para dar conta de cargas de métricas grandes demais para o limite de mensagem do gRPC. Quem tem um job com paralelismo alto conhece esse erro.&lt;/p&gt;
 
 &lt;p&gt;Duas observações honestas para fechar. A primeira é que a maior parte desses destaques está desligada por padrão, o que é a postura correta para um projeto desse tamanho, mas significa que atualizar a versão não entrega nada disso sozinho. A segunda é que quase nada aqui eu testei: essa seção é leitura de release notes, não experiência. Fica anotado para as próximas partes.&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>Jornada para contribuir com o OTel Collector, parte 2</title>
-   <link href="https://apolzek.github.io/2026/08/25/jornada-otel-collector-parte-2"/>
-   <updated>2026-08-25T00:00:00-03:00</updated>
-   <id>https://apolzek.github.io/2026/08/25/jornada-otel-collector-parte-2</id>
-   <content type="html">&lt;p&gt;Na parte 1 eu listei o que precisava aprender. Antes de estudar qualquer coisa dessa lista, resolvi fazer um exercício mais básico: pegar um componente que já existe, mudar alguma coisa nele, gerar um binário com a mudança, rodar os testes e ver o efeito acontecendo de verdade.&lt;/p&gt;
-
-&lt;p&gt;A ideia não é contribuir com isso. É provar que consigo fechar o ciclo. Enquanto eu não conseguisse fazer uma alteração chegar até um Collector rodando, qualquer estudo seria teórico.&lt;/p&gt;
-
-&lt;p&gt;Escolhi o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;filterprocessor&lt;/code&gt; e inventei uma tarefa sem valor nenhum para o projeto, mas útil para mim: quando aparecer um trace com &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;service.name&lt;/code&gt; igual a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;trying&lt;/code&gt;, o processor deve registrar uma marca minha no log junto com o dado inteiro em JSON.&lt;/p&gt;
-
-&lt;h4 id=&quot;passo-1-baixar-só-o-que-interessa&quot;&gt;Passo 1: baixar só o que interessa&lt;/h4&gt;
-
-&lt;p&gt;O &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;contrib&lt;/code&gt; é grande. Como cada componente é um módulo separado, dá para clonar só o pedaço necessário.&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /tmp/otel-lab &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /tmp/otel-lab
-git clone &lt;span class=&quot;nt&quot;&gt;--depth&lt;/span&gt; 1 &lt;span class=&quot;nt&quot;&gt;--filter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;blob:none &lt;span class=&quot;nt&quot;&gt;--sparse&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  https://github.com/open-telemetry/opentelemetry-collector-contrib.git
-&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;opentelemetry-collector-contrib
-git sparse-checkout &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;processor/filterprocessor internal pkg
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Isso deixou 25 MB em disco em vez do repositório inteiro. Precisei incluir &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;internal&lt;/code&gt; e &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pkg&lt;/code&gt; porque o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;go.mod&lt;/code&gt; do &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;filterprocessor&lt;/code&gt; aponta para eles com caminhos relativos.&lt;/p&gt;
-
-&lt;h4 id=&quot;passo-2-escrever-a-alteração&quot;&gt;Passo 2: escrever a alteração&lt;/h4&gt;
-
-&lt;p&gt;Criei um arquivo novo, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;trying.go&lt;/code&gt;, em vez de espalhar código no &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;traces.go&lt;/code&gt;. A função varre os resources procurando o atributo, e serializa o lote inteiro usando o marshaler que o próprio pdata oferece.&lt;/p&gt;
-
-&lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tryingServiceName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;trying&quot;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tryingMarshaler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ptrace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;JSONMarshaler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;logTryingTraces&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;td&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ptrace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Traces&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hasTryingService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;td&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;raw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tryingMarshaler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MarshalTraces&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;td&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;apolzek was here: could not marshal traces&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;apolzek was here&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;zap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;service.name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tryingServiceName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;zap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;spans&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;td&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SpanCount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()),&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;zap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;payload&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;raw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)),&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;A chamada entrou no início de &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;processTraces&lt;/code&gt;. Esse detalhe importa: a função tem um retorno antecipado logo abaixo, que sai na hora quando nenhuma condição de filtro está configurada. Se eu tivesse colocado a chamada depois dele, o teste manual não mostraria nada e eu passaria um tempo procurando erro no lugar errado.&lt;/p&gt;
-
-&lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fsp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filterSpanProcessor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;processTraces&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ctx&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;td&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ptrace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Traces&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ptrace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Traces&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;logTryingTraces&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fsp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;td&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fsp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;skipResourceExpr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fsp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;skipSpanExpr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;passo-3-testar&quot;&gt;Passo 3: testar&lt;/h4&gt;
-
-&lt;p&gt;Escrevi um teste usando o observador de logs do zap, que captura o que foi registrado sem precisar ler saída de terminal. Cobri o caso que casa, um serviço diferente, um nome que só começa com &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;trying&lt;/code&gt;, o nome vazio, o logger nulo e um &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;service.name&lt;/code&gt; que não é string.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;=== RUN   TestLogTryingTraces
-=== RUN   TestLogTryingTraces/matches
-=== RUN   TestLogTryingTraces/different_service
-=== RUN   TestLogTryingTraces/prefix_only
-=== RUN   TestLogTryingTraces/empty
---- PASS: TestLogTryingTraces (0.00s)
---- PASS: TestLogTryingTracesNilLogger (0.00s)
---- PASS: TestHasTryingServiceNonStringAttribute (0.00s)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Depois rodei a suíte inteira do componente, que é o que de fato responde se eu quebrei alguma coisa. Foram 82 testes, nenhuma falha.&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;go &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt; ./...
-ok  github.com/open-telemetry/opentelemetry-collector-contrib/processor/filterprocessor  1.319s
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;passo-4-gerar-um-collector-com-a-alteração&quot;&gt;Passo 4: gerar um Collector com a alteração&lt;/h4&gt;
-
-&lt;p&gt;O binário oficial não serve, porque ele traz o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;filterprocessor&lt;/code&gt; publicado, não o meu. Para isso existe o OCB, o OpenTelemetry Collector Builder, que monta um Collector sob medida a partir de uma lista de componentes.&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;go &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;go.opentelemetry.io/collector/cmd/builder@v0.144.0
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;A parte central da configuração é o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;replaces&lt;/code&gt;, que manda o Go usar minha cópia local no lugar do módulo publicado.&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;dist&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;otelcol-lab&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;output_path&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/tmp/otel-lab/build/otelcol-lab&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;otelcol_version&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;0.144.0&lt;/span&gt;
-
-&lt;span class=&quot;na&quot;&gt;receivers&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;gomod&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;go.opentelemetry.io/collector/receiver/otlpreceiver v0.144.0&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;processors&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;gomod&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;github.com/open-telemetry/opentelemetry-collector-contrib/processor/filterprocessor v0.144.0&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;exporters&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;gomod&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;go.opentelemetry.io/collector/exporter/debugexporter v0.144.0&lt;/span&gt;
-
-&lt;span class=&quot;na&quot;&gt;replaces&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;github.com/open-telemetry/opentelemetry-collector-contrib/processor/filterprocessor =&amp;gt; /tmp/otel-lab/opentelemetry-collector-contrib/processor/filterprocessor&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Antes de rodar, conferi se o binário realmente tinha meu código dentro, o que é mais rápido do que descobrir isso depois pelo silêncio no log:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;strings otelcol-lab | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;apolzek was here&quot;&lt;/span&gt;
-2
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Saíram 35 MB de binário com um receiver, um processor e um exporter.&lt;/p&gt;
-
-&lt;h4 id=&quot;passo-5-rodar-e-enviar-dados&quot;&gt;Passo 5: rodar e enviar dados&lt;/h4&gt;
-
-&lt;p&gt;Subi o Collector com um pipeline de traces mínimo, recebendo OTLP por HTTP e escrevendo no exportador de debug. Enviei dois traces por &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;curl&lt;/code&gt;, iguais em tudo menos no &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;service.name&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;O primeiro, com &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;service.name&lt;/code&gt; igual a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;checkout&lt;/code&gt;, para confirmar que a alteração não dispara em qualquer coisa:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;HTTP 200
-ocorrencias de &apos;apolzek was here&apos; no log: 0
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;O segundo, com &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;service.name&lt;/code&gt; igual a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;trying&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;HTTP 200
-ocorrencias de &apos;apolzek was here&apos; no log: 1
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;a-prova&quot;&gt;A prova&lt;/h4&gt;
-
-&lt;p&gt;A linha que apareceu no log do Collector:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;2026-08-25T14:32:47.120-0300  info  filterprocessor@v0.144.0/trying.go:47
-apolzek was here
-{&quot;otelcol.component.id&quot;: &quot;filter&quot;, &quot;otelcol.component.kind&quot;: &quot;processor&quot;,
- &quot;otelcol.pipeline.id&quot;: &quot;traces&quot;, &quot;otelcol.signal&quot;: &quot;traces&quot;,
- &quot;service.name&quot;: &quot;trying&quot;, &quot;spans&quot;: 1,
- &quot;payload&quot;: &quot;{\&quot;resourceSpans\&quot;:[{\&quot;resource\&quot;:{\&quot;attributes\&quot;:[{\&quot;key\&quot;:\&quot;service.name\&quot;,
- \&quot;value\&quot;:{\&quot;stringValue\&quot;:\&quot;trying\&quot;}},{\&quot;key\&quot;:\&quot;deployment.environment\&quot;,
- \&quot;value\&quot;:{\&quot;stringValue\&quot;:\&quot;lab\&quot;}}]},\&quot;scopeSpans\&quot;:[{\&quot;scope\&quot;:{\&quot;name\&quot;:\&quot;manual-curl\&quot;},
- \&quot;spans\&quot;:[{\&quot;traceId\&quot;:\&quot;5b8efff798038103d269b633813fc60c\&quot;,
- \&quot;spanId\&quot;:\&quot;eee19b7ec3c1b174\&quot;,\&quot;name\&quot;:\&quot;GET /checkout\&quot;,\&quot;kind\&quot;:2,
- \&quot;startTimeUnixNano\&quot;:\&quot;1544712660000000000\&quot;,\&quot;endTimeUnixNano\&quot;:\&quot;1544712661000000000\&quot;,
- \&quot;attributes\&quot;:[{\&quot;key\&quot;:\&quot;http.method\&quot;,\&quot;value\&quot;:{\&quot;stringValue\&quot;:\&quot;GET\&quot;}}],
- \&quot;status\&quot;:{}}]}]}]}&quot;}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Repare no caminho do arquivo no início da linha: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;filterprocessor@v0.144.0/trying.go:47&lt;/code&gt;. O componente se apresenta com a versão publicada, mas está executando o arquivo que eu criei. É o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;replaces&lt;/code&gt; funcionando.&lt;/p&gt;
-
-&lt;h4 id=&quot;o-que-ficou&quot;&gt;O que ficou&lt;/h4&gt;
-
-&lt;p&gt;O ciclo fecha: editar, testar, gerar binário, rodar, ver acontecer. Isso é o que eu não sabia fazer na semana passada, e é pré-requisito para qualquer coisa útil depois.&lt;/p&gt;
-
-&lt;p&gt;Duas coisas me pegaram. A primeira foi o retorno antecipado no &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;processTraces&lt;/code&gt;, que me faria depurar no lugar errado. A segunda foi perceber que testar exige montar um Collector próprio, porque o binário oficial nunca vai conter a minha alteração.&lt;/p&gt;
-
-&lt;p&gt;Nada disso vira pull request. É andaime, e andaime se descarta. Mas agora, quando eu pegar uma issue de verdade, a parte mecânica já está resolvida.&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>Jornada para contribuir com o OTel Collector, parte 1</title>
-   <link href="https://apolzek.github.io/2026/08/25/jornada-otel-collector-parte-1"/>
-   <updated>2026-08-25T00:00:00-03:00</updated>
-   <id>https://apolzek.github.io/2026/08/25/jornada-otel-collector-parte-1</id>
-   <content type="html">&lt;p&gt;O plano era simples: escolher uma issue com a label &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;good first issue&lt;/code&gt;, mandar um PR e ir dormir com a sensação boa de ter contribuído para o OpenTelemetry Collector. O que aconteceu foi que eu abri o repositório, li três arquivos e percebi que não tinha ideia do que estava acontecendo ali xD&lt;/p&gt;
-
-&lt;p&gt;Não é uma reclamação. É que a distância entre &lt;em&gt;usar&lt;/em&gt; o Collector e &lt;em&gt;mexer&lt;/em&gt; no Collector é maior do que eu imaginava. Então mudei o plano: em vez de forçar um PR, resolvi documentar a jornada inteira.&lt;/p&gt;
-
-&lt;p&gt;Antes de seguir, é importante contextualizar meu nível de conhecimento. Não sou um desenvolvedor proficiente em Go. Atuo principalmente nas áreas de Engenharia de Confiabilidade e Engenharia de Plataforma. Tenho uma base sólida em programação, algoritmos, estruturas de dados e design patterns, mas, no dia a dia, meu trabalho atualmente está mais concentrado em configurações, infraestrutura e automação do que no desenvolvimento de código propriamente dito.&lt;/p&gt;
-
-&lt;h4 id=&quot;o-que-eu-achava-que-precisava-saber&quot;&gt;O que eu achava que precisava saber&lt;/h4&gt;
-
-&lt;p&gt;Golang =))&lt;/p&gt;
-
-&lt;h4 id=&quot;o-que-eu-descobri-que-precisava-saber&quot;&gt;O que eu descobri que precisava saber&lt;/h4&gt;
-
-&lt;p&gt;&lt;strong&gt;Go, de verdade.&lt;/strong&gt; Não o Go de escrever um binário que chama uma API. O Go de interfaces, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;context&lt;/code&gt;, goroutines com ciclo de vida e generics espalhados pelo código. Dá pra ler sem isso; escrever, não.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;O modelo de componentes.&lt;/strong&gt; Receiver, processor, exporter, connector, extension. Todo o Collector é essa combinação, e antes de tocar em qualquer linha eu preciso saber em qual dessas caixas o meu problema mora.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;pdata.&lt;/strong&gt; As estruturas internas (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pcommon&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;plog&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pmetric&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ptrace&lt;/code&gt;) não são structs comuns.. são wrappers sobre a representação interna, com regras próprias sobre cópia e mutação. É o tipo de coisa que o compilador deixa passar e o teste reprova.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;O repositório certo.&lt;/strong&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;collector&lt;/code&gt; e &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;collector-contrib&lt;/code&gt; são coisas diferentes, com critérios diferentes sobre o que entra. Descobrir isso &lt;em&gt;antes&lt;/em&gt; de abrir o PR economiza uma conversa constrangedora.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;A burocracia boa.&lt;/strong&gt; CLA assinado, changelog gerado por ferramenta em vez de escrito na mão, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;metadata.yaml&lt;/code&gt; que gera código, testes de ciclo de vida que rodam sozinhos, e um CODEOWNERS que decide quem precisa aprovar. Nada disso é difícil. Tudo isso é invisível até você tropeçar.&lt;/p&gt;
-
-&lt;h4 id=&quot;conceitos-de-go-e-do-collector&quot;&gt;Conceitos de Go e do Collector&lt;/h4&gt;
-
-&lt;p&gt;Esta parte reúne os conceitos que eu precisei entender para conseguir ler o código. Usei o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;receiver/nginxreceiver&lt;/code&gt; do &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;opentelemetry-collector-contrib&lt;/code&gt; como referência, porque ele é pequeno e tem quase tudo que existe nos outros componentes.&lt;/p&gt;
-
-&lt;h4 id=&quot;os-dois-repositórios&quot;&gt;Os dois repositórios&lt;/h4&gt;
-
-&lt;p&gt;O projeto vive em dois repositórios, e saber qual é qual muda para onde vai o seu pull request.&lt;/p&gt;
-
-&lt;p&gt;O &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;opentelemetry-collector&lt;/code&gt;, que todo mundo chama de core, é o framework em si: o que carrega a configuração, monta os pipelines, define as interfaces e implementa os helpers. Junto vem um conjunto pequeno de componentes considerados essenciais, basicamente o OTLP. Hoje são dois receivers, quatro exporters e sete processors. É um número que quase não cresce, e isso é proposital.&lt;/p&gt;
-
-&lt;p&gt;O &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;opentelemetry-collector-contrib&lt;/code&gt; é todo o resto: 114 receivers, 47 exporters, 35 processors, 32 extensions e 14 connectors. É onde estão as integrações com fornecedores, com bancos, com sistemas específicos. O &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;filterprocessor&lt;/code&gt; e o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nginxreceiver&lt;/code&gt; que uso como exemplo estão aqui.&lt;/p&gt;
-
-&lt;p&gt;O critério para separar é manutenção. O core precisa ser estável e ter poucas dependências, porque tudo depende dele. O contrib aceita código que só um grupo de pessoas usa, desde que alguém se responsabilize por manter.&lt;/p&gt;
-
-&lt;p&gt;Na prática, quase toda primeira contribuição acontece no contrib. Se a sua ideia envolve integrar com alguma tecnologia específica, é lá.&lt;/p&gt;
-
-&lt;h4 id=&quot;organização-do-repositório&quot;&gt;Organização do repositório&lt;/h4&gt;
-
-&lt;p&gt;O contrib não é um projeto Go. São mais de quatrocentos módulos. Cada componente tem o seu próprio &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;go.mod&lt;/code&gt;, com dependências e versão próprias.&lt;/p&gt;
-
-&lt;p&gt;A razão é evitar peso desnecessário. O receiver do nginx depende de uma biblioteca de nginx, o exporter da AWS depende do SDK da AWS. Num módulo único, quem quisesse apenas ler métricas de nginx carregaria também o SDK da AWS.&lt;/p&gt;
-
-&lt;p&gt;Para quem contribui isso significa duas coisas. Não existe “rodar os testes do projeto”: você roda os testes do componente em que está mexendo. E adicionar uma dependência altera o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;go.mod&lt;/code&gt; daquela pasta, não um arquivo central.&lt;/p&gt;
-
-&lt;p&gt;Dentro de cada componente existe uma pasta &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;internal/&lt;/code&gt;. Isso é regra da linguagem, não convenção do projeto: o Go proíbe que código de fora importe qualquer coisa sob um &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;internal/&lt;/code&gt;. É onde fica o que pode mudar sem aviso.&lt;/p&gt;
-
-&lt;h4 id=&quot;interfaces&quot;&gt;Interfaces&lt;/h4&gt;
-
-&lt;p&gt;Uma interface em Go é uma lista de métodos. Qualquer tipo que tenha esses métodos satisfaz a interface automaticamente, sem declarar nada. Não existe &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;implements&lt;/code&gt; como em Java ou C#.&lt;/p&gt;
-
-&lt;p&gt;Comparando: em outras linguagens você entra no clube preenchendo a ficha de inscrição. Em Go você entra por já estar com o uniforme certo. Ninguém registra a associação, o porteiro só confere a roupa.&lt;/p&gt;
-
-&lt;p&gt;O contrato mínimo do Collector se chama &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;component.Component&lt;/code&gt; e pede dois métodos: um para iniciar e um para encerrar. Se o seu tipo tem os dois, ele é um componente.&lt;/p&gt;
-
-&lt;p&gt;Essa é a explicação para algo que me travou no início: eu procurava no código a linha que conecta o componente ao Collector e não encontrava. Ela não existe. A conexão é a assinatura dos métodos.&lt;/p&gt;
-
-&lt;h4 id=&quot;componentes&quot;&gt;Componentes&lt;/h4&gt;
-
-&lt;p&gt;São cinco tipos. Receiver recebe dados, processor transforma, exporter envia para fora, connector liga a saída de um pipeline à entrada de outro, extension oferece serviços de apoio como autenticação.&lt;/p&gt;
-
-&lt;p&gt;Antes de escrever qualquer linha é preciso saber em qual desses tipos o seu problema mora. Um comportamento errado na coleta é assunto de receiver, mesmo que apareça depois.&lt;/p&gt;
-
-&lt;h4 id=&quot;factory&quot;&gt;Factory&lt;/h4&gt;
-
-&lt;p&gt;A factory é o objeto que sabe criar o componente. Ela não é o componente.&lt;/p&gt;
-
-&lt;p&gt;Essa separação existe porque o Collector precisa conhecer a configuração padrão antes de qualquer componente existir, para validar o YAML do usuário. Então a factory expõe duas coisas: uma função que devolve a configuração padrão e uma função que cria o componente quando solicitado.&lt;/p&gt;
-
-&lt;p&gt;A factory também declara com quais sinais o componente trabalha, métricas, traces ou logs, e o nível de estabilidade de cada um. Um mesmo componente pode estar estável para métricas e experimental para logs.&lt;/p&gt;
-
-&lt;h4 id=&quot;configuração&quot;&gt;Configuração&lt;/h4&gt;
-
-&lt;p&gt;A configuração trafega pelo sistema como um tipo genérico. A primeira coisa que a função de criação faz é convertê-la para o tipo concreto do componente. Essa conversão se chama type assertion.&lt;/p&gt;
-
-&lt;p&gt;Ela pode falhar. Se o tipo não for o esperado, o programa quebra, a menos que você use a forma de duas saídas, que devolve também um booleano informando se deu certo. É por isso que vários componentes escrevem essa conversão em duas linhas e retornam erro.&lt;/p&gt;
-
-&lt;p&gt;O YAML vira struct por meio de anotações nos campos, chamadas tags. A mais comum achata um struct dentro de outro. É esse achatamento que faz opções como timeout, TLS e retry aparecerem com a mesma grafia em dezenas de componentes sem ninguém redigitar a definição.&lt;/p&gt;
-
-&lt;h4 id=&quot;pipeline-e-consumers&quot;&gt;Pipeline e consumers&lt;/h4&gt;
-
-&lt;p&gt;Não existe um orquestrador central. Cada componente recebe, no momento em que é criado, uma referência ao próximo da fila, e entrega o resultado a ele.&lt;/p&gt;
-
-&lt;p&gt;O pipeline que você escreve no YAML é essa corrente sendo montada na inicialização. Um processor não sabe quem veio antes nem qual é o destino final. Ele conhece apenas o próximo.&lt;/p&gt;
-
-&lt;p&gt;Cada componente declara também se altera os dados que recebe. Essa declaração não é informativa: quando um pipeline se ramifica para vários destinos, o Collector a consulta para decidir se precisa copiar os dados antes de entregar. Declarar errado produz corrupção difícil de rastrear.&lt;/p&gt;
-
-&lt;h4 id=&quot;pdata&quot;&gt;pdata&lt;/h4&gt;
-
-&lt;p&gt;São os tipos que carregam a telemetria: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pmetric&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;plog&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ptrace&lt;/code&gt; e &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pcommon&lt;/code&gt;. Eles parecem structs comuns e não são. São invólucros sobre uma estrutura compartilhada, então se comportam como referência. Copiar a variável não copia o dado.&lt;/p&gt;
-
-&lt;p&gt;Comparando: pdata é a chave de um armário, não o conteúdo do armário. Passar a chave adiante não duplica nada, e se duas pessoas têm a chave, o que uma alterar a outra enxerga.&lt;/p&gt;
-
-&lt;p&gt;Esse foi o conceito que mais me custou tempo, porque o compilador não acusa nada. O problema só aparece quando dois destinos do mesmo pipeline começam a interferir um no outro.&lt;/p&gt;
-
-&lt;p&gt;O acesso também é diferente do Go comum. Em vez de percorrer uma lista com &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;range&lt;/code&gt;, você pergunta o tamanho e pede o item de cada posição. É mais verboso de propósito: o Collector move volumes altos e essa forma evita cópias.&lt;/p&gt;
-
-&lt;h4 id=&quot;context&quot;&gt;Context&lt;/h4&gt;
-
-&lt;p&gt;Quase toda função do projeto recebe um &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;context&lt;/code&gt; como primeiro parâmetro. Ele carrega prazo e cancelamento e serve para propagar uma ordem de parada por toda a cadeia de chamadas.&lt;/p&gt;
-
-&lt;p&gt;Comparando: é um bilhete que acompanha o trabalho de mão em mão. Quando o Collector começa a desligar, ele invalida o bilhete original, e quem estiver segurando uma cópia percebe e desiste do que estava fazendo.&lt;/p&gt;
-
-&lt;p&gt;Duas regras práticas: não guarde o context dentro de um struct, passe adiante; e verifique se ele foi cancelado em qualquer espera longa.&lt;/p&gt;
-
-&lt;h4 id=&quot;goroutines&quot;&gt;Goroutines&lt;/h4&gt;
-
-&lt;p&gt;Goroutine é a unidade de concorrência do Go, criada com &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;go func()&lt;/code&gt;. São baratas o bastante para existirem aos milhares. Receivers que ficam ouvindo uma porta rodam dentro de uma.&lt;/p&gt;
-
-&lt;p&gt;O padrão do projeto é guardar a função de cancelamento no struct do componente durante a inicialização e chamá-la no encerramento. Sem isso a goroutine continua viva depois que o componente morreu, o que é um vazamento.&lt;/p&gt;
-
-&lt;h4 id=&quot;helpers&quot;&gt;Helpers&lt;/h4&gt;
-
-&lt;p&gt;São pacotes que já implementam o trabalho repetitivo: agendar coleta em intervalos regulares, transformar uma função de transformação num processor completo, cuidar de fila, retry e timeout no envio.&lt;/p&gt;
-
-&lt;p&gt;Reimplementar à mão o que um helper já resolve é o motivo mais comum de um pull request voltar da revisão. Se você está escrevendo um laço com timer para coletar de tempos em tempos, provavelmente existe um helper para isso.&lt;/p&gt;
-
-&lt;h4 id=&quot;código-gerado&quot;&gt;Código gerado&lt;/h4&gt;
-
-&lt;p&gt;Boa parte do código de um componente não é escrita à mão.&lt;/p&gt;
-
-&lt;p&gt;Existe um arquivo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;metadata.yaml&lt;/code&gt; que descreve o componente: o tipo, o nível de estabilidade, quem são os donos, e cada métrica com sua unidade e seus atributos. Uma ferramenta lê esse arquivo e gera o código Go que registra as métricas, a documentação em markdown e parte dos testes.&lt;/p&gt;
-
-&lt;p&gt;Na prática, para adicionar uma métrica você edita o YAML e roda a geração. Não escreve o Go.&lt;/p&gt;
-
-&lt;p&gt;Os arquivos gerados começam com um aviso de que não devem ser editados. O CI compara o conteúdo do repositório com o que a ferramenta produziria e reprova se alguém editou à mão.&lt;/p&gt;
-
-&lt;h4 id=&quot;testes&quot;&gt;Testes&lt;/h4&gt;
-
-&lt;p&gt;Os testes usam dublês para o que está em volta: um consumidor que descarta o que recebe, configurações vazias. Isso mantém o teste focado no componente, sem precisar de um Collector completo em execução.&lt;/p&gt;
-
-&lt;p&gt;Dois testes vêm prontos, gerados a partir do &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;metadata.yaml&lt;/code&gt;. O primeiro é de ciclo de vida: inicia o componente, encerra, inicia de novo, encerra sem nunca ter iniciado, e verifica que nada disso quebra. O segundo checa, ao fim do pacote, se sobrou alguma goroutine viva.&lt;/p&gt;
-
-&lt;p&gt;Esse par cobre recurso não liberado e vazamento de goroutine sem você escrever nada.&lt;/p&gt;
-
-&lt;h4 id=&quot;distribuições-e-o-builder&quot;&gt;Distribuições e o builder&lt;/h4&gt;
-
-&lt;p&gt;Não existe “o binário do Collector”. Existe uma escolha de componentes compilada num binário.&lt;/p&gt;
-
-&lt;p&gt;O projeto publica duas distribuições prontas. A &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;otelcol&lt;/code&gt; traz apenas o core. A &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;otelcol-contrib&lt;/code&gt; traz o core mais tudo do contrib, o que a deixa grande e com muita coisa que você não usa.&lt;/p&gt;
-
-&lt;p&gt;Para montar a sua própria existe o OCB, sigla de OpenTelemetry Collector Builder. Você escreve um YAML listando quais receivers, processors e exporters quer, e ele gera o código Go que registra esses componentes, resolve as dependências e compila.&lt;/p&gt;
-
-&lt;p&gt;Isso importa para quem contribui por um motivo direto: a distribuição oficial sempre traz a versão publicada de um componente, nunca a sua cópia local alterada. Para ver a sua mudança rodando é preciso montar um binário com o OCB, apontando o módulo publicado para a sua pasta. É o que faço na parte 2.&lt;/p&gt;
-
-&lt;h4 id=&quot;changelog-e-revisão&quot;&gt;Changelog e revisão&lt;/h4&gt;
-
-&lt;p&gt;O changelog não é escrito no arquivo de changelog. Cada pull request adiciona um YAML pequeno numa pasta própria, informando o tipo da mudança, o componente afetado, uma frase de descrição e a issue relacionada. A release junta tudo.&lt;/p&gt;
-
-&lt;p&gt;Mudanças que não afetam quem usa dispensam esse arquivo, mas precisam ser marcadas como tal no título do pull request. Esquecer isso é o motivo mais comum de CI vermelho num primeiro envio.&lt;/p&gt;
-
-&lt;p&gt;Cada componente tem donos declarados no próprio &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;metadata.yaml&lt;/code&gt;, e são eles que aprovam.&lt;/p&gt;
-
-&lt;p&gt;Cada componente tem também um nível de estabilidade, de &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;development&lt;/code&gt; até &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;stable&lt;/code&gt;, além da lista de distribuições oficiais em que entra. Isso define o quanto se pode quebrar compatibilidade: renomear uma opção de configuração é aceitável em &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;alpha&lt;/code&gt; e é um problema sério em &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;beta&lt;/code&gt;.&lt;/p&gt;
 </content>
  </entry>
  
@@ -1184,7 +1179,7 @@ apolzek was here
 &lt;p&gt;&lt;img src=&quot;/assets/img/Aquiles.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;Eu sou fã do filme Troia e da representação de Brad Pitt como Aquiles. O corpo de Aquiles não era apenas um instrumento de guerra, mas a expressão física de uma vida moldada para o combate, pela disciplina e pela busca da excelência.&lt;/p&gt;
+  &lt;p&gt;Sou fã das obras de Homero e também do filme Troia, especialmente da representação de Brad Pitt como Aquiles. O corpo de Aquiles não era apenas um instrumento de guerra, mas a expressão física de uma vida moldada para o combate, pela disciplina e pela busca da excelência.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;Conhecer profundamente como o corpo funciona é, portanto, aprender a cuidar dele antes que ele cobre o preço da negligência. Entender força, recuperação, alimentação, sono, movimento, envelhecimento e os mecanismos que sustentam nossa saúde nos permite não apenas permanecer fortes, mas preservar nossas capacidades por mais tempo.&lt;/p&gt;
@@ -1455,15 +1450,15 @@ apolzek was here
    <link href="https://apolzek.github.io/2026/06/06/most-valuable-companies-top20"/>
    <updated>2026-06-06T00:00:00-03:00</updated>
    <id>https://apolzek.github.io/2026/06/06/most-valuable-companies-top20</id>
-   <content type="html">&lt;p&gt;If your goal is &lt;strong&gt;US$5 trillion&lt;/strong&gt; and you earn &lt;strong&gt;US$200,000 per day&lt;/strong&gt;, it would take &lt;strong&gt;25,000,000 days&lt;/strong&gt;, or approximately &lt;strong&gt;68,493 years&lt;/strong&gt;, to reach that amount. HAHAHAHAHA &lt;em&gt;Just a joke, have a good day ;P&lt;/em&gt;&lt;/p&gt;
+   <content type="html">&lt;p&gt;A snapshot in time..&lt;/p&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
     &lt;tr&gt;
       &lt;th&gt;#&lt;/th&gt;
-      &lt;th&gt;Empresa&lt;/th&gt;
-      &lt;th&gt;Valor&lt;/th&gt;
-      &lt;th&gt;Categoria (o que mexe)&lt;/th&gt;
+      &lt;th&gt;Company&lt;/th&gt;
+      &lt;th&gt;Value&lt;/th&gt;
+      &lt;th&gt;Category (what it does)&lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
