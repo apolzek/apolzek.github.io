@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-09-01T07:19:08-03:00</updated>
+ <updated>2026-09-01T08:16:55-03:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -12,15 +12,6 @@
  </author>
 
  
- 
- <entry>
-   <title>Apache Flink: Aprendendo em Público, parte 2</title>
-   <link href="https://apolzek.github.io/2026/08/30/apache-flink-aprendendo-em-publico-parte-2"/>
-   <updated>2026-08-30T00:00:00-03:00</updated>
-   <id>https://apolzek.github.io/2026/08/30/apache-flink-aprendendo-em-publico-parte-2</id>
-   <content type="html">&lt;p&gt;in progress&lt;/p&gt;
-</content>
- </entry>
  
  <entry>
    <title>Apache Flink: Aprendendo em Público, parte 1</title>
