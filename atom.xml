@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-09-01T21:29:28-03:00</updated>
+ <updated>2026-09-01T21:35:43-03:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -62,19 +62,19 @@
 
 &lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Como assim até quando ?&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Você lembra de quando os aplicativos de transporte chegaram na cidade ?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; A licença não é uma característica da ferramenta, é uma decisão de quem publica ela. E decisão se revê. Quem publicou hoje pode publicar a próxima versão sob outra regra.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Lembro. Corrida por dez reais, e os pontos de táxi do bairro esvaziaram.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Mas o que já saiu continua liberado.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; E dois anos depois, quando o preço subiu, eles te enganaram ?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Continua, e é só isso que você garante. Tudo que vier depois pode vir diferente. Aí você escolhe entre aceitar a regra nova ou ficar parado numa versão que ninguém mais corrige, olhando o projeto seguir sem você.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Não. O preço era deles.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Está escrito open source na página inicial.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; O preço era deles. O que te deram não foi a corrida barata, foi a permissão de pagar aquele preço enquanto interessasse a eles. E a cidade perdeu o quê no dia em que subiu ?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Está escrito na página inicial. Abre o arquivo de licença e lê o que está lá. Depois procura a segunda coisa: quanto da ferramenta é aberto de verdade. Existe projeto em que o motor é aberto e tudo que uma empresa precisa fica do outro lado do muro, vendido à parte.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Perdeu o preço. E perdeu o táxi, que já não sabia mais chamar.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Que coisas, por exemplo ?&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; É por isso que eu te pergunto o que está escrito na licença, e não na home do site. Uma te diz o que prometem hoje. A outra te diz o que podem tirar amanhã. Já vi projeto trocar de licença numa versão nova, e quem estava dentro descobriu no dia do anúncio, junto com todo mundo.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Login integrado, controle de quem pode fazer o quê, registro de quem fez o quê. Repara que são exatamente as coisas que você não precisa hoje, sozinho no seu teste, e que vai precisar de todas no dia em que aquilo virar ferramenta de time. A página inicial te diz o que prometem hoje. A licença te diz o que podem cobrar amanhã.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Vou ler. Mas imagino que esteja tudo certo, é uma empresa séria.&lt;/p&gt;
 
