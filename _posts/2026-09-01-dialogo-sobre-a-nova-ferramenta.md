@@ -2,7 +2,7 @@
 layout: post
 title: Diálogo sobre a Nova Ferramenta
 # tags: filosofia dialogo socrates tecnologia
-minute: 6
+minute: 9
 ---
 
 *Cenário: fim de tarde, uma mesa de bar perto do escritório. Glauco chega com o notebook debaixo do braço e abre antes mesmo de sentar.*
@@ -33,7 +33,7 @@ minute: 6
 
 **GLAUCO:** Ia querer ver ele servindo quinhentas primeiro.
 
-**SÓCRATES:** E é exatamente isso que nenhum README te mostra. Não porque estejam mentindo, mas porque o autor também nunca viu. Ele construiu pra cozinha dele.
+**SÓCRATES:** E é exatamente isso que nenhum README te mostra. Não porque estejam mentindo, mas porque o autor também nunca viu. Ele construiu pra cozinha dele e testou na cozinha dele.
 
 **GLAUCO:** Mas o site diz que escala horizontalmente.
 
@@ -51,21 +51,17 @@ minute: 6
 
 **SÓCRATES:** Você lembra de quando os aplicativos de transporte chegaram na cidade ?
 
-**GLAUCO:** Lembro. Corrida por dez reais.
-
-**SÓCRATES:** E o que aconteceu com os pontos de táxi do seu bairro ?
-
-**GLAUCO:** Sumiram. Ninguém mais chamava.
+**GLAUCO:** Lembro. Corrida por dez reais, e os pontos de táxi do bairro esvaziaram.
 
 **SÓCRATES:** E dois anos depois, quando o preço subiu, eles te enganaram ?
 
 **GLAUCO:** Não. O preço era deles.
 
-**SÓCRATES:** O preço era deles. O que te deram não foi a corrida barata, foi a permissão de pagar aquele preço enquanto interessasse a eles. E o que a cidade perdeu no dia em que subiu ?
+**SÓCRATES:** O preço era deles. O que te deram não foi a corrida barata, foi a permissão de pagar aquele preço enquanto interessasse a eles. E a cidade perdeu o quê no dia em que subiu ?
 
 **GLAUCO:** Perdeu o preço. E perdeu o táxi, que já não sabia mais chamar.
 
-**SÓCRATES:** É por isso que eu te pergunto o que está escrito na licença, e não na home do site. Uma te diz o que prometem hoje. A outra te diz o que podem tirar amanhã. Já vi mais de um projeto trocar de licença numa versão nova, e quem estava dentro descobriu no dia do anúncio, junto com todo mundo.
+**SÓCRATES:** É por isso que eu te pergunto o que está escrito na licença, e não na home do site. Uma te diz o que prometem hoje. A outra te diz o que podem tirar amanhã. Já vi projeto trocar de licença numa versão nova, e quem estava dentro descobriu no dia do anúncio, junto com todo mundo.
 
 **GLAUCO:** Vou ler. Mas imagino que esteja tudo certo, é uma empresa séria.
 
@@ -83,33 +79,77 @@ minute: 6
 
 **SÓCRATES:** Então o fork é uma porta que existe e que você não consegue atravessar. É como carro importado que não tem peça no país. Ele é seu, o manual inteiro está publicado, e é exatamente por isso que ele fica na garagem.
 
-**GLAUCO:** Ter o direito de continuar não é a mesma coisa que conseguir continuar.
+**GLAUCO:** Ter o direito de continuar não é a mesma coisa que conseguir continuar. Então eu olho o quê ? Se não é a promessa, e não é só a licença.
 
-**SÓCRATES:** Essa é a frase. E muita gente dorme tranquila por causa de uma porta que nunca vai atravessar.
+**SÓCRATES:** Olha quantas mãos diferentes cuidam, e de quantas empresas elas são. Um projeto cuidado por gente que discorda em público e mesmo assim continua junto dura mais que a obra perfeita de uma pessoa só. Não porque os muitos sejam mais sábios. É que a saída de um deles não mata o projeto.
 
-**GLAUCO:** Então eu olho o quê ? Se não é a promessa, e não é só a licença.
+**GLAUCO:** E como eu conto essas mãos ? O repositório tem oito mil estrelas.
 
-**SÓCRATES:** Olha quantas mãos diferentes cuidam. Quantas empresas distintas têm gente enviando código. Se as decisões acontecem em público, de um jeito que dá pra ler a discussão que levou até elas. Um projeto cuidado por gente que discorda em público e mesmo assim continua junto dura mais que a obra perfeita de uma pessoa só. Não porque os muitos sejam mais sábios. É que a saída de um deles não mata o projeto.
+**SÓCRATES:** Estrela não escreve código. Olha quem enviou alteração nos últimos seis meses e conta quantos nomes sobram depois que você tira o primeiro da lista. Depois faz uma coisa que quase ninguém faz: em vez de olhar as issues fechadas, abre as que estão abertas, começando pelas mais antigas.
 
-**GLAUCO:** Isso parece lento.
+**GLAUCO:** Por que as abertas ?
 
-**SÓCRATES:** É lento. E é aí que eu queria chegar: você está chamando de lentidão o preço de não depender de uma pessoa. Toda vez que algo te parecer lento demais, pergunta antes o que aquela lentidão está comprando. Às vezes não compra nada, e você tem razão em fugir. Às vezes compra exatamente o que vai te faltar no dia em que der errado.
+**SÓCRATES:** Porque as fechadas mostram o que eles gostam de resolver. As abertas mostram o que eles decidiram ignorar. Você vai passar muito mais tempo do lado da segunda lista.
 
-**GLAUCO:** Entendi. Mas ainda acho que ela resolve o meu problema melhor que tudo que temos hoje.
+**GLAUCO:** Faz sentido. Vou olhar.
 
-**SÓCRATES:** Pode ser que resolva mesmo. Faltou uma pergunta. No dia em que você precisar de uma coisa que o autor não previu, o que você faz ?
+**SÓCRATES:** Faz melhor: abre uma issue hoje, antes de decidir qualquer coisa. Não precisa ser grande. Um relato honesto, com versão, passo a passo e log, do jeito que você gostaria de receber. E aí espera. A resposta que vier, ou a que não vier, te diz mais sobre os próximos três anos do que qualquer número no site deles.
 
-**GLAUCO:** Abro uma issue e espero.
+**GLAUCO:** Isso pra bug comum. E quando for coisa de segurança ?
 
-**SÓCRATES:** E se não vier ?
+**SÓCRATES:** Aí muda de figura, porque o prazo deixa de ser seu. Onde eles publicam falha de segurança ?
 
-**GLAUCO:** Não sei. Dou um jeito por fora.
+**GLAUCO:** Imagino que no mesmo lugar das outras.
 
-**SÓCRATES:** Você acabou de descrever a diferença entre dois apartamentos. Um tem parede de drywall. O outro tem parede estrutural. Os dois te abrigam igualmente bem enquanto você não precisa abrir uma porta onde não estava previsto.
+**SÓCRATES:** Imaginar não serve. Procura se existe um canal pra te reportarem em particular, e um lugar onde eles anunciam depois, dizendo o que era, o que foi corrigido e quais versões estão afetadas. Quando um carro tem defeito de fábrica, a montadora sabe quem comprou e chama pelo nome. Software nenhum chama. Se esse lugar não existir, você vai ficar sabendo por um post de terceiro, e nesse caso você chega depois de quem estava procurando a falha.
+
+**GLAUCO:** E se eu estiver numa versão antiga quando sair a correção ?
+
+**SÓCRATES:** Essa é a que dói, e quase ninguém faz na hora de escolher. Pergunta se eles corrigem só na última versão ou se levam a correção pras anteriores também. Porque se for só na última, uma falha de segurança deixa de ser uma atualização de uma tarde e vira uma migração inteira, com tudo que ela quebra pelo caminho, num dia que você não escolheu.
+
+**GLAUCO:** Nunca tinha pensado em segurança como prazo.
+
+**SÓCRATES:** É a forma mais útil de pensar. A falha vai aparecer em qualquer ferramenta que você escolher, inclusive nas antigas e chatas. O que muda de uma pra outra é quanto tempo você fica exposto e quanto trabalho custa sair da exposição.
+
+**GLAUCO:** Vou anotar. Tem mais alguma coisa que eu não estou vendo ?
+
+**SÓCRATES:** Tem uma que costuma aparecer só no dia de colocar em produção. Como as pessoas entram nela ?
+
+**GLAUCO:** Usuário e senha criados na própria ferramenta. É rápido.
+
+**SÓCRATES:** Rápido pra você, que é um. Quantas pessoas vão usar isso daqui a um ano ?
+
+**GLAUCO:** Umas duzentas, contando os times de fora.
+
+**SÓCRATES:** Duzentas senhas dentro de uma ferramenta que não fala com o LDAP da empresa. Me responde: quando alguém é desligado numa sexta à tarde, quem lembra de apagar a conta dessa pessoa ali dentro ?
+
+**GLAUCO:** Sinceramente, ninguém.
+
+**SÓCRATES:** Ninguém. E quando te pedirem a lista de quem tem acesso a quê, você monta essa lista de onde ?
+
+**GLAUCO:** Na mão, exportando de cada ferramenta separado.
+
+**SÓCRATES:** Então você já entendeu. Login integrado não é conforto, é o que faz uma pessoa existir num lugar só: ela entra uma vez, é desligada de uma vez, e existe um lugar único pra olhar quando alguém perguntar quem entrou e quando.
+
+**GLAUCO:** Dá pra botar um proxy na frente, autenticando antes.
+
+**SÓCRATES:** Dá, e às vezes é a saída possível. Só repara no que você acabou de fazer: colocou no sistema uma peça nova, que alguém vai ter que manter e monitorar, pra compensar uma que a ferramenta não tem. E o proxy resolve quem entra, não resolve o que cada um pode fazer depois de entrar.
+
+**GLAUCO:** Lá dentro é administrador ou nada.
+
+**SÓCRATES:** É quase sempre administrador ou nada. Então faz a lista agora, enquanto desistir ainda é barato: o LDAP de vocês, o lugar pra onde os logs precisam ir, o alerta que acorda alguém de madrugada, os sistemas de onde os dados vêm. Marca o que ela já faz e o que você vai ter que escrever. Cada item da segunda coluna não é um risco, é uma tarefa que vai aparecer com o seu nome daqui a alguns meses.
+
+**GLAUCO:** E quando eu precisar de uma coisa que o autor simplesmente não previu ?
+
+**SÓCRATES:** Você já sabe a resposta. Vai abrir uma issue e esperar, e agora tem uma ideia melhor do tamanho dessa espera. O que sobra pra decidir é o que você faz enquanto ela não chega.
+
+**GLAUCO:** Dou um jeito por fora.
+
+**SÓCRATES:** Se a ferramenta tiver por onde. É a diferença entre dois apartamentos: um tem parede de drywall, o outro tem parede estrutural. Os dois te abrigam igualmente bem enquanto você não precisa abrir uma porta onde não estava previsto.
 
 **GLAUCO:** E como eu sei qual dos dois estou comprando ?
 
-**SÓCRATES:** Procura o lugar onde a ferramenta te deixa escrever o que ela não previu. Um plugin, um hook, uma interface que você implementa, um jeito de sair pelo lado sem quebrar o resto. Quase toda ferramenta boa tem esse lugar e mostra ele sem vergonha nenhuma. Quando você não acha nenhum, não conclui que não vai precisar. Conclui que você ainda não sabe do que vai precisar.
+**SÓCRATES:** Procura o lugar onde ela te deixa escrever o que ela não previu. Um plugin, um hook, uma interface que você implementa. Quase toda ferramenta boa tem esse lugar e mostra ele sem vergonha nenhuma. Quando você não acha nenhum, não conclui que não vai precisar. Conclui que você ainda não sabe do que vai precisar.
 
 **GLAUCO:** Sócrates, estou começando a achar que você está me dizendo pra nunca usar nada novo.
 
@@ -128,13 +168,6 @@ minute: 6
 **SÓCRATES:** Hoje não. Guarda uma semana e abre de novo. Entusiasmo é bom combustível e péssimo motorista.
 
 ..então Sócrates fechou o notebook, Glauco salvou o diagrama sem apagar nada, e os dois foram tomar uma cerveja.
-
-## Glossário
-
-- *fork*: cópia independente de um projeto de código aberto, mantida dali em diante por outras pessoas
-- *licença*: o texto que define o que se pode fazer com um software; é ela, e não o código estar visível, que diz o que é permitido
-- *governança*: quem decide o rumo de um projeto, e por qual processo
-- *custo de saída*: o trabalho necessário para trocar uma ferramenta por outra depois que o sistema inteiro já se apoia nela
 
 ## Nota
 
