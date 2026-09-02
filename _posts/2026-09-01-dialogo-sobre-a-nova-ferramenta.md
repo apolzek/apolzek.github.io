@@ -43,23 +43,31 @@ minute: 7
 
 **GLAUCO:** Isso importa ? Ela roda num contêiner, eu nem preciso saber.
 
-**SÓCRATES:** É a única parte dela que você não vai poder trocar depois. A linguagem já decidiu, antes de você chegar, um monte de coisa que você só vai sentir em produção. Ela é compilada ou interpretada ?
+**SÓCRATES:** É a única parte dela que você não vai poder trocar depois. A linguagem já decidiu, antes de você chegar, um monte de coisa que você só vai sentir em produção. Qual é ?
 
-**GLAUCO:** Interpretada. É Python.
+**GLAUCO:** Rust.
 
-**SÓCRATES:** Então você não vai instalar só a ferramenta. Vai instalar o interpretador e as dependências dela junto, e vai cuidar dos três pelo resto da vida. Uma coisa compilada chega como um arquivo só, sobe num segundo e não te pergunta nada. Uma interpretada te dá pressa pra escrever e cobra na hora de rodar e de empacotar. Nenhuma das duas é melhor. São contas diferentes, e quem paga é você.
+**SÓCRATES:** Então ela é compilada, e isso te dá coisas boas de graça. Vai chegar como um arquivo só, sem interpretador nem dependência solta pra você carregar junto, e sobe num piscar. Ferramenta interpretada te obriga a cuidar dela e do interpretador dela pelo resto da vida.
 
-**GLAUCO:** Nunca olhei por esse lado.
+**GLAUCO:** Ótimo. Então é a escolha certa.
 
-**SÓCRATES:** Olha por mais um. Ela tem coletor de lixo ?
+**SÓCRATES:** É uma escolha, e toda escolha tem o outro lado virado pra baixo. Aquele arquivo único carrega dentro dele as bibliotecas que o autor escolheu, nas versões que ele escolheu, no dia em que ele compilou. Quando aparecer um problema numa dessas bibliotecas, você não troca a peça. Você espera ele compilar de novo.
 
-**GLAUCO:** Suponho que sim. Quase tudo tem.
+**GLAUCO:** Não tinha pensado nisso.
 
-**SÓCRATES:** Quase tudo tem, e coletor de lixo é um faxineiro competente que limpa a casa na hora que ele escolhe, não na hora que você pede. Com pouco volume você nem nota. Com muito, ele aparece como uma lentidão que chega sem avisar e vai embora sozinha, e o time procura a causa no lugar errado por uma semana. Não é defeito. É o preço de não ter que limpar a casa você mesmo, e é um preço que só se cobra em produção.
+**SÓCRATES:** É o mesmo pacote, olhado do outro lado. Segunda coisa: Rust não tem coletor de lixo.
+
+**GLAUCO:** Isso é bom, não é ?
+
+**SÓCRATES:** É bom pra uma coisa específica. Linguagem com coletor tem um faxineiro que limpa a casa na hora que ele escolhe, não na hora que você pede, e isso aparece como uma lentidão que chega sem avisar e vai embora sozinha, justo quando o volume cresce. Sem coletor, o tempo de resposta é previsível, e previsível vale muito.
+
+**GLAUCO:** Então não tenho com que me preocupar de memória.
+
+**SÓCRATES:** Tem, e de um tipo mais silencioso. Sem coletor nada é varrido por acaso: o que a ferramenta segurar, ela segura até o fim. Uma fila sem limite ou um cache que ninguém mandou parar não aparecem como pausa, aparecem como uma linha subindo devagar por uma semana até alguém ser acordado de madrugada. Coletor de lixo é barulhento e avisa. A falta dele é silenciosa.
 
 **GLAUCO:** Dá pra saber isso antes ?
 
-**SÓCRATES:** Duas perguntas resolvem. Quanta memória ela quer pra trabalhar em paz, porque quem tem coletor costuma querer mais do que aparenta, e o contêiner que você der vai ser o teto dela. E quantos núcleos ela usa de verdade, porque existe linguagem que executa um pedaço de cada vez por decisão de projeto, e aí não adianta você dar oito.
+**SÓCRATES:** Duas perguntas resolvem. Quanta memória ela consome depois de uma semana ligada, e não nos dez primeiros minutos. E quantos núcleos ela usa de verdade, porque uma coisa é a linguagem saber usar oito, outra é a ferramenta ter sido escrita pra isso.
 
 **GLAUCO:** Isso muda o desenho inteiro.
 
