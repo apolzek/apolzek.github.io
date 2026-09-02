@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-09-01T21:35:43-03:00</updated>
+ <updated>2026-09-01T21:38:49-03:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -46,123 +46,65 @@
 
 &lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Ia querer ver ele servindo quinhentas primeiro.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; E é exatamente isso que nenhum README te mostra. Não porque estejam mentindo, mas porque o autor também nunca viu. Ele construiu pra cozinha dele e testou na cozinha dele.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; É exatamente isso que nenhum README te mostra. Não porque estejam mentindo, mas porque o autor também nunca viu. Ele construiu pra cozinha dele e testou na cozinha dele.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Mas o site diz que escala horizontalmente.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Então como eu decido ?&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Diz. Todo site diz. Olha uma coisa: quase toda ferramenta funciona bem no tamanho em que foi escrita. O que separa uma da outra é o que acontece um pouco além disso. Não pergunta se escala. Pergunta como ela quebra, e o que você faz quando ela quebrar.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Para de perguntar se ela funciona. Ela funciona, você viu funcionando. Pergunta se ela tem o que precisa pra ir pra produção, que é outra pergunta e tem lista.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Confesso que não pensei nisso.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Que lista ?&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Nem precisava, até agora. Me conta outra coisa: quem escreveu essa ferramenta ?&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Uma empresa. Mas é open source, o código está todo no GitHub.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Aberto sob qual licença, e até quando ?&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Como assim até quando ?&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; A licença não é uma característica da ferramenta, é uma decisão de quem publica ela. E decisão se revê. Quem publicou hoje pode publicar a próxima versão sob outra regra.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Mas o que já saiu continua liberado.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Continua, e é só isso que você garante. Tudo que vier depois pode vir diferente. Aí você escolhe entre aceitar a regra nova ou ficar parado numa versão que ninguém mais corrige, olhando o projeto seguir sem você.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Umas oito perguntas, e nenhuma delas é sobre o que a ferramenta faz. A primeira: sob qual licença, e quanto dela é aberto de verdade ?&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Está escrito open source na página inicial.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Está escrito na página inicial. Abre o arquivo de licença e lê o que está lá. Depois procura a segunda coisa: quanto da ferramenta é aberto de verdade. Existe projeto em que o motor é aberto e tudo que uma empresa precisa fica do outro lado do muro, vendido à parte.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Página inicial não é licença. Abre o arquivo e lê. Depois repara no que ficou de fora, porque em muito projeto o motor é aberto e o login integrado, o controle de permissão e o registro de acesso são vendidos à parte. Justamente o que você não precisa hoje e vai precisar todo dia quando aquilo virar ferramenta de time.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Que coisas, por exemplo ?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Segunda: quantas pessoas mantêm isso, de quantas empresas, e onde elas decidem o rumo ?&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Login integrado, controle de quem pode fazer o quê, registro de quem fez o quê. Repara que são exatamente as coisas que você não precisa hoje, sozinho no seu teste, e que vai precisar de todas no dia em que aquilo virar ferramenta de time. A página inicial te diz o que prometem hoje. A licença te diz o que podem cobrar amanhã.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; O repositório tem oito mil estrelas.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Vou ler. Mas imagino que esteja tudo certo, é uma empresa séria.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Estrela não escreve código. Conta quantos nomes enviaram alteração nos últimos seis meses, e quantos sobram depois que você tira o primeiro da lista. Se sobrar um, você não escolheu uma ferramenta, escolheu uma pessoa. E vê onde a discussão acontece: se é em público, dá pra ler e até discordar; se é interna, você só fica sabendo do resultado.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Talvez esteja mesmo. Ainda assim: quem decide o rumo dessa ferramenta ?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Terceira: quanto tempo um bug leva pra virar correção ?&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Eles, imagino. São os autores.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Vou olhar as issues fechadas.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; E se amanhã eles levarem pra um lugar que não te serve, ou simplesmente pararem de manter ?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Olha as abertas, das mais antigas pras mais novas. As fechadas mostram o que eles gostam de resolver. As abertas mostram o que eles decidiram ignorar. E abre uma hoje, antes de decidir qualquer coisa: versão, passo a passo, log. A resposta que vier, ou a que não vier, vale mais que qualquer número no site deles.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Aí eu faço um fork. O código é aberto, ninguém pode me impedir.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Quarta: quando sair uma falha de segurança, como você fica sabendo, e eles corrigem a sua versão ?&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Ninguém pode te impedir, é verdade. Deixa eu perguntar de outro jeito: hoje, no seu time, quantas pessoas conseguiriam achar e corrigir um bug dentro do código dessa ferramenta ?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Imagino que saia uma versão nova.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Hoje, nenhuma. Eu talvez, com bastante tempo.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Se sair só na última, uma falha de segurança deixa de ser atualização de uma tarde e vira migração inteira, num dia que você não escolheu. Procura duas coisas: um canal pra reportar em particular e um lugar onde eles anunciam depois, dizendo o que era e quais versões pegam. Sem esse lugar, você fica sabendo por terceiro, depois de quem estava procurando a falha.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Então o fork é uma porta que existe e que você não consegue atravessar. É como carro importado que não tem peça no país. Ele é seu, o manual inteiro está publicado, e é exatamente por isso que ele fica na garagem.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Ter o direito de continuar não é a mesma coisa que conseguir continuar. Então eu olho o quê ? Se não é a promessa, e não é só a licença.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Olha quantas mãos diferentes cuidam, e de quantas empresas elas são. Um projeto cuidado por gente que discorda em público e mesmo assim continua junto dura mais que a obra perfeita de uma pessoa só. Não porque os muitos sejam mais sábios. É que a saída de um deles não mata o projeto.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; E como eu conto essas mãos ? O repositório tem oito mil estrelas.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Estrela não escreve código. Olha quem enviou alteração nos últimos seis meses e conta quantos nomes sobram depois que você tira o primeiro da lista. Depois faz uma coisa que quase ninguém faz: em vez de olhar as issues fechadas, abre as que estão abertas, começando pelas mais antigas.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Por que as abertas ?&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Porque as fechadas mostram o que eles gostam de resolver. As abertas mostram o que eles decidiram ignorar. Você vai passar muito mais tempo do lado da segunda lista.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Faz sentido. Vou olhar.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Faz melhor: abre uma issue hoje, antes de decidir qualquer coisa. Não precisa ser grande. Um relato honesto, com versão, passo a passo e log, do jeito que você gostaria de receber. E aí espera. A resposta que vier, ou a que não vier, te diz mais sobre os próximos três anos do que qualquer número no site deles.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Isso pra bug comum. E quando for coisa de segurança ?&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Aí muda de figura, porque o prazo deixa de ser seu. Onde eles publicam falha de segurança ?&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Imagino que no mesmo lugar das outras.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Imaginar não serve. Procura se existe um canal pra te reportarem em particular, e um lugar onde eles anunciam depois, dizendo o que era, o que foi corrigido e quais versões estão afetadas. Quando um carro tem defeito de fábrica, a montadora sabe quem comprou e chama pelo nome. Software nenhum chama. Se esse lugar não existir, você vai ficar sabendo por um post de terceiro, e nesse caso você chega depois de quem estava procurando a falha.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; E se eu estiver numa versão antiga quando sair a correção ?&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Essa é a que dói, e quase ninguém faz na hora de escolher. Pergunta se eles corrigem só na última versão ou se levam a correção pras anteriores também. Porque se for só na última, uma falha de segurança deixa de ser uma atualização de uma tarde e vira uma migração inteira, com tudo que ela quebra pelo caminho, num dia que você não escolheu.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Nunca tinha pensado em segurança como prazo.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; É a forma mais útil de pensar. A falha vai aparecer em qualquer ferramenta que você escolher, inclusive nas antigas e chatas. O que muda de uma pra outra é quanto tempo você fica exposto e quanto trabalho custa sair da exposição.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Vou anotar. Tem mais alguma coisa que eu não estou vendo ?&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Tem uma que costuma aparecer só no dia de colocar em produção. Como as pessoas entram nela ?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Quinta: como as pessoas entram ?&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Usuário e senha criados na própria ferramenta. É rápido.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Rápido pra você, que é um. Quantas pessoas vão usar isso daqui a um ano ?&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Umas duzentas, contando os times de fora.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Duzentas senhas dentro de uma ferramenta que não fala com o LDAP da empresa. Me responde: quando alguém é desligado numa sexta à tarde, quem lembra de apagar a conta dessa pessoa ali dentro ?&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Sinceramente, ninguém.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Ninguém. E quando te pedirem a lista de quem tem acesso a quê, você monta essa lista de onde ?&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Na mão, exportando de cada ferramenta separado.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Então você já entendeu. Login integrado não é conforto, é o que faz uma pessoa existir num lugar só: ela entra uma vez, é desligada de uma vez, e existe um lugar único pra olhar quando alguém perguntar quem entrou e quando.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Rápido pra você, que é um. Vocês usam LDAP em todo o resto. Então vão ser duzentas contas soltas, e quando alguém for desligado numa sexta ninguém vai lembrar de apagar a de lá. No dia em que te pedirem a lista de quem tem acesso a quê, você monta na mão.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Dá pra botar um proxy na frente, autenticando antes.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Dá, e às vezes é a saída possível. Só repara no que você acabou de fazer: colocou no sistema uma peça nova, que alguém vai ter que manter e monitorar, pra compensar uma que a ferramenta não tem. E o proxy resolve quem entra, não resolve o que cada um pode fazer depois de entrar.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Dá, e às vezes é a saída possível. Só que você acabou de adicionar uma peça pra manter, e o proxy resolve quem entra, não o que cada um pode fazer depois de entrar. Pergunta se lá dentro existe perfil, ou se é administrador ou nada.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Lá dentro é administrador ou nada.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Sexta: o que ela já integra, e o que você vai ter que escrever ?&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; É quase sempre administrador ou nada. Então faz a lista agora, enquanto desistir ainda é barato: o LDAP de vocês, o lugar pra onde os logs precisam ir, o alerta que acorda alguém de madrugada, os sistemas de onde os dados vêm. Marca o que ela já faz e o que você vai ter que escrever. Cada item da segunda coluna não é um risco, é uma tarefa que vai aparecer com o seu nome daqui a alguns meses.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Como assim ?&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; E quando eu precisar de uma coisa que o autor simplesmente não previu ?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Faz duas colunas: o LDAP, o destino dos logs, o alerta que acorda alguém de madrugada, os sistemas de onde os dados vêm. Marca o que ela faz sozinha e o que falta. Cada item da coluna vazia não é um risco, é uma tarefa que vai aparecer com o seu nome daqui a alguns meses.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Você já sabe a resposta. Vai abrir uma issue e esperar, e agora tem uma ideia melhor do tamanho dessa espera. O que sobra pra decidir é o que você faz enquanto ela não chega.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Sétima: o que ela faz quando um pedaço dela cai ?&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Dou um jeito por fora.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Não sei. Nunca derrubei.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Se a ferramenta tiver por onde. É a diferença entre dois apartamentos: um tem parede de drywall, o outro tem parede estrutural. Os dois te abrigam igualmente bem enquanto você não precisa abrir uma porta onde não estava previsto.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Então derruba hoje, antes de gostar dela. Mata o processo no meio de uma carga e olha o que aconteceu: perdeu dado, repetiu dado, voltou sozinha, ou ficou esperando alguém chegar. É a informação mais barata que você vai conseguir a semana inteira.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; E como eu sei qual dos dois estou comprando ?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Oitava: e no dia em que você precisar de uma coisa que o autor não previu ?&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Procura o lugar onde ela te deixa escrever o que ela não previu. Um plugin, um hook, uma interface que você implementa. Quase toda ferramenta boa tem esse lugar e mostra ele sem vergonha nenhuma. Quando você não acha nenhum, não conclui que não vai precisar. Conclui que você ainda não sabe do que vai precisar.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Abro uma issue e espero.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Você já sabe o tamanho dessa espera. O que interessa é o que dá pra fazer enquanto ela não chega. Procura o lugar onde a ferramenta te deixa escrever o que ela não previu: um plugin, um hook, uma interface que você implementa. Quando não existe nenhum, não conclui que não vai precisar. Conclui que você ainda não sabe do que vai precisar.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Sócrates, estou começando a achar que você está me dizendo pra nunca usar nada novo.&lt;/p&gt;
 
@@ -170,7 +112,7 @@
 
 &lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Entre o que, então ?&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Entre escolher de olho aberto e ser escolhido. Faz assim: põe o novo onde o erro sai barato. Uma borda do sistema, um serviço que você desliga numa tarde e ninguém acorda de madrugada. Deixa o meio chato e previsível. Se a ferramenta prestar, ela vai crescendo pra dentro sozinha, e quando chegar lá você já vai ter aprendido a operar ela com o seu peso em cima, e não com o exemplo de vinte minutos.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Entre escolher de olho aberto e ser escolhido. Põe o novo onde o erro sai barato: uma borda do sistema, um serviço que você desliga numa tarde sem acordar ninguém. Deixa o meio chato e previsível. Se a ferramenta prestar, ela cresce pra dentro sozinha, e quando chegar lá você já vai ter aprendido a operar ela com o seu peso em cima, e não com o exemplo de vinte minutos.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; E se eu errar mesmo assim ?&lt;/p&gt;
 
