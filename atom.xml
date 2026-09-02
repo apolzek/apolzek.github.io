@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-09-02T10:12:37-03:00</updated>
+ <updated>2026-09-02T10:31:21-03:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -14,10 +14,10 @@
  
  
  <entry>
-   <title>What a Well-Kept Repository Ships</title>
-   <link href="https://apolzek.github.io/2026/09/01/what-a-well-kept-repository-ships"/>
+   <title>Repository Checklist</title>
+   <link href="https://apolzek.github.io/2026/09/01/repository-checklist"/>
    <updated>2026-09-01T00:00:00-03:00</updated>
-   <id>https://apolzek.github.io/2026/09/01/what-a-well-kept-repository-ships</id>
+   <id>https://apolzek.github.io/2026/09/01/repository-checklist</id>
    <content type="html">&lt;p&gt;A checklist for what a well-maintained repository should ship, in its
 documentation, its code, and its automation.&lt;/p&gt;
 
