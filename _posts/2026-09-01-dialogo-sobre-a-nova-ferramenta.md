@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Diálogo sobre a Novidade e o Tempo
+title: Diálogo sobre a Nova Ferramenta
 # tags: filosofia dialogo socrates tecnologia
 minute: 6
 ---
