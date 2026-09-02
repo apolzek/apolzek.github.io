@@ -1,6 +1,6 @@
 ---
 layout: post
-title: What a Well-Kept Repository Ships
+title: Repository Checklist
 minute: 7
 ---
 
