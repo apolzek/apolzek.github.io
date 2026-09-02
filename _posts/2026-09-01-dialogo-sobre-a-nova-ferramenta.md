@@ -2,14 +2,14 @@
 layout: post
 title: Diálogo sobre a Nova Ferramenta
 # tags: filosofia dialogo socrates tecnologia
-minute: 6
+minute: 5
 ---
 
 *Cenário: fim de tarde, uma mesa de bar perto do escritório. Glauco chega com o notebook debaixo do braço e abre antes mesmo de sentar.*
 
 **GLAUCO:** Sócrates, achei a ferramenta que resolve tudo. Li a documentação ontem à noite, subi um exemplo em vinte minutos e funcionou de primeira. Vou reescrever o sistema inteiro em cima dela.
 
-**SÓCRATES:** Vinte minutos. Deixa eu te perguntar uma coisa antes: quando você faz test drive de um carro, quanto tempo dura ?
+**SÓCRATES:** Vinte minutos. Quando você faz test drive de um carro, quanto tempo dura ?
 
 **GLAUCO:** Uns quinze minutos. Uma volta no quarteirão com o vendedor do lado.
 
@@ -19,79 +19,61 @@ minute: 6
 
 **SÓCRATES:** Então nesses vinte minutos você conheceu a ferramenta, ou conheceu o percurso que o autor dela escolheu pra você fazer ?
 
-**GLAUCO:** O percurso.
+**GLAUCO:** O percurso. Mas gostei do percurso.
 
-**SÓCRATES:** Que é justamente o trecho asfaltado. Não estou dizendo que ela é ruim. Estou dizendo que você ainda não pegou chuva. Quantos registros passaram no seu teste ?
+**SÓCRATES:** E gostar é um bom começo, não estou tirando isso de você. Só que agora você quer fazer outra coisa, e talvez não tenha reparado. Você testou uma ferramenta. O que você quer instalar é uma ferramenta dentro de uma organização.
+
+**GLAUCO:** É a mesma ferramenta.
+
+**SÓCRATES:** É o mesmo objeto. Não é a mesma coisa. No seu teste ela foi usada por uma pessoa, uma vez, com quantos registros ?
 
 **GLAUCO:** Uns mil.
 
-**SÓCRATES:** E num dia de pico, em produção ?
+**SÓCRATES:** Lá dentro vai ser usada por muita gente, todo dia, com milhões, por mais tempo do que você vai ficar cuidando dela. Duas coisas mudam: quantas pessoas e quanto tempo. Quase tudo que dá errado depois vem de uma dessas duas.
 
-**GLAUCO:** Uns dez milhões.
+**GLAUCO:** Começa pelas pessoas.
 
-**SÓCRATES:** Você contrataria pra um casamento de quinhentas pessoas um restaurante que serviu bem dez mesas na semana de inauguração ?
+**SÓCRATES:** Como elas entram ?
 
-**GLAUCO:** Ia querer ver ele servindo quinhentas primeiro.
+**GLAUCO:** Cria usuário e senha na própria ferramenta. É rápido.
 
-**SÓCRATES:** É exatamente isso que nenhum README te mostra. Não porque estejam mentindo, mas porque o autor também nunca viu. Ele construiu pra cozinha dele e testou na cozinha dele.
+**SÓCRATES:** Rápido pra você, que é um. Repara numa coisa: ferramenta de uma pessoa só não precisa saber quem você é, porque você é o único que está lá. Assim que entra a segunda, ela precisa saber. E quando forem duzentas, alguém vai ter que responder três perguntas que hoje nem existem: quem pode entrar, o que cada um pode fazer, e quem fez o que já foi feito.
 
-**GLAUCO:** Então como eu decido ?
+**GLAUCO:** Na empresa todo mundo entra pelo LDAP.
 
-**SÓCRATES:** Para de perguntar se ela funciona. Ela funciona, você viu funcionando. Pergunta se ela tem o que precisa pra ir pra produção, que é outra pergunta e tem lista.
+**SÓCRATES:** E ela fala LDAP ?
 
-**GLAUCO:** Que lista ?
+**GLAUCO:** Acho que não.
 
-**SÓCRATES:** Umas oito perguntas, e nenhuma delas é sobre o que a ferramenta faz. A primeira: sob qual licença, e quanto dela é aberto de verdade ?
+**SÓCRATES:** Então quem for desligado numa sexta sai da empresa e continua dentro da ferramenta. Isso não é detalhe de configuração, é o que separa uma ferramenta pessoal de uma ferramenta de organização. Olha isso hoje, junto com a licença, porque em muito projeto o motor é aberto e é justamente essa parte, o login integrado e o registro de quem fez o quê, que fica vendida à parte.
 
-**GLAUCO:** Está escrito open source na página inicial.
+**GLAUCO:** E o tempo ? Você disse que eram duas coisas.
 
-**SÓCRATES:** Página inicial não é licença. Abre o arquivo e lê. Depois repara no que ficou de fora, porque em muito projeto o motor é aberto e o login integrado, o controle de permissão e o registro de acesso são vendidos à parte. Justamente o que você não precisa hoje e vai precisar todo dia quando aquilo virar ferramenta de time.
+**SÓCRATES:** O tempo é fácil de dizer e difícil de aceitar: você não vai ser quem conserta. Daqui a dois anos vai aparecer um defeito sério, e ou existe gente no seu time capaz de mexer naquele código, ou você depende de estranhos.
 
-**SÓCRATES:** Segunda: quantas pessoas mantêm isso, de quantas empresas, e onde elas decidem o rumo ?
+**GLAUCO:** Depender é tão ruim assim ?
 
-**GLAUCO:** O repositório tem oito mil estrelas.
+**SÓCRATES:** Não é ruim, é normal. Todo mundo depende. O que muda de um projeto pra outro é a resposta a uma pergunta só: quanto tempo eles demoram pra corrigir, e a correção chega até você ?
 
-**SÓCRATES:** Estrela não escreve código. Conta quantos nomes enviaram alteração nos últimos seis meses, e quantos sobram depois que você tira o primeiro da lista. Se sobrar um, você não escolheu uma ferramenta, escolheu uma pessoa. E vê onde a discussão acontece: se é em público, dá pra ler e até discordar; se é interna, você só fica sabendo do resultado.
+**GLAUCO:** Não é a mesma coisa ?
 
-**SÓCRATES:** Terceira: quanto tempo um bug leva pra virar correção ?
+**SÓCRATES:** Não. Uma coisa é consertar. Outra é publicar o conserto de um jeito que sirva pra quem já está usando. Pergunta se eles sabem lançar uma versão pequena, só com a correção, ou se ela só chega junto da próxima versão grande, com tudo que ela muda de quebra.
 
-**GLAUCO:** Vou olhar as issues fechadas.
+**GLAUCO:** Se for só na próxima grande...
 
-**SÓCRATES:** Olha as abertas, das mais antigas pras mais novas. As fechadas mostram o que eles gostam de resolver. As abertas mostram o que eles decidiram ignorar. E abre uma hoje, antes de decidir qualquer coisa: versão, passo a passo, log. A resposta que vier, ou a que não vier, vale mais que qualquer número no site deles.
+**SÓCRATES:** Se for só na próxima grande, o defeito deixa de ser um conserto de uma tarde e vira uma migração inteira, num dia que você não escolheu. Projeto maduro tem duas velocidades: uma pra melhorar e outra pra consertar. Quando só tem uma, quem usa fica preso ao calendário de quem escreve.
 
-**SÓCRATES:** Quarta: quando sair uma falha de segurança, como você fica sabendo, e eles corrigem a sua versão ?
+**GLAUCO:** Dá pra saber isso antes ?
 
-**GLAUCO:** Imagino que saia uma versão nova.
+**SÓCRATES:** Dá, e custa uma tarde. Olha o histórico de versões e procura correções soltas entre as versões grandes. Olha as issues abertas há mais tempo, não as fechadas, porque as fechadas mostram o que eles gostam de resolver e as abertas mostram o que decidiram ignorar. E conta quantas pessoas diferentes assinaram alterações nos últimos meses. Se sobrar uma, você não escolheu uma ferramenta, escolheu uma pessoa.
 
-**SÓCRATES:** Se sair só na última, uma falha de segurança deixa de ser atualização de uma tarde e vira migração inteira, num dia que você não escolheu. Procura duas coisas: um canal pra reportar em particular e um lugar onde eles anunciam depois, dizendo o que era e quais versões pegam. Sem esse lugar, você fica sabendo por terceiro, depois de quem estava procurando a falha.
+**GLAUCO:** Tudo isso antes de decidir.
 
-**SÓCRATES:** Quinta: como as pessoas entram ?
+**SÓCRATES:** Tudo isso custa uma tarde, e você já gastou vinte minutos gostando. Falta a última, e é a mais barata de perguntar: no dia em que você precisar de uma coisa que o autor não previu, existe algum lugar onde você mesmo escreve ela ?
 
-**GLAUCO:** Usuário e senha criados na própria ferramenta. É rápido.
+**GLAUCO:** E se não existir ?
 
-**SÓCRATES:** Rápido pra você, que é um. Vocês usam LDAP em todo o resto. Então vão ser duzentas contas soltas, e quando alguém for desligado numa sexta ninguém vai lembrar de apagar a de lá. No dia em que te pedirem a lista de quem tem acesso a quê, você monta na mão.
-
-**GLAUCO:** Dá pra botar um proxy na frente, autenticando antes.
-
-**SÓCRATES:** Dá, e às vezes é a saída possível. Só que você acabou de adicionar uma peça pra manter, e o proxy resolve quem entra, não o que cada um pode fazer depois de entrar. Pergunta se lá dentro existe perfil, ou se é administrador ou nada.
-
-**SÓCRATES:** Sexta: o que ela já integra, e o que você vai ter que escrever ?
-
-**GLAUCO:** Como assim ?
-
-**SÓCRATES:** Faz duas colunas: o LDAP, o destino dos logs, o alerta que acorda alguém de madrugada, os sistemas de onde os dados vêm. Marca o que ela faz sozinha e o que falta. Cada item da coluna vazia não é um risco, é uma tarefa que vai aparecer com o seu nome daqui a alguns meses.
-
-**SÓCRATES:** Sétima: o que ela faz quando um pedaço dela cai ?
-
-**GLAUCO:** Não sei. Nunca derrubei.
-
-**SÓCRATES:** Então derruba hoje, antes de gostar dela. Mata o processo no meio de uma carga e olha o que aconteceu: perdeu dado, repetiu dado, voltou sozinha, ou ficou esperando alguém chegar. É a informação mais barata que você vai conseguir a semana inteira.
-
-**SÓCRATES:** Oitava: e no dia em que você precisar de uma coisa que o autor não previu ?
-
-**GLAUCO:** Abro uma issue e espero.
-
-**SÓCRATES:** Você já sabe o tamanho dessa espera. O que interessa é o que dá pra fazer enquanto ela não chega. Procura o lugar onde a ferramenta te deixa escrever o que ela não previu: um plugin, um hook, uma interface que você implementa. Quando não existe nenhum, não conclui que não vai precisar. Conclui que você ainda não sabe do que vai precisar.
+**SÓCRATES:** Aí não conclui que você não vai precisar. Conclui que ainda não sabe do que vai precisar.
 
 **GLAUCO:** Sócrates, estou começando a achar que você está me dizendo pra nunca usar nada novo.
 
@@ -99,11 +81,11 @@ minute: 6
 
 **GLAUCO:** Entre o que, então ?
 
-**SÓCRATES:** Entre escolher de olho aberto e ser escolhido. Põe o novo onde o erro sai barato: uma borda do sistema, um serviço que você desliga numa tarde sem acordar ninguém. Deixa o meio chato e previsível. Se a ferramenta prestar, ela cresce pra dentro sozinha, e quando chegar lá você já vai ter aprendido a operar ela com o seu peso em cima, e não com o exemplo de vinte minutos.
+**SÓCRATES:** Entre escolher de olho aberto e ser escolhido. Põe o novo onde o erro sai barato, numa borda que você desliga numa tarde sem acordar ninguém, e deixa o meio chato e previsível. Se a ferramenta prestar, ela cresce pra dentro sozinha.
 
 **GLAUCO:** E se eu errar mesmo assim ?
 
-**SÓCRATES:** Vai errar, várias vezes. Só quero que você saiba quanto custa o erro antes de cometer. Existe erro de uma tarde e existe erro de três anos, e no dia em que a gente comete os dois se parecem muito. **Antes de perguntar o que uma ferramenta faz, pergunta quanto custa sair dela**. Essa é a única resposta que ninguém escreve na documentação.
+**SÓCRATES:** Vai errar, várias vezes. Só quero que você saiba quanto custa o erro antes de cometer. **Antes de perguntar o que uma ferramenta faz, pergunta quanto custa sair dela**. Essa é a única resposta que ninguém escreve na documentação.
 
 **GLAUCO:** Vou refazer o diagrama.
 
