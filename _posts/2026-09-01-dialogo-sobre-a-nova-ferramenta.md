@@ -2,7 +2,7 @@
 layout: post
 title: Diálogo sobre a Nova Ferramenta
 # tags: filosofia dialogo socrates tecnologia
-minute: 5
+minute: 6
 ---
 
 *Cenário: fim de tarde, uma mesa de bar perto do escritório. Glauco chega com o notebook debaixo do braço e abre antes mesmo de sentar.*
@@ -21,71 +21,99 @@ minute: 5
 
 **GLAUCO:** O percurso. Mas gostei do percurso.
 
-**SÓCRATES:** E gostar é um bom começo, não estou tirando isso de você. Só que agora você quer fazer outra coisa, e talvez não tenha reparado. Você testou uma ferramenta. O que você quer instalar é uma ferramenta dentro de uma organização.
+**SÓCRATES:** Gostar já é alguma coisa. Deixa eu te fazer umas perguntas, então. Só não me responde o que você imagina. Me responde o que você sabe.
 
-**GLAUCO:** É a mesma ferramenta.
+**GLAUCO:** Pode perguntar.
 
-**SÓCRATES:** É o mesmo objeto. Não é a mesma coisa. No seu teste ela foi usada por uma pessoa, uma vez, com quantos registros ?
+**SÓCRATES:** Em que linguagem ela foi escrita ?
 
-**GLAUCO:** Uns mil.
+**GLAUCO:** Isso importa ? Ela roda num contêiner, eu nem preciso saber.
 
-**SÓCRATES:** Lá dentro vai ser usada por muita gente, todo dia, com milhões, por mais tempo do que você vai ficar cuidando dela. Duas coisas mudam: quantas pessoas e quanto tempo. Quase tudo que dá errado depois vem de uma dessas duas.
+**SÓCRATES:** Não precisa enquanto ela funciona. A linguagem de uma ferramenta é a língua em que você vai poder discutir com ela, e enquanto tudo vai bem ninguém discute nada. Numa noite ela vai travar, o log não vai dizer o suficiente, e alguém vai ter que abrir aquele código e ler. Se ninguém no seu time fala aquela língua, você não tem a ferramenta. Você tem uma cópia dela.
 
-**GLAUCO:** Começa pelas pessoas.
+**GLAUCO:** É Rust, eu acho.
 
-**SÓCRATES:** Como elas entram ?
+**SÓCRATES:** Acha. E quantas pessoas do seu time leem Rust ?
 
-**GLAUCO:** Cria usuário e senha na própria ferramenta. É rápido.
+**GLAUCO:** Nenhuma.
 
-**SÓCRATES:** Rápido pra você, que é um. Repara numa coisa: ferramenta de uma pessoa só não precisa saber quem você é, porque você é o único que está lá. Assim que entra a segunda, ela precisa saber. E quando forem duzentas, alguém vai ter que responder três perguntas que hoje nem existem: quem pode entrar, o que cada um pode fazer, e quem fez o que já foi feito.
+**SÓCRATES:** Anota isso, não como defeito dela, mas como preço que você vai pagar. Próxima: como uma pessoa prova pra ela que é quem diz ser ?
 
-**GLAUCO:** Na empresa todo mundo entra pelo LDAP.
+**GLAUCO:** Usuário e senha, criados ali dentro mesmo.
 
-**SÓCRATES:** E ela fala LDAP ?
+**SÓCRATES:** E na sua empresa, como as pessoas provam isso em todo o resto ?
 
-**GLAUCO:** Acho que não.
+**GLAUCO:** Pelo LDAP.
 
-**SÓCRATES:** Então quem for desligado numa sexta sai da empresa e continua dentro da ferramenta. Isso não é detalhe de configuração, é o que separa uma ferramenta pessoal de uma ferramenta de organização. Olha isso hoje, junto com a licença, porque em muito projeto o motor é aberto e é justamente essa parte, o login integrado e o registro de quem fez o quê, que fica vendida à parte.
+**SÓCRATES:** Então ela vai ser o único lugar da empresa onde uma pessoa existe duas vezes. Quem for desligado numa sexta vai sair de todos os lugares menos de um. Agora a segunda metade da mesma pergunta: depois que a pessoa entra, quem decide o que ela pode fazer ?
 
-**GLAUCO:** E o tempo ? Você disse que eram duas coisas.
+**GLAUCO:** Acho que quem entra pode tudo.
 
-**SÓCRATES:** O tempo é fácil de dizer e difícil de aceitar: você não vai ser quem conserta. Daqui a dois anos vai aparecer um defeito sério, e ou existe gente no seu time capaz de mexer naquele código, ou você depende de estranhos.
+**SÓCRATES:** Repara que são duas coisas diferentes, e você acabou de tratar como uma. Uma é quem entra. Outra é o que cada um faz depois de entrar. Ferramenta de uma pessoa só não precisa separar as duas, porque a pessoa é você. Ferramenta de organização vive dessa separação.
 
-**GLAUCO:** Depender é tão ruim assim ?
+**GLAUCO:** Nunca precisei pensar nisso.
 
-**SÓCRATES:** Não é ruim, é normal. Todo mundo depende. O que muda de um projeto pra outro é a resposta a uma pergunta só: quanto tempo eles demoram pra corrigir, e a correção chega até você ?
+**SÓCRATES:** Nunca precisou porque você era o único lá dentro. E se amanhã alguém apagar uma coisa importante, você consegue descobrir quem foi ?
 
-**GLAUCO:** Não é a mesma coisa ?
+**GLAUCO:** Não sei se ela guarda isso.
 
-**SÓCRATES:** Não. Uma coisa é consertar. Outra é publicar o conserto de um jeito que sirva pra quem já está usando. Pergunta se eles sabem lançar uma versão pequena, só com a correção, ou se ela só chega junto da próxima versão grande, com tudo que ela muda de quebra.
+**SÓCRATES:** Guardar quem fez o quê não serve pra punir ninguém. Serve pra você conseguir contar a história depois. Sem isso, todo incidente vira discussão de memória, e memória não é prova.
 
-**GLAUCO:** Se for só na próxima grande...
+**GLAUCO:** Faz sentido.
 
-**SÓCRATES:** Se for só na próxima grande, o defeito deixa de ser um conserto de uma tarde e vira uma migração inteira, num dia que você não escolheu. Projeto maduro tem duas velocidades: uma pra melhorar e outra pra consertar. Quando só tem uma, quem usa fica preso ao calendário de quem escreve.
+**SÓCRATES:** Quando saiu a última versão dela ?
 
-**GLAUCO:** Dá pra saber isso antes ?
+**GLAUCO:** Faz uns dois meses, acho.
 
-**SÓCRATES:** Dá, e custa uma tarde. Olha o histórico de versões e procura correções soltas entre as versões grandes. Olha as issues abertas há mais tempo, não as fechadas, porque as fechadas mostram o que eles gostam de resolver e as abertas mostram o que decidiram ignorar. E conta quantas pessoas diferentes assinaram alterações nos últimos meses. Se sobrar uma, você não escolheu uma ferramenta, escolheu uma pessoa.
+**SÓCRATES:** E antes dessa ?
 
-**GLAUCO:** Tudo isso antes de decidir.
+**GLAUCO:** Não olhei.
 
-**SÓCRATES:** Tudo isso custa uma tarde, e você já gastou vinte minutos gostando. Falta a última, e é a mais barata de perguntar: no dia em que você precisar de uma coisa que o autor não previu, existe algum lugar onde você mesmo escreve ela ?
+**SÓCRATES:** Olha, porque o intervalo entre as versões é o relógio no qual você vai amarrar o seu. E olha uma coisa mais fina: entre uma versão grande e outra, saem versões pequenas, só com correção ?
 
-**GLAUCO:** E se não existir ?
+**GLAUCO:** Não reparei.
 
-**SÓCRATES:** Aí não conclui que você não vai precisar. Conclui que ainda não sabe do que vai precisar.
+**SÓCRATES:** Repara. Se saírem, no dia de um problema sério você atualiza uma casa decimal e volta a dormir. Se não saírem, o conserto só chega junto da próxima versão grande, com tudo que ela muda de quebra, e um problema de uma tarde vira uma migração inteira num dia que você não escolheu.
 
-**GLAUCO:** Sócrates, estou começando a achar que você está me dizendo pra nunca usar nada novo.
+**GLAUCO:** Isso eu consigo verificar hoje.
 
-**SÓCRATES:** Aí eu estaria falando bobagem, e você faria bem em não me ouvir. Tudo que você hoje chama de estável já foi novo na frente de alguém que desconfiou. A escolha não é entre o novo e o velho.
+**SÓCRATES:** Verifica junto com esta: quantas pessoas de fato mantêm isso ?
 
-**GLAUCO:** Entre o que, então ?
+**GLAUCO:** O repositório tem oito mil estrelas e centenas de contribuidores.
 
-**SÓCRATES:** Entre escolher de olho aberto e ser escolhido. Põe o novo onde o erro sai barato, numa borda que você desliga numa tarde sem acordar ninguém, e deixa o meio chato e previsível. Se a ferramenta prestar, ela cresce pra dentro sozinha.
+**SÓCRATES:** Estrela é aplauso, e aplauso não conserta nada. Contribuidor, na maioria dessas listas, é qualquer um que já corrigiu uma vírgula na documentação. Conta outra coisa: nos últimos seis meses, quantos nomes diferentes mexeram no coração da ferramenta ? E desses, quantos sobram depois que você tira o primeiro ?
 
-**GLAUCO:** E se eu errar mesmo assim ?
+**GLAUCO:** Não sei. Imagino que poucos.
 
-**SÓCRATES:** Vai errar, várias vezes. Só quero que você saiba quanto custa o erro antes de cometer. **Antes de perguntar o que uma ferramenta faz, pergunta quanto custa sair dela**. Essa é a única resposta que ninguém escreve na documentação.
+**SÓCRATES:** Se sobrar um, você não escolheu uma ferramenta. Escolheu uma pessoa, e essa pessoa não assinou nada com você.
+
+**GLAUCO:** Falta muita pergunta ?
+
+**SÓCRATES:** Uma. Você disse que ela faz quase tudo que você precisa. E o quase ?
+
+**GLAUCO:** O que faltar eu abro uma issue e peço.
+
+**SÓCRATES:** Sempre ? Toda vez que aparecer uma necessidade nova, o caminho vai ser pedir e esperar ?
+
+**GLAUCO:** É o que dá pra fazer.
+
+**SÓCRATES:** Então repara no que você aceitou: o ritmo do que você entrega passa a ser decidido por gente que não conhece o seu problema e não deve nada a você. Existe outro caminho, e ele é a diferença entre uma ferramenta e uma parede: um lugar onde você mesmo escreve o que faltou. Um plugin, um encaixe, um script que ela chama na hora certa. Quando esse lugar existe, o que falta hoje é trabalho seu. Quando não existe, o que falta hoje é espera.
+
+**GLAUCO:** Sócrates, eu não soube responder quase nada.
+
+**SÓCRATES:** E é a melhor coisa que te aconteceu hoje. Repara que você não descobriu que a ferramenta é ruim. Descobriu que você não conhece ela. São coisas muito diferentes, e só uma das duas tem conserto.
+
+**GLAUCO:** Mas eu estava seguro.
+
+**SÓCRATES:** Estava seguro do que viu, e você viu vinte minutos escolhidos por outra pessoa. Todo mundo está seguro no começo. A diferença é que uns descobrem as perguntas antes de instalar, e outros descobrem depois, com o sistema inteiro em pé em cima delas.
+
+**GLAUCO:** Então eu desisto dela ?
+
+**SÓCRATES:** Não foi isso que eu disse. Talvez ela seja ótima. Vai atrás de cada resposta e volta com elas. Se forem boas, você instala sabendo o que instalou. Se forem ruins, você já sabe onde vai doer, e às vezes se instala mesmo assim, de propósito, porque doer naquele lugar é aceitável.
+
+**GLAUCO:** E se eu errar mesmo tendo perguntado tudo ?
+
+**SÓCRATES:** Vai errar de vez em quando, e tudo bem. Põe o novo onde o erro sai barato, numa borda que você desliga numa tarde sem acordar ninguém, e deixa o meio chato e previsível. **Antes de perguntar o que uma ferramenta faz, pergunta quanto custa sair dela**. Essa é a única resposta que ninguém escreve na documentação.
 
 **GLAUCO:** Vou refazer o diagrama.
 
