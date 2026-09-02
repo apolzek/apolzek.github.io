@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-09-01T22:42:30-03:00</updated>
+ <updated>2026-09-01T22:50:25-03:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -68,7 +68,7 @@
 
 &lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Não tinha pensado nisso.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; É o mesmo pacote, olhado do outro lado. Segunda coisa: Rust não tem coletor de lixo.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; É o mesmo pacote, olhado do outro lado. Segunda coisa: Rust não tem coletor de lixo(&lt;em&gt;Garbage Collector&lt;/em&gt;).&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Isso é bom, não é ?&lt;/p&gt;
 
@@ -130,7 +130,7 @@
 
 &lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; O repositório tem oito mil estrelas e centenas de contribuidores.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Estrela é aplauso, e aplauso não conserta nada. Contribuidor, na maioria dessas listas, é qualquer um que já corrigiu uma vírgula na documentação. Conta outra coisa: nos últimos seis meses, quantos nomes diferentes mexeram no coração da ferramenta ? E desses, quantos sobram depois que você tira o primeiro ?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Estrela é aplauso, e aplauso não conserta nada. Contribuidor, na maioria dessas listas, é qualquer um que já corrigiu uma vírgula na documentação. Conta outra coisa: nos últimos seis meses, quantos nomes diferentes mexeram no &lt;em&gt;core&lt;/em&gt; da ferramenta ? E desses, quantos sobram depois que você tira o primeiro ?&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Não sei. Imagino que poucos.&lt;/p&gt;
 
@@ -512,6 +512,15 @@ out of a registry.&lt;/p&gt;
 &lt;p&gt;Kafka Connect ships inside apache/kafka, dbt Tests inside dbt-core and Ray Serve inside ray-project/ray, so they share the repositories above.&lt;/p&gt;
 
 &lt;p&gt;No public repository, these are proprietary or managed services: Power BI, Tableau, Fivetran, Amazon S3, Google Cloud Storage, Azure Data Lake Storage, AWS Glue Catalog, Databricks, Starburst, Snowflake, BigQuery, Redshift, Tecton, Pinecone, Weights &amp;amp; Biases, Neptune, Comet, Vertex AI, SageMaker and Azure ML.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Apache Flink: Aprendendo em Público, parte 2</title>
+   <link href="https://apolzek.github.io/2026/09/01/apache-flink-aprendendo-em-publico-parte-2"/>
+   <updated>2026-09-01T00:00:00-03:00</updated>
+   <id>https://apolzek.github.io/2026/09/01/apache-flink-aprendendo-em-publico-parte-2</id>
+   <content type="html">&lt;p&gt;in progress&lt;/p&gt;
 </content>
  </entry>
  
