@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-09-01T21:20:10-03:00</updated>
+ <updated>2026-09-01T21:20:37-03:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -14,10 +14,10 @@
  
  
  <entry>
-   <title>Diálogo sobre a Novidade e o Tempo</title>
-   <link href="https://apolzek.github.io/2026/09/01/dialogo-sobre-a-novidade-e-o-tempo"/>
+   <title>Diálogo sobre a Nova Ferramenta</title>
+   <link href="https://apolzek.github.io/2026/09/01/dialogo-sobre-a-nova-ferramenta"/>
    <updated>2026-09-01T00:00:00-03:00</updated>
-   <id>https://apolzek.github.io/2026/09/01/dialogo-sobre-a-novidade-e-o-tempo</id>
+   <id>https://apolzek.github.io/2026/09/01/dialogo-sobre-a-nova-ferramenta</id>
    <content type="html">&lt;p&gt;&lt;em&gt;Cenário: fim de tarde, uma mesa de bar perto do escritório. Glauco chega com o notebook debaixo do braço e abre antes mesmo de sentar.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Sócrates, achei a ferramenta que resolve tudo. Li a documentação ontem à noite, subi um exemplo em vinte minutos e funcionou de primeira. Vou reescrever o sistema inteiro em cima dela.&lt;/p&gt;
