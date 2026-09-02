@@ -25,6 +25,20 @@ minute: 6
 
 **GLAUCO:** Pode perguntar.
 
+**SÓCRATES:** Quantos registros passaram por ela no seu teste ?
+
+**GLAUCO:** Uns mil.
+
+**SÓCRATES:** E num dia comum, lá dentro ?
+
+**GLAUCO:** Uns dez milhões.
+
+**SÓCRATES:** E o que ela faz quando não dá conta ? Segura o que está chegando, descarta, ou cai junto ?
+
+**GLAUCO:** Não sei. Nunca cheguei nesse ponto.
+
+**SÓCRATES:** Ninguém chega, no teste. E repara: a escala não inventa defeito nenhum. Ela promove os que já estavam ali e ninguém via. Uma operação lenta em mil registros é invisível. Em dez milhões, ela é o sistema inteiro. Você não vai descobrir defeitos novos em produção, vai descobrir o tamanho real dos que já tinha.
+
 **SÓCRATES:** Em que linguagem ela foi escrita ?
 
 **GLAUCO:** Isso importa ? Ela roda num contêiner, eu nem preciso saber.
@@ -45,21 +59,23 @@ minute: 6
 
 **GLAUCO:** Pelo LDAP.
 
-**SÓCRATES:** Então ela vai ser o único lugar da empresa onde uma pessoa existe duas vezes. Quem for desligado numa sexta vai sair de todos os lugares menos de um. Agora a segunda metade da mesma pergunta: depois que a pessoa entra, quem decide o que ela pode fazer ?
+**SÓCRATES:** Então ela vai ser o único lugar da empresa onde uma pessoa existe duas vezes, e quem for desligado numa sexta vai sair de todos os lugares menos de um. Agora a outra metade: depois que a pessoa entra, quem decide o que ela pode fazer ?
 
-**GLAUCO:** Acho que quem entra pode tudo.
+**GLAUCO:** Quem entra pode tudo, eu acho.
 
-**SÓCRATES:** Repara que são duas coisas diferentes, e você acabou de tratar como uma. Uma é quem entra. Outra é o que cada um faz depois de entrar. Ferramenta de uma pessoa só não precisa separar as duas, porque a pessoa é você. Ferramenta de organização vive dessa separação.
+**SÓCRATES:** Você acabou de tratar como uma coisa só o que são duas. Uma é quem entra. Outra é o que cada um faz depois de entrar. Ferramenta de uma pessoa não precisa separar as duas, porque a pessoa é você.
 
-**GLAUCO:** Nunca precisei pensar nisso.
+**GLAUCO:** É que ninguém no meu time ia fazer estrago de propósito.
 
-**SÓCRATES:** Nunca precisou porque você era o único lá dentro. E se amanhã alguém apagar uma coisa importante, você consegue descobrir quem foi ?
+**SÓCRATES:** Quase nunca é de propósito. Permissão não existe por desconfiança, existe pra limitar o tamanho do erro de uma pessoa distraída numa terça-feira. Quando todo mundo pode tudo, todo mundo carrega o poder de derrubar tudo, e ninguém pediu esse poder.
+
+**GLAUCO:** Nunca tinha pensado assim.
+
+**SÓCRATES:** E quando alguém apagar o que não devia, você descobre quem foi ?
 
 **GLAUCO:** Não sei se ela guarda isso.
 
-**SÓCRATES:** Guardar quem fez o quê não serve pra punir ninguém. Serve pra você conseguir contar a história depois. Sem isso, todo incidente vira discussão de memória, e memória não é prova.
-
-**GLAUCO:** Faz sentido.
+**SÓCRATES:** Pergunta. Registro não existe pra acusar ninguém, existe justamente pra que ninguém precise ser acusado. Sem ele, no dia do problema todo mundo que tinha acesso é suspeito, e a conversa vira memória contra memória. Memória é a testemunha mais interessada que existe.
 
 **SÓCRATES:** Quando saiu a última versão dela ?
 
