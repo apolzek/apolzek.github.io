@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-09-01T21:46:27-03:00</updated>
+ <updated>2026-09-01T21:57:34-03:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -34,71 +34,99 @@
 
 &lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; O percurso. Mas gostei do percurso.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; E gostar é um bom começo, não estou tirando isso de você. Só que agora você quer fazer outra coisa, e talvez não tenha reparado. Você testou uma ferramenta. O que você quer instalar é uma ferramenta dentro de uma organização.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Gostar já é alguma coisa. Deixa eu te fazer umas perguntas, então. Só não me responde o que você imagina. Me responde o que você sabe.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; É a mesma ferramenta.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Pode perguntar.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; É o mesmo objeto. Não é a mesma coisa. No seu teste ela foi usada por uma pessoa, uma vez, com quantos registros ?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Em que linguagem ela foi escrita ?&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Uns mil.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Isso importa ? Ela roda num contêiner, eu nem preciso saber.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Lá dentro vai ser usada por muita gente, todo dia, com milhões, por mais tempo do que você vai ficar cuidando dela. Duas coisas mudam: quantas pessoas e quanto tempo. Quase tudo que dá errado depois vem de uma dessas duas.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Não precisa enquanto ela funciona. A linguagem de uma ferramenta é a língua em que você vai poder discutir com ela, e enquanto tudo vai bem ninguém discute nada. Numa noite ela vai travar, o log não vai dizer o suficiente, e alguém vai ter que abrir aquele código e ler. Se ninguém no seu time fala aquela língua, você não tem a ferramenta. Você tem uma cópia dela.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Começa pelas pessoas.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; É Rust, eu acho.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Como elas entram ?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Acha. E quantas pessoas do seu time leem Rust ?&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Cria usuário e senha na própria ferramenta. É rápido.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Nenhuma.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Rápido pra você, que é um. Repara numa coisa: ferramenta de uma pessoa só não precisa saber quem você é, porque você é o único que está lá. Assim que entra a segunda, ela precisa saber. E quando forem duzentas, alguém vai ter que responder três perguntas que hoje nem existem: quem pode entrar, o que cada um pode fazer, e quem fez o que já foi feito.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Anota isso, não como defeito dela, mas como preço que você vai pagar. Próxima: como uma pessoa prova pra ela que é quem diz ser ?&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Na empresa todo mundo entra pelo LDAP.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Usuário e senha, criados ali dentro mesmo.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; E ela fala LDAP ?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; E na sua empresa, como as pessoas provam isso em todo o resto ?&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Acho que não.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Pelo LDAP.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Então quem for desligado numa sexta sai da empresa e continua dentro da ferramenta. Isso não é detalhe de configuração, é o que separa uma ferramenta pessoal de uma ferramenta de organização. Olha isso hoje, junto com a licença, porque em muito projeto o motor é aberto e é justamente essa parte, o login integrado e o registro de quem fez o quê, que fica vendida à parte.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Então ela vai ser o único lugar da empresa onde uma pessoa existe duas vezes. Quem for desligado numa sexta vai sair de todos os lugares menos de um. Agora a segunda metade da mesma pergunta: depois que a pessoa entra, quem decide o que ela pode fazer ?&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; E o tempo ? Você disse que eram duas coisas.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Acho que quem entra pode tudo.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; O tempo é fácil de dizer e difícil de aceitar: você não vai ser quem conserta. Daqui a dois anos vai aparecer um defeito sério, e ou existe gente no seu time capaz de mexer naquele código, ou você depende de estranhos.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Repara que são duas coisas diferentes, e você acabou de tratar como uma. Uma é quem entra. Outra é o que cada um faz depois de entrar. Ferramenta de uma pessoa só não precisa separar as duas, porque a pessoa é você. Ferramenta de organização vive dessa separação.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Depender é tão ruim assim ?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Nunca precisei pensar nisso.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Não é ruim, é normal. Todo mundo depende. O que muda de um projeto pra outro é a resposta a uma pergunta só: quanto tempo eles demoram pra corrigir, e a correção chega até você ?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Nunca precisou porque você era o único lá dentro. E se amanhã alguém apagar uma coisa importante, você consegue descobrir quem foi ?&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Não é a mesma coisa ?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Não sei se ela guarda isso.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Não. Uma coisa é consertar. Outra é publicar o conserto de um jeito que sirva pra quem já está usando. Pergunta se eles sabem lançar uma versão pequena, só com a correção, ou se ela só chega junto da próxima versão grande, com tudo que ela muda de quebra.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Guardar quem fez o quê não serve pra punir ninguém. Serve pra você conseguir contar a história depois. Sem isso, todo incidente vira discussão de memória, e memória não é prova.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Se for só na próxima grande…&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Faz sentido.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Se for só na próxima grande, o defeito deixa de ser um conserto de uma tarde e vira uma migração inteira, num dia que você não escolheu. Projeto maduro tem duas velocidades: uma pra melhorar e outra pra consertar. Quando só tem uma, quem usa fica preso ao calendário de quem escreve.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Quando saiu a última versão dela ?&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Dá pra saber isso antes ?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Faz uns dois meses, acho.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Dá, e custa uma tarde. Olha o histórico de versões e procura correções soltas entre as versões grandes. Olha as issues abertas há mais tempo, não as fechadas, porque as fechadas mostram o que eles gostam de resolver e as abertas mostram o que decidiram ignorar. E conta quantas pessoas diferentes assinaram alterações nos últimos meses. Se sobrar uma, você não escolheu uma ferramenta, escolheu uma pessoa.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; E antes dessa ?&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Tudo isso antes de decidir.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Não olhei.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Tudo isso custa uma tarde, e você já gastou vinte minutos gostando. Falta a última, e é a mais barata de perguntar: no dia em que você precisar de uma coisa que o autor não previu, existe algum lugar onde você mesmo escreve ela ?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Olha, porque o intervalo entre as versões é o relógio no qual você vai amarrar o seu. E olha uma coisa mais fina: entre uma versão grande e outra, saem versões pequenas, só com correção ?&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; E se não existir ?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Não reparei.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Aí não conclui que você não vai precisar. Conclui que ainda não sabe do que vai precisar.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Repara. Se saírem, no dia de um problema sério você atualiza uma casa decimal e volta a dormir. Se não saírem, o conserto só chega junto da próxima versão grande, com tudo que ela muda de quebra, e um problema de uma tarde vira uma migração inteira num dia que você não escolheu.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Sócrates, estou começando a achar que você está me dizendo pra nunca usar nada novo.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Isso eu consigo verificar hoje.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Aí eu estaria falando bobagem, e você faria bem em não me ouvir. Tudo que você hoje chama de estável já foi novo na frente de alguém que desconfiou. A escolha não é entre o novo e o velho.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Verifica junto com esta: quantas pessoas de fato mantêm isso ?&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Entre o que, então ?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; O repositório tem oito mil estrelas e centenas de contribuidores.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Entre escolher de olho aberto e ser escolhido. Põe o novo onde o erro sai barato, numa borda que você desliga numa tarde sem acordar ninguém, e deixa o meio chato e previsível. Se a ferramenta prestar, ela cresce pra dentro sozinha.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Estrela é aplauso, e aplauso não conserta nada. Contribuidor, na maioria dessas listas, é qualquer um que já corrigiu uma vírgula na documentação. Conta outra coisa: nos últimos seis meses, quantos nomes diferentes mexeram no coração da ferramenta ? E desses, quantos sobram depois que você tira o primeiro ?&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; E se eu errar mesmo assim ?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Não sei. Imagino que poucos.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Vai errar, várias vezes. Só quero que você saiba quanto custa o erro antes de cometer. &lt;strong&gt;Antes de perguntar o que uma ferramenta faz, pergunta quanto custa sair dela&lt;/strong&gt;. Essa é a única resposta que ninguém escreve na documentação.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Se sobrar um, você não escolheu uma ferramenta. Escolheu uma pessoa, e essa pessoa não assinou nada com você.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Falta muita pergunta ?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Uma. Você disse que ela faz quase tudo que você precisa. E o quase ?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; O que faltar eu abro uma issue e peço.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Sempre ? Toda vez que aparecer uma necessidade nova, o caminho vai ser pedir e esperar ?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; É o que dá pra fazer.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Então repara no que você aceitou: o ritmo do que você entrega passa a ser decidido por gente que não conhece o seu problema e não deve nada a você. Existe outro caminho, e ele é a diferença entre uma ferramenta e uma parede: um lugar onde você mesmo escreve o que faltou. Um plugin, um encaixe, um script que ela chama na hora certa. Quando esse lugar existe, o que falta hoje é trabalho seu. Quando não existe, o que falta hoje é espera.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Sócrates, eu não soube responder quase nada.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; E é a melhor coisa que te aconteceu hoje. Repara que você não descobriu que a ferramenta é ruim. Descobriu que você não conhece ela. São coisas muito diferentes, e só uma das duas tem conserto.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Mas eu estava seguro.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Estava seguro do que viu, e você viu vinte minutos escolhidos por outra pessoa. Todo mundo está seguro no começo. A diferença é que uns descobrem as perguntas antes de instalar, e outros descobrem depois, com o sistema inteiro em pé em cima delas.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Então eu desisto dela ?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Não foi isso que eu disse. Talvez ela seja ótima. Vai atrás de cada resposta e volta com elas. Se forem boas, você instala sabendo o que instalou. Se forem ruins, você já sabe onde vai doer, e às vezes se instala mesmo assim, de propósito, porque doer naquele lugar é aceitável.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; E se eu errar mesmo tendo perguntado tudo ?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Vai errar de vez em quando, e tudo bem. Põe o novo onde o erro sai barato, numa borda que você desliga numa tarde sem acordar ninguém, e deixa o meio chato e previsível. &lt;strong&gt;Antes de perguntar o que uma ferramenta faz, pergunta quanto custa sair dela&lt;/strong&gt;. Essa é a única resposta que ninguém escreve na documentação.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Vou refazer o diagrama.&lt;/p&gt;
 
