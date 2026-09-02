@@ -138,6 +138,10 @@ minute: 6
 
 ## Nota
 
-Este é o segundo diálogo que escrevo no molde de **A República, de Platão**. Só a forma é emprestada: as perguntas curtas, uma ideia de cada vez, a resposta do interlocutor abrindo a pergunta seguinte. O resto é conversa de hoje.
+A ideia foi pegar o modelo de diálogo de **A República, de Platão**, e aplicar num caso de tecnologia. Só a forma é emprestada: perguntas curtas, uma ideia de cada vez, a resposta do interlocutor abrindo a pergunta seguinte.
 
-Ele nasceu de uma discussão real que eu já tive dos dois lados, primeiro como Glauco e alguns anos depois como quem faz as perguntas chatas. Uma coisa me incomoda em conversas assim: o mais experiente costuma sair como o adulto da sala, e o iniciante como alguém a ser corrigido. Tentei não escrever isso. O entusiasmo do Glauco não é o erro do diálogo, é o que faz qualquer coisa sair do papel, e sistema construído só por gente cautelosa envelhece antes de nascer. O que a experiência acrescenta não é freio, é prazo: a capacidade de olhar a mesma decisão daqui a três anos.
+O caso é familiar pra quem trabalha com isso. Toda semana aparece uma ferramenta nova, open source, com interface bonita, exemplo que sobe em cinco minutos e um gráfico de estrelas subindo. Nesse ponto parece tudo resolvido, e o entusiasmo é legítimo.
+
+As coisas ficam mais complicadas quando as perguntas começam. Como ela se comporta em escala. O que acontece no dia em que você precisa de algo que o autor não previu. Quanto tempo um bug report leva pra virar correção, e se alguém sequer responde. Quantos mantenedores de verdade existem por trás dos números do repositório, e de quantas empresas diferentes eles são. Quem decide o rumo do projeto, e em que lugar essa decisão é discutida. Como ela faz autenticação, e se isso conversa com o login que o resto da empresa já usa. O que ela faz quando um pedaço dela cai. Se dá pra auditar depois quem fez o quê lá dentro. E quanto trabalho é, de fato, integrá-la ao que você já tem de pé.
+
+Quase nenhuma dessas respostas está na primeira página. A maioria aparece uns seis meses depois, quando trocar já não sai de graça.
