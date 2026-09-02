@@ -204,6 +204,26 @@ a {
 	margin: 0.5rem 0;
 }
 
+/* GFM task lists. Kramdown puts the checkbox inline at the start of the item,
+   so it lands flush against the text and the bullet stays alongside it. Drop
+   the marker, give the box room, and hang the wrapped lines under the text. */
+.post ul.task-list {
+	list-style: none;
+	padding-left: 0;
+}
+
+.post li.task-list-item {
+	padding-left: 1.6rem;
+	text-indent: -1.6rem;
+}
+
+.post .task-list-item-checkbox {
+	width: 0.9rem;
+	height: 0.9rem;
+	margin-right: 0.6rem;
+	vertical-align: -0.1rem;
+}
+
 .meta {
 	margin: 1.4rem 0;
 
