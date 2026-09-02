@@ -49,19 +49,19 @@ minute: 9
 
 **GLAUCO:** Como assim até quando ?
 
-**SÓCRATES:** Você lembra de quando os aplicativos de transporte chegaram na cidade ?
+**SÓCRATES:** A licença não é uma característica da ferramenta, é uma decisão de quem publica ela. E decisão se revê. Quem publicou hoje pode publicar a próxima versão sob outra regra.
 
-**GLAUCO:** Lembro. Corrida por dez reais, e os pontos de táxi do bairro esvaziaram.
+**GLAUCO:** Mas o que já saiu continua liberado.
 
-**SÓCRATES:** E dois anos depois, quando o preço subiu, eles te enganaram ?
+**SÓCRATES:** Continua, e é só isso que você garante. Tudo que vier depois pode vir diferente. Aí você escolhe entre aceitar a regra nova ou ficar parado numa versão que ninguém mais corrige, olhando o projeto seguir sem você.
 
-**GLAUCO:** Não. O preço era deles.
+**GLAUCO:** Está escrito open source na página inicial.
 
-**SÓCRATES:** O preço era deles. O que te deram não foi a corrida barata, foi a permissão de pagar aquele preço enquanto interessasse a eles. E a cidade perdeu o quê no dia em que subiu ?
+**SÓCRATES:** Está escrito na página inicial. Abre o arquivo de licença e lê o que está lá. Depois procura a segunda coisa: quanto da ferramenta é aberto de verdade. Existe projeto em que o motor é aberto e tudo que uma empresa precisa fica do outro lado do muro, vendido à parte.
 
-**GLAUCO:** Perdeu o preço. E perdeu o táxi, que já não sabia mais chamar.
+**GLAUCO:** Que coisas, por exemplo ?
 
-**SÓCRATES:** É por isso que eu te pergunto o que está escrito na licença, e não na home do site. Uma te diz o que prometem hoje. A outra te diz o que podem tirar amanhã. Já vi projeto trocar de licença numa versão nova, e quem estava dentro descobriu no dia do anúncio, junto com todo mundo.
+**SÓCRATES:** Login integrado, controle de quem pode fazer o quê, registro de quem fez o quê. Repara que são exatamente as coisas que você não precisa hoje, sozinho no seu teste, e que vai precisar de todas no dia em que aquilo virar ferramenta de time. A página inicial te diz o que prometem hoje. A licença te diz o que podem cobrar amanhã.
 
 **GLAUCO:** Vou ler. Mas imagino que esteja tudo certo, é uma empresa séria.
 
