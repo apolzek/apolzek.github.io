@@ -2,7 +2,7 @@
 layout: post
 title: Diálogo sobre a Nova Ferramenta
 # tags: filosofia dialogo socrates tecnologia
-minute: 6
+minute: 7
 ---
 
 *Cenário: fim de tarde, uma mesa de bar perto do escritório. Glauco chega com o notebook debaixo do braço e abre antes mesmo de sentar.*
@@ -43,15 +43,27 @@ minute: 6
 
 **GLAUCO:** Isso importa ? Ela roda num contêiner, eu nem preciso saber.
 
-**SÓCRATES:** Não precisa enquanto ela funciona. A linguagem de uma ferramenta é a língua em que você vai poder discutir com ela, e enquanto tudo vai bem ninguém discute nada. Numa noite ela vai travar, o log não vai dizer o suficiente, e alguém vai ter que abrir aquele código e ler. Se ninguém no seu time fala aquela língua, você não tem a ferramenta. Você tem uma cópia dela.
+**SÓCRATES:** É a única parte dela que você não vai poder trocar depois. A linguagem já decidiu, antes de você chegar, um monte de coisa que você só vai sentir em produção. Ela é compilada ou interpretada ?
 
-**GLAUCO:** É Rust, eu acho.
+**GLAUCO:** Interpretada. É Python.
 
-**SÓCRATES:** Acha. E quantas pessoas do seu time leem Rust ?
+**SÓCRATES:** Então você não vai instalar só a ferramenta. Vai instalar o interpretador e as dependências dela junto, e vai cuidar dos três pelo resto da vida. Uma coisa compilada chega como um arquivo só, sobe num segundo e não te pergunta nada. Uma interpretada te dá pressa pra escrever e cobra na hora de rodar e de empacotar. Nenhuma das duas é melhor. São contas diferentes, e quem paga é você.
 
-**GLAUCO:** Nenhuma.
+**GLAUCO:** Nunca olhei por esse lado.
 
-**SÓCRATES:** Anota isso, não como defeito dela, mas como preço que você vai pagar. Próxima: como uma pessoa prova pra ela que é quem diz ser ?
+**SÓCRATES:** Olha por mais um. Ela tem coletor de lixo ?
+
+**GLAUCO:** Suponho que sim. Quase tudo tem.
+
+**SÓCRATES:** Quase tudo tem, e coletor de lixo é um faxineiro competente que limpa a casa na hora que ele escolhe, não na hora que você pede. Com pouco volume você nem nota. Com muito, ele aparece como uma lentidão que chega sem avisar e vai embora sozinha, e o time procura a causa no lugar errado por uma semana. Não é defeito. É o preço de não ter que limpar a casa você mesmo, e é um preço que só se cobra em produção.
+
+**GLAUCO:** Dá pra saber isso antes ?
+
+**SÓCRATES:** Duas perguntas resolvem. Quanta memória ela quer pra trabalhar em paz, porque quem tem coletor costuma querer mais do que aparenta, e o contêiner que você der vai ser o teto dela. E quantos núcleos ela usa de verdade, porque existe linguagem que executa um pedaço de cada vez por decisão de projeto, e aí não adianta você dar oito.
+
+**GLAUCO:** Isso muda o desenho inteiro.
+
+**SÓCRATES:** Muda, e é bem melhor mudar agora, enquanto ainda é papel. Próxima: como uma pessoa prova pra ela que é quem diz ser ?
 
 **GLAUCO:** Usuário e senha, criados ali dentro mesmo.
 
