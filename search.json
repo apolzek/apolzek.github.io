@@ -1,6 +1,16 @@
 [
   
     {
+      "title"    : "The CNCF Landscape, Counted",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/2026/09/02/the-cncf-landscape-counted",
+      "date"     : "2026-09-02 00:00:00 -0300",
+      "secret"   : true,
+      "password" : null
+    } ,
+  
+    {
       "title"    : "What a Well-Kept Repository Ships",
       "category" : "",
       "tags"     : "",
