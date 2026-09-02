@@ -55,7 +55,7 @@ minute: 7
 
 **GLAUCO:** Não tinha pensado nisso.
 
-**SÓCRATES:** É o mesmo pacote, olhado do outro lado. Segunda coisa: Rust não tem coletor de lixo.
+**SÓCRATES:** É o mesmo pacote, olhado do outro lado. Segunda coisa: Rust não tem coletor de lixo(*Garbage Collector*).
 
 **GLAUCO:** Isso é bom, não é ?
 
@@ -117,7 +117,7 @@ minute: 7
 
 **GLAUCO:** O repositório tem oito mil estrelas e centenas de contribuidores.
 
-**SÓCRATES:** Estrela é aplauso, e aplauso não conserta nada. Contribuidor, na maioria dessas listas, é qualquer um que já corrigiu uma vírgula na documentação. Conta outra coisa: nos últimos seis meses, quantos nomes diferentes mexeram no coração da ferramenta ? E desses, quantos sobram depois que você tira o primeiro ?
+**SÓCRATES:** Estrela é aplauso, e aplauso não conserta nada. Contribuidor, na maioria dessas listas, é qualquer um que já corrigiu uma vírgula na documentação. Conta outra coisa: nos últimos seis meses, quantos nomes diferentes mexeram no *core* da ferramenta ? E desses, quantos sobram depois que você tira o primeiro ?
 
 **GLAUCO:** Não sei. Imagino que poucos.
 
