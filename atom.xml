@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-09-01T21:57:34-03:00</updated>
+ <updated>2026-09-01T22:03:46-03:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -38,6 +38,20 @@
 
 &lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Pode perguntar.&lt;/p&gt;
 
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Quantos registros passaram por ela no seu teste ?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Uns mil.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; E num dia comum, lá dentro ?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Uns dez milhões.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; E o que ela faz quando não dá conta ? Segura o que está chegando, descarta, ou cai junto ?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Não sei. Nunca cheguei nesse ponto.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Ninguém chega, no teste. E repara: a escala não inventa defeito nenhum. Ela promove os que já estavam ali e ninguém via. Uma operação lenta em mil registros é invisível. Em dez milhões, ela é o sistema inteiro. Você não vai descobrir defeitos novos em produção, vai descobrir o tamanho real dos que já tinha.&lt;/p&gt;
+
 &lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Em que linguagem ela foi escrita ?&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Isso importa ? Ela roda num contêiner, eu nem preciso saber.&lt;/p&gt;
@@ -58,21 +72,23 @@
 
 &lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Pelo LDAP.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Então ela vai ser o único lugar da empresa onde uma pessoa existe duas vezes. Quem for desligado numa sexta vai sair de todos os lugares menos de um. Agora a segunda metade da mesma pergunta: depois que a pessoa entra, quem decide o que ela pode fazer ?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Então ela vai ser o único lugar da empresa onde uma pessoa existe duas vezes, e quem for desligado numa sexta vai sair de todos os lugares menos de um. Agora a outra metade: depois que a pessoa entra, quem decide o que ela pode fazer ?&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Acho que quem entra pode tudo.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Quem entra pode tudo, eu acho.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Repara que são duas coisas diferentes, e você acabou de tratar como uma. Uma é quem entra. Outra é o que cada um faz depois de entrar. Ferramenta de uma pessoa só não precisa separar as duas, porque a pessoa é você. Ferramenta de organização vive dessa separação.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Você acabou de tratar como uma coisa só o que são duas. Uma é quem entra. Outra é o que cada um faz depois de entrar. Ferramenta de uma pessoa não precisa separar as duas, porque a pessoa é você.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Nunca precisei pensar nisso.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; É que ninguém no meu time ia fazer estrago de propósito.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Nunca precisou porque você era o único lá dentro. E se amanhã alguém apagar uma coisa importante, você consegue descobrir quem foi ?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Quase nunca é de propósito. Permissão não existe por desconfiança, existe pra limitar o tamanho do erro de uma pessoa distraída numa terça-feira. Quando todo mundo pode tudo, todo mundo carrega o poder de derrubar tudo, e ninguém pediu esse poder.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Nunca tinha pensado assim.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; E quando alguém apagar o que não devia, você descobre quem foi ?&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Não sei se ela guarda isso.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Guardar quem fez o quê não serve pra punir ninguém. Serve pra você conseguir contar a história depois. Sem isso, todo incidente vira discussão de memória, e memória não é prova.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;GLAUCO:&lt;/strong&gt; Faz sentido.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Pergunta. Registro não existe pra acusar ninguém, existe justamente pra que ninguém precise ser acusado. Sem ele, no dia do problema todo mundo que tinha acesso é suspeito, e a conversa vira memória contra memória. Memória é a testemunha mais interessada que existe.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;SÓCRATES:&lt;/strong&gt; Quando saiu a última versão dela ?&lt;/p&gt;
 
