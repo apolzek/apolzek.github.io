@@ -1,6 +1,16 @@
 [
   
     {
+      "title"    : "Operators e CRDs",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/2026/09/11/operators-e-crds",
+      "date"     : "2026-09-11 00:00:00 -0300",
+      "secret"   : false,
+      "password" : null
+    } ,
+  
+    {
       "title"    : "The CNCF Landscape, Counted",
       "category" : "",
       "tags"     : "",

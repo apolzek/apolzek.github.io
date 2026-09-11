@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-09-09T13:24:25-03:00</updated>
+ <updated>2026-09-11T15:07:09-03:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -12,6 +12,1009 @@
  </author>
 
  
+ 
+ <entry>
+   <title>Operators e CRDs</title>
+   <link href="https://apolzek.github.io/2026/09/11/operators-e-crds"/>
+   <updated>2026-09-11T00:00:00-03:00</updated>
+   <id>https://apolzek.github.io/2026/09/11/operators-e-crds</id>
+   <content type="html">&lt;h2 id=&quot;índice&quot;&gt;Índice&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#índice&quot;&gt;Índice&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#introdução&quot;&gt;Introdução&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#antes-de-tudo-o-que-é-a-api-do-kubernetes&quot;&gt;Antes de tudo: o que é a API do Kubernetes&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#subindo-o-lab&quot;&gt;Subindo o lab&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#o-cenário-que-escolhi&quot;&gt;O cenário que escolhi&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#parte-1-o-crd-ou-como-criar-uma-gaveta-nova-no-cartório&quot;&gt;Parte 1: o CRD, ou como criar uma gaveta nova no cartório&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#o-crd-sozinho-não-faz-absolutamente-nada&quot;&gt;O CRD sozinho não faz absolutamente nada&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#parte-2-o-controller-ou-o-termostato&quot;&gt;Parte 2: o controller, ou o termostato&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#um-operator-em-bash&quot;&gt;Um operator em bash&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#testando-drift-escala-e-garbage-collection&quot;&gt;Testando: drift, escala e garbage collection&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#o-watch-cru-sem-cliente-nenhum-no-meio&quot;&gt;O watch cru, sem cliente nenhum no meio&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#parte-3-reescrevendo-em-go-com-controller-runtime&quot;&gt;Parte 3: reescrevendo em Go com controller-runtime&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#parte-4-empacotando-e-rodando-dentro-do-cluster&quot;&gt;Parte 4: empacotando e rodando dentro do cluster&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#as-dificuldades-que-é-a-parte-que-ninguém-conta&quot;&gt;As dificuldades, que é a parte que ninguém conta&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#validação-com-cel-sem-webhook-nenhum&quot;&gt;Validação com CEL, sem webhook nenhum&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#o-que-eu-deixei-de-fora-de-propósito&quot;&gt;O que eu deixei de fora de propósito&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#quando-não-escrever-um-operator&quot;&gt;Quando não escrever um operator&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#como-isso-aparece-no-mundo-real&quot;&gt;Como isso aparece no mundo real&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#teardown&quot;&gt;Teardown&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#o-que-ficou&quot;&gt;O que ficou&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;introdução&quot;&gt;Introdução&lt;/h2&gt;
+
+&lt;p&gt;Eu uso operator há anos sem ter escrito um. Instalo cert-manager, instalo prometheus-operator, aplico um &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Certificate&lt;/code&gt;, aplico um &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ServiceMonitor&lt;/code&gt;, funciona. Em algum momento isso começa a incomodar: eu sei usar, mas não sei o que acontece entre o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kubectl apply&lt;/code&gt; e a coisa existindo. E “operator” virou uma daquelas palavras que todo mundo fala e quase ninguém desmonta.&lt;/p&gt;
+
+&lt;p&gt;Então passei um tempo montando um do zero, num kind local, com o objetivo explícito de não usar scaffold no começo. Nada de &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kubebuilder init&lt;/code&gt;, nada de gerador de código, nada de framework. Primeiro na mão, em bash, pra ver o loop acontecendo. Depois em Go, com controller-runtime, pra ver o que o framework realmente resolve. E por último empacotado e rodando dentro do cluster, com RBAC, que é onde a maioria dos tutoriais para.&lt;/p&gt;
+
+&lt;p&gt;Tudo aqui foi rodado de verdade. Os outputs são colados da minha sessão, inclusive os erros.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/lab-operators-reconcile-loop.svg&quot; alt=&quot;reconcile loop&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;antes-de-tudo-o-que-é-a-api-do-kubernetes&quot;&gt;Antes de tudo: o que é a API do Kubernetes&lt;/h2&gt;
+
+&lt;p&gt;Essa é a parte que destrava o resto, e é a que costuma ser pulada.&lt;/p&gt;
+
+&lt;p&gt;O Kubernetes não é um orquestrador com uma API pendurada do lado. Ele é uma API com um banco de dados atrás, e um monte de programinhas que ficam olhando pra esse banco. É isso. Pod, Deployment, Service, ConfigMap: tudo é linha de tabela, exposta via HTTP, guardada no etcd.&lt;/p&gt;
+
+&lt;p&gt;Dá pra provar. Roda qualquer &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kubectl&lt;/code&gt; com &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-v=6&lt;/code&gt; e ele te mostra a requisição HTTP que fez:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl get pods &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; kube-system &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;6 2&amp;gt;&amp;amp;1 | &lt;span class=&quot;nb&quot;&gt;grep &lt;/span&gt;GET
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;Response&quot; verb=&quot;GET&quot; url=&quot;https://127.0.0.1:41879/api/v1/namespaces/kube-system/pods?limit=500&quot; status=&quot;200 OK&quot; milliseconds=3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;O &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kubectl&lt;/code&gt; é só um cliente HTTP com formatação bonita. Dá pra falar direto com a API e receber o JSON cru:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl get &lt;span class=&quot;nt&quot;&gt;--raw&lt;/span&gt; /api/v1/namespaces/kube-system/pods | jq &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;.kind, .apiVersion, (.items|length)&apos;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PodList
+v1
+8
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;E a API se descreve sozinha. Perguntando pra raiz, ela lista os caminhos que atende:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl get &lt;span class=&quot;nt&quot;&gt;--raw&lt;/span&gt; / | jq &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;.paths[]&apos;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/api
+/api/v1
+/apis
+/apis/apiextensions.k8s.io/v1
+/apis/apps
+/apis/apps/v1
+/apis/batch/v1
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;E cada grupo lista os recursos dele, com os verbos que aceita:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl get &lt;span class=&quot;nt&quot;&gt;--raw&lt;/span&gt; /apis/apps/v1 | jq &lt;span class=&quot;s1&quot;&gt;&apos;.resources[] | select(.name==&quot;deployments&quot;)&apos;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;deployments&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;singularName&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;deployment&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;namespaced&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;kind&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Deployment&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;verbs&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;create&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;delete&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;deletecollection&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;get&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;list&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;patch&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;update&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;watch&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;shortNames&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;deploy&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;categories&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;all&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;storageVersionHash&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;8aSe+NMegvE=&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A analogia que funcionou pra mim: o api server é o balcão de um cartório. Ele recebe documento, confere se o formulário está preenchido direito, carimba e arquiva. Ele não executa nada. Quem faz o trabalho são os funcionários, cada um responsável por um tipo de documento, que ficam de olho no arquivo esperando aparecer papel novo pra eles.&lt;/p&gt;
+
+&lt;p&gt;Esses funcionários são os controllers. O deployment controller olha Deployment e cria ReplicaSet. O replicaset controller olha ReplicaSet e cria Pod. O scheduler olha Pod sem nó e escolhe um nó. O kubelet olha Pod atribuído ao nó dele e sobe container. Ninguém manda em ninguém, cada um reage ao que aparece no arquivo.&lt;/p&gt;
+
+&lt;p&gt;Sabendo disso, as duas palavras do título ficam simples:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;CRD&lt;/strong&gt; (CustomResourceDefinition): uma gaveta nova no cartório. Um tipo de documento que a API passa a aceitar, validar e arquivar.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Operator&lt;/strong&gt;: um funcionário novo, que fica olhando essa gaveta e fazendo alguma coisa acontecer no mundo real.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Operator não é uma tecnologia. É um padrão: CRD mais controller. O resto é detalhe de implementação.&lt;/p&gt;
+
+&lt;h2 id=&quot;subindo-o-lab&quot;&gt;Subindo o lab&lt;/h2&gt;
+
+&lt;p&gt;Cluster com kind, um nó só, porque não preciso de mais que isso.&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; kind.yaml &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;&apos;
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: lab-operators
+nodes:
+  - role: control-plane
+&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF
+
+&lt;/span&gt;kind create cluster &lt;span class=&quot;nt&quot;&gt;--config&lt;/span&gt; kind.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Creating cluster &quot;lab-operators&quot; ...
+ ✓ Ensuring node image (kindest/node:v1.36.1) 🖼
+ ✓ Preparing nodes 📦
+ ✓ Writing configuration 📜
+ ✓ Starting control-plane 🕹️
+ ✓ Installing CNI 🔌
+ ✓ Installing StorageClass 💾
+Set kubectl context to &quot;kind-lab-operators&quot;
+
+real	0m9,979s
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Dez segundos com a imagem já em cache. Kind é isso: cada nó é um container, o control plane inteiro roda ali dentro. Pra estudar API e controller é perfeito, porque você quebra e recria à vontade.&lt;/p&gt;
+
+&lt;p&gt;Cluster novo, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kubectl api-resources --no-headers | wc -l&lt;/code&gt; me deu &lt;strong&gt;67&lt;/strong&gt; tipos de recurso. É o vocabulário que o cartório entende hoje. Meu objetivo é fazer virar 68.&lt;/p&gt;
+
+&lt;h2 id=&quot;o-cenário-que-escolhi&quot;&gt;O cenário que escolhi&lt;/h2&gt;
+
+&lt;p&gt;Queria algo que qualquer pessoa entendesse em dez segundos, e que ainda assim tivesse todos os problemas reais de um operator de verdade.&lt;/p&gt;
+
+&lt;p&gt;Um recurso chamado &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Site&lt;/code&gt;. Você declara:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;lab.apolzek.io/v1alpha1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Site&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;blog&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;meu&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;declarado&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;como&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;recurso&quot;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;replicas&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;E o operator cria, sozinho, um ConfigMap com o HTML, um Deployment de nginx servindo esse HTML e um Service na frente. Se alguém apagar o Deployment, ele volta. Se você mudar &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;replicas&lt;/code&gt;, ele acompanha. Se você apagar o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Site&lt;/code&gt;, tudo some junto.&lt;/p&gt;
+
+&lt;p&gt;É pequeno, mas tem tudo: spec e status, recursos filhos, drift, ciclo de vida, validação, permissão. A diferença entre isso e um operator de banco de dados é quantidade de casos de borda, não natureza do problema.&lt;/p&gt;
+
+&lt;h2 id=&quot;parte-1-o-crd-ou-como-criar-uma-gaveta-nova-no-cartório&quot;&gt;Parte 1: o CRD, ou como criar uma gaveta nova no cartório&lt;/h2&gt;
+
+&lt;p&gt;O CRD é um YAML. Ele não tem código nenhum, é só a descrição da gaveta: qual o nome do documento, em que grupo ele vive, quais campos ele aceita, quais são obrigatórios e o que aparece quando alguém dá &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kubectl get&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;apiextensions.k8s.io/v1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;CustomResourceDefinition&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;sites.lab.apolzek.io&lt;/span&gt;          &lt;span class=&quot;c1&quot;&gt;# precisa ser plural.grupo, exatamente&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;lab.apolzek.io&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;names&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Site&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;plural&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;sites&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;singular&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;site&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;shortNames&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;st&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;categories&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lab&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;scope&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Namespaced&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;versions&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;v1alpha1&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;served&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;                     &lt;span class=&quot;c1&quot;&gt;# a API atende essa versao&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;storage&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;                    &lt;span class=&quot;c1&quot;&gt;# e grava no etcd nessa versao&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;subresources&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;{}&lt;/span&gt;                     &lt;span class=&quot;c1&quot;&gt;# spec e status viram enderecos separados&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;schema&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;openAPIV3Schema&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;object&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;properties&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;object&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;required&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;properties&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+                  &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;string&lt;/span&gt;
+                  &lt;span class=&quot;na&quot;&gt;maxLength&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;60&lt;/span&gt;
+                  &lt;span class=&quot;na&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Text rendered as the page headline.&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+                  &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;string&lt;/span&gt;
+                  &lt;span class=&quot;na&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;running&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Site&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;custom&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;resource&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;replicas&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+                  &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;integer&lt;/span&gt;
+                  &lt;span class=&quot;na&quot;&gt;minimum&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+                  &lt;span class=&quot;na&quot;&gt;maximum&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt;
+                  &lt;span class=&quot;na&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;object&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;properties&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;readyReplicas&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;integer&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;}&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;           &lt;span class=&quot;pi&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;}&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;phase&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;         &lt;span class=&quot;pi&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;additionalPrinterColumns&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;Title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;nv&quot;&gt;jsonPath&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;.spec.title&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;Want&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;nv&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;integer&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;jsonPath&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;.spec.replicas&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;Ready&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;integer&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;jsonPath&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;.status.readyReplicas&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;Phase&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;nv&quot;&gt;jsonPath&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;.status.phase&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;Age&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt;   &lt;span class=&quot;nv&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt;    &lt;span class=&quot;nv&quot;&gt;jsonPath&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;.metadata.creationTimestamp&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl apply &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; crd-site.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;customresourcedefinition.apiextensions.k8s.io/sites.lab.apolzek.io created
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Pronto. A partir daqui a API do cluster mudou. Apareceu caminho novo:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl get &lt;span class=&quot;nt&quot;&gt;--raw&lt;/span&gt; / | jq &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;.paths[]&apos;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;grep &lt;/span&gt;lab.apolzek
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/apis/lab.apolzek.io
+/apis/lab.apolzek.io/v1alpha1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Apareceu tipo novo na lista de recursos:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl api-resources | &lt;span class=&quot;nb&quot;&gt;grep &lt;/span&gt;lab.apolzek
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sites   st   lab.apolzek.io/v1alpha1   true   Site
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;E, o que mais me impressionou, apareceu documentação:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl explain site.spec
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GROUP:      lab.apolzek.io
+KIND:       Site
+VERSION:    v1alpha1
+
+FIELD: spec &amp;lt;Object&amp;gt;
+
+FIELDS:
+  message	&amp;lt;string&amp;gt;
+  replicas	&amp;lt;integer&amp;gt;
+  title	&amp;lt;string&amp;gt; -required-
+    Text rendered as the page headline.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Aquele &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;description&lt;/code&gt; que escrevi no schema virou help de linha de comando. Não escrevi uma linha de código pra isso.&lt;/p&gt;
+
+&lt;p&gt;Agora a parte boa: validação. O schema não é decoração, o api server aplica ele antes de gravar.&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# replicas acima do maximo&lt;/span&gt;
+kubectl apply &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; - &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;&apos;
+apiVersion: lab.apolzek.io/v1alpha1
+kind: Site
+metadata: { name: quebrado }
+spec: { title: &quot;teste&quot;, replicas: 9 }
+&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;The Site &quot;quebrado&quot; is invalid: spec.replicas: Invalid value: 9: spec.replicas in body should be less than or equal to 5
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# sem o campo obrigatorio&lt;/span&gt;
+The Site &lt;span class=&quot;s2&quot;&gt;&quot;quebrado&quot;&lt;/span&gt; is invalid: spec.title: Required value
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# campo que nao existe (erro de digitacao em &quot;replicas&quot;)&lt;/span&gt;
+Error from server &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;BadRequest&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: Site &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;version &lt;span class=&quot;s2&quot;&gt;&quot;v1alpha1&quot;&lt;/span&gt; cannot be handled as a Site:
+strict decoding error: unknown field &lt;span class=&quot;s2&quot;&gt;&quot;spec.replcias&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Esse último merece atenção, porque o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kubectl apply&lt;/code&gt; te salvou por usar decodificação estrita. Se a requisição chegar sem isso, o comportamento é outro e bem mais traiçoeiro: o campo desconhecido é &lt;strong&gt;apagado em silêncio&lt;/strong&gt;. Chama-se pruning. Dá pra ver mandando o JSON direto pra API:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl create &lt;span class=&quot;nt&quot;&gt;--raw&lt;/span&gt; /apis/lab.apolzek.io/v1alpha1/namespaces/default/sites &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; prune.json | jq &lt;span class=&quot;s1&quot;&gt;&apos;.spec&apos;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Warning: unknown field &quot;spec.replcias&quot;
+{
+  &quot;message&quot;: &quot;running on a Site custom resource&quot;,
+  &quot;replicas&quot;: 1,
+  &quot;title&quot;: &quot;teste&quot;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Duas coisas aconteceram aí. O &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;replcias&lt;/code&gt; sumiu, como se eu nunca tivesse mandado. E &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;message&lt;/code&gt; e &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;replicas&lt;/code&gt; apareceram do nada, preenchidos com os &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;default&lt;/code&gt; do schema. Ou seja: o que você manda e o que fica gravado não são a mesma coisa. Isso é a primeira armadilha do dia, e ela morde muita gente em CI, onde um typo em YAML passa batido e o recurso sobe “funcionando” com o default.&lt;/p&gt;
+
+&lt;p&gt;Vamos criar o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Site&lt;/code&gt; de verdade agora:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl apply &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; site-blog.yaml
+kubectl get site blog &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;lab.apolzek.io/v1alpha1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Site&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;creationTimestamp&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;2026-09-11T14:59:42Z&quot;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;generation&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;blog&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;namespace&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;default&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;resourceVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;555&quot;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;uid&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;c491975f-b230-454f-a539-87326e65f29b&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;running on a Site custom resource&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;replicas&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;meu site declarado como recurso&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Repara nos três campos que o cartório carimbou sozinho, porque eles vão importar mais pra frente:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;uid&lt;/code&gt;: identidade única desse objeto nesse cluster. É por ela que o garbage collector vai reconhecer os filhos.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;resourceVersion&lt;/code&gt;: a versão da linha. Muda a cada escrita. É o mecanismo de concorrência otimista.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;generation&lt;/code&gt;: o contador do &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;spec&lt;/code&gt;. Só incrementa quando o desejo muda, não quando o status muda.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;o-crd-sozinho-não-faz-absolutamente-nada&quot;&gt;O CRD sozinho não faz absolutamente nada&lt;/h2&gt;
+
+&lt;p&gt;Essa é a lição mais importante do post, e a que eu só internalizei fazendo.&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl get site
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;NAME   TITLE                             WANT   READY   PHASE   AGE
+blog   meu site declarado como recurso   2                      6s
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl get all
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.96.0.1    &amp;lt;none&amp;gt;        443/TCP   75s
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Nada. Nenhum pod, nenhum deployment. As colunas &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;READY&lt;/code&gt; e &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PHASE&lt;/code&gt; estão vazias porque ninguém preencheu.&lt;/p&gt;
+
+&lt;p&gt;Eu declarei que quero um site com duas réplicas e o cluster respondeu, em essência, “anotado”. O CRD é uma gaveta de arquivo. Ele aceita o papel, valida o formulário, guarda, devolve quando você pede. Ele não tem braço. Um CRD sem controller é um &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.json&lt;/code&gt; bem validado dentro do etcd, e nada mais.&lt;/p&gt;
+
+&lt;p&gt;Todo o valor de um operator está na segunda metade.&lt;/p&gt;
+
+&lt;h2 id=&quot;parte-2-o-controller-ou-o-termostato&quot;&gt;Parte 2: o controller, ou o termostato&lt;/h2&gt;
+
+&lt;p&gt;A analogia que finalmente colou pra mim foi essa.&lt;/p&gt;
+
+&lt;p&gt;Um controller não é um gatilho. Não é “quando alguém criar um Site, faça X”. Isso seria edge-triggered, orientado ao evento, e quebra no primeiro evento perdido: se o processo estava reiniciando na hora que o evento passou, aquele Site fica órfão pra sempre.&lt;/p&gt;
+
+&lt;p&gt;Controller é um termostato. O termostato não reage ao ato de você girar o botão. Ele fica, para sempre, comparando duas coisas: a temperatura que você pediu e a temperatura que o sensor está lendo. Se estão iguais, ele não faz nada. Se estão diferentes, ele liga o aquecedor. Não importa como ficaram diferentes: você girou o botão, alguém abriu a janela, faltou luz e ele reiniciou. O que importa é o estado agora.&lt;/p&gt;
+
+&lt;p&gt;Isso se chama level-triggered, e é o modelo do Kubernetes inteiro. Na prática significa que a função central de um operator tem essa assinatura mental:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;reconcile(nome_do_objeto):
+    desejado = le o objeto na API        # spec
+    atual    = le o mundo real           # os filhos que deveriam existir
+    se diferente: escreve a diferenca
+    grava o que observei                 # status
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;E daí saem as duas regras que valem mais que qualquer framework:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Reconcile recebe um nome, não um evento.&lt;/strong&gt; Ele nunca pode assumir “o que mudou”. Ele lê tudo de novo e decide do zero.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Reconcile precisa ser idempotente.&lt;/strong&gt; Rodar dez vezes seguidas tem que dar o mesmo resultado que rodar uma. Ele vai rodar dez vezes seguidas, garantido.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;A outra divisão que confunde todo mundo no começo é spec contra status:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;spec&lt;/code&gt; é o desejo, e pertence a quem escreveu o objeto. Operator não escreve em spec. Se o seu operator escreve em spec, ele está brigando com o usuário.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;status&lt;/code&gt; é a observação, e pertence ao operator. Usuário não escreve em status.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;O &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;subresources: { status: {} }&lt;/code&gt; do CRD existe pra impor isso: spec e status viram dois endereços HTTP diferentes, com permissões diferentes, e escrever num não conta como escrever no outro.&lt;/p&gt;
+
+&lt;h2 id=&quot;um-operator-em-bash&quot;&gt;Um operator em bash&lt;/h2&gt;
+
+&lt;p&gt;Antes de pegar Go, quis ver o loop com os olhos. Um operator é um processo que fala HTTP com a API. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kubectl&lt;/code&gt; fala HTTP com a API. Logo, dá pra escrever um operator em bash. Ele é ruim, mas é honesto, e cabe na cabeça.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/env bash&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# A Site operator in ~60 lines of bash. Same loop a real controller runs,&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# only without the cache, the workqueue and the exponential backoff.&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-euo&lt;/span&gt; pipefail
+
+reconcile&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;local &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;local &lt;/span&gt;name ns uid title message replicas
+  &lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;jq &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;.metadata.name&apos;&lt;/span&gt;      &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$site&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;ns&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;jq   &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;.metadata.namespace&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$site&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;uid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;jq  &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;.metadata.uid&apos;&lt;/span&gt;       &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$site&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;jq   &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;.spec.title&apos;&lt;/span&gt;      &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$site&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;jq &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;.spec.message&apos;&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$site&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;replicas&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;jq &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;.spec.replicas&apos;&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$site&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;c&quot;&gt;# desired state: one ConfigMap, one Deployment, one Service,&lt;/span&gt;
+  &lt;span class=&quot;c&quot;&gt;# all owned by the Site so the garbage collector cleans up for us.&lt;/span&gt;
+  kubectl apply &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; - &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;/dev/null &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: site-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$name&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;
+  namespace: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ns&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;
+  ownerReferences:
+    - apiVersion: lab.apolzek.io/v1alpha1
+      kind: Site
+      name: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$name&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;
+      uid: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$uid&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;
+      controller: true
+data:
+  index.html: |
+    &amp;lt;html&amp;gt;&amp;lt;body style=&quot;font-family: monospace; background:#111; color:#eee&quot;&amp;gt;
+    &amp;lt;h1&amp;gt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$title&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;&amp;lt;/h1&amp;gt;&amp;lt;p&amp;gt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$message&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;&amp;lt;/p&amp;gt;
+    &amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: site-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$name&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;
+  namespace: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ns&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;
+  ownerReferences:
+    - apiVersion: lab.apolzek.io/v1alpha1
+      kind: Site
+      name: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$name&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;
+      uid: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$uid&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;
+      controller: true
+spec:
+  replicas: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$replicas&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;
+  selector:
+    matchLabels: { app: site-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$name&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt; }
+  template:
+    metadata:
+      labels: { app: site-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$name&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt; }
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.29-alpine
+          ports: [{ containerPort: 80 }]
+          volumeMounts:
+            - name: html
+              mountPath: /usr/share/nginx/html
+      volumes:
+        - name: html
+          configMap: { name: site-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$name&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt; }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: site-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$name&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;
+  namespace: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ns&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;
+  ownerReferences:
+    - apiVersion: lab.apolzek.io/v1alpha1
+      kind: Site
+      name: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$name&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;
+      uid: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$uid&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;
+      controller: true
+spec:
+  selector: { app: site-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$name&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt; }
+  ports: [{ port: 80, targetPort: 80 }]
+&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF
+
+&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# observed state goes back into status, never into spec.&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;local &lt;/span&gt;ready
+  &lt;span class=&quot;nv&quot;&gt;ready&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;kubectl get deploy &lt;span class=&quot;s2&quot;&gt;&quot;site-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$name&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ns&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;jsonpath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;{.status.readyReplicas}&apos;&lt;/span&gt; 2&amp;gt;/dev/null &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;ready&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ready&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;local &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;phase&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Pending&quot;&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ready&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$replicas&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;phase&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Ready&quot;&lt;/span&gt;
+  kubectl patch site &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$name&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ns&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--subresource&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;status &lt;span class=&quot;nt&quot;&gt;--type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;merge &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;{&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:{&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;readyReplicas&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ready&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;phase&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$phase&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;http://site-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$name&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ns&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.svc.cluster.local&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;}}&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;/dev/null
+  &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt; +%T&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; reconciled site/&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$name&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; ns=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ns&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; want=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$replicas&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; ready=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ready&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; phase=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$phase&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;watching sites...&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do
+  &lt;/span&gt;kubectl get sites &lt;span class=&quot;nt&quot;&gt;-A&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; json | jq &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;.items[]&apos;&lt;/span&gt; | &lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;read&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; site&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do
+    &lt;/span&gt;reconcile &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$site&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;done
+  &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sleep &lt;/span&gt;5
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Três detalhes desse script valem mais que o resto:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ele usa &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kubectl apply&lt;/code&gt;, não &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;create&lt;/code&gt;. Idempotência de graça: rodar de novo com o mesmo conteúdo não muda nada.&lt;/li&gt;
+  &lt;li&gt;Todo filho carrega &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ownerReferences&lt;/code&gt; apontando pro &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Site&lt;/code&gt;, com o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;uid&lt;/code&gt;. É isso, e só isso, que faz a limpeza funcionar depois.&lt;/li&gt;
+  &lt;li&gt;O status vai por &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--subresource=status&lt;/code&gt;. Escrever status pelo caminho normal seria escrever no objeto inteiro, e aí eu estaria pisando no spec do usuário.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Rodando:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./operator.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;watching sites...
+12:00:09 reconciled site/blog ns=default want=2 ready=0 phase=Pending
+12:00:15 reconciled site/blog ns=default want=2 ready=0 phase=Pending
+12:00:20 reconciled site/blog ns=default want=2 ready=2 phase=Ready
+12:00:25 reconciled site/blog ns=default want=2 ready=2 phase=Ready
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;E o cluster, que estava vazio:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;NAME                             READY   STATUS    RESTARTS   AGE
+pod/site-blog-55d64b56fc-94zpv   1/1     Running   0          20s
+pod/site-blog-55d64b56fc-xpw5z   1/1     Running   0          20s
+
+NAME                TYPE        CLUSTER-IP    PORT(S)   AGE
+service/site-blog   ClusterIP   10.96.205.8   80/TCP    20s
+
+NAME                        READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/site-blog   2/2     2            2           20s
+
+NAME                  DATA   AGE
+configmap/site-blog   1      20s
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;As colunas do &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kubectl get site&lt;/code&gt; também preencheram, porque agora tem alguém escrevendo status:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;NAME   TITLE                             WANT   READY   PHASE   AGE
+blog   meu site declarado como recurso   2      2       Ready   53s
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Servindo de verdade, de dentro do cluster:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl run curl &lt;span class=&quot;nt&quot;&gt;--rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--restart&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;Never &lt;span class=&quot;nt&quot;&gt;--image&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;curlimages/curl:8.11.1 &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; http://site-blog.default.svc.cluster.local
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&amp;gt;&amp;lt;body&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;font-family: monospace; background:#111; color:#eee&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;meu site declarado como recurso&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&amp;lt;p&amp;gt;&lt;/span&gt;running on a Site custom resource&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;testando-drift-escala-e-garbage-collection&quot;&gt;Testando: drift, escala e garbage collection&lt;/h2&gt;
+
+&lt;p&gt;Aqui é onde o padrão mostra pra que veio.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Drift.&lt;/strong&gt; Apaguei o Deployment na mão, como se alguém tivesse feito besteira às três da manhã:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;12:00:46  kubectl delete deploy site-blog
+deployment.apps &lt;span class=&quot;s2&quot;&gt;&quot;site-blog&quot;&lt;/span&gt; deleted
+
+&lt;span class=&quot;c&quot;&gt;# doze segundos depois&lt;/span&gt;
+NAME        READY   UP-TO-DATE   AVAILABLE   AGE
+site-blog   2/2     2            2           12s
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;O log conta a história:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;12:00:41 reconciled site/blog want=2 ready=2 phase=Ready
+12:00:46 reconciled site/blog want=2 ready=0 phase=Pending    &amp;lt;- notou o sumico
+12:00:52 reconciled site/blog want=2 ready=2 phase=Ready      &amp;lt;- refez
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Eu não escrevi nenhum tratamento de “deployment foi apagado”. Não existe esse caso no código. O reconcile só recalcula o desejado e aplica, e por isso recriar é a mesma operação que criar. É o termostato de novo: ele não sabe que a janela abriu, ele só sabe que está frio.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Escala.&lt;/strong&gt; Mudei o desejo:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl patch site blog &lt;span class=&quot;nt&quot;&gt;--type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;merge &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;{&quot;spec&quot;:{&quot;replicas&quot;:4}}&apos;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;12:01:02 reconciled site/blog want=4 ready=2 phase=Pending
+12:01:08 reconciled site/blog want=4 ready=4 phase=Ready
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Garbage collection.&lt;/strong&gt; Essa é a que mais me agradou. Apaguei só o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Site&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl delete site blog
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Error from server (NotFound): deployments.apps &quot;site-blog&quot; not found
+Error from server (NotFound): configmaps &quot;site-blog&quot; not found
+Error from server (NotFound): services &quot;site-blog&quot; not found
+No resources found in default namespace.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;O meu operator não tem uma linha de código de deleção. Quem limpou foi o garbage collector do próprio Kubernetes, seguindo o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ownerReferences&lt;/code&gt; que eu carimbei nos filhos:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl get deploy site-blog &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;jsonpath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;{.metadata.ownerReferences}&apos;&lt;/span&gt; | jq
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;apiVersion&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;lab.apolzek.io/v1alpha1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;controller&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;kind&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Site&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;blog&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;uid&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;c491975f-b230-454f-a539-87326e65f29b&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;O &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;uid&lt;/code&gt; ali não é enfeite. Se você apagar o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Site&lt;/code&gt; e criar outro com o mesmo nome, o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;uid&lt;/code&gt; é novo, e os filhos velhos viram órfãos e são coletados. É o que evita o operator adotar restos de uma encarnação anterior do objeto.&lt;/p&gt;
+
+&lt;h2 id=&quot;o-watch-cru-sem-cliente-nenhum-no-meio&quot;&gt;O watch cru, sem cliente nenhum no meio&lt;/h2&gt;
+
+&lt;p&gt;Meu operator em bash pergunta de cinco em cinco segundos. Um operator de verdade não faz isso, ele abre uma conexão HTTP que fica pendurada e recebe eventos. Também dá pra ver isso na mão:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl get &lt;span class=&quot;nt&quot;&gt;--raw&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;/apis/lab.apolzek.io/v1alpha1/sites?watch=true&apos;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  | jq &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;{type: .type, name: .object.metadata.name, rv: .object.metadata.resourceVersion, replicas: .object.spec.replicas}&apos;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Com essa conexão aberta, criei um Site e mudei ele:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{&quot;type&quot;:&quot;ADDED&quot;,&quot;name&quot;:&quot;blog&quot;,&quot;rv&quot;:&quot;908&quot;,&quot;replicas&quot;:2}
+{&quot;type&quot;:&quot;MODIFIED&quot;,&quot;name&quot;:&quot;blog&quot;,&quot;rv&quot;:&quot;935&quot;,&quot;replicas&quot;:2}
+{&quot;type&quot;:&quot;MODIFIED&quot;,&quot;name&quot;:&quot;blog&quot;,&quot;rv&quot;:&quot;936&quot;,&quot;replicas&quot;:3}
+{&quot;type&quot;:&quot;MODIFIED&quot;,&quot;name&quot;:&quot;blog&quot;,&quot;rv&quot;:&quot;974&quot;,&quot;replicas&quot;:3}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;É um &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Transfer-Encoding: chunked&lt;/code&gt; que nunca fecha, cuspindo JSON por linha. Sem gRPC, sem fila, sem broker. É só HTTP pendurado.&lt;/p&gt;
+
+&lt;p&gt;E olha o que já aparece aqui, na terceira linha de um lab de brinquedo: das quatro notificações, &lt;strong&gt;duas não foram causadas por mim&lt;/strong&gt;. Os eventos de &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rv&lt;/code&gt; 935 e 974 são o meu próprio operator escrevendo status. O operator escreve, o api server notifica, o operator acorda, lê, escreve de novo. Se a escrita de status não for idempotente, isso não é um loop de reconciliação, é um loop infinito consumindo CPU do control plane. Guarda essa, porque ela volta.&lt;/p&gt;
+
+&lt;h2 id=&quot;parte-3-reescrevendo-em-go-com-controller-runtime&quot;&gt;Parte 3: reescrevendo em Go com controller-runtime&lt;/h2&gt;
+
+&lt;p&gt;O bash funciona, mas ele pergunta o cluster inteiro a cada cinco segundos, não tem fila, não tem retry decente, e se eu tiver mil Sites ele faz mil requisições em série. É hora de ver o que um framework de verdade resolve.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;controller-runtime&lt;/code&gt; é a biblioteca que está por baixo do kubebuilder e do operator-sdk, e por baixo de praticamente todo operator sério que você já instalou. Escrevi a mesma coisa com ela, de propósito sem gerar tipo Go nenhum, usando &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;unstructured&lt;/code&gt; pra ler o meu CRD. Fica em 129 linhas.&lt;/p&gt;
+
+&lt;p&gt;O coração:&lt;/p&gt;
+
+&lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;// Reconcile is called with a name, never with an event payload. It reads the&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;// world, computes the desired state and writes the difference. Nothing else.&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SiteReconciler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Reconcile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ctx&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;req&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ctrl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ctrl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ctrl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LoggerFrom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+	&lt;span class=&quot;n&quot;&gt;site&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unstructured&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Unstructured&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SetGroupVersionKind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;siteGVK&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NamespacedName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;c&quot;&gt;// gone: the garbage collector already removed the children&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ctrl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IgnoreNotFound&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;unstructured&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NestedString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;spec&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;unstructured&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NestedString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;spec&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;replicas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;unstructured&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NestedInt64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;spec&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;replicas&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;site-&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;ns&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetNamespace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+	&lt;span class=&quot;n&quot;&gt;cm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;corev1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ConfigMap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ObjectMeta&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;metav1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ObjectMeta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Namespace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;controllerutil&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CreateOrUpdate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;cm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;index.html&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;controllerutil&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SetControllerReference&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Scheme&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ctrl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;c&quot;&gt;// ... o mesmo para o Deployment e o Service ...&lt;/span&gt;
+
+	&lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Pending&quot;&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dep&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Status&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ReadyReplicas&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;replicas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Ready&quot;&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;patch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;byte&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sprintf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+		&lt;span class=&quot;s&quot;&gt;`{&quot;status&quot;:{&quot;readyReplicas&quot;:%d,&quot;phase&quot;:%q,&quot;url&quot;:&quot;http://%s.%s.svc.cluster.local&quot;}}`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;dep&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Status&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ReadyReplicas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Patch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RawPatch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Merge&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;patch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ctrl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;reconciled&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;want&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;replicas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ready&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dep&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Status&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ReadyReplicas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;phase&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ctrl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;E o registro, que é onde mora a mágica:&lt;/p&gt;
+
+&lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;ctrl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SetLogger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;New&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UseDevMode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+
+	&lt;span class=&quot;n&quot;&gt;mgr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ctrl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NewManager&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ctrl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetConfigOrDie&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ctrl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{})&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nb&quot;&gt;panic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;n&quot;&gt;site&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unstructured&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Unstructured&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SetGroupVersionKind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;siteGVK&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ctrl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NewControllerManagedBy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mgr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;For&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;                        &lt;span class=&quot;c&quot;&gt;// reconcilia quando o Site muda&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;Owns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;appsv1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Deployment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{})&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;       &lt;span class=&quot;c&quot;&gt;// e tambem quando um filho meu muda&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;Owns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;corev1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ConfigMap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{})&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;Owns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;corev1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Service&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{})&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;Complete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SiteReconciler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mgr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetClient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()});&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nb&quot;&gt;panic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mgr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ctrl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SetupSignalHandler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nb&quot;&gt;panic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Cinco linhas que valem muito:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;For(site)&lt;/code&gt;: o recurso principal. Mudou, reconcilia.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Owns(...)&lt;/code&gt;: aqui está a diferença real pro bash. O controller passa a observar Deployment, ConfigMap e Service também, e quando um deles muda ele olha o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ownerReferences&lt;/code&gt;, descobre de qual &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Site&lt;/code&gt; aquilo é filho e enfileira &lt;strong&gt;o nome do pai&lt;/strong&gt;. É o que faz drift ser detectado na hora em vez de no próximo poll.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CreateOrUpdate&lt;/code&gt;: o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kubectl apply&lt;/code&gt; do bash, em Go, com a leitura vindo do cache.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;client.IgnoreNotFound&lt;/code&gt;: objeto sumiu, não é erro, é só não ter nada pra fazer.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;r.Scheme()&lt;/code&gt; dentro do &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SetControllerReference&lt;/code&gt;: é ele que descobre o GVK pra montar o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ownerReferences&lt;/code&gt; certo.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Subindo, dá pra ver o que o manager monta antes de começar:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;INFO	Starting EventSource	{&quot;controller&quot;: &quot;site&quot;, &quot;source&quot;: &quot;kind source: *v1.Service&quot;}
+INFO	Starting EventSource	{&quot;controller&quot;: &quot;site&quot;, &quot;source&quot;: &quot;kind source: *v1.Deployment&quot;}
+INFO	Starting EventSource	{&quot;controller&quot;: &quot;site&quot;, &quot;source&quot;: &quot;kind source: *v1.ConfigMap&quot;}
+INFO	Starting EventSource	{&quot;controller&quot;: &quot;site&quot;, &quot;source&quot;: &quot;kind source: *unstructured.Unstructured[lab.apolzek.io/v1alpha1 Site]&quot;}
+INFO	Starting Controller	{&quot;controller&quot;: &quot;site&quot;}
+INFO	Starting workers	{&quot;controller&quot;: &quot;site&quot;, &quot;worker count&quot;: 1}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Quatro informers, cada um com um watch e um cache local. É por isso que &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;r.Get&lt;/code&gt; num controller é barato: ele lê da memória, não da API.&lt;/p&gt;
+
+&lt;p&gt;O mesmo teste de drift, agora cronometrado:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;12:04:07.804  kubectl delete deploy site-blog
+12:04:08      INFO reconciled {&quot;want&quot;: 2, &quot;ready&quot;: 1, &quot;phase&quot;: &quot;Pending&quot;}
+12:04:08      INFO reconciled {&quot;want&quot;: 2, &quot;ready&quot;: 2, &quot;phase&quot;: &quot;Ready&quot;}
+
+NAME        READY   UP-TO-DATE   AVAILABLE   AGE
+site-blog   2/2     2            2           3s
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Menos de um segundo, contra seis do poll em bash. E não é que o Go seja mais rápido, é que ele foi avisado em vez de ter perguntado.&lt;/p&gt;
+
+&lt;p&gt;Melhor ainda, o comportamento em repouso:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;kubectl logs deploy/site-operator | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; reconciled&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;# 10&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sleep &lt;/span&gt;30
+&lt;span class=&quot;nv&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;kubectl logs deploy/site-operator | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; reconciled&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;# 10&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Trinta segundos com o cluster parado, &lt;strong&gt;zero&lt;/strong&gt; reconciles. O loop de status que eu mostrei no watch cru não vira loop infinito porque o patch de status é idempotente: escrever &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{&quot;phase&quot;:&quot;Ready&quot;}&lt;/code&gt; num objeto que já está &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ready&lt;/code&gt; é um no-op, o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;resourceVersion&lt;/code&gt; não muda, ninguém é notificado, e o ciclo morre sozinho. Se eu tivesse colocado um timestamp no status, cada reconcile geraria uma escrita diferente, e aí seria um moedor de CPU. Já vi isso em produção e o sintoma é o api server com latência alta sem motivo aparente.&lt;/p&gt;
+
+&lt;h2 id=&quot;parte-4-empacotando-e-rodando-dentro-do-cluster&quot;&gt;Parte 4: empacotando e rodando dentro do cluster&lt;/h2&gt;
+
+&lt;p&gt;Rodar o operator do laptop apontando pro cluster é ótimo pra desenvolver e não é operator nenhum. Operator mora dentro do cluster, com identidade própria e permissão limitada. Essa etapa é curta e é onde quase todo mundo apanha.&lt;/p&gt;
+
+&lt;p&gt;Primeiro, o binário estático e a imagem, que fica minúscula porque não tem sistema operacional dentro:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;CGO_ENABLED&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0 go build &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; sitectl &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-dockerfile highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; gcr.io/distroless/static:nonroot&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;COPY&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; sitectl /sitectl&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;USER&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; 65532:65532&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ENTRYPOINT&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; [&quot;/sitectl&quot;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker build &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; site-operator:0.1.0 &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+kind load docker-image site-operator:0.1.0 &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; lab-operators
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Image: &quot;site-operator:0.1.0&quot; not yet present on node &quot;lab-operators-control-plane&quot;, loading...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Esse &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kind load&lt;/code&gt; é um detalhe que economiza meia hora de confusão: o nó do kind é um container com um containerd próprio, ele não enxerga as imagens do seu Docker local. Sem isso você fica olhando pra um &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ErrImagePull&lt;/code&gt; de uma imagem que está bem ali na sua máquina.&lt;/p&gt;
+
+&lt;p&gt;Agora a parte que dói. A ServiceAccount nasce podendo nada:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl create sa site-operator
+kubectl get sites &lt;span class=&quot;nt&quot;&gt;--as&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;system:serviceaccount:default:site-operator
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Error from server (Forbidden): sites.lab.apolzek.io is forbidden:
+User &quot;system:serviceaccount:default:site-operator&quot; cannot list resource &quot;sites&quot;
+in API group &quot;lab.apolzek.io&quot; in the namespace &quot;default&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Esse erro é o mais comum na vida de quem escreve operator, e a dica que vale ouro é: dá pra testar a permissão sem subir nada, fingindo ser a ServiceAccount.&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl auth can-i list sites &lt;span class=&quot;nt&quot;&gt;--as&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;system:serviceaccount:default:site-operator
+&lt;span class=&quot;c&quot;&gt;# no&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;O ClusterRole precisa listar, item por item, tudo que o controller toca. Repara que &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sites&lt;/code&gt; e &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sites/status&lt;/code&gt; são recursos &lt;strong&gt;separados&lt;/strong&gt;, exatamente por causa do subresource que configurei lá no CRD:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;rules&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;apiGroups&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;lab.apolzek.io&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;resources&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;sites&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;verbs&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;get&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;list&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;watch&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;update&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;patch&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;apiGroups&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;lab.apolzek.io&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;resources&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;sites/status&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;verbs&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;get&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;update&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;patch&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;apiGroups&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;apps&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;resources&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;deployments&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;verbs&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;get&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;list&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;watch&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;create&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;update&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;patch&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;delete&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;apiGroups&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;resources&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;configmaps&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;services&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;verbs&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;get&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;list&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;watch&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;create&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;update&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;patch&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;delete&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;apiGroups&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;resources&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;events&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;verbs&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;create&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;patch&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;O &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;watch&lt;/code&gt; e o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list&lt;/code&gt; não são opcionais: sem eles o informer não consegue montar o cache e o processo morre no startup com um erro que parece de rede.&lt;/p&gt;
+
+&lt;p&gt;Depois de aplicar:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl auth can-i list sites          &lt;span class=&quot;nt&quot;&gt;--as&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;system:serviceaccount:default:site-operator   &lt;span class=&quot;c&quot;&gt;# yes&lt;/span&gt;
+kubectl auth can-i update sites/status &lt;span class=&quot;nt&quot;&gt;--as&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;system:serviceaccount:default:site-operator   &lt;span class=&quot;c&quot;&gt;# yes&lt;/span&gt;
+kubectl auth can-i delete nodes        &lt;span class=&quot;nt&quot;&gt;--as&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;system:serviceaccount:default:site-operator   &lt;span class=&quot;c&quot;&gt;# no&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Matei o operator local, subi o Deployment com essa SA, e ele assumiu o trabalho sem perceber a troca:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl logs deploy/site-operator &lt;span class=&quot;nt&quot;&gt;--tail&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;INFO Starting Controller {&quot;controller&quot;: &quot;site&quot;}
+INFO Starting workers   {&quot;controller&quot;: &quot;site&quot;, &quot;worker count&quot;: 1}
+INFO reconciled {&quot;Site&quot;: {&quot;name&quot;:&quot;blog&quot;}, &quot;want&quot;: 2, &quot;ready&quot;: 2, &quot;phase&quot;: &quot;Ready&quot;}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Prova final, criando um segundo Site com o operator já rodando dentro do cluster:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;lab.apolzek.io/v1alpha1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Site&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;docs&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;segundo&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;site,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;mesmo&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;operator&quot;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;criado&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;sem&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;eu&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;escrever&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;um&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;unico&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Deployment&quot;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;replicas&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;NAME   TITLE                             WANT   READY   PHASE   AGE
+blog   meu site declarado como recurso   2      2       Ready   98s
+docs   segundo site, mesmo operator      3      3       Ready   12s
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;E no navegador, via &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kubectl port-forward svc/site-docs 18080:80&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/lab-operators-site-docs.png&quot; alt=&quot;site gerado pelo operator&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Um HTML bobo, mas ninguém escreveu Deployment, Service ou ConfigMap pra ele existir. Escreveram dezoito linhas de desejo.&lt;/p&gt;
+
+&lt;h2 id=&quot;as-dificuldades-que-é-a-parte-que-ninguém-conta&quot;&gt;As dificuldades, que é a parte que ninguém conta&lt;/h2&gt;
+
+&lt;p&gt;Até aqui pareceu fácil. Foi, porque o cenário é de brinquedo. Essas são as pedras que apareceram, e as que eu sei que apareceriam num operator sério.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Conflito de escrita, o famoso 409.&lt;/strong&gt; Toda escrita carrega o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;resourceVersion&lt;/code&gt; que você leu. Se alguém escreveu no meio do caminho, a sua escrita é recusada. Forcei isso na mão:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl get site blog &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; json &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; site-old.json     &lt;span class=&quot;c&quot;&gt;# rv 1007&lt;/span&gt;
+kubectl patch site blog &lt;span class=&quot;nt&quot;&gt;--type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;merge &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;{&quot;spec&quot;:{&quot;message&quot;:&quot;alguem escreveu antes de mim&quot;}}&apos;&lt;/span&gt;
+                                                  &lt;span class=&quot;c&quot;&gt;# rv virou 1025&lt;/span&gt;
+kubectl replace &lt;span class=&quot;nt&quot;&gt;--raw&lt;/span&gt; /apis/lab.apolzek.io/v1alpha1/namespaces/default/sites/blog &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; site-old.json
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Error from server (Conflict): Operation cannot be fulfilled on sites.lab.apolzek.io &quot;blog&quot;:
+the object has been modified; please apply your changes to the latest version and try again
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Num operator isso acontece o tempo todo, porque você e o usuário e outros controllers escrevem no mesmo objeto. A resposta certa &lt;strong&gt;não&lt;/strong&gt; é tentar de novo em loop dentro do reconcile. É devolver o erro e deixar o framework reenfileirar com backoff, que é exatamente o que o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;return ctrl.Result{}, err&lt;/code&gt; faz. O reconcile seguinte lê o objeto novo e recalcula. Idempotência salvando a vida de novo.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Finalizers, ou o objeto que não morre.&lt;/strong&gt; Se o seu operator cria coisa fora do cluster (um bucket, um registro DNS, uma zona no provedor), o garbage collector não vai limpar. Você precisa de um finalizer: um marcador que impede o objeto de ser apagado até que você tire o marcador. Simulei:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl patch site blog &lt;span class=&quot;nt&quot;&gt;--type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;merge &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;{&quot;metadata&quot;:{&quot;finalizers&quot;:[&quot;lab.apolzek.io/drain-cdn&quot;]}}&apos;&lt;/span&gt;
+kubectl delete site blog          &lt;span class=&quot;c&quot;&gt;# trava aqui, pra sempre&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl get site blog &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;jsonpath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;{.metadata.name} deletionTimestamp={.metadata.deletionTimestamp} finalizers={.metadata.finalizers}&apos;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;blog  deletionTimestamp=2026-09-11T15:02:16Z  finalizers=[&quot;lab.apolzek.io/drain-cdn&quot;]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;O objeto não foi apagado, ele ganhou um &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;deletionTimestamp&lt;/code&gt; e ficou em estado terminal esperando alguém liberar. Como o meu operator não trata finalizer, ele fica assim eternamente. A saída de emergência, que você provavelmente já usou sem entender:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl patch site blog &lt;span class=&quot;nt&quot;&gt;--type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;json &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;[{&quot;op&quot;:&quot;remove&quot;,&quot;path&quot;:&quot;/metadata/finalizers&quot;}]&apos;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;É por isso que namespace fica preso em &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Terminating&lt;/code&gt;. Não é bug do Kubernetes, é um controller que morreu devendo, ou que nunca existiu. E vale dizer o lado feio: se você remover o finalizer na marra, o recurso externo vaza. O bucket continua lá, pago, sem dono.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Spec contra status, e o loop quente.&lt;/strong&gt; Já mostrei acontecendo. A regra prática é: escreva status só quando o valor mudou, e nunca coloque nada que muda sozinho (timestamp de última verificação, contador, uuid) sem antes pensar duas vezes.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Versionamento.&lt;/strong&gt; O meu CRD tem uma versão só, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;v1alpha1&lt;/code&gt;, e é ótimo enquanto dura. O dia que eu quiser &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;v1beta1&lt;/code&gt; com um campo renomeado, os objetos gravados no etcd continuam na versão velha:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl get crd sites.lab.apolzek.io &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;jsonpath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;{.status.storedVersions}&apos;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# [&quot;v1alpha1&quot;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Servir duas versões ao mesmo tempo exige um conversion webhook, que é um servidor HTTPS que você mantém, com certificado, que o api server chama a cada leitura e escrita. É a parte mais chata de operator, de longe, e a que mais empurra gente a nunca mais mexer no schema depois que subiu.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;RBAC.&lt;/strong&gt; Já mostrei. É chato, é fácil de errar, e o erro só aparece em runtime. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kubectl auth can-i --as=...&lt;/code&gt; é o melhor amigo aqui.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Leader election.&lt;/strong&gt; Se você subir duas réplicas do operator sem isso, os dois reconciliam o mesmo objeto ao mesmo tempo e brigam. O controller-runtime resolve com &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LeaderElection: true&lt;/code&gt; nas opções do manager, usando um &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Lease&lt;/code&gt; como cadeado. Não coloquei no lab pra manter o código legível, mas em produção é obrigatório.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Ordem e dependência.&lt;/strong&gt; Reconcile não pode assumir que o mundo está pronto. O Deployment pode existir e ter zero pods prontos. O ConfigMap pode ter sido criado mas ainda não montado. A resposta não é dormir dentro do reconcile, é retornar &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ctrl.Result{RequeueAfter: ...}&lt;/code&gt; e ser chamado de novo depois.&lt;/p&gt;
+
+&lt;h2 id=&quot;validação-com-cel-sem-webhook-nenhum&quot;&gt;Validação com CEL, sem webhook nenhum&lt;/h2&gt;
+
+&lt;p&gt;Essa foi a descoberta mais útil do lab, porque muita gente escreve validating webhook sem precisar.&lt;/p&gt;
+
+&lt;p&gt;Desde o Kubernetes 1.25, e estável no 1.29, dá pra colocar regras em CEL direto no schema do CRD. Sem servidor, sem certificado, sem nada pra manter. Adicionei duas:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;object&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;required&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;x-kubernetes-validations&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rule&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;self.replicas&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;oldSelf.replicas&quot;&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;replicas&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;can&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;only&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;grow,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;scaling&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;down&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;needs&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Site&quot;&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rule&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;!self.title.startsWith(&apos;prod-&apos;)&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;||&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;self.replicas&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;2&quot;&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;prod-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;needs&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;at&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;least&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;replicas&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;O &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;oldSelf&lt;/code&gt; é o pulo do gato: é uma regra de transição, ela compara com o valor anterior. Testando:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl patch site docs &lt;span class=&quot;nt&quot;&gt;--type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;merge &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;{&quot;spec&quot;:{&quot;replicas&quot;:1}}&apos;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;The Site &quot;docs&quot; is invalid: spec: Invalid value: replicas can only grow, scaling down needs a new Site
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl apply &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; prod-loja.yaml     &lt;span class=&quot;c&quot;&gt;# title: prod-loja, replicas: 1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;The Site &quot;prod-loja&quot; is invalid: spec: Invalid value: a prod- site needs at least 2 replicas
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl patch site docs &lt;span class=&quot;nt&quot;&gt;--type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;merge &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;{&quot;spec&quot;:{&quot;replicas&quot;:4}}&apos;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;site.lab.apolzek.io/docs patched
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Regra de negócio, com mensagem de erro decente, aplicada pelo api server, escrita em YAML. Imutabilidade de campo, campo obrigatório dependendo de outro, limite que só vale em produção: tudo isso cabe em CEL hoje. Webhook ficou pro que realmente precisa chamar alguma coisa externa pra decidir.&lt;/p&gt;
+
+&lt;h2 id=&quot;o-que-eu-deixei-de-fora-de-propósito&quot;&gt;O que eu deixei de fora de propósito&lt;/h2&gt;
+
+&lt;p&gt;Pra ser honesto sobre o que separa esse lab de um operator publicável:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Conditions no status.&lt;/strong&gt; Eu usei um campo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;phase&lt;/code&gt;, que é justamente o padrão que a comunidade abandonou. O jeito certo é uma lista de &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;conditions&lt;/code&gt; com &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;type&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;status&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reason&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;message&lt;/code&gt; e &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lastTransitionTime&lt;/code&gt;, porque um objeto pode estar pronto e degradado ao mesmo tempo, e um enum não expressa isso.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;observedGeneration.&lt;/strong&gt; Sem ele, o usuário não tem como saber se o status que está vendo é sobre o spec que ele acabou de aplicar ou sobre o anterior. É uma linha de código e muda tudo na hora de debugar.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Events.&lt;/strong&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kubectl describe site blog&lt;/code&gt; mostra &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Events: &amp;lt;none&amp;gt;&lt;/code&gt;. Operator bom conta o que está fazendo ali, é o primeiro lugar onde as pessoas olham.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Métricas.&lt;/strong&gt; O controller-runtime já expõe &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/metrics&lt;/code&gt; com duração e taxa de erro por controller, e eu nem espiei.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Testes.&lt;/strong&gt; O &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;envtest&lt;/code&gt; sobe um api server e um etcd de verdade pro teste, sem cluster. É o jeito sério de testar reconcile.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Finalizer implementado.&lt;/strong&gt; Mostrei o problema, não a solução.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Também não usei kubebuilder, de propósito. Ele gera essa estrutura inteira com um comando, mais o Makefile, o RBAC anotado no código, os tipos Go, o deepcopy e o manifesto do CRD a partir das structs. Depois de ter feito na mão, olhar o scaffold dele deixou de ser mágica e virou uma lista de coisas que eu agora sei pra que servem.&lt;/p&gt;
+
+&lt;h2 id=&quot;quando-não-escrever-um-operator&quot;&gt;Quando não escrever um operator&lt;/h2&gt;
+
+&lt;p&gt;Um operator é software que roda pra sempre, com permissão alta, no caminho crítico. Custa manutenção. Vale a pena quando existe conhecimento operacional que não cabe em YAML estático: como fazer failover desse banco, como rotacionar esse certificado antes de vencer, como fazer upgrade desse cluster sem perder quorum. Operator é jeito de codificar um runbook.&lt;/p&gt;
+
+&lt;p&gt;Se o que você quer é só empacotar YAML com variável, isso é Helm ou Kustomize, e você vai dormir melhor. Se é só reagir a um evento uma vez, um Job resolve. A pergunta que uso: existe alguma decisão contínua aqui, que hoje uma pessoa tomaria olhando o estado do sistema? Se não existe, não é operator.&lt;/p&gt;
+
+&lt;h2 id=&quot;como-isso-aparece-no-mundo-real&quot;&gt;Como isso aparece no mundo real&lt;/h2&gt;
+
+&lt;p&gt;Pra fechar a régua, baixei o manifesto de CRDs do cert-manager, que é um operator que muita gente tem instalado sem pensar:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl &lt;span class=&quot;nt&quot;&gt;-sL&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; cm-crds.yaml https://github.com/cert-manager/cert-manager/releases/latest/download/cert-manager.crds.yaml
+&lt;span class=&quot;nb&quot;&gt;wc&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt; cm-crds.yaml                                  &lt;span class=&quot;c&quot;&gt;# 12774&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;^kind: CustomResourceDefinition&apos;&lt;/span&gt; cm-crds.yaml   &lt;span class=&quot;c&quot;&gt;# 6&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Seis CRDs, quase treze mil linhas de YAML só de schema, antes de uma única linha de controller. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Certificate&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CertificateRequest&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Issuer&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ClusterIssuer&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Order&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Challenge&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;E olhando com o que aprendi hoje, aquilo deixa de ser uma parede de YAML: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Certificate&lt;/code&gt; é o desejo que você escreve, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CertificateRequest&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Order&lt;/code&gt; e &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Challenge&lt;/code&gt; são objetos intermediários que o controller cria pra si mesmo com &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ownerReferences&lt;/code&gt;, exatamente como o meu Deployment. O ACME inteiro virou uma máquina de estados feita de recursos observáveis. Dá pra dar &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kubectl get challenge&lt;/code&gt; no meio de uma emissão travada e ver onde parou, e isso é uma decisão de design, não um acaso.&lt;/p&gt;
+
+&lt;p&gt;Meu lab inteiro, pra comparação:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  99 operator.sh
+ 129 goctl/main.go
+  69 crd-site.yaml
+  33 rbac.yaml
+ 330 total
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;teardown&quot;&gt;Teardown&lt;/h2&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kind delete cluster &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; lab-operators
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Uma das melhores coisas do kind: o lab inteiro era um container, e agora não é mais nada.&lt;/p&gt;
+
+&lt;h2 id=&quot;o-que-ficou&quot;&gt;O que ficou&lt;/h2&gt;
+
+&lt;p&gt;Três coisas que eu achava que sabia e não sabia.&lt;/p&gt;
+
+&lt;p&gt;A primeira é que o Kubernetes é muito mais simples e muito mais estranho do que parece. Simples porque é uma API REST com validação e notificação, e nada além disso. Estranho porque todo o comportamento emerge de programinhas independentes reagindo a um banco de dados compartilhado, sem ninguém coordenando. Não existe o “Kubernetes” que decide as coisas. Existem controllers olhando gaveta.&lt;/p&gt;
+
+&lt;p&gt;A segunda é que a parte difícil de um operator não é criar recurso. Criar é fácil, é &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kubectl apply&lt;/code&gt; com outro nome. O difícil é tudo em volta: ser idempotente, sobreviver a conflito, não entrar em loop quente, limpar o que criou fora do cluster, evoluir o schema sem quebrar quem já usa. O framework te dá cache, fila e backoff. O resto é desenho seu.&lt;/p&gt;
+
+&lt;p&gt;A terceira é que CRD sem controller é só YAML validado, e isso mudou a forma como eu leio a documentação de qualquer ferramenta que instalo. Quando alguém diz “instale esse operator”, agora eu ouço: vou colocar um processo com permissão de escrita no meu cluster, que fica acordado pra sempre olhando uns objetos e agindo por conta própria. Vale a pena, quase sempre. Mas é bom saber o que é.&lt;/p&gt;
+
+&lt;p&gt;Próximo passo aqui é refazer isso com kubebuilder, implementar finalizer de verdade com um recurso externo e escrever teste com &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;envtest&lt;/code&gt;. Quando eu tiver apanhado o suficiente, escrevo a parte 2.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Repository Checklist</title>
