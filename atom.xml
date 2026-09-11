@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-09-11T15:07:09-03:00</updated>
+ <updated>2026-09-11T15:23:27-03:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -51,7 +51,16 @@
 
 &lt;p&gt;Tudo aqui foi rodado de verdade. Os outputs são colados da minha sessão, inclusive os erros.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/img/lab-operators-reconcile-loop.svg&quot; alt=&quot;reconcile loop&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;O ciclo inteiro, que é o que o post desmonta pedaço por pedaço:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;flowchart TD
+  a[&quot;1. voce declara&amp;lt;br/&amp;gt;kind: Site&amp;lt;br/&amp;gt;spec.replicas: 2&quot;]
+  b[&quot;2. api server&amp;lt;br/&amp;gt;valida, aplica default,&amp;lt;br/&amp;gt;grava e notifica&quot;]
+  c[&quot;3. operator&amp;lt;br/&amp;gt;reconcile:&amp;lt;br/&amp;gt;desejado x atual&quot;]
+  d[&quot;4. mundo real&amp;lt;br/&amp;gt;ConfigMap, Deployment, Service&amp;lt;br/&amp;gt;com ownerReference&quot;]
+  e[&quot;5. status&amp;lt;br/&amp;gt;readyReplicas, phase&quot;]
+  a --&amp;gt; b --&amp;gt; c --&amp;gt; d --&amp;gt; e --&amp;gt; b
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&quot;antes-de-tudo-o-que-é-a-api-do-kubernetes&quot;&gt;Antes de tudo: o que é a API do Kubernetes&lt;/h2&gt;
 
