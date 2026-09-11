@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380" width="900" height="380" font-family="Fira Code, ui-monospace, SFMono-Regular, Menlo, monospace">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8a7fb8"/>
+    </marker>
+    <style>
+      .box   { fill: none; stroke: #8a7fb8; stroke-width: 2; }
+      .dash  { fill: none; stroke: #8a7fb8; stroke-width: 2; stroke-dasharray: 6 5; }
+      .t     { fill: #8a7fb8; font-size: 15px; }
+      .s     { fill: #8a7fb8; font-size: 12px; opacity: .8; }
+      .h     { fill: #8a7fb8; font-size: 16px; font-weight: 700; }
+      .line  { fill: none; stroke: #8a7fb8; stroke-width: 2; marker-end: url(#a); }
+    </style>
+  </defs>
+
+  <rect class="box" x="20" y="30" width="240" height="110" rx="6"/>
+  <text class="h" x="40" y="60">1. voce declara</text>
+  <text class="t" x="40" y="88">kind: Site</text>
+  <text class="t" x="40" y="110">spec.replicas: 2</text>
+  <text class="s" x="40" y="130">o desejo, guardado no etcd</text>
+
+  <rect class="box" x="330" y="30" width="240" height="110" rx="6"/>
+  <text class="h" x="350" y="60">2. api server</text>
+  <text class="t" x="350" y="88">valida, aplica default,</text>
+  <text class="t" x="350" y="110">grava e avisa quem observa</text>
+  <text class="s" x="350" y="130">REST puro, sobre HTTP</text>
+
+  <rect class="box" x="640" y="30" width="240" height="110" rx="6"/>
+  <text class="h" x="660" y="60">3. operator</text>
+  <text class="t" x="660" y="88">acorda com o evento,</text>
+  <text class="t" x="660" y="110">le o estado atual</text>
+  <text class="s" x="660" y="130">watch + cache local</text>
+
+  <rect class="box" x="640" y="230" width="240" height="110" rx="6"/>
+  <text class="h" x="660" y="260">4. reconcile</text>
+  <text class="t" x="660" y="288">compara desejado</text>
+  <text class="t" x="660" y="310">com o que existe</text>
+  <text class="s" x="660" y="330">e escreve so a diferenca</text>
+
+  <rect class="box" x="330" y="230" width="240" height="110" rx="6"/>
+  <text class="h" x="350" y="260">5. mundo real</text>
+  <text class="t" x="350" y="288">ConfigMap, Deployment,</text>
+  <text class="t" x="350" y="310">Service</text>
+  <text class="s" x="350" y="330">com ownerReference no Site</text>
+
+  <rect class="dash" x="20" y="230" width="240" height="110" rx="6"/>
+  <text class="h" x="40" y="260">6. status</text>
+  <text class="t" x="40" y="288">readyReplicas: 2</text>
+  <text class="t" x="40" y="310">phase: Ready</text>
+  <text class="s" x="40" y="330">o observado, de volta no Site</text>
+
+  <path class="line" d="M 262 85 L 326 85"/>
+  <path class="line" d="M 572 85 L 636 85"/>
+  <path class="line" d="M 760 142 L 760 226"/>
+  <path class="line" d="M 636 285 L 574 285"/>
+  <path class="line" d="M 328 285 L 264 285"/>
+  <path class="line" d="M 140 228 L 140 144"/>
+  <text class="s" x="150" y="190">e o ciclo recomeca a cada mudanca</text>
+</svg>
