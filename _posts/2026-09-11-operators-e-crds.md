@@ -39,10 +39,10 @@ O ciclo inteiro, que é o que o post desmonta pedaço por pedaço:
 
 ```mermaid
 flowchart TD
-  a["1. voce declara<br/>kind: Site<br/>spec.replicas: 2"]
-  b["2. api server<br/>valida, aplica default,<br/>grava e notifica"]
-  c["3. operator<br/>reconcile:<br/>desejado x atual"]
-  d["4. mundo real<br/>ConfigMap, Deployment, Service<br/>com ownerReference"]
+  a["1. you declare<br/>kind: Site<br/>spec.replicas: 2"]
+  b["2. api server<br/>validates, defaults,<br/>stores and notifies"]
+  c["3. operator<br/>reconcile:<br/>desired vs actual"]
+  d["4. real world<br/>ConfigMap, Deployment, Service<br/>with ownerReference"]
   e["5. status<br/>readyReplicas, phase"]
   a --> b --> c --> d --> e --> b
 ```
@@ -183,7 +183,7 @@ O CRD é um YAML. Ele não tem código nenhum, é só a descrição da gaveta: q
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
-  name: sites.lab.apolzek.io          # precisa ser plural.grupo, exatamente
+  name: sites.lab.apolzek.io          # must be exactly plural.group
 spec:
   group: lab.apolzek.io
   names:
@@ -195,10 +195,10 @@ spec:
   scope: Namespaced
   versions:
     - name: v1alpha1
-      served: true                     # a API atende essa versao
-      storage: true                    # e grava no etcd nessa versao
+      served: true                     # the API answers on this version
+      storage: true                    # and stores it in etcd on this one
       subresources:
-        status: {}                     # spec e status viram enderecos separados
+        status: {}                     # spec and status become separate endpoints
       schema:
         openAPIV3Schema:
           type: object
@@ -287,7 +287,7 @@ Aquele `description` que escrevi no schema virou help de linha de comando. Não 
 Agora a parte boa: validação. O schema não é decoração, o api server aplica ele antes de gravar.
 
 ```sh
-# replicas acima do maximo
+# replicas above the maximum
 kubectl apply -f - <<'EOF'
 apiVersion: lab.apolzek.io/v1alpha1
 kind: Site
@@ -301,12 +301,12 @@ The Site "quebrado" is invalid: spec.replicas: Invalid value: 9: spec.replicas i
 ```
 
 ```sh
-# sem o campo obrigatorio
+# missing the required field
 The Site "quebrado" is invalid: spec.title: Required value
 ```
 
 ```sh
-# campo que nao existe (erro de digitacao em "replicas")
+# field that does not exist, a typo in "replicas"
 Error from server (BadRequest): Site in version "v1alpha1" cannot be handled as a Site:
 strict decoding error: unknown field "spec.replcias"
 ```
@@ -396,11 +396,11 @@ Controller é um termostato. O termostato não reage ao ato de você girar o bot
 Isso se chama level-triggered, e é o modelo do Kubernetes inteiro. Na prática significa que a função central de um operator tem essa assinatura mental:
 
 ```
-reconcile(nome_do_objeto):
-    desejado = le o objeto na API        # spec
-    atual    = le o mundo real           # os filhos que deveriam existir
-    se diferente: escreve a diferenca
-    grava o que observei                 # status
+reconcile(object_name):
+    desired = read the object from the API   # spec
+    actual  = read the real world            # the children that should exist
+    if different: write the difference
+    record what was observed                 # status
 ```
 
 E daí saem as duas regras que valem mais que qualquer framework:
@@ -588,7 +588,7 @@ Aqui é onde o padrão mostra pra que veio.
 12:00:46  kubectl delete deploy site-blog
 deployment.apps "site-blog" deleted
 
-# doze segundos depois
+# twelve seconds later
 NAME        READY   UP-TO-DATE   AVAILABLE   AGE
 site-blog   2/2     2            2           12s
 ```
@@ -597,8 +597,8 @@ O log conta a história:
 
 ```
 12:00:41 reconciled site/blog want=2 ready=2 phase=Ready
-12:00:46 reconciled site/blog want=2 ready=0 phase=Pending    <- notou o sumico
-12:00:52 reconciled site/blog want=2 ready=2 phase=Ready      <- refez
+12:00:46 reconciled site/blog want=2 ready=0 phase=Pending    <- noticed it was gone
+12:00:52 reconciled site/blog want=2 ready=2 phase=Ready      <- recreated it
 ```
 
 Eu não escrevi nenhum tratamento de "deployment foi apagado". Não existe esse caso no código. O reconcile só recalcula o desejado e aplica, e por isso recriar é a mesma operação que criar. É o termostato de novo: ele não sabe que a janela abriu, ele só sabe que está frio.
@@ -704,7 +704,7 @@ func (r *SiteReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.
 		return ctrl.Result{}, err
 	}
 
-	// ... o mesmo para o Deployment e o Service ...
+	// ... same thing for the Deployment and the Service ...
 
 	phase := "Pending"
 	if dep.Status.ReadyReplicas == int32(replicas) {
@@ -737,8 +737,8 @@ func main() {
 	site.SetGroupVersionKind(siteGVK)
 
 	if err := ctrl.NewControllerManagedBy(mgr).
-		For(site).                        // reconcilia quando o Site muda
-		Owns(&appsv1.Deployment{}).       // e tambem quando um filho meu muda
+		For(site).                        // reconcile when the Site changes
+		Owns(&appsv1.Deployment{}).       // and also when a child of mine changes
 		Owns(&corev1.ConfigMap{}).
 		Owns(&corev1.Service{}).
 		Complete(&SiteReconciler{Client: mgr.GetClient()}); err != nil {
@@ -920,7 +920,7 @@ Até aqui pareceu fácil. Foi, porque o cenário é de brinquedo. Essas são as 
 ```sh
 kubectl get site blog -o json > site-old.json     # rv 1007
 kubectl patch site blog --type=merge -p '{"spec":{"message":"alguem escreveu antes de mim"}}'
-                                                  # rv virou 1025
+                                                  # rv is now 1025
 kubectl replace --raw /apis/lab.apolzek.io/v1alpha1/namespaces/default/sites/blog -f site-old.json
 ```
 
@@ -935,7 +935,7 @@ Num operator isso acontece o tempo todo, porque você e o usuário e outros cont
 
 ```sh
 kubectl patch site blog --type=merge -p '{"metadata":{"finalizers":["lab.apolzek.io/drain-cdn"]}}'
-kubectl delete site blog          # trava aqui, pra sempre
+kubectl delete site blog          # hangs here, forever
 ```
 
 ```sh
