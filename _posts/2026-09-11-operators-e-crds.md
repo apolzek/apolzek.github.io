@@ -35,7 +35,17 @@ Então passei um tempo montando um do zero, num kind local, com o objetivo expl�
 
 Tudo aqui foi rodado de verdade. Os outputs são colados da minha sessão, inclusive os erros.
 
-![reconcile loop](/assets/img/lab-operators-reconcile-loop.svg)
+O ciclo inteiro, que é o que o post desmonta pedaço por pedaço:
+
+```mermaid
+flowchart TD
+  a["1. voce declara<br/>kind: Site<br/>spec.replicas: 2"]
+  b["2. api server<br/>valida, aplica default,<br/>grava e notifica"]
+  c["3. operator<br/>reconcile:<br/>desejado x atual"]
+  d["4. mundo real<br/>ConfigMap, Deployment, Service<br/>com ownerReference"]
+  e["5. status<br/>readyReplicas, phase"]
+  a --> b --> c --> d --> e --> b
+```
 
 ## Antes de tudo: o que é a API do Kubernetes
 
