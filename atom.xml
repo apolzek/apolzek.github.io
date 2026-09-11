@@ -4,7 +4,7 @@
  <title>apolzek</title>
  <link href="https://apolzek.github.io/atom.xml" rel="self"/>
  <link href="https://apolzek.github.io/"/>
- <updated>2026-09-11T15:23:27-03:00</updated>
+ <updated>2026-09-11T15:27:27-03:00</updated>
  <id>https://apolzek.github.io</id>
  <author>
    <name>apolzek</name>
@@ -54,10 +54,10 @@
 &lt;p&gt;O ciclo inteiro, que é o que o post desmonta pedaço por pedaço:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;flowchart TD
-  a[&quot;1. voce declara&amp;lt;br/&amp;gt;kind: Site&amp;lt;br/&amp;gt;spec.replicas: 2&quot;]
-  b[&quot;2. api server&amp;lt;br/&amp;gt;valida, aplica default,&amp;lt;br/&amp;gt;grava e notifica&quot;]
-  c[&quot;3. operator&amp;lt;br/&amp;gt;reconcile:&amp;lt;br/&amp;gt;desejado x atual&quot;]
-  d[&quot;4. mundo real&amp;lt;br/&amp;gt;ConfigMap, Deployment, Service&amp;lt;br/&amp;gt;com ownerReference&quot;]
+  a[&quot;1. you declare&amp;lt;br/&amp;gt;kind: Site&amp;lt;br/&amp;gt;spec.replicas: 2&quot;]
+  b[&quot;2. api server&amp;lt;br/&amp;gt;validates, defaults,&amp;lt;br/&amp;gt;stores and notifies&quot;]
+  c[&quot;3. operator&amp;lt;br/&amp;gt;reconcile:&amp;lt;br/&amp;gt;desired vs actual&quot;]
+  d[&quot;4. real world&amp;lt;br/&amp;gt;ConfigMap, Deployment, Service&amp;lt;br/&amp;gt;with ownerReference&quot;]
   e[&quot;5. status&amp;lt;br/&amp;gt;readyReplicas, phase&quot;]
   a --&amp;gt; b --&amp;gt; c --&amp;gt; d --&amp;gt; e --&amp;gt; b
 &lt;/code&gt;&lt;/pre&gt;
@@ -188,7 +188,7 @@ real	0m9,979s
 &lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;apiextensions.k8s.io/v1&lt;/span&gt;
 &lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;CustomResourceDefinition&lt;/span&gt;
 &lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;sites.lab.apolzek.io&lt;/span&gt;          &lt;span class=&quot;c1&quot;&gt;# precisa ser plural.grupo, exatamente&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;sites.lab.apolzek.io&lt;/span&gt;          &lt;span class=&quot;c1&quot;&gt;# must be exactly plural.group&lt;/span&gt;
 &lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
   &lt;span class=&quot;na&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;lab.apolzek.io&lt;/span&gt;
   &lt;span class=&quot;na&quot;&gt;names&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
@@ -200,10 +200,10 @@ real	0m9,979s
   &lt;span class=&quot;na&quot;&gt;scope&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Namespaced&lt;/span&gt;
   &lt;span class=&quot;na&quot;&gt;versions&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
     &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;v1alpha1&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;served&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;                     &lt;span class=&quot;c1&quot;&gt;# a API atende essa versao&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;storage&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;                    &lt;span class=&quot;c1&quot;&gt;# e grava no etcd nessa versao&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;served&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;                     &lt;span class=&quot;c1&quot;&gt;# the API answers on this version&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;storage&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;                    &lt;span class=&quot;c1&quot;&gt;# and stores it in etcd on this one&lt;/span&gt;
       &lt;span class=&quot;na&quot;&gt;subresources&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;{}&lt;/span&gt;                     &lt;span class=&quot;c1&quot;&gt;# spec e status viram enderecos separados&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;{}&lt;/span&gt;                     &lt;span class=&quot;c1&quot;&gt;# spec and status become separate endpoints&lt;/span&gt;
       &lt;span class=&quot;na&quot;&gt;schema&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
         &lt;span class=&quot;na&quot;&gt;openAPIV3Schema&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
           &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;object&lt;/span&gt;
@@ -283,7 +283,7 @@ FIELDS:
 
 &lt;p&gt;Agora a parte boa: validação. O schema não é decoração, o api server aplica ele antes de gravar.&lt;/p&gt;
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# replicas acima do maximo&lt;/span&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# replicas above the maximum&lt;/span&gt;
 kubectl apply &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; - &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;&apos;
 apiVersion: lab.apolzek.io/v1alpha1
 kind: Site
@@ -295,11 +295,11 @@ spec: { title: &quot;teste&quot;, replicas: 9 }
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;The Site &quot;quebrado&quot; is invalid: spec.replicas: Invalid value: 9: spec.replicas in body should be less than or equal to 5
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# sem o campo obrigatorio&lt;/span&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# missing the required field&lt;/span&gt;
 The Site &lt;span class=&quot;s2&quot;&gt;&quot;quebrado&quot;&lt;/span&gt; is invalid: spec.title: Required value
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# campo que nao existe (erro de digitacao em &quot;replicas&quot;)&lt;/span&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# field that does not exist, a typo in &quot;replicas&quot;&lt;/span&gt;
 Error from server &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;BadRequest&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: Site &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;version &lt;span class=&quot;s2&quot;&gt;&quot;v1alpha1&quot;&lt;/span&gt; cannot be handled as a Site:
 strict decoding error: unknown field &lt;span class=&quot;s2&quot;&gt;&quot;spec.replcias&quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -382,11 +382,11 @@ service/kubernetes   ClusterIP   10.96.0.1    &amp;lt;none&amp;gt;        443/TC
 
 &lt;p&gt;Isso se chama level-triggered, e é o modelo do Kubernetes inteiro. Na prática significa que a função central de um operator tem essa assinatura mental:&lt;/p&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;reconcile(nome_do_objeto):
-    desejado = le o objeto na API        # spec
-    atual    = le o mundo real           # os filhos que deveriam existir
-    se diferente: escreve a diferenca
-    grava o que observei                 # status
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;reconcile(object_name):
+    desired = read the object from the API   # spec
+    actual  = read the real world            # the children that should exist
+    if different: write the difference
+    record what was observed                 # status
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;E daí saem as duas regras que valem mais que qualquer framework:&lt;/p&gt;
@@ -572,7 +572,7 @@ blog   meu site declarado como recurso   2      2       Ready   53s
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;12:00:46  kubectl delete deploy site-blog
 deployment.apps &lt;span class=&quot;s2&quot;&gt;&quot;site-blog&quot;&lt;/span&gt; deleted
 
-&lt;span class=&quot;c&quot;&gt;# doze segundos depois&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# twelve seconds later&lt;/span&gt;
 NAME        READY   UP-TO-DATE   AVAILABLE   AGE
 site-blog   2/2     2            2           12s
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -580,8 +580,8 @@ site-blog   2/2     2            2           12s
 &lt;p&gt;O log conta a história:&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;12:00:41 reconciled site/blog want=2 ready=2 phase=Ready
-12:00:46 reconciled site/blog want=2 ready=0 phase=Pending    &amp;lt;- notou o sumico
-12:00:52 reconciled site/blog want=2 ready=2 phase=Ready      &amp;lt;- refez
+12:00:46 reconciled site/blog want=2 ready=0 phase=Pending    &amp;lt;- noticed it was gone
+12:00:52 reconciled site/blog want=2 ready=2 phase=Ready      &amp;lt;- recreated it
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Eu não escrevi nenhum tratamento de “deployment foi apagado”. Não existe esse caso no código. O reconcile só recalcula o desejado e aplica, e por isso recriar é a mesma operação que criar. É o termostato de novo: ele não sabe que a janela abriu, ele só sabe que está frio.&lt;/p&gt;
@@ -678,7 +678,7 @@ No resources found in default namespace.
 		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ctrl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;
 	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-	&lt;span class=&quot;c&quot;&gt;// ... o mesmo para o Deployment e o Service ...&lt;/span&gt;
+	&lt;span class=&quot;c&quot;&gt;// ... same thing for the Deployment and the Service ...&lt;/span&gt;
 
 	&lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Pending&quot;&lt;/span&gt;
 	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dep&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Status&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ReadyReplicas&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;replicas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -710,8 +710,8 @@ No resources found in default namespace.
 	&lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SetGroupVersionKind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;siteGVK&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
 	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ctrl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NewControllerManagedBy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mgr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;For&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;                        &lt;span class=&quot;c&quot;&gt;// reconcilia quando o Site muda&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;Owns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;appsv1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Deployment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{})&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;       &lt;span class=&quot;c&quot;&gt;// e tambem quando um filho meu muda&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;For&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;                        &lt;span class=&quot;c&quot;&gt;// reconcile when the Site changes&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;Owns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;appsv1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Deployment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{})&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;       &lt;span class=&quot;c&quot;&gt;// and also when a child of mine changes&lt;/span&gt;
 		&lt;span class=&quot;n&quot;&gt;Owns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;corev1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ConfigMap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{})&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
 		&lt;span class=&quot;n&quot;&gt;Owns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;corev1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Service&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{})&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
 		&lt;span class=&quot;n&quot;&gt;Complete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SiteReconciler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mgr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetClient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()});&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -878,7 +878,7 @@ docs   segundo site, mesmo operator      3      3       Ready   12s
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl get site blog &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; json &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; site-old.json     &lt;span class=&quot;c&quot;&gt;# rv 1007&lt;/span&gt;
 kubectl patch site blog &lt;span class=&quot;nt&quot;&gt;--type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;merge &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;{&quot;spec&quot;:{&quot;message&quot;:&quot;alguem escreveu antes de mim&quot;}}&apos;&lt;/span&gt;
-                                                  &lt;span class=&quot;c&quot;&gt;# rv virou 1025&lt;/span&gt;
+                                                  &lt;span class=&quot;c&quot;&gt;# rv is now 1025&lt;/span&gt;
 kubectl replace &lt;span class=&quot;nt&quot;&gt;--raw&lt;/span&gt; /apis/lab.apolzek.io/v1alpha1/namespaces/default/sites/blog &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; site-old.json
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -891,7 +891,7 @@ the object has been modified; please apply your changes to the latest version an
 &lt;p&gt;&lt;strong&gt;Finalizers, ou o objeto que não morre.&lt;/strong&gt; Se o seu operator cria coisa fora do cluster (um bucket, um registro DNS, uma zona no provedor), o garbage collector não vai limpar. Você precisa de um finalizer: um marcador que impede o objeto de ser apagado até que você tire o marcador. Simulei:&lt;/p&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl patch site blog &lt;span class=&quot;nt&quot;&gt;--type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;merge &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;{&quot;metadata&quot;:{&quot;finalizers&quot;:[&quot;lab.apolzek.io/drain-cdn&quot;]}}&apos;&lt;/span&gt;
-kubectl delete site blog          &lt;span class=&quot;c&quot;&gt;# trava aqui, pra sempre&lt;/span&gt;
+kubectl delete site blog          &lt;span class=&quot;c&quot;&gt;# hangs here, forever&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl get site blog &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;jsonpath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;{.metadata.name} deletionTimestamp={.metadata.deletionTimestamp} finalizers={.metadata.finalizers}&apos;&lt;/span&gt;
