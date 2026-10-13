@@ -509,3 +509,29 @@ production.
 ## A Closing Note
 
 Let's be honest: I'm just starting my journey into eBPF, and it is a genuinely hard subject. It is not something you pick up in a weekend, and doing well in it presupposes a vast base of prior knowledge, including comfort with C, a real mental model of how the Linux kernel works, and time spent debugging things that fail in non-obvious ways. The verifier alone is enough to humble most people. The answers to the questions in this article are superficial, but they give us a good idea of what we're getting into, serving as a starting point for understanding the terrain before going deeper. **Ref**: https://github.com/gojue/ebpf-slide
+
+
+```
+┌──────────────────────────────────────────────┐
+│ Linux Application Developer                  │
+│ Python / Go / Rust / C / Java                │
+├──────────────────────────────────────────────┤
+│ Linux Systems / Automation                   │
+│ Bash / shell / systemd / Ansible / scripts   │
+├──────────────────────────────────────────────┤
+│ Linux Infrastructure / SRE                   │
+│ networking / storage / containers / K8s      │
+├──────────────────────────────────────────────┤
+│ Linux Kernel / eBPF Developer                │
+│ kernel APIs / BPF / tracing / drivers        │
+├──────────────────────────────────────────────┤
+│ Linux Kernel Developer                       │
+│ C / kernel source / scheduler / MM / VFS     │
+├──────────────────────────────────────────────┤
+│ Linux Driver Developer                       │
+│ PCIe / USB / NIC / GPU / block devices       │
+├──────────────────────────────────────────────┤
+│ Hardware / Kernel Interface                  │
+│ CPU / MMU / DMA / interrupts / PCIe / ACPI   │
+└──────────────────────────────────────────────┘
+```
