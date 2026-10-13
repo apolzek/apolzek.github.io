@@ -1,0 +1,49 @@
+# Moments: fotos com legenda, exibidas em grade quadrada (estilo perfil do Instagram).
+# Campos: image (obrigatório, caminho em /assets/img/), caption, caption_en, alt, date.
+# A ordem na página é por data, da mais recente pra mais antiga.
+# As entradas abaixo são de TESTE, com imagens que já estavam no repositório.
+- image: /assets/img/goku-training.jpeg
+  alt: "Goku treinando"
+  caption: "Treino de sábado. Teste de legenda no Moments."
+  caption_en: "Saturday training. Caption test for Moments."
+  date: "2026-10-09"
+- image: /assets/img/Aquiles.jpeg
+  alt: "Aquiles"
+  caption: "Aquiles, pra lembrar do calcanhar."
+  caption_en: "Achilles, to remember the heel."
+  date: "2026-10-08"
+- image: /assets/img/leonardo.jpg
+  alt: "Leonardo da Vinci"
+  caption: "Leonardo, o polímata."
+  caption_en: "Leonardo, the polymath."
+  date: "2026-10-07"
+- image: /assets/img/arm.jpeg
+  alt: "Braço"
+  caption: "Força é consequência."
+  caption_en: "Strength is a consequence."
+  date: "2026-10-06"
+- image: /assets/img/3-brains.png
+  alt: "Os três cérebros"
+  caption: "Os três cérebros."
+  caption_en: "The three brains."
+  date: "2026-10-05"
+- image: /assets/img/julio.png
+  alt: "Júlio, do Cocoricó"
+  caption: "Júlio, curiosidade genuína."
+  caption_en: "Júlio, genuine curiosity."
+  date: "2026-10-04"
+- image: /assets/img/comp-nutricional.jpeg
+  alt: "Composição nutricional"
+  caption: "Composição nutricional de hoje."
+  caption_en: "Today's nutrition breakdown."
+  date: "2026-10-03"
+- image: /assets/img/ubuntu-vm-lab.png
+  alt: "Laboratório com VM Ubuntu"
+  caption: "Lab de rede com Ubuntu."
+  caption_en: "Network lab on Ubuntu."
+  date: "2026-10-02"
+- image: /assets/img/dns.png
+  alt: "DNS"
+  caption: "É sempre DNS."
+  caption_en: "It's always DNS."
+  date: "2026-10-01"

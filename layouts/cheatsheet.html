@@ -1,0 +1,205 @@
+{{ define "main" }}
+  {{- $entries := hugo.Data.cheatsheet -}}
+  <div class='hx:mx-auto hx:flex hextra-max-page-width'>
+    {{ partial "sidebar.html" (dict "context" . "disableSidebar" true "displayPlaceholder" true) }}
+    {{ partial "toc.html" (dict "Params" (dict "toc" false)) }}
+    <article class="hx:w-full hx:break-words hx:flex hx:min-h-[calc(100vh-var(--navbar-height))] hx:min-w-0 hx:justify-center hx:pb-8 hx:pr-[calc(env(safe-area-inset-right)-1.5rem)]">
+      <main class="hx:w-full hx:min-w-0 hx:max-w-6xl hx:px-6 hx:pt-4 hx:md:px-12">
+        <br class="hx:mt-1.5 hx:text-sm" />
+        <h1 class="hx:text-center hx:mt-2 hx:text-4xl hx:font-bold hx:tracking-tight hx:text-slate-900 hx:dark:text-slate-100">{{ .Title }}</h1>
+        <p class="aor-tag-page__count hx:text-center hx:mt-2">{{ len $entries }} {{ T "csEntries" }}</p>
+        <div class="content aor-cs">
+          <div class="aor-cs__intro">{{ .Content }}</div>
+
+          <label class="aor-cs__search">
+            {{- partial "utils/icon.html" (dict "name" "search" "attributes" `height="1em" width="1em" aria-hidden="true"`) -}}
+            <input type="search" id="cs-search-input" placeholder="{{ T "csSearch" }}" aria-label="{{ T "csSearch" }}" autocomplete="off">
+          </label>
+
+          <div class="aor-cs__filter" id="cs-tag-filter"></div>
+          <p class="aor-cs__empty" id="cs-empty" hidden>{{ T "csEmpty" }}</p>
+
+          <ul class="aor-cs__list" id="cs-list">
+            {{- range $entries }}
+            <li class="aor-cs__item"
+                data-tags="{{ delimit (.tags | default slice) "," }}"
+                data-search="{{ printf "%s %s %s" .title .description .commands | lower }}">
+              <div class="aor-cs__header">
+                <span class="aor-cs__title">{{ .title }}</span>
+                {{- with .tags }}
+                <span class="aor-cs__tags">{{ range . }}<button type="button" class="aor-cs__tag">{{ . }}</button>{{ end }}</span>
+                {{- end }}
+              </div>
+              {{- with .description }}<p class="aor-cs__description">{{ . }}</p>{{ end }}
+              <div class="aor-cs__code-wrap">
+                <button class="aor-cs__copy" type="button" title="{{ T "csCopy" }}" aria-label="{{ T "csCopy" }}">
+                  {{- partial "utils/icon.html" (dict "name" "copy" "attributes" `height="1em" width="1em" aria-hidden="true"`) -}}
+                </button>
+                <pre class="aor-cs__code"><code>{{ trim .commands "\n" }}</code></pre>
+              </div>
+            </li>
+            {{- end }}
+          </ul>
+
+          <nav class="aor-cs__pagination" id="cs-pagination"></nav>
+        </div>
+      </main>
+    </article>
+  </div>
+
+  <style>
+    .content.aor-cs { max-width: min(100%, 110ch); }
+    .aor-cs__intro { text-align: center; font-style: italic; opacity: 0.75; margin-bottom: 1.5rem; }
+    .aor-cs__search {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.45rem 0.8rem; margin-bottom: 0.75rem;
+      border: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+      border-radius: 8px;
+      background: color-mix(in srgb, currentColor 3%, transparent);
+      color: color-mix(in srgb, currentColor 55%, transparent);
+    }
+    .aor-cs__search:focus-within { border-color: var(--aor-accent); color: var(--aor-accent); }
+    .aor-cs__search input { flex: 1; border: 0; outline: 0; background: transparent; font: inherit; font-size: 0.95rem; color: inherit; }
+    .aor-cs__search input::placeholder { color: color-mix(in srgb, currentColor 60%, transparent); }
+    .aor-cs__filter { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
+    .aor-cs__filter-btn, .aor-cs__tag {
+      background: none; cursor: pointer; color: inherit; font-family: inherit;
+      border: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+      border-radius: 999px; padding: 0.15rem 0.6rem; font-size: 0.75rem;
+      opacity: 0.65; transition: opacity 120ms ease, border-color 120ms ease, color 120ms ease;
+    }
+    .aor-cs__filter-btn:hover, .aor-cs__filter-btn.is-active, .aor-cs__tag:hover {
+      opacity: 1; border-color: var(--aor-accent); color: var(--aor-accent-strong);
+    }
+    .aor-cs__filter-btn.is-active { background: var(--aor-accent-soft); }
+    .aor-cs__empty { font-style: italic; opacity: 0.6; }
+    .aor-cs__list { list-style: none; padding: 0; margin: 0; columns: 2; column-gap: 2.5rem; }
+    .content ul.aor-cs__list > li::before { content: none; }
+    .aor-cs__item { padding: 1rem 0; border-bottom: 1px solid color-mix(in srgb, currentColor 12%, transparent); break-inside: avoid; }
+    .aor-cs__header { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.25rem; }
+    .aor-cs__title { font-family: "Source Sans 3", "Helvetica Neue", sans-serif; font-weight: 700; font-size: 1rem; }
+    .aor-cs__title::before { content: "$ "; color: var(--aor-accent); }
+    .aor-cs__tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+    .aor-cs__tag { font-size: 0.68rem; padding: 0.05rem 0.45rem; }
+    .aor-cs__description { margin: 0 0 0.5rem; font-size: 0.85rem; font-style: italic; opacity: 0.7; line-height: 1.4; }
+    .aor-cs__code-wrap { position: relative; }
+    .aor-cs__code {
+      margin: 0; padding: 0.75rem 2.4rem 0.75rem 0.85rem; overflow-x: auto;
+      font-size: 0.8rem; line-height: 1.55; white-space: pre;
+      background: var(--hx-color-gray-100, #f0f0f0);
+      border: 1px solid color-mix(in srgb, currentColor 10%, transparent); border-radius: 6px;
+    }
+    html.dark .aor-cs__code { background: #1c1e24; }
+    .aor-cs__code code { background: none; padding: 0; font-size: inherit; }
+    .aor-cs__copy {
+      position: absolute; top: 0.4rem; right: 0.4rem;
+      display: flex; align-items: center; padding: 0.25rem; border: 0; border-radius: 4px;
+      background: transparent; color: inherit; cursor: pointer; opacity: 0.4; transition: opacity 120ms ease, color 120ms ease;
+    }
+    .aor-cs__copy:hover, .aor-cs__copy.is-copied { opacity: 1; color: var(--aor-accent); }
+    .aor-cs__pagination { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2rem; }
+    .aor-cs__pagination a { color: var(--aor-accent); font-weight: 600; text-decoration: none; }
+    .aor-cs__pagination a:hover { color: var(--aor-accent-strong); text-decoration: underline; }
+    @media (max-width: 46rem) { .aor-cs__list { columns: 1; } }
+  </style>
+
+  <script>
+    (function () {
+      var PER_PAGE = 10;
+      var allItems = Array.prototype.slice.call(document.querySelectorAll('#cs-list .aor-cs__item'));
+      var filtered = allItems.slice();
+      var activeTag = null;
+      var searchQuery = '';
+      var emptyMsg = document.getElementById('cs-empty');
+      var nav = document.getElementById('cs-pagination');
+      var filterBar = document.getElementById('cs-tag-filter');
+      var searchInput = document.getElementById('cs-search-input');
+
+      function applyFilters() {
+        filtered = allItems.filter(function (item) {
+          var tags = (item.dataset.tags || '').split(',').map(function (t) { return t.trim(); });
+          if (activeTag && tags.indexOf(activeTag) === -1) return false;
+          return !searchQuery || (item.dataset.search || '').indexOf(searchQuery) !== -1;
+        });
+        render(1);
+      }
+
+      function setFilter(tag) {
+        activeTag = tag;
+        Array.prototype.forEach.call(document.querySelectorAll('.aor-cs__filter-btn'), function (btn) {
+          btn.classList.toggle('is-active', btn.dataset.tag === (tag || ''));
+        });
+        applyFilters();
+      }
+
+      function filterButton(label, tag) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'aor-cs__filter-btn' + (tag ? '' : ' is-active');
+        btn.textContent = label;
+        btn.dataset.tag = tag || '';
+        btn.addEventListener('click', function () { setFilter(tag || null); });
+        return btn;
+      }
+
+      var tagSet = {};
+      allItems.forEach(function (item) {
+        (item.dataset.tags || '').split(',').forEach(function (t) { t = t.trim(); if (t) tagSet[t] = true; });
+      });
+      filterBar.appendChild(filterButton('{{ T "csAll" }}', null));
+      Object.keys(tagSet).sort().forEach(function (tag) { filterBar.appendChild(filterButton(tag, tag)); });
+
+      Array.prototype.forEach.call(document.querySelectorAll('.aor-cs__tag'), function (el) {
+        el.addEventListener('click', function () { setFilter(el.textContent.trim()); window.scrollTo(0, 0); });
+      });
+
+      Array.prototype.forEach.call(document.querySelectorAll('.aor-cs__copy'), function (btn) {
+        btn.addEventListener('click', function () {
+          var code = btn.parentNode.querySelector('code').textContent;
+          var done = function () {
+            btn.classList.add('is-copied');
+            setTimeout(function () { btn.classList.remove('is-copied'); }, 1500);
+          };
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(code).then(done, function () { fallbackCopy(code); done(); });
+          } else { fallbackCopy(code); done(); }
+        });
+      });
+
+      function fallbackCopy(text) {
+        var ta = document.createElement('textarea');
+        ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
+      }
+
+      searchInput.addEventListener('input', function () {
+        searchQuery = searchInput.value.trim().toLowerCase();
+        applyFilters();
+      });
+
+      function render(page) {
+        var start = (page - 1) * PER_PAGE;
+        allItems.forEach(function (item) { item.style.display = 'none'; });
+        filtered.forEach(function (item, i) { item.style.display = (i >= start && i < start + PER_PAGE) ? '' : 'none'; });
+        emptyMsg.hidden = filtered.length !== 0;
+        nav.innerHTML = '';
+        var totalPages = Math.ceil(filtered.length / PER_PAGE);
+        if (totalPages <= 1) return;
+        if (page > 1) nav.appendChild(pageLink('{{ T "prevPage" }}', page - 1));
+        if (page < totalPages) nav.appendChild(pageLink('{{ T "nextPage" }}', page + 1));
+      }
+
+      function pageLink(label, target) {
+        var link = document.createElement('a');
+        link.href = '#';
+        link.textContent = label;
+        link.addEventListener('click', function (e) { e.preventDefault(); render(target); window.scrollTo(0, 0); });
+        return link;
+      }
+
+      render(1);
+    })();
+  </script>
+{{ end }}

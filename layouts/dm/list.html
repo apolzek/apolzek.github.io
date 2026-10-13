@@ -1,0 +1,109 @@
+{{ define "main" }}
+  {{- /* Página "Direct message": um input de código. Cada artigo em content/dm/
+         declara `code:` no front matter; o mapa código -> URL vai pro JS (o
+         código fica exposto no HTML, de propósito). Quando a página EN não tem
+         artigos próprios, usa os artigos da seção PT. */ -}}
+  {{- $pages := .Pages -}}
+  {{- if not $pages -}}
+    {{- range hugo.Sites -}}
+      {{- if eq .Language.Lang "pt-br" -}}
+        {{- with .GetPage "/dm" }}{{ $pages = .Pages }}{{ end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $codes := dict -}}
+  {{- range $pages -}}
+    {{- $url := .RelPermalink -}}
+    {{- with .Params.code -}}{{- $codes = merge $codes (dict (lower (trim . " ")) $url) -}}{{- end -}}
+  {{- end -}}
+  <div class='hx:mx-auto hx:flex hextra-max-page-width'>
+    {{ partial "sidebar.html" (dict "context" . "disableSidebar" true "displayPlaceholder" true) }}
+    {{ partial "toc.html" (dict "Params" (dict "toc" false)) }}
+    <article class="hx:w-full hx:break-words hx:flex hx:min-h-[calc(100vh-var(--navbar-height))] hx:min-w-0 hx:justify-center hx:pb-8 hx:pr-[calc(env(safe-area-inset-right)-1.5rem)]">
+      <main class="hx:w-full hx:min-w-0 hx:max-w-6xl hx:px-6 hx:pt-4 hx:md:px-12">
+        <br class="hx:mt-1.5 hx:text-sm" />
+        <h1 class="hx:text-center hx:mt-2 hx:text-4xl hx:font-bold hx:tracking-tight hx:text-slate-900 hx:dark:text-slate-100">{{ .Title }}</h1>
+        <div class="content aor-dm">
+          <div class="aor-dm__intro">{{ .Content }}</div>
+
+          <form class="aor-dm__form" id="dm-form" autocomplete="off">
+            <label class="aor-dm__field">
+              {{- partial "utils/icon.html" (dict "name" "lock-closed" "attributes" `height="1em" width="1em" aria-hidden="true"`) -}}
+              <input type="text" id="dm-code" aria-label="Direct message" autocapitalize="off" spellcheck="false">
+            </label>
+            <button type="submit" class="aor-dm__button">{{ T "dmButton" }}</button>
+          </form>
+          <p class="aor-dm__error" id="dm-error" role="alert" hidden>{{ T "dmWrong" }}</p>
+        </div>
+      </main>
+    </article>
+  </div>
+
+  <style>
+    .aor-dm__intro { text-align: center; font-style: italic; opacity: 0.75; }
+    .aor-dm__form { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; max-width: 16rem; margin: 3.5rem auto 0; }
+    .aor-dm__field {
+      display: flex; align-items: center; gap: 0.5rem; width: 100%;
+      padding: 0.45rem 0.8rem;
+      border: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+      border-radius: 8px;
+      background: color-mix(in srgb, currentColor 3%, transparent);
+      color: color-mix(in srgb, currentColor 55%, transparent);
+    }
+    .aor-dm__field:focus-within { border-color: var(--aor-accent); color: var(--aor-accent); }
+    .aor-dm__field input {
+      flex: 1; min-width: 0; border: 0; outline: 0; background: transparent;
+      font: inherit; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.95rem;
+      letter-spacing: 0.08em; color: inherit;
+    }
+    .aor-dm__field input::placeholder { color: color-mix(in srgb, currentColor 60%, transparent); letter-spacing: 0; }
+    .aor-dm__button {
+      padding: 0.5rem 1.6rem; border: 0; border-radius: 8px; cursor: pointer;
+      font: inherit; font-weight: 600; font-size: 0.9rem;
+      background: var(--aor-accent); color: #fff;
+      transition: background 120ms ease, transform 120ms ease;
+    }
+    .aor-dm__button:hover { background: var(--aor-accent-strong); }
+    .aor-dm__button:active { transform: translateY(1px); }
+    .aor-dm__error { text-align: center; margin-top: 1rem; color: var(--aor-accent); font-size: 0.9rem; }
+    .aor-dm__form.is-shaking { animation: aor-dm-shake 0.35s ease; }
+    @keyframes aor-dm-shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-6px); }
+      75% { transform: translateX(6px); }
+    }
+    @media (prefers-reduced-motion: reduce) { .aor-dm__form.is-shaking { animation: none; } }
+  </style>
+
+  <script>
+    (function () {
+      var CODES = {{ $codes | jsonify | safeJS }};
+      var form = document.getElementById('dm-form');
+      var input = document.getElementById('dm-code');
+      var error = document.getElementById('dm-error');
+
+      function normalize(value) {
+        return value.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var code = normalize(input.value);
+        var url = CODES[code];
+        if (!url) {
+          error.hidden = false;
+          form.classList.remove('is-shaking');
+          void form.offsetWidth;
+          form.classList.add('is-shaking');
+          input.select();
+          return;
+        }
+        try { window.sessionStorage.setItem('dm:' + url, code); } catch (err) {}
+        window.location.href = url;
+      });
+
+      input.addEventListener('input', function () { error.hidden = true; });
+      input.focus();
+    })();
+  </script>
+{{ end }}

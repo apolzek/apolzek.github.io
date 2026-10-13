@@ -1,0 +1,224 @@
+{{ define "main" }}
+  {{- $thoughts := sort hugo.Data.thoughts "date" "desc" -}}
+  <div class='hx:mx-auto hx:flex hextra-max-page-width'>
+    {{ partial "sidebar.html" (dict "context" . "disableSidebar" true "displayPlaceholder" true) }}
+    {{ partial "toc.html" (dict "Params" (dict "toc" false)) }}
+    <article class="hx:w-full hx:break-words hx:flex hx:min-h-[calc(100vh-var(--navbar-height))] hx:min-w-0 hx:justify-center hx:pb-8 hx:pr-[calc(env(safe-area-inset-right)-1.5rem)]">
+      <main class="hx:w-full hx:min-w-0 hx:max-w-6xl hx:px-6 hx:pt-4 hx:md:px-12">
+        <br class="hx:mt-1.5 hx:text-sm" />
+        <h1 class="hx:text-center hx:mt-2 hx:text-4xl hx:font-bold hx:tracking-tight hx:text-slate-900 hx:dark:text-slate-100">{{ .Title }}</h1>
+        <p class="aor-tag-page__count hx:text-center hx:mt-2">{{ len $thoughts }} thoughts</p>
+        <div class="content aor-thoughts">
+          <div class="aor-thoughts__intro">{{ .Content }}</div>
+
+          <label class="aor-thoughts__search">
+            {{- partial "utils/icon.html" (dict "name" "search" "attributes" `height="1em" width="1em" aria-hidden="true"`) -}}
+            <input type="search" id="thoughts-search-input" placeholder="{{ T "thoughtsSearch" }}" aria-label="{{ T "thoughtsSearch" }}" autocomplete="off">
+          </label>
+          <p class="aor-thoughts__count" id="thoughts-count" hidden></p>
+
+          <ul class="aor-thoughts__list" id="thoughts-list">
+            {{- range $t := $thoughts }}
+            <li class="aor-thought">
+              <p class="aor-thought__text"><span class="aor-thought__body">{{ if and (eq site.Language.Lang "en") $t.text_en }}{{ $t.text_en }}{{ else }}{{ $t.text }}{{ end }}</span> <time class="aor-thought__date" datetime="{{ .date }}">— {{ (time .date).Format "02/01/2006" }}</time>
+                {{- with .image }} <button type="button" class="aor-thought__img-btn" data-image="{{ . }}" data-alt="{{ $t.alt | default "" }}" data-caption="{{ $t.caption | default "" }}" title="{{ T "thoughtImage" }}" aria-label="{{ T "thoughtImage" }}">{{ partial "utils/icon.html" (dict "name" "photograph" "attributes" `height="1em" width="1em" aria-hidden="true"`) }}</button>{{ end -}}
+              </p>
+            </li>
+            {{- end }}
+          </ul>
+
+          <nav class="aor-thoughts__pagination" id="thoughts-pagination"></nav>
+        </div>
+
+        <div class="aor-lightbox" id="thought-lightbox" hidden role="dialog" aria-modal="true" aria-label="{{ T "thoughtImage" }}">
+          <div class="aor-lightbox__box">
+            <button type="button" class="aor-lightbox__close" id="thought-lightbox-close" aria-label="{{ T "close" }}">{{ partial "utils/icon.html" (dict "name" "x" "attributes" `height="1.1em" width="1.1em" aria-hidden="true"`) }}</button>
+            <img id="thought-lightbox-img" src="" alt="">
+            <p class="aor-lightbox__caption" id="thought-lightbox-caption" hidden></p>
+          </div>
+        </div>
+      </main>
+    </article>
+  </div>
+
+  <style>
+    .aor-thoughts__intro { text-align: center; font-style: italic; opacity: 0.75; margin-bottom: 1.5rem; }
+    .aor-thoughts__search {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.45rem 0.8rem; margin-bottom: 0.75rem;
+      border: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+      border-radius: 8px;
+      background: color-mix(in srgb, currentColor 3%, transparent);
+      color: color-mix(in srgb, currentColor 55%, transparent);
+    }
+    .aor-thoughts__search:focus-within { border-color: var(--aor-accent); color: var(--aor-accent); }
+    .aor-thoughts__search input {
+      flex: 1; border: 0; outline: 0; background: transparent;
+      font: inherit; font-size: 0.95rem; color: inherit;
+    }
+    .aor-thoughts__search input::placeholder { color: color-mix(in srgb, currentColor 60%, transparent); }
+    .aor-thoughts__count { font-size: 0.8rem; opacity: 0.6; margin: 0 0 1rem; }
+    .aor-thoughts__list { list-style: none; padding: 0; margin: 0; }
+    .content ul.aor-thoughts__list > li::before { content: none; }
+    .aor-thought { padding: 0.8rem 0; border-bottom: 1px solid color-mix(in srgb, currentColor 12%, transparent); }
+    .aor-thought:last-child { border-bottom: 0; }
+    .aor-thought__text { margin: 0; line-height: 1.6; }
+    .aor-thought__text::before { content: "> "; color: var(--aor-accent); font-weight: 700; }
+    .aor-thought__date { font-size: 0.78em; opacity: 0.55; white-space: nowrap; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .aor-thought__body mark { background: var(--aor-accent-soft); color: inherit; border-radius: 2px; }
+    .aor-thought__img-btn {
+      display: inline-flex; align-items: center; vertical-align: -0.15em;
+      margin-inline-start: 0.35em; padding: 0.1em; border: 0; border-radius: 4px;
+      background: transparent; color: var(--aor-accent); cursor: pointer;
+      opacity: 0.75; transition: opacity 120ms ease, transform 120ms ease;
+    }
+    .aor-thought__img-btn:hover { opacity: 1; transform: scale(1.15); }
+    .aor-thought__img-btn:focus-visible { outline: 2px solid var(--aor-accent); outline-offset: 2px; }
+    .aor-lightbox {
+      position: fixed; inset: 0; z-index: 9999;
+      display: flex; align-items: center; justify-content: center;
+      padding: 1.5rem; background: rgba(0, 0, 0, 0.72);
+      backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+    }
+    .aor-lightbox[hidden] { display: none; }
+    .aor-lightbox__box {
+      position: relative; max-width: min(92vw, 60rem); max-height: 90vh;
+      display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
+      padding: 0.75rem; border-radius: 12px;
+      background: var(--page-bg, #fff);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+      animation: aor-lightbox-in 160ms ease-out;
+    }
+    .aor-lightbox__box img { display: block; max-width: 100%; max-height: 78vh; height: auto; border-radius: 8px; }
+    .aor-lightbox__caption { margin: 0; font-size: 0.85rem; font-style: italic; opacity: 0.7; text-align: center; }
+    .aor-lightbox__close {
+      position: absolute; top: -0.9rem; right: -0.9rem;
+      display: flex; align-items: center; justify-content: center;
+      width: 2rem; height: 2rem; border: 0; border-radius: 50%; cursor: pointer;
+      background: var(--aor-accent); color: #fff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    }
+    .aor-lightbox__close:hover { background: var(--aor-accent-strong); }
+    @keyframes aor-lightbox-in {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @media (prefers-reduced-motion: reduce) { .aor-lightbox__box { animation: none; } }
+    .aor-thoughts__pagination { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2rem; }
+    .aor-thoughts__pagination a { color: var(--aor-accent); font-weight: 600; text-decoration: none; }
+    .aor-thoughts__pagination a:hover { color: var(--aor-accent-strong); text-decoration: underline; }
+  </style>
+
+  <script>
+    (function () {
+      var box = document.getElementById('thought-lightbox');
+      var img = document.getElementById('thought-lightbox-img');
+      var caption = document.getElementById('thought-lightbox-caption');
+      var closeBtn = document.getElementById('thought-lightbox-close');
+      var lastFocus = null;
+
+      function open(btn) {
+        lastFocus = btn;
+        img.src = btn.getAttribute('data-image');
+        img.alt = btn.getAttribute('data-alt') || '';
+        var text = btn.getAttribute('data-caption') || '';
+        caption.textContent = text;
+        caption.hidden = !text;
+        box.hidden = false;
+        document.body.style.overflow = 'hidden';
+        closeBtn.focus();
+      }
+      function close() {
+        box.hidden = true;
+        img.src = '';
+        document.body.style.overflow = '';
+        if (lastFocus) lastFocus.focus();
+      }
+
+      document.addEventListener('click', function (e) {
+        var btn = e.target.closest('.aor-thought__img-btn');
+        if (btn) { e.preventDefault(); open(btn); return; }
+        if (!box.hidden && (e.target === box || e.target.closest('#thought-lightbox-close'))) close();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !box.hidden) close();
+      });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var PER_PAGE = 20;
+      var items = Array.prototype.map.call(document.querySelectorAll('#thoughts-list .aor-thought'), function (el) {
+        var body = el.querySelector('.aor-thought__body');
+        var text = body.textContent;
+        return { el: el, body: body, text: text, needle: normalize(text) };
+      });
+      var input = document.getElementById('thoughts-search-input');
+      var count = document.getElementById('thoughts-count');
+      var nav = document.getElementById('thoughts-pagination');
+      var matches = items;
+
+      function normalize(value) {
+        return value.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+      }
+
+      function highlight(item, query) {
+        if (!query) { item.body.textContent = item.text; return; }
+        var frag = document.createDocumentFragment();
+        var from = 0;
+        var at = item.needle.indexOf(query);
+        while (at !== -1) {
+          if (at > from) frag.appendChild(document.createTextNode(item.text.slice(from, at)));
+          var mark = document.createElement('mark');
+          mark.textContent = item.text.slice(at, at + query.length);
+          frag.appendChild(mark);
+          from = at + query.length;
+          at = item.needle.indexOf(query, from);
+        }
+        if (from < item.text.length) frag.appendChild(document.createTextNode(item.text.slice(from)));
+        item.body.textContent = '';
+        item.body.appendChild(frag);
+      }
+
+      function search(raw) {
+        var query = normalize(raw.trim());
+        matches = query ? items.filter(function (item) { return item.needle.indexOf(query) !== -1; }) : items;
+        items.forEach(function (item) { highlight(item, query); });
+        if (query) {
+          count.textContent = matches.length + (matches.length === 1 ? ' {{ T "resultOne" }}' : ' {{ T "resultOther" }}') + ' {{ T "resultFor" }} "' + raw.trim() + '"';
+          count.hidden = false;
+        } else {
+          count.hidden = true;
+        }
+        render(1);
+      }
+
+      function render(page) {
+        var start = (page - 1) * PER_PAGE;
+        items.forEach(function (item) { item.el.style.display = 'none'; });
+        matches.slice(start, start + PER_PAGE).forEach(function (item) { item.el.style.display = ''; });
+        nav.innerHTML = '';
+        var totalPages = Math.ceil(matches.length / PER_PAGE);
+        if (totalPages <= 1) return;
+        if (page > 1) nav.appendChild(pageLink('{{ T "prevPage" }}', page - 1));
+        if (page < totalPages) nav.appendChild(pageLink('{{ T "nextPage" }}', page + 1));
+      }
+
+      function pageLink(label, target) {
+        var link = document.createElement('a');
+        link.href = '#';
+        link.textContent = label;
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          render(target);
+          window.scrollTo(0, 0);
+        });
+        return link;
+      }
+
+      input.addEventListener('input', function () { search(input.value); });
+      search(input.value);
+    })();
+  </script>
+{{ end }}

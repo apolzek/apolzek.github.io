@@ -1,92 +1,112 @@
-# GitHub Pages
+# apolzek.github.io
 
-+ Theme: https://github.com/P0WEX/Gesko
-+ Forked: https://github.com/DavideBrie/Gesko
+Blog pessoal de Vinícius Gomes Batista (apolzek), em [Hugo](https://gohugo.io) com o tema
+[Hextra](https://github.com/imfing/hextra), usando o visual e os layouts do
+[blog do Fabio Akita](https://github.com/akitaonrails/akitaonrails.github.io).
 
-## Running locally
+## Rodando localmente
 
-### 1. System build dependencies (Ubuntu / Debian)
-
-`ruby-build` compiles ruby from source, so the OS needs the matching headers
-and toolchain. Without these the build fails with errors like
-`Neither readline nor libedit was found`.
+Precisa de Hugo Extended (0.146+), Go e Ruby.
 
 ```sh
-sudo apt update
-sudo apt install -y autoconf patch build-essential rustc \
-  libssl-dev libyaml-dev libreadline-dev zlib1g-dev libgmp-dev \
-  libncurses-dev libffi-dev libgdbm-dev libdb-dev uuid-dev
+brew install hugo            # macOS
+
+./scripts/generate_index.rb  # gera content/_index.md e content/_index.en.md
+hugo server --renderToMemory -p 1313
 ```
 
-> On Fedora use `dnf groupinstall "Development Tools"` + the equivalent
-> `-devel` packages. On Arch most of these come with `base-devel`.
-
-### 2. Ruby via mise
+Abra <http://localhost:1313>. Pra ver rascunhos (`draft: true`) também:
 
 ```sh
-mise install ruby@3.2.2
-mise use -g ruby@3.2.2
-export PATH="$HOME/.local/share/mise/installs/ruby/3.2.2/bin:$PATH"
+./scripts/generate_index.rb --drafts   # não comite o resultado
+hugo server -D --renderToMemory -p 1313
 ```
 
-### 3. Jekyll + gems
+Com Docker:
 
 ```sh
-gem install bundler jekyll
-bundle install
-bundle update liquid
-bundle exec jekyll serve
+./scripts/dev.sh start        # http://localhost:1313
+./scripts/dev.sh stop
+./scripts/dev.sh new-post "Título"
 ```
 
-The site will be available at <http://127.0.0.1:4000/>.
-
-## Layout
+## Estrutura
 
 ```
-_posts/      # blog posts (YYYY-MM-DD-slug.md)
-_grimoire/   # cheatsheet entries
-_data/       # site data (thoughts.yml, etc.)
-_layouts/    # page templates
-_includes/   # partials
-_sass/       # styles
-assets/      # images, gifs, downloads
-index.html   # home (typing title + subtitle live here)
-thoughts.html
-cheatsheet.html
+content/YYYY/MM/DD/slug/index.md     # post em PT (rascunhos têm draft: true)
+content/YYYY/MM/DD/slug/index.en.md  # tradução em EN, servida em /en/
+content/_index.md, _index.en.md      # home PT/EN, GERADAS por scripts/generate_index.rb
+content/about.md, about.en.md        # Sobre
+content/thoughts*.md                 # Thoughts (dados em data/thoughts.yml; image/alt/caption e text_en opcionais)
+content/moments*.md                  # Moments: grade de fotos com legenda (dados em data/moments.yml)
+content/cheatsheet*.md               # Cheatsheet (dados em data/cheatsheet.yml)
+content/dm/<slug>/index.md           # Direct message: textos ocultos, abertos por código
+data/tag_taxonomy.yml                # tags permitidas, com nome pt e en
+i18n/pt-br.yaml, en.yaml             # textos da interface
+layouts/                           # overrides do Hextra (visual do AkitaOnRails)
+static/assets/img/                 # imagens dos posts
+_grimoire/                         # anotações pessoais, não são publicadas
 ```
 
-## Build stamp
-
-The home page shows the commit it was built from, just above the title. Jekyll
-cannot read git, so `bin/build-stamp.sh` writes `_data/build.yml` (short sha,
-full sha, ISO date and a pre-formatted date string) and the template reads it
-from there. CI runs the script before building; `_data/build.yml` is gitignored.
-
-To see the stamp on a local build, run it first:
+## Escrevendo um post
 
 ```sh
-./bin/build-stamp.sh && bundle exec jekyll serve
+./scripts/dev.sh new-post "Título do post"   # ou crie a pasta à mão
 ```
 
-Without that file the stamp is simply omitted — the page still builds.
-
-## Authoring a post
-
-Create a file in `_posts/` named `YYYY-MM-DD-slug.md` with the front matter:
+Front matter mínimo:
 
 ```yaml
 ---
-layout: post
-title: post title
-# tags: tag1 tag2
-minute: 6
+title: "Título"
+slug: "titulo"
+date: '2026-10-08T12:00:00-03:00'
+draft: false
+description: "TL;DR concreto do post, aparece na home e nos cards."
+tags:
+- kubernetes
 ---
 ```
 
-Conventions used across the blog:
+Para a versão em inglês, crie `index.en.md` na mesma pasta com título, slug e
+descrição traduzidos e as tags na coluna `en` da taxonomia. Sem o `index.en.md`,
+o botão EN daquele post aparece desabilitado.
 
-- Title in lower or sentence case, no trailing punctuation.
-- First paragraph starts with `**saving your time**: *one-line TL;DR*`.
-- Fence every code block with the language (` ```sh `, ` ```yaml `,
-  ` ```mermaid `, etc.) so syntax highlighting works.
-- Keep prose first-person and direct — the blog is a journal, not a manual.
+As tags precisam existir em `data/tag_taxonomy.yml`:
+
+```sh
+./scripts/tag_catalog.rb --search "assunto"   # procura uma tag
+./scripts/tag_catalog.rb --check              # valida todos os posts
+```
+
+Depois de publicar ou despublicar um post, rode `./scripts/generate_index.rb` e
+comite os `_index.md` gerados. Blocos ```mermaid são renderizados pelo Hextra.
+
+## Direct message (textos por código)
+
+Textos em `content/dm/<slug>/index.md` não aparecem na home, na busca, no RSS
+nem no sitemap. A página `/dm/` tem um input: quem digita o `code:` certo é
+levado ao texto. O código fica exposto no HTML da página, de propósito; é uma
+cortina, não um cadeado. Front matter:
+
+```yaml
+---
+title: "Título"
+date: '2026-10-08T12:00:00-03:00'
+draft: false
+description: "Resumo."
+code: "palavra-secreta"
+build:
+  list: local
+sitemap:
+  disable: true
+---
+```
+
+Códigos atuais: `nexus`, `sollicitudo`, `protocolos`, `cncf`. Sem tags, para o
+texto não vazar nas páginas de tag.
+
+## Deploy
+
+GitHub Pages via `.github/workflows/pages.yaml` a cada push na `main`
+(Pages precisa estar configurado como "GitHub Actions" nas settings do repo).

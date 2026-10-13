@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}" dir="{{ .Site.Language.Direction | default `ltr` }}">
+  {{- partial "head.html" . -}}
+  <body>
+    <canvas id="cosmos" aria-hidden="true"></canvas>
+    {{- partial "banner.html" . -}}
+    {{- partial "navbar.html" . -}}
+    {{- block "main" . }}{{ end -}}
+    {{- if or (eq .Site.Params.footer.enable nil) (.Site.Params.footer.enable) }}
+      {{ partial "footer.html" . }}
+    {{ end }}
+    {{ partial "scripts.html" . }}
+    <script src="{{ "js/cosmos.js" | relURL }}"></script>
+  </body>
+</html>

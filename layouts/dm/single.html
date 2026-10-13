@@ -1,0 +1,46 @@
+{{ define "main" }}
+  {{- /* Artigo de Direct message: mesmo visual de um post, sem tags, sem
+         "próximo post" e sem link de TL;DR. O script no fim só deixa a página
+         aberta se o visitante chegou pela página /dm/ com o código certo
+         (marca em sessionStorage); caso contrário, volta pra /dm/. O conteúdo
+         continua no HTML, isso é só uma cortina, não um cadeado. */ -}}
+  {{- $dmHome := cond (eq .Site.Language.Lang "en") "/en/dm/" "/dm/" -}}
+  <div class='hx:mx-auto hx:flex hextra-max-page-width'>
+    {{ partial "sidebar.html" (dict "context" . "disableSidebar" true "displayPlaceholder" true) }}
+    {{ partial "toc.html" . }}
+    <article class="hx:w-full hx:break-words hx:flex hx:min-h-[calc(100vh-var(--navbar-height))] hx:min-w-0 hx:justify-center hx:pb-8 hx:pr-[calc(env(safe-area-inset-right)-1.5rem)]">
+      <main class="hx:w-full hx:min-w-0 hx:max-w-6xl hx:px-6 hx:pt-4 hx:md:px-12">
+        <br class="hx:mt-1.5 hx:text-sm" />
+        {{ if .Title }}<h1 class="hx:text-center hx:mt-2 hx:text-4xl hx:font-bold hx:tracking-tight hx:text-slate-900 hx:dark:text-slate-100">{{ .Title }}</h1>{{ end }}
+        <div class="hx:text-center hx:mt-4 hx:text-sm hx:text-gray-500 hx:dark:text-gray-400">
+          {{- with .Date -}}<em>{{ partial "utils/format-date" . }}</em>{{- end -}}
+          <span class="hx:mx-2">·</span>
+          <a href="{{ $dmHome }}" class="aor-dm__back">Direct message</a>
+        </div>
+        <div class="hx:mb-16"></div>
+        <div class="content">
+          {{ .Content }}
+        </div>
+        <div class="hx:mt-16"></div>
+        <p class="aor-dm__footer"><a href="{{ $dmHome }}">{{ T "dmBack" }}</a></p>
+      </main>
+    </article>
+  </div>
+
+  <style>
+    .aor-dm__back { color: inherit; text-decoration: none; }
+    .aor-dm__back:hover { color: var(--aor-accent); }
+    .aor-dm__footer { max-width: 68ch; margin: 0 auto 3rem; text-align: center; }
+    .aor-dm__footer a { color: var(--aor-accent); font-weight: 600; text-decoration: none; }
+    .aor-dm__footer a:hover { color: var(--aor-accent-strong); text-decoration: underline; }
+  </style>
+
+  <script>
+    (function () {
+      var key = 'dm:' + window.location.pathname;
+      var ok = false;
+      try { ok = !!window.sessionStorage.getItem(key); } catch (err) { ok = true; }
+      if (!ok) window.location.replace({{ $dmHome }});
+    })();
+  </script>
+{{ end }}

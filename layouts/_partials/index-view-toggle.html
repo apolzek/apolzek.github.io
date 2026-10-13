@@ -1,0 +1,109 @@
+{{- $listLabel := .listLabel | default "List" -}}
+{{- $gridLabel := .gridLabel | default "Grid" -}}
+{{- $groupLabel := .groupLabel | default "Post view" -}}
+
+<div class="aor-index-view-toggle" role="group" aria-label="{{ $groupLabel }}">
+  <button type="button" data-index-view-button="list" aria-controls="aor-index-list aor-index-grid" aria-pressed="true" title="{{ $listLabel }}">
+    {{- partial "utils/icon.html" (dict "name" "view-list" "attributes" `height="1em" width="1em" aria-hidden="true"`) -}}
+    <span>{{ $listLabel }}</span>
+  </button>
+  <button type="button" data-index-view-button="grid" aria-controls="aor-index-list aor-index-grid" aria-pressed="false" title="{{ $gridLabel }}">
+    {{- partial "utils/icon.html" (dict "name" "view-grid" "attributes" `height="1em" width="1em" aria-hidden="true"`) -}}
+    <span>{{ $gridLabel }}</span>
+  </button>
+</div>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var key = 'aor-index-view';
+    var view = 'list';
+
+    try {
+      var saved = window.localStorage.getItem(key);
+      if (saved === 'grid' || saved === 'list') view = saved;
+    } catch (error) {
+      view = 'list';
+    }
+
+    root.classList.add('aor-index-enhanced');
+
+    function setView(nextView, persist) {
+      view = nextView === 'grid' ? 'grid' : 'list';
+      root.setAttribute('data-aor-index-view', view);
+
+      var buttons = document.querySelectorAll('[data-index-view-button]');
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].setAttribute('aria-pressed', buttons[i].getAttribute('data-index-view-button') === view ? 'true' : 'false');
+      }
+
+      window.dispatchEvent(new CustomEvent('aor:index-view-change', { detail: { view: view } }));
+
+      if (persist) {
+        try {
+          window.localStorage.setItem(key, view);
+        } catch (error) {
+          // The selected view still works when storage is unavailable.
+        }
+      }
+    }
+
+    setView(view, false);
+
+    var toggle = document.querySelector('.aor-index-view-toggle');
+    if (!toggle) return;
+
+    toggle.addEventListener('click', function (event) {
+      var button = event.target.closest('[data-index-view-button]');
+      if (!button || !toggle.contains(button)) return;
+      setView(button.getAttribute('data-index-view-button'), true);
+    });
+  }());
+</script>
+
+<script>
+  /*
+    In Grid view the chronological List (which owns the date-nav / TOC anchor
+    targets) is display:none, so clicking a month in the right-hand date menu
+    can't scroll to a hidden element. This maps the clicked month to the visible
+    Grid month section (by its heading text) and scrolls there instead. List
+    view keeps its native anchor behavior.
+  */
+  (function () {
+    function ready(fn) {
+      if (document.readyState !== 'loading') { fn(); }
+      else { document.addEventListener('DOMContentLoaded', fn); }
+    }
+    ready(function () {
+      var root = document.documentElement;
+      var toc = document.querySelector('.hextra-toc');
+      var grid = document.getElementById('aor-index-grid');
+      if (!toc || !grid) return;
+
+      function norm(text) { return (text || '').replace(/\s+/g, ' ').trim(); }
+
+      function gridSectionByText(text) {
+        var headings = grid.querySelectorAll('h2');
+        for (var i = 0; i < headings.length; i++) {
+          if (norm(headings[i].textContent) === text) {
+            return headings[i].closest('.aor-index-month') || headings[i];
+          }
+        }
+        return null;
+      }
+
+      toc.addEventListener('click', function (event) {
+        if (root.getAttribute('data-aor-index-view') !== 'grid') return; // List scrolls natively
+        var link = event.target.closest('a[href^="#"]');
+        if (!link || !toc.contains(link)) return;
+        var section = gridSectionByText(norm(link.textContent));
+        if (!section) return;
+        event.preventDefault();
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (window.history && window.history.replaceState) {
+          window.history.replaceState(null, '', link.getAttribute('href'));
+        }
+      });
+    });
+  }());
+</script>

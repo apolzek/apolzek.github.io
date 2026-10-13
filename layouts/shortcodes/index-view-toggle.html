@@ -1,0 +1,5 @@
+{{- partial "index-view-toggle.html" (dict
+  "listLabel" (.Get "list" | default "List")
+  "gridLabel" (.Get "grid" | default "Grid")
+  "groupLabel" (.Get "label" | default "Post view")
+) -}}

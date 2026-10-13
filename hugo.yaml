@@ -1,0 +1,209 @@
+# Hugo configuration file
+# Dev: hugo server --renderToMemory -p 1313
+# Rascunhos (draft: true) só aparecem com: hugo server -D
+#
+# Bilíngue: PT-BR é o idioma canônico (index.md, URLs em /), EN fica em
+# index.en.md ao lado, servido em /en/. O seletor PT | EN fica na navbar.
+
+title: apolzek
+enableEmoji: true
+locale: "pt-BR"
+defaultContentLanguage: "pt-br"
+baseURL: "https://apolzek.github.io/"
+
+languages:
+  pt-br:
+    label: "Português"
+    locale: "pt-BR"
+    weight: 1
+    params:
+      description: "Sistemas em produção, observabilidade e engenharia de confiabilidade. Documentando experiências técnicas e, fora da produção, explorando filosofia e reflexões sobre a vida."
+    menu:
+      main:
+        - name: Tema
+          weight: 0
+          params:
+            type: theme-toggle
+        - name: Sobre
+          pageRef: /about
+          weight: 1
+        - name: Thoughts
+          url: "/thoughts/"
+          weight: 3
+        - name: Moments
+          url: "/moments/"
+          weight: 4
+        - name: Cheatsheet
+          url: "/cheatsheet/"
+          weight: 5
+        - name: Direct message
+          url: "/dm/"
+          weight: 6
+        - name: GitHub ↗
+          url: "https://github.com/apolzek"
+          weight: 7
+          params:
+            icon: github
+        - name: Buscar
+          weight: 8
+          params:
+            type: search
+        - name: RSS
+          weight: 9
+          url: "/index.xml"
+          params:
+            icon: rss
+        - name: Idioma
+          weight: 10
+          params:
+            type: language-switch
+      sidebar:
+        - name: GitHub
+          weight: 1
+          url: "https://github.com/apolzek/apolzek.github.io"
+          params:
+            icon: github
+        - name: Twitter
+          weight: 2
+          url: "https://x.com/apolzek"
+          params:
+            icon: x-twitter
+        - name: Thoughts
+          weight: 3
+          url: "/thoughts/"
+          params:
+            icon: light-bulb
+        - name: Cheatsheet
+          weight: 4
+          url: "/cheatsheet/"
+          params:
+            icon: terminal
+  en:
+    label: "English"
+    locale: "en"
+    weight: 2
+    title: "apolzek"
+    contentDir: "content"
+    params:
+      description: "Production systems, observability and reliability engineering. Documenting technical experiences and, outside production, exploring philosophy and reflections on life."
+    menu:
+      main:
+        - name: Theme
+          weight: 0
+          params:
+            type: theme-toggle
+        - name: About
+          pageRef: /en/about
+          weight: 1
+        - name: Thoughts
+          url: "/en/thoughts/"
+          weight: 3
+        - name: Moments
+          url: "/en/moments/"
+          weight: 4
+        - name: Cheatsheet
+          url: "/en/cheatsheet/"
+          weight: 5
+        - name: Direct message
+          url: "/en/dm/"
+          weight: 6
+        - name: GitHub ↗
+          url: "https://github.com/apolzek"
+          weight: 7
+          params:
+            icon: github
+        - name: Search
+          weight: 8
+          params:
+            type: search
+        - name: RSS
+          weight: 9
+          url: "/en/index.xml"
+          params:
+            icon: rss
+        - name: Language
+          weight: 10
+          params:
+            type: language-switch
+      sidebar:
+        - name: GitHub
+          weight: 1
+          url: "https://github.com/apolzek/apolzek.github.io"
+          params:
+            icon: github
+        - name: Twitter
+          weight: 2
+          url: "https://x.com/apolzek"
+          params:
+            icon: x-twitter
+        - name: Thoughts
+          weight: 3
+          url: "/en/thoughts/"
+          params:
+            icon: light-bulb
+        - name: Cheatsheet
+          weight: 4
+          url: "/en/cheatsheet/"
+          params:
+            icon: terminal
+
+outputs:
+  home: [HTML, RSS, SearchIndex]
+
+outputFormats:
+  SearchIndex:
+    mediaType: application/json
+    baseName: search-index
+    isPlainText: true
+    notAlternative: true
+
+# import hextra as module
+module:
+  imports:
+    - path: github.com/imfing/hextra
+
+markup:
+  # allow raw html
+  goldmark:
+    renderer:
+      unsafe: true
+
+  # enable hextra syntax highlight
+  highlight:
+    noClasses: false
+
+params:
+  # Busca local do Hextra (FlexSearch). O blog é pequeno, então o índice
+  # cabe no cliente sem problema.
+  search:
+    enable: true
+    type: flexsearch
+    flexsearch:
+      index: content
+      tokenize: forward
+
+  navbar:
+    displayTitle: true
+    displayLogo: false
+
+  footer:
+    displayCopyright: true
+    displayPoweredBy: true
+
+  editURL:
+    enable: false
+    base: "https://github.com/apolzek/apolzek.github.io/edit/main/content"
+
+  youtubeDefaults:
+    iframeAllowList: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy: "no-referrer"
+    iframeStyle: "border:0; width:100%; aspect-ratio:16/9;"
+
+  theme:
+    default: dark
+
+  author:
+    name: Vinícius Gomes Batista (apolzek)
+    email: viniciusgomes955@gmail.com
+
+  description: "Sistemas em produção, observabilidade e engenharia de confiabilidade. Documentando experiências técnicas e, fora da produção, explorando filosofia e reflexões sobre a vida."
