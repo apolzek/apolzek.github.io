@@ -91,12 +91,16 @@
   date: "2026-09-01"
 - text: 'Lógica, Matemática, Língua Portuguesa, Língua Inglesa, Latim, Filosofia, História, Ciências Naturais, Computação, Economia, Teoria da Informação, Método Científico, Teoria da Comunicação, Técnicas de Aprendizado'
   date: "2026-09-01"
-- text: 'Eu sei a importância dos protocolos e o valor que eles têm, mas detesto pessoas que os seguem cegamente.'
+- text: 'Protocolos existem para proteger um objetivo. Quem os segue cegamente acaba protegendo o protocolo e esquecendo o objetivo'
   date: "2026-09-08"
 - text: 'É comum nos perdermos na escuridão. Sabendo disso, esteja sempre pronto para resgatar aquele que está próximo de você e se perdeu pelo caminho. Estenda a mão, traga-o para cima e não o deixe para trás. Como já dizia o ditado: “Go back to the wagon.” Confie em Deus, porque ninguém precisa atravessar a escuridão sozinho.'
   date: "2026-09-08"
 - text: '"O teu talento acaba quando não tem luz. Ele depende da energia elétrica. Você é um merda." — Diogo Defante'
   date: "2026-10-09"
+- text: '"Se você lesse seus próprios prompts como se fossem de um estranho, que tipo de pessoa encontraria ali ?'
+  date: "2026-17-09"
+- text: 'Seus prompts dizem mais sobre você do que você imagina. Leia-os como um estranho e veja quem aparece'
+  date: "2026-17-09"
 - text: "Comprei OpenTelemetry Certified Associate (OTCA)"
   text_en: "Bought the OpenTelemetry Certified Associate (OTCA)"
   date: "2026-10-09"
