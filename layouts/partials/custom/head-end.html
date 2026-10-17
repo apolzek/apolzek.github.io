@@ -134,10 +134,50 @@
     margin: 0.5rem 0 1rem;
   }
 
-  @media (max-width: 47.99rem) {
+  /* Navbar responsiva em camadas. O menu tem muitos itens; entre o
+     breakpoint do hambúrguer (48rem) e ~76rem nada cabe na largura total,
+     então encurtamos o nome, estreitamos a busca e escondemos os ícones
+     secundários antes que o flex esmague a busca. */
+  .hextra-nav-container nav > a:first-child {
+    flex-shrink: 0;
+  }
+  .hextra-nav-container .hextra-search-wrapper {
+    flex-shrink: 0;
+  }
+  /* Nome completo só quando sobra espaço: desktop largo ou mobile (onde o
+     hambúrguer já escondeu os links). */
+  @media (min-width: 48rem) and (max-width: 76rem), (max-width: 35rem) {
+    .aor-brand__full {
+      display: none;
+    }
+  }
+  @media (max-width: 76rem) {
+    .hextra-nav-container .hextra-search-wrapper {
+      width: 10rem;
+    }
+    .hextra-nav-container .hextra-search-wrapper kbd {
+      display: none;
+    }
+  }
+  @media (max-width: 64rem) {
     .hextra-nav-container nav > a[title="GitHub ↗"],
     .hextra-nav-container nav > a[title="RSS"] {
       display: none;
+    }
+    .hextra-nav-container .hextra-search-wrapper {
+      width: 8rem;
+    }
+    .lang-auto-toggle__text {
+      display: none;
+    }
+  }
+  @media (max-width: 56rem) {
+    .hextra-nav-container nav {
+      gap: 0.25rem;
+      padding-inline: 1rem;
+    }
+    .hextra-nav-container .hextra-search-wrapper {
+      width: 7rem;
     }
   }
   @media (max-width: 23.75rem) {
