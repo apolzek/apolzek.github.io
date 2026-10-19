@@ -96,11 +96,11 @@ new_post() {
     cat > "$post_dir/index.md" << EOF
 ---
 title: "$title"
-date: $(date +%Y-%m-%dT%H:%M:%S%z)
-draft: false
+slug: "$slug"
+date: '$(TZ=America/Sao_Paulo date +%Y-%m-%dT%H:%M:%S-03:00)'
+draft: true
 description: "Descrição do post aqui"
 tags: []
-categories: []
 ---
 
 Conteúdo do post aqui...
