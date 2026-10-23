@@ -1,12 +1,12 @@
 - image: /assets/img/goku-training.jpeg
   alt: "Goku treinando"
-  caption: "Treino de sábado. Teste de legenda no Moments."
-  caption_en: "Saturday training. Caption test for Moments."
+  caption: "Goku Workout Routine."
+  caption_en: "Goku Workout Routine."
   date: "2026-10-09"
 - image: /assets/img/Aquiles.jpeg
   alt: "Aquiles"
-  caption: "Aquiles, pra lembrar do calcanhar."
-  caption_en: "Achilles, to remember the heel."
+  caption: "por isso seu nome nunca será lembrado"
+  caption_en: "that's why your name will never be remembered"
   date: "2026-10-08"
 - image: /assets/img/leonardo.jpg
   alt: "Leonardo da Vinci"
@@ -23,13 +23,8 @@
   caption: "Júlio, curiosidade genuína."
   caption_en: "Júlio, genuine curiosity."
   date: "2026-10-04"
-- image: /assets/img/comp-nutricional.jpeg
-  alt: "Composição nutricional"
-  caption: "Composição nutricional de hoje."
-  caption_en: "Today's nutrition breakdown."
-  date: "2026-10-03"
 - image: /assets/img/dns.png
   alt: "DNS"
-  caption: "É sempre DNS."
-  caption_en: "DNS."
+  caption: "Seu DNS esta seguro"
+  caption_en: "Is your DNS secure"
   date: "2026-10-01"
