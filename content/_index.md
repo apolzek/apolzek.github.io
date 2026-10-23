@@ -10,7 +10,6 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
 ## 2026 - Outubro
 
 - <a class="aor-index-list__main-link" href="/2026/10/12/dialogo-sobre-o-mentor-e-a-confianca/" title="Diálogo socrático: Glauco descobre que dois homens que admira se desprezam, e Sócrates o leva a examinar a necessidade de ter um mentor, o perigo de confiar demais e o dever de formar o próprio juízo, sabendo que até o mestre erra.">Diálogo sobre o Mentor e a Confiança</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/filosofia/">#filosofia</a><a class="aor-tag-link" href="/tags/dialogos/">#dialogos</a></span>
-- <a class="aor-index-list__main-link" href="/2026/10/09/vontade-excelencia-e-cardiologia/" title="Sobre heróis nacionais, a admiração pela cardiologia e pela vontade de Enéas Carneiro, e o dia em que essa admiração virou veneração: o nascimento da Luna, com uma cardiopatia congênita grave, e a equipe que salvou a vida dela.">Vontade, excelência e cardiologia</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/pessoal/">#pessoal</a><a class="aor-tag-link" href="/tags/saude/">#saude</a></span>
 
 ## 2026 - Setembro
 
@@ -48,7 +47,7 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
 <section class="aor-index-month" aria-labelledby="aor-grid-2026-10">
   <div class="aor-index-month__header">
     <h2 id="aor-grid-2026-10">2026 - Outubro</h2>
-    <span>2 posts</span>
+    <span>1 post</span>
   </div>
   <div class="aor-post-grid">
 <article class="aor-post-card" title="Diálogo socrático: Glauco descobre que dois homens que admira se desprezam, e Sócrates o leva a examinar a necessidade de ter um mentor, o perigo de confiar demais e o dever de formar o próprio juízo, sabendo que até o mestre erra.">
@@ -56,12 +55,6 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
   <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/10/12/dialogo-sobre-o-mentor-e-a-confianca/">Diálogo sobre o Mentor e a Confiança</a></h3>
   <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/tags/filosofia/">#filosofia</a><a class="aor-tag-link" href="/tags/dialogos/">#dialogos</a></span>
   <p class="aor-post-card__description">Diálogo socrático: Glauco descobre que dois homens que admira se desprezam, e Sócrates o leva a examinar a necessidade de ter um mentor, o perigo de confiar demais e o dever de formar o próprio juízo, sabendo que até o mestre erra.</p>
-</article>
-<article class="aor-post-card" title="Sobre heróis nacionais, a admiração pela cardiologia e pela vontade de Enéas Carneiro, e o dia em que essa admiração virou veneração: o nascimento da Luna, com uma cardiopatia congênita grave, e a equipe que salvou a vida dela.">
-  <time class="aor-post-card__date" datetime="2026-10-09">09/10/2026</time>
-  <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/10/09/vontade-excelencia-e-cardiologia/">Vontade, excelência e cardiologia</a></h3>
-  <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/tags/pessoal/">#pessoal</a><a class="aor-tag-link" href="/tags/saude/">#saude</a></span>
-  <p class="aor-post-card__description">Sobre heróis nacionais, a admiração pela cardiologia e pela vontade de Enéas Carneiro, e o dia em que essa admiração virou veneração: o nascimento da Luna, com uma cardiopatia congênita grave, e a equipe que salvou a vida dela.</p>
 </article>
   </div>
 </section>

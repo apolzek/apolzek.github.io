@@ -2,7 +2,7 @@
 title: "Vontade, excelência e cardiologia"
 slug: "vontade-excelencia-e-cardiologia"
 date: '2026-10-09T00:00:00-03:00'
-draft: false
+draft: true
 description: "Sobre heróis nacionais, a admiração pela cardiologia e pela vontade de Enéas Carneiro, e o dia em que essa admiração virou veneração: o nascimento da Luna, com uma cardiopatia congênita grave, e a equipe que salvou a vida dela."
 tags:
 - pessoal

@@ -2,7 +2,7 @@
 title: "Will, Excellence and Cardiology"
 slug: "will-excellence-and-cardiology"
 date: '2026-10-09T00:00:00-03:00'
-draft: false
+draft: true
 description: "On national heroes, the admiration for cardiology and for the will of Enéas Carneiro, and the day that admiration became veneration: the birth of Luna, with a severe congenital heart disease, and the team that saved her life."
 tags:
 - personal
