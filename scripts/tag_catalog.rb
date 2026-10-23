@@ -171,6 +171,11 @@ def check_catalog
     draft = frontmatter['draft'] == true
     failures << "#{path}: draft in content/posts/, move it to content/writing/" if draft && path.start_with?('content/posts/')
     failures << "#{path}: not a draft in content/writing/, move it to content/posts/" if !draft && path.start_with?('content/writing/')
+    if path.start_with?('content/posts/')
+      folder = File.basename(File.dirname(path))
+      day = DateTime.parse(frontmatter['date'].to_s).strftime('%Y-%m-%d') rescue nil
+      failures << "#{path}: folder must be named #{day || 'YYYY-MM-DD'}-<slug> to match its date" unless day && folder.start_with?("#{day}-")
+    end
     next unless published?(frontmatter)
 
     language = path.end_with?('.en.md') ? 'en' : 'pt'

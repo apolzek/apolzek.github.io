@@ -33,8 +33,8 @@ Com Docker:
 ## Estrutura
 
 ```
-content/posts/<slug>/index.md        # post publicado em PT, URL /AAAA/MM/DD/<slug>/
-content/posts/<slug>/index.en.md     # tradução em EN, URL /en/AAAA/MM/DD/<slug-en>/
+content/posts/AAAA-MM-DD-<slug>/     # post publicado: index.md (PT, URL /AAAA/MM/DD/<slug>/)
+                                     # e index.en.md (EN, URL /en/AAAA/MM/DD/<slug-en>/)
 content/writing/<slug>/              # rascunhos (draft: true), em escrita
 content/_index.md, _index.en.md      # home PT/EN, GERADAS por scripts/generate_index.rb
 content/about.md, about.en.md        # Sobre
@@ -55,11 +55,14 @@ _grimoire/                         # anotações pessoais, não são publicadas
 ./scripts/dev.sh new-post "Título do post"   # cria content/writing/<slug>/index.md e index.en.md
 ```
 
-Pra publicar: `draft: false` nos dois arquivos e mova a pasta de `content/writing/` para
-`content/posts/`. A pasta não tem data: a URL (`/AAAA/MM/DD/slug/`) sai do `date` e do `slug` do front matter
-(`permalinks` no `hugo.yaml`). Mudar a data muda a URL; renomear a pasta não muda nada.
-Todo post publicado precisa do par PT + EN publicado (`tag_catalog.rb --check` falha se faltar um, e também se houver rascunho em `posts/` ou
-post publicado em `writing/`).
+Pra publicar: `draft: false` nos dois arquivos e mova a pasta de `content/writing/<slug>/` para
+`content/posts/AAAA-MM-DD-<slug>/`, com a data do `date`. Assim `content/posts/` fica em ordem de
+publicação. A URL (`/AAAA/MM/DD/slug/`) sai do `date` e do `slug` do front matter (`permalinks` no
+`hugo.yaml`), não do nome da pasta: mudar a data muda a URL (renomeie a pasta junto).
+
+`tag_catalog.rb --check` (roda no deploy) falha se um post publicado não tiver o par PT + EN, se
+houver rascunho em `posts/` ou post publicado em `writing/`, ou se a pasta em `posts/` não começar
+com a data do post.
 
 Front matter mínimo:
 

@@ -2,7 +2,7 @@
 # frozen_string_literal: true
 
 # Gera a home nos dois idiomas, com todos os posts, a partir de
-# content/posts/<pasta>/index.md (PT) e index.en.md (EN); com --drafts, também
+# content/posts/AAAA-MM-DD-<slug>/index.md (PT) e index.en.md (EN); com --drafts, também
 # content/writing/. A URL vem do front matter (date + slug), igual ao permalink
 # do hugo.yaml:
 #
@@ -82,7 +82,7 @@ def parse_post(path, lang:, include_drafts: false)
 
   date = DateTime.parse(frontmatter['date'].to_s)
   slug = frontmatter['slug'].to_s
-  slug = File.basename(File.dirname(path)) if slug.empty?
+  slug = File.basename(File.dirname(path)).sub(/\A\d{4}-\d{2}-\d{2}-/, '') if slug.empty?
   url = frontmatter['url'] ? frontmatter['url'].to_s : "#{L[lang][:prefix]}/#{date.strftime('%Y/%m/%d')}/#{slug}/"
 
   tags = Array(frontmatter['tags']).map(&:to_s)
