@@ -14,8 +14,8 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
 
 ## 2026 - Setembro
 
-- <a class="aor-index-list__main-link" href="/2026/09/01/dialogo-sobre-a-nova-ferramenta/" title="Diálogo socrático num bar depois do expediente: Glauco chega empolgado com uma ferramenta nova e Sócrates pergunta o que ela resolve de verdade.">Diálogo sobre a Nova Ferramenta</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/filosofia/">#filosofia</a><a class="aor-tag-link" href="/tags/dialogos/">#dialogos</a><a class="aor-tag-link" href="/tags/tecnologia/">#tecnologia</a></span>
 - <a class="aor-index-list__main-link" href="/2026/09/01/repository-checklist/" title="Um checklist do que um repositório bem mantido deveria entregar: os arquivos, a automação e as convenções que tornam um repo fácil de confiar e de contribuir.">Checklist de repositório</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/engenharia-de-software/">#engenharia-de-software</a><a class="aor-tag-link" href="/tags/git/">#git</a><a class="aor-tag-link" href="/tags/open-source/">#open-source</a></span>
+- <a class="aor-index-list__main-link" href="/2026/09/01/dialogo-sobre-a-nova-ferramenta/" title="Diálogo socrático num bar depois do expediente: Glauco chega empolgado com uma ferramenta nova e Sócrates pergunta o que ela resolve de verdade.">Diálogo sobre a Nova Ferramenta</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/filosofia/">#filosofia</a><a class="aor-tag-link" href="/tags/dialogos/">#dialogos</a><a class="aor-tag-link" href="/tags/tecnologia/">#tecnologia</a></span>
 - <a class="aor-index-list__main-link" href="/2026/09/01/data-and-ml-stack-tools/" title="Uma tabela por categoria das ferramentas do stack de dados e ML: para que serve cada tecnologia e onde ela se encaixa numa plataforma de dados moderna, com três arquiteturas de referência.">Ferramentas do stack de dados e ML por categoria</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/data-engineering/">#data-engineering</a><a class="aor-tag-link" href="/tags/machine-learning/">#machine-learning</a></span>
 
 ## 2026 - Agosto
@@ -71,17 +71,17 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
     <span>3 posts</span>
   </div>
   <div class="aor-post-grid">
-<article class="aor-post-card" title="Diálogo socrático num bar depois do expediente: Glauco chega empolgado com uma ferramenta nova e Sócrates pergunta o que ela resolve de verdade.">
-  <time class="aor-post-card__date" datetime="2026-09-01">01/09/2026</time>
-  <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/09/01/dialogo-sobre-a-nova-ferramenta/">Diálogo sobre a Nova Ferramenta</a></h3>
-  <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/tags/filosofia/">#filosofia</a><a class="aor-tag-link" href="/tags/dialogos/">#dialogos</a><a class="aor-tag-link" href="/tags/tecnologia/">#tecnologia</a></span>
-  <p class="aor-post-card__description">Diálogo socrático num bar depois do expediente: Glauco chega empolgado com uma ferramenta nova e Sócrates pergunta o que ela resolve de verdade.</p>
-</article>
 <article class="aor-post-card" title="Um checklist do que um repositório bem mantido deveria entregar: os arquivos, a automação e as convenções que tornam um repo fácil de confiar e de contribuir.">
   <time class="aor-post-card__date" datetime="2026-09-01">01/09/2026</time>
   <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/09/01/repository-checklist/">Checklist de repositório</a></h3>
   <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/tags/engenharia-de-software/">#engenharia-de-software</a><a class="aor-tag-link" href="/tags/git/">#git</a><a class="aor-tag-link" href="/tags/open-source/">#open-source</a></span>
   <p class="aor-post-card__description">Um checklist do que um repositório bem mantido deveria entregar: os arquivos, a automação e as convenções que tornam um repo fácil de confiar e de contribuir.</p>
+</article>
+<article class="aor-post-card" title="Diálogo socrático num bar depois do expediente: Glauco chega empolgado com uma ferramenta nova e Sócrates pergunta o que ela resolve de verdade.">
+  <time class="aor-post-card__date" datetime="2026-09-01">01/09/2026</time>
+  <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/09/01/dialogo-sobre-a-nova-ferramenta/">Diálogo sobre a Nova Ferramenta</a></h3>
+  <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/tags/filosofia/">#filosofia</a><a class="aor-tag-link" href="/tags/dialogos/">#dialogos</a><a class="aor-tag-link" href="/tags/tecnologia/">#tecnologia</a></span>
+  <p class="aor-post-card__description">Diálogo socrático num bar depois do expediente: Glauco chega empolgado com uma ferramenta nova e Sócrates pergunta o que ela resolve de verdade.</p>
 </article>
 <article class="aor-post-card" title="Uma tabela por categoria das ferramentas do stack de dados e ML: para que serve cada tecnologia e onde ela se encaixa numa plataforma de dados moderna, com três arquiteturas de referência.">
   <time class="aor-post-card__date" datetime="2026-09-01">01/09/2026</time>

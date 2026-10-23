@@ -81,23 +81,29 @@ new_post() {
     fi
 
     local title="$1"
-    local date_path
     local slug
     local post_dir
 
-    date_path=$(date +%Y/%m/%d)
     slug=$(slugify "$title")
-    post_dir="content/${date_path}/${slug}"
+    post_dir="content/writing/${slug}"
 
     print_message "Criando post: $post_dir"
 
+    if [ -e "$post_dir" ]; then
+        print_error "Já existe: $post_dir"
+        exit 1
+    fi
+
     mkdir -p "$post_dir"
+
+    local date
+    date=$(TZ=America/Sao_Paulo date +%Y-%m-%dT%H:%M:%S-03:00)
 
     cat > "$post_dir/index.md" << EOF
 ---
 title: "$title"
 slug: "$slug"
-date: '$(TZ=America/Sao_Paulo date +%Y-%m-%dT%H:%M:%S-03:00)'
+date: '$date'
 draft: true
 description: "Descrição do post aqui"
 tags: []
@@ -107,7 +113,21 @@ Conteúdo do post aqui...
 
 EOF
 
-    print_message "Post criado em: $post_dir/index.md"
+    cat > "$post_dir/index.en.md" << EOF
+---
+title: "TODO: English title"
+slug: "$slug"
+date: '$date'
+draft: true
+description: "TODO: English description"
+tags: []
+---
+
+TODO: English translation...
+
+EOF
+
+    print_message "Post criado em: $post_dir/index.md (PT) e $post_dir/index.en.md (EN)"
 }
 
 show_help() {

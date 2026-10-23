@@ -7,7 +7,7 @@ require 'optparse'
 require 'yaml'
 
 TAXONOMY_PATH = 'data/tag_taxonomy.yml'
-CONTENT_GLOB = 'content/[0-9][0-9][0-9][0-9]/[0-9][0-9]/[0-9][0-9]/*/index{,.en}.md'
+CONTENT_GLOB = 'content/{posts,writing}/*/index{,.en}.md'
 
 OPTIONS = {
   check: false,
@@ -20,7 +20,7 @@ def parse_options
   OptionParser.new do |parser|
     parser.banner = 'Usage: scripts/tag_catalog.rb [options]'
     parser.on('--search QUERY', 'Find canonical tags by name, alias, or meaning') { |value| options[:search] = value }
-    parser.on('--check', 'Validate all published PT and EN post tags') { options[:check] = true }
+    parser.on('--check', 'Validate tags and PT/EN pairs of all published posts') { options[:check] = true }
     parser.on('--write PATH', 'Write the full Markdown catalog to PATH') { |value| options[:write] = value }
   end.parse!
   options
@@ -168,6 +168,9 @@ def check_catalog
 
   Dir.glob(CONTENT_GLOB).sort.each do |path|
     frontmatter = parse_frontmatter(path)
+    draft = frontmatter['draft'] == true
+    failures << "#{path}: draft in content/posts/, move it to content/writing/" if draft && path.start_with?('content/posts/')
+    failures << "#{path}: not a draft in content/writing/, move it to content/posts/" if !draft && path.start_with?('content/writing/')
     next unless published?(frontmatter)
 
     language = path.end_with?('.en.md') ? 'en' : 'pt'
@@ -185,11 +188,21 @@ def check_catalog
     published[path] = tags
   end
 
+  published.each_key do |path|
+    next unless path.end_with?('.en.md')
+
+    pt_path = path.sub(/index\.en\.md\z/, 'index.md')
+    failures << "#{path}: published without a published PT original (#{pt_path})" unless published.key?(pt_path)
+  end
+
   published.each do |path, pt_tags|
     next if path.end_with?('.en.md')
 
     en_path = path.sub(/index\.md\z/, 'index.en.md')
-    next unless published.key?(en_path)
+    unless published.key?(en_path)
+      failures << "#{path}: published without a published EN translation (#{en_path})"
+      next
+    end
 
     pt_ids = pt_tags.map { |tag| maps['pt'][tag] }
     en_ids = published.fetch(en_path).map { |tag| maps['en'][tag] }

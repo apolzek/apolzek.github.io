@@ -2,7 +2,9 @@
 # frozen_string_literal: true
 
 # Gera a home nos dois idiomas, com todos os posts, a partir de
-# content/YYYY/MM/DD/slug/index.md (PT) e index.en.md (EN):
+# content/posts/<pasta>/index.md (PT) e index.en.md (EN); com --drafts, também
+# content/writing/. A URL vem do front matter (date + slug), igual ao permalink
+# do hugo.yaml:
 #
 #   content/_index.md            content/_index.en.md
 #
@@ -79,14 +81,9 @@ def parse_post(path, lang:, include_drafts: false)
   return nil if frontmatter['draft'] == true && !include_drafts
 
   date = DateTime.parse(frontmatter['date'].to_s)
-  dir = path.sub(%r{/index(\.en)?\.md\z}, '').delete_prefix("#{CONTENT_DIR}/")
-  url_dir = dir
-  if frontmatter['slug'] && !frontmatter['slug'].to_s.empty?
-    parts = url_dir.split('/')
-    parts[-1] = frontmatter['slug'].to_s
-    url_dir = parts.join('/')
-  end
-  url = frontmatter['url'] ? frontmatter['url'].to_s : "#{L[lang][:prefix]}/#{url_dir}/"
+  slug = frontmatter['slug'].to_s
+  slug = File.basename(File.dirname(path)) if slug.empty?
+  url = frontmatter['url'] ? frontmatter['url'].to_s : "#{L[lang][:prefix]}/#{date.strftime('%Y/%m/%d')}/#{slug}/"
 
   tags = Array(frontmatter['tags']).map(&:to_s)
   unknown_tags = tags - ALLOWED_TAGS.fetch(lang)
@@ -98,7 +95,6 @@ def parse_post(path, lang:, include_drafts: false)
     title: frontmatter['title'],
     description: frontmatter['description'].to_s,
     url: url,
-    dir: dir,
     date: date,
     tags: tags
   }
@@ -110,7 +106,7 @@ end
 def collect_posts(lang, include_future: false, include_drafts: false)
   now = DateTime.now
   file = lang == :en ? 'index.en.md' : 'index.md'
-  Dir.glob("#{CONTENT_DIR}/[0-9][0-9][0-9][0-9]/*/*/*/#{file}")
+  Dir.glob("#{CONTENT_DIR}/{posts,writing}/*/#{file}")
      .map { |path| parse_post(path, lang: lang, include_drafts: include_drafts) }
      .compact
      .select { |post| include_future || post[:date] <= now }
@@ -118,7 +114,7 @@ end
 
 def group_by_month(posts)
   posts
-    .sort_by { |post| post[:date] }
+    .sort_by { |post| [post[:date], post[:url]] }
     .reverse
     .group_by { |post| [post[:date].year, post[:date].month] }
 end

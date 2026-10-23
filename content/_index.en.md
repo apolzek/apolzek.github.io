@@ -14,8 +14,8 @@ _Production systems, observability and reliability engineering. Documenting tech
 
 ## 2026 - September
 
-- <a class="aor-index-list__main-link" href="/en/2026/09/01/dialogue-on-the-new-tool/" title="A Socratic dialogue at a bar after work: Glaucon shows up excited about a new tool and Socrates asks what it actually solves.">Dialogue on the New Tool</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/en/tags/philosophy/">#philosophy</a><a class="aor-tag-link" href="/en/tags/dialogues/">#dialogues</a><a class="aor-tag-link" href="/en/tags/technology/">#technology</a></span>
 - <a class="aor-index-list__main-link" href="/en/2026/09/01/repository-checklist/" title="A checklist for what a well-maintained repository should ship: the files, automation and conventions that make a repo easy to trust and contribute to.">Repository Checklist</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/en/tags/software-engineering/">#software-engineering</a><a class="aor-tag-link" href="/en/tags/git/">#git</a><a class="aor-tag-link" href="/en/tags/open-source/">#open-source</a></span>
+- <a class="aor-index-list__main-link" href="/en/2026/09/01/dialogue-on-the-new-tool/" title="A Socratic dialogue at a bar after work: Glaucon shows up excited about a new tool and Socrates asks what it actually solves.">Dialogue on the New Tool</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/en/tags/philosophy/">#philosophy</a><a class="aor-tag-link" href="/en/tags/dialogues/">#dialogues</a><a class="aor-tag-link" href="/en/tags/technology/">#technology</a></span>
 - <a class="aor-index-list__main-link" href="/en/2026/09/01/data-and-ml-stack-tools/" title="A categorized table of data and ML stack tools: what each technology is for and where it fits in a modern data platform, with three reference architectures.">Data and ML Stack Tools by Category</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/en/tags/data-engineering/">#data-engineering</a><a class="aor-tag-link" href="/en/tags/machine-learning/">#machine-learning</a></span>
 
 ## 2026 - August
@@ -71,17 +71,17 @@ _Production systems, observability and reliability engineering. Documenting tech
     <span>3 posts</span>
   </div>
   <div class="aor-post-grid">
-<article class="aor-post-card" title="A Socratic dialogue at a bar after work: Glaucon shows up excited about a new tool and Socrates asks what it actually solves.">
-  <time class="aor-post-card__date" datetime="2026-09-01">Sep 1, 2026</time>
-  <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/en/2026/09/01/dialogue-on-the-new-tool/">Dialogue on the New Tool</a></h3>
-  <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/en/tags/philosophy/">#philosophy</a><a class="aor-tag-link" href="/en/tags/dialogues/">#dialogues</a><a class="aor-tag-link" href="/en/tags/technology/">#technology</a></span>
-  <p class="aor-post-card__description">A Socratic dialogue at a bar after work: Glaucon shows up excited about a new tool and Socrates asks what it actually solves.</p>
-</article>
 <article class="aor-post-card" title="A checklist for what a well-maintained repository should ship: the files, automation and conventions that make a repo easy to trust and contribute to.">
   <time class="aor-post-card__date" datetime="2026-09-01">Sep 1, 2026</time>
   <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/en/2026/09/01/repository-checklist/">Repository Checklist</a></h3>
   <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/en/tags/software-engineering/">#software-engineering</a><a class="aor-tag-link" href="/en/tags/git/">#git</a><a class="aor-tag-link" href="/en/tags/open-source/">#open-source</a></span>
   <p class="aor-post-card__description">A checklist for what a well-maintained repository should ship: the files, automation and conventions that make a repo easy to trust and contribute to.</p>
+</article>
+<article class="aor-post-card" title="A Socratic dialogue at a bar after work: Glaucon shows up excited about a new tool and Socrates asks what it actually solves.">
+  <time class="aor-post-card__date" datetime="2026-09-01">Sep 1, 2026</time>
+  <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/en/2026/09/01/dialogue-on-the-new-tool/">Dialogue on the New Tool</a></h3>
+  <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/en/tags/philosophy/">#philosophy</a><a class="aor-tag-link" href="/en/tags/dialogues/">#dialogues</a><a class="aor-tag-link" href="/en/tags/technology/">#technology</a></span>
+  <p class="aor-post-card__description">A Socratic dialogue at a bar after work: Glaucon shows up excited about a new tool and Socrates asks what it actually solves.</p>
 </article>
 <article class="aor-post-card" title="A categorized table of data and ML stack tools: what each technology is for and where it fits in a modern data platform, with three reference architectures.">
   <time class="aor-post-card__date" datetime="2026-09-01">Sep 1, 2026</time>

@@ -147,6 +147,11 @@ languages:
           params:
             icon: terminal
 
+permalinks:
+  page:
+    posts: /:year/:month/:day/:slug/
+    writing: /:year/:month/:day/:slug/
+
 outputs:
   home: [HTML, RSS, SearchIndex]
 
