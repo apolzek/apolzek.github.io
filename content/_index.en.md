@@ -39,7 +39,7 @@ _Production systems, observability and reliability engineering. Documenting tech
 ## 2026 - April
 
 - <a class="aor-index-list__main-link" href="/en/2026/04/11/dialogue-on-labels-and-truth/" title="A Socratic dialogue: Socrates finds Glaucon annoyed at a tablet full of inscriptions, and the conversation turns into an inquiry about labels, judgments and what truth is.">Dialogue on Labels and Truth</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/en/tags/philosophy/">#philosophy</a><a class="aor-tag-link" href="/en/tags/dialogues/">#dialogues</a></span>
-- <a class="aor-index-list__main-link" href="/en/2026/04/04/apolzek/" title="Blog reset, May 18, 2026.">starting here</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/en/tags/blog/">#blog</a></span>
+- <a class="aor-index-list__main-link" href="/en/2026/04/04/apolzek/" title="">Getting Started</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/en/tags/blog/">#blog</a></span>
 
 {{% /index-list %}}
 
@@ -170,11 +170,11 @@ _Production systems, observability and reliability engineering. Documenting tech
   <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/en/tags/philosophy/">#philosophy</a><a class="aor-tag-link" href="/en/tags/dialogues/">#dialogues</a></span>
   <p class="aor-post-card__description">A Socratic dialogue: Socrates finds Glaucon annoyed at a tablet full of inscriptions, and the conversation turns into an inquiry about labels, judgments and what truth is.</p>
 </article>
-<article class="aor-post-card" title="Blog reset, May 18, 2026.">
+<article class="aor-post-card" title="">
   <time class="aor-post-card__date" datetime="2026-04-04">Apr 4, 2026</time>
-  <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/en/2026/04/04/apolzek/">starting here</a></h3>
+  <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/en/2026/04/04/apolzek/">Getting Started</a></h3>
   <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/en/tags/blog/">#blog</a></span>
-  <p class="aor-post-card__description">Blog reset, May 18, 2026.</p>
+  <p class="aor-post-card__description"></p>
 </article>
   </div>
 </section>

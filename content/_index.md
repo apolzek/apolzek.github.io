@@ -39,7 +39,7 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
 ## 2026 - Abril
 
 - <a class="aor-index-list__main-link" href="/2026/04/11/dialogo-sobre-rotulos-e-verdade/" title="Diálogo socrático: Sócrates encontra Glauco irritado com uma tábua cheia de inscrições, e a conversa vira uma investigação sobre rótulos, julgamentos e o que é a verdade.">Diálogo sobre os Rótulos e a Verdade</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/filosofia/">#filosofia</a><a class="aor-tag-link" href="/tags/dialogos/">#dialogos</a></span>
-- <a class="aor-index-list__main-link" href="/2026/04/04/apolzek/" title="Reset do blog, 18 de maio de 2026.">começando por aqui</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/blog/">#blog</a></span>
+- <a class="aor-index-list__main-link" href="/2026/04/04/apolzek/" title="">Começando</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/blog/">#blog</a></span>
 
 {{% /index-list %}}
 
@@ -170,11 +170,11 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
   <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/tags/filosofia/">#filosofia</a><a class="aor-tag-link" href="/tags/dialogos/">#dialogos</a></span>
   <p class="aor-post-card__description">Diálogo socrático: Sócrates encontra Glauco irritado com uma tábua cheia de inscrições, e a conversa vira uma investigação sobre rótulos, julgamentos e o que é a verdade.</p>
 </article>
-<article class="aor-post-card" title="Reset do blog, 18 de maio de 2026.">
+<article class="aor-post-card" title="">
   <time class="aor-post-card__date" datetime="2026-04-04">04/04/2026</time>
-  <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/04/04/apolzek/">começando por aqui</a></h3>
+  <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/04/04/apolzek/">Começando</a></h3>
   <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/tags/blog/">#blog</a></span>
-  <p class="aor-post-card__description">Reset do blog, 18 de maio de 2026.</p>
+  <p class="aor-post-card__description"></p>
 </article>
   </div>
 </section>
