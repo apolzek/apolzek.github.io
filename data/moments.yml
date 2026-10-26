@@ -1,12 +1,12 @@
 - image: /assets/img/goku-training.jpeg
   alt: "Goku treinando"
-  caption: "Goku Workout Routine."
-  caption_en: "Goku Workout Routine."
+  caption: "Capsula Goku Recuperandose"
+  caption_en: "Goku recovering in the capsule"
   date: "2026-10-09"
 - image: /assets/img/Aquiles.jpeg
   alt: "Aquiles"
-  caption: "por isso seu nome nunca será lembrado"
-  caption_en: "that's why your name will never be remembered"
+  caption: '"por isso seu nome nunca será lembrado" - Aquiles Troia'
+  caption_en: '"that''s why your name will never be remembered" - Achilles, Troy'
   date: "2026-10-08"
 - image: /assets/img/leonardo.jpg
   alt: "Leonardo da Vinci"
