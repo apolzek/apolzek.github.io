@@ -19,7 +19,7 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
 
 ## 2026 - Agosto
 
-- <a class="aor-index-list__main-link" href="/2026/08/30/apache-flink-aprendendo-em-publico-parte-1/" title="Primeira parte de um estudo em público sobre Apache Flink: conceitos, arquitetura e os primeiros experimentos, com índice para navegar pelo caminho inteiro.">Apache Flink: Aprendendo em Público, parte 1</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/apache-flink/">#apache-flink</a><a class="aor-tag-link" href="/tags/data-engineering/">#data-engineering</a><a class="aor-tag-link" href="/tags/aprendendo-em-publico/">#aprendendo-em-publico</a></span>
+- <a class="aor-index-list__main-link" href="/2026/08/30/apache-flink-aprendendo-em-publico-parte-1/" title="Primeira parte de um estudo em público sobre Apache Flink: conceitos, arquitetura e os primeiros experimentos, com índice para navegar pelo caminho inteiro.">Aprendendo Apache Flink parte 1</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/apache-flink/">#apache-flink</a><a class="aor-tag-link" href="/tags/data-engineering/">#data-engineering</a><a class="aor-tag-link" href="/tags/aprendendo-em-publico/">#aprendendo-em-publico</a></span>
 - <a class="aor-index-list__main-link" href="/2026/08/04/mito-de-er/" title="Um texto sobre o Mito de Er, da República de Platão: o que a leitura despertou numa fase da vida em que ela se fez necessária, mesmo sem os fundamentos para compreendê-la por completo.">Mito de Er</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/filosofia/">#filosofia</a><a class="aor-tag-link" href="/tags/leitura/">#leitura</a></span>
 
 ## 2026 - Julho
@@ -91,7 +91,7 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
   <div class="aor-post-grid">
 <article class="aor-post-card" title="Primeira parte de um estudo em público sobre Apache Flink: conceitos, arquitetura e os primeiros experimentos, com índice para navegar pelo caminho inteiro.">
   <time class="aor-post-card__date" datetime="2026-08-30">30/08/2026</time>
-  <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/08/30/apache-flink-aprendendo-em-publico-parte-1/">Apache Flink: Aprendendo em Público, parte 1</a></h3>
+  <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/08/30/apache-flink-aprendendo-em-publico-parte-1/">Aprendendo Apache Flink parte 1</a></h3>
   <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/tags/apache-flink/">#apache-flink</a><a class="aor-tag-link" href="/tags/data-engineering/">#data-engineering</a><a class="aor-tag-link" href="/tags/aprendendo-em-publico/">#aprendendo-em-publico</a></span>
   <p class="aor-post-card__description">Primeira parte de um estudo em público sobre Apache Flink: conceitos, arquitetura e os primeiros experimentos, com índice para navegar pelo caminho inteiro.</p>
 </article>

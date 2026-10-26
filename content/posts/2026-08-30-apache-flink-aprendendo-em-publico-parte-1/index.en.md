@@ -1,5 +1,5 @@
 ---
-title: "Apache Flink: Learning in Public, Part 1"
+title: "Learning Apache Flink part 1"
 slug: "apache-flink-learning-in-public-part-1"
 date: '2026-08-30T12:00:00-03:00'
 draft: false
