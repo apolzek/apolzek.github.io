@@ -9,6 +9,7 @@ _Production systems, observability and reliability engineering. Documenting tech
 {{% index-list %}}
 ## 2026 - October
 
+- <a class="aor-index-list__main-link" href="/en/2026/10/26/review-storage-fundamentals/" title="A storage review from the disk up to the filesystem: HDD, SSD, NVMe, IOPS, RAID, LVM, ZFS and the filesystems of each operating system, all in informal language with analogies.">Review: storage fundamentals</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/en/tags/linux/">#linux</a></span>
 - <a class="aor-index-list__main-link" href="/en/2026/10/12/dialogue-on-the-mentor-and-trust/" title="A Socratic dialogue: Glaucon discovers that two men he admires despise each other, and Socrates leads him to examine the need for a mentor, the danger of trusting too much and the duty to form one&#39;s own judgment, knowing that even the master errs.">Dialogue on the Mentor and Trust</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/en/tags/philosophy/">#philosophy</a><a class="aor-tag-link" href="/en/tags/dialogues/">#dialogues</a></span>
 
 ## 2026 - September
@@ -46,9 +47,15 @@ _Production systems, observability and reliability engineering. Documenting tech
 <section class="aor-index-month" aria-labelledby="aor-grid-2026-10">
   <div class="aor-index-month__header">
     <h2 id="aor-grid-2026-10">2026 - October</h2>
-    <span>1 post</span>
+    <span>2 posts</span>
   </div>
   <div class="aor-post-grid">
+<article class="aor-post-card" title="A storage review from the disk up to the filesystem: HDD, SSD, NVMe, IOPS, RAID, LVM, ZFS and the filesystems of each operating system, all in informal language with analogies.">
+  <time class="aor-post-card__date" datetime="2026-10-26">Oct 26, 2026</time>
+  <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/en/2026/10/26/review-storage-fundamentals/">Review: storage fundamentals</a></h3>
+  <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/en/tags/linux/">#linux</a></span>
+  <p class="aor-post-card__description">A storage review from the disk up to the filesystem: HDD, SSD, NVMe, IOPS, RAID, LVM, ZFS and the filesystems of each operating system, all in informal language with analogies.</p>
+</article>
 <article class="aor-post-card" title="A Socratic dialogue: Glaucon discovers that two men he admires despise each other, and Socrates leads him to examine the need for a mentor, the danger of trusting too much and the duty to form one&#39;s own judgment, knowing that even the master errs.">
   <time class="aor-post-card__date" datetime="2026-10-12">Oct 12, 2026</time>
   <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/en/2026/10/12/dialogue-on-the-mentor-and-trust/">Dialogue on the Mentor and Trust</a></h3>
