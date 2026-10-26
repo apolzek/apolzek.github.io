@@ -1,5 +1,5 @@
 ---
-title: "Diálogo sobre o Mestre e a Prática"
+title: "Diálogo sobre o Mestre sem Coroa"
 slug: "dialogo-sobre-o-mestre-e-a-pratica"
 date: '2026-07-15T12:00:00-03:00'
 draft: false

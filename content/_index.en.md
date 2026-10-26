@@ -34,7 +34,6 @@ _Production systems, observability and reliability engineering. Documenting tech
 ## 2026 - May
 
 - <a class="aor-index-list__main-link" href="/en/2026/05/09/study-as-a-path-to-liberation/" title="Reflections of a former terrible student on how study stopped being an obligation and became a path to freedom.">Study as a Path to Liberation</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/en/tags/philosophy/">#philosophy</a><a class="aor-tag-link" href="/en/tags/study/">#study</a></span>
-- <a class="aor-index-list__main-link" href="/en/2026/05/02/kubernetes-static-website/" title="Don&#39;t do it. A one-minute joke about the industry&#39;s favorite way to over-engineer a static website.">How to set up a Kubernetes cluster to host your static website</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/en/tags/kubernetes/">#kubernetes</a><a class="aor-tag-link" href="/en/tags/humor/">#humor</a></span>
 
 ## 2026 - April
 
@@ -141,7 +140,7 @@ _Production systems, observability and reliability engineering. Documenting tech
 <section class="aor-index-month" aria-labelledby="aor-grid-2026-05">
   <div class="aor-index-month__header">
     <h2 id="aor-grid-2026-05">2026 - May</h2>
-    <span>2 posts</span>
+    <span>1 post</span>
   </div>
   <div class="aor-post-grid">
 <article class="aor-post-card" title="Reflections of a former terrible student on how study stopped being an obligation and became a path to freedom.">
@@ -149,12 +148,6 @@ _Production systems, observability and reliability engineering. Documenting tech
   <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/en/2026/05/09/study-as-a-path-to-liberation/">Study as a Path to Liberation</a></h3>
   <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/en/tags/philosophy/">#philosophy</a><a class="aor-tag-link" href="/en/tags/study/">#study</a></span>
   <p class="aor-post-card__description">Reflections of a former terrible student on how study stopped being an obligation and became a path to freedom.</p>
-</article>
-<article class="aor-post-card" title="Don&#39;t do it. A one-minute joke about the industry&#39;s favorite way to over-engineer a static website.">
-  <time class="aor-post-card__date" datetime="2026-05-02">May 2, 2026</time>
-  <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/en/2026/05/02/kubernetes-static-website/">How to set up a Kubernetes cluster to host your static website</a></h3>
-  <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/en/tags/kubernetes/">#kubernetes</a><a class="aor-tag-link" href="/en/tags/humor/">#humor</a></span>
-  <p class="aor-post-card__description">Don&#39;t do it. A one-minute joke about the industry&#39;s favorite way to over-engineer a static website.</p>
 </article>
   </div>
 </section>

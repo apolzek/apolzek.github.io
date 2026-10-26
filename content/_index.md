@@ -24,7 +24,7 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
 
 ## 2026 - Julho
 
-- <a class="aor-index-list__main-link" href="/2026/07/15/dialogo-sobre-o-mestre-e-a-pratica/" title="Diálogo socrático: Glauco sai da palestra contrariado e Sócrates o leva a examinar o que faz um mestre e por que a prática não se aprende só ouvindo.">Diálogo sobre o Mestre e a Prática</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/filosofia/">#filosofia</a><a class="aor-tag-link" href="/tags/dialogos/">#dialogos</a></span>
+- <a class="aor-index-list__main-link" href="/2026/07/15/dialogo-sobre-o-mestre-e-a-pratica/" title="Diálogo socrático: Glauco sai da palestra contrariado e Sócrates o leva a examinar o que faz um mestre e por que a prática não se aprende só ouvindo.">Diálogo sobre o Mestre sem Coroa</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/filosofia/">#filosofia</a><a class="aor-tag-link" href="/tags/dialogos/">#dialogos</a></span>
 - <a class="aor-index-list__main-link" href="/2026/07/04/velhas-armadilhas-novas-vitimas/" title="Num mundo com excesso de informação, o desafio é separar o que agrega valor do que só prende atenção. Estratégias práticas para não perder horas com conteúdo que parece educativo e entrega pouco.">Velhas Armadilhas, Novas Vítimas</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/estudo/">#estudo</a><a class="aor-tag-link" href="/tags/produtividade/">#produtividade</a></span>
 
 ## 2026 - Junho
@@ -34,7 +34,6 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
 ## 2026 - Maio
 
 - <a class="aor-index-list__main-link" href="/2026/05/09/o-estudo-como-caminho-de-libertacao/" title="Reflexões de um ex-péssimo aluno sobre como o estudo deixou de ser obrigação e virou caminho de liberdade.">O estudo como caminho de libertação</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/filosofia/">#filosofia</a><a class="aor-tag-link" href="/tags/estudo/">#estudo</a></span>
-- <a class="aor-index-list__main-link" href="/2026/05/02/kubernetes-static-website/" title="Não faça isso. Uma piada de um minuto sobre o jeito favorito da indústria de superengenheirar um site estático.">Como montar um cluster Kubernetes para hospedar seu site estático</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/kubernetes/">#kubernetes</a><a class="aor-tag-link" href="/tags/humor/">#humor</a></span>
 
 ## 2026 - Abril
 
@@ -112,7 +111,7 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
   <div class="aor-post-grid">
 <article class="aor-post-card" title="Diálogo socrático: Glauco sai da palestra contrariado e Sócrates o leva a examinar o que faz um mestre e por que a prática não se aprende só ouvindo.">
   <time class="aor-post-card__date" datetime="2026-07-15">15/07/2026</time>
-  <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/07/15/dialogo-sobre-o-mestre-e-a-pratica/">Diálogo sobre o Mestre e a Prática</a></h3>
+  <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/07/15/dialogo-sobre-o-mestre-e-a-pratica/">Diálogo sobre o Mestre sem Coroa</a></h3>
   <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/tags/filosofia/">#filosofia</a><a class="aor-tag-link" href="/tags/dialogos/">#dialogos</a></span>
   <p class="aor-post-card__description">Diálogo socrático: Glauco sai da palestra contrariado e Sócrates o leva a examinar o que faz um mestre e por que a prática não se aprende só ouvindo.</p>
 </article>
@@ -141,7 +140,7 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
 <section class="aor-index-month" aria-labelledby="aor-grid-2026-05">
   <div class="aor-index-month__header">
     <h2 id="aor-grid-2026-05">2026 - Maio</h2>
-    <span>2 posts</span>
+    <span>1 post</span>
   </div>
   <div class="aor-post-grid">
 <article class="aor-post-card" title="Reflexões de um ex-péssimo aluno sobre como o estudo deixou de ser obrigação e virou caminho de liberdade.">
@@ -149,12 +148,6 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
   <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/05/09/o-estudo-como-caminho-de-libertacao/">O estudo como caminho de libertação</a></h3>
   <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/tags/filosofia/">#filosofia</a><a class="aor-tag-link" href="/tags/estudo/">#estudo</a></span>
   <p class="aor-post-card__description">Reflexões de um ex-péssimo aluno sobre como o estudo deixou de ser obrigação e virou caminho de liberdade.</p>
-</article>
-<article class="aor-post-card" title="Não faça isso. Uma piada de um minuto sobre o jeito favorito da indústria de superengenheirar um site estático.">
-  <time class="aor-post-card__date" datetime="2026-05-02">02/05/2026</time>
-  <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/05/02/kubernetes-static-website/">Como montar um cluster Kubernetes para hospedar seu site estático</a></h3>
-  <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/tags/kubernetes/">#kubernetes</a><a class="aor-tag-link" href="/tags/humor/">#humor</a></span>
-  <p class="aor-post-card__description">Não faça isso. Uma piada de um minuto sobre o jeito favorito da indústria de superengenheirar um site estático.</p>
 </article>
   </div>
 </section>
