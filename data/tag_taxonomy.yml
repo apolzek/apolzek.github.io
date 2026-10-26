@@ -1,207 +1,166 @@
-# Taxonomia controlada de tags. `pt` é o slug usado nos posts em português
-# (index.md) e `en` o slug usado nas traduções (index.en.md). Validar com:
+# Taxonomia controlada de tags. `pt` é o slug usado nos posts (index.md).
+# Validar com:
 #   ./scripts/tag_catalog.rb --check
 #   ./scripts/tag_catalog.rb --search "assunto"
 tags:
   apache_flink:
     pt: apache-flink
-    en: apache-flink
     description: Apache Flink, stream processing e a linha 2.x.
     kind: series
     aliases: [flink]
   learning_in_public:
     pt: aprendendo-em-publico
-    en: learning-in-public
     description: Séries de estudo escritas enquanto o aprendizado acontece.
     kind: series
     aliases: [learning-in-public]
   architecture:
     pt: arquitetura
-    en: architecture
     description: Arquitetura de sistemas, fluxos de mudança e desenho de plataformas.
     aliases: [architecture]
   authentication:
     pt: autenticacao
-    en: authentication
     description: Autenticação e autorização, OIDC, SAML, JWT, RBAC e afins.
     aliases: [auth, authentication, autorizacao]
   blog:
     pt: blog
-    en: blog
     description: Meta-posts sobre o próprio blog.
   cheatsheet:
     pt: cheatsheet
-    en: cheatsheet
     description: Listas de comandos e truques de uso diário.
   cloud_native:
     pt: cloud-native
-    en: cloud-native
     description: Ecossistema CNCF e ferramentas cloud native.
     aliases: [cncf]
   coredns:
     pt: coredns
-    en: coredns
     description: CoreDNS, plugins e laboratórios.
   data_engineering:
     pt: data-engineering
-    en: data-engineering
     description: Engenharia de dados, pipelines e o stack de dados.
     aliases: [dados, engenharia-de-dados]
   dialogues:
     pt: dialogos
-    en: dialogues
     description: Diálogos socráticos entre Sócrates e Glauco.
     kind: series
     aliases: [dialogo, socrates]
   dns:
     pt: dns
-    en: dns
     description: DNS, resolvers, DNSSEC e operação de zonas.
   ebpf:
     pt: ebpf
-    en: ebpf
     description: eBPF, bpftrace e observabilidade no kernel Linux.
     aliases: [bpf, bpftrace]
   economics:
     pt: economia
-    en: economics
     description: Economia, mercado e valor de empresas.
     aliases: [economics]
   software_engineering:
     pt: engenharia-de-software
-    en: software-engineering
     description: Práticas de engenharia de software, repositórios e processo.
     aliases: [software-engineering]
   study:
     pt: estudo
-    en: study
     description: Como estudar, planos de estudo e aprendizado.
     aliases: [aprendizado, learning]
   philosophy:
     pt: filosofia
-    en: philosophy
     description: Filosofia, Platão, reflexões sobre a vida.
     aliases: [philosophy, platao]
   git:
     pt: git
-    en: git
     description: Git e GitHub.
     aliases: [github]
   golang:
     pt: golang
-    en: golang
     description: A linguagem Go.
     aliases: [go]
   humor:
     pt: humor
-    en: humor
     description: Piadas e posts pra não levar a sério.
     aliases: [joke]
   artificial_intelligence:
     pt: inteligencia-artificial
-    en: artificial-intelligence
     description: IA, LLMs e agentes.
     aliases: [ai, ia, llm, llms]
   kafka:
     pt: kafka
-    en: kafka
     description: Apache Kafka.
   kubernetes:
     pt: kubernetes
-    en: kubernetes
     description: Kubernetes, clusters, kind e workloads.
     aliases: [k8s, kind]
   reading:
     pt: leitura
-    en: reading
     description: Livros e autores que valem o tempo.
     aliases: [livros, books]
   linux:
     pt: linux
-    en: linux
     description: Linux, kernel e ferramentas de sistema.
   machine_learning:
     pt: machine-learning
-    en: machine-learning
     description: Machine learning e o stack de ML.
     aliases: [ml]
   business:
     pt: negocios
-    en: business
     description: Empresas, mercado e negócios.
     aliases: [business]
   observability:
     pt: observabilidade
-    en: observability
     description: Observabilidade, métricas, logs, traces e exporters.
     aliases: [observability, monitoring, monitoramento]
   open_source:
     pt: open-source
-    en: open-source
     description: Contribuição e manutenção de projetos open source.
     aliases: [opensource]
   opentelemetry:
     pt: opentelemetry
-    en: opentelemetry
     description: OpenTelemetry e o OTel Collector.
     aliases: [otel, otel-collector]
   operators:
     pt: operators
-    en: operators
     description: Kubernetes Operators e CRDs.
     aliases: [crd, crds, operator]
   personal:
     pt: pessoal
-    en: personal
     description: Textos pessoais e confissões ocasionais.
     aliases: [personal]
   powershell:
     pt: powershell
-    en: powershell
     description: PowerShell e scripts .ps1.
     aliases: [ps1]
   productivity:
     pt: produtividade
-    en: productivity
     description: Atenção, foco e uso do tempo.
     aliases: [productivity]
   prometheus:
     pt: prometheus
-    en: prometheus
     description: Prometheus e exporters.
     aliases: [exporters]
   rabbitmq:
     pt: rabbitmq
-    en: rabbitmq
     description: RabbitMQ.
   networking:
     pt: redes
-    en: networking
     description: Redes de computadores, protocolos, TCP/UDP/TLS.
     aliases: [networking, network, rede, tcp, udp]
   health:
     pt: saude
-    en: health
     description: Corpo, saúde e desempenho físico.
     aliases: [health]
   security:
     pt: seguranca
-    en: security
     description: Segurança da informação.
     aliases: [security]
   shell:
     pt: shell
-    en: shell
     description: Bash, sh e linha de comando.
     aliases: [bash, sh]
   technology:
     pt: tecnologia
-    en: technology
     description: Tecnologia em geral e ferramentas novas.
     aliases: [technology]
   windows:
     pt: windows
-    en: windows
     description: Windows e suas ferramentas.
 
 event_series: {}

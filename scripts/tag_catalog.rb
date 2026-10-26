@@ -7,7 +7,7 @@ require 'optparse'
 require 'yaml'
 
 TAXONOMY_PATH = 'data/tag_taxonomy.yml'
-CONTENT_GLOB = 'content/{posts,writing}/*/index{,.en}.md'
+CONTENT_GLOB = 'content/{posts,writing}/*/index.md'
 
 OPTIONS = {
   check: false,
@@ -20,7 +20,7 @@ def parse_options
   OptionParser.new do |parser|
     parser.banner = 'Usage: scripts/tag_catalog.rb [options]'
     parser.on('--search QUERY', 'Find canonical tags by name, alias, or meaning') { |value| options[:search] = value }
-    parser.on('--check', 'Validate tags and PT/EN pairs of all published posts') { options[:check] = true }
+    parser.on('--check', 'Validate tags of all published posts') { options[:check] = true }
     parser.on('--write PATH', 'Write the full Markdown catalog to PATH') { |value| options[:write] = value }
   end.parse!
   options
@@ -44,7 +44,6 @@ def tag_entries
     {
       id: id,
       pt: values.fetch('pt'),
-      en: values.fetch('en'),
       description: values.fetch('description'),
       kind: values.fetch('kind', 'topic'),
       aliases: Array(values['aliases'])
@@ -58,12 +57,12 @@ end
 
 def render_table(entries)
   lines = [
-    '| PT-BR | English | Purpose | Known aliases |',
-    '|---|---|---|---|'
+    '| Tag | Purpose | Known aliases |',
+    '|---|---|---|'
   ]
   entries.each do |entry|
     aliases = entry[:aliases].empty? ? '-' : entry[:aliases].join(', ')
-    lines << "| `#{markdown_escape(entry[:pt])}` | `#{markdown_escape(entry[:en])}` | #{markdown_escape(entry[:description])} | #{markdown_escape(aliases)} |"
+    lines << "| `#{markdown_escape(entry[:pt])}` | #{markdown_escape(entry[:description])} | #{markdown_escape(aliases)} |"
   end
   lines
 end
@@ -73,10 +72,10 @@ def render_catalog
   projects = entries.select { |entry| %w[project series].include?(entry[:kind]) }
   topics = entries.reject { |entry| %w[project series].include?(entry[:kind]) }
   events = taxonomy_data.fetch('event_series').map do |slug, values|
-    { pt: slug, en: slug, description: 'One named event edition or recurring event series.', aliases: values.fetch('aliases') }
+    { pt: slug, description: 'One named event edition or recurring event series.', aliases: values.fetch('aliases') }
   end
   special = taxonomy_data.fetch('special_tags').map do |id, values|
-    { pt: values.fetch('pt'), en: values.fetch('en'), description: "Reserved section tag (#{id}).", aliases: [] }
+    { pt: values.fetch('pt'), description: "Reserved section tag (#{id}).", aliases: [] }
   end
 
   lines = [
@@ -116,7 +115,7 @@ def search_catalog(query)
   normalized_query = normalize(query)
   tokens = normalized_query.split.reject { |token| token.length < 3 }
   matches = tag_entries.filter_map do |entry|
-    fields = [entry[:id], entry[:pt], entry[:en], entry[:description], *entry[:aliases]].map { |value| normalize(value) }
+    fields = [entry[:id], entry[:pt], entry[:description], *entry[:aliases]].map { |value| normalize(value) }
     exact = fields.include?(normalized_query)
     phrase = fields.any? { |field| field.include?(normalized_query) }
     token_hits = tokens.count { |token| fields.any? { |field| field.include?(token) } }
@@ -126,7 +125,7 @@ def search_catalog(query)
 
   matches.sort_by { |score, entry| [-score, entry[:pt]] }.first(15).map do |_score, entry|
     aliases = entry[:aliases].empty? ? '' : " | aliases: #{entry[:aliases].join(', ')}"
-    "#{entry[:pt]} -> #{entry[:en]} | #{entry[:description]}#{aliases}"
+    "#{entry[:pt]} | #{entry[:description]}#{aliases}"
   end
 end
 
@@ -144,25 +143,22 @@ rescue KeyError, Date::Error
   false
 end
 
-def language_maps
-  maps = { 'pt' => {}, 'en' => {} }
+def tag_map
+  map = {}
   taxonomy_data.fetch('tags').each do |id, values|
-    maps['pt'][values.fetch('pt')] = id
-    maps['en'][values.fetch('en')] = id
+    map[values.fetch('pt')] = id
   end
   taxonomy_data.fetch('event_series').each_key do |slug|
-    maps['pt'][slug] = "event:#{slug}"
-    maps['en'][slug] = "event:#{slug}"
+    map[slug] = "event:#{slug}"
   end
   taxonomy_data.fetch('special_tags').each do |id, values|
-    maps['pt'][values.fetch('pt')] = "special:#{id}"
-    maps['en'][values.fetch('en')] = "special:#{id}"
+    map[values.fetch('pt')] = "special:#{id}"
   end
-  maps
+  map
 end
 
 def check_catalog
-  maps = language_maps
+  map = tag_map
   failures = []
   published = {}
 
@@ -178,40 +174,18 @@ def check_catalog
     end
     next unless published?(frontmatter)
 
-    language = path.end_with?('.en.md') ? 'en' : 'pt'
     tags = Array(frontmatter['tags']).map(&:to_s)
     failures << "#{path}: no tags" if tags.empty?
-    unknown = tags - maps.fetch(language).keys
+    unknown = tags - map.keys
     unless unknown.empty?
-      spellchecker = DidYouMean::SpellChecker.new(dictionary: maps.fetch(language).keys)
+      spellchecker = DidYouMean::SpellChecker.new(dictionary: map.keys)
       unknown.each do |tag|
         suggestions = spellchecker.correct(tag).first(3)
         hint = suggestions.empty? ? '' : "; did you mean #{suggestions.map { |value| "`#{value}`" }.join(', ')}?"
-        failures << "#{path}: unknown #{language.upcase} tag `#{tag}`#{hint}"
+        failures << "#{path}: unknown tag `#{tag}`#{hint}"
       end
     end
     published[path] = tags
-  end
-
-  published.each_key do |path|
-    next unless path.end_with?('.en.md')
-
-    pt_path = path.sub(/index\.en\.md\z/, 'index.md')
-    failures << "#{path}: published without a published PT original (#{pt_path})" unless published.key?(pt_path)
-  end
-
-  published.each do |path, pt_tags|
-    next if path.end_with?('.en.md')
-
-    en_path = path.sub(/index\.md\z/, 'index.en.md')
-    unless published.key?(en_path)
-      failures << "#{path}: published without a published EN translation (#{en_path})"
-      next
-    end
-
-    pt_ids = pt_tags.map { |tag| maps['pt'][tag] }
-    en_ids = published.fetch(en_path).map { |tag| maps['en'][tag] }
-    failures << "#{path}: PT/EN tag mismatch" unless pt_ids == en_ids
   end
 
   if failures.empty?

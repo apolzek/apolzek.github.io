@@ -12,61 +12,61 @@ Reuse existing canonical tags. Add a new tag to the YAML only when it will ident
 
 ## Projects And Series (3)
 
-| PT-BR | English | Purpose | Known aliases |
-|---|---|---|---|
-| `apache-flink` | `apache-flink` | Apache Flink, stream processing e a linha 2.x. | flink |
-| `aprendendo-em-publico` | `learning-in-public` | Séries de estudo escritas enquanto o aprendizado acontece. | learning-in-public |
-| `dialogos` | `dialogues` | Diálogos socráticos entre Sócrates e Glauco. | dialogo, socrates |
+| Tag | Purpose | Known aliases |
+|---|---|---|
+| `apache-flink` | Apache Flink, stream processing e a linha 2.x. | flink |
+| `aprendendo-em-publico` | Séries de estudo escritas enquanto o aprendizado acontece. | learning-in-public |
+| `dialogos` | Diálogos socráticos entre Sócrates e Glauco. | dialogo, socrates |
 
 ## Topics (38)
 
-| PT-BR | English | Purpose | Known aliases |
-|---|---|---|---|
-| `arquitetura` | `architecture` | Arquitetura de sistemas, fluxos de mudança e desenho de plataformas. | architecture |
-| `autenticacao` | `authentication` | Autenticação e autorização, OIDC, SAML, JWT, RBAC e afins. | auth, authentication, autorizacao |
-| `blog` | `blog` | Meta-posts sobre o próprio blog. | - |
-| `cheatsheet` | `cheatsheet` | Listas de comandos e truques de uso diário. | - |
-| `cloud-native` | `cloud-native` | Ecossistema CNCF e ferramentas cloud native. | cncf |
-| `coredns` | `coredns` | CoreDNS, plugins e laboratórios. | - |
-| `data-engineering` | `data-engineering` | Engenharia de dados, pipelines e o stack de dados. | dados, engenharia-de-dados |
-| `dns` | `dns` | DNS, resolvers, DNSSEC e operação de zonas. | - |
-| `ebpf` | `ebpf` | eBPF, bpftrace e observabilidade no kernel Linux. | bpf, bpftrace |
-| `economia` | `economics` | Economia, mercado e valor de empresas. | economics |
-| `engenharia-de-software` | `software-engineering` | Práticas de engenharia de software, repositórios e processo. | software-engineering |
-| `estudo` | `study` | Como estudar, planos de estudo e aprendizado. | aprendizado, learning |
-| `filosofia` | `philosophy` | Filosofia, Platão, reflexões sobre a vida. | philosophy, platao |
-| `git` | `git` | Git e GitHub. | github |
-| `golang` | `golang` | A linguagem Go. | go |
-| `humor` | `humor` | Piadas e posts pra não levar a sério. | joke |
-| `inteligencia-artificial` | `artificial-intelligence` | IA, LLMs e agentes. | ai, ia, llm, llms |
-| `kafka` | `kafka` | Apache Kafka. | - |
-| `kubernetes` | `kubernetes` | Kubernetes, clusters, kind e workloads. | k8s, kind |
-| `leitura` | `reading` | Livros e autores que valem o tempo. | livros, books |
-| `linux` | `linux` | Linux, kernel e ferramentas de sistema. | - |
-| `machine-learning` | `machine-learning` | Machine learning e o stack de ML. | ml |
-| `negocios` | `business` | Empresas, mercado e negócios. | business |
-| `observabilidade` | `observability` | Observabilidade, métricas, logs, traces e exporters. | observability, monitoring, monitoramento |
-| `open-source` | `open-source` | Contribuição e manutenção de projetos open source. | opensource |
-| `opentelemetry` | `opentelemetry` | OpenTelemetry e o OTel Collector. | otel, otel-collector |
-| `operators` | `operators` | Kubernetes Operators e CRDs. | crd, crds, operator |
-| `pessoal` | `personal` | Textos pessoais e confissões ocasionais. | personal |
-| `powershell` | `powershell` | PowerShell e scripts .ps1. | ps1 |
-| `produtividade` | `productivity` | Atenção, foco e uso do tempo. | productivity |
-| `prometheus` | `prometheus` | Prometheus e exporters. | exporters |
-| `rabbitmq` | `rabbitmq` | RabbitMQ. | - |
-| `redes` | `networking` | Redes de computadores, protocolos, TCP/UDP/TLS. | networking, network, rede, tcp, udp |
-| `saude` | `health` | Corpo, saúde e desempenho físico. | health |
-| `seguranca` | `security` | Segurança da informação. | security |
-| `shell` | `shell` | Bash, sh e linha de comando. | bash, sh |
-| `tecnologia` | `technology` | Tecnologia em geral e ferramentas novas. | technology |
-| `windows` | `windows` | Windows e suas ferramentas. | - |
+| Tag | Purpose | Known aliases |
+|---|---|---|
+| `arquitetura` | Arquitetura de sistemas, fluxos de mudança e desenho de plataformas. | architecture |
+| `autenticacao` | Autenticação e autorização, OIDC, SAML, JWT, RBAC e afins. | auth, authentication, autorizacao |
+| `blog` | Meta-posts sobre o próprio blog. | - |
+| `cheatsheet` | Listas de comandos e truques de uso diário. | - |
+| `cloud-native` | Ecossistema CNCF e ferramentas cloud native. | cncf |
+| `coredns` | CoreDNS, plugins e laboratórios. | - |
+| `data-engineering` | Engenharia de dados, pipelines e o stack de dados. | dados, engenharia-de-dados |
+| `dns` | DNS, resolvers, DNSSEC e operação de zonas. | - |
+| `ebpf` | eBPF, bpftrace e observabilidade no kernel Linux. | bpf, bpftrace |
+| `economia` | Economia, mercado e valor de empresas. | economics |
+| `engenharia-de-software` | Práticas de engenharia de software, repositórios e processo. | software-engineering |
+| `estudo` | Como estudar, planos de estudo e aprendizado. | aprendizado, learning |
+| `filosofia` | Filosofia, Platão, reflexões sobre a vida. | philosophy, platao |
+| `git` | Git e GitHub. | github |
+| `golang` | A linguagem Go. | go |
+| `humor` | Piadas e posts pra não levar a sério. | joke |
+| `inteligencia-artificial` | IA, LLMs e agentes. | ai, ia, llm, llms |
+| `kafka` | Apache Kafka. | - |
+| `kubernetes` | Kubernetes, clusters, kind e workloads. | k8s, kind |
+| `leitura` | Livros e autores que valem o tempo. | livros, books |
+| `linux` | Linux, kernel e ferramentas de sistema. | - |
+| `machine-learning` | Machine learning e o stack de ML. | ml |
+| `negocios` | Empresas, mercado e negócios. | business |
+| `observabilidade` | Observabilidade, métricas, logs, traces e exporters. | observability, monitoring, monitoramento |
+| `open-source` | Contribuição e manutenção de projetos open source. | opensource |
+| `opentelemetry` | OpenTelemetry e o OTel Collector. | otel, otel-collector |
+| `operators` | Kubernetes Operators e CRDs. | crd, crds, operator |
+| `pessoal` | Textos pessoais e confissões ocasionais. | personal |
+| `powershell` | PowerShell e scripts .ps1. | ps1 |
+| `produtividade` | Atenção, foco e uso do tempo. | productivity |
+| `prometheus` | Prometheus e exporters. | exporters |
+| `rabbitmq` | RabbitMQ. | - |
+| `redes` | Redes de computadores, protocolos, TCP/UDP/TLS. | networking, network, rede, tcp, udp |
+| `saude` | Corpo, saúde e desempenho físico. | health |
+| `seguranca` | Segurança da informação. | security |
+| `shell` | Bash, sh e linha de comando. | bash, sh |
+| `tecnologia` | Tecnologia em geral e ferramentas novas. | technology |
+| `windows` | Windows e suas ferramentas. | - |
 
 ## Event Editions (0)
 
-| PT-BR | English | Purpose | Known aliases |
-|---|---|---|---|
+| Tag | Purpose | Known aliases |
+|---|---|---|
 
 ## Reserved Tags (0)
 
-| PT-BR | English | Purpose | Known aliases |
-|---|---|---|---|
+| Tag | Purpose | Known aliases |
+|---|---|---|
