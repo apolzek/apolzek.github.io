@@ -9,7 +9,8 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
 {{% index-list %}}
 ## 2026 - Outubro
 
-- <a class="aor-index-list__main-link" href="/2026/10/26/revisao-redes-de-computadores/" title="Uma revisão de redes do cabo ao Kubernetes: Ethernet, VLANs, IP, roteamento, NAT, TCP, DNS, TLS, firewalls, túneis, o caminho completo de um pacote e vinte perguntas pra se testar, tudo em linguagem informal e com analogias.">Revisão: redes de computadores</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/redes/">#redes</a><a class="aor-tag-link" href="/tags/linux/">#linux</a></span>
+- <a class="aor-index-list__main-link" href="/2026/10/26/revisao-fundamentos-de-sistemas-operacionais/" title="Uma revisão de sistemas operacionais de verdade: kernel, syscalls, processos, threads, escalonador, memória virtual, page cache, swap, sinais e boot, com o Linux em profundidade e um passeio por Windows, macOS e BSDs, em linguagem informal e com analogias.">Revisão: fundamentos de sistemas operacionais</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/linux/">#linux</a><a class="aor-tag-link" href="/tags/windows/">#windows</a></span>
+- <a class="aor-index-list__main-link" href="/2026/10/26/revisao-redes-de-computadores/" title="Uma revisão de redes do cabo ao Kubernetes: Ethernet, VLANs, IP, roteamento, NAT, TCP, DNS, TLS, firewalls, túneis, o caminho completo de um pacote e vinte perguntas pra se testar, tudo em linguagem informal e com analogias.">Revisão: fundamentos de redes de computadores</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/redes/">#redes</a><a class="aor-tag-link" href="/tags/linux/">#linux</a></span>
 - <a class="aor-index-list__main-link" href="/2026/10/26/revisao-fundamentos-de-armazenamento/" title="Uma revisão de armazenamento do disco ao filesystem: HDD, SSD, NVMe, IOPS, RAID, LVM, ZFS e os sistemas de arquivos de cada sistema operacional, tudo em linguagem informal e com analogias.">Revisão: fundamentos de armazenamento</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/linux/">#linux</a></span>
 - <a class="aor-index-list__main-link" href="/2026/10/12/dialogo-sobre-o-mentor-e-a-confianca/" title="Diálogo socrático: Glauco descobre que dois homens que admira não se suportam, e Sócrates o leva a ver que gostar dos dois não é traição a nenhum, que a briga deles não é dele e que, quanto mais gente admiramos, mais certo é que algumas não vão se admirar.">Diálogo sobre a Admiração Sem Lado</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/filosofia/">#filosofia</a><a class="aor-tag-link" href="/tags/dialogos/">#dialogos</a></span>
 
@@ -48,12 +49,18 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
 <section class="aor-index-month" aria-labelledby="aor-grid-2026-10">
   <div class="aor-index-month__header">
     <h2 id="aor-grid-2026-10">2026 - Outubro</h2>
-    <span>3 posts</span>
+    <span>4 posts</span>
   </div>
   <div class="aor-post-grid">
+<article class="aor-post-card" title="Uma revisão de sistemas operacionais de verdade: kernel, syscalls, processos, threads, escalonador, memória virtual, page cache, swap, sinais e boot, com o Linux em profundidade e um passeio por Windows, macOS e BSDs, em linguagem informal e com analogias.">
+  <time class="aor-post-card__date" datetime="2026-10-26">26/10/2026</time>
+  <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/10/26/revisao-fundamentos-de-sistemas-operacionais/">Revisão: fundamentos de sistemas operacionais</a></h3>
+  <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/tags/linux/">#linux</a><a class="aor-tag-link" href="/tags/windows/">#windows</a></span>
+  <p class="aor-post-card__description">Uma revisão de sistemas operacionais de verdade: kernel, syscalls, processos, threads, escalonador, memória virtual, page cache, swap, sinais e boot, com o Linux em profundidade e um passeio por Windows, macOS e BSDs, em linguagem informal e com analogias.</p>
+</article>
 <article class="aor-post-card" title="Uma revisão de redes do cabo ao Kubernetes: Ethernet, VLANs, IP, roteamento, NAT, TCP, DNS, TLS, firewalls, túneis, o caminho completo de um pacote e vinte perguntas pra se testar, tudo em linguagem informal e com analogias.">
   <time class="aor-post-card__date" datetime="2026-10-26">26/10/2026</time>
-  <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/10/26/revisao-redes-de-computadores/">Revisão: redes de computadores</a></h3>
+  <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/10/26/revisao-redes-de-computadores/">Revisão: fundamentos de redes de computadores</a></h3>
   <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/tags/redes/">#redes</a><a class="aor-tag-link" href="/tags/linux/">#linux</a></span>
   <p class="aor-post-card__description">Uma revisão de redes do cabo ao Kubernetes: Ethernet, VLANs, IP, roteamento, NAT, TCP, DNS, TLS, firewalls, túneis, o caminho completo de um pacote e vinte perguntas pra se testar, tudo em linguagem informal e com analogias.</p>
 </article>

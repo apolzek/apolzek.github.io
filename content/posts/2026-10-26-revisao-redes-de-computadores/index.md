@@ -1,5 +1,5 @@
 ---
-title: "Revisão: redes de computadores"
+title: "Revisão: fundamentos de redes de computadores"
 slug: "revisao-redes-de-computadores"
 date: '2026-10-26T13:00:00-03:00'
 draft: false
