@@ -7,7 +7,7 @@ description: "Uma revisão de sistemas operacionais de verdade: kernel, syscalls
 tags:
 - linux
 - windows
-minute: 48
+minute: 52
 ---
 
 Depois de revisar [armazenamento](/2026/10/26/revisao-fundamentos-de-armazenamento/) e [redes](/2026/10/26/revisao-redes-de-computadores/), faltava a peça que fica no meio das duas: o sistema operacional. É ele que transforma um disco em arquivos, uma placa de rede em sockets e um punhado de núcleos de CPU em centenas de programas rodando "ao mesmo tempo". A maior parte deste texto mora no Linux, porque é onde passo o dia, mas no final tem uma visita guiada por Windows, macOS e pela família BSD, sempre comparando com o que já vimos. Pega o café de novo.
@@ -32,7 +32,43 @@ O kernel é a parte do sistema operacional que roda com poder total sobre o hard
 
 **Kernel híbrido.** O meio termo que o mundo real escolheu quando queria o melhor dos dois. O kernel do Windows (NT) nasceu com ideias de microkernel, mas por desempenho trouxe quase tudo para dentro do modo privilegiado. O XNU, kernel do macOS, cola um microkernel Mach com uma camada BSD inteira, tudo rodando no mesmo espaço privilegiado.
 
-Na prática, a fronteira entre "híbrido" e "monolítico com organização" é mais marketing do que engenharia. O que importa entender é a fronteira entre modo kernel e modo usuário.
+Na prática, a fronteira entre "híbrido" e "monolítico com organização" é mais marketing do que engenharia. O que importa entender é a fronteira entre modo kernel e modo usuário. Mas antes vale um desvio rápido pelo chão onde tudo isso pisa: o processador.
+
+## Arquitetura do processador: RISC x CISC
+
+Todo processador entende uma lista fixa de instruções, a **ISA** (instruction set architecture): somar, comparar, pular, ler e escrever na memória. A ISA é o contrato entre o hardware e o software. O kernel, o compilador e cada binário que você roda são escritos para uma ISA específica, e é por isso que um programa compilado para x86 não roda num Raspberry Pi sem ajuda.
+
+Existem duas filosofias clássicas para desenhar esse contrato.
+
+**CISC** (complex instruction set computer) aposta em instruções poderosas. Uma única instrução pode ler um valor da memória, somar com outro e gravar o resultado de volta. As instruções têm tamanhos variados (no x86, de 1 a 15 bytes) e há centenas delas, algumas bem especializadas. A ideia nasceu numa época em que memória era cara e compiladores eram fracos: programas curtos, escritos muitas vezes à mão em assembly, eram uma vantagem. O representante dessa família é o **x86**, hoje na versão de 64 bits (amd64, ou x86_64), que domina desktops e servidores há décadas.
+
+**RISC** (reduced instruction set computer) aposta no contrário: poucas instruções, simples, todas do mesmo tamanho (normalmente 4 bytes), e uma regra rígida chamada **load/store**. Só duas instruções tocam a memória, uma para carregar e outra para gravar; todo o resto opera em registradores, que existem em maior número. O programa fica maior, mas cada instrução é tão simples que o hardware consegue decodificar e executar várias por ciclo com circuitos menores e mais econômicos. Os representantes são o **ARM** (celulares, Apple Silicon, AWS Graviton, a maioria dos dispositivos embarcados) e o **RISC V**, uma ISA aberta e livre de royalties que vem crescendo em microcontroladores e já aparece em servidores.
+
+A analogia é a receita de bolo. A receita CISC diz "faça a massa" e confia que o cozinheiro sabe os vinte passos escondidos ali. A receita RISC diz "pegue a farinha, meça 300 gramas, coloque na tigela, pegue os ovos...": é mais longa, mas qualquer cozinheiro executa cada passo sem pensar, e uma brigada de cozinheiros consegue trabalhar em paralelo.
+
+### Por que a briga perdeu o sentido
+
+Nos anos 80 e 90, RISC contra CISC era uma guerra religiosa. Hoje a fronteira é bem mais borrada, por um motivo: **um x86 moderno é um RISC por dentro**. O decodificador da CPU quebra cada instrução x86 complexa em pequenas **micro operações** simples, e o núcleo de execução, com execução fora de ordem, previsão de desvios e várias unidades em paralelo, trabalha só com elas. A ISA CISC virou uma fachada de compatibilidade na frente de um motor de estilo RISC. Do outro lado, ISAs RISC também ganharam instruções nada simples, como as de criptografia e vetoriais.
+
+O que realmente diferencia as famílias hoje:
+
+1. **Decodificação:** instruções de tamanho variado são mais difíceis de decodificar em paralelo. O x86 gasta transistores e energia nisso, e usa um cache de micro operações já decodificadas para compensar. Instruções de tamanho fixo facilitam decodificar oito ou mais por ciclo, como fazem os núcleos da Apple.
+2. **Eficiência energética:** núcleos ARM nasceram no mundo da bateria e costumam entregar mais desempenho por watt. Em datacenter, onde energia e refrigeração são boa parte do custo, isso virou argumento de venda (é a proposta do Graviton).
+3. **Licenciamento:** só Intel e AMD fabricam x86. ARM licencia o projeto ou a ISA para quem pagar, e cada fabricante faz o seu chip. RISC V é aberto, qualquer um implementa sem pedir licença.
+4. **Ecossistema:** décadas de software compilado para x86, principalmente no Windows, pesam mais que qualquer argumento técnico. É o que fez a troca demorar tanto e o que torna a emulação tão importante.
+
+### O que muda para o sistema operacional
+
+Para o programador de aplicação, a ISA quase some atrás do compilador. Para o sistema operacional, ela está em todo lugar:
+
+1. **Boot, interrupções e privilégios:** os anéis do x86 e os níveis de exceção do ARM, que vêm na próxima seção, são definidos pela ISA. Cada arquitetura tem seu próprio código de entrada no kernel, de troca de contexto e de tratamento de exceções. O Linux mantém uma pasta separada para cada uma, a arch, na árvore do código.
+2. **Syscalls:** a instrução muda (syscall no amd64, svc no ARM64, ecall no RISC V), e os números e registradores usados também.
+3. **Tabelas de página:** cada ISA define o formato das tabelas que a MMU lê, os tamanhos de página possíveis (o ARM64 aceita páginas de 4, 16 e 64 KB; o macOS no Apple Silicon usa 16 KB) e como o TLB é invalidado.
+4. **Modelo de memória:** esta pega muita gente. O x86 tem um modelo **forte**: as escritas de um núcleo aparecem para os outros quase na ordem em que foram feitas. O ARM e o RISC V têm modelos **fracos**: o hardware pode reordenar leituras e escritas à vontade, e só as barreiras de memória garantem a ordem. Código concorrente com bug de sincronização que "funcionava" por anos no x86 pode começar a falhar no ARM. Usar as primitivas certas (atomics, mutexes) em vez de truques resolve, porque elas emitem as barreiras que cada arquitetura precisa.
+5. **Binários e containers:** um binário é compilado para uma ISA. Imagens de container multiarquitetura carregam uma variante para amd64 e outra para arm64, e o runtime escolhe a certa. Imagem só para amd64 num nó Graviton simplesmente não sobe, com o erro clássico "exec format error".
+6. **Emulação e tradução:** quando não há binário nativo, alguém traduz. O **Rosetta 2** do macOS traduz binários x86 para ARM, principalmente antes da execução, e conta com uma ajuda do hardware da Apple, que tem um modo de ordenação de memória igual ao do x86, justamente por causa do item 4. O Windows on ARM tem o próprio emulador, e o **QEMU** emula praticamente qualquer ISA, seja o sistema inteiro, seja só um processo, que é como o Docker roda imagens de outra arquitetura no seu notebook (devagar, mas roda).
+
+O resumo honesto: RISC contra CISC deixou de ser a pergunta importante. As perguntas de hoje são desempenho por watt, quem pode fabricar e se o seu software roda lá. Para quem opera sistemas, a consequência prática é saber para qual arquitetura cada artefato foi compilado e não confiar em sorte de modelo de memória.
 
 ## Modo usuário e modo kernel
 
@@ -538,7 +574,7 @@ Visto de cima, todo sistema operacional resolve as mesmas perguntas, só com sot
 
 Na hora de diagnosticar, a pergunta nunca é "o servidor está lento", e sim "qual recurso está saturado": CPU (fila de execução, throttling), memória (major faults, swap, PSI de memória, OOM), I/O (estado D, latência de disco) ou rede. O sistema operacional está o tempo todo te contando isso pelo /proc, pelo dmesg e pelas ferramentas certas. Só precisa perguntar.
 
-## Vinte perguntas pra se testar
+## Vinte e duas perguntas pra se testar
 
 1. **Qual a diferença entre processo e thread?** Processo é o contêiner de recursos: espaço de endereçamento, descritores, credenciais. Threads são linhas de execução dentro dele, compartilhando tudo isso e tendo só pilha e registradores próprios. No Linux, os dois são tasks criadas por clone com flags diferentes.
 
@@ -579,6 +615,10 @@ Na hora de diagnosticar, a pergunta nunca é "o servidor está lento", e sim "qu
 19. **O que o XNU, o kernel do macOS, tem de especial?** Junta um microkernel Mach (tasks, memória, mensagens por Mach ports), uma camada BSD (processos, sinais, sockets, POSIX) e o IOKit para drivers, tudo no mesmo espaço privilegiado. O PID 1 é o launchd.
 
 20. **O que diferencia um BSD de uma distribuição Linux?** Um BSD é um sistema completo: kernel, biblioteca C, comandos e documentação desenvolvidos e lançados juntos como sistema base, sob licença permissiva. Uma distribuição Linux junta um kernel com componentes de vários projetos independentes.
+
+21. **O x86 ainda é CISC de verdade?** Só na fachada. A ISA continua CISC, com instruções complexas e de tamanho variado, mas o decodificador quebra cada uma em micro operações simples, e o núcleo de execução trabalha no estilo RISC. As diferenças que sobraram são o custo de decodificar, a eficiência energética, o licenciamento e o ecossistema.
+
+22. **Código concorrente funcionava no x86 e passou a falhar no ARM. O que pode ser?** O modelo de memória. O x86 quase não reordena leituras e escritas entre núcleos; o ARM reordena bastante e só respeita a ordem com barreiras. Um bug de sincronização escondido aparece. A correção é usar atomics e mutexes de verdade, que emitem as barreiras certas para cada arquitetura.
 
 ## Nota
 
