@@ -3,7 +3,7 @@
 # Rascunhos (draft: true) só aparecem com: hugo server -D
 #
 # Bilíngue: PT-BR é o idioma canônico (index.md, URLs em /), EN fica em
-# index.en.md ao lado, servido em /en/. O seletor PT | EN fica na navbar.
+# index.en.md ao lado, servido em /en/.
 
 title: apolzek
 enableEmoji: true
@@ -53,10 +53,6 @@ languages:
           url: "/index.xml"
           params:
             icon: rss
-        - name: Idioma
-          weight: 10
-          params:
-            type: language-switch
       sidebar:
         - name: GitHub
           weight: 1
@@ -121,10 +117,6 @@ languages:
           url: "/en/index.xml"
           params:
             icon: rss
-        - name: Language
-          weight: 10
-          params:
-            type: language-switch
       sidebar:
         - name: GitHub
           weight: 1

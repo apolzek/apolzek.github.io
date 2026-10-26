@@ -11,9 +11,9 @@ minute: 1
 
 *Qual é o nome do seu tataravô ou da sua tataravó ?*
 
-Estou reativando este blog por um motivo bem pessoal. Recentemente, passei por uma pequena crise de ansiedade ao refletir sobre o *memento mori*, essa lembrança inevitável de que nossa passagem pela Terra é finita. No meio desses pensamentos, senti vontade de deixar algo que talvez resista um pouco mais à passagem do tempo: simples relatos da minha vida, experiências, ideias e pensamentos.
+Estou reativando/resetando este blog.. Recentemente, passei por uma pequena crise de ansiedade ao refletir sobre o *memento mori*, essa lembrança inevitável de que nossa passagem pela Terra é finita. No meio desses pensamentos, senti vontade de deixar algo que talvez resista um pouco mais à passagem do tempo: simples relatos da minha vida, experiências, ideias e pensamentos.
 
-E é justamente isso que pretendo fazer por aqui. Escrever de maneira autêntica e sincera, sem máscaras, sem filtros e sem precisar interpretar o personagem social que a gente acaba assumindo no dia a dia. Basicamente, eu escrevendo pra mim mesmo sobre o que vier à cabeça, sem a preocupação de agradar ou impressionar ninguém.
+É justamente isso que pretendo fazer por aqui: escrever de forma autêntica e sincera, sem máscaras nem filtros. Escrever para mim mesmo, sobre o que vier à cabeça, sem me preocupar em agradar ou impressionar ninguém.
 
 Naturalmente, vai ter bastante coisa sobre minha profissão como engenheiro de confiabilidade e plataforma, minha jornada com observabilidade e os desafios de lidar com sistemas em produção. Mas também vai ter muita filosofia, opiniões, reflexões, desabafos e qualquer outro assunto que desperte minha curiosidade.
 
