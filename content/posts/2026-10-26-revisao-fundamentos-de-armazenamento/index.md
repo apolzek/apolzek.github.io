@@ -2,12 +2,11 @@
 title: "Revisão: fundamentos de armazenamento"
 slug: "revisao-fundamentos-de-armazenamento"
 date: '2026-10-26T12:00:00-03:00'
-draft: true
+draft: false
 description: "Uma revisão de armazenamento do disco ao filesystem: HDD, SSD, NVMe, IOPS, RAID, LVM, ZFS e os sistemas de arquivos de cada sistema operacional, tudo em linguagem informal e com analogias."
 tags:
 - linux
 minute: 38
-url: "/review/fundamentos-de-armazenamento/"
 ---
 
 Este é o texto que eu gostaria de ter lido quando precisei revisar armazenamento de verdade, sem decorar sigla solta. A ideia é subir a pilha inteira: começa no hardware, passa por desempenho, RAID e LVM, e termina nos filesystems de cada sistema operacional. Pega um café, porque é uma caminhada longa, mas prometo que cada parada faz sentido.

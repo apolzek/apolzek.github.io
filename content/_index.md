@@ -9,6 +9,7 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
 {{% index-list %}}
 ## 2026 - Outubro
 
+- <a class="aor-index-list__main-link" href="/2026/10/26/revisao-fundamentos-de-armazenamento/" title="Uma revisão de armazenamento do disco ao filesystem: HDD, SSD, NVMe, IOPS, RAID, LVM, ZFS e os sistemas de arquivos de cada sistema operacional, tudo em linguagem informal e com analogias.">Revisão: fundamentos de armazenamento</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/linux/">#linux</a></span>
 - <a class="aor-index-list__main-link" href="/2026/10/12/dialogo-sobre-o-mentor-e-a-confianca/" title="Diálogo socrático: Glauco descobre que dois homens que admira se desprezam, e Sócrates o leva a examinar a necessidade de ter um mentor, o perigo de confiar demais e o dever de formar o próprio juízo, sabendo que até o mestre erra.">Diálogo sobre o Mentor e a Confiança</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/filosofia/">#filosofia</a><a class="aor-tag-link" href="/tags/dialogos/">#dialogos</a></span>
 
 ## 2026 - Setembro
@@ -46,9 +47,15 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
 <section class="aor-index-month" aria-labelledby="aor-grid-2026-10">
   <div class="aor-index-month__header">
     <h2 id="aor-grid-2026-10">2026 - Outubro</h2>
-    <span>1 post</span>
+    <span>2 posts</span>
   </div>
   <div class="aor-post-grid">
+<article class="aor-post-card" title="Uma revisão de armazenamento do disco ao filesystem: HDD, SSD, NVMe, IOPS, RAID, LVM, ZFS e os sistemas de arquivos de cada sistema operacional, tudo em linguagem informal e com analogias.">
+  <time class="aor-post-card__date" datetime="2026-10-26">26/10/2026</time>
+  <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/10/26/revisao-fundamentos-de-armazenamento/">Revisão: fundamentos de armazenamento</a></h3>
+  <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/tags/linux/">#linux</a></span>
+  <p class="aor-post-card__description">Uma revisão de armazenamento do disco ao filesystem: HDD, SSD, NVMe, IOPS, RAID, LVM, ZFS e os sistemas de arquivos de cada sistema operacional, tudo em linguagem informal e com analogias.</p>
+</article>
 <article class="aor-post-card" title="Diálogo socrático: Glauco descobre que dois homens que admira se desprezam, e Sócrates o leva a examinar a necessidade de ter um mentor, o perigo de confiar demais e o dever de formar o próprio juízo, sabendo que até o mestre erra.">
   <time class="aor-post-card__date" datetime="2026-10-12">12/10/2026</time>
   <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/10/12/dialogo-sobre-o-mentor-e-a-confianca/">Diálogo sobre o Mentor e a Confiança</a></h3>
