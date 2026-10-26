@@ -24,7 +24,7 @@ _Production systems, observability and reliability engineering. Documenting tech
 
 ## 2026 - July
 
-- <a class="aor-index-list__main-link" href="/en/2026/07/15/dialogue-on-the-master-and-practice/" title="A Socratic dialogue: Glaucon leaves the palaestra annoyed, and Socrates leads him to examine what makes a master and why practice cannot be learned by listening alone.">Dialogue on the Master and Practice</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/en/tags/philosophy/">#philosophy</a><a class="aor-tag-link" href="/en/tags/dialogues/">#dialogues</a></span>
+- <a class="aor-index-list__main-link" href="/en/2026/07/15/dialogue-on-the-master-and-practice/" title="A Socratic dialogue: Glaucon leaves the palaestra annoyed, and Socrates leads him to examine what makes a master and why practice cannot be learned by listening alone.">Dialogue on the Master without a Crown</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/en/tags/philosophy/">#philosophy</a><a class="aor-tag-link" href="/en/tags/dialogues/">#dialogues</a></span>
 - <a class="aor-index-list__main-link" href="/en/2026/07/04/old-traps-new-victims/" title="In a world with too much information, the challenge is separating what adds value from what merely holds your attention. Practical strategies to stop losing hours on content that looks educational and delivers little.">Old Traps, New Victims</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/en/tags/study/">#study</a><a class="aor-tag-link" href="/en/tags/productivity/">#productivity</a></span>
 
 ## 2026 - June
@@ -111,7 +111,7 @@ _Production systems, observability and reliability engineering. Documenting tech
   <div class="aor-post-grid">
 <article class="aor-post-card" title="A Socratic dialogue: Glaucon leaves the palaestra annoyed, and Socrates leads him to examine what makes a master and why practice cannot be learned by listening alone.">
   <time class="aor-post-card__date" datetime="2026-07-15">Jul 15, 2026</time>
-  <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/en/2026/07/15/dialogue-on-the-master-and-practice/">Dialogue on the Master and Practice</a></h3>
+  <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/en/2026/07/15/dialogue-on-the-master-and-practice/">Dialogue on the Master without a Crown</a></h3>
   <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/en/tags/philosophy/">#philosophy</a><a class="aor-tag-link" href="/en/tags/dialogues/">#dialogues</a></span>
   <p class="aor-post-card__description">A Socratic dialogue: Glaucon leaves the palaestra annoyed, and Socrates leads him to examine what makes a master and why practice cannot be learned by listening alone.</p>
 </article>

@@ -1,5 +1,5 @@
 ---
-title: "Dialogue on the Master and Practice"
+title: "Dialogue on the Master without a Crown"
 slug: "dialogue-on-the-master-and-practice"
 date: '2026-07-15T12:00:00-03:00'
 draft: false
@@ -20,11 +20,7 @@ minute: 5
 
 **GLAUCON:** Ikkos trained three champions. None of his disciples ever asked about his crowns, and all of them left crowned. How can that be?
 
-**SOCRATES:** Tell me: does the charioteer who wins the race win by his own eyes, or by the eyes of the horse?
-
-**GLAUCON:** By his own, I suppose.
-
-**SOCRATES:** And the man in the stands who notices that the charioteer takes the turn too early and loses half a length, does he himself need to know how to drive the chariot?
+**SOCRATES:** Tell me: when, from the stands, you notice that the charioteer took the turn too early and lost half a length, do you yourself need to know how to drive the chariot to see the mistake?
 
 **GLAUCON:** Perhaps not. Seeing the error and performing the right move seem to be different things.
 

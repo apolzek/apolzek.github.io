@@ -20,11 +20,7 @@ minute: 5
 
 **GLAUCO:** Íkos treinou três campeões. Nenhum de seus discípulos jamais perguntou por suas coroas, e todos saíram coroados. Como pode isso ?
 
-**SÓCRATES:** Diz-me: o auriga que vence a corrida, vence pelos seus olhos ou pelos olhos do cavalo ?
-
-**GLAUCO:** Pelos seus, suponho.
-
-**SÓCRATES:** E aquele que, da arquibancada, percebe que o auriga aperta a curva cedo demais e perde meio corpo de vantagem, precisa ele próprio saber conduzir o carro ?
+**SÓCRATES:** Diz-me: quando, da arquibancada, percebes que o auriga apertou a curva cedo demais e perdeu meio corpo de vantagem, precisas tu saber conduzir o carro para enxergar o erro ?
 
 **GLAUCO:** Talvez não. Ver o erro e cometer o acerto parecem coisas distintas.
 
