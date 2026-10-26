@@ -205,7 +205,7 @@ if include_drafts || include_future
   warn '*** gerados com essas flags, ou rascunhos vazam na home.'
 end
 
-{ pt: '', en: '.en' }.each do |lang, suffix|
+{ pt: '' }.each do |lang, suffix|
   posts = collect_posts(lang, include_future: include_future, include_drafts: include_drafts)
   grouped = group_by_month(posts)
   index_file = "#{CONTENT_DIR}/_index#{suffix}.md"

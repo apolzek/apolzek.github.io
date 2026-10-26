@@ -2,8 +2,7 @@
 # Dev: hugo server --renderToMemory -p 1313
 # Rascunhos (draft: true) só aparecem com: hugo server -D
 #
-# Bilíngue: PT-BR é o idioma canônico (index.md, URLs em /), EN fica em
-# index.en.md ao lado, servido em /en/. O seletor PT | EN fica na navbar.
+# Monolíngue: PT-BR (index.md, URLs em /).
 
 title: apolzek
 enableEmoji: true
@@ -50,10 +49,6 @@ languages:
           url: "/index.xml"
           params:
             icon: rss
-        - name: Idioma
-          weight: 10
-          params:
-            type: language-switch
       sidebar:
         - name: GitHub
           weight: 1
@@ -73,71 +68,6 @@ languages:
         - name: Cheatsheet
           weight: 4
           url: "/cheatsheet/"
-          params:
-            icon: terminal
-  en:
-    label: "English"
-    locale: "en"
-    weight: 2
-    title: "apolzek"
-    contentDir: "content"
-    params:
-      description: "Production systems, observability and reliability engineering. Documenting technical experiences and, outside production, exploring philosophy and reflections on life."
-    menu:
-      main:
-        - name: Theme
-          weight: 0
-          params:
-            type: theme-toggle
-        - name: Thoughts
-          url: "/en/thoughts/"
-          weight: 3
-        - name: Moments
-          url: "/en/moments/"
-          weight: 4
-        - name: Cheatsheet
-          url: "/en/cheatsheet/"
-          weight: 5
-        - name: Direct message
-          url: "/en/dm/"
-          weight: 6
-        - name: GitHub ↗
-          url: "https://github.com/apolzek"
-          weight: 7
-          params:
-            icon: github
-        - name: Search
-          weight: 8
-          params:
-            type: search
-        - name: RSS
-          weight: 9
-          url: "/en/index.xml"
-          params:
-            icon: rss
-        - name: Language
-          weight: 10
-          params:
-            type: language-switch
-      sidebar:
-        - name: GitHub
-          weight: 1
-          url: "https://github.com/apolzek/apolzek.github.io"
-          params:
-            icon: github
-        - name: Twitter
-          weight: 2
-          url: "https://x.com/apolzek"
-          params:
-            icon: x-twitter
-        - name: Thoughts
-          weight: 3
-          url: "/en/thoughts/"
-          params:
-            icon: light-bulb
-        - name: Cheatsheet
-          weight: 4
-          url: "/en/cheatsheet/"
           params:
             icon: terminal
 
