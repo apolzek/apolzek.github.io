@@ -20,7 +20,7 @@
           <ul class="aor-thoughts__list" id="thoughts-list">
             {{- range $t := $thoughts }}
             <li class="aor-thought">
-              <p class="aor-thought__text"><span class="aor-thought__body">{{ if and (eq site.Language.Lang "en") $t.text_en }}{{ $t.text_en }}{{ else }}{{ $t.text }}{{ end }}</span> <time class="aor-thought__date" datetime="{{ .date }}">— {{ (time .date).Format "02/01/2006" }}</time>
+              <p class="aor-thought__text"><span class="aor-thought__body">{{ $t.text }}</span> <time class="aor-thought__date" datetime="{{ .date }}">— {{ (time .date).Format "02/01/2006" }}</time>
                 {{- with .image }} <button type="button" class="aor-thought__img-btn" data-image="{{ . }}" data-alt="{{ $t.alt | default "" }}" data-caption="{{ $t.caption | default "" }}" title="{{ T "thoughtImage" }}" aria-label="{{ T "thoughtImage" }}">{{ partial "utils/icon.html" (dict "name" "photograph" "attributes" `height="1em" width="1em" aria-hidden="true"`) }}</button>{{ end -}}
               </p>
             </li>

@@ -3,7 +3,6 @@
          do Instagram. Dados em data/moments.yml. Clique abre um modal com a foto,
          a legenda e a data. */ -}}
   {{- $moments := sort hugo.Data.moments "date" "desc" -}}
-  {{- $isEN := eq site.Language.Lang "en" -}}
   <div class='hx:mx-auto hx:flex hextra-max-page-width'>
     {{ partial "sidebar.html" (dict "context" . "disableSidebar" true "displayPlaceholder" true) }}
     {{ partial "toc.html" (dict "Params" (dict "toc" false)) }}
@@ -17,8 +16,8 @@
 
           <div class="aor-moments__grid" id="moments-grid">
             {{- range $m := $moments }}
-            {{- $caption := cond (and $isEN $m.caption_en) $m.caption_en $m.caption -}}
-            {{- $dateLabel := cond $isEN ((time $m.date).Format "Jan 2, 2006") ((time $m.date).Format "02/01/2006") -}}
+            {{- $caption := $m.caption -}}
+            {{- $dateLabel := (time $m.date).Format "02/01/2006" -}}
             <button type="button" class="aor-moment" data-image="{{ $m.image }}" data-alt="{{ $m.alt | default "" }}" data-caption="{{ $caption | default "" }}" data-date="{{ $dateLabel }}" aria-label="{{ $caption | default $dateLabel }}">
               <img src="{{ $m.image }}" alt="{{ $m.alt | default "" }}" loading="lazy" decoding="async">
               {{- with $caption }}<span class="aor-moment__overlay"><span>{{ . }}</span></span>{{ end -}}

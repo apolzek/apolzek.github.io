@@ -14,7 +14,7 @@
 {{- end -}}
 
 {{- with $next -}}
-  {{- $label := cond (eq $current.Language.Lang "en") "Next post" "Próximo post" -}}
+  {{- $label := "Próximo post" -}}
   <aside class="aor-next-post hx:print:hidden" aria-label="{{ $label }}">
     <span class="aor-next-post__label">{{ $label }}</span>
     <a class="aor-next-post__link" href="{{ .RelPermalink }}">

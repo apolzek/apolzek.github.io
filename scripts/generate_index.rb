@@ -24,10 +24,7 @@ TAG_TAXONOMY = YAML.safe_load(File.read('data/tag_taxonomy.yml'))
 ALLOWED_TAGS = {
   pt: TAG_TAXONOMY.fetch('tags').values.map { |values| values.fetch('pt') } +
       TAG_TAXONOMY.fetch('event_series').keys +
-      TAG_TAXONOMY.fetch('special_tags').values.map { |values| values.fetch('pt') },
-  en: TAG_TAXONOMY.fetch('tags').values.map { |values| values.fetch('en') } +
-      TAG_TAXONOMY.fetch('event_series').keys +
-      TAG_TAXONOMY.fetch('special_tags').values.map { |values| values.fetch('en') }
+      TAG_TAXONOMY.fetch('special_tags').values.map { |values| values.fetch('pt') }
 }.transform_values(&:freeze).freeze
 
 L = {
@@ -38,13 +35,6 @@ L = {
     months: [nil, 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
              'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
     date_fmt: '%d/%m/%Y', prefix: ''
-  },
-  en: {
-    title: 'apolzek | Journal',
-    intro: "_Production systems, observability and reliability engineering. Documenting technical experiences and, outside production, exploring philosophy and reflections on life._",
-    list: 'List', grid: 'Grid', view: 'Post view',
-    months: Date::MONTHNAMES,
-    date_fmt: '%b %-d, %Y', prefix: '/en'
   }
 }.freeze
 

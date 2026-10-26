@@ -52,7 +52,7 @@
                 <div class="aor-post-grid">
                   {{- range $group.Pages -}}
                     {{- $description := .Params.description | default (.Summary | plainify) -}}
-                    {{- $dateLabel := cond (eq .Site.Language.Lang "pt-br") (.Date.Format "02/01/2006") (.Date.Format "Jan 2, 2006") -}}
+                    {{- $dateLabel := .Date.Format "02/01/2006" -}}
                     <article class="aor-post-card" title="{{ $description }}">
                       <time class="aor-post-card__date" datetime="{{ .Date.Format "2006-01-02" }}">{{ $dateLabel }}</time>
                       <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="{{ .RelPermalink }}">{{ .Title }}</a></h3>

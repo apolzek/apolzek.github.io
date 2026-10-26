@@ -1,16 +1,8 @@
 {{ define "main" }}
   {{- /* Página "Direct message": um input de código. Cada artigo em content/dm/
          declara `code:` no front matter; o mapa código -> URL vai pro JS (o
-         código fica exposto no HTML, de propósito). Quando a página EN não tem
-         artigos próprios, usa os artigos da seção PT. */ -}}
+         código fica exposto no HTML, de propósito). */ -}}
   {{- $pages := .Pages -}}
-  {{- if not $pages -}}
-    {{- range hugo.Sites -}}
-      {{- if eq .Language.Lang "pt-br" -}}
-        {{- with .GetPage "/dm" }}{{ $pages = .Pages }}{{ end -}}
-      {{- end -}}
-    {{- end -}}
-  {{- end -}}
   {{- $codes := dict -}}
   {{- range $pages -}}
     {{- $url := .RelPermalink -}}

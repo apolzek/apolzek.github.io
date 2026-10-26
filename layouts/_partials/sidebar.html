@@ -37,9 +37,8 @@
     {{- end -}}
   {{- end -}}
 {{- end -}}
-{{- $isEN := eq site.Language.Lang "en" -}}
-{{- $topicsLabel := cond $isEN "Topics" "Temas" -}}
-{{- $allTagsLabel := cond $isEN "All tags <span class=\"aor-go\"></span>" "Todas as tags <span class=\"aor-go\"></span>" -}}
+{{- $topicsLabel := "Temas" -}}
+{{- $allTagsLabel := "Todas as tags <span class=\"aor-go\"></span>" -}}
 {{- $tagLinkClass := "hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50" -}}
 
 <aside class="hextra-sidebar-container hx:flex hx:flex-col hx:print:hidden hx:md:top-16 hx:md:shrink-0 hx:md:w-64 hx:md:self-start hx:max-md:[transform:translate3d(0,-100%,0)] {{ $sidebarClass }}">

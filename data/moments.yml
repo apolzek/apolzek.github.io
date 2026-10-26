@@ -1,30 +1,24 @@
 - image: /assets/img/goku-training.jpeg
   alt: "Goku treinando"
   caption: "Capsula Goku Recuperandose"
-  caption_en: "Goku recovering in the capsule"
   date: "2026-10-09"
 - image: /assets/img/Aquiles.jpeg
   alt: "Aquiles"
   caption: '"por isso seu nome nunca será lembrado" - Aquiles Troia'
-  caption_en: '"that''s why your name will never be remembered" - Achilles, Troy'
   date: "2026-10-08"
 - image: /assets/img/leonardo.jpg
   alt: "Leonardo da Vinci"
   caption: "Homem vitruviano"
-  caption_en: "Vitruvian Man"
   date: "2026-10-07"
 - image: /assets/img/3-brains.png
   alt: "Os três cérebros"
   caption: "Os três cérebros."
-  caption_en: "The three brains."
   date: "2026-10-05"
 - image: /assets/img/julio.png
   alt: "Júlio, do Cocoricó"
   caption: "Júlio, curiosidade genuína."
-  caption_en: "Júlio, genuine curiosity."
   date: "2026-10-04"
 - image: /assets/img/dns.png
   alt: "DNS"
   caption: "Seu DNS esta seguro?"
-  caption_en: "Is your DNS secure?"
   date: "2026-10-01"

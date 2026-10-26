@@ -4,7 +4,7 @@
          aberta se o visitante chegou pela página /dm/ com o código certo
          (marca em sessionStorage); caso contrário, volta pra /dm/. O conteúdo
          continua no HTML, isso é só uma cortina, não um cadeado. */ -}}
-  {{- $dmHome := cond (eq .Site.Language.Lang "en") "/en/dm/" "/dm/" -}}
+  {{- $dmHome := "/dm/" -}}
   <div class='hx:mx-auto hx:flex hextra-max-page-width'>
     {{ partial "sidebar.html" (dict "context" . "disableSidebar" true "displayPlaceholder" true) }}
     {{ partial "toc.html" . }}
