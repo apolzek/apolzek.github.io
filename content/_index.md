@@ -11,7 +11,7 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
 
 - <a class="aor-index-list__main-link" href="/2026/10/26/revisao-redes-de-computadores/" title="Uma revisão de redes do cabo ao Kubernetes: Ethernet, VLANs, IP, roteamento, NAT, TCP, DNS, TLS, firewalls, túneis, o caminho completo de um pacote e vinte perguntas pra se testar, tudo em linguagem informal e com analogias.">Revisão: redes de computadores</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/redes/">#redes</a><a class="aor-tag-link" href="/tags/linux/">#linux</a></span>
 - <a class="aor-index-list__main-link" href="/2026/10/26/revisao-fundamentos-de-armazenamento/" title="Uma revisão de armazenamento do disco ao filesystem: HDD, SSD, NVMe, IOPS, RAID, LVM, ZFS e os sistemas de arquivos de cada sistema operacional, tudo em linguagem informal e com analogias.">Revisão: fundamentos de armazenamento</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/linux/">#linux</a></span>
-- <a class="aor-index-list__main-link" href="/2026/10/12/dialogo-sobre-o-mentor-e-a-confianca/" title="Diálogo socrático: Glauco descobre que dois homens que admira se desprezam, e Sócrates o leva a examinar a necessidade de ter um mentor, o perigo de confiar demais e o dever de formar o próprio juízo, sabendo que até o mestre erra.">Diálogo sobre o Mentor e a Confiança</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/filosofia/">#filosofia</a><a class="aor-tag-link" href="/tags/dialogos/">#dialogos</a></span>
+- <a class="aor-index-list__main-link" href="/2026/10/12/dialogo-sobre-o-mentor-e-a-confianca/" title="Diálogo socrático: Glauco descobre que dois homens que admira não se suportam, e Sócrates o leva a ver que gostar dos dois não é traição a nenhum, que a briga deles não é dele e que, quanto mais gente admiramos, mais certo é que algumas não vão se admirar.">Diálogo sobre a Admiração Sem Lado</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/filosofia/">#filosofia</a><a class="aor-tag-link" href="/tags/dialogos/">#dialogos</a></span>
 
 ## 2026 - Setembro
 
@@ -63,11 +63,11 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
   <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/tags/linux/">#linux</a></span>
   <p class="aor-post-card__description">Uma revisão de armazenamento do disco ao filesystem: HDD, SSD, NVMe, IOPS, RAID, LVM, ZFS e os sistemas de arquivos de cada sistema operacional, tudo em linguagem informal e com analogias.</p>
 </article>
-<article class="aor-post-card" title="Diálogo socrático: Glauco descobre que dois homens que admira se desprezam, e Sócrates o leva a examinar a necessidade de ter um mentor, o perigo de confiar demais e o dever de formar o próprio juízo, sabendo que até o mestre erra.">
+<article class="aor-post-card" title="Diálogo socrático: Glauco descobre que dois homens que admira não se suportam, e Sócrates o leva a ver que gostar dos dois não é traição a nenhum, que a briga deles não é dele e que, quanto mais gente admiramos, mais certo é que algumas não vão se admirar.">
   <time class="aor-post-card__date" datetime="2026-10-12">12/10/2026</time>
-  <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/10/12/dialogo-sobre-o-mentor-e-a-confianca/">Diálogo sobre o Mentor e a Confiança</a></h3>
+  <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/10/12/dialogo-sobre-o-mentor-e-a-confianca/">Diálogo sobre a Admiração Sem Lado</a></h3>
   <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/tags/filosofia/">#filosofia</a><a class="aor-tag-link" href="/tags/dialogos/">#dialogos</a></span>
-  <p class="aor-post-card__description">Diálogo socrático: Glauco descobre que dois homens que admira se desprezam, e Sócrates o leva a examinar a necessidade de ter um mentor, o perigo de confiar demais e o dever de formar o próprio juízo, sabendo que até o mestre erra.</p>
+  <p class="aor-post-card__description">Diálogo socrático: Glauco descobre que dois homens que admira não se suportam, e Sócrates o leva a ver que gostar dos dois não é traição a nenhum, que a briga deles não é dele e que, quanto mais gente admiramos, mais certo é que algumas não vão se admirar.</p>
 </article>
   </div>
 </section>
