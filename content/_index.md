@@ -9,6 +9,7 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
 {{% index-list %}}
 ## 2026 - Outubro
 
+- <a class="aor-index-list__main-link" href="/2026/10/27/revisao-fundamentos-de-ciberseguranca/" title="Um mapa da cibersegurança moderna: conceitos, o ciclo de um ataque, MITRE ATT&amp;CK, e cada área da profissão (GRC, ofensiva, SOC, resposta a incidentes, forense, threat intel, AppSec, supply chain, cloud, Kubernetes, identidade, rede, endpoint, criptografia, privacidade, OT, IA) com as ferramentas que se usam hoje, em linguagem informal e com analogias.">Revisão: fundamentos de cibersegurança</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/seguranca/">#seguranca</a></span>
 - <a class="aor-index-list__main-link" href="/2026/10/26/revisao-fundamentos-de-containers-e-orquestracao/" title="Uma revisão de containers e orquestração do kernel ao cluster: namespaces, cgroups, imagens OCI, runtimes, Docker e Podman por dentro, rootless, rede e volumes, e depois Kubernetes com control plane, reconciliação, pods, workloads, probes, recursos, rede, storage, segurança, autoscaling, deploy, operators e diagnóstico, em linguagem informal e com analogias.">Revisão: fundamentos de containers e orquestração de containers</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/kubernetes/">#kubernetes</a><a class="aor-tag-link" href="/tags/cloud-native/">#cloud-native</a><a class="aor-tag-link" href="/tags/linux/">#linux</a></span>
 - <a class="aor-index-list__main-link" href="/2026/10/26/revisao-fundamentos-de-sistemas-operacionais/" title="Uma revisão de sistemas operacionais de verdade: kernel, syscalls, processos, threads, escalonador, memória virtual, page cache, swap, sinais e boot, com o Linux em profundidade e um passeio por Windows, macOS e BSDs, em linguagem informal e com analogias.">Revisão: fundamentos de sistemas operacionais</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/linux/">#linux</a><a class="aor-tag-link" href="/tags/windows/">#windows</a></span>
 - <a class="aor-index-list__main-link" href="/2026/10/26/revisao-redes-de-computadores/" title="Uma revisão de redes do cabo ao Kubernetes: Ethernet, VLANs, IP, roteamento, NAT, TCP, DNS, TLS, firewalls, túneis, o caminho completo de um pacote e vinte perguntas pra se testar, tudo em linguagem informal e com analogias.">Revisão: fundamentos de redes de computadores</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/redes/">#redes</a><a class="aor-tag-link" href="/tags/linux/">#linux</a></span>
@@ -50,9 +51,15 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
 <section class="aor-index-month" aria-labelledby="aor-grid-2026-10">
   <div class="aor-index-month__header">
     <h2 id="aor-grid-2026-10">2026 - Outubro</h2>
-    <span>5 posts</span>
+    <span>6 posts</span>
   </div>
   <div class="aor-post-grid">
+<article class="aor-post-card" title="Um mapa da cibersegurança moderna: conceitos, o ciclo de um ataque, MITRE ATT&amp;CK, e cada área da profissão (GRC, ofensiva, SOC, resposta a incidentes, forense, threat intel, AppSec, supply chain, cloud, Kubernetes, identidade, rede, endpoint, criptografia, privacidade, OT, IA) com as ferramentas que se usam hoje, em linguagem informal e com analogias.">
+  <time class="aor-post-card__date" datetime="2026-10-27">27/10/2026</time>
+  <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/10/27/revisao-fundamentos-de-ciberseguranca/">Revisão: fundamentos de cibersegurança</a></h3>
+  <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/tags/seguranca/">#seguranca</a></span>
+  <p class="aor-post-card__description">Um mapa da cibersegurança moderna: conceitos, o ciclo de um ataque, MITRE ATT&amp;CK, e cada área da profissão (GRC, ofensiva, SOC, resposta a incidentes, forense, threat intel, AppSec, supply chain, cloud, Kubernetes, identidade, rede, endpoint, criptografia, privacidade, OT, IA) com as ferramentas que se usam hoje, em linguagem informal e com analogias.</p>
+</article>
 <article class="aor-post-card" title="Uma revisão de containers e orquestração do kernel ao cluster: namespaces, cgroups, imagens OCI, runtimes, Docker e Podman por dentro, rootless, rede e volumes, e depois Kubernetes com control plane, reconciliação, pods, workloads, probes, recursos, rede, storage, segurança, autoscaling, deploy, operators e diagnóstico, em linguagem informal e com analogias.">
   <time class="aor-post-card__date" datetime="2026-10-26">26/10/2026</time>
   <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/10/26/revisao-fundamentos-de-containers-e-orquestracao/">Revisão: fundamentos de containers e orquestração de containers</a></h3>
