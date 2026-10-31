@@ -3,7 +3,7 @@ title: "Privacy on the internet: a practical guide"
 slug: "privacy-on-the-internet"
 date: '2026-10-31T14:00:00-03:00'
 draft: false
-description: "A technical quick guide to staying private and secure online: privacy vs anonymity, threat modeling, recommended apps (Signal, SimpleX, Briar, Session, KeePassXC, uBlock Origin), VPN vs proxy vs Tor, DNS over HTTPS vs DNS over TLS with real configs, hardened operating systems (Tails, Qubes, GrapheneOS), file sharing with OnionShare, and a curated list of the repositories and sites worth bookmarking."
+description: "A technical quick guide to staying private and secure online: privacy vs anonymity, threat modeling, recommended apps (Signal, SimpleX, Briar, Session, KeePassXC, uBlock Origin), proxy vs VPN vs Tor, DNS over HTTPS vs DNS over TLS with real configs, hardened operating systems (Tails, Qubes, GrapheneOS), file sharing with OnionShare, and a curated list of the repositories and sites worth bookmarking."
 tags:
 - seguranca
 - tecnologia
@@ -98,9 +98,17 @@ Fingerprinting rule: you do not want to look *unique*, you want to look *like ev
 - **Network-wide blocking:** [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) or Pi-hole as a local DNS resolver that blocks ad and tracker domains for every device at home.
 - **Phone forensics:** [MVT (Mobile Verification Toolkit)](https://github.com/mvt-project/mvt), from Amnesty International's Security Lab, checks iOS backups and Android devices for indicators of known spyware such as Pegasus.
 
-## VPN vs proxy vs Tor
+## Proxy vs VPN vs Tor: one hop, one tunnel, three hops
 
 All three put something between you and the destination. They differ in **scope**, **encryption** and **who you have to trust**.
+
+A common source of confusion: Tor *does* use a proxy. The Tor client running on your machine exposes a local **SOCKS5 proxy** (`127.0.0.1:9050` for the `tor` daemon, `127.0.0.1:9150` for Tor Browser), and applications talk to Tor through it, exactly as they would with any proxy:
+
+```bash
+curl --socks5-hostname 127.0.0.1:9050 https://check.torproject.org/api/ip
+```
+
+But that proxy lives on your own computer and is only the entry point. What happens after it is the difference: instead of one intermediary that sees everything, your traffic crosses three independent relays with layered encryption. So the real comparison is not about protocols, it is about how many parties sit in the middle and what each of them can learn.
 
 | | Proxy (HTTP/SOCKS5) | VPN | Tor |
 |---|---|---|---|
