@@ -64,8 +64,14 @@
           </li>
         {{- end -}}
       {{- end -}}
+      {{- $seenURLs := slice -}}
+      {{- $seenNames := slice -}}
+      {{- range site.Menus.main -}}
+        {{- $seenURLs = $seenURLs | append .URL -}}
+        {{- $seenNames = $seenNames | append (strings.TrimSpace (strings.TrimSuffix "↗" .Name)) -}}
+      {{- end -}}
       {{- range site.Menus.sidebar -}}
-        {{- if or .URL .PageRef -}}
+        {{- if and (or .URL .PageRef) (not (in $seenURLs .URL)) (not (in $seenNames .Name)) -}}
           {{- $name := or (T .Identifier) .Name -}}
           {{- $link := .URL -}}
           {{- with .PageRef -}}
@@ -81,19 +87,17 @@
         {{- end -}}
       {{- end -}}
       {{- if $topTags -}}
-        <li class="[word-break:break-word] hx:mt-5 hx:mb-2 hx:px-2 hx:py-1.5 hx:text-sm hx:font-semibold hx:text-gray-900 hx:first:mt-0 hx:dark:text-gray-100">
+        <li class="aor-menu-heading hx:font-semibold">
           <span class="hx:cursor-default">{{ $topicsLabel }}</span>
         </li>
-        {{- range $topTags -}}
-          <li>
-            <a class="{{ $tagLinkClass }}" href="{{ .Page.RelPermalink }}">#{{ .Term }}</a>
-          </li>
-        {{- end -}}
-        {{- with site.GetPage "/tags" -}}
-          <li>
-            <a class="{{ $tagLinkClass }}" href="{{ .RelPermalink }}">{{ $allTagsLabel | safeHTML }}</a>
-          </li>
-        {{- end -}}
+        <li class="aor-chips">
+          {{- range $topTags -}}
+            <a class="aor-chip" href="{{ .Page.RelPermalink }}">#{{ .Term }}</a>
+          {{- end -}}
+          {{- with site.GetPage "/tags" -}}
+            <a class="aor-chip aor-chip--all" href="{{ .RelPermalink }}">{{ $allTagsLabel | safeHTML }}</a>
+          {{- end -}}
+        </li>
       {{- end -}}
     </ul>
 

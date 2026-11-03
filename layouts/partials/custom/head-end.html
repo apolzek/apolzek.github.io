@@ -47,9 +47,90 @@
   .hextra-footer {
     background-color: color-mix(in srgb, var(--page-bg) 45%, transparent) !important;
   }
-  .hextra-sidebar-container,
   .hextra-toc {
     background: transparent;
+  }
+  @media (min-width: 48.0625rem) {
+    .hextra-sidebar-container {
+      background: transparent;
+    }
+  }
+
+  /* Menu mobile (hambúrguer): painel opaco abaixo da navbar, alvos de toque
+     de 44px+, temas em chips e respeito à safe-area dos iPhones. */
+  @media (max-width: 48rem) {
+    .hextra-sidebar-container {
+      background-color: var(--page-bg) !important;
+      z-index: 19 !important;
+      padding-top: var(--navbar-height) !important;
+      opacity: 1;
+      visibility: hidden;
+      transition: transform 0.35s cubic-bezier(0.52, 0.16, 0.04, 1), visibility 0s linear 0.35s !important;
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+    .hextra-sidebar-container.hx\:max-md\:\[transform\:translate3d\(0\,0\,0\)\] {
+      visibility: visible;
+      transition: transform 0.35s cubic-bezier(0.52, 0.16, 0.04, 1), visibility 0s !important;
+    }
+    .hextra-sidebar-container > div:first-child {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid color-mix(in srgb, currentColor 10%, transparent);
+    }
+    .hextra-sidebar-container .hextra-search-wrapper input {
+      font-size: 16px;
+      min-height: 2.75rem;
+    }
+    .hextra-sidebar-container .hextra-scrollbar {
+      padding: 0.75rem 1rem 2rem;
+      -webkit-overflow-scrolling: touch;
+    }
+    .hextra-sidebar-container .hextra-scrollbar > ul {
+      gap: 0;
+    }
+    .hextra-sidebar-container .hextra-scrollbar > ul > li > a:not(.aor-chip) {
+      min-height: 3rem;
+      padding: 0.75rem 0.5rem;
+      font-size: 1.05rem;
+      color: inherit;
+      border-bottom: 1px solid color-mix(in srgb, currentColor 8%, transparent);
+      border-radius: 0;
+    }
+    .hextra-sidebar-container .hextra-scrollbar > ul > li > a:not(.aor-chip):active {
+      background: color-mix(in srgb, currentColor 8%, transparent);
+    }
+    .hextra-sidebar-container .hextra-scrollbar > ul > li.aor-menu-heading {
+      margin: 1.5rem 0 0.5rem;
+      padding: 0 0.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: color-mix(in srgb, currentColor 60%, transparent);
+    }
+    .hextra-sidebar-container .aor-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0 0.25rem;
+    }
+    .hextra-sidebar-container a.aor-chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.5rem;
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      color: inherit;
+      text-decoration: none;
+      border: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+      background: color-mix(in srgb, currentColor 4%, transparent);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .hextra-sidebar-container a.aor-chip:active {
+      background: color-mix(in srgb, currentColor 12%, transparent);
+    }
+    .hextra-sidebar-container a.aor-chip--all {
+      border-style: dashed;
+    }
   }
 
   /* Navbar responsiva em camadas. O menu tem muitos itens; entre o
