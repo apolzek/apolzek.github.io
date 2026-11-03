@@ -7,6 +7,10 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
 {{< index-view-toggle list="Lista" grid="Grade" label="Visualização dos posts" >}}
 
 {{% index-list %}}
+## 2026 - Novembro
+
+- <a class="aor-index-list__main-link" href="/2026/11/03/a-complexidade-escondida-nas-coisas-simples/" title="Um ensaio sobre a complexidade que mora por baixo do que parece simples: o corpo que luta para continuar vivo e cai por um detalhe, a gota d&#39;água que pode matar a sede ou matar, a mente que muda para sempre depois de um único dia, e o nascer e o pôr do sol que só acontecem porque uma quantidade absurda de coisas dá certo ao mesmo tempo.">A complexidade escondida nas coisas simples</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/filosofia/">#filosofia</a></span>
+
 ## 2026 - Outubro
 
 - <a class="aor-index-list__main-link" href="/2026/10/31/observability-solutions-and-companies/" title="A map of the observability market: what the signals are, why OpenTelemetry became the center of gravity, the open-source stack layer by layer (Prometheus, Grafana, Loki, Tempo, Jaeger, ClickHouse and friends), the commercial platforms (Datadog, Dynatrace, New Relic, Splunk, Elastic, Grafana Labs, the cloud providers and the challengers), how vendors charge, where the bills explode, how to choose without getting locked in, and a directory with links to more than 80 tools and companies.">Observability solutions and companies</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/observabilidade/">#observabilidade</a><a class="aor-tag-link" href="/tags/cloud-native/">#cloud-native</a></span>
@@ -53,6 +57,20 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
 {{% /index-list %}}
 
 <div id="aor-index-grid" class="aor-index-grid" data-index-view="grid">
+<section class="aor-index-month" aria-labelledby="aor-grid-2026-11">
+  <div class="aor-index-month__header">
+    <h2 id="aor-grid-2026-11">2026 - Novembro</h2>
+    <span>1 post</span>
+  </div>
+  <div class="aor-post-grid">
+<article class="aor-post-card" title="Um ensaio sobre a complexidade que mora por baixo do que parece simples: o corpo que luta para continuar vivo e cai por um detalhe, a gota d&#39;água que pode matar a sede ou matar, a mente que muda para sempre depois de um único dia, e o nascer e o pôr do sol que só acontecem porque uma quantidade absurda de coisas dá certo ao mesmo tempo.">
+  <time class="aor-post-card__date" datetime="2026-11-03">03/11/2026</time>
+  <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/11/03/a-complexidade-escondida-nas-coisas-simples/">A complexidade escondida nas coisas simples</a></h3>
+  <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/tags/filosofia/">#filosofia</a></span>
+  <p class="aor-post-card__description">Um ensaio sobre a complexidade que mora por baixo do que parece simples: o corpo que luta para continuar vivo e cai por um detalhe, a gota d&#39;água que pode matar a sede ou matar, a mente que muda para sempre depois de um único dia, e o nascer e o pôr do sol que só acontecem porque uma quantidade absurda de coisas dá certo ao mesmo tempo.</p>
+</article>
+  </div>
+</section>
 <section class="aor-index-month" aria-labelledby="aor-grid-2026-10">
   <div class="aor-index-month__header">
     <h2 id="aor-grid-2026-10">2026 - Outubro</h2>
