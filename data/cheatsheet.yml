@@ -330,8 +330,38 @@
     # Watch for specific events only
     inotifywait -m -e create,modify,delete /path/to/watch
 
-    # Continuously print filesystem events
-    inotifywatch -v /path/to/watch
+    # Monitor recursively with long options (same as -mr)
+    inotifywait -m -r /path/to/watch
+
+    # Print events with a timestamp and a custom format
+    inotifywait -m -r --timefmt '%F %T' --format '%T %e %w%f' /path/to/watch
+
+    # Only react when a file is fully written or moved in
+    inotifywait -m -r -e close_write,moved_to /path/to/watch
+
+    # Ignore paths matching a regex (e.g. .git and swap files)
+    inotifywait -m -r --exclude '(\.git/|\.swp$)' /path/to/watch
+
+    # Wait for a single event and exit (useful in scripts)
+    inotifywait -e modify /path/to/file
+
+    # Wait at most 30 seconds for an event (exit code 2 on timeout)
+    inotifywait -t 30 -e modify /path/to/file
+
+    # Run a command every time a file changes
+    inotifywait -m -r -e close_write --format '%w%f' /path/to/watch |
+      while read -r file; do
+        echo "changed: $file"
+      done
+
+    # Rebuild in a loop whenever something under src/ changes
+    while inotifywait -r -e close_write src/; do make; done
+
+    # Watch quietly and log events to a file in the background
+    inotifywait -m -r -q -o /tmp/inotify.log -d /path/to/watch
+
+    # Count events per file for 60 seconds and print a summary
+    inotifywatch -v -r -t 60 /path/to/watch
 
     # Install inotify-tools (Debian/Ubuntu)
     sudo apt install inotify-tools
