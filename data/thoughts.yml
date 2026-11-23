@@ -106,3 +106,5 @@
   date: "2026-10-24"
 - text: "Kubernetes is saying goodbye to IPVS! Starting with version 1.40, it will be disabled by default in kube-proxy, with complete removal planned for 1.43. nftables is now the recommended alternative, while solutions like Cilium take a different approach, using eBPF to replace kube-proxy entirely."
   date: "2026-11-23"
+- text: '"I don''t listen to what people say, I only watch what they do. Behavior never lies." Winston Churchill'
+  date: "2026-11-23"
