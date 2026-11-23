@@ -1,0 +1,20 @@
+{{- /* Navegação entre colchetes, no topo e no rodapé. Os itens vêm do menu
+       "main" do hugo.yaml; o item do tipo "search" abre a busca. */ -}}
+{{- $page := .page -}}
+{{- $here := $page.RelPermalink -}}
+<nav class="{{ .class }}" aria-label="{{ .label }}">
+  <span>[ <a href="{{ "/" | relURL }}"{{ if $page.IsHome }} class="current"{{ end }}>Journal</a> ]</span>
+  {{- range $page.Site.Menus.main -}}
+    {{- $type := .Params.type -}}
+    {{- if eq $type "theme-toggle" -}}
+      <span>[ <a href="#" data-theme-open aria-haspopup="dialog" title="Tema (tecla t)">{{ .Name }}</a>: <span data-theme-name>retro-82</span> ]</span>
+    {{- else if eq $type "search" -}}
+      <span>[ <a href="#" class="nav-search" data-search-open aria-haspopup="dialog">{{ .Name }}</a> ]</span>
+    {{- else -}}
+      {{- $url := .URL -}}
+      {{- $external := hasPrefix $url "http" -}}
+      {{- $name := .Name | replaceRE ` ?↗$` "" -}}
+      <span>[ <a href="{{ $url }}"{{ if and (not $external) (hasPrefix $here $url) }} class="current"{{ end }}{{ if $external }} target="_blank" rel="noopener"{{ end }}>{{ $name }}</a> ]</span>
+    {{- end -}}
+  {{- end -}}
+</nav>

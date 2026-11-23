@@ -1,0 +1,13 @@
+{{ define "main" }}
+  <h1 class="opt"><strong>{{ .Title }}</strong> : {{ len .Data.Terms }}</h1>
+  <article class="framed">
+    <table class="tissue">
+      <tbody>
+        <tr class="cols"><td>Tag</td><td>Posts</td></tr>
+        {{- range .Data.Terms.ByCount -}}
+          <tr><td><a href="{{ .Page.RelPermalink }}">#{{ .Page.Title }}</a></td><td>{{ .Count }}</td></tr>
+        {{- end -}}
+      </tbody>
+    </table>
+  </article>
+{{ end }}

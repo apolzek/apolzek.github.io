@@ -1,15 +1,36 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.Language.Lang }}" dir="{{ .Site.Language.Direction | default `ltr` }}">
-  {{- partial "head.html" . -}}
-  <body>
-    <canvas id="cosmos" aria-hidden="true"></canvas>
-    {{- partial "banner.html" . -}}
-    {{- partial "navbar.html" . -}}
-    {{- block "main" . }}{{ end -}}
-    {{- if or (eq .Site.Params.footer.enable nil) (.Site.Params.footer.enable) }}
-      {{ partial "footer.html" . }}
-    {{ end }}
-    {{ partial "scripts.html" . }}
-    <script src="{{ "js/cosmos.js" | relURL }}"></script>
+<html lang="{{ .Site.Language.Locale | default "pt-BR" }}">
+  {{- partial "phrack/head.html" . -}}
+  <body id="top"{{ if .IsHome }} data-home{{ end }}>
+    {{- partial "phrack/nav.html" (dict "page" . "class" "top-nav" "label" "Principal") -}}
+    {{- partial "phrack/search.html" . -}}
+    {{- partial "phrack/theme-menu.html" . -}}
+    <main class="page">
+      <header class="site-header">
+        <a href="{{ "/" | relURL }}" title="apolzek">
+          <pre class="logo" aria-hidden="true">{{ partial "phrack/logo.html" . | chomp | safeHTML }}</pre>
+          <span class="sr-only">apolzek</span>
+        </a>
+        <span class="logo-sub">..[ apolzek journal ]..</span>
+      </header>
+      <div class="page-pad">
+        <div class="around">
+          {{- block "main" . }}{{ end -}}
+        </div>
+      </div>
+    </main>
+    <footer>
+      {{- partial "phrack/nav.html" (dict "page" . "class" "bottom-nav" "label" "Rodapé") -}}
+      <div class="texto-1">&copy; Copyleft 2026, {{ .Site.Params.author.name }}. Feito com Hugo.</div>
+    </footer>
+    {{- $js := resources.Get "js/phrack.js" -}}
+    {{- if hugo.IsProduction }}{{ $js = $js | minify | fingerprint }}{{ end }}
+    <script src="{{ $js.RelPermalink }}" defer></script>
+    {{- if .Store.Get "hasMermaid" }}
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.esm.min.mjs";
+      mermaid.initialize({ startOnLoad: true, theme: "neutral", fontFamily: "Verdana, sans-serif" });
+    </script>
+    {{- end }}
   </body>
 </html>

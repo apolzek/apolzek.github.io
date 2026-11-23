@@ -1,0 +1,8 @@
+{{- /* Linhas da tabela de índice de um artigo (h2 e h3), percorrendo a
+       árvore de .Fragments.Headings recursivamente. */ -}}
+{{- range . -}}
+  {{- if and .ID (or (eq .Level 2) (eq .Level 3)) -}}
+    <tr{{ if eq .Level 3 }} class="lvl3"{{ end }}><td><a href="#{{ .ID }}">{{ .Title | plainify | htmlUnescape }}</a></td><td></td></tr>
+  {{- end -}}
+  {{- with .Headings }}{{ partial "phrack/toc-rows.html" . }}{{ end -}}
+{{- end -}}

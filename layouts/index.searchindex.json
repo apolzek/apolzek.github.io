@@ -1,9 +1,49 @@
-{{- /* Client-side search index for the homepage type-to-filter easter egg.
-       Emits every regular post of the CURRENT language as compact JSON so the
-       filter can reach the full archive, not just the recent posts shown on the
-       homepage. Keys kept short (t/u/d) to keep the payload small. */ -}}
+{{- /* Índice da busca global (overlay [ Search ] e "digite na home").
+       Posts, thoughts, moments e cheatsheet. Campos: k=tipo, t=título,
+       u=URL, d=data, g=tags, s=descrição, c=texto. Baixado só quando a
+       busca abre pela primeira vez. */ -}}
 {{- $items := slice -}}
-{{- range .Site.RegularPages -}}
-  {{- $items = $items | append (dict "t" .Title "u" .RelPermalink "d" (.Date.Format "2006-01-02")) -}}
+{{- range where site.RegularPages "Section" "in" (slice "posts" "writing") -}}
+  {{- $items = $items | append (dict
+      "k" "post"
+      "t" .Title
+      "u" .RelPermalink
+      "d" (.Date.Format "2006-01-02")
+      "g" (.Params.tags | default slice)
+      "s" (partial "utils/page-description.html" . | chomp)
+      "c" (.Plain | replaceRE `\s+` " ")
+  ) -}}
+{{- end -}}
+{{- range hugo.Data.thoughts -}}
+  {{- $text := .text | plainify | htmlUnescape -}}
+  {{- $items = $items | append (dict
+      "k" "thought"
+      "t" (cond (gt (strings.RuneCount $text) 90) (printf "%s…" (substr $text 0 90)) $text)
+      "u" (printf "/thoughts/?%s" (querify "q" (substr $text 0 60)))
+      "d" .date
+      "s" ""
+      "c" $text
+  ) -}}
+{{- end -}}
+{{- range hugo.Data.moments -}}
+  {{- $items = $items | append (dict
+      "k" "moment"
+      "t" (.caption | default .alt | default "moment")
+      "u" (printf "/moments/#m-%s" (path.Base .image | urlize))
+      "d" .date
+      "s" (.alt | default "")
+      "c" ""
+  ) -}}
+{{- end -}}
+{{- range hugo.Data.cheatsheet -}}
+  {{- $items = $items | append (dict
+      "k" "cheatsheet"
+      "t" .title
+      "u" (printf "/cheatsheet/?%s" (querify "q" .title))
+      "d" ""
+      "g" (.tags | default slice)
+      "s" (.description | default "")
+      "c" (.commands | default "")
+  ) -}}
 {{- end -}}
 {{- $items | jsonify (dict "noHTMLEscape" true) -}}

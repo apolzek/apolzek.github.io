@@ -1,0 +1,42 @@
+{{- /* Caixa de texto no estilo dos cabeçalhos da Phrack:
+
+         |=-----------------------------------------------------------------------=|
+         |=---------------------=[     Introduction     ]=------------------------=|
+
+       Recebe uma lista de linhas (.lines); cada string vira uma linha
+       centralizada e "" vira uma régua. Textos longos quebram por palavra. */ -}}
+{{- $inner := 71 -}}
+{{- $max := 59 -}}
+{{- $rule := printf "|=%s=|" (strings.Repeat $inner "-") -}}
+{{- $out := slice $rule -}}
+{{- range .lines -}}
+  {{- if eq . "" -}}
+    {{- $out = $out | append $rule -}}
+    {{- continue -}}
+  {{- end -}}
+  {{- /* quebra por palavra em pedaços de até $max caracteres */ -}}
+  {{- $chunks := slice -}}
+  {{- $cur := "" -}}
+  {{- range split . " " -}}
+    {{- $try := cond (eq $cur "") . (printf "%s %s" $cur .) -}}
+    {{- if and (gt (strings.RuneCount $try) $max) (ne $cur "") -}}
+      {{- $chunks = $chunks | append $cur -}}
+      {{- $cur = . -}}
+    {{- else -}}
+      {{- $cur = $try -}}
+    {{- end -}}
+  {{- end -}}
+  {{- with $cur }}{{ $chunks = $chunks | append . }}{{ end -}}
+  {{- range $chunks -}}
+    {{- $len := strings.RuneCount . -}}
+    {{- $pad := cond (lt $len 20) 5 (cond (lt $len 40) 3 1) -}}
+    {{- $seg := printf "=[%s%s%s]=" (strings.Repeat $pad " ") . (strings.Repeat $pad " ") -}}
+    {{- $dashes := sub $inner (strings.RuneCount $seg) -}}
+    {{- if lt $dashes 2 }}{{ $dashes = 2 }}{{ end -}}
+    {{- $left := div $dashes 2 -}}
+    {{- $right := sub $dashes $left -}}
+    {{- $out = $out | append (printf "|=%s%s%s=|" (strings.Repeat $left "-") $seg (strings.Repeat $right "-")) -}}
+  {{- end -}}
+{{- end -}}
+{{- $out = $out | append $rule -}}
+<pre class="ascii-box" aria-hidden="true">{{ delimit $out "\n" }}</pre>

@@ -1,0 +1,12 @@
+{{- /* Bloco de código: realce do Chroma (estilo github, claro) + botão de
+       copiar. A linguagem aparece numa etiqueta preta no canto. */ -}}
+{{- $lang := .Attributes.lang | default .Type -}}
+<div class="code-block">
+  {{- with $lang }}<span class="lang">{{ . }}</span>{{ end -}}
+  <button type="button" class="code-copy" data-copy aria-label="Copiar código">COPIAR</button>
+  {{- if $lang -}}
+    {{- transform.Highlight (strings.TrimRight "\n" .Inner) $lang .Options -}}
+  {{- else -}}
+    <pre><code>{{ strings.TrimRight "\n" .Inner }}</code></pre>
+  {{- end -}}
+</div>

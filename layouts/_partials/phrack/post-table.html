@@ -1,0 +1,19 @@
+{{- /* Tabela azul de posts agrupados por mês. Recebe uma lista de páginas. */ -}}
+<article class="framed">
+  <table class="tissue">
+    <tbody>
+      {{- range .GroupByDate "2006-01" -}}
+        <tr class="cols"><td>{{ time.Format "January 2006" (time.AsTime (printf "%s-01" .Key)) | title }}</td><td>{{ len .Pages }}</td></tr>
+        {{- range .Pages -}}
+          <tr>
+            <td><a href="{{ .RelPermalink }}" title="{{ partial "utils/page-description.html" . | chomp }}">{{ .Title }}</a>
+              {{- if .Draft }} <span class="tag">[rascunho]</span>{{ end -}}
+              {{- with .Params.tags }}<span class="tag">{{ range $i, $t := . }}{{ if $i }} {{ end }}#{{ $t }}{{ end }}</span>{{ end -}}
+            </td>
+            <td>{{ .Date.Format "02/01/2006" }}</td>
+          </tr>
+        {{- end -}}
+      {{- end -}}
+    </tbody>
+  </table>
+</article>

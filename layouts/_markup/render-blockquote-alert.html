@@ -1,0 +1,6 @@
+{{- $titles := dict "note" "NOTA" "tip" "DICA" "important" "IMPORTANTE" "warning" "ATENÇÃO" "caution" "CUIDADO" -}}
+{{- $type := lower .AlertType -}}
+<div class="alert alert--{{ $type }}" role="note">
+  <span class="alert__title">.:: {{ .AlertTitle | default (index $titles $type | default (upper $type)) }} ::.</span>
+  <div class="alert__body">{{ .Text }}</div>
+</div>

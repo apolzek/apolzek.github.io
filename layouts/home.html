@@ -1,14 +1,44 @@
 {{ define "main" }}
-  <div class='hx:mx-auto hx:flex hextra-max-page-width'>
-    {{ partial "sidebar.html" (dict "context" . "disableSidebar" true "displayPlaceholder" true) }}
-    {{ partial "toc.html" . }}
-    <article class="hx:w-full hx:break-words hx:flex hx:min-h-[calc(100vh-var(--navbar-height))] hx:min-w-0 hx:justify-center hx:pb-8 hx:pr-[calc(env(safe-area-inset-right)-1.5rem)]">
-      <main class="hx:w-full hx:min-w-0 hx:max-w-6xl hx:px-6 hx:pt-4 hx:md:px-12">
-        {{ if .Title }}<h1 class="hx:sr-only">{{ .Title }}</h1>{{ end }}
-        <div class="content">
-          {{ .Content }}
-        </div>
-      </main>
-    </article>
+  {{- /* Home no formato do índice de uma edição da Phrack: tags na faixa
+         escura, barra ciano com os números, tabela azul com todos os posts
+         (agrupados por mês) e o texto de apresentação em papel branco. */ -}}
+  {{- $pages := (where site.RegularPages "Section" "in" (slice "posts" "writing")).ByDate.Reverse -}}
+
+  <div class="details tag-list">
+    <strong>Tags</strong> :
+    {{- range site.Taxonomies.tags.ByCount }}
+      [ <a href="{{ .Page.RelPermalink }}" title="{{ .Count }} posts">#{{ .Page.Data.Term }}</a> ]
+    {{- end }}
+  </div>
+
+  <div class="opt">
+    <span class="rt"><a href="{{ "index.xml" | relURL }}">RSS</a></span>
+    <span class="opt-field"><strong>Posts</strong> : #{{ len $pages }}</span>
+    {{- range first 1 $pages -}}
+      <span class="opt-field"><span class="opt-sep">&nbsp;|&nbsp;</span><strong>Último</strong> : <strong>{{ .Date.Format "2006-01-02" }}</strong></span>
+    {{- end -}}
+    <span class="opt-field"><span class="opt-sep">&nbsp;|&nbsp;</span><strong>Autor</strong> : <strong>apolzek</strong></span>
+  </div>
+
+  {{ partial "phrack/post-table.html" $pages }}
+
+  <h1 class="opt" id="article"><strong>Título</strong> : {{ .Site.Title }} | Journal</h1>
+  <div class="opt-bottom">
+    <div><strong>Autor</strong> : {{ .Site.Params.author.name }}</div>
+    <a href="https://github.com/apolzek" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <div class="md-article-area">
+    {{- partial "phrack/ascii-box.html" (dict "lines" (slice "apolzek journal" "" "Vinícius Gomes Batista" "" "sistemas em produção / observabilidade / filosofia")) -}}
+    <h2 id="sobre"><a href="#sobre">Sobre</a></h2>
+    <p>{{ .Site.Params.description }}</p>
+    <p>Use <strong>[ Search ]</strong> no topo, ou simplesmente comece a digitar nesta página,
+      para procurar em todos os textos.</p>
+    <h2 id="mais"><a href="#mais">Mais</a></h2>
+    <ul>
+      <li><a href="{{ "/thoughts/" | relURL }}">Thoughts</a>: frases de terceiros e alguns pensamentos, com data.</li>
+      <li><a href="{{ "/moments/" | relURL }}">Moments</a>: fotos com legenda.</li>
+      <li><a href="{{ "/cheatsheet/" | relURL }}">Cheatsheet</a>: comandos e truques do dia a dia.</li>
+      <li><a href="{{ "/tags/" | relURL }}">Tags</a>: todos os assuntos.</li>
+    </ul>
   </div>
 {{ end }}

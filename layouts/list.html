@@ -1,0 +1,5 @@
+{{ define "main" }}
+  <h1 class="opt"><strong>{{ .Title }}</strong></h1>
+  {{ partial "phrack/post-table.html" .RegularPagesRecursive.ByDate.Reverse }}
+  {{- with .Content }}<div class="md-article-area">{{ . }}</div>{{ end }}
+{{ end }}

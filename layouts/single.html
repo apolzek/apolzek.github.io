@@ -1,34 +1,48 @@
 {{ define "main" }}
-  <div class='hx:mx-auto hx:flex hextra-max-page-width'>
-    {{ partial "sidebar.html" (dict "context" . "disableSidebar" true "displayPlaceholder" true) }}
-    {{ partial "toc.html" . }}
-    <article class="hx:w-full hx:break-words hx:flex hx:min-h-[calc(100vh-var(--navbar-height))] hx:min-w-0 hx:justify-center hx:pb-8 hx:pr-[calc(env(safe-area-inset-right)-1.5rem)]">
-      <main class="hx:w-full hx:min-w-0 hx:max-w-6xl hx:px-6 hx:pt-4 hx:md:px-12">
-        {{ partial "breadcrumb.html" (dict "page" . "enable" false) }}
-        <br class="hx:mt-1.5 hx:text-sm" />
-        {{ if .Title }}<h1 class="hx:text-center hx:mt-2 hx:text-4xl hx:font-bold hx:tracking-tight hx:text-slate-900 hx:dark:text-slate-100">{{ .Title }}</h1>{{ end }}
-        {{ with .Params.tags }}
-          <div class="aor-post-tags aor-post-tags--article">
-            {{ partial "tags.html" (dict "context" $) }}
-          </div>
-        {{ end }}
-        <div class="hx:text-center hx:mt-4 hx:text-sm hx:text-gray-500 hx:dark:text-gray-400">
-          {{- with .Date -}}<em>{{ partial "utils/format-date" . }}</em>{{- end -}}
-          {{- with .Site.Config.Services.Disqus.Shortname }}
-          <span class="hx:mx-2">·</span>
-          <a href="#disqus_wrapper" class="hx:text-gray-400 hx:dark:text-gray-500 hx:hover:text-primary-600 hx:dark:hover:text-primary-400 hx:transition-colors">
-            {{ T "joinDiscussion" }}
-          </a>
-          {{- end -}}
-        </div>
-        <div class="hx:mb-16"></div>
-        <div class="content">
-          {{ .Content }}
-        </div>
-        <div class="hx:mt-16"></div>
-        {{ partial "components/chronological-next.html" . }}
-        {{ partial "components/comments.html" . }}
-      </main>
-    </article>
+  {{- /* Post no formato de um artigo da Phrack: tags na faixa escura, barra
+         ciano com data/leitura, índice do próprio artigo na tabela azul,
+         título/autor nas barras e o texto em papel branco. */ -}}
+  {{- $tocRows := partial "phrack/toc-rows.html" .Fragments.Headings | chomp -}}
+  {{- $dateLong := time.Format ":date_long" .Date -}}
+
+  {{- with .Params.tags }}
+  <div class="details tag-list"><strong>Tags</strong> : {{ partial "phrack/tag-links.html" $ }}</div>
+  {{- end }}
+
+  <div class="opt">
+    <span class="rt"><a href="{{ "/" | relURL }}">« Journal</a></span>
+    {{- if not .Date.IsZero -}}
+    <span class="opt-field"><strong>Publicado</strong> : <strong>{{ .Date.Format "2006-01-02" }}</strong></span>
+    {{- end -}}
+    <span class="opt-field"><span class="opt-sep">&nbsp;|&nbsp;</span><strong>Leitura</strong> : {{ .Params.minute | default .ReadingTime }} min</span>
+    {{- if .Draft }}<span class="opt-field"><span class="opt-sep">&nbsp;|&nbsp;</span><strong>RASCUNHO</strong></span>{{ end -}}
   </div>
+
+  {{- if $tocRows }}
+  <article class="framed">
+    <table class="tissue">
+      <tbody>
+        <tr class="cols"><td>Índice</td><td></td></tr>
+        {{ $tocRows | safeHTML }}
+      </tbody>
+    </table>
+  </article>
+  {{- end }}
+
+  <h1 class="opt" id="article"><strong>Título</strong> : {{ .Title }}</h1>
+  <div class="opt-bottom">
+    <div><strong>Autor</strong> : apolzek</div>
+    {{- if not .Date.IsZero }}<span>{{ $dateLong }}</span>{{ end }}
+  </div>
+
+  <div class="md-article-area">
+    {{- $lines := slice .Title "" "apolzek" -}}
+    {{- if not .Date.IsZero }}{{ $lines = $lines | append "" $dateLong }}{{ end -}}
+    {{- partial "phrack/ascii-box.html" (dict "lines" $lines) -}}
+    {{ .Content }}
+    {{- partial "phrack/ascii-box.html" (dict "lines" (slice "EOF")) -}}
+  </div>
+
+  {{ partial "components/chronological-next.html" . }}
+  {{ partial "components/comments.html" . }}
 {{ end }}

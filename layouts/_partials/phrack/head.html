@@ -1,0 +1,28 @@
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {{- $noindex := .Params.noindex | default false -}}
+  {{- if and hugo.IsProduction (not $noindex) }}
+  <meta name="robots" content="index, follow" />
+  {{- else }}
+  <meta name="robots" content="noindex, nofollow" />
+  {{- end }}
+  {{ partialCached "favicons.html" . -}}
+  <title>{{ if .IsHome }}.:: {{ .Site.Title }} ::.{{ else }}.:: {{ .Title }} ::. {{ .Site.Title }}{{ end }}</title>
+  <meta name="description" content="{{ partial "utils/page-description.html" . }}" />
+  <link rel="canonical" href="{{ .Params.canonical | default .Permalink }}" />
+  <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }} RSS" href="{{ "index.xml" | absURL }}" />
+  <meta name="theme-color" content="#000000" />
+  {{- /* Temas: roda bloqueando, de propósito, para pintar o tema (padrão
+         retro-82, ou o salvo) antes do primeiro frame. */ -}}
+  {{- $themeData := resources.FromString "js/omarchy-themes.js" (printf "window.OMARCHY_THEMES = %s;\n" (hugo.Data.omarchy_themes | jsonify)) -}}
+  {{- $themes := slice $themeData (resources.Get "js/themes.js") | resources.Concat "js/themes.bundle.js" -}}
+  {{- if hugo.IsProduction }}{{ $themes = $themes | minify | fingerprint }}{{ end }}
+  <script src="{{ $themes.RelPermalink }}"></script>
+  {{- partial "opengraph.html" . -}}
+  {{- partial "schema.html" . -}}
+  {{- partial "twitter_cards.html" . -}}
+  {{- $css := slice (resources.Get "css/phrack.css") (resources.Get "css/chroma-github.css") (resources.Get "css/chroma-github-dark.css") | resources.Concat "css/site.css" -}}
+  {{- if hugo.IsProduction }}{{ $css = $css | minify | fingerprint }}{{ end }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" />
+</head>

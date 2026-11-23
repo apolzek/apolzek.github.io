@@ -19,10 +19,6 @@ languages:
       description: "Sistemas em produção, observabilidade e engenharia de confiabilidade. Documentando experiências técnicas e, fora da produção, explorando filosofia e reflexões sobre a vida."
     menu:
       main:
-        - name: Tema
-          weight: 0
-          params:
-            type: theme-toggle
         - name: Thoughts
           url: "/thoughts/"
           weight: 3
@@ -40,10 +36,14 @@ languages:
           weight: 7
           params:
             icon: github
-        - name: Buscar
+        - name: Search
           weight: 8
           params:
             type: search
+        - name: Tema
+          weight: 10
+          params:
+            type: theme-toggle
         - name: RSS
           weight: 9
           url: "/index.xml"

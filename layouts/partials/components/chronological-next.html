@@ -14,15 +14,8 @@
 {{- end -}}
 
 {{- with $next -}}
-  {{- $label := "Próximo post" -}}
-  <aside class="aor-next-post hx:print:hidden" aria-label="{{ $label }}">
-    <span class="aor-next-post__label">{{ $label }}</span>
-    <a class="aor-next-post__link" href="{{ .RelPermalink }}">
-      <span>{{ .Title }}</span>
-      {{- partial "utils/icon.html" (dict "name" "arrow-right" "attributes" "class=\"aor-next-post__icon\"") -}}
-    </a>
-    {{- with .Description }}
-      <p class="aor-next-post__description">{{ . }}</p>
-    {{- end }}
+  <aside class="opt-spe next-post" aria-label="Próximo post">
+    <span class="rt">{{ .Date.Format "2006-01-02" }}</span>
+    <strong>Próximo post</strong> : <a href="{{ .RelPermalink }}">{{ .Title }} »</a>
   </aside>
 {{- end -}}
