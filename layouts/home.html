@@ -28,17 +28,20 @@
     <a href="https://github.com/apolzek" target="_blank" rel="noopener">GitHub</a>
   </div>
   <div class="md-article-area">
-    {{- partial "phrack/ascii-box.html" (dict "lines" (slice "apolzek journal" "" "Vinícius Gomes Batista" "" "sistemas em produção / observabilidade / filosofia")) -}}
-    <h2 id="sobre"><a href="#sobre">Sobre</a></h2>
+    {{- partial "phrack/ascii-box.html" (dict "lines" (slice "apolzek journal" "" "Vinícius Gomes Batista" "" "production systems / observability / philosophy")) -}}
+    <h2 id="about"><a href="#about">About</a></h2>
     <p>{{ .Site.Params.description }}</p>
-    <p>Use <strong>[ Search ]</strong> no topo, ou simplesmente comece a digitar nesta página,
-      para procurar em todos os textos.</p>
-    <h2 id="mais"><a href="#mais">Mais</a></h2>
+    <p>I would love to write everything here in English, but I am not yet fluent enough to
+      say exactly what I mean, with the nuance I have in mind. So, for now, most of the
+      texts are in Portuguese, my native language.</p>
+    <p>Use <strong>[ Search ]</strong> at the top, or just start typing on this page,
+      to search through all the texts.</p>
+    <h2 id="more"><a href="#more">More</a></h2>
     <ul>
-      <li><a href="{{ "/thoughts/" | relURL }}">Thoughts</a>: frases de terceiros e alguns pensamentos, com data.</li>
-      <li><a href="{{ "/moments/" | relURL }}">Moments</a>: fotos com legenda.</li>
-      <li><a href="{{ "/cheatsheet/" | relURL }}">Cheatsheet</a>: comandos e truques do dia a dia.</li>
-      <li><a href="{{ "/tags/" | relURL }}">Tags</a>: todos os assuntos.</li>
+      <li><a href="{{ "/thoughts/" | relURL }}">Thoughts</a>: quotes from others and some thoughts of my own, dated.</li>
+      <li><a href="{{ "/moments/" | relURL }}">Moments</a>: captioned photos.</li>
+      <li><a href="{{ "/cheatsheet/" | relURL }}">Cheatsheet</a>: everyday commands and tricks.</li>
+      <li><a href="{{ "/tags/" | relURL }}">Tags</a>: every topic.</li>
     </ul>
   </div>
 {{ end }}

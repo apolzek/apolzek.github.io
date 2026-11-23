@@ -16,7 +16,7 @@ languages:
     locale: "pt-BR"
     weight: 1
     params:
-      description: "Sistemas em produção, observabilidade e engenharia de confiabilidade. Documentando experiências técnicas e, fora da produção, explorando filosofia e reflexões sobre a vida."
+      description: "Production systems, observability and reliability engineering. Documenting technical experiences and, away from production, exploring philosophy and reflections on life."
     menu:
       main:
         - name: Thoughts
@@ -135,4 +135,4 @@ params:
     name: Vinícius Gomes Batista (apolzek)
     email: viniciusgomes955@gmail.com
 
-  description: "Sistemas em produção, observabilidade e engenharia de confiabilidade. Documentando experiências técnicas e, fora da produção, explorando filosofia e reflexões sobre a vida."
+  description: "Production systems, observability and reliability engineering. Documenting technical experiences and, away from production, exploring philosophy and reflections on life."
