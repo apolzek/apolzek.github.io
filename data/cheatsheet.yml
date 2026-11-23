@@ -136,7 +136,7 @@
   commands: |
     # Hidden APs show an empty SSID (or \x00 bytes)
     nmcli -f BSSID,SSID,CHAN,SIGNAL device wifi list | awk '$2=="--"'
-    sudo iw dev wlan0 scan | grep -B 20 -E "SSID: *$|SSID: (\\x00)+$" | grep -E "^BSS|signal|SSID"
+    sudo iw dev wlan0 scan | grep -B 20 -E 'SSID: *$|SSID: (\\x00)+$' | grep -E '^BSS|signal|SSID'
 
     # Reveal the real SSID: passive capture in monitor mode, the name
     # shows up as soon as a client associates (probe response)
