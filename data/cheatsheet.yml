@@ -106,6 +106,114 @@
     nmcli device wifi list
     sudo nmcli connection show "<wifi_name>" --show-secrets
 
+- title: "WiFi Scan"
+  description: "List nearby networks with signal, channel, frequency and security using nmcli, iw and iwd"
+  tags: [linux, wifi, network]
+  commands: |
+    # NetworkManager
+    nmcli device wifi rescan
+    nmcli -f IN-USE,BSSID,SSID,CHAN,FREQ,RATE,SIGNAL,BARS,SECURITY device wifi list
+    nmcli -t -f SSID,SIGNAL,CHAN device wifi list | sort -t: -k2 -nr
+    watch -n 2 nmcli device wifi list
+
+    # iw (raw, works without NetworkManager)
+    iw dev
+    sudo iw dev wlan0 scan | grep -E "^BSS|SSID:|signal:|freq:|DS Parameter set"
+    sudo iw dev wlan0 scan | awk '/^BSS/{b=$2} /signal:/{s=$2} /SSID:/{print s, b, $0}' | sort -n
+
+    # iwd (Omarchy / Arch default)
+    iwctl device list
+    iwctl station wlan0 scan
+    iwctl station wlan0 get-networks
+    iwctl known-networks list
+
+    # Channel congestion: how many APs per channel
+    nmcli -t -f CHAN device wifi list | sort -n | uniq -c
+
+- title: "WiFi Hidden Networks"
+  description: "Find APs that do not broadcast their SSID and connect to a hidden network"
+  tags: [linux, wifi, network]
+  commands: |
+    # Hidden APs show an empty SSID (or \x00 bytes)
+    nmcli -f BSSID,SSID,CHAN,SIGNAL device wifi list | awk '$2=="--"'
+    sudo iw dev wlan0 scan | grep -B 20 -E "SSID: *$|SSID: (\\x00)+$" | grep -E "^BSS|signal|SSID"
+
+    # Reveal the real SSID: passive capture in monitor mode, the name
+    # shows up as soon as a client associates (probe response)
+    sudo airmon-ng check kill
+    sudo airmon-ng start wlan0
+    sudo airodump-ng wlan0mon
+    sudo airodump-ng --bssid <bssid> -c <channel> wlan0mon
+    sudo airmon-ng stop wlan0mon
+    sudo systemctl restart NetworkManager
+
+    # Connect to a hidden network
+    nmcli device wifi connect "<ssid>" password "<password>" hidden yes
+    iwctl station wlan0 connect-hidden "<ssid>"
+
+- title: "WiFi Connection and Diagnostics"
+  description: "Connect, inspect the current link, signal quality, bitrate, regulatory domain and radio state"
+  tags: [linux, wifi, network]
+  commands: |
+    # Connect / disconnect
+    nmcli device wifi connect "<ssid>" password "<password>"
+    nmcli device wifi connect <bssid> password "<password>"
+    nmcli connection up "<ssid>"
+    nmcli device disconnect wlan0
+    nmcli connection modify "<ssid>" connection.autoconnect-priority 10
+
+    # Current link: SSID, BSSID, frequency, signal, tx/rx bitrate
+    iw dev wlan0 link
+    iw dev wlan0 station dump
+    iw dev wlan0 info
+    watch -n 1 "iw dev wlan0 link | grep -E 'signal|bitrate'"
+    cat /proc/net/wireless
+
+    # Show password and a QR code to share the network
+    nmcli device wifi show-password
+
+    # Radio on/off and blocks
+    nmcli radio wifi off && nmcli radio wifi on
+    rfkill list
+    sudo rfkill unblock wifi
+
+    # Hardware, driver, supported bands and modes
+    lspci -k | grep -A 3 -i network
+    lsusb
+    iw list | grep -A 10 "Supported interface modes"
+    iw list | grep -E "MHz \["
+
+    # Regulatory domain (allowed channels / tx power)
+    iw reg get
+    sudo iw reg set BR
+
+    # Power save (common cause of drops / latency)
+    iw dev wlan0 get power_save
+    sudo iw dev wlan0 set power_save off
+
+    # Logs
+    journalctl -u NetworkManager -f
+    journalctl -u iwd -f
+    sudo dmesg -w | grep -i -E "wlan|wifi|80211"
+
+- title: "WiFi Monitoring Tools"
+  description: "Interactive tools to watch networks, signal and throughput in real time"
+  tags: [linux, wifi, network]
+  commands: |
+    nmtui
+    sudo wavemon
+    impala
+    sudo kismet -c wlan0
+
+    # Throughput between two machines on the same network
+    iperf3 -s
+    iperf3 -c <server_ip>
+    iperf3 -c <server_ip> -R
+
+    # Latency / packet loss to the gateway
+    ping -c 50 $(ip route | awk '/default/ {print $3; exit}')
+    mtr $(ip route | awk '/default/ {print $3; exit}')
+
 - title: "Encrypt / Decrypt File with Password"
   description: "Use OpenSSL AES-256-CBC with PBKDF2 to encrypt and decrypt files"
   tags: [openssl, security, linux]
