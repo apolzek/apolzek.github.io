@@ -21,7 +21,7 @@
     </main>
     <footer>
       {{- partial "phrack/nav.html" (dict "page" . "class" "bottom-nav" "label" "Rodapé") -}}
-      <div class="texto-1">&copy; Copyleft 2026, {{ .Site.Params.author.name }}. Feito com Hugo.</div>
+      <div class="texto-1">&copy; Copyleft 2026, {{ .Site.Params.author.name }}. Made with Hugo.</div>
     </footer>
     {{- $js := resources.Get "js/phrack.js" -}}
     {{- if hugo.IsProduction }}{{ $js = $js | minify | fingerprint }}{{ end }}
