@@ -104,3 +104,5 @@
   date: "2026-10-24"
 - text: 'Se as redes sociais aprenderam a capturar nossa atenção para vendê-la, o que as empresas de IA farão com o poder que já têm de conhecer nossos medos, desejos e vulnerabilidades, talvez até melhor do que nós mesmos ?'
   date: "2026-10-24"
+- text: "Kubernetes is saying goodbye to IPVS! Starting with version 1.40, it will be disabled by default in kube-proxy, with complete removal planned for 1.43. nftables is now the recommended alternative, while solutions like Cilium take a different approach, using eBPF to replace kube-proxy entirely."
+  date: "2026-11-23"
