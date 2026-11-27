@@ -10,7 +10,7 @@ tags:
 minute: 9
 ---
 
-Este é um texto sobre o Mito de Er, da República de Platão. É um livro que li sem possuir, naquele momento, os fundamentos necessários para compreendê-lo plenamente. Ainda assim, sua leitura se fez necessária para a fase da vida pela qual eu estava passando. Antes de lê-lo, pesquisei sobre a obra, já conhecia a biografia de Platão e havia despertado meu interesse pela filosofia.
+Este é um texto sobre o Mito de Er, da República de Platão. É um livro que li quando ainda não era a hora: não tinha, naquele momento, os fundamentos necessários para compreendê-lo plenamente. Antes de lê-lo, pesquisei sobre a obra, já conhecia a biografia de Platão e havia despertado meu interesse pela filosofia. Mas, à medida que o tempo foi passando, fui confirmando que deixei muita coisa para trás naquela leitura.
 
 O que é a *República* ? É uma das obras mais importantes e conhecidas de Platão, escrita provavelmente no século IV a.C., por volta de 375 a.C. A obra é construída principalmente na forma de diálogos, tendo Sócrates como personagem central.
 
