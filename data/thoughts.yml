@@ -114,3 +114,5 @@
   date: "2026-11-24"
 - text: 'O professor Jiang apresenta a fórmula de teoria dos jogos baseada em massa × energia × coordenação para vencer disputas, explicando que os pesos são desiguais — com a coordenação em primeiro lugar, seguida pela energia e por último pela massa — e mostrando que a massa ganha força pela coesão do grupo (como no exemplo entre Japão e China), que a energia se mede sobretudo pela energia mental e pela abertura para admitir falhas e evoluir (ilustrada por quem busca autodesenvolvimento em vez de apenas cavar um buraco por um ano), e que a coordenação se divide entre consciente, guiada por lideranças ou estruturas, e subconsciente, quando as pessoas se alinham espontaneamente como em uma dança, sendo esta última a mais poderosa.'
   date: "2026-11-26"
+- text: 'Imagine dois processos executando na mesma máquina e comunicando-se via TCP/IP pelo localhost. Se a interface física de rede possui capacidade de 1 Gbps, a comunicação entre esses processos está limitada a essa velocidade ? Quais fatores determinam a largura de banda máxima dessa comunicação e como você poderia mensurá-la na prática ?'
+  date: "2026-11-27"
