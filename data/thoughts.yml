@@ -116,3 +116,5 @@
   date: "2026-11-26"
 - text: 'Imagine dois processos executando na mesma máquina e comunicando-se via TCP/IP pelo localhost. Se a interface física de rede possui capacidade de 1 Gbps, a comunicação entre esses processos está limitada a essa velocidade ? Quais fatores determinam a largura de banda máxima dessa comunicação e como você poderia mensurá-la na prática ?'
   date: "2026-11-27"
+- text: 'Em qual contexto os agentes de inteligência artificial possuem maior potencial de gerar valor: na criação de software ou na compreensão e operação da complexidade que ele produz ?'
+  date: "2026-11-27"
