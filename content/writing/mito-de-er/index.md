@@ -2,7 +2,7 @@
 title: "Mito de Er"
 slug: "mito-de-er"
 date: '2026-08-04T12:00:00-03:00'
-draft: false
+draft: true
 description: "Um texto sobre o Mito de Er, da República de Platão: o que a leitura despertou, mesmo sem os fundamentos para compreendê-la por completo."
 tags:
 - filosofia

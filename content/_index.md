@@ -34,10 +34,6 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
 - <a class="aor-index-list__main-link" href="/2026/09/01/dialogo-sobre-a-nova-ferramenta/" title="Diálogo socrático num bar depois do expediente: Glauco chega empolgado com uma ferramenta nova e Sócrates pergunta o que ela resolve de verdade.">Diálogo sobre a Nova Ferramenta</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/filosofia/">#filosofia</a><a class="aor-tag-link" href="/tags/dialogos/">#dialogos</a><a class="aor-tag-link" href="/tags/tecnologia/">#tecnologia</a></span>
 - <a class="aor-index-list__main-link" href="/2026/09/01/data-and-ml-stack-tools/" title="Uma tabela por categoria das ferramentas do stack de dados e ML: para que serve cada tecnologia e onde ela se encaixa numa plataforma de dados moderna, com três arquiteturas de referência.">Ferramentas do stack de dados e ML por categoria</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/data-engineering/">#data-engineering</a><a class="aor-tag-link" href="/tags/machine-learning/">#machine-learning</a></span>
 
-## 2026 - Agosto
-
-- <a class="aor-index-list__main-link" href="/2026/08/04/mito-de-er/" title="Um texto sobre o Mito de Er, da República de Platão: o que a leitura despertou, mesmo sem os fundamentos para compreendê-la por completo.">Mito de Er</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/filosofia/">#filosofia</a><a class="aor-tag-link" href="/tags/leitura/">#leitura</a></span>
-
 ## 2026 - Julho
 
 - <a class="aor-index-list__main-link" href="/2026/07/15/dialogo-sobre-o-mestre-e-a-pratica/" title="Diálogo socrático: Glauco sai da palestra contrariado e Sócrates o leva a examinar o que faz um mestre e por que a prática não se aprende só ouvindo.">Diálogo sobre o Mestre sem Coroa</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/filosofia/">#filosofia</a><a class="aor-tag-link" href="/tags/dialogos/">#dialogos</a></span>
@@ -188,20 +184,6 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
   <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/09/01/data-and-ml-stack-tools/">Ferramentas do stack de dados e ML por categoria</a></h3>
   <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/tags/data-engineering/">#data-engineering</a><a class="aor-tag-link" href="/tags/machine-learning/">#machine-learning</a></span>
   <p class="aor-post-card__description">Uma tabela por categoria das ferramentas do stack de dados e ML: para que serve cada tecnologia e onde ela se encaixa numa plataforma de dados moderna, com três arquiteturas de referência.</p>
-</article>
-  </div>
-</section>
-<section class="aor-index-month" aria-labelledby="aor-grid-2026-08">
-  <div class="aor-index-month__header">
-    <h2 id="aor-grid-2026-08">2026 - Agosto</h2>
-    <span>1 post</span>
-  </div>
-  <div class="aor-post-grid">
-<article class="aor-post-card" title="Um texto sobre o Mito de Er, da República de Platão: o que a leitura despertou, mesmo sem os fundamentos para compreendê-la por completo.">
-  <time class="aor-post-card__date" datetime="2026-08-04">04/08/2026</time>
-  <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/08/04/mito-de-er/">Mito de Er</a></h3>
-  <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/tags/filosofia/">#filosofia</a><a class="aor-tag-link" href="/tags/leitura/">#leitura</a></span>
-  <p class="aor-post-card__description">Um texto sobre o Mito de Er, da República de Platão: o que a leitura despertou, mesmo sem os fundamentos para compreendê-la por completo.</p>
 </article>
   </div>
 </section>
