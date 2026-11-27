@@ -304,6 +304,12 @@ h1#article { font-size: inherit; font-weight: 400; }
   overflow-x: auto;
   white-space: pre;
 }
+/* A caixa tem 75 colunas fixas (|= + 71 + =|). Numa tela estreita ela não
+   cabe, então a fonte encolhe até a linha inteira caber na largura do texto:
+   75 colunas x ~0,6em por caractere monoespaçado = ~45em, com folga.
+   No desktop o min() mantém o tamanho normal. */
+.md-article-area { container-type: inline-size; }
+.md-article-area .ascii-box { font-size: min(1em, calc(100cqi / 46)); }
 
 /* blocos de código */
 .code-block { position: relative; }
