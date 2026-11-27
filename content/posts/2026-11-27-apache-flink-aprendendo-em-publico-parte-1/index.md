@@ -229,7 +229,7 @@ Parece detalhe, mas não é. O celular de alguém ficou sem sinal no metrô e si
 
 Se você agrupar por processing time, o resultado depende de quando o job rodou. Reprocessar o mesmo dia amanhã dá um número diferente. Se você agrupar por event time, o resultado é o mesmo sempre, independente de quando o processamento aconteceu. Essa reprodutibilidade é o motivo de event time ser o padrão em quase todo pipeline sério.
 
-Mas isso cria um problema novo: se os eventos chegam fora de ordem, como saber quando uma janela de tempo pode ser fechada? Nunca chega um evento dizendo "acabou, pode contar".
+Mas isso cria um problema novo: se os eventos chegam fora de ordem, como saber quando uma janela de tempo pode ser fechada ? Nunca chega um evento dizendo "acabou, pode contar".
 
 ## Watermarks
 
@@ -237,7 +237,7 @@ A resposta do Flink são as **watermarks**. Uma watermark é um marcador que via
 
 > "Acredito que não vou mais receber eventos com timestamp anterior a T."
 
-É uma aposta, não uma certeza. E é exatamente por ser uma aposta que ela é útil: ela transforma uma pergunta impossível ("já chegou tudo?") em uma decisão configurável ("quanto atraso eu tolero?").
+É uma aposta, não uma certeza. E é exatamente por ser uma aposta que ela é útil: ela transforma uma pergunta impossível ("já chegou tudo ?") em uma decisão configurável ("quanto atraso eu tolero ?").
 
 ```java
 WatermarkStrategy
@@ -260,7 +260,7 @@ Para eventos que chegam após o avanço da watermark, o Flink oferece mecanismos
 
 Como o stream é infinito, agregações só fazem sentido dentro de recortes.
 
-- **Tumbling:** janelas fixas que não se sobrepõem. "A cada 5 minutos, quantos pedidos?"
+- **Tumbling:** janelas fixas que não se sobrepõem. "A cada 5 minutos, quantos pedidos ?"
 - **Sliding:** janelas fixas que se sobrepõem. "Nos últimos 10 minutos, atualizando a cada 1 minuto." Um mesmo evento cai em várias janelas.
 - **Session:** janelas definidas por inatividade. "Agrupe a atividade de um usuário até ele ficar 30 minutos parado." O tamanho da janela é dado pelos dados, não por você.
 

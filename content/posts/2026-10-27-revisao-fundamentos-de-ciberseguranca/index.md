@@ -54,7 +54,7 @@ A analogia da casa ajuda: o ativo são as joias, a ameaça é o ladrão do bairr
 4. **Falhar fechado:** quando algo dá errado, o padrão é negar, não liberar.
 5. **Segurança por padrão:** a configuração que vem de fábrica deve ser a segura. Ninguém lê o manual.
 6. **Não confiar na obscuridade:** esconder como algo funciona não é proteção. Criptografia boa é pública e continua segura mesmo quando todo mundo sabe o algoritmo; só a chave é secreta.
-7. **Assumir a violação (assume breach):** projete pensando que o atacante já está dentro. O que ele alcança? Quanto tempo até alguém perceber? Isso muda o foco de "não deixar entrar" para "limitar o raio de explosão e detectar rápido".
+7. **Assumir a violação (assume breach):** projete pensando que o atacante já está dentro. O que ele alcança ? Quanto tempo até alguém perceber ? Isso muda o foco de "não deixar entrar" para "limitar o raio de explosão e detectar rápido".
 
 ## A anatomia de um ataque moderno
 
@@ -99,7 +99,7 @@ Vamos uma por uma.
 
 ## Governança, risco e conformidade
 
-É a área menos glamourosa e a que decide para onde vai o dinheiro de todas as outras. GRC responde perguntas como: quais são nossos ativos mais críticos? Quais riscos aceitamos? Quem é responsável por quê? Estamos cumprindo a lei e os contratos? Como provamos isso a um auditor ou a um cliente?
+É a área menos glamourosa e a que decide para onde vai o dinheiro de todas as outras. GRC responde perguntas como: quais são nossos ativos mais críticos ? Quais riscos aceitamos ? Quem é responsável por quê ? Estamos cumprindo a lei e os contratos ? Como provamos isso a um auditor ou a um cliente ?
 
 ### Frameworks e normas
 
@@ -160,7 +160,7 @@ Se a ofensiva acha os buracos, a defensiva vigia a casa vinte e quatro horas por
 
 ### Os níveis de um SOC
 
-Tradicionalmente, o **N1** faz a triagem dos alertas (é real ou falso positivo?), o **N2** investiga a fundo o que foi escalado, e o **N3** cuida de casos complexos, caça ameaças e cria detecções. Em volta deles orbitam a **engenharia de detecção**, que escreve e mantém as regras, e a **engenharia de segurança**, que mantém as ferramentas funcionando. Muitas empresas terceirizam parte disso num **MDR** (Managed Detection and Response), um SOC como serviço.
+Tradicionalmente, o **N1** faz a triagem dos alertas (é real ou falso positivo ?), o **N2** investiga a fundo o que foi escalado, e o **N3** cuida de casos complexos, caça ameaças e cria detecções. Em volta deles orbitam a **engenharia de detecção**, que escreve e mantém as regras, e a **engenharia de segurança**, que mantém as ferramentas funcionando. Muitas empresas terceirizam parte disso num **MDR** (Managed Detection and Response), um SOC como serviço.
 
 O maior inimigo do SOC não é o atacante, é a **fadiga de alertas**: milhares de alertas por dia, a maioria falsos positivos, até que o verdadeiro passa despercebido no meio do ruído. Detecção boa é a que tem alta precisão, não a que gera muito alerta.
 
@@ -168,7 +168,7 @@ O maior inimigo do SOC não é o atacante, é a **fadiga de alertas**: milhares 
 
 1. **SIEM (Security Information and Event Management):** o lugar onde todos os logs se encontram (de servidores, firewalls, nuvem, identidade, EDR) para serem correlacionados, pesquisados e transformados em alertas. **Splunk**, **Microsoft Sentinel**, **Google Security Operations** (antigo Chronicle), **Elastic Security**, **IBM QRadar** e o aberto **Wazuh**. A tendência recente é separar o armazenamento de logs (um data lake barato, às vezes no formato **OCSF**) da camada de detecção, porque o custo de ingestão dos SIEMs tradicionais ficou insustentável.
 2. **EDR e XDR:** o agente nos endpoints que vê processos, arquivos, conexões e alterações no registro, e que pode isolar uma máquina com um clique. Falamos mais dele na seção de endpoints. O XDR estende essa visão para identidade, email, nuvem e rede.
-3. **SOAR (Security Orchestration, Automation and Response):** automatiza o trabalho repetitivo em playbooks. Chegou um alerta de phishing? Extrai os links, consulta reputação, procura quem mais recebeu, apaga das caixas, bloqueia o domínio. **Splunk SOAR**, **Cortex XSOAR**, **Tines**, **Torq** e o aberto **Shuffle**. Hoje muito disso está sendo absorvido por agentes de IA que fazem a triagem inicial.
+3. **SOAR (Security Orchestration, Automation and Response):** automatiza o trabalho repetitivo em playbooks. Chegou um alerta de phishing ? Extrai os links, consulta reputação, procura quem mais recebeu, apaga das caixas, bloqueia o domínio. **Splunk SOAR**, **Cortex XSOAR**, **Tines**, **Torq** e o aberto **Shuffle**. Hoje muito disso está sendo absorvido por agentes de IA que fazem a triagem inicial.
 4. **NDR (Network Detection and Response):** análise do tráfego de rede. **Zeek** transforma tráfego em logs ricos de conexões, DNS, HTTP e TLS. **Suricata** é um IDS e IPS com assinaturas. Comerciais como **Darktrace**, **Vectra** e **ExtraHop** usam modelos estatísticos.
 5. **Case management:** onde a investigação é registrada. **TheHive** é o aberto mais conhecido.
 
@@ -184,7 +184,7 @@ A diferença entre uma detecção frágil e uma robusta é o que ela observa. Ha
 
 ### Threat hunting
 
-Caçar ameaças é procurar ativamente por sinais de comprometimento que nenhum alerta pegou, partindo de uma hipótese: "se alguém estivesse fazendo dump de credenciais aqui, o que eu veria?". O que o caçador descobre e é confiável vira detecção automática. Ferramentas: o próprio SIEM, consultas no EDR, **Velociraptor** e **osquery** para fazer perguntas a milhares de máquinas ao mesmo tempo, como se fossem um banco de dados.
+Caçar ameaças é procurar ativamente por sinais de comprometimento que nenhum alerta pegou, partindo de uma hipótese: "se alguém estivesse fazendo dump de credenciais aqui, o que eu veria ?". O que o caçador descobre e é confiável vira detecção automática. Ferramentas: o próprio SIEM, consultas no EDR, **Velociraptor** e **osquery** para fazer perguntas a milhares de máquinas ao mesmo tempo, como se fossem um banco de dados.
 
 ## Resposta a incidentes e forense
 
@@ -222,7 +222,7 @@ Threat intelligence é saber quem está atacando o seu setor, com quais técnica
 
 Ferramentas e fontes: **MISP** e **OpenCTI** como plataformas abertas para guardar e compartilhar inteligência; os formatos **STIX** e **TAXII** para trocar dados entre organizações; feeds de fornecedores como **Recorded Future**, **Mandiant** e **CrowdStrike**; os ISACs setoriais e os CERTs nacionais (no Brasil, o **CERT.br** e o **CTIR Gov**); e o monitoramento de vazamentos e de fóruns criminosos, onde credenciais da empresa aparecem à venda antes de serem usadas.
 
-Inteligência que não muda nenhuma decisão é só leitura interessante. A pergunta certa é sempre "e o que fazemos com isso?".
+Inteligência que não muda nenhuma decisão é só leitura interessante. A pergunta certa é sempre "e o que fazemos com isso ?".
 
 ## Segurança de aplicações e DevSecOps
 
@@ -246,7 +246,7 @@ Para APIs, existe o **OWASP API Security Top 10**, dominado por falhas de autori
 
 A ideia de **shift left** é trazer a segurança para o começo do ciclo, porque um problema achado no design custa muito menos que um achado em produção. Na prática, um pipeline moderno tem várias camadas:
 
-1. **Modelagem de ameaças:** antes do código. Desenhar o sistema e perguntar "o que pode dar errado aqui?". O método **STRIDE** (falsificação, adulteração, repúdio, divulgação de informação, negação de serviço, elevação de privilégio) ajuda a não esquecer categorias. **OWASP Threat Dragon** é uma ferramenta aberta para isso, mas um quadro branco resolve.
+1. **Modelagem de ameaças:** antes do código. Desenhar o sistema e perguntar "o que pode dar errado aqui ?". O método **STRIDE** (falsificação, adulteração, repúdio, divulgação de informação, negação de serviço, elevação de privilégio) ajuda a não esquecer categorias. **OWASP Threat Dragon** é uma ferramenta aberta para isso, mas um quadro branco resolve.
 2. **SAST (análise estática):** lê o código procurando padrões perigosos. **Semgrep**, **CodeQL**, **SonarQube**, **Checkmarx**.
 3. **SCA (análise de composição):** compara as dependências com bancos de vulnerabilidades conhecidas. **Dependabot**, **Renovate**, **Snyk**, **OSV Scanner**, **Trivy**, **Grype**.
 4. **Varredura de segredos:** chaves e senhas commitadas no Git são uma das causas mais comuns de vazamento. **gitleaks**, **TruffleHog** e o push protection do GitHub, que bloqueia o push antes de o segredo sair da máquina.
@@ -270,7 +270,7 @@ Os casos que definiram a área:
 
 As defesas:
 
-1. **SBOM (Software Bill of Materials):** a lista de ingredientes do software, nos formatos **SPDX** ou **CycloneDX**. Quando surge o próximo Log4Shell, a pergunta "onde estamos usando isso?" passa a ter resposta em minutos. **Syft** gera SBOMs de imagens e diretórios.
+1. **SBOM (Software Bill of Materials):** a lista de ingredientes do software, nos formatos **SPDX** ou **CycloneDX**. Quando surge o próximo Log4Shell, a pergunta "onde estamos usando isso ?" passa a ter resposta em minutos. **Syft** gera SBOMs de imagens e diretórios.
 2. **Assinatura e proveniência:** **Sigstore** com o **Cosign** assina imagens e artefatos sem que você precise gerenciar chaves de longa duração. A proveniência registra de qual repositório, commit e pipeline o artefato saiu.
 3. **SLSA:** um framework de níveis de maturidade para a integridade do build, de "existe proveniência" até "o build é isolado, efêmero e não pode ser adulterado nem pelos próprios mantenedores".
 4. **Fixar dependências:** lockfiles, versões e hashes fixos, imagens referenciadas pelo digest em vez da tag, actions do GitHub fixadas pelo hash do commit.
@@ -367,7 +367,7 @@ Notebooks, desktops e servidores são onde o atacante executa código. A proteç
 
 1. **Antivírus tradicional:** assinaturas de arquivos conhecidos. Fácil de contornar com uma pequena mudança no malware.
 2. **EPP (Endpoint Protection Platform):** antivírus com heurística e aprendizado de máquina para pegar o desconhecido.
-3. **EDR (Endpoint Detection and Response):** registra tudo o que acontece na máquina (processos, árvore de processos, linhas de comando, conexões, alterações de arquivo e registro) e permite investigar e responder remotamente. A virada foi passar de "este arquivo é malicioso?" para "este comportamento é malicioso?". **CrowdStrike Falcon**, **Microsoft Defender for Endpoint**, **SentinelOne**, **Palo Alto Cortex XDR**, **Sophos**, **Trend Micro**, e o **Elastic Defend** no mundo aberto. No Linux, além deles, **Wazuh**, **osquery** e ferramentas em eBPF.
+3. **EDR (Endpoint Detection and Response):** registra tudo o que acontece na máquina (processos, árvore de processos, linhas de comando, conexões, alterações de arquivo e registro) e permite investigar e responder remotamente. A virada foi passar de "este arquivo é malicioso ?" para "este comportamento é malicioso ?". **CrowdStrike Falcon**, **Microsoft Defender for Endpoint**, **SentinelOne**, **Palo Alto Cortex XDR**, **Sophos**, **Trend Micro**, e o **Elastic Defend** no mundo aberto. No Linux, além deles, **Wazuh**, **osquery** e ferramentas em eBPF.
 
 O EDR é tão central que virou alvo: atacantes carregam drivers vulneráveis assinados para desligá-lo pelo kernel (a técnica BYOVD, bring your own vulnerable driver). E é tão poderoso que também é um risco operacional: em julho de 2024, uma atualização defeituosa de conteúdo do CrowdStrike Falcon, que roda no kernel do Windows, derrubou milhões de máquinas no mundo inteiro ao mesmo tempo. Não foi ataque, mas mostrou o tamanho da confiança que se deposita nesses agentes, e reacendeu a discussão sobre quanto do código de segurança precisa mesmo rodar dentro do kernel.
 
@@ -388,7 +388,7 @@ Toda empresa tem mais vulnerabilidades do que consegue corrigir. A pergunta é q
 3. **EPSS:** a probabilidade estimada de a falha ser explorada nos próximos trinta dias, calculada a partir de dados reais.
 4. **CISA KEV:** o catálogo de vulnerabilidades que já estão sendo exploradas de fato. Se está no KEV e você tem exposto, é para ontem.
 
-Combinar os três com o contexto (está exposto à internet? que dados alcança?) separa o que é urgente do que é só barulho. Uma CVSS 9.8 numa máquina isolada de laboratório pode esperar; uma CVSS 7.5 no firewall de borda, listada no KEV, não pode.
+Combinar os três com o contexto (está exposto à internet ? que dados alcança ?) separa o que é urgente do que é só barulho. Uma CVSS 9.8 numa máquina isolada de laboratório pode esperar; uma CVSS 7.5 no firewall de borda, listada no KEV, não pode.
 
 ## Criptografia e PKI
 
@@ -500,13 +500,13 @@ Existem ainda combinações menos usadas, como o **laranja** (vermelho com amare
 
 Uma forma útil de agrupar as especialidades é pela pergunta central de cada uma:
 
-1. **Websec, pentest, red team:** "por onde um atacante entraria?"
-2. **Engenharia reversa e análise de malware:** "como isso funciona por dentro?"
-3. **SOC, engenharia de detecção, threat hunting:** "alguém entrou?"
-4. **DFIR:** "o que aconteceu, e como saímos dessa?"
-5. **CTI:** "quem está vindo, e como opera?"
-6. **AppSec, cloud security, engenharia de segurança:** "como construir de um jeito que não quebre?"
-7. **GRC, arquitetura, liderança:** "o que proteger primeiro, e como provar que está protegido?"
+1. **Websec, pentest, red team:** "por onde um atacante entraria ?"
+2. **Engenharia reversa e análise de malware:** "como isso funciona por dentro ?"
+3. **SOC, engenharia de detecção, threat hunting:** "alguém entrou ?"
+4. **DFIR:** "o que aconteceu, e como saímos dessa ?"
+5. **CTI:** "quem está vindo, e como opera ?"
+6. **AppSec, cloud security, engenharia de segurança:** "como construir de um jeito que não quebre ?"
+7. **GRC, arquitetura, liderança:** "o que proteger primeiro, e como provar que está protegido ?"
 
 ### Segurança web (websec)
 
@@ -552,7 +552,7 @@ Engenharia reversa é entender como um programa funciona **sem ter o código fon
 
 ### Análise de malware
 
-Uma aplicação da engenharia reversa voltada à defesa. O analista de malware responde: o que isto faz? Como entrou? Como se comunica com quem o controla? Como detectar isto e tudo o que for parecido?
+Uma aplicação da engenharia reversa voltada à defesa. O analista de malware responde: o que isto faz ? Como entrou ? Como se comunica com quem o controla ? Como detectar isto e tudo o que for parecido ?
 
 **O que se faz:** triagem rápida de amostras (em minutos, decidir se é algo conhecido ou novo e grave), análise comportamental em sandbox, reversa aprofundada das amostras importantes, extração de indicadores, escrita de regras **YARA** e de detecções, e relatórios para o SOC, o time de resposta a incidentes e o de inteligência. Em fornecedores de segurança, é o trabalho de quem alimenta os produtos com detecções novas todos os dias.
 
@@ -608,7 +608,7 @@ O analista de SOC é a linha de frente da defesa: recebe os alertas, decide o qu
 
 ### Engenharia de detecção e threat hunting
 
-A evolução natural do analista de SOC. A **engenharia de detecção** trata a detecção como software: escreve, testa, versiona e mantém as regras que geram os alertas, buscando sempre alta precisão. O **threat hunting** vai na direção oposta do alerta: parte de uma hipótese ("se alguém estivesse fazendo isto aqui, o que eu veria?") e procura ativamente por sinais que nenhuma regra pegou. O que o caçador acha e confirma vira detecção nova.
+A evolução natural do analista de SOC. A **engenharia de detecção** trata a detecção como software: escreve, testa, versiona e mantém as regras que geram os alertas, buscando sempre alta precisão. O **threat hunting** vai na direção oposta do alerta: parte de uma hipótese ("se alguém estivesse fazendo isto aqui, o que eu veria ?") e procura ativamente por sinais que nenhuma regra pegou. O que o caçador acha e confirma vira detecção nova.
 
 **O que se faz:** transformar relatórios de inteligência e técnicas do ATT&CK em regras, reduzir falsos positivos das detecções existentes, medir cobertura (quais técnicas a empresa consegue ou não detectar), e conduzir caçadas periódicas. É o trabalho que mais aproxima o blue team da mentalidade ofensiva.
 
@@ -636,7 +636,7 @@ Quando a detecção funciona, entra o time de **DFIR** (Digital Forensics and In
 
 O time de **CTI** (Cyber Threat Intelligence) estuda os adversários: quem são, o que querem, como operam, e o que isso significa para a empresa. Transforma o mar de informação sobre ataques em decisões para a defesa, do SOC à diretoria.
 
-**O que se faz:** acompanhar grupos e campanhas relevantes ao setor, mapear as técnicas deles no ATT&CK, produzir relatórios nos três níveis (estratégico, operacional e técnico), alimentar o blue team com o que procurar e o red team com quem simular, e monitorar vazamentos e fóruns criminosos em busca de credenciais e dados da empresa à venda. Boa parte do trabalho é separar o relevante do barulho e responder sempre "e o que fazemos com isso?".
+**O que se faz:** acompanhar grupos e campanhas relevantes ao setor, mapear as técnicas deles no ATT&CK, produzir relatórios nos três níveis (estratégico, operacional e técnico), alimentar o blue team com o que procurar e o red team com quem simular, e monitorar vazamentos e fóruns criminosos em busca de credenciais e dados da empresa à venda. Boa parte do trabalho é separar o relevante do barulho e responder sempre "e o que fazemos com isso ?".
 
 **O que precisa saber:** o ATT&CK, métodos de análise estruturada (para não cair em viés de confirmação), noções de geopolítica e de como funciona o crime organizado digital, OSINT, e às vezes idiomas. Saber ler um relatório técnico e traduzi-lo para a diretoria é a habilidade central.
 
@@ -712,45 +712,45 @@ Depois de tantas siglas, é fácil esquecer que a maioria dos incidentes poderia
 
 ## Vinte perguntas pra se testar
 
-1. **Qual a diferença entre ameaça, vulnerabilidade e risco?** Ameaça é quem ou o que pode causar dano; vulnerabilidade é a fraqueza explorável; risco é a combinação da probabilidade de a ameaça explorar a vulnerabilidade com o impacto resultante.
+1. **Qual a diferença entre ameaça, vulnerabilidade e risco ?** Ameaça é quem ou o que pode causar dano; vulnerabilidade é a fraqueza explorável; risco é a combinação da probabilidade de a ameaça explorar a vulnerabilidade com o impacto resultante.
 
-2. **O que significa Zero Trust na prática?** Que estar na rede interna não dá confiança nenhuma. Cada acesso é autenticado e autorizado com base em identidade, dispositivo e contexto, para um recurso específico, e não para a rede inteira.
+2. **O que significa Zero Trust na prática ?** Que estar na rede interna não dá confiança nenhuma. Cada acesso é autenticado e autorizado com base em identidade, dispositivo e contexto, para um recurso específico, e não para a rede inteira.
 
-3. **Por que o MITRE ATT&CK é tão usado?** Porque é um vocabulário comum de táticas e técnicas observadas em ataques reais. Permite medir cobertura de detecção, planejar exercícios de purple team e trocar inteligência sem ambiguidade.
+3. **Por que o MITRE ATT&CK é tão usado ?** Porque é um vocabulário comum de táticas e técnicas observadas em ataques reais. Permite medir cobertura de detecção, planejar exercícios de purple team e trocar inteligência sem ambiguidade.
 
-4. **Qual a diferença entre pentest e red team?** O pentest busca o maior número de falhas num escopo e prazo definidos. O red team simula um adversário real com um objetivo, sem aviso ao time de defesa, para testar a capacidade de detectar e responder.
+4. **Qual a diferença entre pentest e red team ?** O pentest busca o maior número de falhas num escopo e prazo definidos. O red team simula um adversário real com um objetivo, sem aviso ao time de defesa, para testar a capacidade de detectar e responder.
 
-5. **Por que detectar comportamento é melhor que detectar hashes e IPs?** Porque o atacante troca hashes e IPs a cada campanha com custo quase zero, mas mudar a forma de operar é caro. É a Pirâmide da Dor.
+5. **Por que detectar comportamento é melhor que detectar hashes e IPs ?** Porque o atacante troca hashes e IPs a cada campanha com custo quase zero, mas mudar a forma de operar é caro. É a Pirâmide da Dor.
 
-6. **Para que servem SIEM, EDR e SOAR?** SIEM centraliza e correlaciona logs de tudo; EDR observa e age nos endpoints; SOAR automatiza as respostas repetitivas em playbooks.
+6. **Para que servem SIEM, EDR e SOAR ?** SIEM centraliza e correlaciona logs de tudo; EDR observa e age nos endpoints; SOAR automatiza as respostas repetitivas em playbooks.
 
-7. **Por que não desligar imediatamente uma máquina comprometida?** Porque a memória RAM, os processos e as conexões ativas somem, e com eles evidências valiosas. O mais comum é isolá-la da rede pelo EDR e capturar a memória antes.
+7. **Por que não desligar imediatamente uma máquina comprometida ?** Porque a memória RAM, os processos e as conexões ativas somem, e com eles evidências valiosas. O mais comum é isolá-la da rede pelo EDR e capturar a memória antes.
 
-8. **O que é SMS como MFA e por que não basta?** É o código enviado por mensagem, vulnerável a troca fraudulenta de chip e a páginas de phishing que repassam o código em tempo real. Passkeys e chaves FIDO2 são resistentes a phishing porque a credencial é amarrada ao domínio verdadeiro.
+8. **O que é SMS como MFA e por que não basta ?** É o código enviado por mensagem, vulnerável a troca fraudulenta de chip e a páginas de phishing que repassam o código em tempo real. Passkeys e chaves FIDO2 são resistentes a phishing porque a credencial é amarrada ao domínio verdadeiro.
 
-9. **O que é IDOR e por que scanners têm dificuldade com ele?** É acessar um objeto de outra pessoa trocando um identificador na requisição. Scanners não sabem a quem cada objeto pertence, então não percebem que a resposta não deveria ter vindo.
+9. **O que é IDOR e por que scanners têm dificuldade com ele ?** É acessar um objeto de outra pessoa trocando um identificador na requisição. Scanners não sabem a quem cada objeto pertence, então não percebem que a resposta não deveria ter vindo.
 
-10. **Qual a diferença entre SAST, DAST e SCA?** SAST lê o código sem executá-lo; DAST ataca a aplicação rodando, de fora; SCA verifica se as dependências de terceiros têm vulnerabilidades conhecidas.
+10. **Qual a diferença entre SAST, DAST e SCA ?** SAST lê o código sem executá-lo; DAST ataca a aplicação rodando, de fora; SCA verifica se as dependências de terceiros têm vulnerabilidades conhecidas.
 
-11. **Para que serve um SBOM?** Para saber exatamente quais componentes e versões existem em cada software. Quando surge uma vulnerabilidade como o Log4Shell, ele responde em minutos onde ela está presente.
+11. **Para que serve um SBOM ?** Para saber exatamente quais componentes e versões existem em cada software. Quando surge uma vulnerabilidade como o Log4Shell, ele responde em minutos onde ela está presente.
 
-12. **O que o caso xz utils ensinou?** Que a cadeia de suprimentos pode ser atacada pela engenharia social de longo prazo contra mantenedores sobrecarregados, e que um backdoor pode passar por releases oficiais. Também que projetos críticos mantidos por uma pessoa só são um risco para todo mundo.
+12. **O que o caso xz utils ensinou ?** Que a cadeia de suprimentos pode ser atacada pela engenharia social de longo prazo contra mantenedores sobrecarregados, e que um backdoor pode passar por releases oficiais. Também que projetos críticos mantidos por uma pessoa só são um risco para todo mundo.
 
-13. **O que é o modelo de responsabilidade compartilhada?** O provedor protege a infraestrutura da nuvem; o cliente protege o que coloca nela: configurações, identidades, dados e aplicações. A maioria dos incidentes acontece do lado do cliente.
+13. **O que é o modelo de responsabilidade compartilhada ?** O provedor protege a infraestrutura da nuvem; o cliente protege o que coloca nela: configurações, identidades, dados e aplicações. A maioria dos incidentes acontece do lado do cliente.
 
-14. **Por que SSRF é tão perigoso na nuvem?** Porque o servidor pode ser induzido a acessar o serviço de metadados da instância, que entrega credenciais temporárias com as permissões da máquina. Exigir o IMDSv2 na AWS e filtrar destinos internos mitigam.
+14. **Por que SSRF é tão perigoso na nuvem ?** Porque o servidor pode ser induzido a acessar o serviço de metadados da instância, que entrega credenciais temporárias com as permissões da máquina. Exigir o IMDSv2 na AWS e filtrar destinos internos mitigam.
 
-15. **Um container rodando como root é root no host?** Não necessariamente, mas fica muito perto. Containers dividem o kernel do host, e um container privilegiado, com o socket do runtime ou com diretórios do host montados, permite escapar com facilidade. Rodar sem root e sem privilégios reduz muito o risco.
+15. **Um container rodando como root é root no host ?** Não necessariamente, mas fica muito perto. Containers dividem o kernel do host, e um container privilegiado, com o socket do runtime ou com diretórios do host montados, permite escapar com facilidade. Rodar sem root e sem privilégios reduz muito o risco.
 
-16. **Como priorizar milhares de vulnerabilidades?** Combinando a gravidade (CVSS), a probabilidade de exploração (EPSS), a exploração confirmada (CISA KEV) e o contexto do ativo: exposição à internet e acesso a dados críticos.
+16. **Como priorizar milhares de vulnerabilidades ?** Combinando a gravidade (CVSS), a probabilidade de exploração (EPSS), a exploração confirmada (CISA KEV) e o contexto do ativo: exposição à internet e acesso a dados críticos.
 
-17. **O que é a regra de backup 3 2 1 1 0?** Três cópias, em duas mídias diferentes, uma fora do local, uma offline ou imutável, e zero erros nos testes de restauração.
+17. **O que é a regra de backup 3 2 1 1 0 ?** Três cópias, em duas mídias diferentes, uma fora do local, uma offline ou imutável, e zero erros nos testes de restauração.
 
-18. **O que é "colha agora, decifre depois"?** Guardar hoje tráfego cifrado para decifrá-lo quando existirem computadores quânticos capazes de quebrar RSA e curvas elípticas. É por isso que a troca de chaves pós quântica (ML KEM) já está sendo adotada.
+18. **O que é "colha agora, decifre depois" ?** Guardar hoje tráfego cifrado para decifrá-lo quando existirem computadores quânticos capazes de quebrar RSA e curvas elípticas. É por isso que a troca de chaves pós quântica (ML KEM) já está sendo adotada.
 
-19. **O que é prompt injection?** Instruções maliciosas escondidas em dados que um LLM processa, fazendo o modelo seguir o atacante em vez do usuário. Em agentes com ferramentas, isso pode virar ação real, como vazar dados ou enviar mensagens.
+19. **O que é prompt injection ?** Instruções maliciosas escondidas em dados que um LLM processa, fazendo o modelo seguir o atacante em vez do usuário. Em agentes com ferramentas, isso pode virar ação real, como vazar dados ou enviar mensagens.
 
-20. **Se tivesse que escolher um único controle para começar, qual seria?** MFA resistente a phishing nas contas que importam, porque a maior parte dos ataques modernos começa com uma credencial roubada. Mas logo em seguida vêm patches na borda e backups imutáveis, porque um controle sozinho nunca segura: é a defesa em profundidade.
+20. **Se tivesse que escolher um único controle para começar, qual seria ?** MFA resistente a phishing nas contas que importam, porque a maior parte dos ataques modernos começa com uma credencial roubada. Mas logo em seguida vêm patches na borda e backups imutáveis, porque um controle sozinho nunca segura: é a defesa em profundidade.
 
 ## Nota
 

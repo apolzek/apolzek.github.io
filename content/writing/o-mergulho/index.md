@@ -14,7 +14,7 @@ O homem está mal consigo mesmo. Incapaz de suportar o vazio que carrega, busca 
 
 Aos poucos, transforma-se em massa de manobra. Sente que algo está errado, mas não consegue dizer exatamente o quê. E, quando finalmente começa a refletir sobre isso, o despertador toca. São sete horas da manhã. É hora de trabalhar.
 
-Afinal, sem dinheiro, o que ele representa para a sociedade?
+Afinal, sem dinheiro, o que ele representa para a sociedade ?
 
 Ele precisa pagar as contas. Precisa pagar pela água abundante do planeta que chega encanada à sua casa. Precisa pagar pela energia elétrica, essa maravilha que tanto facilita sua vida. Depois precisa comprar roupas, de preferência aquelas que carregam símbolos admirados pelos outros.
 
@@ -32,7 +32,7 @@ Ou, pelo menos, de uma parte dela.
 
 Ele não consegue explicá-la, mas consegue senti-la.
 
-Sentir, porém, é algo difícil. Durante toda a vida aprendeu a confiar apenas naquilo que seus sentidos conseguem provar. Como pode agora acreditar em algo que simplesmente sente? Para continuar essa jornada, percebe que precisa silenciar a audição, o olfato, a visão e até o paladar. Nesse lugar, nenhum deles basta.
+Sentir, porém, é algo difícil. Durante toda a vida aprendeu a confiar apenas naquilo que seus sentidos conseguem provar. Como pode agora acreditar em algo que simplesmente sente ? Para continuar essa jornada, percebe que precisa silenciar a audição, o olfato, a visão e até o paladar. Nesse lugar, nenhum deles basta.
 
 Ali, resta apenas o coração.
 
@@ -56,13 +56,13 @@ Então sua mente começa a produzir pensamentos que jamais haviam passado por el
 
 Perguntas surgem naturalmente.
 
-Como posso ajudar outras pessoas?
+Como posso ajudar outras pessoas ?
 
-Por que o mundo é como é?
+Por que o mundo é como é ?
 
-O que realmente importa?
+O que realmente importa ?
 
-Como posso deixá-lo um pouco melhor do que encontrei?
+Como posso deixá-lo um pouco melhor do que encontrei ?
 
 E o mais curioso é que ele não precisa se esforçar para pensar nisso. Esses pensamentos simplesmente brotam.
 

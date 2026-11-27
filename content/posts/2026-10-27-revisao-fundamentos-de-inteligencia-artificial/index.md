@@ -27,7 +27,7 @@ Guardar essa hierarquia resolve metade das conversas confusas. Quando alguém di
 
 IA não nasceu em 2022. Nasceu nos anos 1950, e a sua história é de entusiasmo e decepção se alternando, o que vale conhecer para não achar que desta vez é só subida.
 
-1. **O fundamento (1950).** Alan Turing publica o artigo que pergunta "máquinas podem pensar?" e propõe o teste que leva o seu nome. A pergunta ainda não foi respondida.
+1. **O fundamento (1950).** Alan Turing publica o artigo que pergunta "máquinas podem pensar ?" e propõe o teste que leva o seu nome. A pergunta ainda não foi respondida.
 2. **O batismo (1956).** Na conferência de Dartmouth, John McCarthy cunha o termo "inteligência artificial". A promessa era alta: resolver o problema em uma geração.
 3. **O perceptron (1958).** Frank Rosenblatt cria o perceptron, o primeiro neurônio artificial que aprende. O entusiasmo é enorme, até que, em 1969, Minsky e Papert mostram as limitações matemáticas dele, e o interesse (e o dinheiro) seca. Primeiro **inverno da IA**.
 4. **Os sistemas especialistas (anos 1980).** A aposta muda para codificar o conhecimento de especialistas em milhares de regras "se isto, então aquilo". Funciona em nichos, mas não escala: manter as regras vira um pesadelo, e o mercado desaba. Segundo inverno.
@@ -56,7 +56,7 @@ Há ainda o **autossupervisionado**, que é o segredo dos LLMs: o rótulo vem do
 Imagine que você quer prever o preço de uma casa a partir do tamanho. O modelo começa com um palpite qualquer (uma reta aleatória). Para melhorar, precisa de três coisas:
 
 1. **Uma função de perda:** um número que mede o quanto o modelo está errando. Quanto maior a diferença entre o preço previsto e o real, maior a perda.
-2. **Um gradiente:** a direção em que ajustar os parâmetros para que a perda diminua. É o cálculo respondendo "para que lado eu empurro cada número para errar menos?".
+2. **Um gradiente:** a direção em que ajustar os parâmetros para que a perda diminua. É o cálculo respondendo "para que lado eu empurro cada número para errar menos ?".
 3. **O gradiente descendente:** repetir, muitas vezes, "calcule a perda, descubra a direção, dê um passinho nela". É descer uma montanha no nevoeiro sentindo a inclinação sob os pés e dando um passo para baixo de cada vez, até chegar ao fundo do vale.
 
 Em redes neurais, o algoritmo que calcula esses gradientes camada por camada, de trás para frente, se chama **retropropagação (backpropagation)**. É a ideia que faz tudo funcionar, e tem quarenta anos. O "aprendizado", desmistificado, é isto: milhões de pequenos ajustes guiados por quanto se está errando.
@@ -158,7 +158,7 @@ A grande tendência atual é o fim das fronteiras entre esses tipos. Os modelos 
 
 ## O lado prático: como se constrói e se usa
 
-Teoria à parte, como é trabalhar com isso na prática?
+Teoria à parte, como é trabalhar com isso na prática ?
 
 ### As ferramentas de quem constrói
 
@@ -215,7 +215,7 @@ A disputa aberto versus fechado é um dos grandes eixos da área: os fechados te
 
 ### A camada de aplicação
 
-Por cima de tudo, milhares de produtos que usam esses modelos via API: assistentes de código (**GitHub Copilot**, **Cursor**, o próprio Claude Code), ferramentas de escrita, atendimento, análise de dados, e os assistentes embutidos em praticamente todo software existente. É a camada onde mais se cria valor (e onde mais há fumaça de marketing). A pergunta útil diante de cada "produto de IA" é sempre: isto é um modelo novo, ou é um aplicativo fino em cima do modelo de outra pessoa?
+Por cima de tudo, milhares de produtos que usam esses modelos via API: assistentes de código (**GitHub Copilot**, **Cursor**, o próprio Claude Code), ferramentas de escrita, atendimento, análise de dados, e os assistentes embutidos em praticamente todo software existente. É a camada onde mais se cria valor (e onde mais há fumaça de marketing). A pergunta útil diante de cada "produto de IA" é sempre: isto é um modelo novo, ou é um aplicativo fino em cima do modelo de outra pessoa ?
 
 ## O lado honesto: limites e riscos
 
@@ -243,35 +243,35 @@ Nenhuma revisão de IA é honesta sem a parte chata. A tecnologia é real e pode
 
 ## Quinze perguntas pra se testar
 
-1. **Qual a diferença entre IA, machine learning e deep learning?** São bonecas russas: IA é qualquer técnica que imite inteligência; ML é a fatia que aprende regras a partir de dados; deep learning é o ML feito com redes neurais profundas.
+1. **Qual a diferença entre IA, machine learning e deep learning ?** São bonecas russas: IA é qualquer técnica que imite inteligência; ML é a fatia que aprende regras a partir de dados; deep learning é o ML feito com redes neurais profundas.
 
-2. **O que é aprendizado supervisionado, não supervisionado e por reforço?** Supervisionado aprende de exemplos com a resposta certa; não supervisionado acha estrutura em dados sem rótulo; por reforço aprende por tentativa e erro com recompensas.
+2. **O que é aprendizado supervisionado, não supervisionado e por reforço ?** Supervisionado aprende de exemplos com a resposta certa; não supervisionado acha estrutura em dados sem rótulo; por reforço aprende por tentativa e erro com recompensas.
 
-3. **O que significa "treinar" um modelo, no fundo?** Ajustar milhões de números (os pesos) para minimizar uma função de perda, dando passinhos na direção indicada pelo gradiente, com a retropropagação calculando esses gradientes.
+3. **O que significa "treinar" um modelo, no fundo ?** Ajustar milhões de números (os pesos) para minimizar uma função de perda, dando passinhos na direção indicada pelo gradiente, com a retropropagação calculando esses gradientes.
 
-4. **O que é overfitting?** Quando o modelo decora o treino em vez de aprender o padrão geral e vai mal com dados novos. Por isso se separam dados de treino, validação e teste.
+4. **O que é overfitting ?** Quando o modelo decora o treino em vez de aprender o padrão geral e vai mal com dados novos. Por isso se separam dados de treino, validação e teste.
 
-5. **Por que o Transformer foi tão importante?** Porque o mecanismo de atenção permite olhar todas as palavras de uma vez, entender contexto longo e treinar em paralelo, o que destravou a escala e os LLMs.
+5. **Por que o Transformer foi tão importante ?** Porque o mecanismo de atenção permite olhar todas as palavras de uma vez, entender contexto longo e treinar em paralelo, o que destravou a escala e os LLMs.
 
-6. **O que é um token?** O pedaço de texto que o modelo processa, menor que uma palavra. Contexto, preço e velocidade são medidos em tokens.
+6. **O que é um token ?** O pedaço de texto que o modelo processa, menor que uma palavra. Contexto, preço e velocidade são medidos em tokens.
 
-7. **O que é um embedding?** A representação de um token (ou texto, ou imagem) como um vetor num espaço onde significados parecidos ficam próximos. É a base da busca semântica e do RAG.
+7. **O que é um embedding ?** A representação de um token (ou texto, ou imagem) como um vetor num espaço onde significados parecidos ficam próximos. É a base da busca semântica e do RAG.
 
-8. **Quais são as fases de criação de um LLM?** Pré-treino (prever o próximo token na internet inteira), fine-tuning por instrução (aprender a obedecer), alinhamento (RLHF, para ser útil e seguro) e, nos recentes, treino de raciocínio.
+8. **Quais são as fases de criação de um LLM ?** Pré-treino (prever o próximo token na internet inteira), fine-tuning por instrução (aprender a obedecer), alinhamento (RLHF, para ser útil e seguro) e, nos recentes, treino de raciocínio.
 
-9. **Por que LLMs alucinam?** Porque só preveem texto plausível, sem distinguir verdadeiro de coerente. Inventam com confiança, e isso é inerente ao funcionamento, não um bug que se conserta fácil.
+9. **Por que LLMs alucinam ?** Porque só preveem texto plausível, sem distinguir verdadeiro de coerente. Inventam com confiança, e isso é inerente ao funcionamento, não um bug que se conserta fácil.
 
-10. **O que é RAG e que problema resolve?** Buscar documentos relevantes e entregá-los no contexto do modelo para ele responder com base neles. Reduz alucinação e permite usar dados privados e atuais sem retreinar.
+10. **O que é RAG e que problema resolve ?** Buscar documentos relevantes e entregá-los no contexto do modelo para ele responder com base neles. Reduz alucinação e permite usar dados privados e atuais sem retreinar.
 
-11. **O que é um agente de IA?** Um modelo que recebe um objetivo e age em laço (raciocina, usa ferramentas, observa, repete) até concluir. É a fronteira atual, e também uma nova superfície de risco.
+11. **O que é um agente de IA ?** Um modelo que recebe um objetivo e age em laço (raciocina, usa ferramentas, observa, repete) até concluir. É a fronteira atual, e também uma nova superfície de risco.
 
-12. **Como funcionam os geradores de imagem modernos?** Por difusão: aprendem a remover ruído passo a passo, partindo de chuvisco aleatório e "revelando" uma imagem guiada pelo texto do pedido.
+12. **Como funcionam os geradores de imagem modernos ?** Por difusão: aprendem a remover ruído passo a passo, partindo de chuvisco aleatório e "revelando" uma imagem guiada pelo texto do pedido.
 
-13. **Por que gerar vídeo é mais difícil que gerar imagem?** Porque além de cada quadro ser bom, eles precisam ser coerentes ao longo do tempo e respeitar movimento e física.
+13. **Por que gerar vídeo é mais difícil que gerar imagem ?** Porque além de cada quadro ser bom, eles precisam ser coerentes ao longo do tempo e respeitar movimento e física.
 
-14. **Por que a NVIDIA é tão central na IA?** Porque deep learning é multiplicação de matrizes em massa, que as GPUs fazem bem, e o CUDA virou o padrão de software que prende o ecossistema ao hardware dela.
+14. **Por que a NVIDIA é tão central na IA ?** Porque deep learning é multiplicação de matrizes em massa, que as GPUs fazem bem, e o CUDA virou o padrão de software que prende o ecossistema ao hardware dela.
 
-15. **Qual a diferença entre modelos abertos e fechados?** Fechados (GPT, Gemini) tendem a liderar a fronteira e se usam por API; abertos (Llama, Mistral, DeepSeek) dão controle, privacidade e customização, e podem rodar na sua própria máquina.
+15. **Qual a diferença entre modelos abertos e fechados ?** Fechados (GPT, Gemini) tendem a liderar a fronteira e se usam por API; abertos (Llama, Mistral, DeepSeek) dão controle, privacidade e customização, e podem rodar na sua própria máquina.
 
 ## Nota
 

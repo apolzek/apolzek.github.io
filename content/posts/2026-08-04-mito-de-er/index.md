@@ -68,7 +68,7 @@ Rapidinho sobre esses dois termos, porque eles são o coração do texto:
 
 O **caráter** o jeito de ser, a estrutura moral da pessoa é muito difícil de mudar depois que a escolha é feita. Ou seja: você não escolhe só as circunstâncias da sua vida. Você escolhe também, junto e embutido, o tipo de pessoa que vai ser dentro dela. Vem tudo no mesmo pacote. Por isso o mito insiste tanto que a habilidade mais importante do mundo é conseguir prever o bem e o mal que uma vida pode trazer. Saber olhar pra uma opção e enxergar não o brilho da superfície, mas o que ela vai fazer com você por dentro, a longo prazo. Sem isso, você está apostando no escuro com o próprio destino.
 
-## E por que a gente não lembra de nada disso?
+## E por que a gente não lembra de nada disso ?
 
 Boa pergunta, o mito responde. Antes de reencarnar, as almas atravessam uma planície árida e bebem a água do **Rio do Esquecimento** (em grego, *Lete*, palavra que significa literalmente "esquecimento"). Um gole e pronto: apagou tudo. Por isso ninguém chega aqui lembrando da própria escolha. A gente nasce sem o manual, sem o recibo, sem a memória de ter assinado embaixo. O que é meio sacana, admito. Mas também é exatamente o que torna a vida uma vida de verdade, e não a execução de um roteiro que você já leu antes.
 

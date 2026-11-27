@@ -40,7 +40,7 @@ E quando você quer de propósito dois cabos entre os mesmos equipamentos, por b
 
 ## VLANs
 
-VLAN é a resposta pra uma pergunta simples: por que comprar três switches se um dá conta? Uma VLAN é um switch lógico dentro do físico: a porta do financeiro na VLAN 10 e a do visitante na VLAN 20 estão no mesmo hardware e em redes completamente separadas, cada uma com seu próprio domínio de broadcast.
+VLAN é a resposta pra uma pergunta simples: por que comprar três switches se um dá conta ? Uma VLAN é um switch lógico dentro do físico: a porta do financeiro na VLAN 10 e a do visitante na VLAN 20 estão no mesmo hardware e em redes completamente separadas, cada uma com seu próprio domínio de broadcast.
 
 Portas têm dois modos. A porta access pertence a uma VLAN só e o dispositivo pendurado nela nem sonha que VLANs existem. A porta trunk carrega várias VLANs ao mesmo tempo, marcando cada frame com uma etiqueta 802.1Q que diz "este frame é da VLAN 10": é o corredor entre switches, com cada malote etiquetado. E existe a VLAN nativa, a que viaja pelo trunk sem etiqueta, uma exceção histórica que é fonte clássica de confusão e de ataques de VLAN hopping quando mal configurada.
 
@@ -58,13 +58,13 @@ E a regra de ouro que decide o destino de cada pacote que sai da sua máquina: s
 
 ## ARP: o encontro entre L2 e L3
 
-Há um abismo entre "quero falar com 10.0.0.5" e "mande este frame pro MAC tal": o IP é o nome da pessoa, o MAC é o apartamento onde ela mora. O ARP é o porteiro que atravessa esse abismo: a máquina grita em broadcast "quem tem o IP 10.0.0.5?" e o dono responde "eu, e meu MAC é este". A resposta vai pro cache ARP (visível com `ip neigh`), porque gritar no saguão a cada pacote seria constrangedor.
+Há um abismo entre "quero falar com 10.0.0.5" e "mande este frame pro MAC tal": o IP é o nome da pessoa, o MAC é o apartamento onde ela mora. O ARP é o porteiro que atravessa esse abismo: a máquina grita em broadcast "quem tem o IP 10.0.0.5 ?" e o dono responde "eu, e meu MAC é este". A resposta vai pro cache ARP (visível com `ip neigh`), porque gritar no saguão a cada pacote seria constrangedor.
 
 Duas notas que valem ouro. O ARP gratuito é a máquina anunciando o próprio endereço sem ninguém perguntar, e é assim que failover de VIP funciona: o servidor que assume o IP virtual grita "este IP agora mora aqui" e os switches atualizam as tabelas na hora. E o lado sombrio: como o ARP não tem autenticação nenhuma, qualquer um pode responder "o 10.0.0.1 sou eu" e virar o homem no meio. Chama ARP spoofing, e é o motivo de redes sérias usarem proteções como dynamic ARP inspection.
 
 ## IPv6
 
-O IPv4 tem 4 bilhões de endereços, e o planeta tem mais gente que isso com três dispositivos cada. O IPv6 resolve com 128 bits, um número que dispensa comparações criativas: dá pra endereçar cada grão de areia e sobra. Por que demorou tanto? Porque o NAT deu sobrevida ao v4 e porque migração de infraestrutura só acontece quando dói.
+O IPv4 tem 4 bilhões de endereços, e o planeta tem mais gente que isso com três dispositivos cada. O IPv6 resolve com 128 bits, um número que dispensa comparações criativas: dá pra endereçar cada grão de areia e sobra. Por que demorou tanto ? Porque o NAT deu sobrevida ao v4 e porque migração de infraestrutura só acontece quando dói.
 
 A notação assusta menos do que parece: oito grupos hexadecimais, com duas abreviações (zeros à esquerda somem, e a maior sequência de grupos zerados vira `::` uma única vez). A subrede padrão de qualquer LAN é /64, gigante de propósito: a metade final do endereço identifica o host, e sobra espaço pra técnicas de privacidade.
 
@@ -74,7 +74,7 @@ E a pegadinha de segurança que merece destaque: como os hosts voltam a ser ende
 
 ## Roteamento
 
-Um roteador vive de uma pergunta: pra onde mando este pacote? A resposta mora na tabela de rotas, e a regra de desempate é o longest prefix match: entre todas as rotas que cobrem o destino, vence a mais específica. Se existe uma rota pra 10.1.0.0/16 e outra pra 10.1.2.0/24, um pacote pra 10.1.2.7 segue a segunda. A rota default (0.0.0.0/0) é a menos específica de todas: o "qualquer outra coisa, manda pra lá".
+Um roteador vive de uma pergunta: pra onde mando este pacote ? A resposta mora na tabela de rotas, e a regra de desempate é o longest prefix match: entre todas as rotas que cobrem o destino, vence a mais específica. Se existe uma rota pra 10.1.0.0/16 e outra pra 10.1.2.0/24, um pacote pra 10.1.2.7 segue a segunda. A rota default (0.0.0.0/0) é a menos específica de todas: o "qualquer outra coisa, manda pra lá".
 
 Rotas estáticas são escritas à mão e funcionam até a topologia mudar. Em redes de verdade, protocolos dinâmicos fazem os roteadores conversarem: o OSPF dentro de casa (todos os roteadores da empresa aprendem os caminhos internos e recalculam sozinhos quando um link cai) e o BGP entre casas. E "entre casas" aqui é literal: a internet é uma federação de Sistemas Autônomos (AS), cada um com seu número, cada um dono da própria rede, anunciando aos vizinhos "estes prefixos moram aqui ou passam por aqui". Não existe autoridade central roteando a internet; existe um acordo de vizinhos, com contratos comerciais por baixo.
 
@@ -136,7 +136,7 @@ Aí nasce o blackhole de PMTUD, um dos bugs mais desorientadores da rede: ping f
 
 ## DHCP
 
-Ninguém configura IP à mão em escala, e o DHCP é o cartório que distribui os endereços. O fluxo tem até acrônimo: DORA. Discover (a máquina nova grita em broadcast "existe um servidor DHCP aí?"), Offer (o servidor oferece um endereço), Request (a máquina pede formalmente aquela oferta), Ack (o servidor lavra o contrato). O contrato é o lease, com prazo de validade e renovação automática na metade do prazo, e vem com as cláusulas que fazem a rede funcionar: gateway, servidores DNS, domínio.
+Ninguém configura IP à mão em escala, e o DHCP é o cartório que distribui os endereços. O fluxo tem até acrônimo: DORA. Discover (a máquina nova grita em broadcast "existe um servidor DHCP aí ?"), Offer (o servidor oferece um endereço), Request (a máquina pede formalmente aquela oferta), Ack (o servidor lavra o contrato). O contrato é o lease, com prazo de validade e renovação automática na metade do prazo, e vem com as cláusulas que fazem a rede funcionar: gateway, servidores DNS, domínio.
 
 Como o Discover é broadcast e broadcast não cruza roteador, redes com várias subredes usam o DHCP relay: o roteador local repassa o pedido ao servidor central, carimbando de qual subrede veio, pra oferta sair da faixa certa.
 
@@ -194,7 +194,7 @@ Os formatos de uso são dois: site a site (duas redes inteiras costuradas por um
 
 ## Rede no Linux por dentro
 
-No Linux, a rede é visível e manipulável peça por peça, e a família `ip` substituiu o folclore do ifconfig: `ip addr` mostra interfaces e endereços, `ip route` mostra a tabela de rotas (e `ip route get` responde "por onde sairia um pacote pra este destino?", pergunta de ouro). O policy routing vai além da tabela única: regras (`ip rule`) escolhem entre várias tabelas de rota conforme a origem ou a marca do pacote, o mecanismo por trás de "tráfego do cliente A sai pelo link A".
+No Linux, a rede é visível e manipulável peça por peça, e a família `ip` substituiu o folclore do ifconfig: `ip addr` mostra interfaces e endereços, `ip route` mostra a tabela de rotas (e `ip route get` responde "por onde sairia um pacote pra este destino ?", pergunta de ouro). O policy routing vai além da tabela única: regras (`ip rule`) escolhem entre várias tabelas de rota conforme a origem ou a marca do pacote, o mecanismo por trás de "tráfego do cliente A sai pelo link A".
 
 As peças de montar são o que faz containers existirem: a bridge é um switch virtual dentro do kernel; o par veth é um cabo virtual com duas pontas; e o network namespace é uma pilha de rede inteira e isolada (interfaces, rotas, firewall próprios). A receita de container: cria um namespace, espeta uma ponta do veth dentro e a outra na bridge do host, e pronto, o processo isolado tem rede. Não é metáfora, é literalmente o que o Docker faz.
 
@@ -213,7 +213,7 @@ Na nuvem, o vocabulário muda e os conceitos não: a VPC é a sua rede privada v
 O par do "caminho de uma escrita" do texto de armazenamento. Você digita a URL e aperta Enter; eis a jornada, com o que pode quebrar em cada porta e qual ferramenta enxerga cada uma:
 
 1. Resolução de nome: o navegador consulta seus caches, o sistema consulta o hosts e o resolver (stub local, depois recursivo), e a árvore do DNS responde. Quebra aqui: registro errado, TTL antigo em cache, resolver fora. Enxerga: `dig`, `dig +trace`.
-2. Decisão de rota: destino na minha subrede ou não? Consulta a tabela, elege gateway ou entrega direta. Quebra: máscara errada, rota ausente, gateway errado via DHCP. Enxerga: `ip route get`.
+2. Decisão de rota: destino na minha subrede ou não ? Consulta a tabela, elege gateway ou entrega direta. Quebra: máscara errada, rota ausente, gateway errado via DHCP. Enxerga: `ip route get`.
 3. ARP: preciso do MAC do próximo salto (o gateway, provavelmente). Cache ou broadcast. Quebra: ARP spoofing, vizinho sumido. Enxerga: `ip neigh`.
 4. O frame sai: a placa monta o frame, o switch consulta a tabela MAC e encaminha, o STP garante que há caminho sem loop, a VLAN certa importa. Quebra: duplex mismatch, porta errada, VLAN errada. Enxerga: `ethtool`, contadores de erro.
 5. NAT na borda: o roteador de casa (e talvez o CGNAT do provedor) reescreve origem e anota na tabela de tradução. Quebra: tabela cheia, timeout de conexão ociosa. Enxerga: `conntrack -L`.
@@ -229,7 +229,7 @@ Dez etapas, dez lugares pra morrer, e o diagnóstico profissional é descobrir o
 
 As ferramentas que resolvem 95% dos mistérios, na ordem em que costumam entrar em cena:
 
-`ip a`, `ip r` e `ip neigh` respondem o básico existencial: tenho endereço? tenho rota? enxergo meu gateway? `ss -tulpn` mostra quem escuta em qual porta (o sucessor do netstat), e `ss -ti` vai além: estatísticas por socket, incluindo RTT medido e retransmissões, uma mina de ouro esquecida.
+`ip a`, `ip r` e `ip neigh` respondem o básico existencial: tenho endereço ? tenho rota ? enxergo meu gateway ? `ss -tulpn` mostra quem escuta em qual porta (o sucessor do netstat), e `ss -ti` vai além: estatísticas por socket, incluindo RTT medido e retransmissões, uma mina de ouro esquecida.
 
 `ping` prova alcance e mede RTT; `mtr` é o traceroute adulto, mostrando perda e latência por salto continuamente (com a ressalva de que roteador despriorizando ICMP gera "perda" no meio do caminho que não afeta o destino; perda real aparece do salto em diante até o fim).
 
@@ -237,9 +237,9 @@ As ferramentas que resolvem 95% dos mistérios, na ordem em que costumam entrar 
 
 `nc` testa se uma porta abre, sem aplicação envolvida. `iperf3` mede o throughput real entre duas máquinas, separando "a rede entrega" de "a aplicação consome". `ethtool` revela velocidade, duplex e erros físicos da placa. `nft list ruleset` mostra o firewall de fato carregado (não o que a wiki diz), e `conntrack -L` abre a tabela de conexões rastreadas.
 
-E quando a dúvida sobrevive a tudo isso, `tcpdump` captura a verdade nua (com o Wireshark pra dissecar com calma): o pacote saiu? chegou? voltou? Capturar nas duas pontas e comparar encerra discussões que dashboards alimentam por dias.
+E quando a dúvida sobrevive a tudo isso, `tcpdump` captura a verdade nua (com o Wireshark pra dissecar com calma): o pacote saiu ? chegou ? voltou ? Capturar nas duas pontas e comparar encerra discussões que dashboards alimentam por dias.
 
-Junto com as ferramentas, o método, que vale mais que elas: diagnostique de baixo pra cima. Link está up? Tenho IP? Tenho rota? O nome resolve? A porta abre? O TLS fecha? A aplicação responde? Cada degrau descarta metade do universo, e é o contrário de chutar "deve ser o DNS" (mesmo que, admito, às vezes seja).
+Junto com as ferramentas, o método, que vale mais que elas: diagnostique de baixo pra cima. Link está up ? Tenho IP ? Tenho rota ? O nome resolve ? A porta abre ? O TLS fecha ? A aplicação responde ? Cada degrau descarta metade do universo, e é o contrário de chutar "deve ser o DNS" (mesmo que, admito, às vezes seja).
 
 ## Amarrando tudo: um mapa mental
 
@@ -253,49 +253,49 @@ A visão de cima, porque redes também são uma pilha e cada camada responde uma
 6. Aplicação (HTTP, TLS e tudo acima): a conversa que interessa, cifrada e multiplexada.
 7. E transversais a tudo: segurança (firewall, segmentação, criptografia) e observabilidade (as ferramentas do kit), que atravessam todas as camadas.
 
-No armazenamento, a pergunta que organiza tudo era "qual o padrão de acesso". Em redes, a pergunta é: **onde o pacote morreu?** Toda investigação é descer essa pilha com método até encontrar o velório, e todo design decente é construir a pilha de modo que, quando o pacote morrer, ele morra avisando.
+No armazenamento, a pergunta que organiza tudo era "qual o padrão de acesso". Em redes, a pergunta é: **onde o pacote morreu ?** Toda investigação é descer essa pilha com método até encontrar o velório, e todo design decente é construir a pilha de modo que, quando o pacote morrer, ele morra avisando.
 
 ## Vinte perguntas pra se testar
 
-1. **Ping funciona, mas o site não abre. O que pode ser?** Ping só prova camada 3 e ICMP. Dali pra cima tudo ainda pode falhar: teste o DNS (`dig`), a porta (`nc` ou `curl`), o firewall de aplicação e o TLS. Alcançar a máquina e conversar com o serviço são coisas diferentes.
+1. **Ping funciona, mas o site não abre. O que pode ser ?** Ping só prova camada 3 e ICMP. Dali pra cima tudo ainda pode falhar: teste o DNS (`dig`), a porta (`nc` ou `curl`), o firewall de aplicação e o TLS. Alcançar a máquina e conversar com o serviço são coisas diferentes.
 
-2. **SSH conecta, mas trava ao listar um diretório grande. Por quê?** Cheiro forte de MTU e PMTUD quebrado por ICMP bloqueado: os pacotes pequenos do handshake e do prompt passam, e os grandes da listagem somem sem aviso. Reveja a seção de MTU.
+2. **SSH conecta, mas trava ao listar um diretório grande. Por quê ?** Cheiro forte de MTU e PMTUD quebrado por ICMP bloqueado: os pacotes pequenos do handshake e do prompt passam, e os grandes da listagem somem sem aviso. Reveja a seção de MTU.
 
-3. **Por que uma única conexão TCP não usa todo o link de longa distância?** Por causa do BDP e da janela: com RTT alto, a janela limita quantos bytes ficam no ar, e o throughput tem teto matemático. Perda de pacotes e o algoritmo de congestionamento pesam junto. Daí as transferências paralelas.
+3. **Por que uma única conexão TCP não usa todo o link de longa distância ?** Por causa do BDP e da janela: com RTT alto, a janela limita quantos bytes ficam no ar, e o throughput tem teto matemático. Perda de pacotes e o algoritmo de congestionamento pesam junto. Daí as transferências paralelas.
 
-4. **Qual a diferença entre switch e roteador?** O switch encaminha frames por MAC dentro de um domínio de camada 2. O roteador encaminha pacotes por IP entre redes diferentes. Um olha o malote, o outro olha o envelope.
+4. **Qual a diferença entre switch e roteador ?** O switch encaminha frames por MAC dentro de um domínio de camada 2. O roteador encaminha pacotes por IP entre redes diferentes. Um olha o malote, o outro olha o envelope.
 
-5. **Por que um loop de cabo derruba a rede inteira?** Frames de camada 2 não têm TTL: broadcasts circulam pra sempre e se multiplicam a cada volta até saturar tudo. É a broadcast storm, e é exatamente o que o STP existe pra prevenir.
+5. **Por que um loop de cabo derruba a rede inteira ?** Frames de camada 2 não têm TTL: broadcasts circulam pra sempre e se multiplicam a cada volta até saturar tudo. É a broadcast storm, e é exatamente o que o STP existe pra prevenir.
 
-6. **Mudei o registro DNS e metade dos usuários ainda vê o IP antigo. Por quê?** Caches pelo mundo respeitando o TTL que valia quando consultaram. Não é propagação, é expiração. Baixe o TTL antes da migração, não depois.
+6. **Mudei o registro DNS e metade dos usuários ainda vê o IP antigo. Por quê ?** Caches pelo mundo respeitando o TTL que valia quando consultaram. Não é propagação, é expiração. Baixe o TTL antes da migração, não depois.
 
-7. **O que é TIME_WAIT e por que tenho milhares?** É o estado de quem fechou a conexão primeiro, mantido por duas vezes o tempo máximo de vida de um segmento, de guarda contra pacotes atrasados contaminarem conexões novas na mesma tupla. Milhares deles costumam denunciar falta de keep alive ou de pooling, não um vazamento.
+7. **O que é TIME_WAIT e por que tenho milhares ?** É o estado de quem fechou a conexão primeiro, mantido por duas vezes o tempo máximo de vida de um segmento, de guarda contra pacotes atrasados contaminarem conexões novas na mesma tupla. Milhares deles costumam denunciar falta de keep alive ou de pooling, não um vazamento.
 
-8. **Connection refused x connection timed out: o que cada um diz?** Refused: o host está lá e respondeu com RST, não há nada escutando naquela porta. Timeout: ninguém respondeu nada, o que cheira a firewall descartando em silêncio, rota errada ou host fora do ar. O refused é um não educado; o timeout é o silêncio no telefone.
+8. **Connection refused x connection timed out: o que cada um diz ?** Refused: o host está lá e respondeu com RST, não há nada escutando naquela porta. Timeout: ninguém respondeu nada, o que cheira a firewall descartando em silêncio, rota errada ou host fora do ar. O refused é um não educado; o timeout é o silêncio no telefone.
 
-9. **Como um pacote decide entre o gateway e a entrega direta?** Comparando o destino com as subredes das interfaces (via máscara) e consultando a tabela de rotas pela rota mais específica, o longest prefix match. `ip route get` mostra a decisão pronta.
+9. **Como um pacote decide entre o gateway e a entrega direta ?** Comparando o destino com as subredes das interfaces (via máscara) e consultando a tabela de rotas pela rota mais específica, o longest prefix match. `ip route get` mostra a decisão pronta.
 
-10. **Por que não consigo abrir porta no roteador de casa?** CGNAT: o IP "público" do seu roteador é um 100.64.x.x compartilhado, e o IP público de verdade mora no provedor. Port forwarding na sua caixa não adianta, porque a porta precisaria abrir na caixa do provedor.
+10. **Por que não consigo abrir porta no roteador de casa ?** CGNAT: o IP "público" do seu roteador é um 100.64.x.x compartilhado, e o IP público de verdade mora no provedor. Port forwarding na sua caixa não adianta, porque a porta precisaria abrir na caixa do provedor.
 
-11. **TCP ou UDP pra voz e jogos? Por quê?** UDP. Um pacote atrasado é inútil (o momento da fala ou do quadro já passou) e retransmitir só aumenta o jitter. Melhor perder um pacote e seguir do que congelar tudo esperando.
+11. **TCP ou UDP pra voz e jogos ? Por quê ?** UDP. Um pacote atrasado é inútil (o momento da fala ou do quadro já passou) e retransmitir só aumenta o jitter. Melhor perder um pacote e seguir do que congelar tudo esperando.
 
-12. **O que muda no IPv6 em relação a NAT e firewall?** Sem NAT como regra, os hosts voltam a ser endereçáveis diretamente, então o firewall precisa existir de fato e estar certo. Esquecer as regras do v6 enquanto se capricha no v4 é das falhas mais comuns da transição.
+12. **O que muda no IPv6 em relação a NAT e firewall ?** Sem NAT como regra, os hosts voltam a ser endereçáveis diretamente, então o firewall precisa existir de fato e estar certo. Esquecer as regras do v6 enquanto se capricha no v4 é das falhas mais comuns da transição.
 
-13. **Pra que serve o SNI?** Pro cliente declarar, já no início do handshake TLS, qual host ele quer. É o que permite um mesmo IP servir dezenas de sites com certificados diferentes, e é também um dos últimos pedaços em claro que um observador do tráfego enxerga.
+13. **Pra que serve o SNI ?** Pro cliente declarar, já no início do handshake TLS, qual host ele quer. É o que permite um mesmo IP servir dezenas de sites com certificados diferentes, e é também um dos últimos pedaços em claro que um observador do tráfego enxerga.
 
-14. **Balanceador L4 x L7: quando usar cada um?** L4 é rápido e opaco: enxerga IP e porta, repassa bytes, serve pra qualquer protocolo. L7 entende HTTP: roteia por path e header, termina TLS, faz retry e métrica rica. Use L4 pra desempenho bruto e protocolos arbitrários; L7 quando precisa de inteligência de aplicação.
+14. **Balanceador L4 x L7: quando usar cada um ?** L4 é rápido e opaco: enxerga IP e porta, repassa bytes, serve pra qualquer protocolo. L7 entende HTTP: roteia por path e header, termina TLS, faz retry e métrica rica. Use L4 pra desempenho bruto e protocolos arbitrários; L7 quando precisa de inteligência de aplicação.
 
-15. **VLAN é segurança?** É segmentação. A segurança vem do firewall ou das ACLs entre as VLANs, e do cuidado com a VLAN nativa e com VLAN hopping. Separar os cômodos não adianta se as portas entre eles não têm fechadura.
+15. **VLAN é segurança ?** É segmentação. A segurança vem do firewall ou das ACLs entre as VLANs, e do cuidado com a VLAN nativa e com VLAN hopping. Separar os cômodos não adianta se as portas entre eles não têm fechadura.
 
-16. **Como um container ganha rede?** Com um network namespace próprio (pilha de rede isolada), um par veth fazendo de cabo virtual entre o namespace e uma bridge no host, e NAT com DNAT pra sair pro mundo e publicar portas. É a seção de Linux por dentro, montada em três comandos.
+16. **Como um container ganha rede ?** Com um network namespace próprio (pilha de rede isolada), um par veth fazendo de cabo virtual entre o namespace e uma bridge no host, e NAT com DNAT pra sair pro mundo e publicar portas. É a seção de Linux por dentro, montada em três comandos.
 
-17. **Por que 1% de perda de pacotes é tão grave?** Porque o TCP lê cada perda como congestionamento e corta a janela, que demora rodadas inteiras pra crescer de novo. O throughput não cai 1%, despenca de forma desproporcional. Perda pequena e constante é veneno de conexão longa.
+17. **Por que 1% de perda de pacotes é tão grave ?** Porque o TCP lê cada perda como congestionamento e corta a janela, que demora rodadas inteiras pra crescer de novo. O throughput não cai 1%, despenca de forma desproporcional. Perda pequena e constante é veneno de conexão longa.
 
-18. **O que é bufferbloat?** Buffers grandes demais nos equipamentos do caminho, que sob carga trocam perda por fila: a latência explode enquanto a banda "sobra". A rede parece lenta com o link folgado, e o teste é simples: pingue algo durante um upload pesado e veja o RTT multiplicar.
+18. **O que é bufferbloat ?** Buffers grandes demais nos equipamentos do caminho, que sob carga trocam perda por fila: a latência explode enquanto a banda "sobra". A rede parece lenta com o link folgado, e o teste é simples: pingue algo durante um upload pesado e veja o RTT multiplicar.
 
-19. **Quando usar anycast?** Pra serviços sem estado ou quase, como DNS e CDN: o mesmo IP anunciado via BGP de vários pontos do mundo, com o roteamento levando cada cliente ao ponto mais próximo. Balanceamento e proximidade feitos pela própria internet, sem balanceador no meio.
+19. **Quando usar anycast ?** Pra serviços sem estado ou quase, como DNS e CDN: o mesmo IP anunciado via BGP de vários pontos do mundo, com o roteamento levando cada cliente ao ponto mais próximo. Balanceamento e proximidade feitos pela própria internet, sem balanceador no meio.
 
-20. **Por que "it's always DNS"?** Porque quase tudo começa com uma resolução de nome, porque o cache esconde o problema por um tempo (tudo funciona até o TTL expirar, aí quebra "do nada") e porque o erro raramente se apresenta como erro de DNS: vira timeout, vira serviço fora, vira lentidão. A culpa chega disfarçada, e o `dig` desmascara.
+20. **Por que "it's always DNS" ?** Porque quase tudo começa com uma resolução de nome, porque o cache esconde o problema por um tempo (tudo funciona até o TTL expirar, aí quebra "do nada") e porque o erro raramente se apresenta como erro de DNS: vira timeout, vira serviço fora, vira lentidão. A culpa chega disfarçada, e o `dig` desmascara.
 
 ## Nota
 

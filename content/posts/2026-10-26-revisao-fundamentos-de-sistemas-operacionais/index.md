@@ -175,7 +175,7 @@ Além das tasks normais, o Linux tem classes de **tempo real**. SCHED_FIFO e SCH
 
 O uptime mostra três números: a média de carga em 1, 5 e 15 minutos. Esse número é a quantidade média de tasks querendo CPU, ou seja, rodando ou na fila. Num servidor com quatro núcleos, carga 4 significa "ocupado, mas sem fila"; carga 12 significa que, em média, oito tasks estão esperando a vez.
 
-A pegadinha: no Linux, a carga **também conta tasks em estado D**, aquelas presas esperando disco. Então um servidor com carga 50 e CPU 95% ociosa não está com falta de processador. Está com um storage morrendo e um monte de processos presos esperando por ele. Carga alta sempre pede a pergunta seguinte: é CPU ou é I/O?
+A pegadinha: no Linux, a carga **também conta tasks em estado D**, aquelas presas esperando disco. Então um servidor com carga 50 e CPU 95% ociosa não está com falta de processador. Está com um storage morrendo e um monte de processos presos esperando por ele. Carga alta sempre pede a pergunta seguinte: é CPU ou é I/O ?
 
 Para uma resposta melhor que o load average, o kernel oferece o **PSI** (pressure stall information) em /proc/pressure: para CPU, memória e I/O, ele diz qual porcentagem do tempo as tasks ficaram travadas esperando aquele recurso. É o load average que a gente queria ter tido desde sempre.
 
@@ -223,7 +223,7 @@ As **huge pages** são páginas de 2 MB ou 1 GB em vez de 4 KB. Uma única entra
 
 ## Page cache: por que o Linux "come" toda a RAM
 
-Aqui mora a pergunta que todo mundo já fez ao rodar free pela primeira vez: por que o servidor com quase nada rodando mostra a memória "toda usada"?
+Aqui mora a pergunta que todo mundo já fez ao rodar free pela primeira vez: por que o servidor com quase nada rodando mostra a memória "toda usada" ?
 
 Porque memória livre é memória desperdiçada. O Linux usa toda a RAM sobrando como **page cache**: uma cópia em memória dos pedaços de arquivo que foram lidos ou escritos recentemente. Quando um programa lê um arquivo pela segunda vez, a leitura vem da RAM, centenas a milhares de vezes mais rápido que o disco. Quando alguém precisa de memória de verdade, o kernel simplesmente descarta páginas limpas do cache, sem custo algum, e as entrega.
 
@@ -274,7 +274,7 @@ O código de saída de um processo morto por sinal é 128 mais o número do sina
 
 ### O problema do PID 1 em containers
 
-Lembra que o PID 1 é especial? O kernel protege o PID 1 de sinais que ele não trata explicitamente: se o PID 1 não instalou tratador para SIGTERM, o sinal é simplesmente ignorado. Num servidor, o PID 1 é o systemd, que trata tudo. Num container, o PID 1 é... a sua aplicação, porque o container tem seu próprio namespace de PIDs.
+Lembra que o PID 1 é especial ? O kernel protege o PID 1 de sinais que ele não trata explicitamente: se o PID 1 não instalou tratador para SIGTERM, o sinal é simplesmente ignorado. Num servidor, o PID 1 é o systemd, que trata tudo. Num container, o PID 1 é... a sua aplicação, porque o container tem seu próprio namespace de PIDs.
 
 Resultado clássico: sua aplicação não trata SIGTERM, você roda docker stop, nada acontece, e dez segundos depois o Docker manda SIGKILL. Sem encerramento gracioso, conexões cortadas, requisições perdidas. E, se sua aplicação cria subprocessos, ela também herda a obrigação de colher os órfãos, senão acumula zumbis. A solução é ou tratar os sinais direito, ou usar um init mínimo como PID 1 (tini, dumb init, ou a opção init do Docker), que repassa sinais e colhe zumbis. Outro erro comum é usar a forma "shell" no CMD do Dockerfile: aí o PID 1 é o sh, que não repassa SIGTERM para a aplicação.
 
@@ -398,8 +398,8 @@ Linux, estritamente, é só o kernel. O que você instala é uma **distribuiçã
 
 Um roteiro honesto para "o servidor está lento", do mais geral ao mais específico, na linha do método USE (utilização, saturação e erros de cada recurso):
 
-1. **uptime:** a carga. Alta? É CPU ou é I/O?
-2. **dmesg:** o kernel reclamou de algo? OOM killer, erro de disco, segfault?
+1. **uptime:** a carga. Alta ? É CPU ou é I/O ?
+2. **dmesg:** o kernel reclamou de algo ? OOM killer, erro de disco, segfault ?
 3. **vmstat a cada segundo:** fila de execução (r), processos bloqueados (b), swap entrando e saindo (si e so), troca de contexto (cs), e a divisão da CPU em user, system, idle e wait. Uma linha de vmstat diz mais do que uma tela de dashboard.
 4. **top ou htop:** quem está comendo CPU e memória. Atenção à coluna de estado e ao tempo em wait.
 5. **free:** olhe o available, não o free.
@@ -564,61 +564,61 @@ O **NetBSD** tem o lema "of course it runs NetBSD": roda em dezenas de arquitetu
 
 Visto de cima, todo sistema operacional resolve as mesmas perguntas, só com sotaques diferentes:
 
-1. **Quem manda no hardware?** O kernel, em modo privilegiado. Monolítico, micro ou híbrido muda a organização interna, não a fronteira.
-2. **Como um programa pede algo?** Por syscalls, quase sempre através de uma biblioteca (glibc, ntdll e Win32, libSystem).
-3. **Como vários programas convivem?** Processos com espaços de endereçamento separados, threads dentro deles, um escalonador preemptivo revezando a CPU com algum critério de justiça e prioridade.
-4. **Como a memória parece infinita?** Memória virtual: páginas, tabelas, MMU e TLB, alocação preguiçosa, page cache usando a sobra, swap ou compressão quando aperta, e um plano para quando acaba de vez (OOM killer no Linux, falha de alocação no Windows).
-5. **Como os processos se comunicam e são avisados?** Descritores ou handles, pipes, sockets, sinais no Unix, objetos e mensagens no Windows, Mach ports no macOS.
-6. **Como tudo começa?** Firmware, bootloader, kernel, um primeiro processo que sobe o resto (systemd, smss e wininit, launchd, init).
-7. **Como se isola e se limita?** Usuários e permissões, capabilities, controle de acesso obrigatório, filtros de syscall, e os tijolos de container: namespaces e cgroups no Linux, jails no FreeBSD, silos e job objects no Windows.
+1. **Quem manda no hardware ?** O kernel, em modo privilegiado. Monolítico, micro ou híbrido muda a organização interna, não a fronteira.
+2. **Como um programa pede algo ?** Por syscalls, quase sempre através de uma biblioteca (glibc, ntdll e Win32, libSystem).
+3. **Como vários programas convivem ?** Processos com espaços de endereçamento separados, threads dentro deles, um escalonador preemptivo revezando a CPU com algum critério de justiça e prioridade.
+4. **Como a memória parece infinita ?** Memória virtual: páginas, tabelas, MMU e TLB, alocação preguiçosa, page cache usando a sobra, swap ou compressão quando aperta, e um plano para quando acaba de vez (OOM killer no Linux, falha de alocação no Windows).
+5. **Como os processos se comunicam e são avisados ?** Descritores ou handles, pipes, sockets, sinais no Unix, objetos e mensagens no Windows, Mach ports no macOS.
+6. **Como tudo começa ?** Firmware, bootloader, kernel, um primeiro processo que sobe o resto (systemd, smss e wininit, launchd, init).
+7. **Como se isola e se limita ?** Usuários e permissões, capabilities, controle de acesso obrigatório, filtros de syscall, e os tijolos de container: namespaces e cgroups no Linux, jails no FreeBSD, silos e job objects no Windows.
 
 Na hora de diagnosticar, a pergunta nunca é "o servidor está lento", e sim "qual recurso está saturado": CPU (fila de execução, throttling), memória (major faults, swap, PSI de memória, OOM), I/O (estado D, latência de disco) ou rede. O sistema operacional está o tempo todo te contando isso pelo /proc, pelo dmesg e pelas ferramentas certas. Só precisa perguntar.
 
 ## Vinte e duas perguntas pra se testar
 
-1. **Qual a diferença entre processo e thread?** Processo é o contêiner de recursos: espaço de endereçamento, descritores, credenciais. Threads são linhas de execução dentro dele, compartilhando tudo isso e tendo só pilha e registradores próprios. No Linux, os dois são tasks criadas por clone com flags diferentes.
+1. **Qual a diferença entre processo e thread ?** Processo é o contêiner de recursos: espaço de endereçamento, descritores, credenciais. Threads são linhas de execução dentro dele, compartilhando tudo isso e tendo só pilha e registradores próprios. No Linux, os dois são tasks criadas por clone com flags diferentes.
 
-2. **Por que o fork não é lento, mesmo copiando o processo inteiro?** Porque não copia: usa copy on write. Pai e filho compartilham as páginas físicas como somente leitura, e só a página que alguém tentar escrever é duplicada.
+2. **Por que o fork não é lento, mesmo copiando o processo inteiro ?** Porque não copia: usa copy on write. Pai e filho compartilham as páginas físicas como somente leitura, e só a página que alguém tentar escrever é duplicada.
 
-3. **O que é um processo zumbi e como se livrar dele?** Um processo que já terminou, mas cujo pai ainda não leu o código de saída com wait. Ele não consome CPU nem memória, só uma entrada na tabela. Matar o zumbi não adianta; é preciso corrigir ou matar o pai, para que o PID 1 adote e colha.
+3. **O que é um processo zumbi e como se livrar dele ?** Um processo que já terminou, mas cujo pai ainda não leu o código de saída com wait. Ele não consome CPU nem memória, só uma entrada na tabela. Matar o zumbi não adianta; é preciso corrigir ou matar o pai, para que o PID 1 adote e colha.
 
-4. **Por que um processo em estado D não morre nem com kill 9?** Porque está numa espera ininterruptível dentro do kernel, normalmente I/O de disco ou NFS. O sinal fica pendente até a operação terminar. A solução está no storage, não no processo.
+4. **Por que um processo em estado D não morre nem com kill 9 ?** Porque está numa espera ininterruptível dentro do kernel, normalmente I/O de disco ou NFS. O sinal fica pendente até a operação terminar. A solução está no storage, não no processo.
 
-5. **Load average 30 numa máquina de 8 núcleos com CPU ociosa. O que está acontecendo?** No Linux, a carga conta também as tasks em estado D. CPU ociosa com carga alta aponta para I/O travado: disco saturado, storage de rede lento ou NFS fora do ar. Confira o vmstat (coluna b), o iostat e o PSI de I/O.
+5. **Load average 30 numa máquina de 8 núcleos com CPU ociosa. O que está acontecendo ?** No Linux, a carga conta também as tasks em estado D. CPU ociosa com carga alta aponta para I/O travado: disco saturado, storage de rede lento ou NFS fora do ar. Confira o vmstat (coluna b), o iostat e o PSI de I/O.
 
-6. **O free mostra quase nada livre. O servidor está sem memória?** Provavelmente não. O Linux usa a sobra como page cache, que é descartável. Olhe a coluna available. Só se preocupe se ela estiver baixa ou se houver swap entrando e saindo e major faults altos.
+6. **O free mostra quase nada livre. O servidor está sem memória ?** Provavelmente não. O Linux usa a sobra como page cache, que é descartável. Olhe a coluna available. Só se preocupe se ela estiver baixa ou se houver swap entrando e saindo e major faults altos.
 
-7. **Qual a diferença entre minor e major page fault?** No minor, a página já está na RAM e só precisa ser mapeada (memória recém alocada, biblioteca compartilhada, copy on write). No major, ela precisa ser lida do disco ou da swap. Major fault em excesso indica memória apertada.
+7. **Qual a diferença entre minor e major page fault ?** No minor, a página já está na RAM e só precisa ser mapeada (memória recém alocada, biblioteca compartilhada, copy on write). No major, ela precisa ser lida do disco ou da swap. Major fault em excesso indica memória apertada.
 
-8. **O que é overcommit e por que o Linux permite?** É deixar a soma da memória prometida passar da RAM disponível, já que a alocação é preguiçosa e programas costumam pedir mais do que usam. A política fica em vm.overcommit_memory. O preço é precisar do OOM killer quando todos resolvem usar ao mesmo tempo.
+8. **O que é overcommit e por que o Linux permite ?** É deixar a soma da memória prometida passar da RAM disponível, já que a alocação é preguiçosa e programas costumam pedir mais do que usam. A política fica em vm.overcommit_memory. O preço é precisar do OOM killer quando todos resolvem usar ao mesmo tempo.
 
-9. **Qual a diferença entre VSZ, RSS e PSS?** VSZ é todo o endereço reservado (inflado). RSS é o que está na RAM, contando o compartilhado em cada processo. PSS divide o compartilhado proporcionalmente, e somado dá a visão mais próxima do consumo real.
+9. **Qual a diferença entre VSZ, RSS e PSS ?** VSZ é todo o endereço reservado (inflado). RSS é o que está na RAM, contando o compartilhado em cada processo. PSS divide o compartilhado proporcionalmente, e somado dá a visão mais próxima do consumo real.
 
-10. **Container morreu com código 137. O que significa?** 128 mais 9: morto por SIGKILL. No Kubernetes, quase sempre é OOMKilled por estourar o memory.max do cgroup, ou SIGKILL depois de não encerrar dentro do prazo após o SIGTERM.
+10. **Container morreu com código 137. O que significa ?** 128 mais 9: morto por SIGKILL. No Kubernetes, quase sempre é OOMKilled por estourar o memory.max do cgroup, ou SIGKILL depois de não encerrar dentro do prazo após o SIGTERM.
 
-11. **Por que docker stop demora dez segundos para parar minha aplicação?** Porque a aplicação é PID 1 dentro do container e não trata SIGTERM, e o kernel ignora sinais sem tratador para o PID 1. O Docker espera e manda SIGKILL. Trate o sinal, use a forma exec no CMD ou coloque um init como o tini.
+11. **Por que docker stop demora dez segundos para parar minha aplicação ?** Porque a aplicação é PID 1 dentro do container e não trata SIGTERM, e o kernel ignora sinais sem tratador para o PID 1. O Docker espera e manda SIGKILL. Trate o sinal, use a forma exec no CMD ou coloque um init como o tini.
 
-12. **Qual a diferença entre SIGTERM e SIGKILL?** SIGTERM é um pedido que o programa pode tratar para encerrar com calma. SIGKILL é executado pelo kernel, não pode ser tratado nem ignorado e não permite limpeza nenhuma.
+12. **Qual a diferença entre SIGTERM e SIGKILL ?** SIGTERM é um pedido que o programa pode tratar para encerrar com calma. SIGKILL é executado pelo kernel, não pode ser tratado nem ignorado e não permite limpeza nenhuma.
 
-13. **Apaguei um log enorme e o df não mudou. Por quê?** Algum processo ainda tem o arquivo aberto, e o espaço só é liberado quando o último descritor fechar. Procure os arquivos marcados como deleted no lsof ou em /proc/PID/fd, e reinicie ou sinalize o processo para reabrir o log.
+13. **Apaguei um log enorme e o df não mudou. Por quê ?** Algum processo ainda tem o arquivo aberto, e o espaço só é liberado quando o último descritor fechar. Procure os arquivos marcados como deleted no lsof ou em /proc/PID/fd, e reinicie ou sinalize o processo para reabrir o log.
 
-14. **Container com limit de 1 CPU está lento, mas a máquina está ociosa. O que pode ser?** Throttling do cgroup: o container gasta a cota do período no começo e fica parado até o próximo. Confira o cpu.stat do cgroup. Aumentar o limit, ou remover o limit e confiar no request, costuma resolver.
+14. **Container com limit de 1 CPU está lento, mas a máquina está ociosa. O que pode ser ?** Throttling do cgroup: o container gasta a cota do período no começo e fica parado até o próximo. Confira o cpu.stat do cgroup. Aumentar o limit, ou remover o limit e confiar no request, costuma resolver.
 
-15. **Para que serve o initramfs?** Para carregar o necessário para encontrar e montar o disco raiz verdadeiro: drivers do controlador, LVM, RAID, descriptografia do LUKS. Depois disso ele troca para a raiz real e executa o init.
+15. **Para que serve o initramfs ?** Para carregar o necessário para encontrar e montar o disco raiz verdadeiro: drivers do controlador, LVM, RAID, descriptografia do LUKS. Depois disso ele troca para a raiz real e executa o init.
 
-16. **O que são namespaces e cgroups, e qual a relação com containers?** Namespaces controlam o que um processo enxerga (PIDs, rede, montagens, hostname, usuários). Cgroups controlam quanto ele pode usar (CPU, memória, I/O, quantidade de processos). Um container é um processo comum com os dois aplicados, mais capabilities reduzidas e seccomp.
+16. **O que são namespaces e cgroups, e qual a relação com containers ?** Namespaces controlam o que um processo enxerga (PIDs, rede, montagens, hostname, usuários). Cgroups controlam quanto ele pode usar (CPU, memória, I/O, quantidade de processos). Um container é um processo comum com os dois aplicados, mais capabilities reduzidas e seccomp.
 
-17. **Por que syscall é cara e o que é o vDSO?** Porque troca de modo de privilégio, atrapalha pipelines e caches e, com as mitigações de Spectre e Meltdown, pode trocar tabelas de página. O vDSO é código do kernel mapeado no processo para responder chamadas simples, como pegar a hora, sem trocar de modo.
+17. **Por que syscall é cara e o que é o vDSO ?** Porque troca de modo de privilégio, atrapalha pipelines e caches e, com as mitigações de Spectre e Meltdown, pode trocar tabelas de página. O vDSO é código do kernel mapeado no processo para responder chamadas simples, como pegar a hora, sem trocar de modo.
 
-18. **Como o Windows cria processos sem fork?** Com CreateProcess, que cria o processo já carregando o executável indicado, numa operação só. No Windows, o processo é só um contêiner de recursos; quem é escalonado são as threads.
+18. **Como o Windows cria processos sem fork ?** Com CreateProcess, que cria o processo já carregando o executável indicado, numa operação só. No Windows, o processo é só um contêiner de recursos; quem é escalonado são as threads.
 
-19. **O que o XNU, o kernel do macOS, tem de especial?** Junta um microkernel Mach (tasks, memória, mensagens por Mach ports), uma camada BSD (processos, sinais, sockets, POSIX) e o IOKit para drivers, tudo no mesmo espaço privilegiado. O PID 1 é o launchd.
+19. **O que o XNU, o kernel do macOS, tem de especial ?** Junta um microkernel Mach (tasks, memória, mensagens por Mach ports), uma camada BSD (processos, sinais, sockets, POSIX) e o IOKit para drivers, tudo no mesmo espaço privilegiado. O PID 1 é o launchd.
 
-20. **O que diferencia um BSD de uma distribuição Linux?** Um BSD é um sistema completo: kernel, biblioteca C, comandos e documentação desenvolvidos e lançados juntos como sistema base, sob licença permissiva. Uma distribuição Linux junta um kernel com componentes de vários projetos independentes.
+20. **O que diferencia um BSD de uma distribuição Linux ?** Um BSD é um sistema completo: kernel, biblioteca C, comandos e documentação desenvolvidos e lançados juntos como sistema base, sob licença permissiva. Uma distribuição Linux junta um kernel com componentes de vários projetos independentes.
 
-21. **O x86 ainda é CISC de verdade?** Só na fachada. A ISA continua CISC, com instruções complexas e de tamanho variado, mas o decodificador quebra cada uma em micro operações simples, e o núcleo de execução trabalha no estilo RISC. As diferenças que sobraram são o custo de decodificar, a eficiência energética, o licenciamento e o ecossistema.
+21. **O x86 ainda é CISC de verdade ?** Só na fachada. A ISA continua CISC, com instruções complexas e de tamanho variado, mas o decodificador quebra cada uma em micro operações simples, e o núcleo de execução trabalha no estilo RISC. As diferenças que sobraram são o custo de decodificar, a eficiência energética, o licenciamento e o ecossistema.
 
-22. **Código concorrente funcionava no x86 e passou a falhar no ARM. O que pode ser?** O modelo de memória. O x86 quase não reordena leituras e escritas entre núcleos; o ARM reordena bastante e só respeita a ordem com barreiras. Um bug de sincronização escondido aparece. A correção é usar atomics e mutexes de verdade, que emitem as barreiras certas para cada arquitetura.
+22. **Código concorrente funcionava no x86 e passou a falhar no ARM. O que pode ser ?** O modelo de memória. O x86 quase não reordena leituras e escritas entre núcleos; o ARM reordena bastante e só respeita a ordem com barreiras. Um bug de sincronização escondido aparece. A correção é usar atomics e mutexes de verdade, que emitem as barreiras certas para cada arquitetura.
 
 ## Nota
 

@@ -31,7 +31,7 @@ O **Pascal** escreveu algo nessa linha que eu nunca esqueci. Ele disse que o hom
 
 ## Uma gota d'água nunca é só água
 
-Falando em gota d'água. Aprendemos na escola que água é H₂O: dois hidrogênios e um oxigênio. Simples, né? Uma das primeiras fórmulas que todo mundo decora.
+Falando em gota d'água. Aprendemos na escola que água é H₂O: dois hidrogênios e um oxigênio. Simples, né ? Uma das primeiras fórmulas que todo mundo decora.
 
 Só que uma gota de verdade nunca é só H₂O. Primeiro que, numa única gota, existem algo em torno de **1,7 sextilhão de moléculas** de água. É um número com 21 zeros. Mais moléculas numa gota do que estrelas que a gente consegue imaginar. E entre essas moléculas tem um monte de visitantes: cálcio, magnésio, sódio, potássio, cloro, gases dissolvidos como oxigênio e gás carbônico, às vezes ferro, às vezes flúor. Pode ter bactérias, vírus, algas microscópicas. Pode ter chumbo de cano velho, mercúrio de garimpo, agrotóxico que escorreu da lavoura, microplástico que hoje já se acha em quase todo lugar.
 
@@ -65,7 +65,7 @@ Lá no centro do Sol, a cerca de **150 milhões de quilômetros** daqui, átomos
 
 Enquanto isso, a Terra gira em torno de si mesma. No equador, ela gira a mais de **1.600 km/h**, e ninguém sente nada. Ao mesmo tempo, ela dá a volta no Sol a mais de **100 mil km/h**. O eixo dela é inclinado em uns 23 graus, e é essa inclinação que dá as estações do ano. Sem ela, não haveria primavera, verão, outono e inverno do jeito que a gente conhece.
 
-E a Lua? A Lua não é só enfeite de noite. Ela puxa os oceanos e cria as marés. Ela ajuda a estabilizar a inclinação da Terra, o que evita que o clima fique bagunçado ao longo de milhões de anos. E ela está se afastando da gente devagarinho, uns **3,8 centímetros por ano**, mais ou menos o ritmo em que crescem as suas unhas.
+E a Lua ? A Lua não é só enfeite de noite. Ela puxa os oceanos e cria as marés. Ela ajuda a estabilizar a inclinação da Terra, o que evita que o clima fique bagunçado ao longo de milhões de anos. E ela está se afastando da gente devagarinho, uns **3,8 centímetros por ano**, mais ou menos o ritmo em que crescem as suas unhas.
 
 Tem ainda a atmosfera, que filtra a radiação perigosa e espalha a luz azul, por isso o céu é azul e o pôr do sol fica laranja. Tem o campo magnético da Terra, gerado pelo ferro derretido lá no núcleo, que desvia boa parte do vento solar. Se qualquer uma dessas peças falhasse, aquele simples "amanheceu" não seria tão simples assim.
 

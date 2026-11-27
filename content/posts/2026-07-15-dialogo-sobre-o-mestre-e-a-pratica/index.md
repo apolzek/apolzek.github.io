@@ -77,6 +77,6 @@ minute: 5
 
 ## Nota
 
-Quem ensina precisa dominar, de maneira prática, aquilo que ensina? A resposta parece óbvia, mas talvez não seja. Costumamos exigir de quem ensina o currículo de quem executa, como se a capacidade de explicar fosse consequência inevitável da experiência. No entanto, há quem nunca tenha alcançado os maiores feitos e ainda assim ensine com clareza e profundidade. Da mesma forma, há praticantes extraordinários incapazes de transmitir o que fazem.
+Quem ensina precisa dominar, de maneira prática, aquilo que ensina ? A resposta parece óbvia, mas talvez não seja. Costumamos exigir de quem ensina o currículo de quem executa, como se a capacidade de explicar fosse consequência inevitável da experiência. No entanto, há quem nunca tenha alcançado os maiores feitos e ainda assim ensine com clareza e profundidade. Da mesma forma, há praticantes extraordinários incapazes de transmitir o que fazem.
 
 Talvez a experiência prática seja um forte indício de competência, mas não uma prova definitiva da capacidade de ensinar. E a ausência dessa experiência também não basta, por si só, para invalidar um bom mestre. Entre a prática e a didática existe uma relação, mas não uma identidade. A questão permanece aberta: o que, afinal, qualifica alguém para ensinar ? Talvez a única certeza seja a lição socrática de que indícios não bastam e de que examinar cada caso continua sendo um trabalho sem atalhos.

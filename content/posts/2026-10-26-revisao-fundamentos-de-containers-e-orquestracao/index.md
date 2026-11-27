@@ -207,7 +207,7 @@ A versão 6, lançada em junho de 2026, foi principalmente uma faxina: saíram o
 
 O Podman faz parte de um conjunto de ferramentas que compartilham bibliotecas: **Buildah** constrói imagens (o podman build é o Buildah por baixo), **Skopeo** copia, inspeciona e assina imagens entre registros sem precisar baixá-las para o armazenamento local, e o **CRI O** é o runtime do Kubernetes que usa as mesmas bibliotecas. O **Podman Desktop** é a interface gráfica, gratuita, para Mac, Windows e Linux.
 
-## Docker ou Podman?
+## Docker ou Podman ?
 
 Os dois rodam as mesmas imagens, aceitam os mesmos Dockerfiles e têm comandos quase idênticos. As diferenças estão na arquitetura e no ecossistema:
 
@@ -276,7 +276,7 @@ Mas o Compose tem um limite claro: ele vive **numa máquina só**. Se a máquina
 
 ## Parte 2: orquestração, o problema que ela resolve
 
-Um container sozinho numa máquina não é um sistema. Quando você tem duzentos containers espalhados por trinta máquinas, as perguntas mudam: em qual máquina cada um roda? O que acontece quando uma máquina morre? Como um container encontra o outro se os IPs mudam toda hora? Como atualizar a versão sem derrubar o serviço? Quem reinicia o que travou? Como escalar quando o tráfego dobra?
+Um container sozinho numa máquina não é um sistema. Quando você tem duzentos containers espalhados por trinta máquinas, as perguntas mudam: em qual máquina cada um roda ? O que acontece quando uma máquina morre ? Como um container encontra o outro se os IPs mudam toda hora ? Como atualizar a versão sem derrubar o serviço ? Quem reinicia o que travou ? Como escalar quando o tráfego dobra ?
 
 Um **orquestrador** responde a essas perguntas. É o maestro de uma orquestra: não toca nenhum instrumento, mas sabe quem deve estar tocando, onde, e percebe na hora quando um músico some. Você não diz "rode este container naquela máquina"; você diz "quero três cópias deste serviço sempre rodando", e ele se vira para que isso seja verdade, agora e daqui a seis meses.
 
@@ -362,11 +362,11 @@ Pods não são consertados, são substituídos. Um pod não muda de nó, não "v
 
 O kubelet pode verificar a saúde de cada container com uma requisição HTTP, uma conexão TCP, uma chamada gRPC ou um comando executado dentro do container. E existem três tipos de verificação, cada um com uma consequência diferente:
 
-1. **Liveness:** "este container está vivo ou travado?". Se falhar, o kubelet **mata e reinicia** o container. Serve para destravar processos em deadlock.
-2. **Readiness:** "este container pode receber tráfego agora?". Se falhar, o pod é **tirado dos endpoints** dos Services, mas não é reiniciado. Serve para aquecimento, para dependências temporariamente fora e para sobrecarga.
-3. **Startup:** "o container já terminou de iniciar?". Enquanto ela não passar, as outras duas ficam desligadas. Serve para aplicações que demoram para subir, sem precisar afrouxar a liveness.
+1. **Liveness:** "este container está vivo ou travado ?". Se falhar, o kubelet **mata e reinicia** o container. Serve para destravar processos em deadlock.
+2. **Readiness:** "este container pode receber tráfego agora ?". Se falhar, o pod é **tirado dos endpoints** dos Services, mas não é reiniciado. Serve para aquecimento, para dependências temporariamente fora e para sobrecarga.
+3. **Startup:** "o container já terminou de iniciar ?". Enquanto ela não passar, as outras duas ficam desligadas. Serve para aplicações que demoram para subir, sem precisar afrouxar a liveness.
 
-O erro mais comum e mais caro: colocar na **liveness** uma verificação que depende do banco de dados ou de outro serviço. Quando o banco engasga, todos os pods falham a liveness ao mesmo tempo, são reiniciados ao mesmo tempo, sobem ao mesmo tempo martelando o banco que já estava mal, e uma lentidão vira um apagão completo. A liveness deve responder só "meu processo está funcionando?". Dependências externas, quando muito, vão na readiness, e com cuidado.
+O erro mais comum e mais caro: colocar na **liveness** uma verificação que depende do banco de dados ou de outro serviço. Quando o banco engasga, todos os pods falham a liveness ao mesmo tempo, são reiniciados ao mesmo tempo, sobem ao mesmo tempo martelando o banco que já estava mal, e uma lentidão vira um apagão completo. A liveness deve responder só "meu processo está funcionando ?". Dependências externas, quando muito, vão na readiness, e com cuidado.
 
 ## Encerramento gracioso: onde os sinais do Unix voltam
 
@@ -589,7 +589,7 @@ Essa extensibilidade é o motivo de o Kubernetes ter virado mais que um orquestr
 
 ### etcd e o control plane
 
-O etcd é a peça mais sensível. Ele gosta de disco com baixa latência de fsync (ele chama fsync em cada gravação, lembra do artigo de armazenamento?), de rede estável entre os membros e de número ímpar de membros. Backup do etcd (um snapshot periódico) é o seguro de vida do cluster.
+O etcd é a peça mais sensível. Ele gosta de disco com baixa latência de fsync (ele chama fsync em cada gravação, lembra do artigo de armazenamento ?), de rede estável entre os membros e de número ímpar de membros. Backup do etcd (um snapshot periódico) é o seguro de vida do cluster.
 
 ### Versões e upgrades
 
@@ -629,7 +629,7 @@ E o dicionário dos estados mais comuns:
 7. **Evicted:** o nó ficou sem memória ou disco e o kubelet despejou o pod. Frequentemente é log ou camada gravável enchendo o disco do nó.
 8. **Terminating para sempre:** um finalizer pendurado (algum controller precisava fazer limpeza e não fez) ou um nó que sumiu sem avisar.
 
-Para problemas de rede, um pod de diagnóstico com ferramentas como dig, curl e tcpdump, rodando no mesmo namespace, testa DNS, Services e políticas do ponto de vista de quem está dentro do cluster. Grande parte dos mistérios de "não conecta" se resolve com três perguntas: o nome resolve? O Service tem endpoints? Alguma política bloqueia?
+Para problemas de rede, um pod de diagnóstico com ferramentas como dig, curl e tcpdump, rodando no mesmo namespace, testa DNS, Services e políticas do ponto de vista de quem está dentro do cluster. Grande parte dos mistérios de "não conecta" se resolve com três perguntas: o nome resolve ? O Service tem endpoints ? Alguma política bloqueia ?
 
 ## Amarrando tudo: um mapa mental
 
@@ -646,55 +646,55 @@ Para problemas de rede, um pod de diagnóstico com ferramentas como dig, curl e 
 
 ## Vinte e cinco perguntas pra se testar
 
-1. **Qual a diferença entre um container e uma máquina virtual?** A VM emula hardware e roda um kernel próprio; o container é um processo do host isolado por namespaces e limitado por cgroups, compartilhando o kernel. Container é mais leve e rápido, VM isola mais.
+1. **Qual a diferença entre um container e uma máquina virtual ?** A VM emula hardware e roda um kernel próprio; o container é um processo do host isolado por namespaces e limitado por cgroups, compartilhando o kernel. Container é mais leve e rápido, VM isola mais.
 
-2. **Quais recursos do kernel formam um container?** Namespaces para o isolamento da visão, cgroups para os limites de recursos, um sistema de arquivos em camadas (overlayfs) para a raiz, e capabilities, seccomp e SELinux ou AppArmor para reduzir permissões.
+2. **Quais recursos do kernel formam um container ?** Namespaces para o isolamento da visão, cgroups para os limites de recursos, um sistema de arquivos em camadas (overlayfs) para a raiz, e capabilities, seccomp e SELinux ou AppArmor para reduzir permissões.
 
-3. **Por que o que o container grava some quando ele é removido?** Porque fica na camada gravável do overlayfs, que pertence ao container. Dados persistentes vão em volumes ou bind mounts.
+3. **Por que o que o container grava some quando ele é removido ?** Porque fica na camada gravável do overlayfs, que pertence ao container. Dados persistentes vão em volumes ou bind mounts.
 
-4. **Qual a diferença entre tag e digest?** A tag é um apelido que pode ser movido para outra imagem a qualquer momento; o digest é o hash do conteúdo e identifica uma imagem de forma imutável.
+4. **Qual a diferença entre tag e digest ?** A tag é um apelido que pode ser movido para outra imagem a qualquer momento; o digest é o hash do conteúdo e identifica uma imagem de forma imutável.
 
-5. **Apaguei um segredo num passo posterior do Dockerfile. Ele saiu da imagem?** Não. Ele continua na camada onde foi criado, e qualquer um que baixar a imagem consegue extraí-lo. Segredos de build usam montagens de segredo, que não ficam em camada.
+5. **Apaguei um segredo num passo posterior do Dockerfile. Ele saiu da imagem ?** Não. Ele continua na camada onde foi criado, e qualquer um que baixar a imagem consegue extraí-lo. Segredos de build usam montagens de segredo, que não ficam em camada.
 
-6. **O que é a OCI e por que ela importa?** É o conjunto de padrões abertos de imagem, runtime e distribuição. Por causa dela, uma imagem construída com Docker roda no Podman, no containerd, no CRI O e em qualquer Kubernetes.
+6. **O que é a OCI e por que ela importa ?** É o conjunto de padrões abertos de imagem, runtime e distribuição. Por causa dela, uma imagem construída com Docker roda no Podman, no containerd, no CRI O e em qualquer Kubernetes.
 
-7. **Qual a diferença entre runc e containerd?** O runc é o runtime de baixo nível: cria o processo com namespaces e cgroups e sai. O containerd é o de alto nível: baixa e guarda imagens, gerencia o ciclo de vida e expõe uma API.
+7. **Qual a diferença entre runc e containerd ?** O runc é o runtime de baixo nível: cria o processo com namespaces e cgroups e sai. O containerd é o de alto nível: baixa e guarda imagens, gerencia o ciclo de vida e expõe uma API.
 
-8. **Por que colocar alguém no grupo docker é dar root a essa pessoa?** Porque o grupo dá acesso ao socket do daemon, que roda como root, e qualquer um que fale com ele pode iniciar um container privilegiado montando o disco do host.
+8. **Por que colocar alguém no grupo docker é dar root a essa pessoa ?** Porque o grupo dá acesso ao socket do daemon, que roda como root, e qualquer um que fale com ele pode iniciar um container privilegiado montando o disco do host.
 
-9. **Qual a principal diferença arquitetural entre Docker e Podman?** O Docker tem um daemon central, normalmente root, que cria os containers; o Podman não tem daemon, o próprio comando cria o container e sai, e o padrão é rootless.
+9. **Qual a principal diferença arquitetural entre Docker e Podman ?** O Docker tem um daemon central, normalmente root, que cria os containers; o Podman não tem daemon, o próprio comando cria o container e sai, e o padrão é rootless.
 
-10. **Como o Podman consegue ser root dentro do container sem ser root fora?** Com user namespaces: o UID 0 do container é mapeado para o UID do usuário no host, e os demais UIDs para uma faixa subordinada reservada em subuid e subgid.
+10. **Como o Podman consegue ser root dentro do container sem ser root fora ?** Com user namespaces: o UID 0 do container é mapeado para o UID do usuário no host, e os demais UIDs para uma faixa subordinada reservada em subuid e subgid.
 
-11. **Publiquei uma porta e meu firewall não a bloqueou. Por quê?** Porque o Docker insere regras de NAT e de encaminhamento antes das regras do firewall do sistema. Para expor só localmente, publique no endereço de loopback.
+11. **Publiquei uma porta e meu firewall não a bloqueou. Por quê ?** Porque o Docker insere regras de NAT e de encaminhamento antes das regras do firewall do sistema. Para expor só localmente, publique no endereço de loopback.
 
-12. **Por que meu container leva dez segundos (ou trinta, no Kubernetes) para parar?** Porque o processo principal é o PID 1 e não trata SIGTERM, ou roda atrás de um shell que não repassa sinais. O runtime espera o prazo e manda SIGKILL. Use a forma exec do comando, trate o sinal ou use um init mínimo.
+12. **Por que meu container leva dez segundos (ou trinta, no Kubernetes) para parar ?** Porque o processo principal é o PID 1 e não trata SIGTERM, ou roda atrás de um shell que não repassa sinais. O runtime espera o prazo e manda SIGKILL. Use a forma exec do comando, trate o sinal ou use um init mínimo.
 
-13. **O Kubernetes deixou de suportar imagens Docker?** Não. Ele removeu o dockershim, ou seja, deixou de usar o Docker como runtime nos nós. As imagens são OCI e continuam rodando no containerd ou no CRI O.
+13. **O Kubernetes deixou de suportar imagens Docker ?** Não. Ele removeu o dockershim, ou seja, deixou de usar o Docker como runtime nos nós. As imagens são OCI e continuam rodando no containerd ou no CRI O.
 
-14. **Apaguei um pod e ele voltou. Por quê?** Porque ele pertence a um ReplicaSet de um Deployment, que quer um número fixo de réplicas. O controller viu uma a menos e criou outra. Para reduzir, mude o número de réplicas.
+14. **Apaguei um pod e ele voltou. Por quê ?** Porque ele pertence a um ReplicaSet de um Deployment, que quer um número fixo de réplicas. O controller viu uma a menos e criou outra. Para reduzir, mude o número de réplicas.
 
-15. **Qual a diferença entre liveness e readiness?** Liveness falhando faz o kubelet reiniciar o container. Readiness falhando tira o pod dos endpoints dos Services, sem reiniciar. A liveness não deve depender de serviços externos.
+15. **Qual a diferença entre liveness e readiness ?** Liveness falhando faz o kubelet reiniciar o container. Readiness falhando tira o pod dos endpoints dos Services, sem reiniciar. A liveness não deve depender de serviços externos.
 
-16. **O que significa CrashLoopBackOff?** Que o container está morrendo repetidamente e o kubelet está esperando cada vez mais entre as tentativas, até cinco minutos. A causa está nos logs da execução anterior e no código de saída.
+16. **O que significa CrashLoopBackOff ?** Que o container está morrendo repetidamente e o kubelet está esperando cada vez mais entre as tentativas, até cinco minutos. A causa está nos logs da execução anterior e no código de saída.
 
-17. **Qual a diferença entre request e limit?** Request é o mínimo garantido, usado pelo scheduler para encaixar o pod e pelo cgroup para dividir CPU sob disputa. Limit é o teto: em CPU causa throttling, em memória causa OOMKilled.
+17. **Qual a diferença entre request e limit ?** Request é o mínimo garantido, usado pelo scheduler para encaixar o pod e pelo cgroup para dividir CPU sob disputa. Limit é o teto: em CPU causa throttling, em memória causa OOMKilled.
 
-18. **Qual a diferença entre OOMKilled e Evicted?** OOMKilled é o kernel matando um processo que passou do limit de memória do cgroup. Evicted é o kubelet despejando pods porque o nó inteiro ficou com pouca memória ou disco.
+18. **Qual a diferença entre OOMKilled e Evicted ?** OOMKilled é o kernel matando um processo que passou do limit de memória do cgroup. Evicted é o kubelet despejando pods porque o nó inteiro ficou com pouca memória ou disco.
 
-19. **Por que o deploy gera erros 502 por alguns segundos?** Porque a retirada do pod dos endpoints e o SIGTERM acontecem ao mesmo tempo, e a retirada leva segundos para chegar a todos os proxies. Um preStop que espera alguns segundos e uma aplicação que termina as requisições em andamento resolvem.
+19. **Por que o deploy gera erros 502 por alguns segundos ?** Porque a retirada do pod dos endpoints e o SIGTERM acontecem ao mesmo tempo, e a retirada leva segundos para chegar a todos os proxies. Um preStop que espera alguns segundos e uma aplicação que termina as requisições em andamento resolvem.
 
-20. **O que é um ClusterIP e por que o ping nele não funciona?** É um IP virtual que não existe em nenhuma interface, só em regras que reescrevem o destino para um pod nas portas do Service. Não há nada para responder ao ping, mas a conexão TCP na porta funciona.
+20. **O que é um ClusterIP e por que o ping nele não funciona ?** É um IP virtual que não existe em nenhuma interface, só em regras que reescrevem o destino para um pod nas portas do Service. Não há nada para responder ao ping, mas a conexão TCP na porta funciona.
 
-21. **O Service existe, mas não responde. O que verificar?** Se ele tem endpoints. Sem endpoints, o seletor não combina com os rótulos dos pods ou os pods não passam a readiness. Com endpoints, confira a porta de destino e as NetworkPolicies.
+21. **O Service existe, mas não responde. O que verificar ?** Se ele tem endpoints. Sem endpoints, o seletor não combina com os rótulos dos pods ou os pods não passam a readiness. Com endpoints, confira a porta de destino e as NetworkPolicies.
 
-22. **Secrets do Kubernetes são seguros?** Por padrão, só codificados em base64, que não é criptografia. A segurança vem de RBAC restritivo, criptografia em repouso no etcd e de não guardar Secrets em texto puro no Git.
+22. **Secrets do Kubernetes são seguros ?** Por padrão, só codificados em base64, que não é criptografia. A segurança vem de RBAC restritivo, criptografia em repouso no etcd e de não guardar Secrets em texto puro no Git.
 
-23. **Por que migrar do Ingress para a Gateway API?** Porque a Gateway API é a sucessora oficial, separa responsabilidades entre plataforma e aplicação e tem recursos sem anotações proprietárias, e porque o ingress nginx da comunidade foi aposentado em março de 2026, sem mais correções de segurança.
+23. **Por que migrar do Ingress para a Gateway API ?** Porque a Gateway API é a sucessora oficial, separa responsabilidades entre plataforma e aplicação e tem recursos sem anotações proprietárias, e porque o ingress nginx da comunidade foi aposentado em março de 2026, sem mais correções de segurança.
 
-24. **O que é um operator?** Um CRD mais um controller que reconcilia esse tipo novo de recurso com o mundo real, embutindo conhecimento operacional: criar, replicar, fazer backup, recuperar de falhas e atualizar um sistema complexo como um banco de dados.
+24. **O que é um operator ?** Um CRD mais um controller que reconcilia esse tipo novo de recurso com o mundo real, embutindo conhecimento operacional: criar, replicar, fazer backup, recuperar de falhas e atualizar um sistema complexo como um banco de dados.
 
-25. **O que acontece com os pods se o control plane cair?** Os pods que já estão rodando continuam rodando, e o tráfego continua fluindo pelas regras que já estão nos nós. O que para é tudo que depende de decisão: agendamentos novos, recriação de pods que morrerem, autoscaling, deploys e mudanças de endpoints. O control plane decide; os nós executam.
+25. **O que acontece com os pods se o control plane cair ?** Os pods que já estão rodando continuam rodando, e o tráfego continua fluindo pelas regras que já estão nos nós. O que para é tudo que depende de decisão: agendamentos novos, recriação de pods que morrerem, autoscaling, deploys e mudanças de endpoints. O control plane decide; os nós executam.
 
 ## Nota
 

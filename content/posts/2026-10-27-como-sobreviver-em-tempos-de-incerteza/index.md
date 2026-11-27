@@ -9,7 +9,7 @@ tags:
 minute: 22
 ---
 
-Este texto foge do assunto habitual da casa. Parte de um pressuposto desconfortável, mas que boa parte da humanidade já viveu: o de que as coisas estão instáveis, as instituições não são confiáveis, e quem governa não quer ser desafiado. A pergunta é antiga e volta a cada geração: quando não se pode contar com o de cima, como as pessoas comuns se organizam para sobreviver e cuidar umas das outras?
+Este texto foge do assunto habitual da casa. Parte de um pressuposto desconfortável, mas que boa parte da humanidade já viveu: o de que as coisas estão instáveis, as instituições não são confiáveis, e quem governa não quer ser desafiado. A pergunta é antiga e volta a cada geração: quando não se pode contar com o de cima, como as pessoas comuns se organizam para sobreviver e cuidar umas das outras ?
 
 Não vou tratar isso como fantasia de sobrevivencialista solitário com um bunker e latas de comida. A solidão é justamente a fraqueza, não a defesa. Vou tratar como o que de fato funcionou na história: **gente comum construindo, lado a lado, estruturas próprias de apoio** quando as oficiais apodreceram. É um tema com uma longa tradição filosófica, e com exemplos concretos que deram certo. Começo pelas ideias e termino num modelo prático.
 
@@ -45,7 +45,7 @@ Do outro lado do Atlântico e um século antes, **Henry David Thoreau** escreveu
 
 ### Illich e Schumacher: ferramentas que servem, não que escravizam
 
-Dois críticos da modernidade industrial nos dão o princípio tecnológico. **Ivan Illich**, em *A Convivencialidade*, distinguiu dois tipos de ferramenta: a que amplia o poder de quem a usa, e a que torna o usuário dependente de um sistema que ele não controla. Um carro simples que você mesmo conserta é conivencial; um sistema de transporte que o prende a horários, dívidas e peritos, não. **E.F. Schumacher**, em *O Negócio é Ser Pequeno* (*Small Is Beautiful*), chamou isso de "tecnologia apropriada": ferramentas na escala humana, que a comunidade entende, controla e conserta. A pergunta de Illich e Schumacher é a que devemos fazer a cada tecnologia: *isto me dá autonomia ou me prende?*
+Dois críticos da modernidade industrial nos dão o princípio tecnológico. **Ivan Illich**, em *A Convivencialidade*, distinguiu dois tipos de ferramenta: a que amplia o poder de quem a usa, e a que torna o usuário dependente de um sistema que ele não controla. Um carro simples que você mesmo conserta é conivencial; um sistema de transporte que o prende a horários, dívidas e peritos, não. **E.F. Schumacher**, em *O Negócio é Ser Pequeno* (*Small Is Beautiful*), chamou isso de "tecnologia apropriada": ferramentas na escala humana, que a comunidade entende, controla e conserta. A pergunta de Illich e Schumacher é a que devemos fazer a cada tecnologia: *isto me dá autonomia ou me prende ?*
 
 ### Ostrom: a prova de que comunidades sabem se governar
 

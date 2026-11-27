@@ -181,9 +181,9 @@ Curiosidade de fronteira: Mac lê NTFS mas não escreve por padrão, e o terreno
 
 Só para completar o mapa: NTFS desde 1993, com journaling e ACLs, e o ReFS tentando ser o filesystem moderno de servidor. FAT32 e exFAT sobrevivem como língua franca de pendrive e cartão SD.
 
-## O caminho de uma escrita, ou: quando um dado está salvo de verdade?
+## O caminho de uma escrita, ou: quando um dado está salvo de verdade ?
 
-Pergunta aparentemente boba que derruba gente experiente: quando o seu programa escreve num arquivo, em que momento o dado está realmente seguro? A resposta é um corredor cheio de portas, e vale conhecer cada uma:
+Pergunta aparentemente boba que derruba gente experiente: quando o seu programa escreve num arquivo, em que momento o dado está realmente seguro ? A resposta é um corredor cheio de portas, e vale conhecer cada uma:
 
 1. Cache da aplicação: o write da sua linguagem muitas vezes nem chega ao kernel na hora; bibliotecas mantêm buffer próprio (o printf é bufferizado, por exemplo).
 2. Page cache do kernel: quando a escrita chega ao sistema operacional, o dado vai pra RAM e a chamada retorna sucesso imediatamente. Sucesso aqui significa "o kernel anotou", não "está no disco". O kernel descarrega essas páginas sujas depois, quando achar conveniente.
@@ -215,7 +215,7 @@ Compressão nativa (LZ4 e Zstd) que quase sempre vale a pena ligar, deduplicaç�
 
 O preço de tudo isso: ZFS quer ver os discos crus (nada de controladora RAID no meio), pede RAM com generosidade, e expandir um RAIDZ era historicamente inflexível (adicionar um disco a um vdev RAIDZ só chegou de verdade em versões recentes do OpenZFS). No Linux ele vive fora da árvore do kernel por incompatibilidade de licenças (CDDL x GPL), então chega via módulo (OpenZFS), com o Ubuntu oferecendo suporte direto e o Proxmox e o TrueNAS construídos em cima dele.
 
-Se a sua pergunta é "quero um servidor de arquivos ou de backup confiável em casa ou na empresa, o que uso?", a resposta da década é: ZFS com espelhos ou RAIDZ2, snapshots automáticos e `zfs send` para outra máquina. Difícil errar.
+Se a sua pergunta é "quero um servidor de arquivos ou de backup confiável em casa ou na empresa, o que uso ?", a resposta da década é: ZFS com espelhos ou RAIDZ2, snapshots automáticos e `zfs send` para outra máquina. Difícil errar.
 
 ## Bloco, arquivo e objeto: as três línguas do armazenamento
 
@@ -264,45 +264,45 @@ Na hora de dimensionar, a pergunta nunca é "qual o melhor disco", e sim "qual o
 
 Fundamentos só viram conhecimento quando respondem problema real. Então fecha o texto se testando nestas vinte, que são o tipo de coisa que aparece em plantão, migração e entrevista:
 
-1. **Por que um disco entregando poucos MB/s pode estar saturado?** Porque o gargalo pode ser IOPS, não banda. 20 MB/s em blocos de 4K aleatórios são mais de 5 mil operações por segundo, muito além do que um HDD entrega. Olhe utilização e await no iostat, não só os MB/s.
+1. **Por que um disco entregando poucos MB/s pode estar saturado ?** Porque o gargalo pode ser IOPS, não banda. 20 MB/s em blocos de 4K aleatórios são mais de 5 mil operações por segundo, muito além do que um HDD entrega. Olhe utilização e await no iostat, não só os MB/s.
 
-2. **Por que apagar um arquivo nem sempre libera espaço?** Porque o espaço só volta quando a última referência morre: um processo com o arquivo aberto segura os blocos (o clássico "deletei o log gigante e o df não mudou", visível com lsof), hard links extras mantêm o inode vivo, e snapshots seguram os blocos antigos por definição.
+2. **Por que apagar um arquivo nem sempre libera espaço ?** Porque o espaço só volta quando a última referência morre: um processo com o arquivo aberto segura os blocos (o clássico "deletei o log gigante e o df não mudou", visível com lsof), hard links extras mantêm o inode vivo, e snapshots seguram os blocos antigos por definição.
 
-3. **Quando uma escrita está realmente salva?** Quando o fsync retornou com sucesso e cada camada do caminho respeitou o flush. Um write que retornou é promessa; fsync é contrato. Reveja a seção do caminho da escrita.
+3. **Quando uma escrita está realmente salva ?** Quando o fsync retornou com sucesso e cada camada do caminho respeitou o flush. Um write que retornou é promessa; fsync é contrato. Reveja a seção do caminho da escrita.
 
-4. **RAID substitui backup?** Não. RAID replica tudo com a mesma eficiência, inclusive o seu erro e o ransomware.
+4. **RAID substitui backup ?** Não. RAID replica tudo com a mesma eficiência, inclusive o seu erro e o ransomware.
 
-5. **Por que RAID 5 com discos grandes assusta?** Porque o rebuild demora horas ou dias com o array no talo, que é o momento mais provável de uma segunda falha, e a segunda falha no RAID 5 é fatal. Daí RAID 6 e RAIDZ2.
+5. **Por que RAID 5 com discos grandes assusta ?** Porque o rebuild demora horas ou dias com o array no talo, que é o momento mais provável de uma segunda falha, e a segunda falha no RAID 5 é fatal. Daí RAID 6 e RAIDZ2.
 
-6. **IOPS alto garante throughput alto?** Não: são réguas diferentes ligadas pelo tamanho do bloco. Muitas operações minúsculas dão IOPS alto com banda baixa; poucas operações gigantes dão o contrário.
+6. **IOPS alto garante throughput alto ?** Não: são réguas diferentes ligadas pelo tamanho do bloco. Muitas operações minúsculas dão IOPS alto com banda baixa; poucas operações gigantes dão o contrário.
 
-7. **Por que SSD muito cheio fica lento?** A garbage collection perde espaço de manobra, o wear leveling tem menos células livres pra revezar e o cache SLC encolhe. Deixar folga (overprovisioning) e manter o TRIM em dia resolve a maior parte.
+7. **Por que SSD muito cheio fica lento ?** A garbage collection perde espaço de manobra, o wear leveling tem menos células livres pra revezar e o cache SLC encolhe. Deixar folga (overprovisioning) e manter o TRIM em dia resolve a maior parte.
 
-8. **O que é o write hole do RAID 5?** A janela entre gravar o dado e gravar a paridade: uma queda de energia nesse meio tempo deixa paridade e dado inconsistentes sem ninguém avisar. O RAIDZ fecha essa janela porque a transação copy on write só vale quando está completa.
+8. **O que é o write hole do RAID 5 ?** A janela entre gravar o dado e gravar a paridade: uma queda de energia nesse meio tempo deixa paridade e dado inconsistentes sem ninguém avisar. O RAIDZ fecha essa janela porque a transação copy on write só vale quando está completa.
 
-9. **O df mostra espaço livre, mas criar arquivo dá "No space left on device". Como?** Inodes esgotados. Confira com df no modo de inodes e procure o diretório com milhões de arquivos pequenos.
+9. **O df mostra espaço livre, mas criar arquivo dá "No space left on device". Como ?** Inodes esgotados. Confira com df no modo de inodes e procure o diretório com milhões de arquivos pequenos.
 
-10. **Por que du e df discordam?** Arquivos deletados que seguem abertos por algum processo, os blocos reservados pro root (uns 5% no ext4) e arquivos esparsos fazem os dois medirem coisas diferentes.
+10. **Por que du e df discordam ?** Arquivos deletados que seguem abertos por algum processo, os blocos reservados pro root (uns 5% no ext4) e arquivos esparsos fazem os dois medirem coisas diferentes.
 
-11. **O que acontece se faltar luz no meio de uma escrita?** O que estava só em cache se perde (daí o fsync), mas journaling ou copy on write garantem que a estrutura do filesystem volte consistente: o diário termina ou desfaz a operação, o COW simplesmente nunca invalidou o estado antigo.
+11. **O que acontece se faltar luz no meio de uma escrita ?** O que estava só em cache se perde (daí o fsync), mas journaling ou copy on write garantem que a estrutura do filesystem volte consistente: o diário termina ou desfaz a operação, o COW simplesmente nunca invalidou o estado antigo.
 
-12. **Partição e volume são a mesma coisa?** Não. Partição é fatia fixa de um disco, gravada na tabela. Volume é a abstração onde o filesystem mora, e pode ser uma partição, vários discos ou uma fatia flexível de um pool.
+12. **Partição e volume são a mesma coisa ?** Não. Partição é fatia fixa de um disco, gravada na tabela. Volume é a abstração onde o filesystem mora, e pode ser uma partição, vários discos ou uma fatia flexível de um pool.
 
-13. **MBR ou GPT?** GPT, salvo arqueologia: MBR para em 2 TB e 4 partições primárias; GPT tem cópia reserva, checksum e é o esperado pelo boot UEFI.
+13. **MBR ou GPT ?** GPT, salvo arqueologia: MBR para em 2 TB e 4 partições primárias; GPT tem cópia reserva, checksum e é o esperado pelo boot UEFI.
 
-14. **Por que alinhamento de partição importa?** Partição desalinhada faz cada escrita de 4K cair montada em dois setores físicos, transformando uma escrita em leitura mais duas escritas. Tudo fica lento e nenhum erro aparece.
+14. **Por que alinhamento de partição importa ?** Partição desalinhada faz cada escrita de 4K cair montada em dois setores físicos, transformando uma escrita em leitura mais duas escritas. Tudo fica lento e nenhum erro aparece.
 
-15. **Vale pagar NVMe em vez de SSD SATA?** Pra latência, IOPS e cargas paralelas, sim: protocolo enxuto e dezenas de milhares de filas contra uma fila de 32. Pra guardar filme e backup, tanto faz.
+15. **Vale pagar NVMe em vez de SSD SATA ?** Pra latência, IOPS e cargas paralelas, sim: protocolo enxuto e dezenas de milhares de filas contra uma fila de 32. Pra guardar filme e backup, tanto faz.
 
-16. **Por que o ZFS quer os discos crus, sem controladora RAID no meio?** Porque os checksums e o self healing precisam enxergar e controlar os discos de verdade. Controladora no meio esconde erros, mente sobre flush e atrapalha a reconstrução.
+16. **Por que o ZFS quer os discos crus, sem controladora RAID no meio ?** Porque os checksums e o self healing precisam enxergar e controlar os discos de verdade. Controladora no meio esconde erros, mente sobre flush e atrapalha a reconstrução.
 
-17. **Deduplicação do ZFS vale a pena?** Quase nunca: a tabela de dedup devora RAM e o ganho real costuma ser pequeno. Compressão LZ4, por outro lado, quase sempre vale ligar.
+17. **Deduplicação do ZFS vale a pena ?** Quase nunca: a tabela de dedup devora RAM e o ganho real costuma ser pequeno. Compressão LZ4, por outro lado, quase sempre vale ligar.
 
-18. **O que é profundidade de fila e por que benchmark sempre cita?** É quantas operações estão em voo ao mesmo tempo. SSDs só mostram o IOPS de catálogo com fila funda; medir com fila 1 revela a latência pura de cada operação. Os dois números contam histórias diferentes.
+18. **O que é profundidade de fila e por que benchmark sempre cita ?** É quantas operações estão em voo ao mesmo tempo. SSDs só mostram o IOPS de catálogo com fila funda; medir com fila 1 revela a latência pura de cada operação. Os dois números contam histórias diferentes.
 
-19. **Disco quase ocioso, IOPS baixo, aplicação lenta. O que olhar?** Provável escrita síncrona serializada: uma thread chamando fsync e esperando cada confirmação. O que manda aí é a latência de cada operação, não a capacidade do disco. Olhe o await, procure fsync no rastro da aplicação e considere um SLOG ou cache com bateria.
+19. **Disco quase ocioso, IOPS baixo, aplicação lenta. O que olhar ?** Provável escrita síncrona serializada: uma thread chamando fsync e esperando cada confirmação. O que manda aí é a latência de cada operação, não a capacidade do disco. Olhe o await, procure fsync no rastro da aplicação e considere um SLOG ou cache com bateria.
 
-20. **Snapshot é backup?** Só depois que vira cópia em outro sistema. No mesmo pool, snapshot morre junto com o pool, com o disco e com o ransomware que cifrar tudo.
+20. **Snapshot é backup ?** Só depois que vira cópia em outro sistema. No mesmo pool, snapshot morre junto com o pool, com o disco e com o ransomware que cifrar tudo.
 
 ## Nota
 

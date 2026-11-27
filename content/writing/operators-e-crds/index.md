@@ -1040,7 +1040,7 @@ Também não usei kubebuilder, de propósito. Ele gera essa estrutura inteira co
 
 Um operator é software que roda pra sempre, com permissão alta, no caminho crítico. Custa manutenção. Vale a pena quando existe conhecimento operacional que não cabe em YAML estático: como fazer failover desse banco, como rotacionar esse certificado antes de vencer, como fazer upgrade desse cluster sem perder quorum. Operator é jeito de codificar um runbook.
 
-Se o que você quer é só empacotar YAML com variável, isso é Helm ou Kustomize, e você vai dormir melhor. Se é só reagir a um evento uma vez, um Job resolve. A pergunta que uso: existe alguma decisão contínua aqui, que hoje uma pessoa tomaria olhando o estado do sistema? Se não existe, não é operator.
+Se o que você quer é só empacotar YAML com variável, isso é Helm ou Kustomize, e você vai dormir melhor. Se é só reagir a um evento uma vez, um Job resolve. A pergunta que uso: existe alguma decisão contínua aqui, que hoje uma pessoa tomaria olhando o estado do sistema ? Se não existe, não é operator.
 
 ## Como isso aparece no mundo real
 

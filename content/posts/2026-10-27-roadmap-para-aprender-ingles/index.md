@@ -77,7 +77,7 @@ O detalhe importante é o "compreensível". Estudos de Paul Nation e colegas mos
 
 ### Mas output e interação também são necessários
 
-Outros pesquisadores mostraram o que falta no input puro. Merrill Swain, estudando alunos de imersão no Canadá que ouviam francês o dia inteiro há anos e mesmo assim falavam com muitos erros, propôs a **hipótese do output**: é ao tentar **produzir** que você percebe o que não sabe dizer (o "buraco"), testa hipóteses e é forçado a processar a gramática, e não só o sentido. Michael Long propôs a **hipótese da interação**: na conversa, quando a comunicação falha e os dois negociam o sentido ("como assim?", "você quis dizer...?"), o aprendiz recebe exatamente o input e o feedback de que precisa.
+Outros pesquisadores mostraram o que falta no input puro. Merrill Swain, estudando alunos de imersão no Canadá que ouviam francês o dia inteiro há anos e mesmo assim falavam com muitos erros, propôs a **hipótese do output**: é ao tentar **produzir** que você percebe o que não sabe dizer (o "buraco"), testa hipóteses e é forçado a processar a gramática, e não só o sentido. Michael Long propôs a **hipótese da interação**: na conversa, quando a comunicação falha e os dois negociam o sentido ("como assim ?", "você quis dizer... ?"), o aprendiz recebe exatamente o input e o feedback de que precisa.
 
 ### Perceber é o primeiro passo
 
@@ -113,7 +113,7 @@ Os aplicativos de **repetição espaçada** (Anki é o mais conhecido) juntam as
 
 ### Feedback corretivo ajuda
 
-Meta-análises sobre correção de erros mostram que o feedback corretivo funciona, especialmente quando **leva o aluno a se corrigir** (um "como?", uma pista sobre o erro) em vez de só dar a forma certa e seguir em frente. Quem nunca recebe correção tende a **fossilizar** erros: eles viram parte do seu inglês e ficam cada vez mais difíceis de tirar.
+Meta-análises sobre correção de erros mostram que o feedback corretivo funciona, especialmente quando **leva o aluno a se corrigir** (um "como ?", uma pista sobre o erro) em vez de só dar a forma certa e seguir em frente. Quem nunca recebe correção tende a **fossilizar** erros: eles viram parte do seu inglês e ficam cada vez mais difíceis de tirar.
 
 ### Os mitos
 
@@ -171,20 +171,20 @@ O inglês é uma língua de **ritmo acentual**: as sílabas tônicas vêm em int
 
 1. *I can swim* soa como "ai kən SUIM" (eu sei nadar), com o *can* reduzido; *I can't swim* tem o *can't* forte (eu não sei nadar). É a vogal e o acento, não o T final, que fazem a diferença na fala rápida.
 2. *a cup of tea* soa como "ə CÂP ə TI" (uma xícara de chá).
-3. *What do you want to do?* soa como "uádəiə UÓNə DU?" (o que você quer fazer?).
+3. *What do you want to do?* soa como "uádəiə UÓNə DU ?" (o que você quer fazer ?).
 
 E as palavras se juntam na **fala conectada**:
 
 1. **Ligação:** consoante final se liga à vogal seguinte. *Turn it off* soa como "tər ni tóf" (desliga isso).
 2. **Elisão:** sons somem. *Next day* vira "nécs dei" (no dia seguinte); *last night* vira "lés nait" (ontem à noite).
-3. **Assimilação:** sons se transformam pelo vizinho. *Did you* vira "dídja" (você...?, no passado); *Don't you* vira "dôntcha"; *want to* vira *wanna*, *going to* vira *gonna*, *got to* vira *gotta*.
+3. **Assimilação:** sons se transformam pelo vizinho. *Did you* vira "dídja" (você... ?, no passado); *Don't you* vira "dôntcha"; *want to* vira *wanna*, *going to* vira *gonna*, *got to* vira *gotta*.
 4. **Flap americano:** no inglês americano, T e D entre vogais viram um som parecido com o R de "caro": *water* soa como "uórər" (água), *better* como "bérər" (melhor), *a lot of* como "ə lárəv" (muito).
 
 É por isso que você entende o professor e não entende o filme: o professor fala as palavras separadas e cheias; o filme fala com tudo isso ao mesmo tempo. Ouvir sem conhecer essas regras é como tentar ler um texto sem espaços entre as palavras.
 
 #### Entonação
 
-A melodia da frase carrega sentido: a entonação descendente no fim de uma pergunta com *wh* (*Where do you LIVE?*, onde você mora?), ascendente em perguntas de sim ou não (*Do you live HERE?*, você mora aqui?), e o **acento de foco**, que muda o sentido da mesma frase: *I didn't say he stole the money* significa coisas diferentes conforme a palavra destacada. *I didn't SAY he stole the money* (eu não disse, talvez tenha insinuado); *I didn't say HE stole the money* (eu não disse que foi ele); *I didn't say he stole the MONEY* (eu não disse que foi o dinheiro que ele roubou).
+A melodia da frase carrega sentido: a entonação descendente no fim de uma pergunta com *wh* (*Where do you LIVE?*, onde você mora ?), ascendente em perguntas de sim ou não (*Do you live HERE?*, você mora aqui ?), e o **acento de foco**, que muda o sentido da mesma frase: *I didn't say he stole the money* significa coisas diferentes conforme a palavra destacada. *I didn't SAY he stole the money* (eu não disse, talvez tenha insinuado); *I didn't say HE stole the money* (eu não disse que foi ele); *I didn't say he stole the MONEY* (eu não disse que foi o dinheiro que ele roubou).
 
 ### 2. Vocabulário
 
@@ -227,8 +227,8 @@ Boa parte da fala nativa é feita de **blocos prontos** (chunks, ou linguagem fo
 6. *I'm looking forward to it.* (Estou ansioso por isso, no sentido bom.)
 7. *That makes sense.* (Faz sentido.)
 8. *Let me get back to you on that.* (Deixa eu te dar um retorno sobre isso.)
-9. *What do you mean by...?* (O que você quer dizer com...?)
-10. *Would you mind if I...?* (Você se importa se eu...?)
+9. *What do you mean by...?* (O que você quer dizer com... ?)
+10. *Would you mind if I...?* (Você se importa se eu... ?)
 
 #### Phrasal verbs
 
@@ -244,7 +244,7 @@ Verbos com partícula (*up*, *out*, *off*, *on*, *down*, *over*...) são onipres
 8. *carry on* (continuar): *Carry on, I'm listening.* (Continua, estou ouvindo.)
 9. *come up with* (ter uma ideia, inventar): *He came up with a great solution.* (Ele teve uma ótima solução.)
 10. *get along with* (se dar bem com): *I get along with my boss.* (Eu me dou bem com o meu chefe.)
-11. *set up* (configurar, montar): *Can you set up the new laptop?* (Você pode configurar o notebook novo?)
+11. *set up* (configurar, montar): *Can you set up the new laptop?* (Você pode configurar o notebook novo ?)
 12. *break down* (quebrar, ter um colapso): *The car broke down on the highway.* (O carro quebrou na estrada.)
 
 Alguns são **separáveis**, e com pronome o pronome vai no meio: *Turn off the light* ou *Turn the light off* (apague a luz), mas só *Turn it off*, nunca *Turn off it*.
@@ -293,7 +293,7 @@ A mesma ideia muda de forma conforme o contexto:
 1. *Kids* (informal), *children* (neutro), *offspring* (formal ou técnico): filhos, crianças.
 2. *Get* (informal), *receive* (neutro), *obtain* (formal): receber, conseguir.
 3. *Find out* (informal), *discover* (neutro), *ascertain* (formal): descobrir.
-4. *Hey, can you send me the file?* (Ei, me manda o arquivo?) versus *Could you please send me the file?* (Você poderia, por favor, me enviar o arquivo?) versus *I would be grateful if you could send me the file.* (Eu agradeceria se você pudesse me enviar o arquivo.)
+4. *Hey, can you send me the file?* (Ei, me manda o arquivo ?) versus *Could you please send me the file?* (Você poderia, por favor, me enviar o arquivo ?) versus *I would be grateful if you could send me the file.* (Eu agradeceria se você pudesse me enviar o arquivo.)
 
 Phrasal verbs costumam ser mais informais que seus equivalentes latinos, o que dá ao brasileiro uma tendência a soar formal demais na fala: dizer *I will return at five* quando um nativo diria *I'll be back at five* (volto às cinco).
 
@@ -309,15 +309,15 @@ Adjetivo vem **antes** do substantivo e não vai para o plural: *a red car* (um 
 
 #### O verbo to be (A1)
 
-*I am*, *you are*, *he/she/it is*, *we are*, *they are*. Ele faz o papel de "ser" e de "estar", e aparece em lugares onde o português usa "ter": *I'm 30 years old.* (Tenho 30 anos.) *I'm hungry.* (Estou com fome.) *I'm cold.* (Estou com frio.) *I'm right.* (Tenho razão.) *Are you afraid?* (Você está com medo?)
+*I am*, *you are*, *he/she/it is*, *we are*, *they are*. Ele faz o papel de "ser" e de "estar", e aparece em lugares onde o português usa "ter": *I'm 30 years old.* (Tenho 30 anos.) *I'm hungry.* (Estou com fome.) *I'm cold.* (Estou com frio.) *I'm right.* (Tenho razão.) *Are you afraid?* (Você está com medo ?)
 
 #### Perguntas e negativas com do (A1)
 
-Com o verbo to be e com os modais, a pergunta inverte a ordem: *You are tired* vira *Are you tired?* (Você está cansado?). Com todos os outros verbos, entra o auxiliar *do*, *does* ou *did*, e o verbo principal volta para a forma básica: *You work here.* vira *Do you work here?* (Você trabalha aqui?); *She likes coffee* vira *Does she like coffee?* (Ela gosta de café?) e *She doesn't like coffee.* (Ela não gosta de café.); *They went home* vira *Did they go home?* (Eles foram para casa?).
+Com o verbo to be e com os modais, a pergunta inverte a ordem: *You are tired* vira *Are you tired?* (Você está cansado ?). Com todos os outros verbos, entra o auxiliar *do*, *does* ou *did*, e o verbo principal volta para a forma básica: *You work here.* vira *Do you work here?* (Você trabalha aqui ?); *She likes coffee* vira *Does she like coffee?* (Ela gosta de café ?) e *She doesn't like coffee.* (Ela não gosta de café.); *They went home* vira *Did they go home?* (Eles foram para casa ?).
 
 O erro clássico é duplicar o tempo verbal: *Does she likes?* e *Did they went?* estão errados; o auxiliar já carrega o tempo e a pessoa.
 
-Perguntas com palavras interrogativas seguem a mesma lógica: *Where do you live?* (Onde você mora?) *What did you say?* (O que você disse?) *How long have you been here?* (Há quanto tempo você está aqui?). E, quando a pergunta é **sobre o sujeito**, não há auxiliar: *Who called you?* (Quem te ligou?), não *Who did call you?*
+Perguntas com palavras interrogativas seguem a mesma lógica: *Where do you live?* (Onde você mora ?) *What did you say?* (O que você disse ?) *How long have you been here?* (Há quanto tempo você está aqui ?). E, quando a pergunta é **sobre o sujeito**, não há auxiliar: *Who called you?* (Quem te ligou ?), não *Who did call you?*
 
 #### Presente simples e presente contínuo (A1 e A2)
 
@@ -334,14 +334,14 @@ Ações terminadas num momento definido do passado. Verbos regulares levam -ed: 
 
 O português não tem um tempo equivalente, e é por isso que ele é tão difícil. O present perfect (*have* mais particípio) liga o passado ao presente. Ele aparece em quatro situações principais:
 
-1. **Experiência de vida, sem tempo definido:** *Have you ever been to Japan?* (Você já foi ao Japão?) *I've never eaten sushi.* (Nunca comi sushi.)
+1. **Experiência de vida, sem tempo definido:** *Have you ever been to Japan?* (Você já foi ao Japão ?) *I've never eaten sushi.* (Nunca comi sushi.)
 2. **Algo que começou no passado e continua até agora,** com *for* e *since*: *I've lived here for five years.* (Moro aqui há cinco anos.) *She's worked at the company since 2020.* (Ela trabalha na empresa desde 2020.) Repare: o português usa o **presente** ("moro aqui há cinco anos") e o inglês usa o present perfect. Dizer *I live here for five years* é um dos erros mais comuns de brasileiros.
 3. **Passado recente com resultado no presente:** *I've lost my keys.* (Perdi minhas chaves, e continuo sem elas.) *He's just arrived.* (Ele acabou de chegar.)
-4. **Com *already*, *yet* e *still*:** *Have you finished yet?* (Você já terminou?) *I've already sent the email.* (Já mandei o e-mail.) *I haven't decided yet.* (Ainda não decidi.)
+4. **Com *already*, *yet* e *still*:** *Have you finished yet?* (Você já terminou ?) *I've already sent the email.* (Já mandei o e-mail.) *I haven't decided yet.* (Ainda não decidi.)
 
 A regra de ouro: **se há um momento definido no passado, é passado simples**. *I've seen that movie* (já vi esse filme), mas *I saw that movie last week* (vi esse filme semana passada). Nunca *I've seen it yesterday*. (O inglês britânico usa o present perfect um pouco mais que o americano em casos de passado recente, mas a regra do tempo definido vale para os dois.)
 
-A variação contínua enfatiza a duração de uma atividade: *I've been waiting for an hour.* (Estou esperando há uma hora.) *What have you been doing lately?* (O que você tem feito ultimamente?)
+A variação contínua enfatiza a duração de uma atividade: *I've been waiting for an hour.* (Estou esperando há uma hora.) *What have you been doing lately?* (O que você tem feito ultimamente ?)
 
 #### For, since e ago
 
@@ -371,8 +371,8 @@ E depois de *when*, *if*, *as soon as*, *before*, *after*, falando do futuro, us
 
 Modais (*can*, *could*, *may*, *might*, *must*, *should*, *would*, *will*, *shall*) não levam S na terceira pessoa, não usam *do* em perguntas e são seguidos do verbo sem *to*.
 
-1. *can*, capacidade e permissão: *I can speak three languages.* (Sei falar três línguas.) *Can I sit here?* (Posso sentar aqui?)
-2. *could*, capacidade no passado, pedido educado, possibilidade: *Could you help me?* (Você poderia me ajudar?) *It could be a network issue.* (Pode ser um problema de rede.)
+1. *can*, capacidade e permissão: *I can speak three languages.* (Sei falar três línguas.) *Can I sit here?* (Posso sentar aqui ?)
+2. *could*, capacidade no passado, pedido educado, possibilidade: *Could you help me?* (Você poderia me ajudar ?) *It could be a network issue.* (Pode ser um problema de rede.)
 3. *should*, conselho: *You should talk to your manager.* (Você deveria falar com o seu gerente.)
 4. *must* e *have to*, obrigação: *I have to leave at six.* (Tenho que sair às seis.) Cuidado com a negativa: *You mustn't touch that* (você não pode tocar nisso, é proibido) é muito diferente de *You don't have to come* (você não precisa vir).
 5. *might* e *may*, possibilidade: *I might be late.* (Talvez eu me atrase.)
@@ -394,7 +394,7 @@ E as formas sem *if*, mais formais: *Had I known, I would have come.* (Se eu sou
 
 #### Discurso indireto (B1 a B2)
 
-Contar o que alguém disse, normalmente recuando um tempo verbal: *"I'm tired," she said.* vira *She said she was tired.* (Ela disse que estava cansada.) *"I'll help you."* vira *He said he would help me.* (Ele disse que me ajudaria.) Perguntas indiretas não invertem: *Where is the station?* vira *Could you tell me where the station is?* (Você poderia me dizer onde fica a estação?), não *where is the station*.
+Contar o que alguém disse, normalmente recuando um tempo verbal: *"I'm tired," she said.* vira *She said she was tired.* (Ela disse que estava cansada.) *"I'll help you."* vira *He said he would help me.* (Ele disse que me ajudaria.) Perguntas indiretas não invertem: *Where is the station?* vira *Could you tell me where the station is?* (Você poderia me dizer onde fica a estação ?), não *where is the station*.
 
 #### Say e tell, make e do
 
@@ -409,7 +409,7 @@ Contar o que alguém disse, normalmente recuando um tempo verbal: *"I'm tired," 
 
 Depois de alguns verbos vem o -ing; depois de outros, o *to*; e alguns mudam de sentido.
 
-1. Com -ing: *enjoy*, *avoid*, *finish*, *mind*, *suggest*, *keep*, *consider*. *I enjoy reading.* (Gosto de ler.) *Would you mind waiting?* (Você se importa de esperar?)
+1. Com -ing: *enjoy*, *avoid*, *finish*, *mind*, *suggest*, *keep*, *consider*. *I enjoy reading.* (Gosto de ler.) *Would you mind waiting?* (Você se importa de esperar ?)
 2. Com *to*: *want*, *decide*, *plan*, *hope*, *need*, *agree*, *refuse*. *I decided to leave.* (Decidi ir embora.)
 3. Mudam de sentido: *I stopped smoking.* (Parei de fumar.) versus *I stopped to smoke.* (Parei para fumar.) *I remember locking the door.* (Lembro de ter trancado a porta.) versus *Remember to lock the door.* (Lembre de trancar a porta.) *I tried calling him.* (Tentei ligar para ele, como experimento.) versus *I tried to open the window.* (Tentei abrir a janela, com esforço.)
 4. Depois de preposição, sempre -ing: *I'm interested in learning Python.* (Tenho interesse em aprender Python.) *Thank you for coming.* (Obrigado por vir.) Inclusive com o *to* que é preposição: *I'm looking forward to seeing you.* (Estou ansioso para te ver.)
@@ -431,7 +431,7 @@ Os artigos parecem simples e são uma das últimas coisas a ficarem perfeitas.
 
 #### Contáveis e incontáveis (A2 a B1)
 
-Alguns substantivos incontáveis em inglês são contáveis em português, e não vão para o plural nem aceitam *a*: *advice* (conselhos): *Can I give you some advice?* ou *a piece of advice* (Posso te dar um conselho?); *information* (informações); *news* (notícias, e o verbo fica no singular: *The news is good*); *furniture* (móveis); *equipment* (equipamentos); *feedback*; *research* (pesquisas); *homework*; *software*; *luggage* (bagagem). Para quantidade: *many* e *few* com contáveis, *much* e *little* com incontáveis, *a lot of* com os dois.
+Alguns substantivos incontáveis em inglês são contáveis em português, e não vão para o plural nem aceitam *a*: *advice* (conselhos): *Can I give you some advice?* ou *a piece of advice* (Posso te dar um conselho ?); *information* (informações); *news* (notícias, e o verbo fica no singular: *The news is good*); *furniture* (móveis); *equipment* (equipamentos); *feedback*; *research* (pesquisas); *homework*; *software*; *luggage* (bagagem). Para quantidade: *many* e *few* com contáveis, *much* e *little* com incontáveis, *a lot of* com os dois.
 
 #### Preposições (A1 a C2)
 
@@ -451,7 +451,7 @@ Advérbios de frequência vêm antes do verbo principal e depois do to be: *I us
 
 #### Question tags e respostas curtas (B1)
 
-*You're coming, aren't you?* (Você vem, né?) *She didn't call, did she?* (Ela não ligou, ligou?) E respostas curtas com o auxiliar: *Do you like it? Yes, I do.* (Você gosta? Gosto.) Responder só *Yes* ou repetir o verbo principal (*Yes, I like*) soa estranho.
+*You're coming, aren't you?* (Você vem, né ?) *She didn't call, did she?* (Ela não ligou, ligou ?) E respostas curtas com o auxiliar: *Do you like it? Yes, I do.* (Você gosta ? Gosto.) Responder só *Yes* ou repetir o verbo principal (*Yes, I like*) soa estranho.
 
 #### Estruturas avançadas (B2 a C2)
 
@@ -472,7 +472,7 @@ Um resumo do que mais aparece, do errado para o certo:
 4. *I live here for five years.* → *I've lived here for five years.* (Moro aqui há cinco anos.)
 5. *I've seen him yesterday.* → *I saw him yesterday.* (Eu o vi ontem.)
 6. *She don't like it.* → *She doesn't like it.* (Ela não gosta.)
-7. *Did you went?* → *Did you go?* (Você foi?)
+7. *Did you went?* → *Did you go?* (Você foi ?)
 8. *The people are angry. / The life is hard.* → *People are angry. / Life is hard.* (As pessoas estão bravas. A vida é difícil.)
 9. *I'm agree.* → *I agree.* (Concordo.)
 10. *It depends of you.* → *It depends on you.* (Depende de você.)
@@ -486,8 +486,8 @@ Um resumo do que mais aparece, do errado para o certo:
 18. *I have doubts about the exercise.* → *I have questions about the exercise.* (Tenho dúvidas sobre o exercício. *Doubt* em inglês é desconfiança, incerteza sobre se algo é verdade.)
 19. *Speak to me* no sentido de "me fala" → *Tell me* ou *Let me know.* (Me avisa.)
 20. *Actually, I work in a bank* querendo dizer "atualmente" → *Currently, I work at a bank.* (Atualmente trabalho num banco.)
-21. *Can you borrow me your pen?* → *Can you lend me your pen?* (Você me empresta sua caneta? *Borrow* é pegar emprestado; *lend* é emprestar.)
-22. *How do you call this?* → *What do you call this?* (Como se chama isso?)
+21. *Can you borrow me your pen?* → *Can you lend me your pen?* (Você me empresta sua caneta ? *Borrow* é pegar emprestado; *lend* é emprestar.)
+22. *How do you call this?* → *What do you call this?* (Como se chama isso ?)
 23. *Since three years.* → *For three years.* (Há três anos.)
 24. *Very much people.* → *A lot of people.* ou *Many people.* (Muitas pessoas.)
 
@@ -512,7 +512,7 @@ E duas formas de ouvir: **intensiva** (um trecho curto, repetido várias vezes, 
 
 Falar bem depende de três coisas: ter o que dizer (vocabulário e chunks), conseguir montar rápido (fluência) e se fazer entender (pronúncia e estratégias de comunicação). As técnicas que mais funcionam estão na próxima seção, mas duas ideias valem desde já:
 
-1. **Estratégias de comunicação** são uma habilidade em si. Quando faltar a palavra, descreva: *It's a thing you use to...* (é uma coisa que você usa para...), *It's like a... but...* (é tipo um... mas...), *What's the word for...?* (qual é a palavra para...?). Peça esclarecimento: *Sorry, could you say that again?* (Desculpa, pode repetir?), *Do you mean...?* (Você quer dizer...?). Ganhe tempo com naturalidade: *Let me think...* (Deixa eu pensar...), *That's a good question.* (Boa pergunta.), *Well, the thing is...* (Bom, a questão é...).
+1. **Estratégias de comunicação** são uma habilidade em si. Quando faltar a palavra, descreva: *It's a thing you use to...* (é uma coisa que você usa para...), *It's like a... but...* (é tipo um... mas...), *What's the word for...?* (qual é a palavra para... ?). Peça esclarecimento: *Sorry, could you say that again?* (Desculpa, pode repetir ?), *Do you mean...?* (Você quer dizer... ?). Ganhe tempo com naturalidade: *Let me think...* (Deixa eu pensar...), *That's a good question.* (Boa pergunta.), *Well, the thing is...* (Bom, a questão é...).
 2. **Pensar em inglês** não é um dom; é consequência de chunks automatizados. Ninguém "decide" pensar em inglês; você vai tendo cada vez mais blocos prontos que dispensam a tradução.
 
 #### Escrita (writing)
@@ -528,11 +528,11 @@ A escrita é a habilidade mais fraca dos brasileiros no EF EPI e a mais importan
 
 Falar não é fazer monólogos alternados. **Pragmática** é usar a língua de forma adequada à situação e às pessoas, e erros de pragmática são julgados com mais severidade que erros de gramática, porque o ouvinte acha que é grosseria, não falta de conhecimento.
 
-1. **Pedidos indiretos.** O inglês, especialmente o britânico e o americano corporativo, suaviza muito. *Give me the report.* (Me dá o relatório.) soa grosseiro; *Could you send me the report when you get a chance?* (Você pode me mandar o relatório quando puder?) é o normal.
-2. **Discordar com educação:** *I see your point, but...* (Entendo seu ponto, mas...), *I'm not sure I agree.* (Não sei se concordo.), *Have you considered...?* (Você já considerou...?). Um *No, you're wrong* direto soa muito mais agressivo em inglês que em português.
+1. **Pedidos indiretos.** O inglês, especialmente o britânico e o americano corporativo, suaviza muito. *Give me the report.* (Me dá o relatório.) soa grosseiro; *Could you send me the report when you get a chance?* (Você pode me mandar o relatório quando puder ?) é o normal.
+2. **Discordar com educação:** *I see your point, but...* (Entendo seu ponto, mas...), *I'm not sure I agree.* (Não sei se concordo.), *Have you considered...?* (Você já considerou... ?). Um *No, you're wrong* direto soa muito mais agressivo em inglês que em português.
 3. **Suavizadores:** *just*, *a bit*, *maybe*, *I think*, *I was wondering*. *I just wanted to check if...* (Só queria confirmar se...), *It's a bit late.* (Está um pouco tarde.)
-4. **Small talk:** a conversa leve no começo de reuniões e encontros (*How was your weekend?*, como foi seu fim de semana?; *How's it going?*, tudo certo?) tem função social. Responder *How are you?* com um relato detalhado da sua saúde também é erro de pragmática; o esperado é *Good, thanks. You?* (Bem, obrigado. E você?).
-5. **Turnos de fala:** como entrar na conversa (*Can I just add something?*, posso acrescentar uma coisa?), como devolver a palavra (*What do you think?*, o que você acha?), como sinalizar que está ouvindo (*Right.*, *I see.*, *Makes sense.*).
+4. **Small talk:** a conversa leve no começo de reuniões e encontros (*How was your weekend?*, como foi seu fim de semana ?; *How's it going?*, tudo certo ?) tem função social. Responder *How are you?* com um relato detalhado da sua saúde também é erro de pragmática; o esperado é *Good, thanks. You?* (Bem, obrigado. E você ?).
+5. **Turnos de fala:** como entrar na conversa (*Can I just add something?*, posso acrescentar uma coisa ?), como devolver a palavra (*What do you think?*, o que você acha ?), como sinalizar que está ouvindo (*Right.*, *I see.*, *Makes sense.*).
 
 #### Mediação
 
@@ -608,7 +608,7 @@ Em 2026, os modelos de linguagem viraram uma ferramenta poderosa para quem apren
 1. **Parceiro de conversa por voz**, disponível a qualquer hora, sem julgamento. Ótimo para treino de fluência, para simular entrevistas e reuniões, e para perder a vergonha.
 2. **Corretor de textos com explicação.** Escreva primeiro, sozinho; depois peça a correção **com a explicação de cada erro** e uma lista dos padrões que se repetem. Pedir para a IA escrever por você não ensina nada.
 3. **Gerador de material no seu nível:** textos graduados sobre os assuntos que te interessam, com o vocabulário que você está estudando, listas de colocações, exemplos de uma estrutura, perguntas de compreensão.
-4. **Dicionário de uso:** "qual a diferença entre *borrow* e *lend*?", "isso soa natural?", "como um nativo diria isso de forma mais informal?".
+4. **Dicionário de uso:** "qual a diferença entre *borrow* e *lend*?", "isso soa natural ?", "como um nativo diria isso de forma mais informal ?".
 
 Os cuidados: modelos às vezes erram, especialmente em nuances de pronúncia e regionalismos; a correção automática não substitui a interação humana na parte de pragmática e de pronúncia; e o risco maior é usar a IA como muleta, delegando justamente o esforço de recuperação e produção que gera o aprendizado. Regra simples: **a IA deve te fazer trabalhar mais, não menos**.
 

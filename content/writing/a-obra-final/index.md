@@ -65,7 +65,7 @@ O erro, então, não é o preço do aprendizado. É o mecanismo dele. Retirar o 
 
 ## Quando um homem está pronto
 
-Chego, enfim, à pergunta que me interessa de verdade: quando alguém está pronto para a sua obra final?
+Chego, enfim, à pergunta que me interessa de verdade: quando alguém está pronto para a sua obra final ?
 
 Olhando as biografias, há um padrão que incomoda.
 
