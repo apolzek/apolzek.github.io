@@ -14,7 +14,7 @@ Este é um texto sobre o Mito de Er, da República de Platão. É um livro que l
 
 O que é a *República* ? É uma das obras mais importantes e conhecidas de Platão, escrita provavelmente no século IV a.C., por volta de 375 a.C. A obra é construída principalmente na forma de diálogos, tendo Sócrates como personagem central.
 
-Um dos grandes problemas que orientam a discussão é uma pergunta aparentemente simples, mas bastante incômoda: *vale a pena ser justo ?* O que é a justiça ? É melhor ser justo por si mesma ou apenas pelas vantagens e recompensas que ela pode trazer ? Em outras palavras: vale a pena agir corretamente quando a injustiça poderia trazer mais benefícios ?
+Um dos grandes problemas que orientam a discussão é uma pergunta aparentemente simples, mas bastante incômoda: *vale a pena ser justo ?* O que é a justiça ? É melhor ser justo pela própria justiça ou apenas pelas vantagens e recompensas que ela pode trazer ? Em outras palavras: vale a pena agir corretamente quando a injustiça poderia trazer mais benefícios ?
 
 A partir dessas questões, Platão desenvolve uma longa investigação sobre a justiça, a educação, a organização da cidade, a natureza da alma e o modo como devemos viver.
 
@@ -22,19 +22,19 @@ A partir dessas questões, Platão desenvolve uma longa investigação sobre a j
 
 Por estar no final da *República*, o *Mito de Er* funciona como uma conclusão simbólica da obra e retoma uma de suas questões fundamentais: quais são as consequências de nossas escolhas e que tipo de vida devemos escolher ? Ele não deve ser entendido simplesmente como "a resposta final" de Platão, mas como uma narrativa que encerra e amplia a investigação filosófica desenvolvida ao longo do diálogo.
 
-**Quem conta a história ?** Sócrates, que foi o professor de Platão e é o personagem principal de quase todos os seus livros. É pela boca dele que o mito é narrado.
+**Quem conta a história ?** Sócrates, que foi o professor de Platão e é o personagem principal da maioria dos seus diálogos. É pela boca dele que o mito é narrado.
 
 ## O cenário
 
-Er é um guerreiro que morre em batalha. O corpo dele fica dias no campo sem apodrecer e, na hora de ser cremado, ele acorda e  conta tudo o que viu do outro lado.
+Er é um guerreiro que morre em batalha. O corpo dele fica dez dias no campo sem apodrecer e, no décimo segundo dia, já na pira funerária, ele acorda e conta tudo o que viu do outro lado.
 
 Basicamente: um dos primeiros relatos de alguém que volta da morte na história da filosofia.
 
 O que Er descreve é o processo pelo qual as almas retornam ao mundo sensível. Traduzindo o termo técnico: "mundo sensível" é simplesmente o mundo que a gente enxerga, toca, cheira, o mundo material, O DAQUI. Platão acreditava que a alma existe antes e depois do corpo, e que ela vai e volta. O que Er viu foi justamente o balcão de embarque dessa volta. E lá tem gente trabalhando. As Moiras, três figuras da mitologia grega que controlam o destino de cada pessoa, representadas como fiandeiras (mulheres que fiam, ou seja, produzem linha). A ideia é que a sua vida é um fio, e elas cuidam desse fio:
 
 - **Cloto**: a que *fia*, ou seja, produz o fio da sua vida e confirma a vida que cada alma escolheu.
-- **Láquesis**: a que *mede* e distribui, sorteia e organiza os destinos.
-- **Átropos**: a que torna o fio *irreversível*. Na tradição grega mais comum é ela quem corta o fio, mas no mito de Platão o papel dela é outro: depois que o fio é fiado, ninguém mais desfaz. O nome dela significa literalmente "a inflexível", a que não volta atrás.
+- **Láquesis**: a que *mede* e distribui: é do colo dela que saem os lotes do sorteio e os modelos de vida.
+- **Átropos**: a que torna o fio *irreversível*. Na versão mais conhecida do mito é ela quem corta o fio, mas no mito de Platão o papel dela é outro: depois que o fio é fiado, ninguém mais desfaz. O nome dela significa literalmente "a inflexível", a que não volta atrás.
 
 Guarde esse detalhe, porque ele importa: as Moiras estão lá, o destino existe na história. Platão não está negando o destino. Ele vai fazer algo mais esperto do que isso.
 
@@ -57,7 +57,7 @@ Platão bate nessa tecla com força total. A frase que aparece no mito é pratic
 
 ## O cardápio de vidas
 
-E o que estava disponível pra escolher ? De tudo. Vidas ricas, vidas pobres, vidas de tirano, vidas de gente famosa, vidas de anônimo, vidas simples, vidas de bicho até. Um bufê completo de existências possíveis. Só que é aí que a coisa complica de verdade. Porque a vida que parece boa nem sempre é boa. A vida de tirano brilha de longe: poder, dinheiro, todo mundo te obedecendo. De perto, é uma máquina de produzir injustiça e, segundo Platão, quem produz injustiça acaba destruindo a si mesmo por dentro. No mito, tem uma cena ótima: a alma que tirou o primeiro lugar da fila, que vinha do céu e tinha sido virtuosa na vida anterior por hábito, sem filosofia, se atira em cima da vida de tirano, agarra ela com tudo, e só depois percebe o que veio junto no pacote, inclusive devorar os próprios filhos. Aí sai se lamentando e culpando os deuses. Mas ela mesma escolheu. Ela só não olhou direito. E no extremo oposto está Ulisses, que tirou o último lugar da fila. Curado da ambição pela lembrança de tudo o que sofreu, ele procurou com calma e encontrou, largada num canto, a vida de um homem comum, sem fama e sem poder, e disse que teria escolhido a mesma coisa se fosse o primeiro. Então o desafio real nunca foi escolher a vida mais chamativa. O desafio era ter autoconhecimento suficiente pra escolher uma vida que levasse à virtude e não à injustiça.
+E o que estava disponível pra escolher ? De tudo. Vidas ricas, vidas pobres, vidas de tirano, vidas de gente famosa, vidas de anônimo, vidas simples, vidas de bicho até. Um bufê completo de existências possíveis. Só que é aí que a coisa complica de verdade. Porque a vida que parece boa nem sempre é boa. A vida de tirano brilha de longe: poder, dinheiro, todo mundo te obedecendo. De perto, é uma máquina de produzir injustiça e, segundo Platão, quem produz injustiça acaba destruindo a si mesmo por dentro. No mito, tem uma cena ótima: a alma que tirou o primeiro lugar da fila, que vinha do céu e tinha sido virtuosa na vida anterior por hábito, sem filosofia, se atira em cima da vida de tirano, agarra ela com tudo, e só depois percebe o que veio junto no pacote, inclusive devorar os próprios filhos. Aí sai se lamentando e culpando os deuses. Mas ela mesma escolheu. Ela só não olhou direito. E no extremo oposto está Ulisses, que tirou o último lugar da fila. Curado da ambição pela lembrança de tudo o que sofreu, ele procurou com calma e encontrou, largada num canto, a vida de um homem comum, longe da política e dos negócios públicos, e disse que teria escolhido a mesma coisa se fosse o primeiro. Então o desafio real nunca foi escolher a vida mais chamativa. O desafio era ter autoconhecimento suficiente pra escolher uma vida que levasse à virtude e não à injustiça.
 
 Rapidinho sobre esses dois termos, porque eles são o coração do texto:
 
@@ -66,7 +66,7 @@ Rapidinho sobre esses dois termos, porque eles são o coração do texto:
 
 ### E tem um detalhe cruel: o caráter
 
-O **caráter** o jeito de ser, a estrutura moral da pessoa é muito difícil de mudar depois que a escolha é feita. Ou seja: você não escolhe só as circunstâncias da sua vida. Você escolhe também, junto e embutido, o tipo de pessoa que vai ser dentro dela. Vem tudo no mesmo pacote. Por isso o mito insiste tanto que a habilidade mais importante do mundo é conseguir prever o bem e o mal que uma vida pode trazer. Saber olhar pra uma opção e enxergar não o brilho da superfície, mas o que ela vai fazer com você por dentro, a longo prazo. Sem isso, você está apostando no escuro com o próprio destino.
+O **caráter**, o jeito de ser, a estrutura moral da pessoa, não vem pronto no cardápio: ele se molda conforme a vida escolhida, e essa escolha não tem volta. Ou seja: você não escolhe só as circunstâncias da sua vida. Você escolhe também, junto e embutido, o tipo de pessoa que vai ser dentro dela. Vem tudo no mesmo pacote. Por isso o mito insiste tanto que a habilidade mais importante do mundo é conseguir prever o bem e o mal que uma vida pode trazer. Saber olhar pra uma opção e enxergar não o brilho da superfície, mas o que ela vai fazer com você por dentro, a longo prazo. Sem isso, você está apostando no escuro com o próprio destino.
 
 ## E por que a gente não lembra de nada disso ?
 
@@ -76,7 +76,7 @@ Boa pergunta, o mito responde. Antes de reencarnar, as almas atravessam a planí
 
 ### 1. É um ataque frontal ao fatalismo
 
-**Fatalismo** é a crença de que está tudo escrito e não adianta nada fazer nada, "se tem que ser, vai ser". O primo dele, o **determinismo**, é a ideia de que tudo o que você faz já foi causado por coisas fora do seu controle: genética, criação, sociedade, acaso. Repare no que Platão faz: ele **não nega** que exista destino. As Moiras estão lá, tecendo. O sorteio existe. O acaso existe e interfere de verdade. Ele poderia simplesmente ter dito "destino não existe", mas não disse. O que ele faz é mais sofisticado: ele mostra que, **mesmo dentro do destino, sobra liberdade**. Você não escolhe a posição na fila. Você escolhe o que faz com ela. E como sempre sobra opção boa na mesa, a desculpa "eu não tinha alternativa" simplesmente não cola.
+**Fatalismo** é a crença de que está tudo escrito e não adianta nada fazer nada, "se tem que ser, vai ser". O primo dele, o **determinismo**, é a ideia de que tudo o que você faz já foi causado por coisas fora do seu controle: genética, criação, sociedade, acaso. Repare no que Platão faz: ele **não nega** que exista destino. As Moiras estão lá, fiando. O sorteio existe. O acaso existe e interfere de verdade. Ele poderia simplesmente ter dito "destino não existe", mas não disse. O que ele faz é mais sofisticado: ele mostra que, **mesmo dentro do destino, sobra liberdade**. Você não escolhe a posição na fila. Você escolhe o que faz com ela. E como sempre sobra opção boa na mesa, a desculpa "eu não tinha alternativa" simplesmente não cola.
 
 Essa é a tese central: **o ser humano é livre e, por ser livre, é responsável pelo caminho que trilha**.
 
@@ -90,15 +90,15 @@ Sobra o quê ?? Sobra você =)))))
 
 ### 3. A "escolha" não aconteceu num além-vida, ela está acontecendo agora
 
-Esse é o ponto mais importante, e é onde o mito deixa de ser uma história sobre reencarnação e vira uma história sobre **hoje**. Lembra que o caráter vem embutido na escolha e é quase impossível de mudar depois ? Lembra que a alma que agarrou a vida de tirano fez isso por impulso, sem examinar ? Então: essa é uma imagem do que a gente faz o tempo todo.
+Esse é o ponto mais importante, e é onde o mito deixa de ser uma história sobre reencarnação e vira uma história sobre **hoje**. Lembra que o caráter vem embutido na escolha e que a escolha não tem volta ? Lembra que a alma que agarrou a vida de tirano fez isso por impulso, sem examinar ? Então: essa é uma imagem do que a gente faz o tempo todo.
 
 A cada decisão, o que estudar, com quem andar, o que aceitar, o que deixar passar, que tipo de pessoa se permitir ser numa discussão, você está de novo naquele campo, escolhendo um pacote de vida sem enxergar direito o que vem dentro. E, assim como no mito, depois de um tempo fica muito difícil desfazer. O rio do Descuido, na planície do Esquecimento, é a imagem perfeita disso: a gente esquece que está escolhendo. Age no automático, culpa as circunstâncias, e só percebe o pacote quando já é tarde.
 
 ### 4. Por isso a filosofia importa.. e essa é a real conclusão do livro
 
-Aqui tudo se encaixa. Se a única coisa que separa uma escolha boa de uma escolha desastrosa é a **capacidade de examinar as opções antes de agarrar a primeira que brilha**, então a habilidade mais valiosa que existe é aprender a examinar. É isso que Platão chama de filosofia. Não decoreba de nomes gregos: é o treino de olhar pras coisas com calma e enxergar o que elas realmente são, e não o que aparentam ser. É exatamente o que Ulisses fez enquanto todo mundo se atropelava.
+Aqui tudo se encaixa. Se a única coisa que separa uma escolha boa de uma escolha desastrosa é a **capacidade de examinar as opções antes de agarrar a primeira que brilha**, então a habilidade mais valiosa que existe é aprender a examinar. É isso que Platão chama de filosofia. Não decoreba de nomes gregos: é o treino de olhar pras coisas com calma e enxergar o que elas realmente são, e não o que aparentam ser. É exatamente o que Ulisses fez enquanto outros escolhiam no impulso.
 
-E aí a *República* fecha o círculo. A pergunta inicial era "vale a pena ser justo ?". A resposta, que o mito reforça, é: **vale**, porque a justiça não é uma regra imposta de fora que te atrapalha, é o que mantém sua alma em ordem, e uma alma em ordem é a única coisa que consegue escolher bem. Ser injusto não te dá vantagem; te deixa cego na hora que mais importa enxergar.
+E aí a *República* fecha o círculo. A pergunta inicial era "vale a pena ser justo ?". A resposta, que o mito reforça, é: **vale**, porque a justiça não é uma regra imposta de fora que te atrapalha, é o que mantém sua alma em ordem, e é uma alma em ordem que consegue escolher bem. Ser injusto não te dá vantagem; te deixa cego na hora que mais importa enxergar.
 
 ---
 
