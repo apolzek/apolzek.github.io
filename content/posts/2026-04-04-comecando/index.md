@@ -17,6 +17,6 @@ Estou reativando/resetando este blog.. Recentemente, passei por uma pequena cris
 
 Naturalmente, vai ter bastante coisa sobre minha profissão como engenheiro de confiabilidade e plataforma, minha jornada com observabilidade e os desafios de lidar com sistemas em produção. Mas também vai ter muita filosofia, opiniões, reflexões, desabafos e qualquer outro assunto que desperte minha curiosidade.
 
-Quem me conhece sabe que sou um cara reservado, que não gosta de aparecer. Meio chato e até entediante, admito. Mas, apesar disso, não considero meus pensamentos nem minhas experiências tão entediantes assim. E talvez seja justamente por isso que resolvi começar a compartilhá-los por aqui.
+Quem me conhece sabe que sou um cara reservado, que não gosta de aparecer. Meio chato e até entediante, admito. Mas, apesar disso, tenho a esperança de que as coisas que venho fazendo e refletindo não sejam empolgantes só para mim, e que de alguma forma cheguem a quem precisa. Quanto a mim, gostaria, do fundo do coração, de envelhecer de maneira lúcida, a ponto de conseguir tirar um tempo para reler tudo o que escrevi por aqui.
 
 "Enquanto adiamos, a vida passa." — Sêneca

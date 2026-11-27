@@ -11,7 +11,7 @@ minute: 11
 
 Tem uma frase do Heráclito, aquele filósofo grego que falava que ninguém entra duas vezes no mesmo rio, que eu acho uma das mais bonitas já escritas: **"a natureza ama esconder-se"**. Ela é curta, quase um bilhete, mas carrega uma ideia enorme. O que a gente vê é a superfície. Por baixo de quase tudo que parece simples existe uma montanha de coisas acontecendo, e a gente só percebe quando alguma delas falha.
 
-Este texto é sobre isso. Sobre a complexidade que fica escondida no dia a dia, e sobre o fato curioso de que quanto mais complexa uma coisa é, mais ela consegue resistir a quase tudo, e ainda assim pode cair por quase nada.
+Este texto é sobre isso. Sobre a complexidade que fica escondida no dia a dia, e sobre o fato curioso de que quanto mais complexa uma coisa é, mais ela consegue resistir a quase tudo, e ainda assim pode cair por quase nada. Qualquer profissional de segurança da informação provavelmente concordaria bastante com isso.
 
 ## O corpo que não quer morrer
 

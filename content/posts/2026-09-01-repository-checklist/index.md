@@ -1,5 +1,5 @@
 ---
-title: "Checklist de repositório"
+title: "The AI-Era Repository Checklist"
 slug: "repository-checklist"
 date: '2026-09-01T12:00:00-03:00'
 draft: false
