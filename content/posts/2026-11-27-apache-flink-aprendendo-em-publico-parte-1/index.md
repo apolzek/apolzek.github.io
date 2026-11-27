@@ -1,9 +1,11 @@
 ---
-title: "Aprendendo Apache Flink parte 1"
+title: "Apache Flink: conceitos básicos revisados"
 slug: "apache-flink-aprendendo-em-publico-parte-1"
-date: '2026-08-30T12:00:00-03:00'
+date: '2026-11-27T12:00:00-03:00'
 draft: false
-description: "Primeira parte de um estudo em público sobre Apache Flink: conceitos, arquitetura e os primeiros experimentos, com índice para navegar pelo caminho inteiro."
+aliases:
+- /2026/08/30/apache-flink-aprendendo-em-publico-parte-1/
+description: "Os conceitos básicos de Apache Flink, revisados e atualizados para a linha 2.x: arquitetura, paralelismo, tempo, watermarks, estado, checkpoints, Flink SQL e deploy, com índice para navegar pelo caminho inteiro."
 tags:
 - apache-flink
 - data-engineering
@@ -137,20 +139,20 @@ Duas coisas nesse código não são detalhe de sintaxe. A primeira é que a font
 
 A segunda é que o exactly-once no destino é uma propriedade do destino, não do Flink. O `KafkaSink` só alcança isso porque escreve dentro de uma transação que é confirmada quando o checkpoint fecha, e por isso ele exige um `transactionalIdPrefix` estável entre reinícios. O `FileSink` funciona pela mesma lógica: os arquivos ficam com sufixo de "em progresso" até o checkpoint confirmar, o que costuma assustar quem olha o bucket no meio do caminho e acha que nada está sendo escrito. Já o `JdbcSink` não tem transação distribuída, então a garantia que ele oferece depende de você escrever com chave primária e deixar a repetição ser inofensiva.
 
-Vale insistir na parte do versionamento, porque ela morde. Com exceção dos conectores de sistema de arquivos e do `datagen`, que vêm dentro da distribuição, cada conector é um projeto separado, com repositório próprio, release próprio e numeração que não tem relação nenhuma com a do Flink. O `flink-connector-kafka` está na 5.0.0 enquanto o Flink está na 2.3. Os dois números não conversam, e não existe "a versão do conector que combina com a minha" por dedução.
+Vale insistir na parte do versionamento, porque ela morde. Com exceção dos conectores de sistema de arquivos e do `datagen`, que vêm dentro da distribuição, cada conector é um projeto separado, com repositório próprio, release próprio e numeração que não tem relação nenhuma com a do Flink. O `flink-connector-kafka` está na 5.1.0 enquanto o Flink está na 2.3. Os dois números não conversam, e não existe "a versão do conector que combina com a minha" por dedução.
 
-O que existe é uma matriz de compatibilidade, publicada na página de downloads, e conferir essa matriz é passo obrigatório antes de escolher a versão do Flink de um projeto novo. O motivo é que a migração para a linha 2.x não foi simultânea, e boa parte do ecossistema ficou para trás. Alguns exemplos de como isso estava quando escrevi:
+O que existe é uma matriz de compatibilidade, publicada na página de downloads, e conferir essa matriz é passo obrigatório antes de escolher a versão do Flink de um projeto novo. O motivo é que a migração para a linha 2.x não foi simultânea, e boa parte do ecossistema ficou para trás. Alguns exemplos de como isso estava em novembro de 2026:
 
 | Conector | Versão | Flink compatível |
 |:--|:--|:--|
-| Kafka | 5.0.0 | 2.1.x e 2.2.x |
+| Kafka | 5.1.0 | 2.2.x e 2.3.x |
 | JDBC | 4.1.0 | 2.1.x e 2.2.x |
 | Elasticsearch | 4.0.0 | 2.0.x |
 | Prometheus | 1.0.0 | 1.19.x e 1.20.x |
 
 O conector do Prometheus é o caso mais eloquente, e é um que me interessa de perto, porque ele é a saída natural para métricas derivadas de telemetria. Ele existe, é oficial, e escreve via a API de remote write do Prometheus. É só sink, não há fonte correspondente, o que faz sentido: o Prometheus é onde a série temporal termina, não de onde ela vem. Só que a 1.0.0 ainda é da linha 1.x do Flink e não atravessou para a 2.x. Quem quiser esse destino hoje escolhe entre ficar na 1.20, que é LTS, ou escrever a integração na mão.
 
-E repare que nem o Kafka lista a 2.3 na tabela acima. A defasagem de um release entre o núcleo e os conectores é o estado normal das coisas, não uma exceção. Se o seu pipeline depende de um conector específico, é ele que decide qual versão do Flink você pode rodar, e não o contrário.
+E repare que, dos quatro, só o Kafka já lista a 2.3, e mesmo ele chegou lá meses depois do lançamento do núcleo. A defasagem entre o núcleo e os conectores é o estado normal das coisas, não uma exceção. Se o seu pipeline depende de um conector específico, é ele que decide qual versão do Flink você pode rodar, e não o contrário.
 
 ## Paralelismo
 
@@ -184,7 +186,7 @@ Entre dois operadores existe sempre uma decisão sobre para qual subtask seguint
 
 O `broadcast` merece nota porque é a base de um padrão inteiro: um stream pequeno de regras é transmitido para todas as subtasks, que o guardam em estado, enquanto o stream grande de eventos passa particionado por chave. É assim que se troca a lógica de um job sem redeploy.
 
-Vale lembrar também que `rebalance` e `rescale` ganharam distribuição adaptativa na 2.3, olhando a carga real do destino em vez de fazer round-robin cego, e é uma opção que precisa ser ligada, como descrevo no post sobre o Flink 2.3.
+Vale lembrar também que `rebalance` e `rescale` ganharam distribuição adaptativa na 2.3, olhando a carga real do destino em vez de fazer round-robin cego. Não é o comportamento padrão: é uma opção que precisa ser ligada.
 
 Nada disso resolve o problema que mais dói, que é o **data skew**. Skew é quando a distribuição das chaves é desigual: um cliente que sozinho responde por metade das transações, um produto que viralizou, um tenant gigante no meio de mil pequenos. Como o `keyBy` garante que a mesma chave vai sempre para a mesma subtask, essa subtask vira o gargalo, as outras ficam ociosas, e o job inteiro anda na velocidade da mais lenta. Aumentar o paralelismo não ajuda em nada, porque a chave pesada continua indo para um lugar só.
 
@@ -265,11 +267,13 @@ Como o stream é infinito, agregações só fazem sentido dentro de recortes.
 ```java
 stream
     .keyBy(Event::getUserId)
-    .window(TumblingEventTimeWindows.of(Time.minutes(5)))
+    .window(TumblingEventTimeWindows.of(Duration.ofMinutes(5)))
     .aggregate(new EventCounter());
 ```
 
 Um detalhe que eu não tinha entendido de cara: prefira `reduce`/`aggregate` a `process` quando puder. O `process` recebe todos os eventos da janela de uma vez, o que significa guardar todos eles em estado até o fechamento. Já `aggregate` mantém apenas o acumulador. Em janelas grandes, essa diferença é a diferença entre um job estável e um job que morre de OOM.
+
+Outra nota de versão: a classe `Time` que aparece em quase todo exemplo antigo (`Time.minutes(5)`) foi removida na 2.0. Tudo que recebia tempo passou a receber `java.time.Duration`.
 
 ## ProcessFunction
 
@@ -385,13 +389,16 @@ Nem tudo precisa de Java. O Flink expõe uma Table API e SQL sobre o mesmo motor
 ```sql
 SELECT
     user_id,
-    TUMBLE_START(event_time, INTERVAL '5' MINUTE) AS window_start,
+    window_start,
     COUNT(*) AS total
-FROM orders
+FROM TUMBLE(TABLE orders, DESCRIPTOR(event_time), INTERVAL '5' MINUTES)
 GROUP BY
     user_id,
-    TUMBLE(event_time, INTERVAL '5' MINUTE);
+    window_start,
+    window_end;
 ```
+
+Essa é a sintaxe de *window table-valued functions*: a janela vira uma função que recebe a tabela e devolve a mesma tabela com as colunas `window_start` e `window_end`. Em tutorial antigo aparece a forma `GROUP BY TUMBLE(...)` com `TUMBLE_START`, que ainda roda mas está marcada como obsoleta na documentação.
 
 O conceito que sustenta isso é a **dualidade stream/tabela**: um stream é o log de mudanças de uma tabela, e uma tabela é o estado acumulado de um stream. São a mesma informação vista de dois ângulos.
 
@@ -422,7 +429,7 @@ A diferença entre retract e upsert é sutil e importa na hora de escolher o des
 
 Isso leva à armadilha clássica, que dá para prever antes de cair nela. Você escreve um `GROUP BY` contínuo e aponta o resultado para um tópico Kafka comum. O conector Kafka padrão é append-only, e o resultado da sua consulta é um fluxo de correções, não de inserções. O job não chega nem a subir: o planejador rejeita a consulta com uma mensagem do tipo "table sink doesn't support consuming update changes which is produced by node GroupAggregate". A falha na hora do planejamento é uma boa notícia, porque o modo silencioso de errar isso seria gravar as retrações como se fossem eventos normais e ter um consumidor lá na frente somando tudo duas vezes.
 
-Existem três saídas, e a escolha diz mais sobre o problema do que sobre o Flink. A primeira é usar um sink que aceite atualizações, como `upsert-kafka` ou JDBC com chave primária declarada. A segunda é fazer o resultado parar de mudar, agrupando por janela em vez de agrupar de forma contínua: quando a janela fecha, o valor é final e vira uma inserção só. A terceira, disponível a partir da 2.3, é converter explicitamente entre as formas com `FROM_CHANGELOG` e `TO_CHANGELOG`, que é o que descrevo no post sobre o Flink 2.3.
+Existem três saídas, e a escolha diz mais sobre o problema do que sobre o Flink. A primeira é usar um sink que aceite atualizações, como `upsert-kafka` ou JDBC com chave primária declarada. A segunda é fazer o resultado parar de mudar, agrupando por janela em vez de agrupar de forma contínua: quando a janela fecha, o valor é final e vira uma inserção só. A terceira, disponível a partir da 2.3, é converter explicitamente entre as formas com os operadores `FROM_CHANGELOG` e `TO_CHANGELOG`.
 
 Para quem vem de dados, essa é a porta de entrada mais rápida, dá para chegar longe sem escrever uma linha de Java.
 
@@ -521,7 +528,7 @@ Ortogonal a isso está o gerenciador de recursos: standalone (você mesmo sobe o
 
 No Kubernetes existem três caminhos, e vale entender a diferença porque eles resolvem problemas distintos.
 
-O primeiro é **standalone no Kubernetes**: você escreve dois `Deployment`, um para o JobManager e outro para o TaskManager, um `Service` e um `ConfigMap` com o `flink-conf.yaml`. O Flink não sabe que está no Kubernetes, ele só vê processos que se registram. Funciona, e é transparente, mas a escala é sua: mudar paralelismo é mudar réplicas na mão, e fazer upgrade com savepoint é uma sequência de comandos que alguém precisa lembrar de executar na ordem certa.
+O primeiro é **standalone no Kubernetes**: você escreve dois `Deployment`, um para o JobManager e outro para o TaskManager, um `Service` e um `ConfigMap` com o `config.yaml` (o antigo `flink-conf.yaml` deixou de ser suportado na 2.0). O Flink não sabe que está no Kubernetes, ele só vê processos que se registram. Funciona, e é transparente, mas a escala é sua: mudar paralelismo é mudar réplicas na mão, e fazer upgrade com savepoint é uma sequência de comandos que alguém precisa lembrar de executar na ordem certa.
 
 O segundo é o **native Kubernetes**, em que o próprio JobManager fala com a API do Kubernetes e cria os pods de TaskManager que faltam para atender o paralelismo pedido. Você submete com `flink run-application -t kubernetes-application` e não escreve manifesto de TaskManager nenhum. O cluster passa a se dimensionar de acordo com o job, e não o contrário.
 
@@ -534,13 +541,13 @@ metadata:
   name: otlp-processor
 spec:
   image: registry.example.com/otlp-processor:1.4.0
-  flinkVersion: v2_0
+  flinkVersion: v2_3
   serviceAccount: flink
   flinkConfiguration:
     taskmanager.numberOfTaskSlots: "4"
     state.backend.type: rocksdb
-    state.checkpoints.dir: s3://flink-state/otlp-processor/checkpoints
-    state.savepoints.dir: s3://flink-state/otlp-processor/savepoints
+    execution.checkpointing.dir: s3://flink-state/otlp-processor/checkpoints
+    execution.checkpointing.savepoint-dir: s3://flink-state/otlp-processor/savepoints
     execution.checkpointing.interval: "60s"
     high-availability.type: kubernetes
     high-availability.storageDir: s3://flink-state/otlp-processor/ha
@@ -600,15 +607,15 @@ Precisa ser SSD local, não volume de rede. O RocksDB é uma LSM tree: escreve e
 
 Para o tamanho, a conta parte do estado lógico: número de chaves ativas vezes o tamanho do estado por chave, dividido pelo paralelismo, dá o estado por TaskManager. Depois disso, multiplique. Duas a três vezes é uma margem razoável, porque a compactação precisa de espaço para escrever os arquivos novos antes de apagar os antigos, e porque os checkpoints incrementais mantêm arquivos referenciados por snapshots anteriores que ainda não foram descartados. Dez milhões de chaves com 1 KB de estado cada dão 10 GB de estado lógico; em três TaskManagers, isso é algo entre 7 e 10 GB de disco em cada um.
 
-No Kubernetes, isso significa escolher entre `emptyDir` e volume persistente. Com `emptyDir`, o disco morre com o pod, e um restart obriga o TaskManager a baixar o estado inteiro do armazenamento remoto antes de voltar a processar, o que em estados grandes é a diferença entre segundos e muitos minutos de recuperação. Com um volume persistente e `state.backend.local-recovery: true`, a cópia local sobrevive ao restart e a recuperação lê do disco em vez da rede. É mais complexidade em troca de tempo de recuperação, e a escolha depende de quanto o atraso custa.
+No Kubernetes, isso significa escolher entre `emptyDir` e volume persistente. Com `emptyDir`, o disco morre com o pod, e um restart obriga o TaskManager a baixar o estado inteiro do armazenamento remoto antes de voltar a processar, o que em estados grandes é a diferença entre segundos e muitos minutos de recuperação. Com um volume persistente e a recuperação local ligada (`execution.checkpointing.local-backup.enabled: true` para manter a cópia local e `execution.state-recovery.from-local: true` para restaurar a partir dela), a cópia local sobrevive ao restart e a recuperação lê do disco em vez da rede. É mais complexidade em troca de tempo de recuperação, e a escolha depende de quanto o atraso custa.
 
 ### S3 e o sistema de arquivos remoto
 
 Aqui está a confusão que eu mesmo tinha antes de estudar: **o S3 não é onde o estado vive, é onde as cópias dele são guardadas**. O estado quente está no heap ou no disco local do TaskManager, e é lá que ele é lido e escrito a cada evento. O S3 entra em quatro momentos, e todos eles são periódicos ou excepcionais.
 
-O primeiro são os checkpoints. A cada intervalo configurado, cada operador escreve seu estado em `state.checkpoints.dir`. É isso que sobrevive à perda simultânea de todos os pods.
+O primeiro são os checkpoints. A cada intervalo configurado, cada operador escreve seu estado em `execution.checkpointing.dir`. É isso que sobrevive à perda simultânea de todos os pods.
 
-O segundo são os savepoints, em `state.savepoints.dir`, que é o mesmo mecanismo com outro ciclo de vida: eles são seus, não são apagados pelo Flink, e é deles que sai o upgrade sem perder estado.
+O segundo são os savepoints, em `execution.checkpointing.savepoint-dir`, que é o mesmo mecanismo com outro ciclo de vida: eles são seus, não são apagados pelo Flink, e é deles que sai o upgrade sem perder estado.
 
 O terceiro são os metadados de alta disponibilidade, em `high-availability.storageDir`. O ConfigMap do Kubernetes é pequeno demais para guardar o grafo do job e os ponteiros completos, então ele guarda apenas a referência e o conteúdo fica no armazenamento remoto.
 
@@ -616,9 +623,9 @@ O quarto, quando existe, são os próprios dados: uma fonte que lê Parquet de u
 
 A razão de ser S3, e não um disco compartilhado, é que a durabilidade precisa ser independente do cluster. Um checkpoint que está no mesmo hardware que o job não protege contra a perda desse hardware. O armazenamento de objetos é barato, replicado e continua existindo depois de o cluster inteiro deixar de existir, que é precisamente a propriedade que faz um job de streaming ser recuperável. GCS, Azure Blob e HDFS ocupam o mesmo lugar na arquitetura, com outra letra no esquema da URI.
 
-A configuração tem uma pegadinha que custa tempo. O Flink traz duas implementações de S3, e elas não são intercambiáveis. A `flink-s3-fs-presto` é a indicada para checkpoints, porque é rápida com arquivos pequenos e não depende de renomear objetos, operação que o S3 não tem de forma atômica e que emula com uma cópia seguida de uma remoção. A `flink-s3-fs-hadoop` é a que suporta escrita recuperável, que é o que o sink de arquivos precisa para fazer upload multipart e confirmar só no checkpoint. Muita gente instala as duas e usa `s3p://` para o estado e `s3a://` para os dados. As duas são plugins e precisam ir para `/opt/flink/plugins/`, cada uma em seu próprio diretório, e não para `lib/`. No `lib/` elas carregam no classloader principal e conflitam entre si.
+A configuração tem uma pegadinha que custa tempo. O Flink traz duas implementações maduras de S3, e elas não são intercambiáveis. A `flink-s3-fs-presto` é a indicada para checkpoints, porque é rápida com arquivos pequenos e não depende de renomear objetos, operação que o S3 não tem de forma atômica e que emula com uma cópia seguida de uma remoção. A `flink-s3-fs-hadoop` é a que suporta escrita recuperável, que é o que o sink de arquivos precisa para fazer upload multipart e confirmar só no checkpoint. Muita gente instala as duas e usa `s3p://` para o estado e `s3a://` para os dados. As duas são plugins e precisam ir para `/opt/flink/plugins/`, cada uma em seu próprio diretório, e não para `lib/`. No `lib/` elas carregam no classloader principal e conflitam entre si. A 2.3 trouxe uma terceira, a `flink-s3-fs-native`, escrita sobre o AWS SDK v2 e sem dependência do Hadoop, mas ela ainda é experimental.
 
-O último ponto é sobre o intervalo de checkpoint, que parece uma configuração de latência e é também uma conta de custo. Cada checkpoint escreve pelo menos um arquivo por subtarefa com estado. Um job com paralelismo 200 e checkpoint a cada 10 segundos produz na ordem de setenta mil objetos por hora, e o S3 cobra por requisição além de limitar a taxa por prefixo. Isso aparece como latência de checkpoint subindo e, no limite, como checkpoint expirando por timeout. Duas defesas ajudam: subir o `state.storage.fs.memory-threshold` para que estados pequenos viajem dentro do arquivo de metadados em vez de virarem objetos separados, e aceitar um intervalo maior. Um minuto entre checkpoints é um valor comum, e o que ele custa é apenas a quantidade de trabalho que precisa ser refeita depois de uma falha.
+O último ponto é sobre o intervalo de checkpoint, que parece uma configuração de latência e é também uma conta de custo. Cada checkpoint escreve pelo menos um arquivo por subtarefa com estado. Um job com paralelismo 200 e checkpoint a cada 10 segundos produz na ordem de setenta mil objetos por hora, e o S3 cobra por requisição além de limitar a taxa por prefixo. Isso aparece como latência de checkpoint subindo e, no limite, como checkpoint expirando por timeout. Duas defesas ajudam: subir o `execution.checkpointing.data-inline-threshold` para que estados pequenos viajem dentro do arquivo de metadados em vez de virarem objetos separados, e aceitar um intervalo maior. Um minuto entre checkpoints é um valor comum, e o que ele custa é apenas a quantidade de trabalho que precisa ser refeita depois de uma falha.
 
 ## O ecossistema em volta
 
@@ -647,7 +654,7 @@ O primeiro é o problema dos arquivos pequenos. O sink do Iceberg confirma o que
 
 O segundo é o catálogo, que quase sempre é lembrado tarde. É fácil pensar no formato de tabela e esquecer que alguém precisa saber que a tabela existe. Sem catálogo configurado, o `CREATE TABLE` do Flink SQL vive só na sessão e some quando o cliente fecha, e o Trino do outro lado não enxerga nada do que foi criado. Escolher o catálogo é o que faz Flink e os outros motores estarem falando da mesma tabela, em vez de dos mesmos arquivos por coincidência.
 
-O terceiro é a razão de existir uma feature store, que demorei a entender. O problema que ela resolve não é de armazenamento, é de consistência: se a feature "média de compras nos últimos 30 minutos" é calculada por um job Flink na inferência e por uma query SQL no treino, as duas vão discordar em algum detalhe, e o modelo passa a ver em produção dados diferentes dos que viu ao aprender. Manter uma definição só, alimentada pelo mesmo job, é o ponto. E vale notar que parte disso está migrando para dentro do próprio Flink com as funções de modelo da 2.1 e 2.2, que descrevo no post sobre o Flink 2.3.
+O terceiro é a razão de existir uma feature store, que demorei a entender. O problema que ela resolve não é de armazenamento, é de consistência: se a feature "média de compras nos últimos 30 minutos" é calculada por um job Flink na inferência e por uma query SQL no treino, as duas vão discordar em algum detalhe, e o modelo passa a ver em produção dados diferentes dos que viu ao aprender. Manter uma definição só, alimentada pelo mesmo job, é o ponto. E vale notar que parte disso está migrando para dentro do próprio Flink, com as funções de modelo que chegaram ao Flink SQL na 2.1 e na 2.2.
 
 ## Complexidades
 

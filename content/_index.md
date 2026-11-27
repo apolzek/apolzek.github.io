@@ -9,6 +9,7 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
 {{% index-list %}}
 ## 2026 - Novembro
 
+- <a class="aor-index-list__main-link" href="/2026/11/27/apache-flink-aprendendo-em-publico-parte-1/" title="Os conceitos básicos de Apache Flink, revisados e atualizados para a linha 2.x: arquitetura, paralelismo, tempo, watermarks, estado, checkpoints, Flink SQL e deploy, com índice para navegar pelo caminho inteiro.">Apache Flink: conceitos básicos revisados</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/apache-flink/">#apache-flink</a><a class="aor-tag-link" href="/tags/data-engineering/">#data-engineering</a><a class="aor-tag-link" href="/tags/aprendendo-em-publico/">#aprendendo-em-publico</a></span>
 - <a class="aor-index-list__main-link" href="/2026/11/03/a-complexidade-escondida-nas-coisas-simples/" title="Um ensaio sobre a complexidade que mora por baixo do que parece simples: o corpo que luta para continuar vivo e cai por um detalhe, a gota d&#39;água que pode matar a sede ou matar, a mente que muda para sempre depois de um único dia, e o nascer e o pôr do sol que só acontecem porque uma quantidade absurda de coisas dá certo ao mesmo tempo.">A complexidade escondida nas coisas simples</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/filosofia/">#filosofia</a></span>
 
 ## 2026 - Outubro
@@ -33,7 +34,6 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
 
 ## 2026 - Agosto
 
-- <a class="aor-index-list__main-link" href="/2026/08/30/apache-flink-aprendendo-em-publico-parte-1/" title="Primeira parte de um estudo em público sobre Apache Flink: conceitos, arquitetura e os primeiros experimentos, com índice para navegar pelo caminho inteiro.">Aprendendo Apache Flink parte 1</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/apache-flink/">#apache-flink</a><a class="aor-tag-link" href="/tags/data-engineering/">#data-engineering</a><a class="aor-tag-link" href="/tags/aprendendo-em-publico/">#aprendendo-em-publico</a></span>
 - <a class="aor-index-list__main-link" href="/2026/08/04/mito-de-er/" title="Um texto sobre o Mito de Er, da República de Platão: o que a leitura despertou numa fase da vida em que ela se fez necessária, mesmo sem os fundamentos para compreendê-la por completo.">Mito de Er</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/filosofia/">#filosofia</a><a class="aor-tag-link" href="/tags/leitura/">#leitura</a></span>
 
 ## 2026 - Julho
@@ -60,9 +60,15 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
 <section class="aor-index-month" aria-labelledby="aor-grid-2026-11">
   <div class="aor-index-month__header">
     <h2 id="aor-grid-2026-11">2026 - Novembro</h2>
-    <span>1 post</span>
+    <span>2 posts</span>
   </div>
   <div class="aor-post-grid">
+<article class="aor-post-card" title="Os conceitos básicos de Apache Flink, revisados e atualizados para a linha 2.x: arquitetura, paralelismo, tempo, watermarks, estado, checkpoints, Flink SQL e deploy, com índice para navegar pelo caminho inteiro.">
+  <time class="aor-post-card__date" datetime="2026-11-27">27/11/2026</time>
+  <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/11/27/apache-flink-aprendendo-em-publico-parte-1/">Apache Flink: conceitos básicos revisados</a></h3>
+  <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/tags/apache-flink/">#apache-flink</a><a class="aor-tag-link" href="/tags/data-engineering/">#data-engineering</a><a class="aor-tag-link" href="/tags/aprendendo-em-publico/">#aprendendo-em-publico</a></span>
+  <p class="aor-post-card__description">Os conceitos básicos de Apache Flink, revisados e atualizados para a linha 2.x: arquitetura, paralelismo, tempo, watermarks, estado, checkpoints, Flink SQL e deploy, com índice para navegar pelo caminho inteiro.</p>
+</article>
 <article class="aor-post-card" title="Um ensaio sobre a complexidade que mora por baixo do que parece simples: o corpo que luta para continuar vivo e cai por um detalhe, a gota d&#39;água que pode matar a sede ou matar, a mente que muda para sempre depois de um único dia, e o nascer e o pôr do sol que só acontecem porque uma quantidade absurda de coisas dá certo ao mesmo tempo.">
   <time class="aor-post-card__date" datetime="2026-11-03">03/11/2026</time>
   <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/11/03/a-complexidade-escondida-nas-coisas-simples/">A complexidade escondida nas coisas simples</a></h3>
@@ -174,15 +180,9 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
 <section class="aor-index-month" aria-labelledby="aor-grid-2026-08">
   <div class="aor-index-month__header">
     <h2 id="aor-grid-2026-08">2026 - Agosto</h2>
-    <span>2 posts</span>
+    <span>1 post</span>
   </div>
   <div class="aor-post-grid">
-<article class="aor-post-card" title="Primeira parte de um estudo em público sobre Apache Flink: conceitos, arquitetura e os primeiros experimentos, com índice para navegar pelo caminho inteiro.">
-  <time class="aor-post-card__date" datetime="2026-08-30">30/08/2026</time>
-  <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/08/30/apache-flink-aprendendo-em-publico-parte-1/">Aprendendo Apache Flink parte 1</a></h3>
-  <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/tags/apache-flink/">#apache-flink</a><a class="aor-tag-link" href="/tags/data-engineering/">#data-engineering</a><a class="aor-tag-link" href="/tags/aprendendo-em-publico/">#aprendendo-em-publico</a></span>
-  <p class="aor-post-card__description">Primeira parte de um estudo em público sobre Apache Flink: conceitos, arquitetura e os primeiros experimentos, com índice para navegar pelo caminho inteiro.</p>
-</article>
 <article class="aor-post-card" title="Um texto sobre o Mito de Er, da República de Platão: o que a leitura despertou numa fase da vida em que ela se fez necessária, mesmo sem os fundamentos para compreendê-la por completo.">
   <time class="aor-post-card__date" datetime="2026-08-04">04/08/2026</time>
   <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/08/04/mito-de-er/">Mito de Er</a></h3>
