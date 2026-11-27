@@ -23,7 +23,7 @@ A vida, no fundo, é teimosa. Ela quer continuar. O **Spinoza** dizia que toda c
 
 E aí vem a parte que me deixa pensando. Esse mesmo corpo, capaz de tanta coisa, pode parar por causa de algo minúsculo. Algumas gotas de um veneno que trava uma única enzima. Uma bactéria que entrou no lugar errado. Um coágulo do tamanho de um grão de arroz que fechou a artéria errada. Um projétil que acerta um ponto específico. Não precisa destruir o corpo inteiro. Basta atingir **uma peça crítica**.
 
-Quem trabalha com sistemas conhece bem esse conceito: o *ponto único de falha*. Você pode ter redundância em tudo, mas se existe uma peça da qual todas as outras dependem, ela é o seu calcanhar. E o corpo humano, por mais genial que seja, tem os seus. O cérebro precisa de oxigênio sem parar; alguns minutos sem ele já causam dano permanente. O coração não tem substituto. Os pesquisadores **John Doyle** e **Jean Carlson** descreveram esse tipo de sistema com uma expressão que resume tudo: **"robusto, porém frágil"**. Quanto mais um sistema se especializa em resistir aos problemas comuns, mais ele fica exposto a um tipo de problema raro e específico.
+Quem trabalha com sistemas conhece bem esse conceito: o *ponto único de falha*. Você pode ter redundância em tudo, mas se existe uma peça da qual todas as outras dependem, ela é o seu calcanhar. E o corpo humano, por mais genial que seja, tem os seus. O cérebro precisa de oxigênio sem parar; alguns minutos sem ele já causam dano permanente. O coração não tem substituto. Os pesquisadores **John Doyle** e **Jean Carlson** descreveram esse tipo de sistema com uma expressão que resume tudo: **"robusto, porém frágil"** (*robust yet fragile*), no artigo [*Complexity and robustness*](https://www.pnas.org/doi/10.1073/pnas.012582499) (PNAS, 2002). Quanto mais um sistema se especializa em resistir aos problemas comuns, mais ele fica exposto a um tipo de problema raro e específico.
 
 Isso não é defeito, é o preço da complexidade. Uma pedra não morre porque nunca esteve viva. Só quem tem muita coisa funcionando junto pode perder tudo por causa de uma coisa só.
 
@@ -34,6 +34,8 @@ O **Pascal** escreveu algo nessa linha que eu nunca esqueci. Ele disse que o hom
 Falando em gota d'água. Aprendemos na escola que água é H₂O: dois hidrogênios e um oxigênio. Simples, né? Uma das primeiras fórmulas que todo mundo decora.
 
 Só que uma gota de verdade nunca é só H₂O. Primeiro que, numa única gota, existem algo em torno de **1,7 sextilhão de moléculas** de água. É um número com 21 zeros. Mais moléculas numa gota do que estrelas que a gente consegue imaginar. E entre essas moléculas tem um monte de visitantes: cálcio, magnésio, sódio, potássio, cloro, gases dissolvidos como oxigênio e gás carbônico, às vezes ferro, às vezes flúor. Pode ter bactérias, vírus, algas microscópicas. Pode ter chumbo de cano velho, mercúrio de garimpo, agrotóxico que escorreu da lavoura, microplástico que hoje já se acha em quase todo lugar.
+
+> "Eu olho para este universo físico, químico, matemático, biológico, sociológico e psicológico e vejo-o como uma complexidade estarrecedora: nada é simples, nem uma gota d'água e nem um átomo. Somente a ignorância brutal do ser humano considera tudo simples. Tudo é extremamente complexo, e eu me curvo diante de uma vontade suprema. Eu creio em Deus."
 
 E aqui está o ponto. Olhando, você não vê diferença nenhuma. Duas gotas idênticas a olho nu, transparentes, sem cheiro. Uma mata a sede. A outra adoece ou mata. A diferença está toda no que não aparece.
 
