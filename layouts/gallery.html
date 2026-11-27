@@ -1,0 +1,94 @@
+{{ define "main" }}
+  {{- /* Gallery: fotos com legenda em grade quadrada de 3 colunas. Dados em
+         data/gallery.yml. Clique abre a foto com legenda e data. */ -}}
+  {{- $items := sort hugo.Data.gallery "date" "desc" -}}
+  <h1 class="opt"><span class="rt">{{ len $items }} images</span><strong>Título</strong> : {{ .Title }}</h1>
+  {{- with .Content }}<div class="details">{{ . }}</div>{{ end }}
+  <div class="gallery" id="gallery-grid">
+    {{- range $g := $items }}
+    {{- $caption := $g.caption -}}
+    {{- $dateLabel := (time $g.date).Format "02/01/2006" -}}
+    <button type="button" class="gallery-item" id="m-{{ path.Base $g.image | urlize }}" data-image="{{ $g.image }}" data-alt="{{ $g.alt | default "" }}" data-caption="{{ $caption | default "" }}" data-date="{{ $dateLabel }}" aria-label="{{ $caption | default $dateLabel }}">
+      <img src="{{ $g.image }}" alt="{{ $g.alt | default "" }}" loading="lazy" decoding="async">
+      <span class="gallery__bar">{{ $dateLabel }}{{ with $caption }} · {{ . }}{{ end }}</span>
+    </button>
+    {{- end }}
+  </div>
+
+  <div class="lightbox" id="gallery-lightbox" hidden role="dialog" aria-modal="true" aria-label="Gallery">
+    <div class="lightbox__box">
+      <button type="button" class="search-close-button" id="gallery-lightbox-close">[ {{ T "close" }} ]</button>
+      <img id="gallery-lightbox-img" src="" alt="">
+      <p class="lightbox__caption" id="gallery-lightbox-caption"></p>
+    </div>
+  </div>
+
+  <style>
+    .gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--color-rule); border-bottom: 2px solid var(--color-rule-hard); }
+    .gallery-item { position: relative; display: block; width: 100%; aspect-ratio: 1 / 1; padding: 0; border: 0; overflow: hidden; cursor: pointer; background: var(--color-bg); }
+    .gallery-item img { display: block; width: 100%; height: 100%; object-fit: cover; image-rendering: auto; filter: saturate(0.9); }
+    .gallery-item:hover img { filter: none; }
+    .gallery__bar {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      padding: 3px 5px; font: 10px var(--font-sans); text-align: left;
+      background: var(--color-search-bg); color: var(--color-search-fg);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      transform: translateY(100%); transition: transform 120ms ease;
+    }
+    .gallery-item:hover .gallery__bar, .gallery-item:focus-visible .gallery__bar { transform: none; background: var(--color-toc-hover-bg); color: var(--color-toc-hover-fg); }
+    .gallery-item:focus-visible { outline: 2px solid var(--color-focus); outline-offset: -2px; }
+    @media (max-width: 700px) { .gallery__bar { display: none; } }
+  </style>
+
+  <script>
+    (function () {
+      var box = document.getElementById('gallery-lightbox');
+      var img = document.getElementById('gallery-lightbox-img');
+      var caption = document.getElementById('gallery-lightbox-caption');
+      var closeBtn = document.getElementById('gallery-lightbox-close');
+      var tiles = Array.prototype.slice.call(document.querySelectorAll('.gallery-item'));
+      var current = -1;
+
+      function show(i) {
+        if (i < 0 || i >= tiles.length) return;
+        current = i;
+        var t = tiles[i];
+        img.src = t.getAttribute('data-image');
+        img.alt = t.getAttribute('data-alt') || '';
+        caption.textContent = '';
+        var text = t.getAttribute('data-caption') || '';
+        if (text) caption.appendChild(document.createTextNode(text));
+        var time = document.createElement('time');
+        time.textContent = t.getAttribute('data-date') || '';
+        caption.appendChild(time);
+        box.hidden = false;
+        document.body.style.overflow = 'hidden';
+        closeBtn.focus();
+      }
+      function close() {
+        box.hidden = true;
+        img.src = '';
+        document.body.style.overflow = '';
+        if (current >= 0) tiles[current].focus();
+      }
+
+      document.addEventListener('click', function (e) {
+        var tile = e.target.closest('.gallery-item');
+        if (tile) { e.preventDefault(); show(tiles.indexOf(tile)); return; }
+        if (!box.hidden && (e.target === box || e.target.closest('#gallery-lightbox-close'))) close();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (box.hidden) return;
+        if (e.key === 'Escape') close();
+        else if (e.key === 'ArrowRight') show(current + 1);
+        else if (e.key === 'ArrowLeft') show(current - 1);
+      });
+
+      // Link da busca global (/gallery/#m-<imagem>) abre a foto direto.
+      if (location.hash) {
+        var target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+        if (target && tiles.indexOf(target) !== -1) show(tiles.indexOf(target));
+      }
+    })();
+  </script>
+{{ end }}

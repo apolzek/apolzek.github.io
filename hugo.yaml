@@ -22,8 +22,8 @@ languages:
         - name: Thoughts
           url: "/thoughts/"
           weight: 3
-        - name: Moments
-          url: "/moments/"
+        - name: Gallery
+          url: "/gallery/"
           weight: 4
         - name: Cheatsheet
           url: "/cheatsheet/"

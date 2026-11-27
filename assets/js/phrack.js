@@ -11,7 +11,7 @@
   var status = document.getElementById("search-status");
   if (!overlay || !input || !box) return;
 
-  var KINDS = { post: "post", thought: "thought", moment: "moment", cheatsheet: "cheatsheet" };
+  var KINDS = { post: "post", thought: "thought", gallery: "gallery", cheatsheet: "cheatsheet" };
   var data = null;
   var loading = false;
   var active = 0;

@@ -1,5 +1,5 @@
 {{- /* Índice da busca global (overlay [ Search ] e "digite na home").
-       Posts, thoughts, moments e cheatsheet. Campos: k=tipo, t=título,
+       Posts, thoughts, gallery e cheatsheet. Campos: k=tipo, t=título,
        u=URL, d=data, g=tags, s=descrição, c=texto. Baixado só quando a
        busca abre pela primeira vez. */ -}}
 {{- $items := slice -}}
@@ -25,11 +25,11 @@
       "c" $text
   ) -}}
 {{- end -}}
-{{- range hugo.Data.moments -}}
+{{- range hugo.Data.gallery -}}
   {{- $items = $items | append (dict
-      "k" "moment"
-      "t" (.caption | default .alt | default "moment")
-      "u" (printf "/moments/#m-%s" (path.Base .image | urlize))
+      "k" "gallery"
+      "t" (.caption | default .alt | default "gallery")
+      "u" (printf "/gallery/#m-%s" (path.Base .image | urlize))
       "d" .date
       "s" (.alt | default "")
       "c" ""

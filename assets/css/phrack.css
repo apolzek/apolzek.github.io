@@ -470,7 +470,7 @@ pre.mermaid { background: none; border: 0; text-align: center; font-family: var(
   margin-top: 6px;
 }
 
-/* --- lightbox (moments e imagem dos thoughts) ------------------------------ */
+/* --- lightbox (gallery e imagem dos thoughts) ------------------------------ */
 .lightbox {
   position: fixed;
   inset: 0;
