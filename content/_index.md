@@ -35,7 +35,7 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
 
 ## 2026 - Agosto
 
-- <a class="aor-index-list__main-link" href="/2026/08/04/mito-de-er/" title="Um texto sobre o Mito de Er, da República de Platão: o que a leitura despertou numa fase da vida em que ela se fez necessária, mesmo sem os fundamentos para compreendê-la por completo.">Mito de Er</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/filosofia/">#filosofia</a><a class="aor-tag-link" href="/tags/leitura/">#leitura</a></span>
+- <a class="aor-index-list__main-link" href="/2026/08/04/mito-de-er/" title="Um texto sobre o Mito de Er, da República de Platão: o que a leitura despertou, mesmo sem os fundamentos para compreendê-la por completo.">Mito de Er</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/filosofia/">#filosofia</a><a class="aor-tag-link" href="/tags/leitura/">#leitura</a></span>
 
 ## 2026 - Julho
 
@@ -190,11 +190,11 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
     <span>1 post</span>
   </div>
   <div class="aor-post-grid">
-<article class="aor-post-card" title="Um texto sobre o Mito de Er, da República de Platão: o que a leitura despertou numa fase da vida em que ela se fez necessária, mesmo sem os fundamentos para compreendê-la por completo.">
+<article class="aor-post-card" title="Um texto sobre o Mito de Er, da República de Platão: o que a leitura despertou, mesmo sem os fundamentos para compreendê-la por completo.">
   <time class="aor-post-card__date" datetime="2026-08-04">04/08/2026</time>
   <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/08/04/mito-de-er/">Mito de Er</a></h3>
   <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/tags/filosofia/">#filosofia</a><a class="aor-tag-link" href="/tags/leitura/">#leitura</a></span>
-  <p class="aor-post-card__description">Um texto sobre o Mito de Er, da República de Platão: o que a leitura despertou numa fase da vida em que ela se fez necessária, mesmo sem os fundamentos para compreendê-la por completo.</p>
+  <p class="aor-post-card__description">Um texto sobre o Mito de Er, da República de Platão: o que a leitura despertou, mesmo sem os fundamentos para compreendê-la por completo.</p>
 </article>
   </div>
 </section>
