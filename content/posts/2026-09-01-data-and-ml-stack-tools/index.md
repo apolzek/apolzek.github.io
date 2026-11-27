@@ -3,45 +3,74 @@ title: "Ferramentas do stack de dados e ML por categoria"
 slug: "data-and-ml-stack-tools"
 date: '2026-09-01T12:00:00-03:00'
 draft: false
-description: "Uma tabela por categoria das ferramentas do stack de dados e ML: para que serve cada tecnologia e onde ela se encaixa numa plataforma de dados moderna, com três arquiteturas de referência."
+description: "Uma tabela por categoria das ferramentas do stack de dados e ML: para que serve cada tecnologia e onde ela se encaixa numa plataforma de dados moderna, as técnicas e ferramentas de observabilidade de dados e quatro arquiteturas de referência."
 tags:
 - data-engineering
 - machine-learning
-minute: 7
+minute: 11
 ---
 
 | Categoria | Ferramentas / Tecnologias | Uso principal |
 |---|---|---|
-| **Machine Learning** | MLflow, Kubeflow, Feast, Ray, TensorFlow, PyTorch, Scikit-learn, XGBoost, LightGBM | Treino, tracking, serving, feature store e MLOps |
-| **Data Science / Analytics** | Python, Jupyter, Pandas, Polars, NumPy, SciPy, R, Apache Arrow | Exploração de dados, análise estatística e preparação de dados |
+| **Frameworks de ML** | TensorFlow, PyTorch, Scikit-learn, XGBoost, LightGBM, Ray | Treino de modelos, do clássico ao deep learning, e treino distribuído |
+| **Data Science / Analytics** | Python, Jupyter, Pandas, Polars, NumPy, SciPy, R | Exploração de dados, análise estatística e preparação de dados |
 | **BI / Analytics** | Apache Superset, Metabase, Grafana, Power BI, Tableau | Dashboards, exploração e visualização de dados |
-| **Engenharia de Dados** | Apache Spark, Apache Flink, Apache Beam, Apache Kafka, dbt | Processamento de dados, pipelines e transformações |
-| **Ingestão / CDC** | Apache Kafka, Debezium, Kafka Connect, Apache NiFi, Airbyte, Fivetran | Ingestão de dados, CDC e integração de dados |
+| **Processamento batch** | Apache Spark, Apache Beam | Processamento distribuído de grandes volumes |
+| **Ingestão / CDC** | Debezium, Kafka Connect, Apache NiFi, Airbyte, Fivetran | Ingestão de dados, CDC e integração de dados |
+| **Streaming / Processamento de eventos** | Apache Kafka, Redpanda, Apache Pulsar (brokers); Apache Flink (processamento) | Transporte e processamento de dados em tempo real |
 | **Orquestração de workflows** | Apache Airflow, Dagster, Prefect, Argo Workflows | Orquestração de pipelines e workflows |
-| **Transformação de dados** | dbt, Apache Spark, SQLMesh, Dataform | Transformação, modelagem e ELT |
+| **Transformação de dados** | dbt, SQLMesh, Dataform | Transformação, modelagem e ELT dentro do warehouse ou lakehouse |
 | **Qualidade de dados** | Great Expectations, Soda, dbt Tests, Deequ | Validação e checagens de qualidade |
-| **Catálogo / Governança** | OpenMetadata, DataHub, Apache Atlas, Amundsen, OpenLineage | Catálogo de dados, linhagem e governança |
-| **Armazenamento do data lake** | Amazon S3, MinIO, Google Cloud Storage, Azure Data Lake Storage | Object storage e data lake |
+| **Observabilidade de dados** | Elementary, Monte Carlo, OpenLineage, Marquez, Evidently | Frescor, volume, schema, anomalias, linhagem e drift (detalhes abaixo) |
+| **Catálogo / Governança** | OpenMetadata, DataHub, Apache Atlas | Catálogo de dados, linhagem e governança |
+| **Armazenamento do data lake** | Amazon S3, Google Cloud Storage, Azure Data Lake Storage, MinIO | Object storage e data lake |
 | **Formatos de arquivo** | Apache Parquet, Apache ORC, Apache Avro, Apache Arrow | Formatos de armazenamento e intercâmbio de dados |
 | **Formatos de tabela abertos** | Apache Iceberg, Apache Hudi, Delta Lake, Apache Paimon | Tabelas ACID, evolução de schema, snapshots e time travel |
 | **Catálogo de lakehouse** | Apache Polaris, Project Nessie, AWS Glue Catalog, Hive Metastore | Catálogo de tabelas e gestão de metadados |
-| **Engines de consulta** | Trino, Presto, DuckDB, ClickHouse, Apache Doris, StarRocks | Analytics em SQL e OLAP |
-| **Plataformas de lakehouse** | Databricks, Dremio, Starburst, Snowflake | Plataformas de data lakehouse e analytics |
+| **Engines de consulta / OLAP** | Trino, Presto, DuckDB, ClickHouse, Apache Doris, StarRocks | SQL distribuído, analytics embarcado e OLAP |
+| **Data Warehouse (gerenciado)** | Snowflake, BigQuery, Redshift | Warehouse como serviço, com armazenamento e computação gerenciados |
+| **Plataformas de lakehouse** | Databricks, Dremio, Starburst | Plataformas de data lakehouse e analytics |
 | **Feature Store** | Feast, Hopsworks, Tecton | Gestão e serving de features de ML |
-| **Pipelines de ML** | Kubeflow Pipelines, MLflow, Airflow, Metaflow, Flyte | Pipelines de machine learning |
-| **Model Serving** | KServe, Seldon, NVIDIA Triton, Ray Serve, BentoML, vLLM | Inferência e serving de modelos |
-| **Experiment Tracking** | MLflow, Weights & Biases, Neptune, Comet | Acompanhamento de experimentos e métricas |
+| **Pipelines de ML** | Kubeflow Pipelines, Metaflow, Flyte | Pipelines de machine learning |
+| **Experiment Tracking** | MLflow, Weights & Biases, Comet | Acompanhamento de experimentos e métricas |
 | **Model Registry** | MLflow, Kubeflow, Vertex AI, SageMaker, Azure ML | Versionamento e ciclo de vida de modelos |
+| **Model Serving** | KServe, Seldon, NVIDIA Triton, Ray Serve, BentoML, vLLM | Inferência e serving de modelos |
 | **Bancos vetoriais** | Qdrant, Milvus, Weaviate, pgvector, Pinecone | Embeddings, busca semântica e RAG |
-| **Streaming / Processamento de eventos** | Apache Kafka, Apache Flink, Redpanda, Apache Pulsar | Processamento de dados em tempo real |
-| **Data Warehouse** | Snowflake, BigQuery, Redshift, ClickHouse, DuckDB | Analytics estruturado e OLAP |
-| **Observabilidade de dados** | OpenTelemetry, Grafana, Prometheus, OpenLineage, Marquez | Observabilidade de dados e pipelines |
+
+Algumas ferramentas aparecem em mais de uma linha porque cumprem mais de um
+papel: o MLflow faz tracking e registry, o Ray treina e serve modelos, e o
+Grafana mostra tanto dashboards de negócio quanto a saúde dos pipelines.
+
+## Observabilidade de dados
+
+Observabilidade de infraestrutura responde se o job está de pé. Observabilidade
+de dados responde se o que o job entregou está certo: um pipeline pode rodar
+verde todos os dias e gravar uma tabela vazia, duplicada ou com uma coluna que
+mudou de tipo. As técnicas que mais aparecem:
+
+| Técnica | O que verifica | Como se faz |
+|---|---|---|
+| **Frescor (freshness)** | Se a tabela foi atualizada dentro do prazo esperado | Comparar o último timestamp ou a última partição com um SLA (dbt `source freshness`, Elementary, Soda) |
+| **Volume** | Se a quantidade de linhas está dentro do normal | Contar linhas por carga ou partição e comparar com o histórico (detecção de anomalia) |
+| **Schema** | Se colunas sumiram, apareceram ou mudaram de tipo | Testes de schema, data contracts e regras de compatibilidade no schema registry |
+| **Qualidade e distribuição** | Nulos, unicidade, faixas de valor, valores aceitos | Testes declarativos (dbt tests, Great Expectations, Soda, Deequ) |
+| **Linhagem** | De onde cada tabela vem e quem depende dela | Eventos OpenLineage emitidos por Airflow, Spark, dbt e Flink, guardados no Marquez ou no DataHub |
+| **Reconciliação** | Se origem e destino batem | Comparar contagens e somas entre o banco de origem e o lake, essencial em CDC |
+| **Write-Audit-Publish (WAP)** | Que dado ruim não chegue a quem consome | Escrever num branch (Iceberg ou Nessie), validar e só então publicar no branch principal |
+| **Diff de dados** | O que uma mudança de código altera no resultado | Comparar a tabela antes e depois de mudar um modelo (o `table_diff` do SQLMesh, por exemplo) |
+| **Atraso em streaming** | Se o pipeline está acompanhando o fluxo | Consumer lag no Kafka e atraso do watermark e duração de checkpoint no Flink |
+| **Drift** | Se os dados de produção se afastaram dos de treino | Comparar distribuições de features e de predições (Evidently) |
+
+Muita gente resume as cinco primeiras em "pilares" da observabilidade de dados:
+frescor, volume, schema, distribuição e linhagem. Na prática, o que transforma
+isso em operação é ter, para cada tabela importante, um dono, um SLA e um
+alerta que chegue a quem pode agir.
 
 ## Arquiteturas de referência
 
-Três jeitos de ligar as ferramentas acima num stack que funciona. Todas têm as
-mesmas três camadas, ingestão, processamento e armazenamento, mais o que quer
-que consuma o resultado.
+Quatro jeitos de ligar as ferramentas acima. As três primeiras têm as mesmas
+camadas, ingestão, processamento e armazenamento, mais o que consome o
+resultado. A quarta mostra o que observa os dados enquanto eles passam.
 
 ### 1. Lakehouse em batch
 
@@ -50,33 +79,41 @@ ELT noturno e de hora em hora. O padrão quando a latência é medida em horas.
 ```mermaid
 flowchart TB
   subgraph ing["Ingestão"]
-    airbyte["Airbyte"]
+    pg["PostgreSQL"]
+    saas["APIs e SaaS"]
     debezium["Debezium + Kafka Connect"]
+    airbyte["Airbyte"]
   end
-  subgraph proc["Processamento"]
+  subgraph load["Carga"]
     spark["Apache Spark"]
-    dbt["dbt"]
-    ge["Great Expectations"]
   end
   subgraph sto["Armazenamento"]
     iceberg["Apache Iceberg"]
-    s3["MinIO / S3"]
+    s3["Object storage (S3)"]
     polaris["Apache Polaris"]
+  end
+  subgraph tr["Transformação"]
+    dbt["dbt"]
+    ge["Great Expectations"]
   end
   subgraph out["Consumo"]
     trino["Trino"]
     superset["Apache Superset"]
   end
 
-  airbyte --> spark
-  debezium --> spark
-  spark --> dbt --> ge --> iceberg
+  pg --> debezium --> spark
+  saas --> airbyte --> spark
+  spark -- "camada bruta (bronze)" --> iceberg
+  iceberg <-- "silver e gold" --> dbt
+  iceberg -. "validação" .-> ge
   s3 -.- iceberg
   polaris -.- iceberg
   iceberg --> trino --> superset
 ```
 
-O Apache Airflow fica fora do desenho, disparando cada seta acima.
+O dbt não fica no caminho entre a ingestão e a tabela: ele lê e escreve dentro
+do próprio lakehouse, executando o SQL via Spark ou Trino. O Apache Airflow
+fica fora do desenho, disparando cada etapa.
 
 ### 2. Streaming
 
@@ -86,6 +123,7 @@ histórico, o store OLAP para o dashboard.
 ```mermaid
 flowchart TB
   subgraph ing["Ingestão"]
+    pg["PostgreSQL"]
     debezium["Debezium"]
     kafka["Apache Kafka"]
   end
@@ -101,7 +139,7 @@ flowchart TB
     grafana["Grafana"]
   end
 
-  debezium --> kafka --> flink
+  pg --> debezium --> kafka --> flink
   flink --> paimon --> trino
   flink --> clickhouse --> grafana
 ```
@@ -112,8 +150,8 @@ para de escrever.
 
 ### 3. ML e inferência
 
-Features escritas pelo mesmo pipeline que alimenta o treino, e um modelo servido
-a partir de um registry.
+Features escritas pelo mesmo pipeline que alimenta o treino, um modelo servido
+a partir de um registry e, ao lado, um fluxo de RAG.
 
 ```mermaid
 flowchart TB
@@ -125,8 +163,8 @@ flowchart TB
     spark["Apache Spark"]
   end
   subgraph sto["Armazenamento"]
-    feast["Feast"]
     delta["Delta Lake no S3"]
+    feast["Feast"]
     qdrant["Qdrant"]
   end
   subgraph train["Treino"]
@@ -135,23 +173,69 @@ flowchart TB
   end
   subgraph serve["Serving"]
     kserve["KServe"]
+    app["Aplicação (RAG)"]
     vllm["vLLM"]
   end
 
   kafka --> flink
-  kafka --> spark
-  flink --> feast
-  flink --> qdrant
-  spark --> delta
-  delta --> ray --> mlflow --> kserve
-  feast --> kserve
-  qdrant --> vllm
+  kafka --> spark --> delta
+  flink -- "features online" --> feast
+  delta -- "store offline" --> feast
+  feast -- "dataset de treino" --> ray --> mlflow --> kserve
+  feast -- "features na inferência" --> kserve
+  flink -- "embeddings" --> qdrant
+  app -- "busca" --> qdrant
+  app -- "prompt com contexto" --> vllm
 ```
+
+O Feast guarda as mesmas features em dois lugares: no store offline, de onde
+sai o dataset de treino, e no online, consultado na inferência. No RAG, quem
+consulta o banco vetorial é a aplicação, que depois monta o prompt e chama o
+modelo; o vLLM só gera o texto.
+
+### 4. Observabilidade de dados
+
+O que observa os pipelines das arquiteturas acima: linhagem, testes e
+publicação condicionada à validação.
+
+```mermaid
+flowchart TB
+  subgraph pipe["Pipelines"]
+    airflow["Apache Airflow"]
+    spark["Apache Spark"]
+    dbt["dbt"]
+  end
+  subgraph wap["Write-Audit-Publish"]
+    branch["Branch de auditoria no Iceberg"]
+    checks["Soda / Great Expectations"]
+    main["Branch principal (publicado)"]
+  end
+  subgraph meta["Linhagem"]
+    ol["Eventos OpenLineage"]
+    marquez["Marquez / DataHub"]
+  end
+  subgraph mon["Monitoramento"]
+    elementary["Elementary"]
+    alert["Alertas e on-call"]
+  end
+
+  spark --> branch --> checks
+  checks -- "passou" --> main
+  checks -- "falhou" --> alert
+  dbt -- "testes, frescor e volume" --> elementary --> alert
+  airflow -.-> ol
+  spark -.-> ol
+  dbt -.-> ol
+  ol --> marquez
+```
+
+A linhagem é o que transforma um alerta em diagnóstico: quando uma checagem
+falha, o Marquez ou o DataHub mostram de qual tabela o problema veio e quais
+dashboards e modelos dependem dela.
 
 ## Repositórios oficiais
 
 - [Airbyte](https://github.com/airbytehq/airbyte): ELT baseado em conectores para carregar dados num warehouse ou lake.
-- [Amundsen](https://github.com/amundsen-io/amundsen): Descoberta de dados e busca de metadados para analistas.
 - [Apache Airflow](https://github.com/apache/airflow): Agenda e monitora pipelines escritos como DAGs em Python.
 - [Apache Arrow](https://github.com/apache/arrow): Formato colunar em memória compartilhado entre engines e linguagens.
 - [Apache Atlas](https://github.com/apache/atlas): Governança de metadados e linhagem para o ecossistema Hadoop.
@@ -176,12 +260,14 @@ flowchart TB
 - [Dagster](https://github.com/dagster-io/dagster): Orquestrador construído em torno de data assets em vez de tarefas.
 - [Dataform](https://github.com/dataform-co/dataform): Workflows de transformação em SQL com gestão de dependências.
 - [DataHub](https://github.com/datahub-project/datahub): Plataforma de metadados para catálogo, linhagem e ownership.
-- [dbt](https://github.com/dbt-labs/dbt-core): Transforma selects em SQL em modelos testados, documentados e versionados.
+- [dbt](https://github.com/dbt-labs/dbt): Transforma selects em SQL em modelos testados, documentados e versionados.
 - [Debezium](https://github.com/debezium/debezium): Lê os logs de mudança do banco e os publica como eventos.
 - [Deequ](https://github.com/awslabs/deequ): Checagens de qualidade de dados expressas como jobs Spark.
 - [Delta Lake](https://github.com/delta-io/delta): Camada de armazenamento transacional sobre arquivos Parquet.
 - [Dremio](https://github.com/dremio/dremio-oss): Engine de consulta e camada semântica sobre o armazenamento do lake.
 - [DuckDB](https://github.com/duckdb/duckdb): Banco analítico que roda dentro do seu processo, sem servidor.
+- [Elementary](https://github.com/elementary-data/elementary): Observabilidade de dados nativa do dbt: testes de anomalia, frescor, volume e alertas.
+- [Evidently](https://github.com/evidentlyai/evidently): Métricas e relatórios de drift e qualidade para dados, modelos de ML e LLMs.
 - [Feast](https://github.com/feast-dev/feast): Feature store que serve as mesmas features para treino e inferência.
 - [Flyte](https://github.com/flyteorg/flyte): Workflows tipados e versionados para dados e ML no Kubernetes.
 - [Grafana](https://github.com/grafana/grafana): Dashboards sobre métricas, logs e traces.
@@ -197,26 +283,24 @@ flowchart TB
 - [Metabase](https://github.com/metabase/metabase): BI que deixa quem não é engenheiro fazer perguntas ao banco.
 - [Metaflow](https://github.com/Netflix/metaflow): Workflows em Python para data science, da Netflix.
 - [Milvus](https://github.com/milvus-io/milvus): Banco vetorial para busca por similaridade em escala.
-- [MinIO](https://github.com/minio/minio): Object storage compatível com S3 que você mesmo roda.
+- [MinIO](https://github.com/minio/minio): Object storage compatível com S3 que você mesmo roda. O repositório open source foi arquivado em 2026; a empresa passou a oferecer só a edição AIStor.
 - [MLflow](https://github.com/mlflow/mlflow): Acompanha experimentos, empacota modelos e mantém o registry.
 - [NumPy](https://github.com/numpy/numpy): Arrays e computação numérica, a base do stack Python.
 - [NVIDIA Triton](https://github.com/triton-inference-server/server): Servidor de inferência para modelos em GPU e CPU.
 - [OpenLineage](https://github.com/OpenLineage/OpenLineage): Padrão aberto para pipelines reportarem o que leram e escreveram.
 - [OpenMetadata](https://github.com/open-metadata/OpenMetadata): Catálogo, linhagem, qualidade e governança num lugar só.
-- [OpenTelemetry](https://github.com/open-telemetry/opentelemetry-specification): Padrão neutro de fornecedor para traces, métricas e logs.
 - [Pandas](https://github.com/pandas-dev/pandas): DataFrames para manipulação de dados em Python.
 - [pgvector](https://github.com/pgvector/pgvector): Tipos e índices vetoriais dentro do PostgreSQL.
 - [Polars](https://github.com/pola-rs/polars): DataFrames rápidos escritos em Rust, com engine de consulta lazy.
 - [Prefect](https://github.com/PrefectHQ/prefect): Orquestração para workflows em Python, feita para execuções dinâmicas.
 - [Presto](https://github.com/prestodb/presto): Engine SQL distribuída que consulta os dados onde eles estão.
 - [Project Nessie](https://github.com/projectnessie/nessie): Branches e commits no estilo Git para tabelas do lake.
-- [Prometheus](https://github.com/prometheus/prometheus): Banco de séries temporais e alertas para métricas.
 - [Python](https://github.com/python/cpython): A linguagem em que a maior parte deste stack é escrita e operada.
 - [PyTorch](https://github.com/pytorch/pytorch): Framework de deep learning com grafos dinâmicos.
 - [Qdrant](https://github.com/qdrant/qdrant): Engine de busca vetorial com filtros, escrita em Rust.
 - [R](https://github.com/r-devel/r-svn): Linguagem e ambiente para estatística.
 - [Ray](https://github.com/ray-project/ray): Runtime distribuído em Python para treino, tuning e serving.
-- [Redpanda](https://github.com/redpanda-data/redpanda): Broker compatível com Kafka sem JVM e sem ZooKeeper.
+- [Redpanda](https://github.com/redpanda-data/redpanda): Broker compatível com Kafka sem JVM e sem ZooKeeper. O repositório foi arquivado, e a Community Edition segue sob licença própria da Redpanda.
 - [Scikit-learn](https://github.com/scikit-learn/scikit-learn): Algoritmos clássicos de machine learning em Python.
 - [SciPy](https://github.com/scipy/scipy): Computação científica construída sobre o NumPy.
 - [Seldon](https://github.com/SeldonIO/seldon-core): Faz deploy e monitora modelos no Kubernetes.
@@ -229,6 +313,8 @@ flowchart TB
 - [Weaviate](https://github.com/weaviate/weaviate): Banco vetorial com módulos de embedding embutidos.
 - [XGBoost](https://github.com/dmlc/xgboost): Biblioteca de gradient boosting, o cavalo de batalha dos dados tabulares.
 
-O Kafka Connect vem dentro de apache/kafka, o dbt Tests dentro de dbt-core e o Ray Serve dentro de ray-project/ray, então compartilham os repositórios acima.
+O Kafka Connect vem dentro de apache/kafka, o dbt Tests dentro de dbt-labs/dbt e o Ray Serve dentro de ray-project/ray, então compartilham os repositórios acima.
 
-Sem repositório público, por serem proprietários ou serviços gerenciados: Power BI, Tableau, Fivetran, Amazon S3, Google Cloud Storage, Azure Data Lake Storage, AWS Glue Catalog, Databricks, Starburst, Snowflake, BigQuery, Redshift, Tecton, Pinecone, Weights & Biases, Neptune, Comet, Vertex AI, SageMaker e Azure ML.
+O Amundsen, que aparecia na versão anterior desta lista, foi arquivado em setembro de 2026 por inatividade.
+
+Sem repositório público, por serem proprietários ou serviços gerenciados: Power BI, Tableau, Fivetran, Amazon S3, Google Cloud Storage, Azure Data Lake Storage, AWS Glue Catalog, Databricks, Starburst, Snowflake, BigQuery, Redshift, Tecton, Pinecone, Weights & Biases, Comet, Monte Carlo, Vertex AI, SageMaker e Azure ML.
