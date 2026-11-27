@@ -10,6 +10,7 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
 ## 2026 - Novembro
 
 - <a class="aor-index-list__main-link" href="/2026/11/27/most-valuable-companies-top20-novembro-2026/" title="Um retrato do momento: as vinte empresas mais valiosas do mundo em novembro de 2026, e o que a lista diz sobre onde o valor está hoje.">As 20 empresas mais valiosas do mundo (novembro de 2026)</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/negocios/">#negocios</a><a class="aor-tag-link" href="/tags/economia/">#economia</a></span>
+- <a class="aor-index-list__main-link" href="/2026/11/27/checklist-de-concepcao-e-implementacao-de-software/" title="Perguntas para fazer antes e durante a construção de um software: propósito e valor, escopo, ambiente e modelo de execução, usuários, interface, arquitetura, dependências, dados, integrações, segurança, confiabilidade, performance, observabilidade, configuração, testes, deploy, operação, custos, documentação, evolução e a validação final.">Checklist de concepção e implementação de software</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/engenharia-de-software/">#engenharia-de-software</a><a class="aor-tag-link" href="/tags/arquitetura/">#arquitetura</a></span>
 - <a class="aor-index-list__main-link" href="/2026/11/27/apache-flink-aprendendo-em-publico-parte-1/" title="Os conceitos básicos de Apache Flink, revisados e atualizados para a linha 2.x: arquitetura, paralelismo, tempo, watermarks, estado, checkpoints, Flink SQL e deploy, com índice para navegar pelo caminho inteiro.">Apache Flink: conceitos básicos revisados</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/apache-flink/">#apache-flink</a><a class="aor-tag-link" href="/tags/data-engineering/">#data-engineering</a><a class="aor-tag-link" href="/tags/aprendendo-em-publico/">#aprendendo-em-publico</a></span>
 - <a class="aor-index-list__main-link" href="/2026/11/03/a-complexidade-escondida-nas-coisas-simples/" title="Um ensaio sobre a complexidade que mora por baixo do que parece simples: o corpo que luta para continuar vivo e cai por um detalhe, a gota d&#39;água que pode matar a sede ou matar, a mente que muda para sempre depois de um único dia, e o nascer e o pôr do sol que só acontecem porque uma quantidade absurda de coisas dá certo ao mesmo tempo.">A complexidade escondida nas coisas simples</a><br><span class="aor-post-tags aor-post-tags--index-list"><a class="aor-tag-link" href="/tags/filosofia/">#filosofia</a></span>
 
@@ -61,7 +62,7 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
 <section class="aor-index-month" aria-labelledby="aor-grid-2026-11">
   <div class="aor-index-month__header">
     <h2 id="aor-grid-2026-11">2026 - Novembro</h2>
-    <span>3 posts</span>
+    <span>4 posts</span>
   </div>
   <div class="aor-post-grid">
 <article class="aor-post-card" title="Um retrato do momento: as vinte empresas mais valiosas do mundo em novembro de 2026, e o que a lista diz sobre onde o valor está hoje.">
@@ -69,6 +70,12 @@ _Sistemas em produção, observabilidade e engenharia de confiabilidade. Documen
   <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/11/27/most-valuable-companies-top20-novembro-2026/">As 20 empresas mais valiosas do mundo (novembro de 2026)</a></h3>
   <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/tags/negocios/">#negocios</a><a class="aor-tag-link" href="/tags/economia/">#economia</a></span>
   <p class="aor-post-card__description">Um retrato do momento: as vinte empresas mais valiosas do mundo em novembro de 2026, e o que a lista diz sobre onde o valor está hoje.</p>
+</article>
+<article class="aor-post-card" title="Perguntas para fazer antes e durante a construção de um software: propósito e valor, escopo, ambiente e modelo de execução, usuários, interface, arquitetura, dependências, dados, integrações, segurança, confiabilidade, performance, observabilidade, configuração, testes, deploy, operação, custos, documentação, evolução e a validação final.">
+  <time class="aor-post-card__date" datetime="2026-11-27">27/11/2026</time>
+  <h3 class="aor-post-card__title"><a class="aor-post-card__title-link" href="/2026/11/27/checklist-de-concepcao-e-implementacao-de-software/">Checklist de concepção e implementação de software</a></h3>
+  <span class="aor-post-tags aor-post-tags--card"><a class="aor-tag-link" href="/tags/engenharia-de-software/">#engenharia-de-software</a><a class="aor-tag-link" href="/tags/arquitetura/">#arquitetura</a></span>
+  <p class="aor-post-card__description">Perguntas para fazer antes e durante a construção de um software: propósito e valor, escopo, ambiente e modelo de execução, usuários, interface, arquitetura, dependências, dados, integrações, segurança, confiabilidade, performance, observabilidade, configuração, testes, deploy, operação, custos, documentação, evolução e a validação final.</p>
 </article>
 <article class="aor-post-card" title="Os conceitos básicos de Apache Flink, revisados e atualizados para a linha 2.x: arquitetura, paralelismo, tempo, watermarks, estado, checkpoints, Flink SQL e deploy, com índice para navegar pelo caminho inteiro.">
   <time class="aor-post-card__date" datetime="2026-11-27">27/11/2026</time>
