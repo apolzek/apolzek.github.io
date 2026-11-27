@@ -66,6 +66,13 @@
   --color-err: var(--ansi-bright-red);
   --color-err-ink: #a00;
   --color-signal-ink: var(--ansi-black);
+  /* estados: seleção de texto, item atual no menu, foco dentro do papel */
+  --color-select-bg: var(--ansi-cyan);
+  --color-select-fg: var(--ansi-black);
+  --color-article-select-bg: var(--ansi-blue);
+  --color-article-select-fg: var(--ansi-white);
+  --color-menu-current: var(--ansi-yellow);
+  --color-focus-article: var(--ansi-blue);
   --logo-1: var(--ansi-bright-cyan);
   --logo-2: var(--ansi-bright-cyan);
   --logo-3: var(--ansi-cyan);
@@ -99,6 +106,16 @@ a:link, a:visited { color: var(--color-link); font-weight: 700; text-decoration:
 a:hover, a:active { color: var(--color-link); font-weight: 700; text-decoration: underline; }
 a.current { color: var(--color-link-current); }
 :focus-visible { outline: 2px solid var(--color-focus); outline-offset: 1px; }
+
+/* Cada estado tem a sua cor, e nenhuma depende do sistema operacional:
+   seleção = tom frio do tema; busca (mark) e item atual = amarelo;
+   hover de link no artigo = cores invertidas; foco = anel de contorno. */
+::selection { background: var(--color-select-bg); color: var(--color-select-fg); }
+.md-article-area::selection, .md-article-area ::selection {
+  background: var(--color-article-select-bg);
+  color: var(--color-article-select-fg);
+}
+.md-article-area :focus-visible { outline-color: var(--color-focus-article); }
 
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
@@ -535,7 +552,7 @@ pre.mermaid { background: none; border: 0; text-align: center; font-family: var(
   cursor: pointer;
 }
 .theme-item:hover, .theme-item:focus-visible { background: var(--color-toc-hover-bg); color: var(--color-toc-hover-fg); outline: 0; }
-.theme-item.is-current { color: var(--color-link-current); font-weight: 700; }
+.theme-item.is-current { color: var(--color-menu-current); font-weight: 700; }
 .theme-item__name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .theme-item__mode { color: var(--color-search-meta-fg); font-size: 10px; letter-spacing: 1px; }
 .swatches { display: inline-flex; flex: none; outline: 1px solid var(--color-rule-hard); }

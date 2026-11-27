@@ -134,6 +134,26 @@
     var magenta = pickSignal([c.magenta, c.bright_magenta], [260, 334], "#a371f7", [fg]);
     var mark = pickSignal([c.bright_yellow, c.yellow], [35, 70], "#e5c07b");
 
+    // Seleção de texto: um tom frio (o "selection" do próprio tema), nunca
+    // amarelo, que é a cor da busca (mark) e do item atual. Precisa se
+    // destacar do fundo e manter o texto legível (4.5:1) por cima.
+    function selection(base, text) {
+      var sel = c.selection || (theme.site || {}).selection;
+      var h = sel ? hsl(sel) : null;
+      if (!sel || contrast(sel, base) < 1.6 || (h && h[1] > 0.3 && inHue(h[0], [35, 75]))) {
+        // sem uma seleção própria que se destaque: mistura o azul do tema
+        // no fundo até a diferença ficar visível (1.6:1)
+        for (var i = dark ? 4 : 3; i <= 8; i++) {
+          sel = mix(base, blue, i / 10);
+          if (contrast(sel, base) >= 1.6) break;
+        }
+      }
+      return [sel, contrast(text, sel) >= 4.5 ? text : inkOn(sel)];
+    }
+    var pageSel = selection(bg, fg);
+    var paperSel = selection(paper, ink);
+    var menuCurrent = ensureContrast(current, tocAlt, 4.5, lift);
+
     var logo = [c.bright_cyan, c.bright_cyan, c.cyan, c.bright_blue, c.bright_blue, c.blue].map(function (x) {
       return ensureContrast(x || cyan, bg, 2.5, lift);
     });
@@ -185,7 +205,13 @@
       "--color-warn": warn,
       "--color-err": err,
       "--color-err-ink": ensureContrast(err, paper, 4.5, lift),
-      "--color-signal-ink": inkOn(ok)
+      "--color-signal-ink": inkOn(ok),
+      "--color-select-bg": pageSel[0],
+      "--color-select-fg": pageSel[1],
+      "--color-article-select-bg": paperSel[0],
+      "--color-article-select-fg": paperSel[1],
+      "--color-menu-current": menuCurrent,
+      "--color-focus-article": ensureContrast(blue, paper, 3, lift)
     };
     logo.forEach(function (x, i) { vars["--logo-" + (i + 1)] = x; });
     return vars;
